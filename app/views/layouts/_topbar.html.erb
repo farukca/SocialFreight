@@ -1,0 +1,19 @@
+<div class="topbar">
+  <div class="fill">
+    <div class="container fixed">
+      <h3><a href="#">SocialFreight</a></h3>
+      <ul>
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <% if current_user %>
+          <li>Logged in as <%= current_user.email %></li>
+          <li><%= link_to "Log out", logout_path %></li>
+        <% else %>
+          <li><%= link_to "Sign up", signup_path %> </li>
+          <li><%= link_to "log in", login_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

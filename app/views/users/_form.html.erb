@@ -1,0 +1,13 @@
+<%= simple_form_for(@user) do |f| %>
+  <%= f.error_notification %>
+
+  <fieldset>
+    <%= f.input :email %>
+    <%= f.input :password %>
+    <%= f.input :password_confirmation %>
+    <%= f.input :username %>
+    <%= f.input :patron_id, :collection => Patron.all, :prompt => "Choose a Company" %>
+    <%= f.button :submit, :class => 'btn primary' %>
+  </fieldset>
+
+<% end %>

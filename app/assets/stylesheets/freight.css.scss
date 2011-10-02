@@ -1,0 +1,223 @@
+#menu {
+    background-color: #DDECF3;
+    display: inline;
+    float: left;
+    margin-right: 10px;
+    margin-left: -60px;
+    margin-top: 60px;
+    padding-top: 5px;
+    position: fixed;
+    //width: 50px;
+    z-index: 1;
+	list-style:none;
+    -moz-transition:border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    box-shadow:0 1px 3px rgba(0, 0, 0, 0.1) inset;
+}
+#menu .maleuser {
+    background: url("/assets/user_male.png") no-repeat scroll 0 0 transparent;
+}
+#menu .femaleuser {
+    background: url("/assets/user_female.png") no-repeat scroll 0 0 transparent;
+}
+#menu .air {
+    background: url("/assets/plane.png") no-repeat scroll 0 0 transparent;
+}
+#menu .sea {
+    background: url("/assets/ship.png") no-repeat scroll 0 0 transparent;
+}
+#menu .rail {
+    background: url("/assets/train.png") no-repeat scroll 0 0 transparent;
+}
+#menu .truck {
+    background: url("/assets/truck.png") no-repeat scroll 0 0 transparent;
+}
+#menu .custom {
+    background: url("/assets/fork.png") no-repeat scroll 0 0 transparent;
+}
+#menu .finance{
+    background: url("/assets/finance.png") no-repeat scroll 0 0 transparent;
+}
+#menu .customer{
+    background: url("/assets/customer.png") no-repeat scroll 0 0 transparent;
+}
+.menubaritem {
+    border:1px solid #CCCCCC;
+    cursor: pointer;
+    height: 48px;
+    margin-bottom: 5px;
+    //margin-left: 4px;
+    position: relative;
+    width: 48px;
+}
+.menubaritem:hover {
+    border:1px solid #AAAAAA;
+}
+#content {
+    float: left;
+	margin-top:40px;
+	padding-top:5px;
+	position:relative;
+}
+#opform-step-bar {
+    background:none repeat scroll 0 0 transparent;
+    display:block;
+    list-style:none outside none;
+	/*margin:0;*/
+    padding:0;
+}
+#opform-step-bar li {
+    background-image:url("/assets/stepback.png");
+    background-position:0 28px;
+    color:#4C4D4F;
+    float:left;
+    font-size:1.1em;
+    height:28px;
+    line-height:28px;
+    margin:0 0 0 -15px;
+    padding-left:20px;
+    position:relative;
+    text-indent:9px;
+    width:181px;
+}
+#opform-step-bar li.selected {
+    background-position:0 0;
+    color:white;
+}
+#opform-step-bar li.step-1 {
+    background-image:url("/assets/step-first.png");
+    padding-left:13px;
+    width:167px;
+    z-index:1;
+}
+#opform-step-bar li.step-1 {
+    margin:0;
+    z-index:4;
+}
+#opform-step-bar li.step-2 {
+    z-index:3;
+}
+#opform-step-bar li.step-3 {
+    z-index:2;
+}
+#opform-step-bar li.step-4 {
+    z-index:1;
+}
+.slidingDiv {
+    height:100px;
+    border:2px solid #3399FF;
+}
+.slidingDiv form label {
+    width:90px;
+	line-height:13px;
+    padding:0px;
+}
+.slidingDiv form div.input {
+    margin-left:95px;
+}
+.togglebutton {
+    display:none;
+}
+.listheader {
+	display:block;
+	height:30px;
+	padding-bottom:5px;
+}
+.listheader .leftside {
+	float:left;
+}
+.rightside {
+	float:right;
+}
+form .span8 {
+    margin-left:0px;
+}
+.numbers td, th {
+	width :60px;
+    text-align:center;
+	border:1px solid #DDDDDD;
+	background-color:#EDEDED;
+}
+.numbers td {
+	height:60px;
+	font-size:25px;
+}
+.feeds ul {
+    list-style-position:outside;
+    list-style-type:none;
+    margin:0;
+    padding:0;
+}
+.feeds ul li {
+	border-bottom:1px solid #D1D1D1;
+    float:left;
+    margin-top:5px;
+    width:100%;
+}
+.feeds ul li a {
+    border:medium none;
+	text-decoration:none;
+	color:#343434;
+}
+.feeds ul li a img {
+    float:left;
+    margin-right:7px;
+}
+.feeds h5 {
+    font-size:14px;
+    font-weight:normal;
+    line-height:18px;
+}
+.feeds .source {
+    text-align:right;
+}
+.feeds p {
+	font-size:12px;
+    margin-bottom:0px;
+}
+.uprofile {
+	margin-top:5px;
+	overflow:hidden;
+}
+.uprofile .photo {
+    display:block;
+    float:left;
+    margin-right:5px;
+}
+.uprofile p{
+    font-size:10.5px;
+}
+#post-home {
+    background:url("http://static01.linkedin.com/scds/common/u/img/bg/bg_sharepostmod_567x400.png") no-repeat scroll left bottom transparent;
+	top:40px;
+    /*left:71px;
+    padding-bottom:7px;
+    position:absolute;
+    width:567px;
+    z-index:6;*/
+}
+#post-home .post-module-in {
+    background:url("http://static01.linkedin.com/scds/common/u/img/bg/bg_sharepostmod_567x400.png") no-repeat scroll 0 0 transparent;
+    padding:7px 7px 0 22px;
+}
+.post {
+    margin:0;
+    padding:0;
+}
+.post .post-actions:after {
+    clear:both;
+    content:".";
+    display:block;
+    height:0;
+    visibility:hidden;
+}
+.post .post-actions {
+    color:#666666;
+    font-size:12px;
+    margin:3px 0 0;
+    position:relative;
+}
+.post .post-actions #attach {
+    left:0;
+    position:absolute;
+    top:6px;
+}

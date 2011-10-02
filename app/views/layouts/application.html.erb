@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Socialfreight</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= render 'layouts/topbar' %>
+
+<div class="container">
+  <div id="leftmenu">
+    <ul id="menu">
+      <%= render 'layouts/menu' %>
+    </ul>
+  </div>
+
+  <div id="content">
+    <%= yield %>
+  </div>
+
+</div>
+
+</body>
+</html>
+

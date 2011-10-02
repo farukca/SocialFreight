@@ -1,0 +1,13 @@
+<%= simple_form_for(@patron) do |f| %>
+  <%= f.error_notification %>
+
+  <fieldset>
+    <%= f.input :name %>
+    <%= f.input :title %>
+    <%= f.input :patron_key %>
+    <%= f.input :postcode  %>
+    <%= f.input :address, :as => :text %>
+    <%= f.button :submit, :class => 'btn primary' %>
+  </fieldset>
+
+<% end %>

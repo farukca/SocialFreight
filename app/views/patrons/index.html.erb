@@ -1,0 +1,35 @@
+<h1>Listing Patrons</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Şehir</th>
+    <th>Ülke</th>
+    <th>Tel</th>
+    <th>Mail</th>
+    <th>Fax</th>
+    <th>Fatura Adresi</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @patrons.each do |patron| %>
+  <tr>
+    <td><%= patron.title %></td>
+    <td><%= patron.city.name if patron.city %></td>
+    <td><%= patron.country.name if patron.country %></td>
+    <td><%= patron.tel %></td>
+    <td><%= patron.email %></td>
+    <td><%= patron.fax %></td>
+    <td><%= patron.invoice_address %></td>
+    <td><%= link_to 'Show', patron %></td>
+    <td><%= link_to 'Edit', edit_patron_path(patron) %></td>
+    <td><%= link_to 'Destroy', patron, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New patron', new_patron_path %>
