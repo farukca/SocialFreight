@@ -1,6 +1,5 @@
 class PositionsController < ApplicationController
-  # GET /positions
-  # GET /positions.json
+
   def index
     @positions = Position.all
 
@@ -10,8 +9,6 @@ class PositionsController < ApplicationController
     end
   end
 
-  # GET /positions/1
-  # GET /positions/1.json
   def show
     @position = Position.find(params[:id])
 
@@ -21,8 +18,6 @@ class PositionsController < ApplicationController
     end
   end
 
-  # GET /positions/new
-  # GET /positions/new.json
   def new
     @position = Position.new
 
@@ -37,14 +32,13 @@ class PositionsController < ApplicationController
     @position = Position.find(params[:id])
   end
 
-  # POST /positions
-  # POST /positions.json
   def create
     @position = Position.new(params[:position])
 
     respond_to do |format|
       if @position.save
-        format.html { redirect_to @position, notice: 'Position was successfully created.' }
+        #format.html { redirect_to @position, notice: 'Position was successfully created.' }
+        format.html { render "detail", notice: 'Position was successfully created.' }
         format.json { render json: @position, status: :created, location: @position }
       else
         format.html { render action: "new" }

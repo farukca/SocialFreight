@@ -4,7 +4,7 @@ class Company
   field :name
   field :title
   belongs_to :patron
-  field :patron_key
+  field :patron_token
   belongs_to :branch
 
   field :address
@@ -17,13 +17,12 @@ class Company
   field :invoice_address
 
   belongs_to :user
-  belongs_to :saler, :class_name => User, :inverse_of => :saler, :foreign_key => "saler_id" 
+  belongs_to :saler, :class_name => User, :inverse_of => :saler, :foreign_key => "saler_id"
 
-  #has_many :branches
-  #has_many :stuffs
+  has_many :transporter_positions, :class_name => "Position", :inverse_of => :transporter
+  has_many :agent_positions, :class_name => "Position", :inverse_of => :agent
+  has_many :forwarder_positions, :class_name => "Position", :inverse_of => :forwarder
 
   validates_presence_of :name, :title
-  #validates_uniqueness_of :name, :case_sensitive => false
-  #validates_presence_of :country_id, :city_id, :address
 
 end

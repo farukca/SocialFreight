@@ -1,13 +1,15 @@
 class City
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Slug
   field :name
-  field :code
-
-  validates_presence_of :name, :code
-  validates_uniqueness_of :name, :case_sensitive => false
-#  validates_uniqueness_of :code, :case_sensitive => false
-
+  field :city_code
+  slug :name
+  belongs_to :state
   belongs_to :country
+
+  attr_accessible :name, :city_code, :country_id
+
+  validates_presence_of :name, :country_id
 
 end

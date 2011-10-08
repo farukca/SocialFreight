@@ -13,7 +13,7 @@ class PatronsController < ApplicationController
   # GET /patrons/1
   # GET /patrons/1.json
   def show
-    @patron = Patron.find(params[:id])
+    @patron = Patron.find_by_code(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

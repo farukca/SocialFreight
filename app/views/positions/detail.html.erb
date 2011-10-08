@@ -1,0 +1,76 @@
+<%= render 'breadcrumb', :locals => { :step => 2 } %>
+
+<div id="opform" class="row">
+<%= simple_form_for(@position) do |f| %>
+  <%= f.error_notification %>
+
+  <fieldset>
+    <div class="row">
+      <div class="page-header span16 columns">
+        <h4>New Position</h4>
+      </div>
+      <div class="span8 columns">
+        <%= f.input :operation do %>
+          <%= f.input_field :operation, :as => :select, :collection => ['Air', 'Sea', 'Truck','Rail','Inland'] %>
+          <%= f.input_field :direction, :as => :select, :collection => ['Export', 'Import', 'Transit'] %>
+          <%= f.input_field :paid_at, :as => :select, :collection => ['PrePaid', 'CustomCollect'] %>
+        <% end %>
+        <%= f.input :master_reference, :label => "Master Stock No" do %>
+          <%= f.input_field :master_reference, :size => 20 %>
+          <%= f.input_field :master_type, :as => :select, :collection => ['Master Only', 'Konsolide'] %>
+        <% end %>
+        <%= f.input :agent_reference, :label => "Reservation" %>
+      </div>
+      <div class="span8 columns">
+        <%= f.input :branch do %>
+          <%= f.input_field :branch, :as => :select, :collection => ['Head Office', 'Sea', 'Truck','Rail','Inland'] %>
+          <%= f.input_field :patron, :size => 20 %>
+        <% end %>
+        <%= f.input :master_date, :label => "Master Date" %>
+        <%= f.input :created_at, :label => "Open Date" %>
+      </div>
+    </div>
+  </fieldset>
+
+<% end %>
+</div>
+<div class="row">
+  <div class="span16 page-header"><h4>Aktarma Bilgileri</h4></div>
+  <div class="span16">
+    <table class="common-table zebra-striped">
+      <thead>
+        <tr>
+          <th>Havalimanı</th><th>Giriş Tarihi</th><th>Çıkış Tarihi</th><th>Uçak-Sefer No</th><th>Havayolu</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>AHL</td><td>19.09.2011</td><td>20.09.2011</td><td>TB195</td><td>THY</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="clearfix" style="float:right;">
+      <a href="aktarma.html" rel="facebox" class="btn primary">Aktarma Bilgisi Ekle</a>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="span16 page-header"><h4>Multi Modal Taşıma Bilgileri</h4></div>
+  <div class="span16">
+    <table class="common-table zebra-striped">
+      <thead>
+        <tr>
+          <th>Taşıma Tipi</th><th>Kalkış Yeri-Tarihi</th><th>Varış Yeri Tarihi</th><th>Araç No</th><th>Sefer No</th><th>Nakliyeci</th><th>Belge No</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Dahili Karayolu Taşıma</td><td>AHL-19.09.2011</td><td>UAK-20.09.2011</td><td>34 VK 554</td><td>TB195</td><td>THY</td><td>ZK-648215</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="clearfix" style="float:right;">
+      <a href="ektasima.html" rel="facebox" class="btn primary">Ek Taşıma Bilgisi Ekle</a>
+    </div>
+  </div>
+</div>

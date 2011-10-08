@@ -704,6 +704,7 @@ form textarea {
   line-height: normal;
 }
 form label {
+  margin-right: 5px;
   padding-top: 6px;
   font-size: 13px;
   line-height: 18px;
@@ -1478,7 +1479,7 @@ footer {
   background-image: linear-gradient(#ffe38d, #ffd040);
   border-bottom-color: #ffc40d;
 }
-.alert-message.success {
+.alert-message.notice {
   background-color: #62bc62;
   background-repeat: repeat-x;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#97d397), to(#62bc62));

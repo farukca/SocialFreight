@@ -8,6 +8,8 @@ gem 'rails', '3.1.1.rc2'
 gem 'sqlite3'
 gem 'mongoid', '~> 2.2'
 gem 'bson_ext', '~> 1.3'
+gem 'mongoid_token', '~> 0.9.1'
+gem 'mongoid_slug'
 
 gem 'sorcery'
 
@@ -45,6 +47,7 @@ gem 'therubyracer'
 gem 'rspec-rails', :group => [:test, :development]
 group :test do
   # Pretty printed test output
+  gem 'mongoid-rspec'
   gem 'turn', :require => false
   gem 'factory_girl_rails'
   gem 'capybara'

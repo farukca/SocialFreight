@@ -1,13 +1,21 @@
-<%= simple_form_for(@patron) do |f| %>
+<div id="opform" class="span16 columns">
+<%= simple_form_for @patron, :validate => true do |f| %>
   <%= f.error_notification %>
 
   <fieldset>
-    <%= f.input :name %>
-    <%= f.input :title %>
-    <%= f.input :patron_key %>
-    <%= f.input :postcode  %>
-    <%= f.input :address, :as => :text %>
-    <%= f.button :submit, :class => 'btn primary' %>
+    <div class="row">
+      <div class="page-header span16 columns">
+        <h4>Customer</h4>
+      </div>
+      <div class="span8 columns">
+        <%= f.input :title %>
+        <%= f.input :email %>
+        <%= f.input :tel  %>
+        <%= f.input :address, :as => :text, :input_html => {:rows => "3"} %>
+        <%= f.button :submit, :class => 'btn primary' %>
+      </div>
+    </div>
   </fieldset>
 
 <% end %>
+</div>

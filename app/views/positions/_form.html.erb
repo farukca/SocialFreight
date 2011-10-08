@@ -1,10 +1,63 @@
+<div id="opform" class="row">
 <%= simple_form_for(@position) do |f| %>
   <%= f.error_notification %>
 
-  <div class="inputs">
-  </div>
+  <fieldset>
+    <div class="row">
+      <div class="page-header span16 columns">
+        <h4>New Position</h4>
+      </div>
+      <div class="span8 columns">
+        <%= f.input :operation do %>
+          <%= f.input_field :operation, :as => :select, :collection => ['Air', 'Sea', 'Truck','Rail','Inland'] %>
+          <%= f.input_field :direction, :as => :select, :collection => ['Export', 'Import', 'Transit'] %>
+          <%= f.input_field :paid_at, :as => :select, :collection => ['PrePaid', 'CustomCollect'] %>
+        <% end %>
+        <%= f.input :master_reference, :label => "Master Stock No" do %>
+          <%= f.input_field :master_reference, :size => 20 %>
+          <%= f.input_field :master_type, :as => :select, :collection => ['Master Only', 'Konsolide'] %>
+        <% end %>
+        <%= f.input :agent_reference, :label => "Reservation" %>
+      </div>
+      <div class="span8 columns">
+        <%= f.input :branch do %>
+          <%= f.input_field :branch, :as => :select, :collection => ['Head Office', 'Sea', 'Truck','Rail','Inland'] %>
+          <%= f.input_field :patron, :size => 20 %>
+        <% end %>
+        <%= f.input :master_date, :label => "Master Date" %>
+        <%= f.input :created_at, :label => "Open Date" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="page-header span16 columns">
+        <h4>Sefer Bilgileri</h4>
+      </div>
+      <div class="span8 columns">
+        <%= f.input :transporter %>
+        <%= f.input :forwarder %>
+        <%= f.input :agent %>
+        <%= f.input :description, :as => :text, :input_html => {:rows => "3"}, :label => "Notes" %>
+      </div>
+      <div class="span8 columns">
+        <%= f.input :load_place do %>
+          <%= f.input_field :load_place, :size => 25 %>
+          <%= f.input_field :load_date, :size => 10 %>
+        <% end %>
+        <%= f.input :unload_place do %>
+          <%= f.input_field :unload_place, :size => 25 %>
+          <%= f.input_field :unload_date, :size => 10 %>
+        <% end %>
+        <%= f.input :voyage do %>
+          <%= f.input_field :voyage, :size => 15 %>
+          <%= f.input_field :vessel, :size => 15 %>
+        <% end %>
+        <%= f.input :contract_no %>
+        <div class="clearfix" style="margin-left:250px">
+          <%= f.button :submit, :class => 'btn primary' %>
+        </div>
+      </div>
+    </div>
+  </fieldset>
 
-  <div class="actions">
-    <%= f.button :submit %>
-  </div>
 <% end %>
+</div>

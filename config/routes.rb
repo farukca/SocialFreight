@@ -1,9 +1,8 @@
 Socialfreight::Application.routes.draw do
 
+  resources :password_resets
   resources :places
-
   resources :companies
-
   resources :patrons
 
   get "logout" => "sessions#destroy", :as => "logout"
