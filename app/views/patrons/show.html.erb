@@ -1,5 +1,35 @@
-<p id="notice"><%= notice %></p>
+<div id="patron" class="row">
 
+  <div id="sidebar" class="span4">
+    <div class="row">
+      <span class="clearfix"><h4>Picture</h4></span>
+      <ul>
+	   <li>Email</li>
+           <li>Website</li>
+           <li>Tel</li>
+           <li>Fax</li>
+           <li>Adres</li>
+      </ul>
+    </div>
+  </div>
 
-<%= link_to 'Edit', edit_patron_path(@patron) %> |
-<%= link_to 'Back', patrons_path %>
+  <div class="span10 columns">
+    <div>
+      <span class="rightside">
+	<%= link_to "Add User", new_user_path %>
+	<%= link_to "Parameters", new_user_path %>
+	<%= link_to "Add Firm", new_user_path %>
+      </span>
+    </div>
+
+    <div id="details" class="row">
+	<span class="leftside"><h4>Aktif Operation Sayıları</h4></span>
+	<table class="common-table">
+	   <tbody>
+	     <tr class="numbers"><td>5</td><td>4</td><td>3</td><td>1</td><td>11</td></tr>
+	     <tr class="numbers"><th>Air</th><th>Sea</th><th>Truck</th><th>Rail</th><th>Inland</th></tr>
+	   </tbody>
+	</table>
+    </div>
+  </div>
+</div>

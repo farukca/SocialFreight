@@ -11,8 +11,17 @@ class User
   field :crypted_password
   field :salt
   field :slug
+  field :last_login_at, type: DateTime
+  field :last_logout_at, type: DateTime
+  field :last_activity_at, type: DateTime
+  field :activation_state
+  field :activation_token
+  field :activation_token_expires_at, type: DateTime
   field :password_reset_token
-  field :password_reset_time, type: DateTime
+  field :password_reset_email_time, type: DateTime
+  field :password_reset_token_expires_at, type: DateTime
+  field :failed_logins_count, type: Integer
+  field :lock_expires_at, type: DateTime
   slug :name, :surname
 
   belongs_to :patron
@@ -23,19 +32,21 @@ class User
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
   validates_presence_of :email
+  validates_presence_of :name
+  validates_presence_of :surname
   #validates_uniqueness_of :email, :case_sensitive => false, :on => :create
 
-  after_create  :send_activation_mail
+  #after_create  :send_activation_mail
 
-  def send_activation_mail
-    UserMailer.user_activation(self).deliver
-  end
+  #def send_activation_mail
+  #  UserMailer.activation_needed_email(self).deliver
+  #end
 
-  def send_password_reset
+  def send_password_reset_email
     generate_token(:password_reset_token)
-    self.password_reset_time = Time.zone.now
+    self.password_reset_email_time = Time.zone.now
     save!
-    UserMailer.password_reset(self).deliver
+    UserMailer.password_reset_email(self).deliver
   end
 
   def generate_token(column)

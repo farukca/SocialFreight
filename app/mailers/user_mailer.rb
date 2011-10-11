@@ -6,12 +6,19 @@ class UserMailer < ActionMailer::Base
   #
   #   en.user_mailer.user_activation.subject
   #
-  def user_activation(user)
+  def activation_needed_email(user)
     @user = user
+    @url  = "http://0.0.0.0:3000/users/#{user.activation_token}/activate"
     mail :to => user.email, :subject => "SocialFreight Account Activation"
   end
 
-  def password_reset(user)
+  def activation_success_email(user)
+    @user = user
+    @url  = "http://0.0.0.0:3000/login"
+    mail :to => user.email, :subject => "Welcome to SocialFreight"
+  end
+
+  def password_reset_email(user)
     @user = user
     mail :to => user.email, :subject => "SocialFreight Password Reset"
   end

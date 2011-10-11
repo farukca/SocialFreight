@@ -1,6 +1,7 @@
 class LoadingsController < ApplicationController
-  # GET /loadings
-  # GET /loadings.json
+
+  before_filter :require_login
+
   def index
     @loadings = Loading.all
 

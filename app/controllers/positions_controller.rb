@@ -1,5 +1,7 @@
 class PositionsController < ApplicationController
 
+  before_filter :require_login
+
   def index
     @positions = Position.all
 

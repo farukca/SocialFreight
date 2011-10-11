@@ -3,7 +3,7 @@ require 'spec_helper'
 describe UserMailer do
   describe "#password_reset" do 
     let(:user) { Factory(:user, :password_reset_token => "anything") }
-    let(:mail) { UserMailer.password_reset(user) }
+    let(:mail) { UserMailer.password_reset_email(user) }
 
     it "sends user password reset url" do
       mail.subject.should eq("SocialFreight Password Reset")

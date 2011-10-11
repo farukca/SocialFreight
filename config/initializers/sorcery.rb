@@ -2,7 +2,7 @@
 # The default is nothing which will include only core features (password encryption, login/logout).
 # Available submodules are: :user_activation, :http_basic_auth, :remember_me,
 # :reset_password, :session_timeout, :brute_force_protection, :activity_logging, :external
-Rails.application.config.sorcery.submodules = [:remember_me, :session_timeout]
+Rails.application.config.sorcery.submodules = [:reset_password, :remember_me, :session_timeout, :user_activation, :activity_logging, :brute_force_protection]
 
 # Here you can configure each submodule's features.
 Rails.application.config.sorcery.configure do |config|
@@ -19,8 +19,8 @@ Rails.application.config.sorcery.configure do |config|
                                                                       # 'redirect_back_or_to'.
 
   # -- session timeout --
-  # config.session_timeout = 3600                                     # how long in seconds to keep the session alive.
-  # config.session_timeout_from_last_action = false                   # use the last action as the beginning of
+   config.session_timeout = 3600                                      # how long in seconds to keep the session alive.
+   config.session_timeout_from_last_action = true                     # use the last action as the beginning of
                                                                       # session timeout.
 
   # -- http_basic_auth --
@@ -113,36 +113,36 @@ Rails.application.config.sorcery.configure do |config|
     # user.activation_token_expires_at_attribute_name = :activation_token_expires_at  # the attribute name to hold
                                                                                       # activation code expiration date.
 
-    # user.activation_token_expiration_period =  nil                                  # how many seconds before the
+    user.activation_token_expiration_period =  12.hours                               # how many seconds before the
                                                                                       # activation code expires. nil for
                                                                                       # never expires.
 
-    # user.user_activation_mailer = nil                                               # your mailer class. Required.
+    user.user_activation_mailer = UserMailer                                               # your mailer class. Required.
 
-    # user.activation_needed_email_method_name = :activation_needed_email             # activation needed email method
+    user.activation_needed_email_method_name = :activation_needed_email             # activation needed email method
                                                                                       # on your mailer class.
 
-    # user.activation_success_email_method_name = :activation_success_email           # activation success email method
+    user.activation_success_email_method_name = :activation_success_email           # activation success email method
                                                                                       # on your mailer class.
 
-    # user.prevent_non_active_users_to_login = true                                   # do you want to prevent or allow
+    user.prevent_non_active_users_to_login = true                                   # do you want to prevent or allow
                                                                                       # users that did not activate by
                                                                                       # email to login?
 
     # -- reset_password --
-    # user.reset_password_token_attribute_name = :reset_password_token                          # reset password code
+    user.reset_password_token_attribute_name = :password_reset_token                            # reset password code
                                                                                                 # attribute name.
 
-    # user.reset_password_token_expires_at_attribute_name = :reset_password_token_expires_at    # expires at attribute
+    user.reset_password_token_expires_at_attribute_name = :password_reset_token_expires_at      # expires at attribute
                                                                                                 # name.
 
-    # user.reset_password_email_sent_at_attribute_name = :reset_password_email_sent_at          # when was email sent,
+    user.reset_password_email_sent_at_attribute_name = :password_reset_email_time               # when was email sent,
                                                                                                 # used for hammering
                                                                                                 # protection.
 
-    # user.reset_password_mailer = nil                                                          # mailer class. Needed.
+    user.reset_password_mailer = UserMailer                                                          # mailer class. Needed.
 
-    # user.reset_password_email_method_name = :reset_password_email                             # reset password email
+    user.reset_password_email_method_name = :password_reset_email                             # reset password email
                                                                                                 # method on your mailer
                                                                                                 # class.
 
@@ -151,7 +151,7 @@ Rails.application.config.sorcery.configure do |config|
                                                                                                 # request expires. nil
                                                                                                 # for never expires.
 
-    # user.reset_password_time_between_emails = 5 * 60                                          # hammering protection,
+    user.reset_password_time_between_emails = 5 * 60                                          # hammering protection,
                                                                                                 # how long to wait
                                                                                                 # before allowing
                                                                                                 # another email to be
@@ -164,9 +164,9 @@ Rails.application.config.sorcery.configure do |config|
                                                                                       # user is banned and when it will
                                                                                       # be active again.
 
-    # user.consecutive_login_retries_amount_limit = 50                                # how many failed logins allowed.
+    user.consecutive_login_retries_amount_limit = 10                                # how many failed logins allowed.
 
-    # user.login_lock_time_period = 60 * 60                                           # how long the user should be
+    user.login_lock_time_period = 60                                                # how long the user should be
                                                                                       # banned. in seconds. 0 for
                                                                                       # permanent.
 

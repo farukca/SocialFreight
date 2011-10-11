@@ -1,6 +1,7 @@
 class CompaniesController < ApplicationController
-  # GET /companies
-  # GET /companies.json
+  
+  before_filter :require_login
+
   def index
     @companies = Company.all
 

@@ -1,6 +1,8 @@
 class PatronsController < ApplicationController
-  # GET /patrons
-  # GET /patrons.json
+
+  before_filter :require_login
+  skip_before_filter :require_login, :only => [:new, :create]
+
   def index
     @patrons = Patron.all
 

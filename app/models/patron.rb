@@ -28,11 +28,15 @@ class Patron
   has_many :branches
   has_many :users
 
-  attr_accessible :title, :email, :website, :tel, :fax, :postcode, :address, :city_id, :country_id, :status, :saler_id
+  attr_accessor :password
+  attr_accessible :title, :website, :tel, :fax, :postcode, :address, :city_id, :country_id, :status, :saler_id, 
+                  :email, :password, :password_confirmation
 
   before_create :generate_patron
   after_create  :create_patron_user
 
+  validates_confirmation_of :password
+  validates_presence_of :password, :on => :create
   validates_presence_of :title, :message => I18n.t('patrons.errors.title.cant_be_blank')
   validates_presence_of :email, :message => I18n.t('patrons.errors.title.cant_be_blank')
   validates_presence_of :tel,   :message => I18n.t('patrons.errors.title.cant_be_blank')
@@ -48,7 +52,7 @@ class Patron
   end
 
   def create_patron_user
-    self.users.create(:name => "SocialFreight", :surname => "Admin", :email => self.email, :password => self.token, :password_confirmation => self.token);
+    self.users.create(:name => "SocialFreight", :surname => "Admin", :email => self.email, :password => self.password, :password_confirmation => self.password_confirmation);
   end
 
 end

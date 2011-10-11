@@ -1,6 +1,7 @@
 class PlacesController < ApplicationController
-  # GET /places
-  # GET /places.json
+  
+  before_filter :require_login
+
   def index
     @places = Place.all
 
