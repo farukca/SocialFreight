@@ -1,10 +1,60 @@
 <%= simple_form_for(@loading) do |f| %>
   <%= f.error_notification %>
 
-  <div class="inputs">
-  </div>
+  <fieldset>
+    <div class="row">
+      <div class="page-header span16 columns">
+        <h4>New Loading</h4>
+      </div>
+      <%= f.hidden_field :position_id, :value => @loading.position ? @loading.position.id : nil %>
+      <div class="span8 columns">
+        <%= f.input :operation do %>
+          <%= f.input_field :operation, :class => "small disabled" %>
+          <%= f.input_field :direction, :as => :select, :collection => Position.direction_types.map { |r| [r[1], r[0] ] } %>
+          <%= f.input_field :paid_at, :as => :select, :collection => Position.payment_types.map { |r| [r[1], r[0] ] } %>
+        <% end %>
+        <%= f.input :incoterm, :as => :select, :collection => Loading.incoterms.map { |r| [r[1], r[0] ] } %>
+      </div>
+      <div class="span8 columns">
+        <%= f.input :position, :label => "Position Reference", :input_html => { :class => "disabled", :value => @loading.position ? @loading.position.reference : nil } %>
+        <%= f.input :branch do %>
+          <%= f.input_field :branch, :as => :select, :collection => current_patron.branches, :include_blank => false%>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="page-header span16 columns">
+        <h4>Yük Bilgileri</h4>
+      </div>
+      <div class="span8 columns">
+        <%= f.input :company, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.company ? @loading.company.prepopulate_tokens.to_json : nil } %>
+        <%= f.input :sender, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.sender ? @loading.sender.prepopulate_tokens.to_json : nil } %>
+        <%= f.input :loader, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.loader ? @loading.loader.prepopulate_tokens.to_json : nil } %>
+        <%= f.input :consignee, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.consignee ? @loading.consignee.prepopulate_tokens.to_json : nil } %>
+        <%= f.input :agent, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.agent ? @loading.agent.prepopulate_tokens.to_json : nil } %>
+        <%= f.input :deliver, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.deliver ? @loading.deliver.prepopulate_tokens.to_json : nil } %>
+        <%= f.input :notify, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.notify ? @loading.notify.prepopulate_tokens.to_json : nil } %>
+        <%= f.input :description, :as => :text, :input_html => {:rows => "3"}, :label => "Notes" %>
+      </div>
+      <div class="span8 columns">
+        <%= f.input :load_place, :input_html => {:class => "token_input", "data-url" => "/places.json", "data-pre" => @loading.load_place ? @loading.load_place.prepopulate_tokens.to_json : nil} %>
 
-  <div class="actions">
-    <%= f.button :submit %>
-  </div>
+        <%= f.input :unload_place, :input_html => {:class => "token_input", "data-url" => "/places.json", "data-pre" => @loading.unload_place ? @loading.unload_place.prepopulate_tokens.to_json : nil} %>
+        <%= f.input :load_date, :label => "Load/Unload Dates" do %>
+	        <%= f.input_field :load_date, :size => 10 %>
+	        <%= f.input_field :unload_date, :size => 10 %>
+        <% end %>
+        <%= f.input :customofficer, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.customofficer ? @loading.customofficer.prepopulate_tokens.to_json : nil } %>
+        <%= f.input :statement do %>
+          <%= f.input_field :statement, :size => 10 %>
+          <%= f.input_field :statement_date, :size => 10 %>
+        <% end %>
+        <%= f.input :commodity, :as => :text, :input_html => {:rows => "3"}, :label => "Notes" %>
+        <div class="clearfix" style="margin-left:250px">
+          <%= f.button :submit, :class => 'btn primary' %>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
 <% end %>

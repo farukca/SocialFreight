@@ -1447,6 +1447,8 @@ footer {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
+  text-align: center;
+  font-size: 15px;
 }
 .alert-message p {
   color: #fff;
@@ -1455,7 +1457,7 @@ footer {
 .alert-message p + p {
   margin-top: 5px;
 }
-.alert-message.error {
+.alert-message.error, .alert-message.alert {
   background-color: #d83a2e;
   background-repeat: repeat-x;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#e4776f), to(#d83a2e));

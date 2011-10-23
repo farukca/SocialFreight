@@ -3,18 +3,16 @@ class CompaniesController < ApplicationController
   before_filter :require_login
 
   def index
-    @companies = Company.all
+    @companies = Company.where(:name => /#{params[:q]}/i).limit(10)
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @companies }
+      format.json { render json: @companies.map(&:token_inputs) }
     end
   end
 
-  # GET /companies/1
-  # GET /companies/1.json
   def show
-    @company = Company.find(params[:id])
+    @company = Company.find_by_slug(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -22,10 +20,8 @@ class CompaniesController < ApplicationController
     end
   end
 
-  # GET /companies/new
-  # GET /companies/new.json
   def new
-    @company = Company.new
+    @company = current_patron.companies.build(params[:company])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -33,15 +29,13 @@ class CompaniesController < ApplicationController
     end
   end
 
-  # GET /companies/1/edit
   def edit
     @company = Company.find(params[:id])
   end
 
-  # POST /companies
-  # POST /companies.json
   def create
-    @company = Company.new(params[:company])
+    @company = current_patron.companies.build(params[:company])
+    @company.patron_token = current_patron.token
 
     respond_to do |format|
       if @company.save
@@ -54,8 +48,6 @@ class CompaniesController < ApplicationController
     end
   end
 
-  # PUT /companies/1
-  # PUT /companies/1.json
   def update
     @company = Company.find(params[:id])
 
@@ -70,8 +62,6 @@ class CompaniesController < ApplicationController
     end
   end
 
-  # DELETE /companies/1
-  # DELETE /companies/1.json
   def destroy
     @company = Company.find(params[:id])
     @company.destroy

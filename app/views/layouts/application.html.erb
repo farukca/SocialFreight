@@ -17,7 +17,7 @@
   </div>
 
   <div id="content">
-    <div id="messages">
+    <div id="messages" class="span16">
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => "flash_#{name}", :class => "alert-message #{name}" %>
       <% end %>

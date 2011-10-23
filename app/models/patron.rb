@@ -18,15 +18,17 @@ class Patron
   belongs_to :city
   belongs_to :state
   belongs_to :country
+  field :patron_type
   field :status, default: "A"
-  token :length => 7, :contains => :alphanumeric
-
   belongs_to :saler, :class_name => User, :inverse_of => :saler, :foreign_key => "saler_id" 
-
+  token :length => 7, :contains => :alphanumeric
   slug :title, :as => :code
 
   has_many :branches
   has_many :users
+  has_many :companies
+  has_many :positions
+  has_many :loadings
 
   attr_accessor :password
   attr_accessible :title, :website, :tel, :fax, :postcode, :address, :city_id, :country_id, :status, :saler_id, 
@@ -40,11 +42,29 @@ class Patron
   validates_presence_of :title, :message => I18n.t('patrons.errors.title.cant_be_blank')
   validates_presence_of :email, :message => I18n.t('patrons.errors.title.cant_be_blank')
   validates_presence_of :tel,   :message => I18n.t('patrons.errors.title.cant_be_blank')
-  validates_uniqueness_of :email, :case_sensitive => false, :on => :create
+  validates_uniqueness_of :email, :case_sensitive => false
 
   validates_length_of   :title, :maximum => 255#, :message => I18n.t('tasks.errors.name.too_long')
   validates_length_of   :tel, :maximum => 12#, :message => I18n.t('tasks.errors.name.too_long')
 
+  class << self
+    def statuses()
+      statuses = {
+        'A' => 'Active',
+        'C' => 'Closed',
+        'I' => 'Cancelled'
+      }
+    end
+
+    def ranks()
+      ranks = {
+        '10' => 'Reservation',
+        '20' => 'Loading',
+        '30' => 'On Way',
+        '40' => 'Unloading'
+      }
+    end
+  end
 
   protected
   def generate_patron

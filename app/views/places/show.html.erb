@@ -1,5 +1,55 @@
-<p id="notice"><%= notice %></p>
-
-
-<%= link_to 'Edit', edit_place_path(@place) %> |
-<%= link_to 'Back', places_path %>
+<div id="place" class="row">
+  <div id="pos-btn" class="row">
+    <ul class="pills rightside">
+      <li><%= link_to "Edit Place", edit_place_path(@place), :class => "btn primary" %></li>
+    </ul>
+  </div>
+  <div class="profile-content span12">
+    <div class="place">
+      <h3>
+        <span id="reference"><%= @place.name %></span>
+      </h3>
+      <dl id="overview">
+        <dt>Kod</dt>
+        <dd>
+          <ul>
+            <li><span><%= @place.code %></span></li>
+          </ul>
+        </dd>
+        <dt>Type</dt>
+        <dd>
+          <ul>
+            <li><span><%= @place.place_type %></span></li>
+          </ul>
+        </dd>
+        <dt>Country/City</dt>
+        <dd>
+          <ul>
+            <li>
+              <span><%= @place.country.name if @place.country %></span>
+              <span><%= @place.city.name if @place.city %></span>
+            </li>
+          </ul>
+        </dd>
+        <dt>District</dt>
+          <dd>
+            <ul>
+              <li><span><%= @place.district %></span></li>
+            </ul>
+          </dd>
+        <dt>PostCode/ZipCode</dt>
+        <dd>
+          <ul>
+            <li><span><%= @place.postcode%></span></li>
+          </ul>
+        </dd>  
+        <dt>Description</dt>
+        <dd>
+          <ul>
+            <li><span><%= @place.description %></span></li>
+          </ul>     
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>

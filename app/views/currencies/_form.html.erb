@@ -1,0 +1,18 @@
+<%= simple_form_for @currency, :validate => true do |f| %>
+  <%= f.error_notification %>
+
+  <fieldset>
+    <div class="row">
+      <div class="page-header span16 columns">
+        <h4>New Currency</h4>
+      </div>
+      <div class="span8 columns">
+        <%= f.input :code %>
+        <%= f.input :name %>
+        <%= f.input :symbol %>
+        <%= f.input :multiplier %>
+        <%= f.button :submit, :class => "btn primary" %>
+      </div>
+    </div>
+  </fieldset>
+<% end %>

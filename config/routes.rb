@@ -1,9 +1,6 @@
 Socialfreight::Application.routes.draw do
 
-  resources :password_resets
-  resources :places
-  resources :companies
-  resources :patrons
+  resources :currencies
 
   get "logout" => "sessions#destroy", :as => "logout"
   get "login"  => "sessions#new", :as => "login"
@@ -15,9 +12,20 @@ Socialfreight::Application.routes.draw do
     end
   end
   resources :sessions
-
+  resources :password_resets
+  resources :places
+  resources :companies
+  resources :patrons
+  resources :branches
   resources :loadings
-  resources :positions
+  resources :positions do
+    get :autocomplete_place_name, :on => :collection
+    get :autocomplete_company_name, :on => :collection
+  end
+
+  resources "countries" do
+    resources "cities"
+  end
 
   root :to => 'home#index'
 

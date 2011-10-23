@@ -1,10 +1,26 @@
-<%= simple_form_for(@place) do |f| %>
+<%= simple_form_for @place, :validate => true do |f| %>
   <%= f.error_notification %>
 
-  <div class="inputs">
-  </div>
+  <fieldset>
+    <div class="row">
+      <div class="page-header">
+        <h4>New Place</h4>
+      </div>
+      <div class="span8 columns">
+        <%= f.input :place_type do %>
+          <%= f.select :place_type, Place.place_types.map { |r| [r[1], r[0] ] }, :include_blank => false %>
+        <% end %>
+        <%= f.input :name %>
+        <%= f.input :code %>
+        <%= f.input :postcode %>
+        <%= f.input :district %>
+        <%= f.input :country_id, :as => :select, :collection => Country.all, :include_blank => false %>
+        <%= f.input :state_id %>
+        <%= f.input :city_id %>
+        <%= f.input :description, :as => :text, :input_html => {:rows => "3"} %>
+        <%= f.button :submit, :class => 'btn primary' %>
+      </div>
+    </div>
+  </fieldset>
 
-  <div class="actions">
-    <%= f.button :submit %>
-  </div>
 <% end %>

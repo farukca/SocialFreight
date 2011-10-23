@@ -7,5 +7,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require rails.validations
+//= require jquery.tokeninput
 //= require megamenu
 //= require_tree .

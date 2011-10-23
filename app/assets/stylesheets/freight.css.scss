@@ -1,3 +1,7 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
 #menu {
     background-color: #DDECF3;
     display: inline;
@@ -54,9 +58,9 @@
 }
 #content {
     float: left;
-	margin-top:40px;
-	padding-top:5px;
-	position:relative;
+    margin-top:40px;
+    padding-top:5px;
+    position:relative;
 }
 #opform-step-bar {
     background:none repeat scroll 0 0 transparent;
@@ -223,4 +227,129 @@ form .span8 {
 }
 fieldset span {
     padding-left:130px;
+}
+#profile-details td {
+    font-size:11px;
+}
+.profile-content {
+    border:2px solid #D6D6D6;
+    box-shadow:2px 2px 3px rgba(0, 0, 0, 0.08);
+    margin:0 0 15px;
+    min-height:90px;
+    padding:10px;
+    overflow:hidden;
+    position:relative;
+}
+.profile-content #overview {
+    overflow:visible;
+}
+#overview dt {
+    left:-10px;
+    width:115px;
+    color:#747474;
+    margin:1px 0 10px;
+    text-align:right;
+    position:relative;
+    z-index:1;
+    float:left;
+}
+#overview dd {
+    background:url("assets/bg_grey_dotted_h-line_3x1.png") repeat-x scroll 0 100% transparent;
+    overflow:hidden;
+    margin-bottom:10px;
+}
+#overview dd.last {
+    background:none repeat scroll 0 0 transparent;
+    margin-bottom:-6px;
+}
+#overview dd:last-child {
+    background:none repeat scroll 0 0 transparent;
+    margin-bottom:-6px;
+}
+#overview ul {
+    color:#555555;
+    list-style-type:disc;
+    margin-left:1.3em;
+}
+#overview ul, #overview li {
+    color:#333333;
+    list-style-type:none;
+    margin-bottom:3px;
+    margin-left:0;
+}
+#overview ul.current {
+    font-weight:bold;
+}
+#overview li {
+    color:#000000;
+}
+.resume li, .draggable li {
+    font-size:13px;
+}
+#overview ul.current a, #overview ul.past a {
+    color:#000000;
+}
+.profile-content h1 {
+    line-height:19px;
+    margin:0 0 7px;
+    border:medium none;
+    color:#000000;
+    font-weight:bold;
+    margin:0 0 4px;
+    padding:0;
+}
+.profile-content .image {
+    border:1px solid #D6D6D6;
+    margin:0 16px 16px 0;
+    position:relative;
+    float:left;
+}
+.profile-content h1 #reference {
+    font-family:Georgia,serif;
+}
+.profile-content p {
+    color:#333333;
+}
+.profile-content p.title {
+    margin:0;
+}
+.profile-content p.title {
+    margin:0 0 6px;
+}
+.profile-content .demographic-info {
+    color:#747474;
+    margin:2px 0 6px;
+}
+.profile-content .demographic-info {
+    color:#666666;
+    margin:4px 0 6px;
+    padding:0;
+}
+.profile-content .demographic-info dd {
+    display:inline;
+    margin:0;
+    padding:0 4px 0 0;
+}
+.profile-content .demographic-info dd.industry {
+    border-left:1px solid #CCCCCC;
+    padding-left:6px;
+}
+#sideview dt {
+    color:#747474;
+    position:relative;
+	width:80px;
+	float:left;
+    z-index:1;
+}
+#sideview dd {
+	width:140px;
+    overflow:hidden;
+	margin-bottom:10px;
+}
+#sideview dd.last {
+    background:none repeat scroll 0 0 transparent;
+}
+#sideview dd:last-child {
+    background:none repeat scroll 0 0 transparent;
+    margin-bottom:-6px;
 }

@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+  layout 'guest_layout'
+
   def new
   end
 

@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    render :layout => 'guest_layout' unless current_user
   end
 
   def create

@@ -9,5 +9,3 @@ jQuery ->
   $('.togglebutton').click ->
      $(".slidingDiv").slideToggle()
 
-
-

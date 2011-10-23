@@ -1,19 +1,30 @@
-<h1>Log in</h1>
-<%= form_tag sessions_path do %>
-  <div class="field">
-    <%= label_tag :email %>
-    <%= text_field_tag :email, params[:email] %>
+<div class="row">
+  <div id="login-form" class="span8">
+    <div class="page-header span8 columns">
+      <h4>Log in</h4>
+    </div>
+    <%= form_tag sessions_path do %>
+      <fieldset>
+      <div class="row">
+      <div class="clearfix">
+        <%= label_tag :email %>
+        <%= text_field_tag :email, params[:email] %>
+      </div>
+      <div class="clearfix">
+        <%= label_tag :password %>
+        <%= password_field_tag :password %>
+      </div>
+      <div class="clearfix">
+        <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+        <%= label_tag :remember_me %>
+      </div>
+      <div class="input"><%= submit_tag "Log in", :class => "btn primary" %></div>
+      <p><%= link_to "Forgotten Password?", new_password_reset_path %></p>
+      </div>
+      </fieldset>
+    <% end %>
   </div>
-  <div class="field">
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
-  </div>
-  <div class="field">
-    <%= check_box_tag :remember_me, 1, params[:remember_me] %>
-    <%= label_tag :remember_me %>
-  </div>
-  <div class="actions"><%= submit_tag "Log in" %></div>
-  <p><%= link_to "Forgotten Password?", new_password_reset_path %></p>
-<% end %>
+</div>
+
 
 

@@ -34,7 +34,7 @@ class User
   validates_presence_of :email
   validates_presence_of :name
   validates_presence_of :surname
-  #validates_uniqueness_of :email, :case_sensitive => false, :on => :create
+  validates_uniqueness_of :email, :case_sensitive => false
 
   #after_create  :send_activation_mail
 

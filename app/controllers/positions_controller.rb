@@ -1,6 +1,6 @@
 class PositionsController < ApplicationController
 
-  before_filter :require_login
+  before_filter :require_login#, :current_patron
 
   def index
     @positions = Position.all
@@ -12,7 +12,7 @@ class PositionsController < ApplicationController
   end
 
   def show
-    @position = Position.find(params[:id])
+    @position = Position.find_by_slug(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -21,7 +21,7 @@ class PositionsController < ApplicationController
   end
 
   def new
-    @position = Position.new
+    @position = current_patron.positions.build(params[:position])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -31,16 +31,17 @@ class PositionsController < ApplicationController
 
   # GET /positions/1/edit
   def edit
-    @position = Position.find(params[:id])
+    @position = Position.find_by_slug(params[:id])
   end
 
   def create
-    @position = Position.new(params[:position])
+    @position = current_patron.positions.build(params[:position])
+    @position.patron_token = current_patron.token
 
     respond_to do |format|
       if @position.save
         #format.html { redirect_to @position, notice: 'Position was successfully created.' }
-        format.html { render "detail", notice: 'Position was successfully created.' }
+        format.html { redirect_to @position, notice: 'Position was successfully created.' }
         format.json { render json: @position, status: :created, location: @position }
       else
         format.html { render action: "new" }
@@ -49,10 +50,8 @@ class PositionsController < ApplicationController
     end
   end
 
-  # PUT /positions/1
-  # PUT /positions/1.json
   def update
-    @position = Position.find(params[:id])
+    @position = Position.find_by_slug(params[:id])
 
     respond_to do |format|
       if @position.update_attributes(params[:position])
@@ -65,10 +64,8 @@ class PositionsController < ApplicationController
     end
   end
 
-  # DELETE /positions/1
-  # DELETE /positions/1.json
   def destroy
-    @position = Position.find(params[:id])
+    @position = Position.find_by_slug(params[:id])
     @position.destroy
 
     respond_to do |format|

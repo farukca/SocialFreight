@@ -1,0 +1,53 @@
+<div id="country" class="row">
+
+  <div>
+    <div class="row">
+      <span><%= @country.name %></span>
+      <span class="rightside">
+	<%= link_to "Add City", new_user_path %>
+	<%= link_to "Add State", new_user_path %>
+      </span>
+    </div>
+
+    <div id="new_city" class="row">
+      <%= simple_form_for ([@country, @country.cities.build]), :validate => true do |f| %>
+        <%= f.error_notification %>
+
+        <fieldset>
+          <div class="row">
+            <div class="page-header span16 columns">
+              <h4>Add City</h4>
+            </div>
+            <div class="span8 columns">
+              <%= f.input :code  %>
+              <%= f.input :name %>
+              <%= f.input :telcode %>
+              <%= f.button :submit, :class => 'btn primary' %>
+            </div>
+          </div>
+        </fieldset>
+
+      <% end %>
+    </div>
+
+    <div id="cities" class="row">
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Kod</th>
+          <th>Tel Kod</th>
+        </tr>
+
+      <% @country.cities.each do |city| %>
+        <tr>
+          <td><%= city.name %></td>
+          <td><%= city.code %></td>
+          <td><%= city.telcode %></td>
+        </tr>
+      <% end %>
+      </table>
+    </div>
+
+
+  </div>
+</div>

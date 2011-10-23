@@ -22,6 +22,7 @@ end
 
 gem 'simple_form'
 gem 'client_side_validations'
+gem 'rails3-jquery-autocomplete'
 gem 'kaminari'
 
 #File uploading

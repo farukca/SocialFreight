@@ -18,10 +18,11 @@
 	 <div class="span6 columns">
 	 <div class="span3">
 	    <ul>
-		<li><a href="mainmenu.html">Position List</a></li>
+		<li><%= link_to "Position List", positions_path(:operation => 'Air') %></li>
 		<li><a href="airload.html">Good List</a></li>
 		<li><a href="airproposal.html">Proposal List</a></li>
 		<li><a href="#">Reservation List</a></li>
+		<li><%= link_to "Airports", places_path(:place_type => "AP") %></li>
 	    </ul>   
 	 </div>
 	 <div class="span3">
@@ -115,7 +116,7 @@
           <div class="span6 columns">
             <div class="span3">
                <ul>
-                  <li><a href="mainmenu.html">New Customer List</a></li>
+                  <li><%= link_to "New Customer", new_company_path %></li>
                   <li><a href="airload.html">Good List</a></li>
                   <li><a href="airproposal.html">Proposal List</a></li>
                   <li><%= link_to "New Patron", new_patron_path %></li>

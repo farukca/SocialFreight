@@ -1,21 +1,32 @@
-<h1>Listing places</h1>
-
+<div class="row">
+<h3>Listing places</h3>
+<span class="rightside"><%= link_to 'New Place', new_place_path, :class => "btn primary" %></span>
 <table>
   <tr>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Type</th>
+    <th>Name</th>
+    <th>Code</th>
+    <th>Country</th>
+    <th>City</th>
+    <th>District</th>
+    <th>Description</th>
+    <th/>
+    <th/>
   </tr>
-
 <% @places.each do |place| %>
   <tr>
-    <td><%= link_to 'Show', place %></td>
+    <td><%= place.place_type %></td>
+    <td><%= link_to place.name, place_path(place) %></td>
+    <td><%= place.code %></td>
+    <td><%= place.country.name if place.country %></td>
+    <td><%= place.city.name if place.city %></td>
+    <td><%= place.district %></td>
+    <td><%= place.description %></td>
     <td><%= link_to 'Edit', edit_place_path(place) %></td>
     <td><%= link_to 'Destroy', place, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
+</div>
 
-<br />
 
-<%= link_to 'New Place', new_place_path %>

@@ -6,40 +6,39 @@ class LoadingsController < ApplicationController
     @loadings = Loading.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @loadings }
     end
   end
 
-  # GET /loadings/1
-  # GET /loadings/1.json
   def show
-    @loading = Loading.find(params[:id])
+    @loading = Loading.find_by_slug(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.json { render json: @loading }
     end
   end
 
-  # GET /loadings/new
-  # GET /loadings/new.json
   def new
-    @loading = Loading.new
+
+    @position = Position.find_by_slug(params[:position_id]) if params[:position_id]
+    if @position
+       @loading = @position.loadings.build(params[:loading])
+    else
+       @loading = current_patron.loadings.build(params[:loading])
+    end
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       format.json { render json: @loading }
     end
   end
 
-  # GET /loadings/1/edit
   def edit
-    @loading = Loading.find(params[:id])
+    @loading = Loading.find_by_slug(params[:id])
   end
 
-  # POST /loadings
-  # POST /loadings.json
   def create
     @loading = Loading.new(params[:loading])
 
@@ -54,10 +53,8 @@ class LoadingsController < ApplicationController
     end
   end
 
-  # PUT /loadings/1
-  # PUT /loadings/1.json
   def update
-    @loading = Loading.find(params[:id])
+    @loading = Loading.find_by_slug(params[:id])
 
     respond_to do |format|
       if @loading.update_attributes(params[:loading])
@@ -70,10 +67,8 @@ class LoadingsController < ApplicationController
     end
   end
 
-  # DELETE /loadings/1
-  # DELETE /loadings/1.json
   def destroy
-    @loading = Loading.find(params[:id])
+    @loading = Loading.find_by_slug(params[:id])
     @loading.destroy
 
     respond_to do |format|

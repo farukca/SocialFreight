@@ -4,7 +4,7 @@
       <div class="post-module-in">
 	<form id="share-form" class="post" method="POST">
 	  <div class="clearfix">
-	    <textarea id="textarea" cols="70" name="textarea"></textarea>
+	    <textarea id="textarea" cols="60" name="textarea"></textarea>
 	  </div>
 	  <div class="post-actions">
 	     <div id="attach"><a href="#">Attach a link</a></div>
@@ -33,9 +33,9 @@
   <div id="warnings" class="span7 columns feeds">
     <div class="listheader">
       <span class="rightside">
-	<a href="airpos.html" class="btn primary">Create Position</a>
-	<a href="airload.html" class="btn primary">Create Loading</a>
-	<a href="airload.html" class="btn primary">Create Reservation</a>
+	<%= link_to "Create Position", new_position_path, :class => "btn primary" %>
+	<%= link_to "Create Loading", new_loading_path, :class => "btn primary" %>
+	<%= link_to "Create Reservation", new_loading_path, :class => "btn primary" %>
       </span>
     </div>
     <div id="opsummary" class="span7">

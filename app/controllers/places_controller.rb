@@ -3,18 +3,21 @@ class PlacesController < ApplicationController
   before_filter :require_login
 
   def index
-    @places = Place.all
+    if params[:q]
+      strQ = params[:q].html_safe
+      @places = Place.where(:name => /#{strQ}/i).limit(10)
+    else
+      @places = Place.all
+    end
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @places }
+      format.html
+      format.json { render json: @places.map(&:token_inputs) }
     end
   end
 
-  # GET /places/1
-  # GET /places/1.json
   def show
-    @place = Place.find(params[:id])
+    @place = Place.find_by_slug(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -22,8 +25,6 @@ class PlacesController < ApplicationController
     end
   end
 
-  # GET /places/new
-  # GET /places/new.json
   def new
     @place = Place.new
 
@@ -33,13 +34,10 @@ class PlacesController < ApplicationController
     end
   end
 
-  # GET /places/1/edit
   def edit
-    @place = Place.find(params[:id])
+    @place = Place.find_by_slug(params[:id])
   end
 
-  # POST /places
-  # POST /places.json
   def create
     @place = Place.new(params[:place])
 
@@ -54,10 +52,8 @@ class PlacesController < ApplicationController
     end
   end
 
-  # PUT /places/1
-  # PUT /places/1.json
   def update
-    @place = Place.find(params[:id])
+    @place = Place.find_by_slug(params[:id])
 
     respond_to do |format|
       if @place.update_attributes(params[:place])
@@ -70,10 +66,8 @@ class PlacesController < ApplicationController
     end
   end
 
-  # DELETE /places/1
-  # DELETE /places/1.json
   def destroy
-    @place = Place.find(params[:id])
+    @place = Place.find_by_slug(params[:id])
     @place.destroy
 
     respond_to do |format|

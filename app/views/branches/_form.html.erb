@@ -1,0 +1,20 @@
+<div id="branch-form" class="span16 columns">
+<%= simple_form_for @branch, :validate => true do |f| %>
+  <%= f.error_notification %>
+
+  <fieldset>
+    <div class="row">
+      <div class="page-header span16 columns">
+        <h4>New Branch</h4>
+      </div>
+      <div class="span8 columns">
+        <%= f.input :name %>
+        <%= f.input :tel  %>
+        <%= f.input :email %>
+        <%= f.button :submit, :class => 'btn primary' %>
+      </div>
+    </div>
+  </fieldset>
+
+<% end %>
+</div>
