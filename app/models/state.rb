@@ -7,7 +7,7 @@ class State
   field :code
   field :telcode
   belongs_to :country
-  slug :name
+  slug :name, :scope => :country, :permanent => true
 
   has_many :cities
 

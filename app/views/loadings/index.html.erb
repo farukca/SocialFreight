@@ -2,15 +2,35 @@
 
 <table>
   <tr>
-    <th></th>
+    <th>Referans</th>
+    <th>Operation</th>
+    <th>Direction</th>
+    <th>Müşteri</th>
+    <th>Agent</th>
+    <th>Çıkış Yeri</th>
+    <th>Çıkış Tarihi</th>
+    <th>Varış Yeri</th>
+    <th>Varış Tarihi</th>
+    <th>Pozisyon</th>
+    <th>Incoterm</th>
     <th></th>
     <th></th>
   </tr>
 
 <% @loadings.each do |loading| %>
   <tr>
-    <td><%= link_to 'Show', loading %></td>
-    <td><%= link_to 'Edit', edit_loading_path(loading) %></td>
+    <td><%= link_to loading.reference, loading_path(loading) %></td>
+    <td><%= loading.operation %></td>
+    <td><%= loading.direction %></td>
+    <td><%= loading.company.name if loading.company %></td>
+    <td><%= loading.agent.name if loading.agent %></td>
+    <td><%= loading.load_place.name if loading.load_place %></td>
+    <td><%= loading.load_date %></td>
+    <td><%= loading.unload_place.name if loading.unload_place %></td>
+    <td><%= loading.load_date %></td>
+    <td><%= loading.position.reference if loading.position %></td>
+    <td><%= loading.incoterm %></td>
+    <td><%= link_to "Edit", edit_loading_path(loading) %></td>
     <td><%= link_to 'Destroy', loading, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
@@ -18,4 +38,4 @@
 
 <br />
 
-<%= link_to 'New Loading', new_loading_path %>
+<%= link_to 'New loading', new_loading_path %>

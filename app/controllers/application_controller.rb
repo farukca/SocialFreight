@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_patron
 
-  private
+  protected
   def current_patron
     @current_patron ||= Patron.find(session[:patron_id]) if session[:patron_id]
   end

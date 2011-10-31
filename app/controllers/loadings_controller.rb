@@ -12,7 +12,9 @@ class LoadingsController < ApplicationController
   end
 
   def show
-    @loading = Loading.find_by_slug(params[:id])
+    @loading = Loading.find_by_slug!(params[:id])
+    @package = @loading.packages.build()
+    @container = @loading.containers.build()
 
     respond_to do |format|
       format.html
@@ -23,8 +25,10 @@ class LoadingsController < ApplicationController
   def new
 
     @position = Position.find_by_slug(params[:position_id]) if params[:position_id]
-    if @position
+    unless @position.nil?
        @loading = @position.loadings.build(params[:loading])
+       @loading.operation = @position.operation
+       @loading.direction = @position.direction
     else
        @loading = current_patron.loadings.build(params[:loading])
     end
@@ -40,7 +44,8 @@ class LoadingsController < ApplicationController
   end
 
   def create
-    @loading = Loading.new(params[:loading])
+    @loading = current_patron.loadings.build(params[:loading])
+    @loading.patron_token = current_patron.token
 
     respond_to do |format|
       if @loading.save

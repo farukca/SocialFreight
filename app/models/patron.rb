@@ -24,6 +24,7 @@ class Patron
   token :length => 7, :contains => :alphanumeric
   slug :title, :as => :code
 
+  embeds_many :counters
   has_many :branches
   has_many :users
   has_many :companies
@@ -47,6 +48,23 @@ class Patron
   validates_length_of   :title, :maximum => 255#, :message => I18n.t('tasks.errors.name.too_long')
   validates_length_of   :tel, :maximum => 12#, :message => I18n.t('tasks.errors.name.too_long')
 
+  private
+  def generate_patron
+    self.name = self.title
+  end
+
+  private
+  def create_patron_user
+    self.users.create(:name => "SocialFreight", :surname => "Admin", :email => self.email, :password => self.password, :password_confirmation => self.password_confirmation);
+  end
+
+  def generate_counter(ctype, operation, direction)
+    counter = self.counters.find_or_initialize_by(counter_type: ctype, operation: operation, direction: direction)
+    counter.inc(:count, 1)
+    counter.save!
+    return counter.count
+  end
+
   class << self
     def statuses()
       statuses = {
@@ -64,15 +82,18 @@ class Patron
         '40' => 'Unloading'
       }
     end
+
+   def operations()
+     operations = {
+        'A' => 'Air',
+        'S' => 'Sea',
+        'R' => 'Rail',
+        'T' => 'Truck',
+        'I' => 'Inland'
+     }
+   end
+
   end
 
-  protected
-  def generate_patron
-    self.name = self.title
-  end
-
-  def create_patron_user
-    self.users.create(:name => "SocialFreight", :surname => "Admin", :email => self.email, :password => self.password, :password_confirmation => self.password_confirmation);
-  end
 
 end

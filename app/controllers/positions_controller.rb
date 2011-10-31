@@ -12,8 +12,8 @@ class PositionsController < ApplicationController
   end
 
   def show
-    @position = Position.find_by_slug(params[:id])
-
+    @position  = Position.find_by_slug!(params[:id])
+    @transnode = Transnode.new
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @position }

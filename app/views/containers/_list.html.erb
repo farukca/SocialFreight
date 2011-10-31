@@ -1,0 +1,19 @@
+<table>
+  <tr>
+    <th>Container No</th>
+    <th>Container Type</th>
+    <th>Seal No</th>
+    <th>Free Days</th>
+    <th>Daily Demurrage</th>
+  </tr>
+
+<% containers.each do |container| %>
+  <tr>
+    <td><%= container.name %></td>
+    <td><%= container.container_type %></td>
+    <td><%= container.sealno %></td>
+    <td><%= container.free_day %></td>
+    <td><%= container.demurrage %>&nbsp;<%= container.demurrage_curr %></td>
+ </tr>
+<% end %>
+</table>

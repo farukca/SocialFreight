@@ -10,7 +10,8 @@ class User
   field :email
   field :crypted_password
   field :salt
-  field :slug
+  belongs_to :patron
+  belongs_to :branch
   field :last_login_at, type: DateTime
   field :last_logout_at, type: DateTime
   field :last_activity_at, type: DateTime
@@ -22,10 +23,11 @@ class User
   field :password_reset_token_expires_at, type: DateTime
   field :failed_logins_count, type: Integer
   field :lock_expires_at, type: DateTime
-  slug :name, :surname
-
-  belongs_to :patron
-  belongs_to :branch
+  slug  :name, :surname, :as => :title, :scope => :patron, :permanent => true
+  auto_increment :rec_number
+  field :roles , type: Array
+  has_many :positions
+  has_many :loadings
 
   attr_accessible :email, :password, :password_confirmation, :name, :surname, :patron_id
 
@@ -41,6 +43,14 @@ class User
   #def send_activation_mail
   #  UserMailer.activation_needed_email(self).deliver
   #end
+
+  def roles_list
+    [:admin, :operator, :financer, :ledger, :saler, :planner, :manager]
+  end
+
+  def has_role? role
+    roles_list.include? role.to_sym
+  end
 
   def send_password_reset_email
     generate_token(:password_reset_token)

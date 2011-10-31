@@ -19,17 +19,15 @@
 	 <div class="span3">
 	    <ul>
 		<li><%= link_to "Position List", positions_path(:operation => 'Air') %></li>
-		<li><a href="airload.html">Good List</a></li>
+		<li><%= link_to "Load List", loadings_path(:operation => 'Air') %></li>
 		<li><a href="airproposal.html">Proposal List</a></li>
-		<li><a href="#">Reservation List</a></li>
 		<li><%= link_to "Airports", places_path(:place_type => "AP") %></li>
 	    </ul>   
 	 </div>
 	 <div class="span3">
 							<ul>
-								<li><a href="airpos.html">Create Position</a></li>
-								<li><a href="#">Create Loading</a></li>
-								<li><a href="#">Create Reservation</a></li>
+								<li><%= link_to "Create Position", new_position_path %></li>
+								<li><%= link_to "Create Loading", new_loading_path %></li>
 								<li><a href="#">Create Proposal</a></li>
 								<li><a href="#">Parameters</a></li>
 							</ul>   

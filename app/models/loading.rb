@@ -13,16 +13,16 @@ class Loading
   field :patron_token
   belongs_to :branch
   belongs_to :company
-  belongs_to :loader, :class_name => Company, :inverse_of => :loader
-  belongs_to :sender, :class_name => Company, :inverse_of => :sender
-  belongs_to :consignee, :class_name => Company, :inverse_of => :consignee
-  belongs_to :notify, :class_name => Company, :inverse_of => :notify
-  belongs_to :notify2, :class_name => Company, :inverse_of => :notify2
-  belongs_to :deliver, :class_name => Company, :inverse_of => :deliver
-  belongs_to :agent, :class_name => Company, :inverse_of => :agent
-  belongs_to :load_place, :class_name => Place, :inverse_of => :load_place
+  belongs_to :loader, :class_name => "Company", :inverse_of => :loader
+  belongs_to :sender, :class_name => "Company", :inverse_of => :sender
+  belongs_to :consignee, :class_name => "Company", :inverse_of => :consignee
+  belongs_to :notify, :class_name => "Company", :inverse_of => :notify
+  belongs_to :notify2, :class_name => "Company", :inverse_of => :notify2
+  belongs_to :deliver, :class_name => "Company", :inverse_of => :deliver
+  belongs_to :agent, :class_name => "Company", :inverse_of => :agent
+  belongs_to :load_place, :class_name => "Place", :inverse_of => :load_place
   field :load_date, type: Date
-  belongs_to :unload_place, :class_name => Place, :inverse_of => :unload_place
+  belongs_to :unload_place, :class_name => "Place", :inverse_of => :unload_place
   field :unload_date, type: Date
 
   field :statement
@@ -30,34 +30,44 @@ class Loading
   field :commodity
   field :marks_nos
   #belongs_to :custom
-  belongs_to :customofficer, :class_name => Company, :inverse_of => :customofficer
-  belongs_to :producer, :class_name => Company, :inverse_of => :producer
-  belongs_to :presenter, :class_name => Company, :inverse_of => :presenter
-  belongs_to :bank, :class_name => Company, :inverse_of => :bank
+  belongs_to :customofficer, :class_name => "Company", :inverse_of => :customofficer
+  belongs_to :producer, :class_name => "Company", :inverse_of => :producer
+  belongs_to :presenter, :class_name => "Company", :inverse_of => :presenter
+  belongs_to :bank, :class_name => "Company", :inverse_of => :bank
   field :hts_no
   field :volume, type: Float
   field :chg_volume, type: Float
   field :brut_wg, type: Float
   field :chg_wg, type: Float
   field :freight_price, type: Float
-  field :freight_price_curr
+  field :freight_curr
 
   belongs_to :user
-  belongs_to :saler, :class_name => User, :inverse_of => :saler, :foreign_key => "saler_id" 
+  belongs_to :saler, :class_name => "User", :inverse_of => :saler, :foreign_key => "saler_id" 
 
   field :status
   field :agent_reference
   field :other_reference
   field :description
-  slug :reference
+  slug  :reference, :scope => :patron, :permanent => true
+  auto_increment :rec_number
   
-  #has_many :containers
-  #has_many :packages
+  has_many :containers
+  has_many :packages
 
-  #validates_confirmation_of :reference
-  validates_presence_of :reference, :on => :create
+  before_create :set_initials
+
+  #validates_presence_of :reference, :except => :create
   validates_uniqueness_of :reference, :case_sensitive => false
   validates_presence_of :operation, :direction, :patron_id, :patron_token, :branch_id
+
+  private
+  def set_initials
+    counter = self.patron.generate_counter("Loading", self.operation, self.direction)
+    self.reference = self.operation + "." + self.direction + "." + sprintf('%07d', counter)
+    self.patron_token = current_patron.token if self.patron_token.blank?
+    generate_slug!
+  end
 
   class << self
     def incoterms()

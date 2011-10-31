@@ -6,7 +6,7 @@ class Country
   field :code
   field :name
   field :telcode
-  slug  :name
+  slug  :name, :permanent => true
 
   has_many :cities
   has_many :states

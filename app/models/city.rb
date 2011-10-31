@@ -8,7 +8,7 @@ class City
   field :telcode
   belongs_to :state
   belongs_to :country
-  slug :name
+  slug :name, :permanent => true
 
   attr_accessible :name, :code, :telcode, :country_id, :state_id
 

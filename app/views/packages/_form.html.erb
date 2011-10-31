@@ -1,0 +1,44 @@
+<%= simple_form_for [@loading, @package], :validate => true do |f| %>
+  <%= f.error_notification %>
+
+  <fieldset>
+    <div class="row">
+      <div class="page-header span16 columns">
+        <h4>New Package</h4>
+      </div>
+      <%= f.hidden_field :loading, :value => @package.loading ? @package.loading.id : nil %>
+      <%= f.hidden_field :container, :value => @package.container ? @package.container.id : nil %>
+
+      <div class="span8 columns">
+        <%= f.input :total do %>
+          <%= f.input_field :total, :class => "small" %>
+          <%= f.input_field :pack_type, :as => :select, :collection => Package.pack_types.map { |r| [r[1], r[0] ] }, :class => "medium" %>
+        <% end %>
+        <%= f.input :dimension1 do %>
+          <%= f.input_field :dimension1, :size => 5 %>X
+          <%= f.input_field :dimension2, :size => 5 %>X
+          <%= f.input_field :dimension3, :size => 5 %>
+        <% end %>
+        <%= f.input :imo, :label => "Hazardous IMO No", :input_html => {:class => "medium" } %>
+        <%= f.input :gtip, :label => "G.Tip No", :input_html => {:class => "medium" } %>
+        <%= f.input :po, :label => "PO No", :input_html => {:class => "medium" } %>
+      </div>
+      <div class="span8 columns">
+        <%= f.input :brutwg, :label => "Brüt/Net Weight" do %>
+          <%= f.input_field :brutwg, :size => 10 %>
+          <%= f.input_field :netwg,  :size => 10 %>
+        <% end %>
+        <%= f.input :volume, :label => "Volume/Ladameter" do %>
+          <%= f.input_field :volume, :size => 10 %>
+          <%= f.input_field :lada,  :size => 10 %>
+        <% end %>
+        <%= f.input :description, :label => "Package Detail" %>
+        <%= f.input :notes, :as => :text, :input_html => {:rows => "3"}, :label => "Loading Note" %>
+        <div class="clearfix" style="margin-left:250px">
+          <%= f.button :submit, :class => 'btn primary' %>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+<% end %>

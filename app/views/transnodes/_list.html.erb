@@ -1,0 +1,27 @@
+<table>
+  <tr>
+    <th>Type</th>
+    <th>Vessel</th>
+    <th>Voyage</th>
+    <th>Load Place</th>
+    <th>Unload Place</th>
+    <th>Supplier</th>
+    <th>Price</th>
+    <th>Add.Vessel</th>
+    <th></th>
+  </tr>
+
+<% transnodes.each do |transnode| %>
+  <tr>
+    <td><%= transnode.trans_method %>-<%= transnode.trans_type %></td>
+    <td><%= transnode.vessel %></td>
+    <td><%= transnode.voyage %></td>
+    <td><%= transnode.load_place.name %></td>
+    <td><%= transnode.unload_place.name %></td>
+    <td><%= transnode.supplier.name %></td>
+    <td><%= transnode.freight_price %>&nbsp;<%= transnode.freight_curr %></td>
+    <td><%= transnode.vessel2 %></td>
+    <td><%= link_to "Edit", edit_position_transnode_path(transnode.position, transnode) %></td>
+  </tr>
+<% end %>
+</table>

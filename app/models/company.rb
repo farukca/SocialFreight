@@ -24,18 +24,32 @@ class Company
   field :fax
   field :contact
   field :sector
-  belongs_to :saler, :class_name => User, :inverse_of => :saler, :foreign_key => "saler_id"
+  belongs_to :saler, :class_name => User, :inverse_of => :saler
   field :twitter_url
   field :facebook_url
   field :linkedin_url
   field :notes
   field :description
   token :length => 25, :contains => :alphanumeric
-  slug  :name
+  slug  :name, :scope => :patron, :permanent => true
+  auto_increment :rec_number
+  #acts_as_slugoid :generate_from => :name, :store_as => :slug
 
   has_many :transporter_positions, :class_name => "Position", :inverse_of => :transporter
   has_many :agent_positions, :class_name => "Position", :inverse_of => :agent
   has_many :forwarder_positions, :class_name => "Position", :inverse_of => :forwarder
+  has_many :loadings
+  has_many :sender_loadings, :class_name => "Loading", :inverse_of => :sender
+  has_many :loader_loadings, :class_name => "Loading", :inverse_of => :loader
+  has_many :consignee_loadings, :class_name => "Loading", :inverse_of => :consignee
+  has_many :agent_loadings, :class_name => "Loading", :inverse_of => :agent
+  has_many :deliver_loadings, :class_name => "Loading", :inverse_of => :deliver
+  has_many :notify_loadings, :class_name => "Loading", :inverse_of => :notify
+  has_many :notify2_loadings, :class_name => "Loading", :inverse_of => :notify2
+  has_many :customofficer_loadings, :class_name => "Loading", :inverse_of => :customofficer
+  has_many :producer_loadings, :class_name => "Loading", :inverse_of => :producer
+  has_many :presenter_loadings, :class_name => "Loading", :inverse_of => :presenter
+  has_many :bank_loadings, :class_name => "Loading", :inverse_of => :bank
 
   attr_accessible :name, :title, :company_type, :branch, :postcode, :address, :district, :city_id, :country_id, :state_id, 
                   :email, :website, :tel, :gsm, :voip, :fax, :contact, :sector, :twitter_url, :facebook_url, :linkedin_url, 

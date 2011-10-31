@@ -1,10 +1,10 @@
 Socialfreight::Application.routes.draw do
 
-  resources :currencies
-
   get "logout" => "sessions#destroy", :as => "logout"
   get "login"  => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
+  #get "today" => "home#today", :as => "today"
+  #get "today" => "home#egitim", :as => "egitim"
 
   resources :users do
     member do
@@ -17,15 +17,18 @@ Socialfreight::Application.routes.draw do
   resources :companies
   resources :patrons
   resources :branches
-  resources :loadings
   resources :positions do
-    get :autocomplete_place_name, :on => :collection
-    get :autocomplete_company_name, :on => :collection
+    resources :transnodes
+  end
+  resources :loadings do
+    resources :packages
+    resources :containers
   end
 
-  resources "countries" do
-    resources "cities"
+  resources :countries do
+    resources :cities
   end
+  resources :currencies
 
   root :to => 'home#index'
 

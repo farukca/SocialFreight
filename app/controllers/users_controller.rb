@@ -6,13 +6,16 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    if current_user
+      @user = current_patron.users.build()
+    end
     render :layout => 'guest_layout' unless current_user
   end
 
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to root_url, :notice => "Welcome {#@user.username}!"
+      redirect_to root_url, :notice => "Activation mail has been sent to your mail!"
     else
       render :new
     end

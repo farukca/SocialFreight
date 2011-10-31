@@ -1,0 +1,34 @@
+
+<table>
+  <tr>
+    <th>Package Number</th>
+    <th>IMO No</th>
+    <th>G.Tip No</th>
+    <th>PO No</th>
+    <th>Brüt</th>
+    <th>Net Weight</th>
+    <th>Volume</th>
+    <th>Ladameter</th>
+    <th>Details</th>
+    <th>Notes</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @packages.each do |package| %>
+  <tr>
+    <td><%= package.total %>&nbsp;<%= package.pack_type %></td>
+    <td><%= package.imo %></td>
+    <td><%= package.gtip %></td>
+    <td><%= package.po %></td>
+    <td><%= package.brutwg %></td>
+    <td><%= package.netwg %></td>
+    <td><%= package.volume %></td>
+    <td><%= package.ladameter %></td>
+    <td><%= package.description %></td>
+    <td><%= package.notes %></td>
+    <td><%= link_to "Edit", edit_package_path(package) %></td>
+    <td><%= link_to 'Destroy', package, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>

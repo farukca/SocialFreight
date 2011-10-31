@@ -36,24 +36,26 @@ class Position
   field :agent_reference
   field :other_reference
   field :description
-  slug :reference
+  belongs_to :user
+  slug  :reference, :scope => :patron, :permanent => true
+  auto_increment :rec_number
 
   has_many :loadings, dependent: :nullify
+  has_many :transnodes
   #embeds_many :transfers
-  #embeds_many :multimodals
 
   before_create :set_initials
 
   #attr_accessible 
 
   #validates_confirmation_of :password
-  #validates_presence_of :reference, :on => :create
+  validates_presence_of :reference, :on => :update
   validates_presence_of :operation #, :message => I18n.t('tasks.errors.name.cant_be_blank')
   validates_presence_of :direction #, :message => I18n.t('tasks.errors.name.cant_be_blank')
   validates_presence_of :patron #, :message => I18n.t('tasks.errors.name.cant_be_blank')
   validates_presence_of :patron_token #, :message => I18n.t('tasks.errors.name.cant_be_blank')
   validates_presence_of :branch #, :message => I18n.t('tasks.errors.name.cant_be_blank')
-  #validates_uniqueness_of :reference, :case_sensitive => false #burada patron_id değerine göre unique key olmalı
+  validates_uniqueness_of :reference, :case_sensitive => false #burada patron_id değerine göre unique key olmalı
   #validates_presence_of :load_place #, :message => I18n.t('tasks.errors.name.cant_be_blank')
   #validates_presence_of :unload_place #, :message => I18n.t('tasks.errors.name.cant_be_blank')
   validates_presence_of :load_date #, :message => I18n.t('tasks.errors.name.cant_be_blank')
@@ -61,8 +63,10 @@ class Position
 
   private
   def set_initials
-    self.reference = self.operation + "." + self.direction + ".015442"
+    counter = self.patron.generate_counter("Position", self.operation, self.direction)
+    self.reference = self.operation + "." + self.direction + "." + sprintf('%07d', counter)
     self.patron_token = current_patron.token if self.patron_token.blank?
+    generate_slug!
   end
 
   class << self

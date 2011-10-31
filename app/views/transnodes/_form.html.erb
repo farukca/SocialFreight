@@ -1,0 +1,45 @@
+<div id="transnode_form" class="row">
+<%= simple_form_for [@position, @transnode], :validate => true do |f| %>
+  <%= f.error_notification %>
+
+  <fieldset>
+    <div class="row">
+      <div class="page-header span16 columns">
+        <h4>New MultiModal Node</h4>
+      </div>
+      <div class="span8 columns">
+        <%= f.input :trans_method do %>
+          <%= f.input_field :trans_method, :as => :select, :collection => Transnode.trans_methods.map { |r| [r[1], r[0] ] }, :include_blank => false %>
+          <%= f.input_field :trans_type, :as => :select, :collection => Transnode.trans_types.map { |r| [r[1], r[0] ] }, :include_blank => false %>
+        <% end %>
+        <%= f.input :vessel, :label => "Vessel-Voyage" do %>
+          <%= f.input_field :vessel, :size => 15 %>
+          <%= f.input_field :voyage, :size => 15 %>
+        <% end %>
+        <%= f.input :load_place, :input_html => {:class => "token_input", "data-url" => "/places.json", "data-pre" => @transnode.load_place ? @transnode.load_place.prepopulate_tokens.to_json : nil} %>
+        <%= f.input :load_date, :size => 10 %>
+
+        <%= f.input :unload_place, :input_html => {:class => "token_input", "data-url" => "/places.json", "data-pre" => @transnode.unload_place ? @transnode.unload_place.prepopulate_tokens.to_json : nil} %>
+        <%= f.input :unload_date, :size => 10 %>
+      </div>
+      <div class="span8 columns">
+        <%= f.input :supplier, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @transnode.supplier ? @transnode.supplier.prepopulate_tokens.to_json : nil } %>
+        <%= f.input :freight_price do %>
+          <%= f.input_field :freight_price, :class => "small" %>
+          <%= f.input_field :freight_curr, :as => :select, :collection => Currency.all, :include_blank => false, :class => "medium" %>
+        <% end %>
+        <%= f.input :ticket_no do %>
+          <%= f.input_field :ticket_no, :size => 15 %>
+          <%= f.input_field :ticket_date, :size => 10 %>
+        <% end %>
+        <%= f.input :vessel2, :label => "Additional Vessel" %>
+        <%= f.input :notes, :as => :text, :input_html => {:rows => "3"} %>
+        <div class="clearfix" style="margin-left:250px">
+          <%= f.button :submit, :class => 'btn primary' %>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+<% end %>
+</div>

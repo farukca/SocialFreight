@@ -13,7 +13,8 @@ class Place
   belongs_to :country
   field :description
   #geocode
-  slug  :name
+  slug :name, :scope => :country, :permanent => true
+  auto_increment :rec_number
 
   attr_accessible :name, :code, :place_type, :postcode, :district, :city_id, :state_id, :country_id, :description
 
