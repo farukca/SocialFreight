@@ -3,6 +3,8 @@ class PatronsController < ApplicationController
   before_filter :require_login
   skip_before_filter :require_login, :only => [:new, :create]
 
+  layout 'guest_layout', :on => [:new, :create]
+
   def index
     @patrons = Patron.all
 
@@ -12,8 +14,6 @@ class PatronsController < ApplicationController
     end
   end
 
-  # GET /patrons/1
-  # GET /patrons/1.json
   def show
     @patron = Patron.find_by_code(params[:id])
 
@@ -23,8 +23,6 @@ class PatronsController < ApplicationController
     end
   end
 
-  # GET /patrons/new
-  # GET /patrons/new.json
   def new
     @patron = Patron.new
 
@@ -34,13 +32,10 @@ class PatronsController < ApplicationController
     end
   end
 
-  # GET /patrons/1/edit
   def edit
-    @patron = Patron.find(params[:id])
+    @patron = Patron.find_by_code(params[:id])
   end
 
-  # POST /patrons
-  # POST /patrons.json
   def create
     @patron = Patron.new(params[:patron])
 
@@ -55,10 +50,8 @@ class PatronsController < ApplicationController
     end
   end
 
-  # PUT /patrons/1
-  # PUT /patrons/1.json
   def update
-    @patron = Patron.find(params[:id])
+    @patron = Patron.find_by_code(params[:id])
 
     respond_to do |format|
       if @patron.update_attributes(params[:patron])
@@ -71,8 +64,6 @@ class PatronsController < ApplicationController
     end
   end
 
-  # DELETE /patrons/1
-  # DELETE /patrons/1.json
   def destroy
     @patron = Patron.find(params[:id])
     @patron.destroy

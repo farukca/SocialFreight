@@ -15,11 +15,14 @@ class Patron
   field :fax
   field :postcode
   field :address
+  field :contact_name
+  field :contact_surname
   belongs_to :city
   belongs_to :state
   belongs_to :country
   field :patron_type
   field :status, default: "A"
+  field :operations, type: Array
   belongs_to :saler, :class_name => User, :inverse_of => :saler, :foreign_key => "saler_id" 
   token :length => 7, :contains => :alphanumeric
   slug :title, :as => :code
@@ -27,13 +30,14 @@ class Patron
   embeds_many :counters
   has_many :branches
   has_many :users
+  has_many :people
   has_many :companies
   has_many :positions
   has_many :loadings
 
   attr_accessor :password
   attr_accessible :title, :website, :tel, :fax, :postcode, :address, :city_id, :country_id, :status, :saler_id, 
-                  :email, :password, :password_confirmation
+                  :email, :password, :password_confirmation, :operations, :contact_name, :contact_surname
 
   before_create :generate_patron
   after_create  :create_patron_user
@@ -42,6 +46,8 @@ class Patron
   validates_presence_of :password, :on => :create
   validates_presence_of :title, :message => I18n.t('patrons.errors.title.cant_be_blank')
   validates_presence_of :email, :message => I18n.t('patrons.errors.title.cant_be_blank')
+  validates_presence_of :contact_name, :message => I18n.t('patrons.errors.title.cant_be_blank')
+  validates_presence_of :contact_surname, :message => I18n.t('patrons.errors.title.cant_be_blank')
   validates_presence_of :tel,   :message => I18n.t('patrons.errors.title.cant_be_blank')
   validates_uniqueness_of :email, :case_sensitive => false
 
@@ -55,7 +61,7 @@ class Patron
 
   private
   def create_patron_user
-    self.users.create(:name => "SocialFreight", :surname => "Admin", :email => self.email, :password => self.password, :password_confirmation => self.password_confirmation);
+    self.users.create(:name => self.contact_name, :surname => self.contact_surname, :email => self.email, :password => self.password, :password_confirmation => self.password_confirmation);
   end
 
   def generate_counter(ctype, operation, direction)
@@ -82,16 +88,6 @@ class Patron
         '40' => 'Unloading'
       }
     end
-
-   def operations()
-     operations = {
-        'A' => 'Air',
-        'S' => 'Sea',
-        'R' => 'Rail',
-        'T' => 'Truck',
-        'I' => 'Inland'
-     }
-   end
 
   end
 

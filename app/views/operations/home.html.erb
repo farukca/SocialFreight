@@ -1,0 +1,31 @@
+<div id="operation" class="row">
+
+ <div>
+
+  <div class="row">
+    <span class="leftside"><h4><%= @operation.name.humanize %></h4></span>
+    <span class="rightside links">
+      <%= link_to (image_tag "new_position.png"), new_position_path(:operation => @operation.id), "data-placement" => "below",  "rel" => 'twipsy', "title" => "Yeni Pozisyon Oluştur" %>
+      <%= link_to (image_tag "new_reservation.png"), new_loading_path(:operation => @operation.id), "data-placement" => "below",  "rel" => 'twipsy', "title" => "Yeni Yük Reservasyonu Oluştur" %>
+      <%= link_to (image_tag "new_loading.png"), positions_path(:operation => @operation.id), "data-placement" => "below",  "rel" => 'twipsy', "title" => "Pozisyona Yük Ekle" %>
+      <%= link_to (image_tag "new_bid.png"), new_position_path(:operation => @operation.id), "data-placement" => "below",  "rel" => 'twipsy', "title" => "Yeni Teklif Oluştur" %>
+    </span>
+  </div>
+
+  <div id="position" class="row">
+      <%= render 'searches/position_form' %>
+      <% if @operation.positions %>
+        <%= render 'positions/positions', :positions => @operation.positions %>
+      <% end %>
+  </div>
+
+  <div id="loading" class="row">
+      <%= render 'searches/loading_form' %>
+      <% if @operation.loadings %>
+        <%= render 'loadings/loadings', :loadings => @operation.loadings %>
+      <% end %>
+  </div>
+
+ </div>
+
+</div>

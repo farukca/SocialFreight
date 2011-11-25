@@ -17,7 +17,7 @@
           </ul>
         </div>
       </div>
-      <div class="profile-content">
+      <div class="profile-content row">
         <div id="position">
           <h3>
             <span id="reference">Referans No: <%= @position.reference %></span>
@@ -27,23 +27,13 @@
           </p>
           <dl class="demographic-info adr" id="headline">
             <dd><%= link_to @position.branch.name, "#" %></span></dd>
-            <dd class="industry"><%= link_to Patron.operations[@position.operation], "#" %></dd>
+            <dd class="industry"><%= link_to @position.operation.humanize, "#" %></dd>
             <dd class="industry"><%= link_to Position.direction_types[@position.direction], "#" %></dd>
             <dd class="industry"><%= link_to Position.payment_types[@position.paid_at], "#" %></dd>
           </dl>
         </div>
+        <div class="span6">
         <dl id="overview">
-  <!--dt>
-Kalkýþ Yeri
-  </dt>
-  <dd>
-<ul>
-  <li>Atatürk Havalimaný (AHL)
-<span class="at">at</span>
-<span>20.11.2011 14:00</span>
-  </li>
-</ul>
-  </dd-->
           <dt>Konşimento</dt>
           <dd>
             <ul>
@@ -89,16 +79,6 @@ Kalkýþ Yeri
               <li><span><%= @position.created_at %></span></li>
             </ul>     
           </dd>
-          <dt>Opsiyon</dt>
-          <dd>
-            <ul>
-              <li>
-                <span><%= @position.opsiyon_wg %></span>
-                <span>-</span>
-                <span><%= @position.opsiyon_date %></span>
-              </li>
-            </ul>
-          </dd>
           <dt>Durumu</dt>
           <dd>
             <ul>
@@ -117,6 +97,50 @@ Kalkýþ Yeri
             </ul>
           </dd>
         </dl>
+        </div>
+        <div class="span6">
+        <dl id="overview">
+          <dt>Konşimento</dt>
+          <dd>
+            <ul>
+              <li>
+                <span><%= Position.master_types[@position.master_type] %></span>
+                <span style="border-left:1px solid #CCCCCC;padding-left:6px;"><%= @position.master_date %></span>
+              </li>
+            </ul>
+          </dd>
+          <dt>Tedarikçi</dt>
+          <dd>
+            <ul>
+              <li>CASS</li>
+            </ul>
+          </dd>
+          <dt>Navlun Ücreti</dt>
+          <dd>
+            <ul>
+              <li>
+                <span><%= @position.freight_price%></span>
+                <span><%= @position.freight_curr%></span>
+              </li>
+            </ul>
+          </dd>
+          <dt>Agent</dt>
+            <dd>
+              <ul>
+                <li><%= @position.agent.name if @position.agent%></li>
+              </ul>
+            </dd>
+          <dt>Agent Price</dt>
+          <dd>
+            <ul>
+              <li>
+                <span><%= @position.freight_price%></span>
+                <span><%= @position.freight_curr%></span>
+              </li>
+            </ul>
+          </dd>  
+        </dl>
+        </div>
       </div>
     </div>
     <div id="profile-details" class="span4 columns">

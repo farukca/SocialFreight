@@ -1,63 +1,29 @@
+<div class="row">
 <%= simple_form_for @loading, :validate => true do |f| %>
   <%= f.error_notification %>
 
-  <fieldset>
-    <div class="row">
-      <div class="page-header span16 columns">
-        <h4>New Loading</h4>
-      </div>
-      <%= f.hidden_field :position, :value => @loading.position ? @loading.position.id : nil %>
-      <div class="span8 columns">
-        <%= f.input :operation do %>
-          <%= f.input_field :operation, :as => :select, :collection => Patron.operations.map { |r| [r[1], r[0] ] }, :include_blank => false %>
-          <%= f.input_field :direction, :as => :select, :collection => Position.direction_types.map { |r| [r[1], r[0] ] } %>
-          <%= f.input_field :paid_at, :as => :select, :collection => Position.payment_types.map { |r| [r[1], r[0] ] } %>
-        <% end %>
-        <%= f.input :incoterm, :as => :select, :collection => Loading.incoterms.map { |r| [r[1], r[0] ] } %>
-      </div>
-      <div class="span8 columns">
-        <div class="clearfix">
-          <label>Position Reference</label>
-          <label><%= @loading.position ? @loading.position.reference : "RESERVATION" %></label>
-        </div>
-        <%= f.input :branch do %>
-          <%= f.input_field :branch, :as => :select, :collection => current_patron.branches, :include_blank => false%>
-        <% end %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="page-header span16 columns">
-        <h4>Yük Bilgileri</h4>
-      </div>
-      <div class="span8 columns">
-        <%= f.input :company, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.company ? @loading.company.prepopulate_tokens.to_json : nil } %>
-        <%= f.input :sender, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.sender ? @loading.sender.prepopulate_tokens.to_json : nil } %>
-        <%= f.input :loader, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.loader ? @loading.loader.prepopulate_tokens.to_json : nil } %>
-        <%= f.input :consignee, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.consignee ? @loading.consignee.prepopulate_tokens.to_json : nil } %>
-        <%= f.input :agent, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.agent ? @loading.agent.prepopulate_tokens.to_json : nil } %>
-        <%= f.input :deliver, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.deliver ? @loading.deliver.prepopulate_tokens.to_json : nil } %>
-        <%= f.input :notify, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.notify ? @loading.notify.prepopulate_tokens.to_json : nil } %>
-        <%= f.input :description, :as => :text, :input_html => {:rows => 3, :cols => 37}, :label => "Notes" %>
-      </div>
-      <div class="span8 columns">
-        <%= f.input :load_place, :input_html => {:class => "token_input", "data-url" => "/places.json", "data-pre" => @loading.load_place ? @loading.load_place.prepopulate_tokens.to_json : nil} %>
+  <div class="row">
+    <ul class="tabs" data-tabs="tabs">
+      <li class="active"><a href="#loading-main-form">Genel Yük Bilgileri</a></li>
+      <li><a href="#loading-detail-form">Yük Detay Bilgileri</a></li>
+    </ul>
 
-        <%= f.input :unload_place, :input_html => {:class => "token_input", "data-url" => "/places.json", "data-pre" => @loading.unload_place ? @loading.unload_place.prepopulate_tokens.to_json : nil} %>
-        <%= f.input :load_date, :label => "Load/Unload Dates" do %>
-	        <%= f.input_field :load_date, :size => 10, :class => "datepicker" %>
-	        <%= f.input_field :unload_date, :size => 10, :class => "datepicker" %>
-        <% end %>
-        <%= f.input :customofficer, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.customofficer ? @loading.customofficer.prepopulate_tokens.to_json : nil } %>
-        <%= f.input :statement do %>
-          <%= f.input_field :statement, :size => 10 %>
-          <%= f.input_field :statement_date, :size => 10, :class => "datepicker" %>
-        <% end %>
-        <%= f.input :commodity, :as => :text, :input_html => {:rows => 3, :cols => 37} %>
-        <div class="clearfix" style="margin-left:250px">
-          <%= f.button :submit, :class => 'btn primary' %>
-        </div>
+    <ul class="nav secondary-nav rightside">
+      <li>
+        <%= f.button :submit, :class => 'btn primary' %>
+      </li>
+    </ul>
+
+    <div id="my-tab-content" class="tab-content">
+      <div id="loading-main-form" class="tab-pane active">
+        <%= render 'form_main', :f => f %>
       </div>
+      <div id="loading-detail-form" class="tab-pane">
+        <%= render 'form_detail', :f => f %>
+      </div>      
     </div>
-  </fieldset>
+
+  </div>
 
 <% end %>
+</div>

@@ -7,9 +7,7 @@
         <h4>New Place</h4>
       </div>
       <div class="span8 columns">
-        <%= f.input :place_type do %>
-          <%= f.select :place_type, Place.place_types.map { |r| [r[1], r[0] ] }, :include_blank => false %>
-        <% end %>
+        <%= f.input :place_type, :as => :radio, :collection => Operation.all.map { |o| [o.place, o.id]}, :include_blank => false %>
         <%= f.input :name %>
         <%= f.input :code %>
         <%= f.input :postcode %>

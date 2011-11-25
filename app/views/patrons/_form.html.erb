@@ -1,4 +1,4 @@
-<div id="opform" class="span16 columns">
+<div id="patron_form" class="span16 columns">
 <%= simple_form_for @patron, :validate => true do |f| %>
   <%= f.error_notification %>
 
@@ -8,11 +8,17 @@
         <h4>Customer</h4>
       </div>
       <div class="span8 columns">
-        <%= f.input :title %>
+        <%= f.input :title, :label => "Company" %>
+        <%= f.input :contact_name, :label => "Name" %>
+        <%= f.input :contact_surname, :label => "Surname" %>
         <%= f.input :tel  %>
         <%= f.input :email %>
         <%= f.input :password %>
         <%= f.input :password_confirmation %>
+        <div class="clearfix">
+          <label class="required">Operations</label>
+          <%= f.collection_check_boxes :operations, Operation.all, :id, :name, :label => "Operations" %>
+        </div>
         <%= f.button :submit, :class => 'btn primary' %>
       </div>
     </div>

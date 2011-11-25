@@ -31,6 +31,7 @@ class LoadingsController < ApplicationController
        @loading.direction = @position.direction
     else
        @loading = current_patron.loadings.build(params[:loading])
+       @loading.operation = params[:operation] if params[:operation]
     end
 
     respond_to do |format|
@@ -49,7 +50,8 @@ class LoadingsController < ApplicationController
 
     respond_to do |format|
       if @loading.save
-        format.html { redirect_to @loading, notice: 'Loading was successfully created.' }
+        #format.html { redirect_to @loading, notice: 'Loading was successfully created.' }
+        format.html { render 'detail', notice: 'Loading was successfully created.' }
         format.json { render json: @loading, status: :created, location: @loading }
       else
         format.html { render action: "new" }

@@ -28,7 +28,7 @@ gem 'rails3-jquery-autocomplete'
 gem 'kaminari'
 
 #File uploading
-gem 'carrierwave'
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'mini_magick'
 
 gem 'jquery-rails'

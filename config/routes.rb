@@ -13,10 +13,17 @@ Socialfreight::Application.routes.draw do
   end
   resources :sessions
   resources :password_resets
+
+  resources :patrons
+  resources :operations do
+    member do
+      get :home
+    end
+  end
   resources :places
   resources :companies
-  resources :patrons
   resources :branches
+  resources :people
   resources :positions do
     resources :transnodes
   end
@@ -24,10 +31,11 @@ Socialfreight::Application.routes.draw do
     resources :packages
     resources :containers
   end
-
-  resources :countries do
-    resources :cities
-  end
+  resources :vehicles
+  resources :searches
+  
+  resources :countries
+  resources :cities
   resources :currencies
 
   root :to => 'home#index'

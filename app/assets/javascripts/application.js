@@ -9,4 +9,13 @@
 //= require rails.validations
 //= require jquery.tokeninput
 //= require megamenu
+//= require bootstrap-modal
+//= require bootstrap-alerts
+//= require bootstrap-twipsy
+//= require bootstrap-popover
+//= require bootstrap-dropdown
+//= require bootstrap-scrollspy
+//= require bootstrap-tabs
+//= require bootstrap-buttons
+//= require bootstrap-datepicker
 //= require_tree .

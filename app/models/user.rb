@@ -26,10 +26,12 @@ class User
   slug  :name, :surname, :as => :title, :scope => :patron, :permanent => true
   auto_increment :rec_number
   field :roles , type: Array
+
   has_many :positions
   has_many :loadings
 
   attr_accessible :email, :password, :password_confirmation, :name, :surname, :patron_id
+  attr_protected  :password
 
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create

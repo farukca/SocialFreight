@@ -2,4 +2,56 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  position:
+    air:
+      label:
+        transporter:   "Airline"
+        agent:         "Foreign Agent"
+        supplier:      "CASS Supplier"
+        vesselvoyage:  "Plane & Flight"
+        vessel2voyage: "Second Plane & Flight"
+        load_place:    "Departure Airport"
+        unload_place:  "Arrival Airport"
+        masterno:      "MAWB No"
+        masterdate:    "MAWB Date"
+        agentref:      "Agent Reference"
+        linerref:      "Airline Reference"
+    sea:
+      label:
+        transporter:   "Shipowner"
+        agent:         "Foreign Agent"
+        supplier:      "Line Agent"
+        vesselvoyage:  "Ship & Voyage"
+        vessel2voyage: "Sec. Ship & Voyage"
+        load_place:    "Departure Seaport"
+        unload_place:  "Arrival Seaport"
+        masterno:      "MBL No"
+        masterdate:    "MBL Date"
+        agentref:      "Agent Reference"
+        linerref:      "Liner Reference"
+    road:
+      label:
+        transporter:   "Vehicle Owner"
+        agent:         "Foreign Agent"
+        supplier:      "Transporter"
+        vesselvoyage:  "Trailer & Voyage"
+        vessel2voyage: "Truck & Driver"
+        load_place:    "Loading Custom"
+        unload_place:  "Unloading Custom"
+        masterno:      "CMR No"
+        masterdate:    "CMR Date"
+        agentref:      "Agent Reference"
+        linerref:      "Transporter Reference"
+    rail:
+      label:
+        transporter:   "Train Operator"
+        agent:         "Foreign Agent"
+        supplier:      "Rail Agency"
+        vesselvoyage:  "Wagon & Voyage"
+        vessel2voyage: "Second Wagon & Voyage"
+        load_place:    "Departure Station"
+        unload_place:  "Arrival Station"
+        masterno:      "TNR No"
+        masterdate:    "TNR Date"
+        agentref:      "Agent Reference"
+        linerref:      "Rail Agency Reference"

@@ -1,40 +1,6 @@
 <h1>Listing positions</h1>
 
-<table>
-  <tr>
-    <th>Referans</th>
-    <th>Operation</th>
-    <th>Direction</th>
-    <th>Nakliyeci</th>
-    <th>Agent</th>
-    <th>Çıkış Yeri</th>
-    <th>Çıkış Tarihi</th>
-    <th>Varış Yeri</th>
-    <th>Varış Tarihi</th>
-    <th>Sefer No</th>
-    <th>Uçak Bilgisi</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @positions.each do |position| %>
-  <tr>
-    <td><%= link_to position.reference, position %></td>
-    <td><%= position.operation %></td>
-    <td><%= position.direction %></td>
-    <td><%= position.transporter.name if position.transporter %></td>
-    <td><%= position.agent.name if position.agent %></td>
-    <td><%= position.load_place.name if position.load_place %></td>
-    <td><%= position.load_date %></td>
-    <td><%= position.unload_place.name if position.unload_place %></td>
-    <td><%= position.load_date %></td>
-    <td><%= position.voyage %></td>
-    <td><%= position.vessel %></td>
-    <td><%= link_to 'Edit', edit_position_path(position) %></td>
-    <td><%= link_to 'Destroy', position, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+<%= render 'positions', :positions => @positions %>
 
 <br />
 

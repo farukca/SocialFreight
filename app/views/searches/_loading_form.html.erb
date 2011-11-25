@@ -1,0 +1,35 @@
+<div id="search-form" class="widget">
+<%= simple_form_for @search do |f| %>
+
+  <fieldset>
+    <div class="row">
+      <div class="span8 columns">
+        <%= f.input :model, :as => :hidden, :input_html => { :value => "loadings" } %>
+        <%= f.input :operation, :as => :hidden %>
+        <%= f.input :direction do %>
+          <%= f.input_field :direction, :as => :select, :collection => Position.direction_types.map { |r| [r[1], r[0] ] }, :class => "small" %>
+          <%= f.input_field :paid_at, :as => :select, :collection => Position.payment_types.map { |r| [r[1], r[0] ] }, :class => "small" %>
+        <% end %>
+      </div>
+      <div class="span8 columns">
+        <%= f.input :docdate1, :label => I18n.t("position.#{@search.operation}.label.masterdate") do %>
+          <%= f.input_field :docdate1, :class => "small", "data-datepicker" => "datepicker" %>
+          <%= f.input_field :docdate2, :class => "small", "data-datepicker" => "datepicker" %>
+          <%= f.button :submit, "Search", :class => 'btn primary' %>
+          <%= link_to (image_tag "advanced_search.png"), "#", :class => 'togglebutton', "data-placement" => "below",  "rel" => 'twipsy', "title" => "Detaylı Ara", "data-href" => "#loading_search_form" %>
+        <% end %>
+      </div>
+    </div>
+    <div id="loading_search_form" class="slidingDiv row">
+      <div class="span8 columns">
+        <%= f.input :company_id %>
+      </div>
+      <div class="span8 columns">
+        <%= f.input :branch do %>
+          <%= f.input_field :branch, :as => :select, :collection => current_patron.branches, :class => "medium" %>
+        <% end %>
+      </div>
+    </div>
+  </fieldset>
+<% end %>
+</div>

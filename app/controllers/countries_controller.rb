@@ -1,6 +1,6 @@
 class CountriesController < ApplicationController
 
-  #before_filter :require_login
+  before_filter :require_login
 
   def new
     @country = Country.new

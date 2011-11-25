@@ -38,6 +38,7 @@ class Company
   has_many :transporter_positions, :class_name => "Position", :inverse_of => :transporter
   has_many :agent_positions, :class_name => "Position", :inverse_of => :agent
   has_many :forwarder_positions, :class_name => "Position", :inverse_of => :forwarder
+  has_many :supplier_positions, :class_name => "Position", :inverse_of => :supplier
   has_many :loadings
   has_many :sender_loadings, :class_name => "Loading", :inverse_of => :sender
   has_many :loader_loadings, :class_name => "Loading", :inverse_of => :loader

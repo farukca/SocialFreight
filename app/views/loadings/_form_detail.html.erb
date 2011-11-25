@@ -1,0 +1,28 @@
+<fieldset>
+<div class="row">
+  <div class="page-header span16 columns">
+    <h4></h4>
+  </div>
+  <div class="span8 columns">
+    <%= f.input :loader, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.loader ? @loading.loader.prepopulate_tokens.to_json : nil } %>
+    <%= f.input :deliver, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.deliver ? @loading.deliver.prepopulate_tokens.to_json : nil } %>
+    <%= f.input :notify, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.notify ? @loading.notify.prepopulate_tokens.to_json : nil } %>
+    <%= f.input :notify2, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.notify ? @loading.notify.prepopulate_tokens.to_json : nil } %>
+    <%= f.input :agent_reference %>
+    <%= f.input :customer_reference %>
+  </div>
+  <div class="span8 columns">
+    <%= f.input :waybill_no %>
+    <%= f.input :customofficer, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.customofficer ? @loading.customofficer.prepopulate_tokens.to_json : nil } %>
+    <%= f.input :statement do %>
+      <%= f.input_field :statement, :size => 10 %>
+      <%= f.input_field :statement_date, :size => 10, :class => "datepicker" %>
+    <% end %>
+    <%= f.input :stage do %>
+      <%= f.input_field :stage, :class => "medium", :as => :select, :collection => Loading.stages.map { |r| [r[1], r[0] ] }, :include_blank => false %>
+      <%= f.input_field :stage_date, :class => "small datepicker" %>
+    <% end %>
+    <%= f.input :delivery_note, :as => :text, :input_html => {:rows => 2, :cols => 37}, :label => "Notes" %>
+  </div>
+</div>
+</fieldset>

@@ -1,0 +1,15 @@
+<%= simple_form_for @operation, :validate => true do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.input :code %>
+    <%= f.input :name %>
+    <%= f.input :longname %>
+    <%= f.input :place %>
+    <%= f.input :description, :as => :text %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

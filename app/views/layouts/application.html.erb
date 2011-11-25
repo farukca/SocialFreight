@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>Socialfreight</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag    "application", :debug => Rails.env.development? %>
+  <%= javascript_include_tag "application", :debug => Rails.env.development? %>
   <%= csrf_meta_tags %>
 </head>
 <body>

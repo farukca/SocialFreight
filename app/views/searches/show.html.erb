@@ -1,0 +1,8 @@
+<% case @search.model %>
+  <% when "positions" %>
+    <%= render 'searches/position_form' %>
+    <%= render 'positions/positions', :positions => @search.positions %>
+  <% when "loadings" %>
+    <%= render 'searches/loading_form' %>
+    <%= render 'loadings/loadings', :loadings => @search.loadings %>
+<% end %>

@@ -2,10 +2,15 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ->
-  $("input.datepicker").datepicker()
+  $(".topbar").dropdown()
+  $(".tabs").tabs()
+  $("a[rel=twipsy]").twipsy live: true
+  $("a[rel=popover]").popover(offset: 10).click (e) ->
+    e.preventDefault()
+  $(".alert-message").alert()
+  $("#menu").megaMenu('hover_fade')
   $(".slidingDiv").hide()
   $(".togglebutton").show()
-  $("#menu").megaMenu('hover_fade')
   $('.togglebutton').click ->
-     $(".slidingDiv").slideToggle()
+     $($(this).data('href')).slideToggle()
 

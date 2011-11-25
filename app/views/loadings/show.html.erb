@@ -26,7 +26,7 @@
           </p>
           <dl class="demographic-info adr" id="headline">
             <dd><%= link_to @loading.branch.name, "#" %></span></dd>
-            <dd class="industry"><%= link_to Patron.operations[@loading.operation], "#" %></dd>
+            <dd class="industry"><%= link_to @loading.operation.humanize, "#" %></dd>
             <dd class="industry"><%= link_to Position.direction_types[@loading.direction], "#" %></dd>
             <dd class="industry"><%= link_to Position.payment_types[@loading.paid_at], "#" %></dd>
           </dl>
@@ -96,11 +96,11 @@ Kalkýþ Yeri
               </li>
             </ul>
           </dd>
-          <dt>Açıklama</dt>
+          <dt>Teslim notu</dt>
           <dd class="last">
             <ul class="past">
               <li>
-                <span><%= @loading.description %></span>
+                <span><%= @loading.delivery_note %></span>
               </li>
             </ul>
           </dd>

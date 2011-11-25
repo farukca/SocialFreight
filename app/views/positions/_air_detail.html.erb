@@ -1,0 +1,15 @@
+<div class="page-header span16 columns">
+  <h4>Araç Bilgileri</h4>
+</div>
+<div class="span8 columns">
+  <%= f.input :vessel, :label => I18n.t("position.#{@position.operation}.label.vesselvoyage") do %>
+    <%= f.input_field :vessel, :class => "small" %>
+    <%= f.input_field :voyage, :class => "medium" %>
+  <% end %>
+</div>
+<div class="span8 columns">
+  <%#= f.input :vessel2, :label => I18n.t("position.#{@position.operation}.label.vessel2voyage") do %>
+    <%#= f.input_field :vessel2, :size => 15 %>
+    <%#= f.input_field :voyage2, :size => 15 %>
+  <%# end %>
+</div>

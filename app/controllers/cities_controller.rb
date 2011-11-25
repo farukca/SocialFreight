@@ -1,6 +1,6 @@
 class CitiesController < ApplicationController
 
-  #before_filter :require_login
+  before_filter :require_login
 
   def new
     @city = City.new
@@ -16,12 +16,13 @@ class CitiesController < ApplicationController
   end
 
   def index
-    @cities = City.all
+    @cities = City.where(:name => /#{params[:q]}/i).limit(10)
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @cities }
+      format.json { render json: @cities.map(&:token_inputs) }
     end
+
   end
 
   def show

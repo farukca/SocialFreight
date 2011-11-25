@@ -17,33 +17,6 @@ html, body {
     -moz-transition:border 0.2s linear 0s, box-shadow 0.2s linear 0s;
     box-shadow:0 1px 3px rgba(0, 0, 0, 0.1) inset;
 }
-#menu .maleuser {
-    background: url("/assets/user_male.png") no-repeat scroll 0 0 transparent;
-}
-#menu .femaleuser {
-    background: url("/assets/user_female.png") no-repeat scroll 0 0 transparent;
-}
-#menu .air {
-    background: url("/assets/plane.png") no-repeat scroll 0 0 transparent;
-}
-#menu .sea {
-    background: url("/assets/ship.png") no-repeat scroll 0 0 transparent;
-}
-#menu .rail {
-    background: url("/assets/train.png") no-repeat scroll 0 0 transparent;
-}
-#menu .truck {
-    background: url("/assets/truck.png") no-repeat scroll 0 0 transparent;
-}
-#menu .custom {
-    background: url("/assets/fork.png") no-repeat scroll 0 0 transparent;
-}
-#menu .finance{
-    background: url("/assets/finance.png") no-repeat scroll 0 0 transparent;
-}
-#menu .customer{
-    background: url("/assets/customer.png") no-repeat scroll 0 0 transparent;
-}
 .menubaritem {
     border:1px solid #CCCCCC;
     cursor: pointer;
@@ -106,20 +79,9 @@ html, body {
 #opform-step-bar li.step-4 {
     z-index:1;
 }
-.slidingDiv {
-    height:100px;
-    border:2px solid #3399FF;
-}
-.slidingDiv form label {
-    width:90px;
-	line-height:13px;
-    padding:0px;
-}
-.slidingDiv form div.input {
-    margin-left:95px;
-}
 .togglebutton {
     display:none;
+    position:absolute;
 }
 .listheader {
 	display:block;
@@ -356,4 +318,158 @@ fieldset span {
 }
 #login_form label {
     text-align:left;
+}
+form ul li {
+    list-style: none inside none;
+}
+form ul li {
+    float:left;
+}
+form ul li label {
+    float:none;
+}
+.page-header h1, h4 {
+  margin-bottom: 0px;
+}
+.widget {
+    border:1px solid #D6D6D6;
+    box-shadow:2px 2px 3px rgba(0, 0, 0, 0.08);
+    padding:2px;
+    overflow:hidden;
+}
+.links img {
+    opacity:0.8;
+}
+.links img:hover {
+    opacity:1;
+}
+.datepicker {
+  background-color: #ffffff;
+  border-color: #999;
+  border-color: rgba(0, 0, 0, 0.2);
+  border-style: solid;
+  border-width: 1px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  background-clip: padding-box;
+  display: none;
+  position: absolute;
+  z-index: 900;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 18px;
+  padding-bottom: 4px;
+  width: 218px;
+}
+.datepicker .nav {
+  font-weight: bold;
+  width: 100%;
+  padding: 4px 0;
+  background-color: #f5f5f5;
+  color: #808080;
+  border-bottom: 1px solid #ddd;
+  -webkit-box-shadow: inset 0 1px 0 #ffffff;
+  -moz-box-shadow: inset 0 1px 0 #ffffff;
+  box-shadow: inset 0 1px 0 #ffffff;
+  zoom: 1;
+}
+.datepicker .nav:before, .datepicker .nav:after {
+  display: table;
+  content: "";
+  zoom: 1;
+  *display: inline;
+}
+.datepicker .nav:after {
+  clear: both;
+}
+.datepicker .nav span {
+  display: block;
+  float: left;
+  text-align: center;
+  height: 28px;
+  line-height: 28px;
+  position: relative;
+}
+.datepicker .nav .bg {
+  width: 100%;
+  background-color: #fdf5d9;
+  height: 28px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+.datepicker .nav .fg {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.datepicker .button {
+  cursor: pointer;
+  padding: 0 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+.datepicker .button:hover {
+  background-color: #808080;
+  color: #ffffff;
+}
+.datepicker .months {
+  float: left;
+  margin-left: 4px;
+}
+.datepicker .months .name {
+  width: 72px;
+  padding: 0;
+}
+.datepicker .years {
+  float: right;
+  margin-right: 4px;
+}
+.datepicker .years .name {
+  width: 36px;
+  padding: 0;
+}
+.datepicker .dow, .datepicker .days div {
+  float: left;
+  width: 30px;
+  line-height: 25px;
+  text-align: center;
+}
+.datepicker .dow {
+  font-weight: bold;
+  color: #808080;
+}
+.datepicker .calendar {
+  padding: 4px;
+}
+.datepicker .days div {
+  cursor: pointer;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+.datepicker .days div:hover {
+  background-color: #0064cd;
+  color: #ffffff;
+}
+.datepicker .overlap {
+  color: #bfbfbf;
+}
+.datepicker .today {
+  background-color: #fee9cc;
+}
+.datepicker .selected {
+  background-color: #bfbfbf;
+  color: #ffffff;
 }

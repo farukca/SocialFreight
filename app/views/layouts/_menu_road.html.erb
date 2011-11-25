@@ -1,0 +1,24 @@
+<div class="dropcontent">
+  <div class="row">
+    <div><h5>Road Transportation Menu</h5></div>
+    <div class="span6 columns">
+      <div class="span3">
+        <ul>
+          <li><%= link_to "Position List", positions_path(:operation => "road") %></li>
+          <li><%= link_to "Load List", loadings_path(:operation => "road") %></li>
+          <li><a href="roadproposal.html">Proposal List</a></li>
+          <li><%= link_to "Places", places_path(:place_type => "road") %></li>
+          <li><%= link_to "Add Vehicle", new_vehicle_path %></li>
+        </ul>   
+      </div>
+      <div class="span3">
+        <ul>
+          <li><%= link_to "Create Position", new_position_path(:operation => "road") %></li>
+          <li><%= link_to "Create Loading", new_loading_path(:operation => "road") %></li>
+          <li><a href="#">Create Proposal</a></li>
+          <li><a href="#">Parameters</a></li>
+        </ul>   
+      </div>
+    </div>
+  </div>
+</div>

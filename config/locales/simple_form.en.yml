@@ -21,4 +21,10 @@ en:
     # hints:
     #   username: 'User name to sign in.'
     #   password: 'No special characters, please.'
-
+    labels:
+      position:
+        contract_no: "Contract"
+        notes:       "Notlar"
+        agent_price:  "Agent told Price"
+        load_date:    "Departure Date"
+        unload_date:  "Arrival Date"
