@@ -10,7 +10,7 @@
     </div>
 
     <div id="new_city" class="row">
-      <%= simple_form_for ([@country, @country.cities.build]), :validate => true do |f| %>
+      <%= simple_form_for ([@country.cities.build]), :validate => true do |f| %>
         <%= f.error_notification %>
 
         <fieldset>
@@ -19,6 +19,7 @@
               <h4>Add City</h4>
             </div>
             <div class="span8 columns">
+              <%= f.input :country_id, :as => :hidden, :input_html => { :value => @country.id }  %>
               <%= f.input :code  %>
               <%= f.input :name %>
               <%= f.input :telcode %>

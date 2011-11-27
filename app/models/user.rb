@@ -31,7 +31,7 @@ class User
   has_many :loadings
 
   attr_accessible :email, :password, :password_confirmation, :name, :surname, :patron_id
-  attr_protected  :password
+  #attr_protected  :password
 
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create

@@ -19,4 +19,16 @@ class SearchesController < ApplicationController
     @search = Search.find(params[:id])
   end
 
+  def planning
+
+    @search = Search.new
+    @search.operation = params[:operation] if params[:operation]
+    @search.patron_id = current_patron.id
+    @search.patron_token = current_patron.token
+
+    respond_to do |format|
+      format.html # show.html.erb
+    end
+  end
+
 end

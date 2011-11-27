@@ -35,15 +35,12 @@ class Patron
   has_many :positions
   has_many :loadings
 
-  attr_accessor :password
   attr_accessible :title, :website, :tel, :fax, :postcode, :address, :city_id, :country_id, :status, :saler_id, 
-                  :email, :password, :password_confirmation, :operations, :contact_name, :contact_surname
+                  :email, :operations, :contact_name, :contact_surname
 
   before_create :generate_patron
   after_create  :create_patron_user
 
-  validates_confirmation_of :password
-  validates_presence_of :password, :on => :create
   validates_presence_of :title, :message => I18n.t('patrons.errors.title.cant_be_blank')
   validates_presence_of :email, :message => I18n.t('patrons.errors.title.cant_be_blank')
   validates_presence_of :contact_name, :message => I18n.t('patrons.errors.title.cant_be_blank')
@@ -61,7 +58,14 @@ class Patron
 
   private
   def create_patron_user
-    self.users.create(:name => self.contact_name, :surname => self.contact_surname, :email => self.email, :password => self.password, :password_confirmation => self.password_confirmation);
+    #self.users.create(:name => self.contact_name, :surname => self.contact_surname, :email => self.email, :password => '9876543210', :password_confirmation => '9876543210');
+    @user = self.users.build()
+    @user.name = self.contact_name
+    @user.surname = self.contact_surname
+    @user.email = self.email
+    @user.password = '9876543210'
+    @user.password_confirmation = '9876543210'
+    @user.save!
   end
 
   def generate_counter(ctype, operation, direction)

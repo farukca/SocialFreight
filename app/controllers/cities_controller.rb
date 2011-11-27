@@ -27,6 +27,7 @@ class CitiesController < ApplicationController
 
   def show
     @city = City.find_by_slug(params[:id])
+    @marker  = @city.to_gmaps4rails
 
     respond_to do |format|
       format.html # show.html.erb
@@ -35,9 +36,19 @@ class CitiesController < ApplicationController
   end
 
   def create
-    @country = Country.find_by_slug(params[:country_id])
-    @city    = @country.cities.create!(params[:city])
-    redirect_to country_path(@country)
+
+    @city = City.new(params[:city])
+
+    respond_to do |format|
+      if @city.save
+        format.html { redirect_to @city.country, notice: 'City was successfully created.' }
+        format.json { render json: @city, status: :created, location: @city }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @city.errors, status: :unprocessable_entity }
+      end
+    end
+
   end
 
 end

@@ -26,6 +26,7 @@ class CountriesController < ApplicationController
 
   def show
     @country = Country.find_by_slug(params[:id])
+    @marker  = @country.to_gmaps4rails
 
     respond_to do |format|
       format.html # show.html.erb

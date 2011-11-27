@@ -1,0 +1,6 @@
+<tr>
+  <td><%= country.code %></td>
+  <td><%= link_to country.name, country_path(country) %></td>
+  <td><%= link_to 'Edit', edit_country_path(country) %></td>
+  <td><%= link_to 'Destroy', country, confirm: 'Are you sure?', method: :delete %></td>
+</tr>

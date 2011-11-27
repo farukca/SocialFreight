@@ -10,11 +10,12 @@
         <%= f.input :place_type, :as => :radio, :collection => Operation.all.map { |o| [o.place, o.id]}, :include_blank => false %>
         <%= f.input :name %>
         <%= f.input :code %>
+        <%= f.input :address %>
         <%= f.input :postcode %>
         <%= f.input :district %>
         <%= f.input :country_id, :as => :select, :collection => Country.all, :include_blank => false %>
-        <%= f.input :state_id %>
-        <%= f.input :city_id %>
+        <%#= f.input :state_id %>
+        <%= f.input :city_id, :as => :select, :collection => City.all, :include_blank => false %>
         <%= f.input :description, :as => :text, :input_html => {:rows => "3"} %>
         <%= f.button :submit, :class => 'btn primary' %>
       </div>

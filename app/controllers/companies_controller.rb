@@ -13,6 +13,7 @@ class CompaniesController < ApplicationController
 
   def show
     @company = Company.find_by_slug(params[:id])
+    @marker = @company.to_gmaps4rails
 
     respond_to do |format|
       format.html # show.html.erb

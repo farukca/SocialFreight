@@ -11,6 +11,8 @@ gem 'bson_ext', '~> 1.3'
 gem 'mongoid_token', '~> 0.9.1'
 gem 'mongoid_slug'
 gem 'mongoid_auto_inc'
+gem 'mongoid_spacial'
+gem 'gmaps4rails'
 
 gem 'sorcery'
 gem 'cancan'

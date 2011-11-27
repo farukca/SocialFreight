@@ -8,7 +8,7 @@ Socialfreight::Application.routes.draw do
 
   resources :users do
     member do
-      get :activate
+      get :activate, :activation
     end
   end
   resources :sessions
@@ -32,8 +32,11 @@ Socialfreight::Application.routes.draw do
     resources :containers
   end
   resources :vehicles
-  resources :searches
-  
+  resources :searches do
+    member do
+      get :planning
+    end
+  end  
   resources :countries
   resources :cities
   resources :currencies

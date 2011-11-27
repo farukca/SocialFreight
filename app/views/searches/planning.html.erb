@@ -1,0 +1,10 @@
+<div id="planning" class="row">
+
+  <div id="reservations" class="row">
+    <%= render 'searches/reservation_form' %>
+     <% if @search.searched? %>
+        <%= render 'loadings/loadings', :loadings => @search.reservations %>
+      <% end %>
+  </div>
+
+</div>

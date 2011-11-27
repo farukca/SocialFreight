@@ -4,8 +4,8 @@
       <li><%= link_to "Edit Place", edit_place_path(@place), :class => "btn primary" %></li>
     </ul>
   </div>
-  <div class="profile-content span12">
-    <div class="place">
+  <div class="profile-content row">
+    <div class="place span6 columns">
       <h3>
         <span id="reference"><%= @place.name %></span>
       </h3>
@@ -37,6 +37,14 @@
               <li><span><%= @place.district %></span></li>
             </ul>
           </dd>
+        <dt>Coordinate</dt>
+          <dd>
+            <ul>
+              <li><span><%= @json %></span></li>
+              <li><span><%= @place.longitude %>&nbsp;<%= @place.latitude %></span></li>
+            </ul>
+          </dd>
+
         <dt>PostCode/ZipCode</dt>
         <dd>
           <ul>
@@ -50,6 +58,10 @@
           </ul>     
         </dd>
       </dl>
+    </div>
+    <div class="span9 columns">
+      <%#= gmaps("markers" => {"data" => @place.coordinate.to_json }) %>
+      <%= gmaps4rails(@json) %>
     </div>
   </div>
 </div>

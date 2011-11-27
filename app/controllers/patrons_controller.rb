@@ -41,7 +41,8 @@ class PatronsController < ApplicationController
 
     respond_to do |format|
       if @patron.save
-        format.html { redirect_to @patron, notice: 'Patron was successfully created.' }
+        #format.html { redirect_to @patron, notice: 'Patron was successfully created.' }
+        format.html { render 'check_mail', notice: 'Patron was successfully created.' }
         format.json { render json: @patron, status: :created, location: @patron }
       else
         format.html { render action: "new" }

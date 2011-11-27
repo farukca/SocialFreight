@@ -75,17 +75,31 @@ class Position
   validates_presence_of :load_date #, :message => I18n.t('tasks.errors.name.cant_be_blank')
   validates_presence_of :unload_date #, :message => I18n.t('tasks.errors.name.cant_be_blank')
 
+  validates_inclusion_of :operation, in: ["air","sea","road","rail","inland"]
+  validates_inclusion_of :direction, in: ["E","I","T"]
+  validates_numericality_of :freight_price
+  validates_numericality_of :agent_price
+  validates_associated :transporter
+  validates_uniqueness_of :patron_token, :reference
+  #validates_length_of   :mwb, minimum: 11
+  #validates_format_of   :
+
+  index :patron_token, background: true
+  index :operation, background: true
+  index :load_date, background: true
+
   scope :patron, ->(token) { where(patron_token: token) }
   scope :active, where(status: "A")
   scope :air, where(operation: "air")
   scope :sea, where(operation: "sea")
   scope :road, where(operation: "road")
   scope :rail, where(operation: "rail")
+  scope :inland, where(operation: "inland")
   scope :export, where(direction: "E")
   scope :import, where(direction: "I")
 
   #scope :washed_up, where(:age.gt => 30)
-  scope :last, order_by(:created_at, :desc)
+  scope :newones, order_by(:created_at, :desc)
 
   private
   def set_initials

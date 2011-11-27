@@ -1,0 +1,18 @@
+<div id="user_form" class="row">
+<%= simple_form_for @user, :validate => true  do |f| %>
+  <%= f.error_notification %>
+
+  <div class="page-header span16 columns">
+    <h4>Activate Your Account</h4>
+  </div>
+  <div>
+    <p>Your Mail:<%= @user.email %>
+  </div>
+  <fieldset>
+      <%= f.input :password %>
+      <%= f.input :password_confirmation, :label => "Confirm Password" %>
+      <%= f.button :submit, :class => 'btn primary' %>
+  </fieldset>
+
+<% end %>
+</div>

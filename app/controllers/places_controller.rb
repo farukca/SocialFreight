@@ -8,6 +8,7 @@ class PlacesController < ApplicationController
       @places = Place.where(:name => /#{strQ}/i).limit(10)
     else
       @places = Place.all
+      @json = Place.all.to_gmaps4rails
     end
 
     respond_to do |format|
@@ -18,7 +19,7 @@ class PlacesController < ApplicationController
 
   def show
     @place = Place.find_by_slug(params[:id])
-
+    @json  = @place.to_gmaps4rails
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @place }

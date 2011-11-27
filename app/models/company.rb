@@ -3,6 +3,10 @@ class Company
   include Mongoid::Timestamps
   include Mongoid::Token
   include Mongoid::Slug
+  include Gmaps4rails::ActsAsGmappable
+  include Mongoid::Spacial::Document
+ 
+  acts_as_gmappable
 
   field :name
   field :title
@@ -16,6 +20,7 @@ class Company
   belongs_to :city
   belongs_to :state
   belongs_to :country
+  field :location, type: Array, spacial: {lng: :longitude, lat: :latitude, return_array: true }
   field :tel
   field :gsm
   field :voip
@@ -65,6 +70,25 @@ class Company
   validates_uniqueness_of :name, :case_sensitive => false
   validates_length_of :name, :maximum => 40
   validates_length_of :title, :maximum => 100
+
+  before_save :get_coordinates
+  
+  def gmaps4rails_address
+  #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
+    "#{self.address}, #{self.district}, #{self.city.name}, #{self.country.name}" 
+  end
+
+  def get_coordinates
+    self.location = Gmaps4rails.geocode(gmaps4rails_address).first
+  end
+
+  def longitude
+    self.location[0]
+  end
+
+  def latitude
+    self.location[1]
+  end
 
   class << self
 

@@ -24,16 +24,26 @@ class Operation
     @loadings = find_loadings
   end
 
+  def reservations
+    @reservations = find_reservations
+  end
+
   private
   def find_positions
-    positions = Position.patron(self.patron_token).active.where(operation: self.id)#.limit(20).last
+    positions = Position.patron(self.patron_token).active.where(operation: self.id).limit(10).newones
     positions
   end
 
   private
   def find_loadings
-    loadings = Loading.patron(self.patron_token).active.where(operation: self.id)#.limit(20).last
+    loadings = Loading.patron(self.patron_token).active.where(operation: self.id).plannedloads.limit(10).newones
     loadings
+  end
+
+  private
+  def find_reservations
+    reservations = Loading.patron(self.patron_token).active.where(operation: self.id).reservations.limit(10).newones
+    reservations
   end
 
 end

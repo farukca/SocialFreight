@@ -18,6 +18,9 @@ class Search
   field :driver_id
   field :company_id
   field :transporter_id
+  field :country
+  field :city
+  field :searched, type: Boolean, default: true
 
   def positions
     @positions = find_positions
@@ -25,6 +28,10 @@ class Search
 
   def loadings
     @loadings = find_loadings
+  end
+
+  def reservations
+    @reservations = find_reservations
   end
 
   private
@@ -44,4 +51,11 @@ class Search
     loadings
   end
 
+  private
+  def find_reservations
+    reservations = Loading.patron(self.patron_token).active.reservations
+    reservations = loadings.where(operation: self.operation) if self.operation.present?
+    reservations = loadings.where(direction: self.direction) if self.direction.present?
+    reservations
+  end
 end

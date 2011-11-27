@@ -2,6 +2,10 @@ class Loading
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Slug
+  include Gmaps4rails::ActsAsGmappable
+  include Mongoid::Spacial::Document
+ 
+  acts_as_gmappable
 
   field :reference
   field :hwb_no
@@ -31,6 +35,7 @@ class Loading
   field :departure_district
   field :departure_postcode
   field :departure_address
+  field :departure_location, type: Array, spacial: {lng: :longitude, lat: :latitude, return_array: true }
 
   #Unloading address and place infos
   field :unload_place_type
@@ -40,6 +45,7 @@ class Loading
   field :arrival_district
   field :arrival_postcode
   field :arrival_address
+  field :arrival_location, type: Array, spacial: {lng: :longitude, lat: :latitude, return_array: true }
 
   field :pickup_date, type: Date
   field :load_date, type: Date
@@ -89,12 +95,11 @@ class Loading
   has_many :containers
   has_many :packages
 
-  before_create :set_initials
-
   #validates_presence_of :reference, :except => :create
   validates_uniqueness_of :reference, :case_sensitive => false
   validates_presence_of :operation, :direction, :patron_id, :patron_token, :branch_id
   validates_presence_of :company
+  validates_associated :company
 
   scope :patron, ->(token) { where(patron_token: token) }
   scope :active, where(status: "A")
@@ -104,7 +109,12 @@ class Loading
   scope :rail, where(operation: "rail")
   scope :export, where(direction: "E")
   scope :import, where(direction: "I")
-  scope :last, order_by(:created_at, :desc)
+  scope :newones, order_by(:created_at, :desc)
+  scope :reservations, where(position: nil)
+  scope :plannedloads, where(:position.exists => true)
+
+  before_create :set_initials
+  before_save   :get_coordinates
 
   private
   def set_initials
@@ -112,6 +122,35 @@ class Loading
     self.reference = self.operation + "." + self.direction + "." + sprintf('%07d', counter)
     self.patron_token = current_patron.token if self.patron_token.blank?
     generate_slug!
+  end
+
+  def gmaps4rails_address_departure
+    "#{self.departure_address}, #{self.departure_district}, #{self.departure_city.name}, #{self.departure_country.name}"
+  end
+
+  def gmaps4rails_address_arrival
+    "#{self.arrival_address}, #{self.arrival_district}, #{self.arrival_city.name}, #{self.arrival_country.name}"
+  end
+
+  def get_coordinates
+    self.departure_location = Gmaps4rails.geocode(gmaps4rails_address_departure).first
+    self.arrival_location   = Gmaps4rails.geocode(gmaps4rails_address_arrival).first
+  end
+
+  def longitude
+    self.arrival_location[0]
+  end
+
+  def latitude
+    self.arrival_location[1]
+  end
+
+  def longitude_departure
+    self.departure_location[0]
+  end
+
+  def latitude_departure
+    self.departure_location[1]
   end
 
   class << self

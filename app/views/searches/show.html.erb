@@ -5,4 +5,7 @@
   <% when "loadings" %>
     <%= render 'searches/loading_form' %>
     <%= render 'loadings/loadings', :loadings => @search.loadings %>
+  <% when "reservations" %>
+    <%= render 'searches/reservation_form' %>
+    <%= render 'loadings/loadings', :loadings => @search.reservations %>
 <% end %>
