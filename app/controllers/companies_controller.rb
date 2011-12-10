@@ -12,8 +12,12 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    @company = Company.find_by_slug(params[:id])
-    @marker = @company.to_gmaps4rails
+    if params[:lookup]
+      @company = Company.find(params[:id])
+    else
+      @company = Company.find_by_slug(params[:id])
+      @marker = @company.to_gmaps4rails
+    end
 
     respond_to do |format|
       format.html # show.html.erb

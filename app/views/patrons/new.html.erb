@@ -1,2 +1,20 @@
+<div class="row">
 
-<%= render 'form' %>
+  <div class="span9 columns">
+    <div id="login_image"></div>
+    <%= render 'form' %>
+    <div id="signupnote">
+      <p>You have already an account?&nbsp;<%= link_to "Sign in", login_path%></p>
+      <p>You want just a personal account?&nbsp;<%= link_to "Sign up", signup_path%></p>
+    </div>
+  </div>
+
+  <div class="span7 columns">
+    <div id="login_roadmap">
+      <%= image_tag "cloudapp.jpg" %>
+    </div>
+  </div>
+
+</div>
+
+

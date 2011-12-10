@@ -5,7 +5,7 @@ class Loading
   include Gmaps4rails::ActsAsGmappable
   include Mongoid::Spacial::Document
  
-  acts_as_gmappable
+  acts_as_gmappable :process_geocoding => false, :validation => false
 
   field :reference
   field :hwb_no
@@ -36,6 +36,7 @@ class Loading
   field :departure_postcode
   field :departure_address
   field :departure_location, type: Array, spacial: {lng: :longitude, lat: :latitude, return_array: true }
+  field :load_point
 
   #Unloading address and place infos
   field :unload_place_type
@@ -46,7 +47,9 @@ class Loading
   field :arrival_postcode
   field :arrival_address
   field :arrival_location, type: Array, spacial: {lng: :longitude, lat: :latitude, return_array: true }
+  field :unload_point
 
+  field :gmaps, type: Boolean
   field :pickup_date, type: Date
   field :load_date, type: Date
   field :unload_date, type: Date
@@ -56,11 +59,11 @@ class Loading
   field :statement
   field :statement_date, type: Date
   field :commodity
+  field :producer
   field :marks_nos
   field :load_type
   belongs_to :custom, :class_name => "Place", :inverse_of => :custom
   belongs_to :customofficer, :class_name => "Company", :inverse_of => :customofficer
-  belongs_to :producer, :class_name => "Company", :inverse_of => :producer
   belongs_to :presenter, :class_name => "Company", :inverse_of => :presenter
   belongs_to :bank, :class_name => "Company", :inverse_of => :bank
   field :bank_flag, type: Boolean
@@ -100,6 +103,7 @@ class Loading
   validates_presence_of :operation, :direction, :patron_id, :patron_token, :branch_id
   validates_presence_of :company
   validates_associated :company
+  validates_presence_of :commodity
 
   scope :patron, ->(token) { where(patron_token: token) }
   scope :active, where(status: "A")
@@ -128,13 +132,17 @@ class Loading
     "#{self.departure_address}, #{self.departure_district}, #{self.departure_city.name}, #{self.departure_country.name}"
   end
 
-  def gmaps4rails_address_arrival
+  def gmaps4rails_address
     "#{self.arrival_address}, #{self.arrival_district}, #{self.arrival_city.name}, #{self.arrival_country.name}"
   end
 
   def get_coordinates
-    self.departure_location = Gmaps4rails.geocode(gmaps4rails_address_departure).first
-    self.arrival_location   = Gmaps4rails.geocode(gmaps4rails_address_arrival).first
+    if self.departure_address.present?
+      self.departure_location = Gmaps4rails.geocode(gmaps4rails_address_departure).first
+    end
+    if self.arrival_address.present?
+      self.arrival_location   = Gmaps4rails.geocode(gmaps4rails_address).first
+    end
   end
 
   def longitude
@@ -177,8 +185,16 @@ class Loading
         'C' => 'Closed'
       }
     end
+
+    def point_types()
+      point_types = {
+        'M' => 'Customer Place',
+        'P' => 'Airport'
+      }
+    end
   end
 
+  public
   def position_name
     if self.position.nil?
       "RESERVATION"

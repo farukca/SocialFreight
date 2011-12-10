@@ -1,26 +1,24 @@
-<div id="patron_form" class="span16 columns">
+<div id="patron_form">
 <%= simple_form_for @patron, :validate => true do |f| %>
   <%= f.error_notification %>
 
   <fieldset>
-    <div class="row">
-      <div class="page-header span16 columns">
-        <h4>Customer</h4>
-      </div>
-      <div class="span8 columns">
-        <%= f.input :title, :label => "Company" %>
-        <%= f.input :contact_name, :label => "Name" %>
-        <%= f.input :contact_surname, :label => "Surname" %>
-        <%= f.input :tel  %>
-        <%= f.input :email %>
-        <%= f.input :password %>
-        <%= f.input :password_confirmation %>
-        <div class="clearfix">
-          <label class="required">Operations</label>
+    <div class="page-header">
+      <h4>Try SocialFreight</h4>
+    </div>
+    <div>
+      <%= f.input :title, :label => "Company" %>
+      <%= f.input :contact_name, :label => "Name" %>
+      <%= f.input :contact_surname, :label => "Surname" %>
+      <%= f.input :tel  %>
+      <%= f.input :email %>
+      <div class="clearfix">
+        <label class="required">Operations</label>
+        <div id="operations">
           <%= f.collection_check_boxes :operations, Operation.all, :id, :name, :label => "Operations" %>
         </div>
-        <%= f.button :submit, :class => 'btn primary' %>
       </div>
+      <%= f.button :submit, :class => 'btn primary' %>
     </div>
   </fieldset>
 

@@ -79,8 +79,8 @@ class Position
   validates_inclusion_of :direction, in: ["E","I","T"]
   validates_numericality_of :freight_price
   validates_numericality_of :agent_price
-  validates_associated :transporter
-  validates_uniqueness_of :patron_token, :reference
+  #validates_associated :transporter
+  validates_uniqueness_of :patron_token, :reference, :on => :update
   #validates_length_of   :mwb, minimum: 11
   #validates_format_of   :
 

@@ -1,0 +1,29 @@
+<div class="profile-section">
+  <div class="profile-data-header">
+    <h4>Contact</h4>
+  </div>
+  <div class="profile-data-body">
+    <div class="profile-data-section">
+      <%= image_tag "occupied_icon.png" %><span><%= loading.company.name if loading.company %></span>
+    </div>
+    <div class="profile-data-section">
+      <%= image_tag "mail_icon.png" %><span><%= loading.departure_country.name if loading.departure_country %>-><%= loading.arrival_country.name if loading.arrival_country %></span>
+    </div>
+    <div class="profile-data-section">
+      <%= image_tag "occupied_icon.png", "data-placement" => 'below',  :rel => 'twipsy', :title => 'Waybill No' %><span><%= loading.waybill_no %></span>
+    </div>
+    <div class="profile-data-section">
+      <%= image_tag "usd_icon.png" %><span><%= loading.freight_price %>&nbsp;<%= loading.freight_curr %>&nbsp;Navlun</span>
+    </div>
+    <div class="profile-data-section">
+      <%= image_tag "tel_icon.png" %><span><%= loading.brut_wg %>&nbsp;</span>
+    </div>
+    <div class="profile-data-section">
+      <%= image_tag "kfax_icon.png" %><span><span><%= loading.created_at.strftime("%m/%d/%Y") %></span>
+    </div>
+
+    <div class="profile-data-section">
+      <%= image_tag "address_icon.png" %><span><%= loading.commodity %></span>
+    </div>
+  </div>
+</div>

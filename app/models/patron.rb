@@ -41,11 +41,11 @@ class Patron
   before_create :generate_patron
   after_create  :create_patron_user
 
-  validates_presence_of :title, :message => I18n.t('patrons.errors.title.cant_be_blank')
-  validates_presence_of :email, :message => I18n.t('patrons.errors.title.cant_be_blank')
-  validates_presence_of :contact_name, :message => I18n.t('patrons.errors.title.cant_be_blank')
-  validates_presence_of :contact_surname, :message => I18n.t('patrons.errors.title.cant_be_blank')
-  validates_presence_of :tel,   :message => I18n.t('patrons.errors.title.cant_be_blank')
+  validates_presence_of :title#, :message => I18n.t('patrons.errors.title.cant_be_blank')
+  validates_presence_of :email#, :message => I18n.t('patrons.errors.title.cant_be_blank')
+  validates_presence_of :contact_name#, :message => I18n.t('patrons.errors.title.cant_be_blank')
+  validates_presence_of :contact_surname#, :message => I18n.t('patrons.errors.title.cant_be_blank')
+  validates_presence_of :tel#,   :message => I18n.t('patrons.errors.title.cant_be_blank')
   validates_uniqueness_of :email, :case_sensitive => false
 
   validates_length_of   :title, :maximum => 255#, :message => I18n.t('tasks.errors.name.too_long')

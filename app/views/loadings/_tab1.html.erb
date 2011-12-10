@@ -1,0 +1,24 @@
+<div id="good_profile" class="tab-pane profile-content active">
+  <div id="good_left">
+    <%= render 'tab_header', :loading => loading %>
+    <div id="good_goods" class="dlist">
+      <dl>
+        <dt>Customer</dt>
+        <dd class="company"><%= loading.company.name if loading.company %>&nbsp;</dd>
+        <dt>Gönderici</dt>
+        <dd class="company"><%= loading.sender.name if loading.sender %>&nbsp;</dd>
+        <dt>Alıcı</dt>
+        <dd class="company"><%= loading.consignee.name if loading.consignee %>&nbsp;</dd>
+        <dt>Acenta</dt>
+        <dd class="company"><%= loading.agent.name if loading.agent %>&nbsp;</dd>
+        <dt>Waybill No</dt>
+        <dd class="company"><%= loading.waybill_no %>&nbsp;</dd>
+        <dt>Navlun Tutarı</dt>
+        <dd><%= loading.freight_price %>&nbsp;<%= loading.freight_curr.upcase %></dd>
+        <dt>Yük Tanımı</dt>
+        <dd class="commodity"><%= loading.commodity %></dd>
+      </dl>
+    </div>
+  </div>
+</div>
+

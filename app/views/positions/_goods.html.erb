@@ -1,0 +1,18 @@
+<div class="box">
+  <div class="boxes">
+    <div class="todoListHeader">Pozisyona Bağlı Yükler</div>
+    <div class="todoListContents">
+      <ol class="listClass">
+       <% for load in @position.loadings %>
+        <li class="incompleteClass">
+          <%= link_to load.reference, loading_path(load)%>
+        </li>
+       <% end %>
+        <li>
+          <%= link_to "Add Loading", new_loading_path(:position_id => @position.slug), :class => "btn primary rightside" %>
+        </li>
+      </ol>
+    </div>
+  </div>
+</div>
+

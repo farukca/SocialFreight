@@ -1,3 +1,27 @@
-<div id="loading">
-  <%= render 'form' %>
+<div class="row">
+<%= simple_form_for @loading, :validate => true do |f| %>
+  <%= f.error_notification %>
+
+  <div class="row">
+    <ul class="tabs" data-tabs="tabs">
+      <li class="active"><a href="#loading-main-form">Genel Yük Bilgileri</a></li>
+      <li><a href="#loading-detail-form">Yük Detay Bilgileri</a></li>
+      <div class="rightside">
+        <%= f.button :submit, :class => 'btn primary' %>
+      </div>
+    </ul>
+
+
+    <div id="my-tab-content" class="tab-content">
+      <div id="loading-main-form" class="tab-pane active">
+        <%= render 'form_main', :f => f %>
+      </div>
+      <div id="loading-detail-form" class="tab-pane">
+        <%= render 'form_detail', :f => f %>
+      </div>      
+    </div>
+
+  </div>
+
+<% end %>
 </div>

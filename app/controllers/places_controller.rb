@@ -18,8 +18,12 @@ class PlacesController < ApplicationController
   end
 
   def show
-    @place = Place.find_by_slug(params[:id])
-    @json  = @place.to_gmaps4rails
+    if params[:lookup]
+      @place = Place.find(params[:id])
+    else
+      @place = Place.find_by_slug(params[:id])
+      @json  = @place.to_gmaps4rails
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @place }

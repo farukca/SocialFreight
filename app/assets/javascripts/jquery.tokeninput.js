@@ -64,7 +64,8 @@ var DEFAULT_CLASSES = {
     dropdownItem: "token-input-dropdown-item",
     dropdownItem2: "token-input-dropdown-item2",
     selectedDropdownItem: "token-input-selected-dropdown-item",
-    inputToken: "token-input-input-token"
+    inputToken: "token-input-input-token",
+    tokenView: "token-input-token-view"
 };
 
 // Input box position "enum"
@@ -461,6 +462,15 @@ $.TokenList = function (input, url_or_data, settings) {
                 hidden_input.change();
                 return false;
             });
+        // The 'view_token' button
+        $("<span><img src='/assets/add.png' alt='Detail Info' /></span>")
+            .addClass(settings.classes.tokenView)
+            .appendTo(this_token)
+            .click(function (event) {
+                view_token(item.id);
+                event.preventDefault();
+                return false;
+            });
 
         // Store data on the token
         var token_data = {"id": item.id};
@@ -610,6 +620,13 @@ $.TokenList = function (input, url_or_data, settings) {
         if($.isFunction(callback)) {
             callback.call(hidden_input,token_data);
         }
+    }
+
+    // Open Detail window
+    function view_token (tokenid) {
+        var parts    = settings.url.split(".json");
+        var view_url = parts[0] + "/" + tokenid + "?lookup=1";
+        window.open(view_url, 'Detail Info', 'width=600,height=400');
     }
 
     // Update the hidden input box value

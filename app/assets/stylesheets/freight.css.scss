@@ -6,9 +6,8 @@ html, body {
     background-color: #DDECF3;
     display: inline;
     float: left;
-    margin-right: 10px;
-    margin-left: -60px;
-    margin-top: 60px;
+    margin-left: -52px;
+    margin-top: 80px;
     padding-top: 5px;
     position: fixed;
     //width: 50px;
@@ -32,7 +31,7 @@ html, body {
 #content {
     float: left;
     margin-top:40px;
-    padding-top:5px;
+    //padding-top:5px;
     position:relative;
 }
 #opform-step-bar {
@@ -152,19 +151,6 @@ form .span8 {
 .uprofile p{
     font-size:10.5px;
 }
-#post-home {
-    background:url("http://static01.linkedin.com/scds/common/u/img/bg/bg_sharepostmod_567x400.png") no-repeat scroll left bottom transparent;
-	top:40px;
-    /*left:71px;
-    padding-bottom:7px;
-    position:absolute;
-    width:567px;
-    z-index:6;*/
-}
-#post-home .post-module-in {
-    background:url("http://static01.linkedin.com/scds/common/u/img/bg/bg_sharepostmod_567x400.png") no-repeat scroll 0 0 transparent;
-    padding:7px 7px 0 22px;
-}
 .post {
     margin:0;
     padding:0;
@@ -195,8 +181,9 @@ fieldset span {
     font-size:11px;
 }
 .profile-content {
-    border:2px solid #D6D6D6;
-    box-shadow:2px 2px 3px rgba(0, 0, 0, 0.08);
+    border: 2px solid #FFFFFF;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 6px #CCCCCC;
     margin:0 0 15px;
     min-height:90px;
     padding:10px;
@@ -217,7 +204,7 @@ fieldset span {
     float:left;
 }
 #overview dd {
-    background:url("assets/bg_grey_dotted_h-line_3x1.png") repeat-x scroll 0 100% transparent;
+    //background:url("assets/bg_grey_dotted_h-line_3x1.png") repeat-x scroll 0 100% transparent;
     overflow:hidden;
     margin-bottom:10px;
 }
@@ -279,23 +266,27 @@ fieldset span {
 .profile-content p.title {
     margin:0 0 6px;
 }
-.profile-content .demographic-info {
-    color:#747474;
-    margin:2px 0 6px;
+.profile-content .dlist {
+    border: 1px solid #FFFFFF;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 6px #CCCCCC;
 }
-.profile-content .demographic-info {
-    color:#666666;
-    margin:4px 0 6px;
-    padding:0;
+.profile-content .dlist dt {
+    float:left;
+    width:150px;
+    margin-bottom: 7px;
 }
-.profile-content .demographic-info dd {
+.profile-content .dlist dd {
+    width:100%;
+    margin-left: 4px;
+    margin-bottom: 7px;
+}
+.profile-content .yatay-info dd {
     display:inline;
     margin:0;
-    padding:0 4px 0 0;
-}
-.profile-content .demographic-info dd.industry {
+    padding:0 4px 0 4px;
     border-left:1px solid #CCCCCC;
-    padding-left:6px;
+    float:none;
 }
 #sideview dt {
     color:#747474;
@@ -316,8 +307,22 @@ fieldset span {
     background:none repeat scroll 0 0 transparent;
     margin-bottom:-6px;
 }
+#login_form {
+    border-top: 1px dotted #DDDDDD;
+}
 #login_form label {
     text-align:left;
+}
+#login_form label, #patron_form label {
+    margin-right:5px;
+}
+#login_image {
+    margin-top: 75px;
+    text-align:center;
+}
+#login_roadmap {
+    margin-top: 100px;
+    text-align:center;
 }
 form ul li {
     list-style: none inside none;
@@ -472,4 +477,167 @@ form ul li label {
 .datepicker .selected {
   background-color: #bfbfbf;
   color: #ffffff;
+}
+#signupnote {
+  font-size: 12px;
+  border-top: 1px dotted #DDDDDD;
+  padding: 20px 0 0 0;
+}
+.welcome_screen {
+    margin-top:200px;
+    margin-left:200px;
+}
+.welcome_screen  div{
+    border:1px solid #DDDDDD;
+    float:left;
+    text-align:center;
+    margin-left:5px;
+}
+.welcome_screen  p {
+    font-weight:bold;
+}
+#sidebar {
+    background-color: #444444;
+    color: #FFFFFF;
+    margin-top:40px;
+    margin-left:0px;
+}
+#sidebar h3, h4 {
+    color: #FFFFFF;
+    margin-left:10px;
+}
+#sidebar a {
+    color: #EEEEEE;
+}
+#profile-sidebar {
+    float: left;
+    overflow:visible;
+    margin-top:20px;
+}
+#profile-picture {
+    margin-left:10px;
+}
+.profile-section {
+    margin-bottom:28px;
+    margin-top:20px;
+}
+.profile-data-body {
+    color:#CCCCCC;
+    float:none;
+    line-height:15px;
+}
+.profile-data-header {
+    background-color:transparent;
+    border-bottom:1px solid #D7DBDE;
+    line-height:20px;
+    margin:0 0 7px;
+    position:relative;
+}
+.profile-data-section {
+    padding-bottom:4px;
+    position:relative;
+    text-align:left;
+    height:25px;
+}
+.profile-data-section  img {
+    margin-right:5px;
+    margin-left:5px;
+}
+.profile-data-section  a, span {
+    vertical-align:super;
+}
+
+#rightbar {
+    margin-top:20px;
+    margin-bottom:0px;
+    width:200px;
+}
+.box {
+    margin-bottom:15px;
+    margin-top:20px;
+}
+.todoList {
+    background:url("/assets/todoBack.png") repeat-x scroll 0 0 #FFE5A7;
+    border:2px solid #FFFFFF;
+    border-radius:5px 5px 5px 5px;
+    box-shadow:0 1px 6px #CCCCCC;
+    margin-left:2px;
+    margin-right:4px;
+    padding-bottom:6px;
+    padding-top:3px;
+}
+.userProfilePage .todoListBoxContents {
+    margin-top:4px;
+}
+.todoListHeader {
+    border-bottom:1px solid #D7DBDE;
+    padding-bottom:10px;
+    padding-left:10px;
+    padding-top:8px;
+    font-weight:bold;
+}
+.todoListContents ol {
+    margin-top:0;
+}
+.listClass {
+    list-style-position:outside;
+    margin-bottom:0;
+    margin-left:1px;
+    padding-bottom:1px;
+    padding-left:6px;
+    padding-top:3px;
+}
+.todoListContents ol li {
+    margin-right:0;
+}
+.incompleteClass {
+    line-height:21px;
+    list-style:disc outside url("/img/chatter/wtdn_bullet.png");
+    margin-left:1em;
+    padding-left:0;
+    text-decoration:none;
+    vertical-align:middle;
+}
+.incompleteClass a {
+    color:#015BA7;
+    margin-left:0;
+    padding-left:0;
+    vertical-align:middle;
+}
+.profile {
+    background:url("/assets/feedbg.png") repeat-x scroll left -40px #FFFFFF;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+}
+
+.publishercontainer {
+    -moz-border-bottom-colors:none;
+    -moz-border-image:none;
+    -moz-border-left-colors:none;
+    -moz-border-right-colors:none;
+    -moz-border-top-colors:none;
+    background:url("/assets/cloud.png") no-repeat scroll right top transparent;
+    border-color:-moz-use-text-color -moz-use-text-color #E6E6E6;
+    border-style:none none solid;
+    border-width:0 0 1px;
+    line-height:normal;
+    margin-bottom:5px;
+    max-width:640px;
+    min-height:75px;
+    overflow:visible;
+    padding:10px;
+    position:relative;
+}
+.justhead {
+    background-color: #DDECF3;
+    border-bottom: 1px solid #DDDDDD;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    margin-bottom: 10px;
+}
+label abbr {
+    background-color: #CC0000;
+    bottom: 1px;
+    top: 1px;
+    width: 3px;
+    height:10px;
 }

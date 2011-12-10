@@ -11,6 +11,12 @@
         <%= f.input :name %>
         <%= f.input :tel  %>
         <%= f.input :email %>
+        <%= f.input :address %>
+        <%= f.input :postcode %>
+        <%= f.input :district %>
+        <%= f.input :country_id, :as => :select, :collection => Country.all, :include_blank => false %>
+        <%#= f.input :state_id %>
+        <%= f.input :city_id, :as => :select, :collection => City.all, :include_blank => false %>
         <%= f.button :submit, :class => 'btn primary' %>
       </div>
     </div>

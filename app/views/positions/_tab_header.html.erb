@@ -1,0 +1,13 @@
+<div id="position_header" class="todoListHeader">
+  Referans No: <%= position.reference.upcase %>
+  <span id="positionref" class="rightside">
+  <%= position.mwb_no %>
+  </span>
+</div>
+<div id="position_branch">
+  <dl class="yatay-info" id="headline">
+    <dd><%= position.branch.name %></dd>
+    <dd><%= Position.direction_types[@position.direction] %></dd>
+    <dd><%= Position.payment_types[position.paid_at] %></dd>
+  </dl>
+</div>

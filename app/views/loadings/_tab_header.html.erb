@@ -1,0 +1,18 @@
+<div id="good_header" class="todoListHeader">
+  Referans No: <%= loading.reference.upcase %>
+  <span id="positionref" class="rightside">
+  <% if loading.position_id.nil? %>
+    Position: <%= link_to loading.position_name.upcase, position_path(loading.position) %>
+  <% else %>
+    RESERVATION
+  <% end %>
+  </span>
+</div>
+<div id="good_branch">
+  <dl class="yatay-info" id="headline">
+    <dd><%= loading.branch.name %></dd>
+    <dd><%= Position.payment_types[loading.paid_at] %></dd>
+    <dd><%= loading.incoterm %></dd>
+  </dl>
+</div>
+

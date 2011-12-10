@@ -6,7 +6,7 @@ class Company
   include Gmaps4rails::ActsAsGmappable
   include Mongoid::Spacial::Document
  
-  acts_as_gmappable
+  acts_as_gmappable :process_geocoding => false, :validation => false
 
   field :name
   field :title
@@ -21,6 +21,7 @@ class Company
   belongs_to :state
   belongs_to :country
   field :location, type: Array, spacial: {lng: :longitude, lat: :latitude, return_array: true }
+  field :gmaps, type: Boolean
   field :tel
   field :gsm
   field :voip
@@ -79,7 +80,9 @@ class Company
   end
 
   def get_coordinates
-    self.location = Gmaps4rails.geocode(gmaps4rails_address).first
+    if self.address.present? && self.location.blank?
+      self.location = Gmaps4rails.geocode(gmaps4rails_address).first
+    end
   end
 
   def longitude
@@ -88,6 +91,10 @@ class Company
 
   def latitude
     self.location[1]
+  end
+
+  def prevent_geocoding
+    self.address.blank? #|| (!self.location.blank?)
   end
 
   class << self

@@ -29,8 +29,8 @@ class Branch
 
   attr_accessible :name, :tel, :fax, :postcode, :district, :address, :city_id, :country_id, :status, :patron_id
 
-  validates_presence_of :name, :message => I18n.t('patrons.errors.title.cant_be_blank')
-  validates_presence_of :patron, :message => I18n.t('patrons.errors.title.cant_be_blank')
+  validates_presence_of :name#, :message => I18n.t('patrons.errors.title.cant_be_blank')
+  validates_presence_of :patron#, :message => I18n.t('patrons.errors.title.cant_be_blank')
   validates_length_of   :name, :maximum => 100#, :message => I18n.t('tasks.errors.name.too_long')
 
   before_save :get_coordinates
@@ -40,7 +40,7 @@ class Branch
   end
 
   def get_coordinates
-    self.location = Gmaps4rails.geocode(gmaps4rails_address).first
+    self.location = Gmaps4rails.geocode(gmaps4rails_address).first unless self.address.nil?
   end
 
   def longitude

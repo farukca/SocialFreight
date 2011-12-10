@@ -1,143 +1,43 @@
-<div id="loading{#@loading.slug}" class="row">
-  <div class="row">
-    <div class="span12 columns">
-      <div class="row">
-        <div id="pos-nav" class="span7">
-          <ul class="tabs">
-            <li class="active"><a href="#">Loading</a></li>
-            <li><a href="#">Details</a></li>
-            <li><a href="#">Documents</a></li>
-          </ul>
-        </div>
-        <div id="pos-btn" class="span5">
-          <ul class="pills rightside">
-            <li><%= link_to "Add Container", new_loading_container_path(@loading, @container), :class => "btn primary" %></li>
-            <li><%= link_to "Add Packages", new_loading_package_path(@loading, @package), :class => "btn primary" %></li>
-          </ul>
-        </div>
+<div class="row">
+  <div id="sidebar" class="span4 columns sidebar">
+    <div id="profile-sidebar">
+      <div id="profile-picture">
+        <%= image_tag "loading.jpg" %>
       </div>
-      <div class="profile-content">
-        <div id="loading">
-          <h3>
-            <span id="reference">Referans No: <%= @loading.reference %></span>
-          </h3>
-          <p class="headline-title title">
-            Position No: <%= @loading.position.reference if @loading.position %>
-          </p>
-          <dl class="demographic-info adr" id="headline">
-            <dd><%= link_to @loading.branch.name, "#" %></span></dd>
-            <dd class="industry"><%= link_to @loading.operation.humanize, "#" %></dd>
-            <dd class="industry"><%= link_to Position.direction_types[@loading.direction], "#" %></dd>
-            <dd class="industry"><%= link_to Position.payment_types[@loading.paid_at], "#" %></dd>
-          </dl>
-        </div>
-        <dl id="overview">
-  <!--dt>
-Kalkýþ Yeri
-  </dt>
-  <dd>
-<ul>
-  <li>Atatürk Havalimaný (AHL)
-<span class="at">at</span>
-<span>20.11.2011 14:00</span>
-  </li>
-</ul>
-  </dd-->
-          <dt>Commodity</dt>
-          <dd>
-            <ul>
-              <li>
-                <span><%= @loading.commodity %></span>
-              </li>
-            </ul>
-          </dd>
-          <dt>Müşteri</dt>
-          <dd>
-            <ul>
-              <li><%= @loading.company.name if @loading.company%></li>
-            </ul>
-          </dd>
-          <dt>Navlun Ücreti</dt>
-          <dd>
-            <ul>
-              <li>
-                <span><%= @loading.freight_price%></span>
-                <span><%= @loading.freight_curr%></span>
-              </li>
-            </ul>
-          </dd>
-          <dt>Agent</dt>
-            <dd>
-              <ul>
-                <li><%= @loading.agent.name if @loading.agent%></li>
-              </ul>
-            </dd>
-          <dt>Agent Price</dt>
-          <dd>
-            <ul>
-              <li>
-                <span><%= @loading.freight_price%></span>
-                <span><%= @loading.freight_curr%></span>
-              </li>
-            </ul>
-          </dd>  
-          <dt>Açılış Tarihi</dt>
-          <dd>
-            <ul>
-              <li><span><%= @loading.created_at %></span></li>
-            </ul>     
-          </dd>
-          <dt>Durumu</dt>
-          <dd>
-            <ul>
-              <li>
-                <span>Booking</span>
-                <span>18/10/2011 - 42964</span>
-              </li>
-            </ul>
-          </dd>
-          <dt>Teslim notu</dt>
-          <dd class="last">
-            <ul class="past">
-              <li>
-                <span><%= @loading.delivery_note %></span>
-              </li>
-            </ul>
-          </dd>
-        </dl>
-      </div>
-    </div>
-    <div id="profile-details" class="span4 columns">
-    <div id="pos-btn2" class="span4">
-      <ul class="pills">
-        <li><%= link_to "Edit loading", edit_loading_path(@loading.slug), :class => "btn primary" %></li>
-      </ul>
-    </div>
-    <div class="profile-content">
-      <div class="clearfix">
-        <div class="profile-img">
-          <img src="../assets/aircargo.jpg"/>
-        </div>
-      </div>
-      <div class="clearfix">
-        <dl id="sideview" class="span4">
-          <dt>Kalkış Yeri:</dt>
-          <dd><%= @loading.load_place.name if @loading.load_place %></dd>
-          <dt>Kalkış Tarihi:</dt>
-          <dd><%= @loading.load_date %></dd>
-          <dt>Varış Yeri:</dt>
-          <dd><%= @loading.unload_place.name if @loading.unload_place %></dd>
-          <dt>Varış Tarihi:</dt>
-          <dd><%= @loading.unload_date %></dd>
-        </dl>
-      </div>
-      <div class="clearfix">
-        <div>
-          <a href="#" class="btn primary rightside">Aktarma Bilgisi Ekle</a>
-        </div>
-      </div>
+      <%= render 'tab_sidebar', :loading => @loading %>
     </div>
   </div>
+  <div id="content" class="span9 columns content">
+    <div id="good" class="row profile">
+      <ul class="tabs" data-tabs="tabs">
+        <li class="active"><a href="#good_profile">Yük Bilgisi</a></li>
+        <li><a href="#good_detail">Yük Detayları</a></li>
+        <li><a href="#good_docs">Adres Bilgileri</a></li>
+        <div class="rightside">
+          <%= link_to "Edit Loading", edit_loading_path(@loading), :class => 'btn primary' %>
+        </div>
+      </ul>
+      <div id="my-tab-content" class="tab-content">
+        <%= render 'tab1', :loading => @loading %>
+        <%= render 'tab2', :loading => @loading %>
+        <%= render 'tab3', :loading => @loading %>
+      </div>
+    </div>
+    <div id="good_feeds" class="feeds">
+      <%= render 'comment', :loading => @loading %>
+      <%= render 'comments', :loading => @loading %>
+    </div>
+  </div>
+  <div id="rightbar" class="span3 columns">
+    <%= render 'todos', :loading => @loading %>
+    <%= render 'boxes', :loading => @loading %>
+    <%#= render 'containers', :loading => @loading %>
+    <%= render 'followers', :loading => @loading %>
+  </div>
 </div>
-<%= render :partial => 'containers/list', :locals => { :containers => @loading.containers } %>
-<%= render :partial => 'packages/list', :locals => { :packages => @loading.packages } %>
+<!--ul class="pills rightside">
+  <li><%= link_to "Add Container", new_loading_container_path(@loading, @container), :class => "btn primary" %></li>
+  <li><%= link_to "Add Packages", new_loading_package_path(@loading, @package), :class => "btn primary" %></li>
+</ul-->
+<%#= render :partial => 'containers/list', :locals => { :containers => @loading.containers } %>
+<%#= render :partial => 'packages/list', :locals => { :packages => @loading.packages } %>
