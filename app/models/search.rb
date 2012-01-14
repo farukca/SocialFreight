@@ -54,8 +54,8 @@ class Search
   private
   def find_reservations
     reservations = Loading.patron(self.patron_token).active.reservations
-    reservations = loadings.where(operation: self.operation) if self.operation.present?
-    reservations = loadings.where(direction: self.direction) if self.direction.present?
+    reservations = reservations.where(operation: self.operation) if self.operation.present?
+    reservations = reservations.where(direction: self.direction) if self.direction.present?
     reservations
   end
 end

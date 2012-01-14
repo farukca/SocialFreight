@@ -1,0 +1,10 @@
+<div id="branch_list" class="tab-pane profile-content">
+  <table class="bordered-table">
+
+    <%= render patron.branches %>
+
+  </table>
+  <div class="rightside">
+    <%= link_to "Yeni Şube", new_branch_path, :class => 'btn primary' %>
+  </div>
+</div>

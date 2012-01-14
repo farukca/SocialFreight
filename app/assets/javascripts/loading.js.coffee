@@ -17,3 +17,24 @@ jQuery ->
       $('#loading_arrival_city').html(options)
     else
       $('#loading_arrival_city').empty()
+
+  $(document).on "click", ".follow_button", ->
+    $.ajax
+      url: "/"+$(this).data('model')+"/"+$(this).data('loadid')+"/follow"
+      success: ->
+        $(this).html('&cross; UnFollow')
+        $(this).removeClass('follow_button')
+        $(this).removeClass('primary')
+        $(this).addClass('unfollow_button')
+        $(this).addClass('danger')
+    return false
+  $(document).on "click", ".unfollow_button", ->
+    $.ajax
+      url: "/"+$(this).data('model')+"/"+$(this).data('loadid')+"/unfollow"
+      success: ->
+        $(this).html('Follow')
+        $(this).removeClass('unfollow_button')
+        $(this).removeClass('danger')
+        $(this).addClass('follow_button')
+        $(this).addClass('primary')
+    return false

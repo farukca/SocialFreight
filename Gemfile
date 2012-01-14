@@ -12,6 +12,7 @@ gem 'mongoid_token', '~> 0.9.1'
 gem 'mongoid_slug'
 gem 'mongoid_auto_inc'
 gem 'mongoid_spacial'
+gem 'mongoid_follow'
 gem 'gmaps4rails'
 
 gem 'sorcery'
@@ -32,6 +33,9 @@ gem 'kaminari'
 #File uploading
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'mini_magick'
+
+#PDF
+gem 'prawn'
 
 gem 'jquery-rails'
 gem 'execjs'

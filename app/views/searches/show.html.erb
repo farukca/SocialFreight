@@ -7,5 +7,5 @@
     <%= render 'loadings/loadings', :loadings => @search.loadings %>
   <% when "reservations" %>
     <%= render 'searches/reservation_form' %>
-    <%= render 'loadings/reservations', :loadings => @search.reservations %>
+    <%= render 'reservations', :reservations => @search.reservations %>
 <% end %>

@@ -45,4 +45,10 @@ class Container
     end
   end
 
+  public
+  def header
+    #"#{self.name} #{self.container_type} (#{self.sealno})"
+    "#{self.container_type}-#{self.name}"
+  end
+
 end

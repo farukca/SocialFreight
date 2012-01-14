@@ -1,0 +1,36 @@
+<div id="user_form">
+<%= simple_form_for user, :remote => true, :validate => true  do |f| %>
+  <%= f.error_notification %>
+
+  <fieldset>
+    <div class="pageBody">
+      <table class="detailList" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td class="dataCol">
+            <table class="detailList" border="0" cellpadding="0" cellspacing="0">
+              <tr><%= f.input :name %></tr>
+              <tr><%= f.input :surname %></tr>
+              <tr><%= f.input :email %></tr>
+              <tr><%= f.input :password %></tr>
+              <tr><%= f.input :password_confirmation, :label => "Confirm Password" %></tr>
+           </table>
+         </td>
+         <%if logged_in? %>
+         <td class="dataCol">
+            <table class="detailList" border="0" cellpadding="0" cellspacing="0">
+              <tr><%= f.input :region %></tr>
+              <tr><%= f.input :time_zone %></tr>
+              <tr><%= f.input :user_type %></tr>
+           </table>
+         </td>
+         <% end %>
+       </tr>
+       <tr>
+         <td class="dataCol rightside"><%= f.button :submit, :class => 'btn primary' %></td>
+       </tr>
+     </table>
+   </div>
+  </fieldset>
+
+<% end %>
+</div>

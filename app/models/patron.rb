@@ -13,6 +13,7 @@ class Patron
   field :website
   field :tel
   field :fax
+  field :gsm
   field :postcode
   field :address
   field :contact_name
@@ -22,6 +23,7 @@ class Patron
   belongs_to :country
   field :patron_type
   field :status, default: "A"
+  field :logo
   field :operations, type: Array
   belongs_to :saler, :class_name => User, :inverse_of => :saler, :foreign_key => "saler_id" 
   token :length => 7, :contains => :alphanumeric
@@ -34,9 +36,12 @@ class Patron
   has_many :companies
   has_many :positions
   has_many :loadings
+  has_many :activities
+
+  mount_uploader :logo, LogoUploader
 
   attr_accessible :title, :website, :tel, :fax, :postcode, :address, :city_id, :country_id, :status, :saler_id, 
-                  :email, :operations, :contact_name, :contact_surname
+                  :email, :operations, :contact_name, :contact_surname, :logo, :remove_logo
 
   before_create :generate_patron
   after_create  :create_patron_user
@@ -73,6 +78,12 @@ class Patron
     counter.inc(:count, 1)
     counter.save!
     return counter.count
+  end
+
+  def set_activity(target, action, creator_id=nil, action_text, user_name)
+    creator_id ||= target.user_id
+    #return log_later(target, action, creator_id) if self.is_importing
+    Activity.log(self, target, action, creator_id, action_text, user_name, self.token)
   end
 
   class << self

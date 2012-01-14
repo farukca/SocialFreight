@@ -1,0 +1,9 @@
+<div id="commentlist">
+  <div class="todoListHeader">Comments
+    <!--span id="commentCount" class="rightside"><%= object.comments.count %></span-->
+  </div>
+      <ul>
+        <%= render object.comments.order_by(:created_at, :desc) %>
+      </ul>
+  </div>
+</div>

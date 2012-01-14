@@ -1,11 +1,8 @@
 <div id="good_header" class="todoListHeader">
   Referans No: <%= loading.reference.upcase %>
+  <%= link_to "(PDF)", loading_path(loading, format: "pdf") %>
   <span id="positionref" class="rightside">
-  <% if loading.position_id.nil? %>
-    Position: <%= link_to loading.position_name.upcase, position_path(loading.position) %>
-  <% else %>
-    RESERVATION
-  <% end %>
+    <%= link_to loading.position_name, position_path(loading.position) %>
   </span>
 </div>
 <div id="good_branch">

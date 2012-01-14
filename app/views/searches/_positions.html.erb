@@ -1,0 +1,22 @@
+<div id="positions_list">
+  <table class="bordered-table">
+    <tr>
+      <th class="span1"/>
+      <th class="span3">Referans</th>
+      <th class="span2">Direction</th>
+      <th class="span4">Çıkış Yeri</th>
+      <th class="span2">Çıkış Tarihi</th>
+      <th class="span4">Varış Yeri</th>
+      <th class="span2">Varış Tarihi</th>
+    </tr>
+    <% for position in positions %>
+      <%= render 'position', :position => position %>
+    <% end %>
+  </table>
+
+  <div class="rightside">
+    <%= button_tag "Pozisyona Bağla", :type => :button, :disable_with => "Please wait...", :class => "btn primary", :id => "connect_to_position" %>
+  </div>
+
+</div>
+  

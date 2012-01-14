@@ -7,7 +7,7 @@
       <%= render 'tab_sidebar', :loading => @loading %>
     </div>
   </div>
-  <div id="content" class="span9 columns content">
+  <div id="inner-content" class="span10 columns">
     <div id="good" class="row profile">
       <ul class="tabs" data-tabs="tabs">
         <li class="active"><a href="#good_profile">Yük Bilgisi</a></li>
@@ -23,15 +23,17 @@
         <%= render 'tab3', :loading => @loading %>
       </div>
     </div>
-    <div id="good_feeds" class="feeds">
-      <%= render 'comment', :loading => @loading %>
-      <%= render 'comments', :loading => @loading %>
+    <div id="loading_comments" class="feeds">
+      <%= render 'comments/commentable', :object => @loading %>
     </div>
   </div>
   <div id="rightbar" class="span3 columns">
     <%= render 'todos', :loading => @loading %>
-    <%= render 'boxes', :loading => @loading %>
-    <%#= render 'containers', :loading => @loading %>
+    <% if @loading.operation == 'sea' %>
+      <%= render 'containers', :loading => @loading %>
+    <% else %>
+      <%= render 'boxes', :loading => @loading %>
+    <% end %>
     <%= render 'followers', :loading => @loading %>
   </div>
 </div>

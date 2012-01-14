@@ -4,6 +4,9 @@ class SearchesController < ApplicationController
 
   def new
     @search = Search.new
+    @search.operation = params[:operation] if params[:operation]
+    @search.patron_id = current_patron.id
+    @search.patron_token = current_patron.token
   end
 
   def create
@@ -29,6 +32,15 @@ class SearchesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
     end
+  end
+  
+  def update
+    @search = Search.new(params[:search])
+    @search.patron_id = current_patron.id
+    @search.patron_token = current_patron.token
+
+    @search.save!
+    redirect_to @search
   end
 
 end

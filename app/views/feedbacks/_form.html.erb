@@ -1,0 +1,19 @@
+<%= simple_form_for @feedback, :validate => true do |f| %>
+  <%= f.error_notification %>
+
+  <fieldset>
+    <div class="row">
+      <div class="page-header">
+        <h4>New Feedback</h4>
+      </div>
+      <div class="span8 columns">
+        <%#= f.input :place_type, :as => :checkbox, :collection => Operation.all.map { |o| [o.place, o.id]}, :include_blank => false %>
+        <%= f.input :name %>
+        <%= f.input :email %>
+        <%= f.input :msg %>
+        <%= f.button :submit, :class => 'btn primary' %>
+      </div>
+    </div>
+  </fieldset>
+
+<% end %>

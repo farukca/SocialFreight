@@ -1,10 +1,7 @@
 <div id="user_form">
-<%= simple_form_for @user, :validate => true  do |f| %>
+<%= simple_form_for user, :validate => true  do |f| %>
   <%= f.error_notification %>
 
-  <div class="page-header">
-    <h4>Sign Up</h4>
-  </div>
   <fieldset>
       <%= f.input :name %>
       <%= f.input :surname %>

@@ -1,24 +1,32 @@
-<fieldset>
-  <div class="row">
-    <%= f.hidden_field :position, :value => @loading.position ? @loading.position.id : nil %>
-    <%= f.hidden_field :operation %>
-    <div class="span8 columns">
-      <div class="justhead">
-        <h5>Operasyon Bilgileri</h5>
-      </div>
+<div class="pageBody">
+  <%= f.hidden_field :position, :value => @loading.position ? @loading.position.id : nil %>
+  <%= f.hidden_field :operation %>
+
+  <table  class="detailList" border="0" cellpadding="0" cellspacing="0">
+    <tr>
       <%= f.input :direction, :as => :radio, :collection => Position.direction_types.map { |r| [r[1], r[0] ] }, :class => "small" %>
       <%= f.input :paid_at, :as => :radio, :collection => Position.payment_types.map { |r| [r[1], r[0] ] }, :class => "small" %>
+    </tr>
+    <tr>
       <%= f.input :incoterm, :as => :select, :collection => Loading.incoterms.map { |r| [r[1], r[0] ] }, :input_html => { :class => "medium" } %>
       <%= f.input :waybill_no, :input_html => { :class => "medium" } %>
+    </tr>
+    <tr>
       <%= f.input :branch, :as => :select, :collection => current_patron.branches, :include_blank => false, :input_html => { :class => "medium" } %>
-    </div>
-    <div class="span8 columns">
-      <div class="justhead">
-        <h5>Yük Bilgileri</h5>
-      </div>
-      
+      <%= f.input :load_type, :as => :select, :collection => Loading.load_types.map { |r| [r[1], r[0] ] }, :label => "Yük Tipi", :input_html => { :class => "medium" } %>
+    </tr>
+  </table>
+</div>
+<div class="subHeader">
+  <h5>Yük Bilgileri</h5>
+</div>
+<div class="pageBody">
+  <table  class="detailList" border="0" cellpadding="0" cellspacing="0">
+    <tr>
       <%= f.input :position_name, :input_html => {:class => "medium disabled", :disabled => ""}, :label => "Position" %>
       <%= f.input :company, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.company ? @loading.company.prepopulate_tokens.to_json : nil }, :label => "Customer" %>
+    </tr>
+    <tr>
       <%= f.input :brut_wg, :label => "Brüt Ağırlık" do %>
         <%= f.input_field :brut_wg, :class => "small" %>&nbsp;KG
         <%#= f.input_field :wg_type, :as => :select, :collection => Loading.weight_types.map { |r| [r[1], r[0] ] }, :class => "small" %>
@@ -27,52 +35,79 @@
         <%= f.input_field :freight_price, :class => "small" %>
         <%= f.input_field :freight_curr, :as => :select, :collection => Currency.all, :include_blank => false, :class => "medium" %>
       <% end %>
-      <%= f.input :commodity, :as => :text, :input_html => {:rows => 1, :cols => 37} %>     
-    </div>
-  </div>
-  <div class="row">
-    <div class="span8 columns">
-      <div class="justhead">
-        <h5>Yükleme Adresi</h5>
-      </div>
-      <%= f.input :departure_country do %>
-        <%= f.input_field :departure_country, :as => :select, :collection => Country.all, :include_blank => true, :class => "medium" %>
-      <%#= f.input :departure_city, :input_html => {:class => "token_input", "data-url" => "/cities.json", "data-pre" => @loading.departure_city ? @loading.departure_city.prepopulate_tokens.to_json : nil} %>
-        <%= f.grouped_collection_select :departure_city, Country.order_by(:name), :cities, :name, :id, :name, {:include_blank => true}, {:class => "medium"} %>
-      <% end %>
-      <%= f.input :load_point, :as => :radio, :collection => Loading.point_types.map { |r| [r[1], r[0] ] } %>
-      <%= f.input :pickup_date, :label => "Prepared/Load Date", :input_html => {:class => "inline-inputs"} do %>
-       <%= f.input_field :pickup_date, :class => "small", "data-datepicker" => "datepicker" %>
-       <%= f.input_field :load_date, :class => "small", "data-datepicker" => "datepicker" %>
-      <% end %>
-      <%= f.input :load_place, :input_html => {:class => "token_input", "data-url" => "/places.json", "data-pre" => @loading.load_place ? @loading.load_place.prepopulate_tokens.to_json : nil} %>
-      <%= f.input :departure_district, :label => "Semt" do %>
-        <%= f.input_field :departure_district, :class => "medium" %>
-        <%= f.input_field :departure_postcode, :class => "small" %>
-      <% end %>
-      <%= f.input :departure_address, :as => :text, :input_html => {:rows => 1, :cols => 37} %>
-     </div>
-    <div class="span8 columns">
-      <div class="justhead">
-        <h5>Boşaltma Adresi</h5>
-      </div>
-      <%= f.input :arrival_country do %>
-        <%= f.input_field :arrival_country, :as => :select, :collection => Country.all, :include_blank => false, :class => "medium" %>
-        <%= f.grouped_collection_select :arrival_city, Country.order_by(:name), :cities, :name, :id, :name, {:include_blank => true}, {:class => "medium"} %>
-      <% end %>
-      <%= f.input :unload_point, :as => :radio, :collection => Loading.point_types.map { |r| [r[1], r[0] ] } %>
-      <%= f.input :unload_date, :input_html => {:class => "small", "data-datepicker" => "datepicker"} %>
-      <%= f.input :unload_place, :input_html => {:class => "token_input", "data-url" => "/places.json", "data-pre" => @loading.unload_place ? @loading.unload_place.prepopulate_tokens.to_json : nil} %>
-      <%= f.input :arrival_district, :label => "Semt" do %>
-        <%= f.input_field :arrival_district, :class => "medium" %>
-        <%= f.input_field :arrival_postcode, :class => "small" %>
-      <% end %>
-      <%= f.input :arrival_address, :as => :text, :input_html => {:rows => 1, :cols => 37} %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="page-header span16 columns">
-      <h4></h4>
-    </div>
-   </div>
-</fieldset>
+    </tr>
+    <tr>
+      <%= f.input :commodity, :as => :text, :input_html => {:rows => 1, :cols => 37} %>
+      <%= f.input :marks_nos, :as => :text, :input_html => {:rows => 1, :cols => 37} %>
+    </tr>
+  </table>
+</div>
+<div class="subHeader">
+  <h5>Adres Bilgileri</h5>
+</div>
+<div class="pageBody">
+  <table class="detailList" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td class="dataCol">
+        <table class="detailList" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <%= f.input :departure_country do %>
+              <%= f.input_field :departure_country, :as => :select, :collection => Country.all, :include_blank => true, :class => "medium" %>
+              <%#= f.input :departure_city, :input_html => {:class => "token_input", "data-url" => "/cities.json", "data-pre" => @loading.departure_city ? @loading.departure_city.prepopulate_tokens.to_json : nil} %>
+              <%= f.grouped_collection_select :departure_city, Country.order_by(:name), :cities, :name, :id, :name, {:include_blank => true}, {:class => "medium"} %>
+            <% end %>
+          </tr>
+          <tr>
+            <%= f.input :load_point, :as => :radio, :collection => Loading.point_types.map { |r| [r[1], r[0] ] } %>
+          </tr>
+          <tr>
+            <%= f.input :pickup_date, :label => "Prepared/Load Date", :input_html => {:class => "inline-inputs"} do %>
+              <%= f.input_field :pickup_date, :class => "small", "data-datepicker" => "datepicker" %>
+              <%= f.input_field :load_date, :class => "small", "data-datepicker" => "datepicker" %>
+            <% end %>
+          </tr>
+          <tr>
+            <%= f.input :load_place, :input_html => {:class => "token_input", "data-url" => "/places.json", "data-pre" => @loading.load_place ? @loading.load_place.prepopulate_tokens.to_json : nil} %>
+          </tr>
+          <tr>
+            <%= f.input :departure_district, :label => "Semt" do %>
+              <%= f.input_field :departure_district, :class => "medium" %>
+              <%= f.input_field :departure_postcode, :class => "small" %>
+            <% end %>
+          </tr>
+          <tr>
+            <%= f.input :departure_address, :as => :text, :input_html => {:rows => 1, :cols => 37} %>
+          </tr>
+        </table>
+      </td>
+      <td class="dataCol">
+        <table class="detailList" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <%= f.input :arrival_country do %>
+              <%= f.input_field :arrival_country, :as => :select, :collection => Country.all, :include_blank => false, :class => "medium" %>
+              <%= f.grouped_collection_select :arrival_city, Country.order_by(:name), :cities, :name, :id, :name, {:include_blank => true}, {:class => "medium"} %>
+            <% end %>
+          </tr>
+          <tr>
+            <%= f.input :unload_point, :as => :radio, :collection => Loading.point_types.map { |r| [r[1], r[0] ] } %>
+          </tr>
+          <tr>
+            <%= f.input :unload_date, :input_html => {:class => "small", "data-datepicker" => "datepicker"} %>
+          </tr>
+          <tr>
+            <%= f.input :unload_place, :input_html => {:class => "token_input", "data-url" => "/places.json", "data-pre" => @loading.unload_place ? @loading.unload_place.prepopulate_tokens.to_json : nil} %>
+          </tr>
+          <tr>
+            <%= f.input :arrival_district, :label => "Semt" do %>
+              <%= f.input_field :arrival_district, :class => "medium" %>
+              <%= f.input_field :arrival_postcode, :class => "small" %>
+            <% end %>
+          </tr>
+          <tr>
+            <%= f.input :arrival_address, :as => :text, :input_html => {:rows => 1, :cols => 37} %>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>

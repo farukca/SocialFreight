@@ -1,0 +1,12 @@
+<tr>
+  <td><%= branch.name %></td>
+  <td><%= branch.tel %></td>
+  <td><%= branch.fax %></td>
+  <td><%= branch.address %></td>
+  <td><%= branch.district %></td>
+  <td><%= branch.postcode %></td>
+  <td><%= branch.city.name if branch.city %></td>
+  <td><%= branch.country.name if branch.country %></td>
+  <td><%= link_to 'Edit', edit_branch_path(branch) %></td>
+  <td><%= link_to 'Destroy', branch, :confirm => 'Are you sure?', :method => :delete %></td>
+</tr>

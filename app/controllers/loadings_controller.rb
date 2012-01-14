@@ -15,10 +15,15 @@ class LoadingsController < ApplicationController
     @loading = Loading.find_by_slug!(params[:id])
     @package = @loading.packages.build()
     @container = @loading.containers.build()
+    @comment = @loading.comments.build()
 
     respond_to do |format|
       format.html
       format.json { render json: @loading }
+      format.pdf do
+        pdf = LoadingPdf.new(@loading)
+        send_data pdf.render, filename: "loading_info_#{@loading.reference}.pdf", type: "application/pdf", disposition: "inline"
+      end
     end
   end
 
@@ -47,9 +52,12 @@ class LoadingsController < ApplicationController
   def create
     @loading = current_patron.loadings.build(params[:loading])
     @loading.patron_token = current_patron.token
+    @loading.user_id = current_user.id
 
     respond_to do |format|
       if @loading.save
+        #current_user.follow(@loading)
+
         #format.html { redirect_to @loading, notice: 'Loading was successfully created.' }
         format.html { render 'detail', notice: 'Loading was successfully created.' }
         format.json { render json: @loading, status: :created, location: @loading }
@@ -83,4 +91,15 @@ class LoadingsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def follow
+    @loading = Loading.find_by_slug(params[:id])
+    current_user.follow(@loading)
+  end
+
+  def unfollow
+    @loading = Loading.find_by_slug(params[:id])
+    current_user.unfollow(@loading)
+  end
+
 end

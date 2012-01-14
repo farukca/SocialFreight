@@ -1,23 +1,19 @@
-<div class="box">
+<div class="box" id="followers">
   <div class="boxes">
     <div class="todoListHeader">Followers</div>
     <div class="todoListContents">
-      <ol class="listClass">
-        <li class="incompleteClass">
-          <a href="#">Faruk Çelik</a>
-        </li>
-        <li class="incompleteClass">
-          <a href="#">Abdullah Demir</a>
-        </li>
-        <li class="incompleteClass">
-          <a href="#">Abdurrahman Mazlumoğlu</a>
-        </li>
-        <li>
-          <div class="rightside">
-            <%= link_to "Follow", new_loading_package_path(loading, @package), :class => "btn primary" %>
-          </div>
-        </li>
+      <ol class="listClass" id="follower_list">
+        <% for fower in loading.all_followers %>
+          <%= render "follower", :user => fower %>
+        <% end %>
       </ol>
+      <div class="rightside">
+        <% unless current_user.follows?(loading) %>
+          <%= link_to "Follow", "#", :class => "btn primary follow_button", :id => "followme", "data-loadid" => "#{loading.slug}", "data-model" => "loadings" %>
+        <% else %>
+          <%= link_to "UnFollow", "#", :class => "btn danger unfollow_button", "data-loadid" => "#{loading.slug}", "data-model" => "loadings" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

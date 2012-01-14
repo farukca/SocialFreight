@@ -7,6 +7,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require rails.validations
+//= require sf_min
 //= require jquery.tokeninput
 //= require megamenu
 //= require bootstrap-modal
@@ -18,4 +19,5 @@
 //= require bootstrap-tabs
 //= require bootstrap-buttons
 //= require bootstrap-datepicker
+//= require facebox
 //= require_tree .

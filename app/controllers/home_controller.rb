@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   
-  layout 'guest_layout'
+  layout 'guest'
 
   def index
     if current_user && current_patron

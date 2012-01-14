@@ -1,54 +1,59 @@
-<fieldset>
-<div class="row">
-  <div class="span8 columns">
-    <div class="justhead">
-      <h5>Yükleme Bilgileri</h5>
-    </div>
-    <%= f.input :sender, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.sender ? @loading.sender.prepopulate_tokens.to_json : nil } %>
-    <%= f.input :loader, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.loader ? @loading.loader.prepopulate_tokens.to_json : nil } %>
-    <%= f.input :customofficer, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.customofficer ? @loading.customofficer.prepopulate_tokens.to_json : nil } %>
-    <%= f.input :statement do %>
-      <%= f.input_field :statement, :class => "medium" %>
-      <%= f.input_field :statement_date, :class => "small", "data-datepicker" => "datepicker" %>
-    <% end %>
-    <%= f.input :loading_note, :as => :text, :input_html => {:rows => 1, :cols => 37} %>     
-  </div>
-  <div class="span8 columns">
-    <div class="justhead">
-      <h5>Teslimat Bilgileri</h5>
-    </div>
-    <%= f.input :consignee, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.consignee ? @loading.consignee.prepopulate_tokens.to_json : nil } %>
-    <%= f.input :deliver, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.deliver ? @loading.deliver.prepopulate_tokens.to_json : nil } %>
-    <%= f.input :notify, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.notify ? @loading.notify.prepopulate_tokens.to_json : nil } %>
-    <%= f.input :notify2, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.notify ? @loading.notify.prepopulate_tokens.to_json : nil } %>
-    <%= f.input :delivery_note, :as => :text, :input_html => {:rows => 1, :cols => 37} %>     
-  </div>
+<div class="pageBody">
+  <table  class="detailList" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <%= f.input :sender, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.sender ? @loading.sender.prepopulate_tokens.to_json : nil } %>
+      <%= f.input :loader, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.loader ? @loading.loader.prepopulate_tokens.to_json : nil } %>
+    </tr>
+    <tr>
+      <%= f.input :customofficer, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.customofficer ? @loading.customofficer.prepopulate_tokens.to_json : nil } %>
+      <%= f.input :statement do %>
+        <%= f.input_field :statement, :class => "medium" %>
+        <%= f.input_field :statement_date, :class => "small", "data-datepicker" => "datepicker" %>
+      <% end %>
+    </tr>
+  </table>
 </div>
-<div class="row">
-  <div class="span8 columns">
-    <div class="justhead">
-      <h5>Yük İçeriği</h5>
-    </div>
-    <%= f.input :producer, :input_html => {:class => "medium"} %>
-    <%= f.input :product_price do %>
-      <%= f.input_field :product_price, :class => "small" %>
-      <%= f.input_field :product_curr, :as => :select, :collection => Currency.all, :include_blank => false, :class => "medium" %>
-    <% end %>
-    <%= f.input :marks_nos, :as => :text, :input_html => {:rows => 1, :cols => 37} %>
-  </div>
-  <div class="span8 columns">
-    <div class="justhead">
-      <h5>Diğer Bilgiler</h5>
-    </div>
-    <%= f.input :agent, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.agent ? @loading.agent.prepopulate_tokens.to_json : nil } %>
-    <%= f.input :agent_reference, :input_html => {:class => "medium"} %>
-    <%= f.input :stage do %>
-      <%= f.input_field :stage, :class => "medium", :as => :select, :collection => Loading.stages.map { |r| [r[1], r[0] ] }, :include_blank => false %>
-      <%= f.input_field :stage_date, :class => "small", "data-datepicker" => "datepicker" %>
-    <% end %>
-    <%= f.input :load_type, :as => :select, :collection => Loading.load_types.map { |r| [r[1], r[0] ] }, :label => "Yük Tipi" %>
-    <%= f.input :customer_reference, :input_html => {:class => "medium"} %>
-  </div>
-
+<div class="subHeader">
+  <h5>Teslimat Bilgileri</h5>
 </div>
-</fieldset>
+<div class="pageBody">
+  <table  class="detailList" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <%= f.input :consignee, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.consignee ? @loading.consignee.prepopulate_tokens.to_json : nil } %>
+      <%= f.input :deliver, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.deliver ? @loading.deliver.prepopulate_tokens.to_json : nil } %>
+    </tr>
+    <tr>
+      <%= f.input :notify, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.notify ? @loading.notify.prepopulate_tokens.to_json : nil } %>
+      <%= f.input :notify2, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.notify ? @loading.notify.prepopulate_tokens.to_json : nil } %>
+    </tr>
+    <tr>
+      <%= f.input :loading_note, :as => :text, :input_html => {:rows => 1, :cols => 37} %>
+      <%= f.input :delivery_note, :as => :text, :input_html => {:rows => 1, :cols => 37} %>
+    </tr>
+  </table>
+</div>
+<div class="subHeader">
+  <h5>Diğer Bilgiler</h5>
+</div>
+<div class="pageBody">
+  <table  class="detailList" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <%= f.input :producer, :input_html => {:class => "medium"} %>
+      <%= f.input :product_price do %>
+        <%= f.input_field :product_price, :class => "small" %>
+        <%= f.input_field :product_curr, :as => :select, :collection => Currency.all, :include_blank => false, :class => "medium" %>
+      <% end %>
+    </tr>
+    <tr>
+      <%= f.input :agent, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.agent ? @loading.agent.prepopulate_tokens.to_json : nil } %>
+      <%= f.input :agent_reference, :input_html => {:class => "medium"} %>
+    </tr>
+    <tr>
+      <%= f.input :stage do %>
+        <%= f.input_field :stage, :class => "medium", :as => :select, :collection => Loading.stages.map { |r| [r[1], r[0] ] }, :include_blank => false %>
+        <%= f.input_field :stage_date, :class => "small", "data-datepicker" => "datepicker" %>
+      <% end %>
+      <%= f.input :customer_reference, :input_html => {:class => "medium"} %>
+    </tr>
+  </table>
+</div>

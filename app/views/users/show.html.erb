@@ -1,18 +1,20 @@
 <div id="personal" class="row">
   <div id="personalfeeds" class="span9 columns feeds">
-    <div id="post-home" class="span9">
+    <div id="post-home" class="span9 publishercontainer">
       <div class="post-module-in">
-	<form id="share-form" class="post" method="POST">
-	  <div class="clearfix">
-	    <textarea id="textarea" cols="60" name="textarea"></textarea>
-	  </div>
-	  <div class="post-actions">
-	     <div id="attach"><a href="#">Attach a link</a></div>
-	     <div class="clearfix">
-	     	<span class="rightside"><a href="airload2.html" class="btn primary">Paylaş</a></span>
-	     </div>
- 	  </div>	
-	</form>
+    <form id="share-form" class="post" method="POST">
+      <div class="clearfix">
+        <textarea id="textarea" cols="80" rows="1" name="textarea" style="width: 490px; height:18px; min-height: 16px;"></textarea>
+      </div>
+      <div class="post-actions">
+        <div id="attach">
+          <a href="#">Attach a link</a>
+        </div>
+        <div class="clearfix">
+          <span class="rightside"><a href="airload2.html" class="btn primary">Paylaş</a></span>
+        </div>
+      </div>	
+    </form>
       </div>
     </div>
 
@@ -26,6 +28,7 @@
                 <p style="text-align:right;">From TechCrunch <a class="source" href="#">John Doe</a> on April 10, 2010</p>
              </div>
            </li>
+           <%= render current_patron.activities.latests %>
       </ul>
     </div>
   </div>

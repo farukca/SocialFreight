@@ -1,0 +1,12 @@
+<tr>
+  <td><%= check_box_tag :selectedrow, reservation.id, false, "data-loadid" => reservation.id, "data-ref" => reservation.reference, "data-operation" => reservation.operation %></td>
+  <td><%= link_to reservation.reference, reservation %></td>
+  <td><%= reservation.direction %></td>
+  <td><%= reservation.company.name if reservation.company %></td>
+  <td><%= reservation.load_place.name if reservation.load_place %></td>
+  <td><%= reservation.load_date %></td>
+  <td><%= reservation.unload_place.name if reservation.unload_place %></td>
+  <td><%= reservation.load_date %></td>
+  <td><%= reservation.commodity %></td>
+  <td><%= reservation.freight_price %> &nbsp; <%= reservation.freight_curr %></td>
+</tr>

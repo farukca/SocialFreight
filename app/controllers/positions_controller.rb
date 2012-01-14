@@ -38,9 +38,11 @@ class PositionsController < ApplicationController
   def create
     @position = current_patron.positions.build(params[:position])
     @position.patron_token = current_patron.token
+    @position.user_id = current_user.id
 
     respond_to do |format|
       if @position.save
+        current_user.follow(@position)
         #format.html { redirect_to @position, notice: 'Position was successfully created.' }
         format.html { redirect_to @position, notice: 'Position was successfully created.' }
         format.json { render json: @position, status: :created, location: @position }
@@ -74,4 +76,27 @@ class PositionsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def addload
+    @position = Position.find(params[:id])
+    @loadids  = params[:loadids]
+    @loadids.split(',').each do |load|
+      @loading = Load.find_by_id(load)
+      if @loading.position_id.nil?
+        @loading.update_attributes(:position_id => @position.id)
+      end
+    end
+ 
+  end
+
+  def follow
+    @position = Position.find_by_slug(params[:id])
+    current_user.follow(@position)
+  end
+
+  def unfollow
+    @position = Position.find_by_slug(params[:id])
+    current_user.unfollow(@position)
+  end
+
 end

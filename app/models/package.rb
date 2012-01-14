@@ -2,7 +2,7 @@ class Package
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  field :total
+  field :total, type: Integer
   field :pack_type
   field :dimension1, type: Integer
   field :dimension2, type: Integer
@@ -32,5 +32,10 @@ class Package
         'PALLET' => 'Pallet'
       }
     end
+  end
+
+  public
+  def header
+    "#{self.total} #{self.pack_type} (#{self.dimension1}X#{self.dimension2}#{self.dimension3})"
   end
 end

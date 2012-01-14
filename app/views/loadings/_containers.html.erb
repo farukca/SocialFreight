@@ -1,0 +1,16 @@
+<div class="box">
+  <div class="boxes">
+    <div class="todoListHeader">Containers</div>
+    <div class="todoListContents">
+      <ol class="listClass">
+        <%= render loading.containers %>
+        <li>
+          <div class="rightside">
+            <%= link_to "Add Container", new_loading_container_path(loading, @container), :class => "btn primary", :rel => "facebox" %>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</div>
+

@@ -1,6 +1,22 @@
-<h1>Editing position</h1>
+<div class="row">
+<%= simple_form_for @position, :validate => true do |f| %>
+  <%= f.error_notification %>
 
-<%= render 'form' %>
+  <div class="row">
+    <ul class="tabs" data-tabs="tabs">
+      <li class="active"><a href="#loading-main-form">Pozisyon Bilgileri</a></li>
+      <div class="rightside">
+        <%= f.button :submit, :class => 'btn primary' %>
+      </div>
+    </ul>
 
-<%= link_to 'Show', @position %> |
-<%= link_to 'Back', positions_path %>
+    <div id="my-tab-content" class="tab-content">
+      <div id="loading-main-form" class="tab-pane active">
+        <%= render 'form_main', :f => f %>
+      </div>
+    </div>
+
+  </div>
+
+<% end %>
+</div>

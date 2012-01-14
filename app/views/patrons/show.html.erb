@@ -1,36 +1,49 @@
 <div id="patron" class="row">
-
-  <div id="sidebar" class="span4">
-    <div class="row">
-      <span class="clearfix"><h4>Picture</h4></span>
-      <ul>
-	   <li>Email</li>
-           <li>Website</li>
-           <li>Tel</li>
-           <li>Fax</li>
-           <li>Adres</li>
+  <!--div id="sidebar" class="span4 columns sidebar">
+    <div id="profile-sidebar">
+      <div id="profile-picture">
+        <%= image_tag "use_application.png" %>
+      </div>
+      <%= render 'tab_sidebar', :patron => @patron %>
+    </div>
+  </div-->
+  <div class="row">
+    <div id="profile-picture">
+      <%= link_to image_tag(@patron.logo_url(:profile)), "#", :class => 'togglebutton', "data-placement" => "below",  "rel" => 'twipsy', "title" => "Resmi Değiştirmek için Tıklayınız", "data-href" => "#logo_change_div" %>
+    </div>
+    <div id="profile-title">
+      <h3><%= @patron.title %></h3>
+    </div>
+  </div>
+  <div id="logo_change_div" class="row slidingDiv">
+    <%= form_for @patron, :remote => true, :html => {:multipart => true} do |f| %>
+      <p>
+        <label>Resim dosyası:</label>
+        <%= f.file_field :logo %>
+        <%= f.submit "Değiştir" %>
+        <%if @patron.logo? %>
+          <%= f.check_box :remove_logo %>&nbsp;Logoyu Sil
+        <% end %>
+      </p>
+    <% end %>
+  </div>
+  <div class="row">
+    <div id="good" class="profile">
+      <ul class="tabs" data-tabs="tabs">
+        <li class="active"><a href="#patron_profile">Genel Bilgiler</a></li>
+        <li><a href="#user_list">Kullanıcılar</a></li>
+        <li><a href="#branch_list">Şubeler</a></li>
       </ul>
+      <div id="my-tab-content" class="tab-content">
+        <%= render 'tab1', :patron => @patron %>
+        <%= render 'tab2', :patron => @patron %>
+        <%= render 'tab3', :patron => @patron %>
+      </div>
     </div>
   </div>
-
-  <div class="span10 columns">
-    <div>
-      <span class="rightside">
-	<%= link_to "Add User", new_user_path %>
-	<%= link_to "Parameters", new_user_path %>
-	<%= link_to "Add Branch", new_branch_path %>
-	<%= link_to "Add Place", new_place_path %>
-      </span>
-    </div>
-
-    <div id="details" class="row">
-	<span class="leftside"><h4>Aktif Operation Sayıları</h4></span>
-	<table class="common-table">
-	   <tbody>
-	     <tr class="numbers"><td>5</td><td>4</td><td>3</td><td>1</td><td>11</td></tr>
-	     <tr class="numbers"><th>Air</th><th>Sea</th><th>Truck</th><th>Rail</th><th>Inland</th></tr>
-	   </tbody>
-	</table>
-    </div>
-  </div>
+  <div id="rightbar">
+    <%= render 'news', :patron => @patron %>
+    <%= render 'numbers', :patron => @patron %>
+    <%= render 'followers', :patron => @patron %>
+  </div> 
 </div>

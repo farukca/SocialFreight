@@ -13,4 +13,12 @@ jQuery ->
   $(".togglebutton").show()
   $('.togglebutton').click ->
      $($(this).data('href')).slideToggle()
+  $(".token_input").each ->
+    el = $(this)
+    el.tokenInput el.data("url"),
+      crossDomain: false
+      tokenLimit: 1
+      prePopulate: el.data("pre")
+      preventDuplicates: true
+  $("a[rel*=facebox]").facebox()
 

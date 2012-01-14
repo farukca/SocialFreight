@@ -65,7 +65,9 @@ var DEFAULT_CLASSES = {
     dropdownItem2: "token-input-dropdown-item2",
     selectedDropdownItem: "token-input-selected-dropdown-item",
     inputToken: "token-input-input-token",
-    tokenView: "token-input-token-view"
+    tokenView: "token-input-token-view",
+    lookupIcon: "lookup.png",
+    newrecIcon: "newrec.png"
 };
 
 // Input box position "enum"
@@ -200,7 +202,7 @@ $.TokenList = function (input, url_or_data, settings) {
             hide_dropdown();
             $(this).val("");
         })
-        .bind("keyup keydown blur update", resize_input)
+ //       .bind("keyup keydown blur update", resize_input)
         .keydown(function (event) {
             var previous_token;
             var next_token;
@@ -348,7 +350,7 @@ $.TokenList = function (input, url_or_data, settings) {
         .hide();
 
     // Magic element to help us resize the text input
-    var input_resizer = $("<tester/>")
+/*    var input_resizer = $("<tester/>")
         .insertAfter(input_box)
         .css({
             position: "absolute",
@@ -361,7 +363,7 @@ $.TokenList = function (input, url_or_data, settings) {
             letterSpacing: input_box.css("letterSpacing"),
             whiteSpace: "nowrap"
         });
-
+*/
     // Pre-populate list if items exist
     hidden_input.val("");
     var li_data = settings.prePopulate || hidden_input.data("pre");
@@ -374,6 +376,32 @@ $.TokenList = function (input, url_or_data, settings) {
             checkTokenLimit();
         });
     }
+
+    //Faruk Lookup icon
+    var lookup_icon = $("<img />")
+        .attr("src", "../assets/"+settings.classes.lookupIcon)
+        .addClass("lookupIcon")
+    var lookup_link = $("<a />")
+        .attr("id", "token-lookup-" + input.id)
+        .attr("href", "javascript: openLookup('"+settings.url+"',670,'1','&lksrch=1')")
+        //.attr("href", "javascript: alert('Kayıt Seçiniz')")
+        //.attr("rel", "facebox")
+        .append(lookup_icon)
+    var newrec_icon    = $("<img />")
+        .attr("src", "../assets/"+settings.classes.newrecIcon)
+        .addClass("lookupIcon")
+    var newrec_link = $("<a />")
+        //.attr("href", (settings.url.split(".json")[0] + "/new?lookup=1"))
+        .attr("href", "javascript: openLookup('"+settings.url.split(".json")[0]+"/q="+input_box.val().toLowerCase()+"',670,'1','&lksrch=1')")
+        //.attr("rel", "facebox")
+        .append(newrec_icon)
+    var lookup_div = $("<div />")
+        //.addClass("rightside")
+        .addClass("lookupInput")
+        .insertAfter(token_list)
+        .append(lookup_link)
+        //.append(newrec_link)
+    //Faruk Lookup icon bitti
 
     // Initialization is done
     if($.isFunction(settings.onReady)) {
@@ -430,14 +458,13 @@ $.TokenList = function (input, url_or_data, settings) {
         }
     }
 
-    function resize_input() {
-        if(input_val === (input_val = input_box.val())) {return;}
+//    function resize_input() {
 
         // Enter new content into resizer and resize input accordingly
-        var escaped = input_val.replace(/&/g, '&amp;').replace(/\s/g,' ').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-        input_resizer.html(escaped);
-        input_box.width(input_resizer.width() + 30);
-    }
+//        var escaped = input_val.replace(/&/g, '&amp;').replace(/\s/g,' ').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+//        input_resizer.html(escaped);
+ //       input_box.width(input_resizer.width() + 30);
+//    }
 
     function is_printable_character(keycode) {
         return ((keycode >= 48 && keycode <= 90) ||     // 0-1a-z
@@ -462,15 +489,16 @@ $.TokenList = function (input, url_or_data, settings) {
                 hidden_input.change();
                 return false;
             });
-        // The 'view_token' button
-        $("<span><img src='/assets/add.png' alt='Detail Info' /></span>")
+        // Faruk The 'view_token' button
+        /*$("<span><img src='/assets/add.png' alt='Detail Info' /></span>")
             .addClass(settings.classes.tokenView)
             .appendTo(this_token)
             .click(function (event) {
                 view_token(item.id);
                 event.preventDefault();
                 return false;
-            });
+            });*/
+        $(lookup_link).attr("href", (settings.url.split(".json")[0] + "/" + item.id + "?lookup=1"));
 
         // Store data on the token
         var token_data = {"id": item.id};
@@ -622,7 +650,7 @@ $.TokenList = function (input, url_or_data, settings) {
         }
     }
 
-    // Open Detail window
+    //Faruk Open Detail window
     function view_token (tokenid) {
         var parts    = settings.url.split(".json");
         var view_url = parts[0] + "/" + tokenid + "?lookup=1";
@@ -875,14 +903,3 @@ $.TokenList.Cache = function (options) {
     };
 };
 }(jQuery));
-$(document).ready(function() {
-  $(".token_input").each(function(){
-    var el = $(this);
-    el.tokenInput(el.data("url"),{
-      crossDomain: false,
-      tokenLimit: 1,
-      prePopulate: el.data("pre"),
-      preventDuplicates: true
-    });
-  });
-});

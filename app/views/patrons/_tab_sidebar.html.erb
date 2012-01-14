@@ -1,0 +1,25 @@
+<div class="profile-section">
+  <div class="profile-data-header">
+    <h4>Contact</h4>
+  </div>
+  <div class="profile-data-body">
+    <div class="profile-data-section">
+      <%= image_tag "occupied_icon.png" %><span><%= patron.title %></span>
+    </div>
+    <div class="profile-data-section">
+      <%= image_tag "mail_icon.png" %><span><%= patron.email %></span>
+    </div>
+    <div class="profile-data-section">
+      <%= image_tag "tel_icon.png" %><span><%= patron.tel %></span>
+    </div>
+    <div class="profile-data-section">
+      <%= image_tag "kfax_icon.png" %><span><span><%= patron.fax %></span>
+    </div>
+    <div class="profile-data-section">
+      <%= image_tag "address_icon.png" %><span><%= patron.address %></span>
+    </div>
+    <div class="profile-data-section">
+      <%= image_tag "kfax_icon.png" %><span><span><%= patron.created_at.strftime("%m/%d/%Y") %></span>
+    </div>
+  </div>
+</div>

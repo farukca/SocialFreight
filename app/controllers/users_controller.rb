@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if current_user
       @user = current_patron.users.build()
     end
-    render :layout => 'guest_layout' unless current_user
+    render :layout => 'guest' unless current_user
   end
 
   def create
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
 
   def activation
     @user = User.find_by_title!(params[:id])
-    render :layout => 'guest_layout' unless current_user
+    render :layout => 'guest' unless current_user
   end
 
   def update

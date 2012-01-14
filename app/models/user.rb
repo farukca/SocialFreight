@@ -2,6 +2,7 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Slug
+  include Mongoid::Follower
 
   authenticates_with_sorcery!
 
@@ -12,6 +13,9 @@ class User
   field :salt
   belongs_to :patron
   belongs_to :branch
+  field :region
+  field :time_zone
+  field :user_type
   field :last_login_at, type: DateTime
   field :last_logout_at, type: DateTime
   field :last_activity_at, type: DateTime
@@ -29,6 +33,8 @@ class User
 
   has_many :positions
   has_many :loadings
+  has_many :activities
+  has_many :comments
 
   attr_accessible :email, :password, :password_confirmation, :name, :surname, :patron_id
   #attr_protected  :password
@@ -66,4 +72,9 @@ class User
       self[column] = SecureRandom.urlsafe_base64
     end while User.exists?(conditions: {column: self[column]})
   end
+
+  def full_name
+    self.name + " " + self.surname
+  end
+
 end

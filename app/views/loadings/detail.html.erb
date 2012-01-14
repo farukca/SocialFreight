@@ -1,23 +1,30 @@
-<div class="row">
+<div id="opform">
 <%= simple_form_for @loading, :validate => true do |f| %>
   <%= f.error_notification %>
+  <fieldset>
 
-  <div class="row">
-    <ul class="tabs" data-tabs="tabs">
-      <li class="active"><a href="#loading-detail-form">Yük Detay Bilgileri</a></li>
-      <div class="rightside">
-        <%= f.button :submit, "Save Details", :class => 'btn primary' %>
+  <div class="pageBlock">
+    <%= render 'shared/form_buttonsh' %>
+    <%= render 'shared/form_header' %>
+
+    <div class="row">
+      <!--ul class="tabs" data-tabs="tabs">
+        <li class="active"><a href="#loading-detail-form">Yük Detay Bilgileri</a></li>
+        <div class="rightside">
+          <%= f.button :submit, "Save Details", :class => 'btn primary' %>
+        </div>
+      </ul-->
+
+
+      <div id="my-tab-content" class="tab-content">
+        <div id="loading-detail-form" class="tab-pane active">
+          <%= render 'form_detail', :f => f %>
+        </div>      
       </div>
-    </ul>
-
-
-    <div id="my-tab-content" class="tab-content">
-      <div id="loading-detail-form" class="tab-pane active">
-        <%= render 'form_detail', :f => f %>
-      </div>      
+      <%= render 'shared/form_buttonsb' %>
     </div>
 
-  </div>
+  </fieldset>
 
 <% end %>
 </div>

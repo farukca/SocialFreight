@@ -2,84 +2,140 @@ html, body {
   margin: 0;
   padding: 0;
 }
-#menu {
-    background-color: #DDECF3;
-    display: inline;
-    float: left;
-    margin-left: -52px;
-    margin-top: 80px;
-    padding-top: 5px;
-    position: fixed;
-    //width: 50px;
-    z-index: 1;
-	list-style:none;
-    -moz-transition:border 0.2s linear 0s, box-shadow 0.2s linear 0s;
-    box-shadow:0 1px 3px rgba(0, 0, 0, 0.1) inset;
+.inline-dropdown {
+    position:inherit;
 }
-.menubaritem {
-    border:1px solid #CCCCCC;
-    cursor: pointer;
-    height: 48px;
-    margin-bottom: 5px;
-    //margin-left: 4px;
-    position: relative;
-    width: 48px;
+#bodyTable {
+    display: table;
+    padding: 0;
 }
-.menubaritem:hover {
-    border:1px solid #AAAAAA;
+.sidebarCell, #sidebarDiv {
+    background-color:#E8E8E8;
+    width:200px;
 }
-#content {
-    float: left;
-    margin-top:40px;
-    //padding-top:5px;
-    position:relative;
-}
-#opform-step-bar {
+.sidebarMenu {
+    margin:0 0 20px;
     background:none repeat scroll 0 0 transparent;
-    display:block;
-    list-style:none outside none;
-	/*margin:0;*/
+}
+.sidebarMenuHeader {
+    background-color: #1797C0;
+    color:#FFFFFF;
     padding:0;
+    font-weight:bold;
 }
-#opform-step-bar li {
-    background-image:url("/assets/stepback.png");
-    background-position:0 28px;
-    color:#4C4D4F;
-    float:left;
-    font-size:1.1em;
-    height:28px;
-    line-height:28px;
-    margin:0 0 0 -15px;
-    padding-left:20px;
+.sidebarMenuBody {
+    padding:6px 5px 10px 4px;
+    background-color: transparent;
+    padding:12px 9px 10px;
+}
+.recentItem {
+    padding:4px 5px 3px 25px;
     position:relative;
-    text-indent:9px;
-    width:181px;
+    z-index:7;
 }
-#opform-step-bar li.selected {
+.recentItem a img {
+    left:0;
+    margin-left:3px;
+    position:absolute;
+}
+.accountItem .accountIcon {
+    background-image:url("/assets/master.png");
+    background-position:0 -2px;
+    background-repeat: no-repeat;
+    height:16px;
+    width:16px;
+}
+.userItem .userIcon {
+    background-image:url("/assets/alohaProfile16.png");
+    background-repeat: no-repeat;
+    height:16px;
+    width:16px;
     background-position:0 0;
-    color:white;
 }
-#opform-step-bar li.step-1 {
-    background-image:url("/assets/step-first.png");
-    padding-left:13px;
-    width:167px;
-    z-index:1;
+.outer td {
+    vertical-align:top;
 }
-#opform-step-bar li.step-1 {
+.outer td.oRight {
+    padding:0 10px 20px;
+    background-color:transparent;
+}
+#sidebarCell, #sidebarDiv .sidebarModule, #sidebarDiv .nestedModule {
+    background-color:transparent;
+    border:0 none;
+}
+.labelCol, .dataCol, .labelCol2, .dataCol2 {
+    padding-bottom:3px;
+    padding-top:3px;
+}
+.labelCol {
+    width:36%;
+    font-size:91%;
+    font-weight:bold;
+    text-align:right;
+}
+.dataCol {
+    width:50%;
+}
+.labelCol2 {
+    width:13%;
+    font-size:91%;
+    font-weight:bold;
+    text-align:right;
+}
+.dataCol2 {
+    width:22%;
+    font-size:91%;
+    font-weight:normal;
+    text-align:left;
+}
+.dataCol2 .lastCol {
+    width:17%;
+}
+.requiredInput .requiredBlock {
+    background-color:#CC0000;
+    bottom:1px;
+    left:-4px;
+    position:absolute;
+    top:1px;
+    width:3px;
+}
+.pageBlock {
+    background-color:#F8F8F8;
+    border-bottom:2px solid #EAEAEA;
+    border-left:1px solid #EAEAEA;
+    border-radius:4px 4px 4px 4px;
+    border-right:1px solid #EAEAEA;
+    border-top:3px solid #236FBD;
+}
+.pageBody {
+    margin-top: 8px;
+    border-bottom:1px solid #EAEAEA;
+}
+.subHeader {
+    background-color:#C4C5C6;
+    border-top:1px solid #FFFFFF;
+    border-width:1px 0 0;
+    color:#000000;
+    margin-top: 2px;
+}
+.subHeader  h5{
+    line-height: 24px;
+}
+.tdTitle {
+    color:#222222;
+    font-size:91%;
     margin:0;
-    z-index:4;
+    vertical-align:middle;
+    width:30%;
 }
-#opform-step-bar li.step-2 {
-    z-index:3;
-}
-#opform-step-bar li.step-3 {
-    z-index:2;
-}
-#opform-step-bar li.step-4 {
-    z-index:1;
+.content {
+    width:880px;
+    position:relative;
 }
 .togglebutton {
-    display:none;
+    display:inline;
+}
+.togglebutton img {
     position:absolute;
 }
 .listheader {
@@ -186,7 +242,7 @@ fieldset span {
     box-shadow: 0 1px 6px #CCCCCC;
     margin:0 0 15px;
     min-height:90px;
-    padding:10px;
+    padding:3px;
     overflow:hidden;
     position:relative;
 }
@@ -204,7 +260,7 @@ fieldset span {
     float:left;
 }
 #overview dd {
-    //background:url("assets/bg_grey_dotted_h-line_3x1.png") repeat-x scroll 0 100% transparent;
+    //background:url("/assets/bg_grey_dotted_h-line_3x1.png") repeat-x scroll 0 100% transparent;
     overflow:hidden;
     margin-bottom:10px;
 }
@@ -341,6 +397,7 @@ form ul li label {
     box-shadow:2px 2px 3px rgba(0, 0, 0, 0.08);
     padding:2px;
     overflow:hidden;
+    margin-top:5px;
 }
 .links img {
     opacity:0.8;
@@ -496,39 +553,46 @@ form ul li label {
 .welcome_screen  p {
     font-weight:bold;
 }
-#sidebar {
+#createBtn {
     background-color: #444444;
     color: #FFFFFF;
-    margin-top:40px;
+    width: 200px;
     margin-left:0px;
 }
-#sidebar h3, h4 {
+#createBtn h3, h4 {
     color: #FFFFFF;
     margin-left:10px;
 }
-#sidebar a {
+#createBtn a {
     color: #EEEEEE;
 }
 #profile-sidebar {
     float: left;
     overflow:visible;
     margin-top:20px;
+    width:100%;
 }
 #profile-picture {
-    margin-left:10px;
+    float: left;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    overflow: hidden;
+    width: 200px;
+    height: 100px;
 }
 .profile-section {
     margin-bottom:28px;
     margin-top:20px;
 }
 .profile-data-body {
-    color:#CCCCCC;
+    color:#999999;
     float:none;
     line-height:15px;
 }
 .profile-data-header {
     background-color:transparent;
-    border-bottom:1px solid #D7DBDE;
+    border-bottom:1px solid #292929;
     line-height:20px;
     margin:0 0 7px;
     position:relative;
@@ -537,16 +601,43 @@ form ul li label {
     padding-bottom:4px;
     position:relative;
     text-align:left;
-    height:25px;
+    height:28px;
+    border-bottom:1px solid #1B1B1B;
+    border-top:1px solid #323232;
+}
+h4.profile-data-section {
+    border-top: 1px solid transparent;
 }
 .profile-data-section  img {
     margin-right:5px;
     margin-left:5px;
+    vertical-align: middle;
 }
-.profile-data-section  a, span {
-    vertical-align:super;
+.profile-link-section:hover {
+    background-color:#0F5895;
 }
-
+.profile-link-section a:hover {
+    text-decoration:none;
+}
+.sidelink-item {
+    -moz-transition: border 0.2s ease 0s;
+    background: -moz-linear-gradient(center top , #292929 0pt, #252525 100%) repeat scroll 0 0 #272727;
+    border-right: 4px solid transparent;
+    color: #999999;
+    cursor: pointer;
+    display: block;
+    font-size: 12px;
+    line-height: 28px;
+    margin: 0;
+    min-height: 28px;
+    position: relative;
+    border: 0 none;
+}
+.sidelink-item:hover {
+    background: none repeat scroll 0 0 #0064CD;
+    border-right-color: #666666;
+    text-decoration:none;
+}
 #rightbar {
     margin-top:20px;
     margin-bottom:0px;
@@ -580,7 +671,7 @@ form ul li label {
     margin-top:0;
 }
 .listClass {
-    list-style-position:outside;
+    list-style-position:inside;
     margin-bottom:0;
     margin-left:1px;
     padding-bottom:1px;
@@ -640,4 +731,27 @@ label abbr {
     top: 1px;
     width: 3px;
     height:10px;
+}
+.Feedback {
+    display: block;
+    position: fixed;
+    right: 0;
+    top: 200px;
+}
+.lookupIcon {
+    opacity: 0.8;
+}
+.lookupIcon:hover {
+    opacity: 1;
+}
+.lookupInput {
+    display: inline;
+    vertical-align: middle;
+    white-space: nowrap;
+    padding-left: 5px;
+}
+#post-home textarea {
+    width: 490px;
+    height:18px;
+    min-height: 16px;
 }

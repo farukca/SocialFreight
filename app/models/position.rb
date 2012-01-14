@@ -2,6 +2,7 @@ class Position
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Slug
+  include Mongoid::Followee
   
   field :reference
   field :operation
@@ -56,6 +57,7 @@ class Position
 
   has_many :loadings, dependent: :nullify
   has_many :transnodes
+  has_many :comments, as: :commentable, dependent: :delete
   #embeds_many :transfers
 
   before_create :set_initials

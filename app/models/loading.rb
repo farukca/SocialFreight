@@ -2,6 +2,7 @@ class Loading
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Slug
+  include Mongoid::Followee
   include Gmaps4rails::ActsAsGmappable
   include Mongoid::Spacial::Document
  
@@ -97,13 +98,16 @@ class Loading
   
   has_many :containers
   has_many :packages
-
+  has_many :comments, as: :commentable, dependent: :delete
+ 
   #validates_presence_of :reference, :except => :create
   validates_uniqueness_of :reference, :case_sensitive => false
   validates_presence_of :operation, :direction, :patron_id, :patron_token, :branch_id
   validates_presence_of :company
   validates_associated :company
+  validates_presence_of :branch
   validates_presence_of :commodity
+  validates_presence_of :user
 
   scope :patron, ->(token) { where(patron_token: token) }
   scope :active, where(status: "A")
@@ -114,11 +118,12 @@ class Loading
   scope :export, where(direction: "E")
   scope :import, where(direction: "I")
   scope :newones, order_by(:created_at, :desc)
-  scope :reservations, where(position: nil)
-  scope :plannedloads, where(:position.exists => true)
+  scope :reservations, where(position_id: nil)
+  scope :plannedloads, where(:position_id.exists => true)
 
   before_create :set_initials
   before_save   :get_coordinates
+  after_create  :set_after_jobs
 
   private
   def set_initials
@@ -126,6 +131,11 @@ class Loading
     self.reference = self.operation + "." + self.direction + "." + sprintf('%07d', counter)
     self.patron_token = current_patron.token if self.patron_token.blank?
     generate_slug!
+  end
+
+  def set_after_jobs
+    self.user.follow(self) if self.user
+    patron.set_activity(self, 'create', user.id, 'created')
   end
 
   def gmaps4rails_address_departure
@@ -196,7 +206,7 @@ class Loading
 
   public
   def position_name
-    if self.position.nil?
+    if self.position_id.nil?
       "RESERVATION"
     else
        self.position.reference

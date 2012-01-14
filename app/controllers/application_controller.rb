@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_patron
 
+  def follow_object(object)
+    current_user.follow(object)
+  end
+
   protected
   def current_patron
     @current_patron ||= Patron.find(session[:patron_id]) if session[:patron_id]
@@ -23,5 +27,13 @@ class ApplicationController < ActionController::Base
   def patron_user?
     !!current_patron
   end
+
+  layout proc { |controller|
+    if controller.params[:nolayout]
+      nil
+    else
+      current_patron ? "application" : "guest"
+    end
+  }
 
 end

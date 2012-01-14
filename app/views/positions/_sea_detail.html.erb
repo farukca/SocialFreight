@@ -6,7 +6,7 @@
     <%= f.input_field :vessel, :class => "small" %>
     <%= f.input_field :voyage, :class => "medium" %>
   <% end %>
-  <%= f.input :ordino_date, :input_html => {:class => "small datepicker"} %>
+  <%= f.input :ordino_date, :input_html => { :class => "small", "data-datepicker" => "datepicker" } %>
 
 </div>
 <div class="span8 columns">
@@ -14,5 +14,5 @@
     <%= f.input_field :vessel2, :class => "small" %>
     <%= f.input_field :voyage2, :class => "medium" %>
   <% end %>
-  <%= f.input :sob_date, :input_html => {:class => "small datepicker"}, :label => "SOB Date" %>
+  <%= f.input :sob_date, :input_html => { :class => "small", "data-datepicker" => "datepicker" }, :label => "SOB Date" %>
 </div>
