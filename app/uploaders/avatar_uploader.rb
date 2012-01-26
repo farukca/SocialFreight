@@ -18,9 +18,10 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
-  # def default_url
-  #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
-  # end
+  def default_url
+     #"/images/fallback/" + [version_name, "default.png"].compact.join('_')
+     "/assets/user.png" # + [version_name, "default.png"].compact.join('_')
+  end
 
   # Process files as they are uploaded:
   # process :scale => [200, 300]
@@ -31,7 +32,10 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :small do
-    process :resize_to_fit => [50, 50]
+    process :resize_to_fit => [48, 48]
+  end
+  version :profile do
+    process :resize_to_fit => [90, 90]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

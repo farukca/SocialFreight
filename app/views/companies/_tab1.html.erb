@@ -1,0 +1,45 @@
+<div id="company_profile" class="tab-pane active">
+  <div class="pageBody">
+    <table  class="detailList" border="0" cellpadding="0" cellspacing="0">
+      <!--tr>
+        <td colspan="6" class="subHeader"><h5>Adres Bilgileri</h5></td>
+      </tr>
+      <tr>
+        <td class="labelCol2">Adres :</td>
+        <td class="dataCol2"><%= @company.address %></td>
+        <td class="labelCol2">Şehir/Ülke :</td>
+        <td class="dataCol2"><%= @company.city.name if @company.city %>&nbsp;<%= @company.country.name if @company.country %></td>
+        <td class="labelCol2">PostaKodu :</td>
+        <td class="dataCol2 lastCol"><%= @company.postcode %></td>
+      </tr-->
+      <tr>
+        <td class="labelCol2">Ünvan :</td>
+        <td colspan="5"><h5><%= @company.title %></h5></td>
+      </tr>
+      <tr>
+        <td class="labelCol2">Tipi :</td>
+        <td class="dataCol2"><%= @company.company_type %></td>
+        <td class="labelCol2">Sektör :</td>
+        <td class="dataCol2"><%= @company.sector %></td>
+        <td class="labelCol2">Yetkili :</td>
+        <td class="dataCol2 lastCol"><%= @company.contact %></td>
+      </tr>
+      <tr>
+        <td class="labelCol2">Sıra No :</td>
+        <td class="dataCol2"><%= @company.rec_number %></td>
+        <td class="labelCol2"></td>
+        <td class="dataCol2"></td>
+        <td class="labelCol2"></td>
+        <td class="dataCol2 lastCol"></td>
+      </tr>
+      <tr>
+        <td class="labelCol2">Operasyonel Notlar :</td>
+        <td colspan="5"><%= @company.notes %></td>
+      </tr>
+      <tr>
+        <td class="labelCol2">Diğer Notlar :</td>
+        <td colspan="5"><%= @company.description %></td>
+      </tr>
+    </table>
+  </div>
+</div>

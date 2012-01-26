@@ -1,0 +1,25 @@
+<div id="quick-profile" class="loading">
+  <div>
+    <table  class="detailList" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td class="labelCol2">Müşteri :</td>
+        <td class="dataCol2"><%= @loading.company.name if @loading.company %></td>
+        <td class="labelCol2">Yükleme:</td>
+        <td class="dataCol2"><%= @loading.departure_city.name if @loading.departure_city %>&nbsp;<%= @loading.departure_country.name if @loading.departure_country %></td>
+        <td class="dataCol2" rowspan="3"><%= @loading.commodity %></td>
+      </tr>
+      <tr>
+        <td class="labelCol2">Alıcı :</td>
+        <td class="dataCol2"><%= @loading.consignee.name if @loading.consignee %></td>
+        <td class="labelCol2">Boşaltma:</td>
+        <td class="dataCol2 lastCol"><%= @loading.departure_city.name if @loading.departure_city %>&nbsp;<%= @loading.departure_country.name if @loading.departure_country %></td>
+      </tr>
+      <tr>
+        <td class="labelCol2"> Gönderici:</td>
+        <td class="dataCol2 lastCol"><%= @loading.sender.name if @loading.sender %></td>
+        <td class="labelCol2">Navlun:</td>
+        <td class="dataCol2"><%= @loading.freight_price %>&nbsp;<%= @loading.freight_curr.upcase %></td>
+      </tr>
+    </table>
+  </div>
+</div>

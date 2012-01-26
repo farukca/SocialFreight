@@ -135,7 +135,9 @@ class Loading
 
   def set_after_jobs
     self.user.follow(self) if self.user
-    patron.set_activity(self, 'create', user.id, 'created')
+    self.user.create_activity(self, reference, patron_id, patron_token)
+    #patron.set_activity(self, 'create', user.id, 'created', user.full_name)
+    Patron.journal_record(patron, user, branch, nil, self.class.name, 1, 0)
   end
 
   def gmaps4rails_address_departure
@@ -211,5 +213,9 @@ class Loading
     else
        self.position.reference
     end
+  end
+
+  def to_s
+    reference
   end
 end

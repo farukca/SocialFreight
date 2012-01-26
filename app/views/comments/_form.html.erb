@@ -3,15 +3,13 @@
 <%= simple_form_for [object, object.comments.build()], :validate => true, :remote => true, :class => "post" do |f| %>
   <%= f.error_notification %>
     <tr>
-      <%= f.input :comment_text, :as => :text, :input_html => {:rows => "1", :cols => "80"}, :label => false %>
+      <%= f.input :comment_text, :as => :text, :input_html => {:rows => "1", :cols => "50"}, :label => false %>
     </tr>
     <tr>
       <td>
         <div id="attach">
           <a href="#">Attach a link</a>
         </div>
-      </td>
-      <td>
         <div class="clearfix">
           <span class="rightside"><%= f.button :submit, :class => 'btn primary' %></span>
         </div>

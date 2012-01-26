@@ -22,12 +22,16 @@ class Patron
   belongs_to :state
   belongs_to :country
   field :patron_type
+  field :employees
+  field :language
   field :status, default: "A"
   field :logo
   field :operations, type: Array
   belongs_to :saler, :class_name => User, :inverse_of => :saler, :foreign_key => "saler_id" 
   token :length => 7, :contains => :alphanumeric
   slug :title, :as => :code
+
+  mount_uploader :logo, LogoUploader
 
   embeds_many :counters
   has_many :branches
@@ -37,8 +41,7 @@ class Patron
   has_many :positions
   has_many :loadings
   has_many :activities
-
-  mount_uploader :logo, LogoUploader
+  has_many :journals, as: :journaled, dependent: :delete
 
   attr_accessible :title, :website, :tel, :fax, :postcode, :address, :city_id, :country_id, :status, :saler_id, 
                   :email, :operations, :contact_name, :contact_surname, :logo, :remove_logo
@@ -84,6 +87,15 @@ class Patron
     creator_id ||= target.user_id
     #return log_later(target, action, creator_id) if self.is_importing
     Activity.log(self, target, action, creator_id, action_text, user_name, self.token)
+  end
+
+  def self.journal_record(patron, user, branch, team, journal_model, unit, amount)
+    Journal.log(patron, journal_model, patron.id, patron.token, unit, amount)
+
+    Journal.log(user, journal_model, patron.id, patron.token, unit, amount) if user
+    Journal.log(branch, journal_model, patron.id, patron.token, unit, amount) if branch
+    Journal.log(team, journal_model, patron.id, patron.token, unit, amount) if team
+
   end
 
   class << self

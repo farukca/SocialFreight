@@ -2,44 +2,23 @@ class Activity
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  field :action
-  field :action_text
-  field :user_name
   field :patron_token
   belongs_to :user
   belongs_to :patron
   belongs_to :target, :polymorphic => true
-  belongs_to :comment_target, :polymorphic => true
+  field :target_name 
 
-   attr_accessible :action, :action_text, :target, :patron_id, :patron_token, :comment_target_type, :comment_target_id, :user_id, :user_name
+  attr_accessible :target_name, :target, :patron_id, :patron_token, :user_id
 
-  validates_presence_of :action, :action_text, :user_id, :patron_id, :target, :patron_token
+  validates_presence_of :user_id, :patron_id, :target_name, :target, :patron_token
 
   scope :latests, order_by(:created_at, :desc)
 
-  def self.log(patron, target, action, creator_id, action_text, user_name, token)
-    patron_id = patron.try(:id)
-    #return if patron.try(:is_importing)
-    
-    #is_private = target.respond_to?(:is_private) && target.is_private
+  def self.log(user, target, target_name, patron_id, patron_token)
+    patron_id ||= user.patron_id
+    patron_token ||= user.patron.token
 
-    if target.is_a? Comment
-      comment_target_type = target.commentable_type
-      comment_target_id = target.commentable_id
-      #is_private = target.respond_to?(:is_private) && target.is_private
-    end
-    
-    activity = Activity.new(
-      :target => target,
-      :action => action,
-      :action_text => action_text,
-      :user_id => creator_id,
-      :patron_id => patron_id,
-      :patron_token => token,
-      :comment_target_type => comment_target_type,
-      :comment_target_id => comment_target_id,
-      #:is_private => is_private)
-      :user_name => user_name)
+    activity = Activity.new(:target => target, :user_id => user.id, :patron_id => patron_id, :patron_token => patron_token, :target_name => target_name)
 
     #activity.created_at = case action
     #  when 'create'

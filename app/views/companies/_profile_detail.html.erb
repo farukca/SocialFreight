@@ -1,0 +1,28 @@
+<div id="quick-profile" class="company">
+  <div>
+    <table  class="detailList" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td class="labelCol2">Yetkili :</td>
+        <td class="dataCol2"><%= @company.contact %></td>
+        <td class="labelCol2">Website :</td>
+        <td class="dataCol2"><%= @company.website %></td>
+        <td class="dataCol2" rowspan="3">
+          <%= @company.address %><br/><%= @company.district %>&nbsp;<%= @company.postcode %><br/>
+          <%= @company.city.name if @company.city %>&nbsp;<%= @company.country.name if @company.country %>
+        </td>
+      </tr>
+      <tr>
+        <td class="labelCol2">Telefon :</td>
+        <td class="dataCol2"><%= @company.tel %></td>
+        <td class="labelCol2">GSM :</td>
+        <td class="dataCol2 lastCol"><%= @company.gsm %></td>
+      </tr>
+      <tr>
+        <td class="labelCol2">Mail :</td>
+        <td class="dataCol2 lastCol"><%= @company.email %></td>
+        <td class="labelCol2">Fax :</td>
+        <td class="dataCol2"><%= @company.fax %></td>
+      </tr>
+    </table>
+  </div>
+</div>

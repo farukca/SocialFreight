@@ -1,22 +1,8 @@
-<div id="good_docs" class="tab-pane profile-content">
+<div id="good_docs" class="tab-pane">
   <div id="good_left">
     <%= render 'tab_header', :loading => loading %>
     <div id="good_goods" class="dlist">
     <dl>
-      <dt>Pickup Tarihi</dt>
-      <dd><%= loading.pickup_date %></dd>
-      <dt>Yükleme Adresi</dt>
-      <dd><%= loading.departure_address %>&nbsp;<%= loading.departure_district %>&nbsp;<%= loading.departure_city.name if loading.departure_city %>&nbsp;<%= loading.departure_country.name if loading.departure_country %><span class="rightside"><a href="#">Show map</a></span></dd>
-      <dt>Yükleme Tarihi</dt>
-      <dd><%= loading.load_date %></dd>
-      <dt>Teslimat Firması</dt>
-      <dd class="company"><%= loading.deliver.name if loading.deliver %>&nbsp;</dd>
-      <dt>Boşaltma Adres</dt>
-      <dd><%= loading.arrival_address %>&nbsp;<%= loading.arrival_district %>&nbsp;<%= loading.arrival_city.name if loading.arrival_city %>&nbsp;<%= loading.arrival_country.name if loading.arrival_country %><span class="rightside"><a href="#">Show map</a></span></dd>
-      <dt>Boşaltma Tarihi</dt>
-      <dd><%= loading.unload_date %></dd>
-      <dt>Durumu</dt>
-      <dd><%= Loading.stages[loading.stage] %>&nbsp;<%= loading.stage_date %></dd>
     </dl>
   </div>
 </div>

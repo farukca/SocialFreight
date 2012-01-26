@@ -16,6 +16,9 @@ class User
   field :region
   field :time_zone
   field :user_type
+  field :locale
+  field :language
+  field :mail_encoding
   field :last_login_at, type: DateTime
   field :last_logout_at, type: DateTime
   field :last_activity_at, type: DateTime
@@ -29,14 +32,18 @@ class User
   field :lock_expires_at, type: DateTime
   slug  :name, :surname, :as => :title, :scope => :patron, :permanent => true
   auto_increment :rec_number
-  field :roles , type: Array
+  field :role
+  field :avatar
+
+  mount_uploader :avatar, AvatarUploader
 
   has_many :positions
   has_many :loadings
   has_many :activities
   has_many :comments
+  has_many :journals, as: :journaled, dependent: :delete
 
-  attr_accessible :email, :password, :password_confirmation, :name, :surname, :patron_id
+  attr_accessible :email, :password, :password_confirmation, :name, :surname, :patron_id, :avatar, :remove_avatar
   #attr_protected  :password
 
   validates_confirmation_of :password
@@ -75,6 +82,12 @@ class User
 
   def full_name
     self.name + " " + self.surname
+  end
+
+  def create_activity(target, target_name, patron_id, patron_token)
+    #creator_id ||= target.user_id
+    target_name ||= target.to_s
+    Activity.log(self, target, target_name, patron_id, patron_token)
   end
 
 end

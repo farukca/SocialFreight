@@ -26,6 +26,7 @@ class Branch
   has_many :users
   has_many :positions
   has_many :loadings
+  has_many :journals, as: :journaled, dependent: :delete
 
   attr_accessible :name, :tel, :fax, :postcode, :district, :address, :city_id, :country_id, :status, :patron_id
 

@@ -20,4 +20,5 @@
 //= require bootstrap-buttons
 //= require bootstrap-datepicker
 //= require facebox
+//= require highcharts
 //= require_tree .

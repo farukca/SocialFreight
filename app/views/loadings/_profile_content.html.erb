@@ -1,0 +1,37 @@
+<div class="profile-content">
+  <table class="outer" width="100%" id="contentTable" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="oRight" id="bodyCell">
+  <div id="inner-content">
+    <div id="good" class="row profile">
+      <ul class="pills" data-tabs="tabs">
+        <li class="active"><a href="#good_profile">Yük Bilgisi</a></li>
+        <li><a href="#good_detail">Yük Detayları</a></li>
+        <li><a href="#good_docs">Adres Bilgileri</a></li>
+      </ul>
+      <div id="my-tab-content" class="tab-content">
+        <%= render 'tab1', :loading => @loading %>
+        <%= render 'tab2', :loading => @loading %>
+        <%= render 'tab3', :loading => @loading %>
+      </div>
+    </div>
+    <div id="loading_comments" class="feeds">
+      <%= render 'comments/commentable', :object => @loading %>
+    </div>
+  </div>
+
+      </td>
+      <td id="rightCell" class="sidebarCell">
+  <div id="rightbar">
+    <%= render 'todos', :loading => @loading %>
+    <% if @loading.operation == 'sea' %>
+      <%= render 'containers', :loading => @loading %>
+    <% else %>
+      <%= render 'boxes', :loading => @loading %>
+    <% end %>
+    <%= render 'followers', :loading => @loading %>
+  </div>
+      </td>
+    </tr>
+  </table>
+</div>

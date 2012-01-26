@@ -1,0 +1,32 @@
+<div class="profile-content">
+  <table class="outer" width="100%" id="contentTable" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="oRight" id="bodyCell">
+          <div id="inner-content">
+            <div id="position" class="row profile">
+              <ul class="pills" data-tabs="tabs">
+                <li class="active"><a href="#position_profile">Profile</a></li>
+                <li><a href="#position_detail">Details</a></li>
+                <li><a href="#position_docs">Documents</a></li>
+              </ul>
+              <div id="my-tab-content" class="tab-content">
+                <%= render 'tab1', :position => @position %>
+                <%= render 'tab2', :position => @position %>
+                <%= render 'tab3', :position => @position %>
+              </div>
+            </div>
+            <div id="position_comments" class="feeds">
+              <%= render 'comments/commentable', :object => @position %>
+            </div>
+          </div>
+      </td>
+      <td id="rightCell" class="sidebarCell">
+          <div id="rightbar">
+            <%= render 'todos', :position => @position %>
+            <%= render 'goods', :position => @position %>
+            <%= render 'loadings/followers', :loading => @position %>
+          </div>
+      </td>
+    </tr>
+  </table>
+</div>

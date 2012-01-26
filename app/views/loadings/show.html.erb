@@ -1,45 +1,8 @@
-<div class="row">
-  <div id="sidebar" class="span4 columns sidebar">
-    <div id="profile-sidebar">
-      <div id="profile-picture">
-        <%= image_tag "loading.jpg" %>
-      </div>
-      <%= render 'tab_sidebar', :loading => @loading %>
-    </div>
+<div id="loading" class="row">
+  <div class="row">
+    <%= render 'profile_header' %>
   </div>
-  <div id="inner-content" class="span10 columns">
-    <div id="good" class="row profile">
-      <ul class="tabs" data-tabs="tabs">
-        <li class="active"><a href="#good_profile">Yük Bilgisi</a></li>
-        <li><a href="#good_detail">Yük Detayları</a></li>
-        <li><a href="#good_docs">Adres Bilgileri</a></li>
-        <div class="rightside">
-          <%= link_to "Edit Loading", edit_loading_path(@loading), :class => 'btn primary' %>
-        </div>
-      </ul>
-      <div id="my-tab-content" class="tab-content">
-        <%= render 'tab1', :loading => @loading %>
-        <%= render 'tab2', :loading => @loading %>
-        <%= render 'tab3', :loading => @loading %>
-      </div>
-    </div>
-    <div id="loading_comments" class="feeds">
-      <%= render 'comments/commentable', :object => @loading %>
-    </div>
-  </div>
-  <div id="rightbar" class="span3 columns">
-    <%= render 'todos', :loading => @loading %>
-    <% if @loading.operation == 'sea' %>
-      <%= render 'containers', :loading => @loading %>
-    <% else %>
-      <%= render 'boxes', :loading => @loading %>
-    <% end %>
-    <%= render 'followers', :loading => @loading %>
+  <div class="row">
+    <%= render 'profile_content' %>
   </div>
 </div>
-<!--ul class="pills rightside">
-  <li><%= link_to "Add Container", new_loading_container_path(@loading, @container), :class => "btn primary" %></li>
-  <li><%= link_to "Add Packages", new_loading_package_path(@loading, @package), :class => "btn primary" %></li>
-</ul-->
-<%#= render :partial => 'containers/list', :locals => { :containers => @loading.containers } %>
-<%#= render :partial => 'packages/list', :locals => { :packages => @loading.packages } %>

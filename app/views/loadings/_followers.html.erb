@@ -4,7 +4,7 @@
     <div class="todoListContents">
       <ol class="listClass" id="follower_list">
         <% for fower in loading.all_followers %>
-          <%= render "follower", :user => fower %>
+          <%= render "loadings/follower", :user => fower %>
         <% end %>
       </ol>
       <div class="rightside">

@@ -1,0 +1,24 @@
+<div id="profile-header" class="profile-content">
+  <table class="outer" width="100%" id="headerTable" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="span3">
+        <div id="profile-picture" class="position">
+          <%= image_tag("/assets/position.png") %>
+        </div>
+      </td>
+      <td>
+        <div id="profile-detail" class="position">
+          <div id="profile-title" class="row">
+            <div class="title">
+              <span><%= @position.reference.upcase %></span>
+            </div>
+            <div class="buttons">
+              <%= link_to "Edit", edit_position_path(@position), :class => 'btn primary' %>
+            </div>
+          </div>
+          <%= render 'profile_detail' %>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>

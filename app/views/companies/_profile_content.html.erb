@@ -1,0 +1,34 @@
+<div class="profile-content">
+  <table class="outer" width="100%" id="contentTable" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="oRight" id="bodyCell">
+        <div id="inner-content">
+          <div id="profile-info" class="row profile company">
+            <ul class="pills" data-tabs="tabs">
+              <li class="active"><a href="#company_profile">Profile</a></li>
+              <li><a href="#company_detail">Yetkililer</a></li>
+              <li><a href="#company_docs">Taşımalar</a></li>
+              <li><a href="#company_docs">Açık İşlemler</a></li>
+              <li><a href="#company_docs">Aktiviteler</a></li>
+              <li><a href="#company_docs">Fırsatlar</a></li>
+              <li><a href="#company_docs">İlişkili Firmalar</a></li>
+              <li><a href="#company_docs">Notlar/Dosyalar</a></li>
+            </ul>
+            <div id="my-tab-content" class="tab-content">
+              <%= render 'tab1', :position => @position %>
+              <%= render 'tab2', :position => @position %>
+              <%= render 'tab3', :position => @position %>
+            </div>
+          </div>
+        </div>
+      </td>
+      <!--td id="rightCell" class="sidebarCell">
+        <div id="rightbar">
+          <%= render 'news', :company => @company %>
+          <%= render 'numbers', :company => @company %>
+          <%= render 'followers', :company => @company %>
+        </div>
+      </td-->
+    </tr>
+  </table>
+</div>

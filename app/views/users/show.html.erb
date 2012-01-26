@@ -1,65 +1,38 @@
-<div id="personal" class="row">
-  <div id="personalfeeds" class="span9 columns feeds">
-    <div id="post-home" class="span9 publishercontainer">
-      <div class="post-module-in">
-    <form id="share-form" class="post" method="POST">
-      <div class="clearfix">
-        <textarea id="textarea" cols="80" rows="1" name="textarea" style="width: 490px; height:18px; min-height: 16px;"></textarea>
-      </div>
-      <div class="post-actions">
-        <div id="attach">
-          <a href="#">Attach a link</a>
-        </div>
-        <div class="clearfix">
-          <span class="rightside"><a href="airload2.html" class="btn primary">Paylaş</a></span>
-        </div>
-      </div>	
-    </form>
-      </div>
-    </div>
-
-    <div id="feedlist" class="span9">
-      <span class="leftside"><h4>Today News</h4></span>
-      <ul>
-	   <li>
-	     <div class="feedline">
-                <a href="#" class="img-load"><img src="../assets/linkedin.png" alt="" /></a> 
-                <h5><a href="#">State of the Web 2010: E-Commerce Rebounds, Facebook Rises, Online Video Booms</a></h5>
-                <p style="text-align:right;">From TechCrunch <a class="source" href="#">John Doe</a> on April 10, 2010</p>
-             </div>
-           </li>
-           <%= render current_patron.activities.latests %>
-      </ul>
-    </div>
-  </div>
-
-  <div id="warnings" class="span7 columns feeds">
-    <div class="listheader">
-      <span class="rightside">
-<% current_patron.operations.each_with_index do |operation, index| %>
-  <% unless operation.to_s.blank? %>
-    <%= link_to (image_tag "#{operation}.png"), home_operation_path(operation) %>
-  </li>
-  <% end %>
+<% content_for :selected_navigation do%>
+  <% @selected_navigation = :home %>
 <% end %>
-      </span>
-    </div>
-    <div id="opsummary" class="span7">
-	<span class="leftside"><h4>Aktif Operation Sayıları</h4></span>
-	<table class="common-table">
-	   <tbody>
-	     <tr class="numbers"><td>5</td><td>4</td><td>3</td><td>1</td><td>11</td></tr>
-	     <tr class="numbers"><th>Air</th><th>Sea</th><th>Truck</th><th>Rail</th><th>Inland</th></tr>
-	   </tbody>
-	</table>
-    </div>
-    <ul>
-	<li>
-	   <div class="feedline">
-	      <a href="#" class="img-load"><img src="../assets/small_plane.png" alt="" /></a>
-	      <p>The <a href="airload.html">I.S.54545</a> has no Freight Price.</p>
-	   </div>
-	</li>
-    </ul>
+
+<div id="user" class="row">
+  <div class="row">
+    <%= render 'profile_header' %>
+  </div>
+  <div class="row">
+    <%= render 'profile_content' %>
   </div>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+$(function() {
+  new Highcharts.Chart({
+    chart: {
+      renderTo: "user_statics"
+    },
+    title: {
+      text: "Daily Statics"
+    },
+    xAxis: {
+      type: "datetime"
+    },
+    yAxis: {
+      title: {
+        text: "Numbers"
+      }
+    },
+    series: [{
+      pointInterval: <%= 1.day * 1000 %>,
+      pointStart: <%= 3.weeks.ago.to_i*1000 %>,
+      data: [1,5,3,8,4,6]
+    }]
+  });
+});
+</script>

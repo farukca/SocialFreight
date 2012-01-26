@@ -58,9 +58,6 @@ class Position
   has_many :loadings, dependent: :nullify
   has_many :transnodes
   has_many :comments, as: :commentable, dependent: :delete
-  #embeds_many :transfers
-
-  before_create :set_initials
 
   #attr_accessible 
 
@@ -103,12 +100,23 @@ class Position
   #scope :washed_up, where(:age.gt => 30)
   scope :newones, order_by(:created_at, :desc)
 
+  before_create :set_initials
+  after_create  :set_after_jobs
+
   private
   def set_initials
     counter = self.patron.generate_counter("Position", self.operation, self.direction)
     self.reference = self.operation + "." + self.direction + "." + sprintf('%07d', counter)
     #self.patron_token = current_patron.token if self.patron_token.blank?
     generate_slug!
+  end
+
+  private
+  def set_after_jobs
+    self.user.follow(self) if self.user
+    self.user.create_activity(self, reference, patron_id, patron_token)
+    #patron.set_activity(self, 'create', user.id, 'created', user.full_name)
+    Patron.journal_record(patron, user, branch, nil, self.class.name, 1, 0)
   end
 
   class << self
@@ -145,6 +153,10 @@ class Position
         'C' => 'Closed'
       }
     end
+  end
+
+  def to_s
+    reference
   end
 
 end

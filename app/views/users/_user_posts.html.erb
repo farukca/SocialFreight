@@ -1,0 +1,27 @@
+  <div id="personalfeeds" class="feeds">
+    <div id="post-home" class="publishercontainer">
+      <div class="post-module-in">
+      <form id="share-form" class="post" method="POST">
+      <div class="clearfix">
+        <textarea id="textarea" cols="60" rows="1" name="textarea" style="height:18px; min-height: 16px;"></textarea>
+      </div>
+      <div class="post-actions">
+        <div id="attach">
+          <a href="#">Attach a link</a>
+        </div>
+        <div class="clearfix">
+          <span class="rightside"><a href="airload2.html" class="btn primary">Paylaş</a></span>
+        </div>
+      </div>	
+      </form>
+      </div>
+    </div>
+
+    <div id="feedlist">
+      <span class="leftside"><h4>Bildirimler</h4></span>
+      <ul>
+           <%= render current_patron.activities.latests %>
+      </ul>
+    </div>
+  </div>
+

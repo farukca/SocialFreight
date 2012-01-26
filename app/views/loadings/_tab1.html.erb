@@ -1,23 +1,49 @@
-<div id="good_profile" class="tab-pane profile-content active">
-  <div id="good_left">
+<div id="good_profile" class="tab-pane active">
+  <div class="pageBody">
     <%= render 'tab_header', :loading => loading %>
-    <div id="good_goods" class="dlist">
-      <dl>
-        <dt>Customer</dt>
-        <dd class="company"><%= loading.company.name if loading.company %>&nbsp;</dd>
-        <dt>Gönderici</dt>
-        <dd class="company"><%= loading.sender.name if loading.sender %>&nbsp;</dd>
-        <dt>Alıcı</dt>
-        <dd class="company"><%= loading.consignee.name if loading.consignee %>&nbsp;</dd>
-        <dt>Acenta</dt>
-        <dd class="company"><%= loading.agent.name if loading.agent %>&nbsp;</dd>
-        <dt>Waybill No</dt>
-        <dd class="company"><%= loading.waybill_no %>&nbsp;</dd>
-        <dt>Navlun Tutarı</dt>
-        <dd><%= loading.freight_price %>&nbsp;<%= loading.freight_curr.upcase %></dd>
-        <dt>Yük Tanımı</dt>
-        <dd class="commodity"><%= loading.commodity %></dd>
-      </dl>
+    <div class="profile-content">
+    <table  class="detailList" border="0" cellpatding="0" cellspacing="0">
+      <tr>
+        <td class="labelCol2">Customer :</td>
+        <td class="dataCol2"><%= loading.company.name if loading.company %>&nbsp;</td>
+        <td class="labelCol2">Waybill No :</td>
+        <td class="dataCol2"><%= loading.waybill_no %>&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="labelCol2">Gönderici :</td>
+        <td class="dataCol2"><%= loading.sender.name if loading.sender %>&nbsp;</td>
+        <td class="labelCol2">Navlun Tutarı :</td>
+        <td class="dataCol2"><%= loading.freight_price %>&nbsp;<%= loading.freight_curr.upcase %></td>
+      </tr>
+      <tr>
+        <td class="labelCol2">Alıcı :</td>
+        <td class="dataCol2"><%= loading.consignee.name if loading.consignee %>&nbsp;</td>
+        <td class="labelCol2">Mal Değeri :</td>
+        <td class="dataCol2"><%= loading.product_price %>&nbsp;<%= loading.product_curr.upcase if loading.product_curr %></td>
+      </tr>
+      <tr>
+        <td class="labelCol2">Acenta :</td>
+        <td class="dataCol2"><%= loading.agent.name if loading.agent %>&nbsp;</td>
+        <td class="labelCol2">Özet Beyan :</td>
+        <td class="dataCol2"><%= loading.statement %>&nbsp;<%= loading.statement_date %></td>
+      </tr>
+      <tr>
+        <td class="labelCol2">Yükleme/Pickup Tarihi :</td>
+        <td class="dataCol2"><%= loading.load_date %>&nbsp;/&nbsp;<%= loading.pickup_date %></td>
+        <td class="labelCol2">Boşaltma Tarihi:</td>
+        <td class="dataCol2"><%= loading.unload_date %></td>
+      </tr>
+      <tr>
+        <td class="labelCol2">Yükleme Adresi :</td>
+        <td class="dataCol2"><%= loading.departure_address %>&nbsp;<%= loading.departure_district %>&nbsp;<%= loading.departure_city.name if loading.departure_city %>&nbsp;<%= loading.departure_country.name if loading.departure_country %><span class="rightside"><a href="#">Show map</a></span></td>
+        <td class="labelCol2">Boşaltma Adres :</td>
+        <td class="dataCol2"><%= loading.arrival_address %>&nbsp;<%= loading.arrival_district %>&nbsp;<%= loading.arrival_city.name if loading.arrival_city %>&nbsp;<%= loading.arrival_country.name if loading.arrival_country %><span class="rightside"><a href="#">Show map</a></span></td>
+      </tr>
+      <tr>
+        <td class="labelCol2">Yük Tanımı :</td>
+        <td class="dataCol2"><%= loading.commodity %></td>
+      </tr>
+    </table>
     </div>
   </div>
 </div>

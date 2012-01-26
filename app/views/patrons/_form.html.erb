@@ -3,22 +3,43 @@
   <%= f.error_notification %>
 
   <fieldset>
-    <div class="page-header">
-      <h4>Try SocialFreight</h4>
-    </div>
-    <div>
-      <%= f.input :title, :label => "Company" %>
-      <%= f.input :contact_name, :label => "Name" %>
-      <%= f.input :contact_surname, :label => "Surname" %>
-      <%= f.input :tel  %>
-      <%= f.input :email %>
-      <div class="clearfix">
-        <label class="required">Operations</label>
-        <div id="operations">
-          <%= f.collection_check_boxes :operations, Operation.all, :id, :name, :label => "Operations" %>
-        </div>
-      </div>
-      <%= f.button :submit, :class => 'btn primary' %>
+    <div class="pageBody">
+      <table  class="detailList" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <%= f.input :title, :label => "Company" %>
+        </tr>
+        <tr>
+          <%= f.input :contact_name, :label => "Name" %>
+        </tr>
+        <tr>
+          <%= f.input :contact_surname, :label => "Surname" %>
+        </tr>
+        <tr>
+          <%= f.input :tel  %>
+        </tr>
+        <tr>
+          <%= f.input :email %>
+        </tr>
+        <tr>
+          <%= f.input :employees %>
+        </tr>
+        <tr>
+          <%= f.input :language %>
+        </tr>
+        <!--tr>
+          <td>
+            <div class="clearfix">
+              <label class="required">Operations</label>
+              <div id="operations">
+                <%= f.collection_check_boxes :operations, Operation.all, :id, :name, :label => "Operations" %>
+              </div>
+            </div>
+          </td>
+        </tr-->
+        <tr>
+          <td class="dataCol rightside"><%= f.button :submit, "Try SocialFreight", :class => 'btn primary' %></td>
+        </tr>
+      </table>
     </div>
   </fieldset>
 

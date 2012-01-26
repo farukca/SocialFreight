@@ -1,9 +1,11 @@
-<div id="nav" class="row" style="margin-top:40px;">
+<% yield :selected_navigation %>
+
+<div id="nav" class="row profile" style="margin-top:45px;">
   <ul class="tabs" data-tabs="tabs">
-    <li><a href="#">Ana Sayfa</a></li>
+    <li class="<%= selected_navigation(:home) %>"><a href="#">Ana Sayfa</a></li>
     <% current_patron.operations.each_with_index do |operation, index| %>
       <% unless operation.to_s.blank? %>
-        <li><%= link_to operation.to_s.humanize, home_operation_path(operation) %></li>
+        <li class="<%= selected_navigation(operation.to_s) %>"><%= link_to operation.to_s.humanize, home_operation_path(operation) %></li>
       <% end %>
     <% end %>
     <li><a href="#">Ulusal Dağıtım</a></li>

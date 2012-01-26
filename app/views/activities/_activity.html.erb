@@ -1,7 +1,8 @@
-<li>
-  <div class="feedline">
-    <a href="#" class="img-load"><img src="../assets/linkedin.png" alt="" /></a> 
-    <h5><%= "#{activity.user_name} #{activity.action_text} the #{activity.real_target_type}" %></h5>
-    <p style="text-align:right;"><%= activity.created_at.strftime("%d/%m/%Y %I:%M%p")%></p>
+<div id="item<%= activity.target_id %>" class="hoverable <%= activity.target_type.downcase %>Item">
+  <div id="<%= activity.target_type.downcase %><%= activity.target_id %>" class="recentItem">
+    <%= link_to activity.target, :title => "#{activity.target_type}: #{activity.target_name}" do %>
+      <%= image_tag "s.png",  :class => "#{activity.target_type.downcase}Icon" %>
+      <span class="mruText"><%= activity.target_name %></span>
+    <% end %>
   </div>
-</li>
+</div>

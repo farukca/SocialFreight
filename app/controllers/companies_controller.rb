@@ -35,7 +35,7 @@ class CompaniesController < ApplicationController
   end
 
   def edit
-    @company = Company.find(params[:id])
+    @company = Company.find_by_slug(params[:id])
   end
 
   def create
@@ -54,7 +54,7 @@ class CompaniesController < ApplicationController
   end
 
   def update
-    @company = Company.find(params[:id])
+    @company = Company.find_by_slug(params[:id])
 
     respond_to do |format|
       if @company.update_attributes(params[:company])

@@ -4,7 +4,7 @@
   <fieldset>
 
   <div class="pageBlock">
-    <%= render 'shared/form_buttonsh' %>
+    <%= render 'shared/form_buttonsh', :f => f, :header => "Loading Details" %>
     <%= render 'shared/form_header' %>
 
     <div class="row">
@@ -21,7 +21,7 @@
           <%= render 'form_detail', :f => f %>
         </div>      
       </div>
-      <%= render 'shared/form_buttonsb' %>
+      <%= render 'shared/form_buttonsb', :f => f %>
     </div>
 
   </fieldset>

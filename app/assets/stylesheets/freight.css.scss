@@ -9,8 +9,25 @@ html, body {
     display: table;
     padding: 0;
 }
+.outer td {
+    vertical-align:middle;
+    border-bottom: 1px solid #ECECEC;
+}
+.outer td .sidebarCell {
+    vertical-align:top;
+}
+.outer td.oRight {
+    //padding:0 10px 20px;
+    background-color:transparent;
+}
+#sidebarCell, #sidebarDiv .sidebarModule, #sidebarDiv .nestedModule {
+    background-color:transparent;
+    border:0 none;
+    vertical-align:top;
+}
 .sidebarCell, #sidebarDiv {
     background-color:#E8E8E8;
+    vertical-align: top;
     width:200px;
 }
 .sidebarMenu {
@@ -45,6 +62,20 @@ html, body {
     height:16px;
     width:16px;
 }
+.loadingItem .loadingIcon {
+    background-image:url("/assets/master.png");
+    background-position:0 -24px;
+    background-repeat: no-repeat;
+    height:16px;
+    width:16px;
+}
+.positionItem .positionIcon {
+    background-image:url("/assets/master.png");
+    background-position:0 -44px;
+    background-repeat: no-repeat;
+    height:16px;
+    width:16px;
+}
 .userItem .userIcon {
     background-image:url("/assets/alohaProfile16.png");
     background-repeat: no-repeat;
@@ -52,20 +83,10 @@ html, body {
     width:16px;
     background-position:0 0;
 }
-.outer td {
-    vertical-align:top;
-}
-.outer td.oRight {
-    padding:0 10px 20px;
-    background-color:transparent;
-}
-#sidebarCell, #sidebarDiv .sidebarModule, #sidebarDiv .nestedModule {
-    background-color:transparent;
-    border:0 none;
-}
 .labelCol, .dataCol, .labelCol2, .dataCol2 {
     padding-bottom:3px;
     padding-top:3px;
+    line-height: 18px;
 }
 .labelCol {
     width:36%;
@@ -119,7 +140,7 @@ html, body {
     margin-top: 2px;
 }
 .subHeader  h5{
-    line-height: 24px;
+    line-height: 18px;
 }
 .tdTitle {
     color:#222222;
@@ -232,6 +253,8 @@ form .span8 {
 fieldset span {
     padding-left:10px;
     text-align:left;
+//    display: block;
+//    padding-left: 200px;
 }
 #profile-details td {
     font-size:11px;
@@ -241,7 +264,7 @@ fieldset span {
     border-radius: 5px 5px 5px 5px;
     box-shadow: 0 1px 6px #CCCCCC;
     margin:0 0 15px;
-    min-height:90px;
+    //min-height:90px;
     padding:3px;
     overflow:hidden;
     position:relative;
@@ -388,9 +411,6 @@ form ul li {
 }
 form ul li label {
     float:none;
-}
-.page-header h1, h4 {
-  margin-bottom: 0px;
 }
 .widget {
     border:1px solid #D6D6D6;
@@ -566,6 +586,10 @@ form ul li label {
 #createBtn a {
     color: #EEEEEE;
 }
+.page-header h1, h4 {
+  margin-bottom: 0px;
+  color: #333333;
+}
 #profile-sidebar {
     float: left;
     overflow:visible;
@@ -578,8 +602,20 @@ form ul li label {
     margin-left: 10px;
     margin-right: 10px;
     overflow: hidden;
-    width: 200px;
+    width: 120px;
     height: 100px;
+}
+#profile-title .title {
+    width: 50%;
+    float: left;
+    font-weight: bold;
+    font-size: 18px;
+    color: #404040;
+}
+#profile-title .buttons {
+    float: right;
+    margin-bottom: 5px;
+    margin-top: -10px;
 }
 .profile-section {
     margin-bottom:28px;
@@ -638,7 +674,7 @@ h4.profile-data-section {
     border-right-color: #666666;
     text-decoration:none;
 }
-#rightbar {
+.rightbar {
     margin-top:20px;
     margin-bottom:0px;
     width:200px;
@@ -736,7 +772,7 @@ label abbr {
     display: block;
     position: fixed;
     right: 0;
-    top: 200px;
+    bottom: 0;
 }
 .lookupIcon {
     opacity: 0.8;
@@ -751,7 +787,6 @@ label abbr {
     padding-left: 5px;
 }
 #post-home textarea {
-    width: 490px;
     height:18px;
     min-height: 16px;
 }
