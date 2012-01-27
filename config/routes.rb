@@ -1,7 +1,5 @@
 Socialfreight::Application.routes.draw do
 
-  get "activities/index"
-
   get "logout" => "sessions#destroy", :as => "logout"
   get "login"  => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
@@ -52,6 +50,8 @@ Socialfreight::Application.routes.draw do
   resources :cities
   resources :currencies
   resources :feedbacks
+  resources :posts
+  resources :activities
 
   root :to => 'home#index'
 

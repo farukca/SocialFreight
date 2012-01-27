@@ -2,7 +2,7 @@ class PatronsController < ApplicationController
 
   before_filter :require_login
   skip_before_filter :require_login, :only => [:new, :create]
-  layout 'guest', :only => :new
+  #layout 'guest', :only => :new
 
   def index
     @patrons = Patron.all
@@ -24,11 +24,7 @@ class PatronsController < ApplicationController
 
   def new
     @patron = Patron.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @patron }
-    end
+    render :layout => 'guest' unless current_user
   end
 
   def edit

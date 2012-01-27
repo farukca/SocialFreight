@@ -55,7 +55,7 @@ html, body {
     margin-left:3px;
     position:absolute;
 }
-.accountItem .accountIcon {
+.companyItem .companyIcon {
     background-image:url("/assets/master.png");
     background-position:0 -2px;
     background-repeat: no-repeat;
@@ -752,7 +752,6 @@ h4.profile-data-section {
     max-width:640px;
     min-height:75px;
     overflow:visible;
-    padding:10px;
     position:relative;
 }
 .justhead {

@@ -7,7 +7,6 @@ class CommentsController < ApplicationController
     @commentable = find_commentable
     @comment = @commentable.comments.build(params[:comment])
     @comment.user_id  = current_user.id
-    @comment.user_name = current_user.full_name
     @comment.patron_id  = current_patron.id
     @comment.patron_token  = current_patron.token
 

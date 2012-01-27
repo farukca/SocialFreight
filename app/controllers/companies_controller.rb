@@ -41,6 +41,7 @@ class CompaniesController < ApplicationController
   def create
     @company = current_patron.companies.build(params[:company])
     @company.patron_token = current_patron.token
+    @company.user_id = current_user.id
 
     respond_to do |format|
       if @company.save

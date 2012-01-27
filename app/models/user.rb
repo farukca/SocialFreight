@@ -41,6 +41,8 @@ class User
   has_many :loadings
   has_many :activities
   has_many :comments
+  has_many :posts
+  #has_many :companies
   has_many :journals, as: :journaled, dependent: :delete
 
   attr_accessible :email, :password, :password_confirmation, :name, :surname, :patron_id, :avatar, :remove_avatar

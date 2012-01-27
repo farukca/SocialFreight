@@ -1,0 +1,12 @@
+<div id="post-home" class="publishercontainer">
+  <div class="post-module-in">
+    <%= render 'posts/form' %>
+  </div>
+</div>
+<div id="postlist">
+  <span class="leftside"><h4>Bildirimler</h4></span>
+  <ul>
+    <%= render current_user.posts.latests.limit(5) %>
+  </ul>
+</div>
+

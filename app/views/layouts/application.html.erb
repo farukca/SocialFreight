@@ -29,7 +29,7 @@
         <td id="sidebarCell" class="sidebarCell">
           <%= content_for?(:sidebar) ? yield(:sidebar) : render(:partial => 'shared/sidebar')%>
         </td>
-        <td class="oRight" id="bodyCell">
+        <td class="oRight" id="bodyCell" style="vertical-align:top">
           <%= yield %>
         </td>
       </tr>

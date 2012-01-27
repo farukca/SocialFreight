@@ -14,6 +14,8 @@ class Activity
 
   scope :latests, order_by(:created_at, :desc)
 
+  after_create :create_comment
+
   def self.log(user, target, target_name, patron_id, patron_token)
     patron_id ||= user.patron_id
     patron_token ||= user.patron.token
@@ -40,5 +42,10 @@ class Activity
     else
       self.target_type
     end
+  end
+
+  private
+  def create_comment
+    Comment.log(user, target, target_name, patron_id, patron_token, 'S')
   end
 end

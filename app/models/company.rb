@@ -3,6 +3,7 @@ class Company
   include Mongoid::Timestamps
   include Mongoid::Token
   include Mongoid::Slug
+  include Mongoid::Followee
   include Gmaps4rails::ActsAsGmappable
   include Mongoid::Spacial::Document
  
@@ -30,6 +31,7 @@ class Company
   field :fax
   field :contact
   field :sector
+  belongs_to :user
   belongs_to :saler, :class_name => User, :inverse_of => :saler
   field :twitter_url
   field :facebook_url
@@ -57,6 +59,7 @@ class Company
   has_many :producer_loadings, :class_name => "Loading", :inverse_of => :producer
   has_many :presenter_loadings, :class_name => "Loading", :inverse_of => :presenter
   has_many :bank_loadings, :class_name => "Loading", :inverse_of => :bank
+  has_many :comments, as: :commentable, dependent: :delete
 
   attr_accessible :name, :title, :company_type, :branch, :postcode, :address, :district, :city_id, :country_id, :state_id, 
                   :email, :website, :tel, :gsm, :voip, :fax, :contact, :sector, :twitter_url, :facebook_url, :linkedin_url, 
@@ -73,7 +76,8 @@ class Company
   validates_length_of :title, :maximum => 100
 
   before_save :get_coordinates
-  
+  after_create  :set_after_jobs
+
   def gmaps4rails_address
   #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
     "#{self.address}, #{self.district}, #{self.city.name}, #{self.country.name}" 
@@ -95,6 +99,14 @@ class Company
 
   def prevent_geocoding
     self.address.blank? #|| (!self.location.blank?)
+  end
+
+  private
+  def set_after_jobs
+    self.user.follow(self) if self.user
+    self.user.create_activity(self, name, patron_id, patron_token)
+    #patron.set_activity(self, 'create', user.id, 'created', user.full_name)
+    Patron.journal_record(patron, user, branch, nil, self.class.name, 1, 0)
   end
 
   class << self
@@ -119,4 +131,7 @@ class Company
     [{ :id => _id, :name => name }]
   end
 
+  def to_s
+    name
+  end
 end
