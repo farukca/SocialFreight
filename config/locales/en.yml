@@ -55,3 +55,7 @@ en:
         masterdate:    "TNR Date"
         agentref:      "Agent Reference"
         linerref:      "Rail Agency Reference"
+  loading:
+    air:
+      label:
+        transporter:   "Airway"

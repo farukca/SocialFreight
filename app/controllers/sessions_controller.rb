@@ -11,8 +11,8 @@ class SessionsController < ApplicationController
       session[:patron_id] = user.patron_id if user.patron_id
       redirect_back_or_to root_url
     else
-      flash.now.alert = "Email or passwaord is invalid"
-      render :new
+      flash.now.alert = "Email or password is invalid"
+      render :new#, :notice => "Email or password is invalid"
     end
   end
   

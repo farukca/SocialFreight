@@ -391,16 +391,17 @@ fieldset span {
 }
 #login_form label {
     text-align:left;
+    width:20%;
 }
 #login_form label, #patron_form label {
     margin-right:5px;
 }
 #login_image {
-    margin-top: 75px;
+    margin-top: 40px;
     text-align:center;
 }
 #login_roadmap {
-    margin-top: 100px;
+    margin-top: 60px;
     text-align:center;
 }
 form ul li {
@@ -788,4 +789,20 @@ label abbr {
 #post-home textarea {
     height:18px;
     min-height: 16px;
+}
+.alert-message.alert {
+  background-color: #c43c35;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#ee5f5b), to(#c43c35));
+  background-image: -moz-linear-gradient(top, #ee5f5b, #c43c35);
+  background-image: -ms-linear-gradient(top, #ee5f5b, #c43c35);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ee5f5b), color-stop(100%, #c43c35));
+  background-image: -webkit-linear-gradient(top, #ee5f5b, #c43c35);
+  background-image: -o-linear-gradient(top, #ee5f5b, #c43c35);
+  background-image: linear-gradient(top, #ee5f5b, #c43c35);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ee5f5b', endColorstr='#c43c35', GradientType=0);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  border-color: #c43c35 #c43c35 #882a25;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  color: #FFFFFF;
 }

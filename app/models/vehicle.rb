@@ -2,6 +2,7 @@ class Vehicle
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Token
+  include Mongoid::Followee
 
   field :code
   belongs_to :country
@@ -31,6 +32,10 @@ class Vehicle
 
   def prepopulate_tokens
     [{ :id => _id, :name => code }]
+  end
+
+  def to_s
+    code
   end
 
   class << self

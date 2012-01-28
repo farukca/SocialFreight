@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
  
-  before_filter :require_login, :except => :new
+  before_filter :require_login
+  skip_before_filter :require_login, :only => [:new, :activate, :activation, :update]
 
   def index
     @users = User.all
@@ -20,6 +21,10 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+    if current_patron
+      @user.patron_id = current_patron.id
+      @user.generate_temp_password
+    end
     if @user.save
       redirect_to root_url, :notice => "Activation mail has been sent to your mail!"
     else
@@ -48,18 +53,22 @@ class UsersController < ApplicationController
   def update
     @user = User.find_by_title!(params[:id])
 
-    respond_to do |format|
-      if @user.update_attributes(params[:user])
-        login(@user.email, params[:user][:password], params[:remember_me])
-        session[:patron_id] = @user.patron_id if @user.patron_id
-        format.html { redirect_to @user, notice: 'Welcome to SocialFreight.' }
-        format.json { head :ok }
+    if @user.update_attributes(params[:user])
+      if @user.last_login_at.nil?
+        login_user = login(@user.email, params[:user][:password], params[:remember_me])
+        if login_user
+          session[:patron_id] = login_user.patron_id if login_user.patron_id
+          redirect_back_or_to root_url, notice: 'Welcome to SocialFreight.'
+        else
+          render :new, :notice => "Email or password is invalid"
+        end
       else
-        format.html { render action: "activation" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        redirect_to @user, :notice => "Updated succesfully"
       end
+    else
+      render :new, :error => "Update error, please try again"
     end
-    user = login(params[:email], params[:password], params[:remember_me])
+    #user = login(params[:email], params[:password], params[:remember_me])
 
   end
 

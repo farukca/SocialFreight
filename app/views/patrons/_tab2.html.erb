@@ -1,4 +1,4 @@
-<div id="user_list" class="tab-pane profile-content">
+<div id="users" class="tab-pane profile-content">
   <div class="row">
     <div id="new_user_btn">
       <%= link_to "Add User", "#", :class => "btn primary togglebutton", "data-placement" => "below", "data-href" => "#new_user_div" %>
@@ -10,7 +10,7 @@
 
   <div class="row">
     <div id="users_list_div">
-      <table id="users_table" class="zebra-striped">
+      <table id="user_list" class="zebra-striped">
         <%= render patron.users %>
       </table>
     </div>

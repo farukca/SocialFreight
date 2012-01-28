@@ -3,6 +3,7 @@ class User
   include Mongoid::Timestamps
   include Mongoid::Slug
   include Mongoid::Follower
+  include Mongoid::Followee
 
   authenticates_with_sorcery!
 
@@ -45,7 +46,8 @@ class User
   #has_many :companies
   has_many :journals, as: :journaled, dependent: :delete
 
-  attr_accessible :email, :password, :password_confirmation, :name, :surname, :patron_id, :avatar, :remove_avatar
+   attr_accessible :email, :password, :password_confirmation, :name, :surname, :patron_id, :avatar, :remove_avatar, 
+                   :region, :time_zone, :user_type, :language, :locale, :mail_encoding, :role
   #attr_protected  :password
 
   validates_confirmation_of :password
@@ -55,11 +57,11 @@ class User
   validates_presence_of :surname
   validates_uniqueness_of :email, :case_sensitive => false
 
-  #after_create  :send_activation_mail
+  after_create  :send_activation_mail
 
-  #def send_activation_mail
-  #  UserMailer.activation_needed_email(self).deliver
-  #end
+  def send_activation_mail
+    UserMailer.activation_needed_email(self).deliver
+  end
 
   def roles_list
     [:admin, :operator, :financer, :ledger, :saler, :planner, :manager]
@@ -86,10 +88,9 @@ class User
     self.name + " " + self.surname
   end
 
-  def create_activity(target, target_name, patron_id, patron_token)
-    #creator_id ||= target.user_id
-    target_name ||= target.to_s
-    Activity.log(self, target, target_name, patron_id, patron_token)
+  def generate_temp_password
+    self.password = "9516284"
+    self.password_confirmation = "9516284"
   end
 
 end
