@@ -11,4 +11,28 @@ class HomeController < ApplicationController
   def today
   end
 
+  def air
+  end
+
+  def sea
+  end
+
+  def road
+  end
+
+  def rail
+  end
+
+  def inland
+  end
+
+  def roadmap
+  end
+
+  def security
+  end
+
+  def features
+  end
+
 end

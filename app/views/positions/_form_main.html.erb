@@ -26,13 +26,8 @@
 
     <%= render :partial => "#{@position.operation}_detail", :locals => {:f => f} %>
 
-  </table>
-</div>
-<div class="subHeader">
-  <h5>Adres Bilgileri</h5>
-</div>
-<div class="pageBody">
-  <table  class="detailList" border="0" cellpadding="0" cellspacing="0">
+    <tr><td colspan="2" class="subHeader"><h5>Adres Bilgileri</h5></td></tr>
+
     <tr>
       <%= f.input :load_place, :label => I18n.t("position.#{@position.operation}.label.load_place"), :input_html => {:class => "token_input", "data-url" => "/places.json", "data-pre" => @position.load_place ? @position.load_place.prepopulate_tokens.to_json : nil} %>
       <%= f.input :unload_place, :label => I18n.t("position.#{@position.operation}.label.unload_place"), :input_html => {:class => "token_input", "data-url" => "/places.json", "data-pre" => @position.unload_place ? @position.unload_place.prepopulate_tokens.to_json : nil} %>
@@ -45,13 +40,8 @@
       <%= f.input :agent_reference, :label => "References" %>
       <%= f.input :other_reference, :class => "medium", :placeholder => I18n.t("position.#{@position.operation}.label.linerref") %>
     </tr>
-  </table>
-</div>
-<div class="subHeader">
-  <h5>Diğer Bilgileri</h5>
-</div>
-<div class="pageBody">
-  <table  class="detailList" border="0" cellpadding="0" cellspacing="0">
+
+    <tr><td colspan="2" class="subHeader"><h5>Diğer Bilgileri</h5></td></tr>
     <tr>
       <%= f.input :supplier, :label => I18n.t("position.#{@position.operation}.label.supplier"), :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @position.supplier ? @position.supplier.prepopulate_tokens.to_json : nil } %>
       <%= f.input :contract_no, :input_html => {:class => "medium"} %>

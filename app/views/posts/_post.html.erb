@@ -5,7 +5,7 @@
       <%= image_tag "s.png",  :class => "#{post.target_type}Icon" %>
       <span class="mruText"><%= post.target_name %></span>
     <% end if post.target %>
-    <span><%= post.message %></span>
-    <p class="rightside"><%= link_to "#{post.user.full_name}; #{post.created_at.strftime("%d/%m/%Y %I:%M%p")}", "#" %></p>
+    <span><%= post.user.full_name %>&nbsp;<%= post.message %></span>
+    <p class="rightside"><%= link_to "#{post.created_at.strftime("%d/%m/%Y %I:%M%p")}", "#" %></p>
   </div>
 </li>

@@ -53,6 +53,15 @@ Socialfreight::Application.routes.draw do
   resources :posts
   resources :activities
 
+  get "air" => "home#air", :as => "air"
+  get "sea" => "home#sea", :as => "sea"
+  get "road" => "home#road", :as => "road"
+  get "rail" => "home#rail", :as => "rail"
+  get "inland" => "home#inland", :as => "inland"
+  get "roadmap" => "home#roadmap", :as => "roadmap"
+  get "security" => "home#security", :as => "security"
+  get "features" => "home#features", :as => "features"
+
   root :to => 'home#index'
 
   # The priority is based upon order of creation:

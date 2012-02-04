@@ -1,0 +1,224 @@
+
+/*** ESSENTIAL STYLES ***/
+.sf-menu, .sf-menu * {
+	margin:			0;
+	padding:		0;
+	list-style:		none;
+}
+.sf-menu {
+	line-height:	1.0;
+}
+.sf-menu ul {
+	position:		absolute;
+	top:			-999em;
+	width:			13em; /* left offset of submenus need to match (see below) */
+        background: #fff !important;
+
+
+}
+.sf-menu ul li {
+	width:			100%;
+}
+.sf-menu li:hover {
+	visibility:		inherit; /* fixes IE7 'sticky bug' */
+}
+.sf-menu li {
+	float:			left;
+	position:		relative;
+}
+.sf-menu a {
+	display:		block;
+	position:		relative;
+}
+.sf-menu li:hover ul,
+.sf-menu li.sfHover ul {
+	left:			0;
+	top:			3em; /* match top ul list item height */
+	z-index:		99;
+}
+ul.sf-menu li:hover li ul,
+ul.sf-menu li.sfHover li ul {
+	top:			-999em;
+}
+ul.sf-menu li li:hover ul,
+ul.sf-menu li li.sfHover ul {
+	left:			12.65em; /* match ul width */
+	top:			0;
+}
+ul.sf-menu li li:hover li ul,
+ul.sf-menu li li.sfHover li ul {
+	top:			-999em;
+}
+ul.sf-menu li li li:hover ul,
+ul.sf-menu li li li.sfHover ul {
+	left:			12.65em; /* match ul width */
+	top:			0;
+}
+
+/*** DEMO SKIN ***/
+.sf-menu {
+	float:			left;
+
+}
+.sf-menu a {
+
+	text-decoration:none;
+}
+.sf-menu a, .sf-menu a:visited  { /* visited pseudo selector so IE6 applies text colour*/
+	color:			#13a;
+}
+.sf-menu li {
+
+}
+.sf-menu li li {
+    padding-top: 15px;
+    padding-bottom: 5px;
+    margin-left: 0 !important;
+     border: none !important;
+}
+.sf-menu li li a {
+    padding: 0 !important;
+}
+
+.sf-menu li li li {
+
+}
+.sf-menu li:hover, .sf-menu li.sfHover,
+.sf-menu a:focus, .sf-menu a:hover, .sf-menu a:active {
+
+	outline:		0;
+}
+
+
+.sf-sub-indicator {
+    display: none;
+}
+
+/*** shadows for all but IE6 ***/
+.sf-shadow ul {
+	background:	url('/assets/shadow.png') no-repeat bottom right;
+	padding: 0 8px 9px 0;
+	-moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -o-border-radius: 5px;
+        -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.35);
+        -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.35);
+        -o-box-shadow: 0 0 2px rgba(0, 0, 0, 0.35);
+
+}
+.sf-shadow ul.sf-shadow-off {
+	background: transparent;
+}
+
+
+
+/*** ESSENTIAL STYLES ***/
+.sf-menu2, .sf-menu2 * {
+	margin:			0;
+	padding:		0;
+	list-style:		none;
+}
+.sf-menu2 {
+	line-height:	1.0;
+}
+.sf-menu2 ul {
+	position:		absolute;
+	top:			-999em;
+	width:			12em; /* left offset of submenus need to match (see below) */
+        background: #000 !important;
+
+
+}
+.sf-menu2 ul li {
+	width:			100%;
+}
+.sf-menu2 li:hover {
+	visibility:		inherit; /* fixes IE7 'sticky bug' */
+}
+.sf-menu2 li {
+	float:			left;
+	position:		relative;
+}
+.sf-menu2 a {
+	display:		block;
+	position:		relative;
+}
+.sf-menu2 li:hover ul,
+.sf-menu2 li.sfHover ul {
+	left:			-0.9em;
+	top:			1.6em; /* match top ul list item height */
+	z-index:		99;
+}
+ul.sf-menu2 li:hover li ul,
+ul.sf-menu2 li.sfHover li ul {
+	top:			-999em;
+}
+ul.sf-menu2 li li:hover ul,
+ul.sf-menu2 li li.sfHover ul {
+	left:			12.5em; /* match ul width */
+	top:			0;
+}
+ul.sf-menu2 li li:hover li ul,
+ul.sf-menu2 li li.sfHover li ul {
+	top:			-999em;
+}
+ul.sf-menu2 li li li:hover ul,
+ul.sf-menu2 li li li.sfHover ul {
+	left:			12.5em; /* match ul width */
+	top:			0;
+}
+
+/*** DEMO SKIN ***/
+.sf-menu2 {
+	float:			left;
+
+}
+.sf-menu2 a {
+
+	text-decoration:none;
+}
+.sf-menu2 a, .sf-menu2 a:visited  { /* visited pseudo selector so IE6 applies text colour*/
+
+}
+.sf-menu2 li {
+
+}
+.sf-menu2 li li {
+    padding-top: 5px;
+    margin-top: 5px;
+    padding-left: 15px;
+     border: none !important;
+}
+.sf-menu2 li li a {
+
+}
+
+.sf-menu2 li li li {
+
+}
+.sf-menu2 li:hover, .sf-menu2 li.sfHover,
+.sf-menu2 a:focus, .sf-menu2 a:hover, .sf-menu2 a:active {
+
+	outline:		0;
+}
+
+
+.sf-sub-indicator {
+    display: none;
+}
+
+/*** shadows for all but IE6 ***/
+.sf-shadow2 ul {
+	background:	url('/assets/shadow.png') no-repeat bottom right;
+	padding: 0 8px 9px 0;
+	-moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -o-border-radius: 5px;
+        -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.35);
+        -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.35);
+        -o-box-shadow: 0 0 2px rgba(0, 0, 0, 0.35);
+
+}
+.sf-shadow ul.sf-shadow-off {
+	background: transparent;
+}

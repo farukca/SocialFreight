@@ -2,14 +2,15 @@
 <html>
 <head>
   <title>Socialfreight</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag    "socialfreight" %>
+  <%= javascript_include_tag "socialfreight" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render 'layouts/topbar' %>
+<%#= render 'layouts/topbar' %>
+<%= render 'shared/site_header' %>
 
-<div class="container">
+<div class="container-fluid" style="padding:0">
 
   <div id="content">
     <div id="messages" class="span16" style="margin-top:50px">
@@ -21,6 +22,8 @@
   </div>
 
 </div>
+<%= render 'shared/site_news' %>
+<%= render 'shared/site_footer' %>
 
 </body>
 </html>

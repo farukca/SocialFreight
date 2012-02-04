@@ -1,0 +1,24 @@
+<div class="header">
+  <div class="container">
+    <div class="logo-container">
+      <a class="logo" href="index.html"><img src="/assets/logo.png" alt="" /></a>
+      <span class="tagline">Multimodal nakliye yönetimi, ve sosyal...</span-->
+    </div>
+    <ul id="main-nav" class="sf-menu">
+      <li><%= link_to "Ana Sayfa", root_url, :class => "active" %></li>
+      <li><%= link_to "Güvenlik", security_path %></li>
+      <li><%= link_to "Servisler", "#" %>
+        <ul>
+          <li><%= link_to "Kara Taşımacılığı", road_path %></li>
+          <li><%= link_to "Hava Taşımacılığı", air_path %></li>
+          <li><%= link_to "Deniz Taşımacılığı", sea_path %></li>
+          <li><%= link_to "Demiryolu Taşımacılığı", rail_path %></li>
+          <li><%= link_to "Ulusal Dağıtım", inland_path %></li>
+        </ul>
+      </li>
+      <li><%= link_to "Niçin SocialFreight", features_path %></li>
+      <li><%= link_to "Roadmap", roadmap_path %></li>
+      <li><%= link_to "İletişim", "?" %></li>
+    </ul>
+  </div>
+</div>

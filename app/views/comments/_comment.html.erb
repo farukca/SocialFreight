@@ -1,9 +1,8 @@
 <li>
   <div class="feedline">
     <a href="#" class="img-load"><%= image_tag comment.user.avatar_url(:small) %></a> 
-    <span>
-      <%= comment.comment_text %>
-    </span>
-    <p class="rightside"><%= link_to "#{comment.user.full_name}; #{comment.created_at.strftime("%d/%m/%Y %I:%M%p")}", "#" %></p>
+    <span><%= comment.user.full_name %></span>&nbsp;
+    <span><%= comment.comment_text %></span>
+    <p class="rightside"><%= link_to "#{comment.created_at.strftime("%d/%m/%Y %I:%M%p")}", "#" %></p>
   </div>
 </li>
