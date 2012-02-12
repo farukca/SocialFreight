@@ -1,16 +1,18 @@
-<% yield :selected_navigation %>
-
-<div id="nav" class="row profile" style="margin-top:45px;">
-  <ul class="tabs" data-tabs="tabs">
-    <li class="<%= selected_navigation(:home) %>"><a href="#">Ana Sayfa</a></li>
-    <% current_patron.operations.each_with_index do |operation, index| %>
-      <% unless operation.to_s.blank? %>
-        <li class="<%= selected_navigation(operation.to_s) %>"><%= link_to operation.to_s.humanize, home_operation_path(operation) %></li>
-      <% end %>
-    <% end %>
-    <li><a href="#">Ulusal Dağıtım</a></li>
-    <li><%= link_to "Müşteriler", companies_path %></li>
-    <li><%= link_to "Admin Panel", patron_path(current_patron) %></li>
-    <li><%= link_to "Diğer İşlemler", "#" %></li>
+<div id="main-navigation" class="row profile" style="margin-top:45px;margin-left:5px;">
+  <ul class="nav nav-tabs" data-tabs="tabs">
+    <li id="homenavigator"><%= link_to "Ana Sayfa", root_url %></li>
+    <li id="airnavigator"><%= link_to "Hava", home_operation_path(:air) %></li>
+    <li id="seanavigator"><%= link_to "Deniz", home_operation_path(:sea) %></li>
+    <li id="roadnavigator"><%= link_to "Kara", home_operation_path(:road) %></li>
+    <li id="railnavigator"><%= link_to "Demiryolu", home_operation_path(:rail) %></li>
+    <%# current_patron.operations.each_with_index do |operation, index| %>
+      <%# unless operation.to_s.blank? %>
+        <!--li class="<%#= selected_navigation(operation.to_s) %>"><%#= link_to operation.to_s.humanize, home_operation_path(operation) %></li-->
+      <%# end %>
+    <%# end %>
+    <li id="inlandnavigator"><%= link_to "Ulusal Dağıtım", home_operation_path(:inland) %></li>
+    <li id="companynavigator"><%= link_to "Müşteriler", companies_path %></li>
+    <li id="adminnavigator"><%= link_to "Admin Panel", patron_path(current_patron) %></li>
+    <li id="othersnavigator"><%= link_to "Diğer İşlemler", "#" %></li>
   </ul>
 </div>

@@ -1,21 +1,13 @@
 <div id="profile-header" class="profile-content">
   <table class="outer" width="100%" id="headerTable" border="0" cellspacing="0" cellpadding="0">
     <tr>
-      <td class="span3">
+      <td class="span2">
         <div id="profile-picture" class="loading">
           <%= image_tag("/assets/loading.png") %>
         </div>
       </td>
-      <td>
+      <td style="vertical-align:top">
         <div id="profile-detail" class="loading">
-          <div id="profile-title" class="row">
-            <div class="title">
-              <span><%= @loading.reference.upcase %></span>
-            </div>
-            <div class="buttons">
-              <%= link_to "Edit", edit_loading_path(@loading), :class => 'btn primary' %>
-            </div>
-          </div>
           <%= render 'profile_detail' %>
         </div>
       </td>

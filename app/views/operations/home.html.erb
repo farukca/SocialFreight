@@ -1,10 +1,6 @@
 <%= content_for(:sidebar, render(:partial => 'sidebar', :locals => {:operation => @operation.id} )) %>
 
-<% content_for :selected_navigation do%>
-  <% @selected_navigation = @operation.id %>
-<% end %>
-
-<div id="operation" class="row">
+<div id="operation">
 
   <%= render 'content' %>
 

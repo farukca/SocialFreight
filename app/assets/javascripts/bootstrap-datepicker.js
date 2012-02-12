@@ -206,9 +206,8 @@
         var offset = this.$el.offset();
 
         this.$picker.css({
-          //FC top: offset.top + this.$el.outerHeight() + 2,
-          top: offset.top - 15,
-          left: offset.left - 206
+          top: offset.top + this.$el.outerHeight() + 2,
+          left: offset.left
         }).show();
 
         $('html').on('keydown', this.keyHandler);

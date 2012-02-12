@@ -1,10 +1,10 @@
 <%= content_for(:sidebar, render(:partial => 'operations/sidebar', :locals => {:operation => @position.operation} )) %>
 
-<div id="position" class="row">
-  <div class="row">
+<div id="position">
+  <div>
     <%= render 'profile_header' %>
   </div>
-  <div class="row">
+  <div>
     <%= render 'profile_content' %>
   </div>
 </div>

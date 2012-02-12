@@ -10,11 +10,11 @@
       <h5>Account Info</h5>
     </div>
 
-    <div class="row">
+    <div>
       <div id="my-tab-content" class="tab-content">
         <div id="company-main-form" class="tab-pane active">
           <div class="pageBody">
-            <table  class="detailList" border="0" cellpadding="0" cellspacing="0">
+            <table style="width:100%" border="0" cellpadding="0" cellspacing="0">
               <tr>
                 <%= f.input :name, :label => "Short Name" %>
                 <%= f.input :title, :label => "Invoice Title" %>
@@ -29,13 +29,7 @@
                 <%= f.input :contact %>
                 <%= f.input :branch, :as => :select, :collection => current_patron.branches, :include_blank => false %>
               </tr>
-            </table>
-          </div>
-          <div class="subHeader">
-            <h5>İletişim Bilgileri</h5>
-          </div>
-          <div class="pageBody">
-            <table  class="detailList" border="0" cellpadding="0" cellspacing="0">
+              <tr class="subHeader"><td colspan="2"><h5>İletişim Bilgileri</h5></td></tr>
               <tr>
                 <%= f.input :tel  %>
                 <%= f.input :fax  %>
@@ -46,12 +40,12 @@
               </tr>
               <tr>
                 <%= f.input :country_id do %>
-                  <%= f.input_field :country_id, :class => "medium", :as => :select, :collection => Country.all, :include_blank => false %>
-                  <%= f.input_field :city_id, :class => "medium", :as => :select, :collection => City.all, :include_blank => false %>
+                  <%= f.input_field :country_id, :class => "input-medium", :as => :select, :collection => Country.all, :include_blank => false %>
+                  <%= f.input_field :city_id, :class => "input-medium", :as => :select, :collection => City.all, :include_blank => false %>
                 <% end %>
                 <%= f.input :district do %>
-                  <%= f.input_field :district, :class => "medium" %>
-                  <%= f.input_field :postcode, :class => "small" %>
+                  <%= f.input_field :district, :class => "input-medium" %>
+                  <%= f.input_field :postcode, :class => "input-small" %>
                 <% end %>
               </tr>
               <tr>

@@ -8,17 +8,11 @@
 //= require jquery_ujs
 //= require jquery.cycle.all
 //= require rails.validations
-//= require bootstrap-modal
-//= require bootstrap-alerts
-//= require bootstrap-twipsy
-//= require bootstrap-popover
-//= require bootstrap-dropdown
-//= require bootstrap-scrollspy
-//= require bootstrap-tabs
-//= require bootstrap-buttons
-//= require bootstrap-datepicker
+//= require bootstrap
 //= require facebox
 //= require twitter
 //= require superfish
 //= require script
 // require_tree .
+// require bootstrap-datepicker
+

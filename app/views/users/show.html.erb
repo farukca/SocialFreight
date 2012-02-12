@@ -1,12 +1,8 @@
-<% content_for :selected_navigation do%>
-  <% @selected_navigation = :home %>
-<% end %>
-
-<div id="user" class="row">
-  <div class="row">
+<div id="user">
+  <div>
     <%= render 'profile_header' %>
   </div>
-  <div class="row">
+  <div>
     <%= render 'profile_content' %>
   </div>
 </div>

@@ -1,14 +1,14 @@
 <div id="profile-header" class="profile-content">
   <table class="outer" width="100%" id="headerTable" border="0" cellspacing="0" cellpadding="0">
     <tr>
-      <td class="span3">
+      <td class="span2 noborder">
         <div id="profile-picture" class="loading">
           <%= link_to image_tag(@user.avatar_url(:profile)), "#", :class => 'togglebutton', "data-placement" => "below",  "rel" => 'twipsy', "title" => "Resmi Değiştirmek için Tıklayınız", "data-href" => "#logo_change_div" %>
         </div>
       </td>
       <td>
         <div id="profile-detail" class="loading">
-          <div id="profile-title" class="row">
+          <div id="profile-title">
             <div class="title">
               <span><%= @user.full_name %></span>
             </div>
@@ -20,7 +20,7 @@
           </div>
           <%= render 'profile_detail' %>
         </div>
-        <div id="logo_change_div" class="row slidingDiv">
+        <div id="logo_change_div" class="slidingDiv">
           <%= form_for @user, :remote => true, :html => {:multipart => true} do |f| %>
             <p>
               <label>Resim dosyası:</label>

@@ -2,7 +2,7 @@
   <div class="feedline">
     <a href="#" class="img-load"><%= image_tag post.user.avatar_url(:small) %></a>
     <%= link_to post.target, :title => "#{post.target_type}: #{post.target_name}" do %>
-      <%= image_tag "s.png",  :class => "#{post.target_type}Icon" %>
+      <i class="icon-<%= post.target_type.downcase %>"></i>
       <span class="mruText"><%= post.target_name %></span>
     <% end if post.target %>
     <span><%= post.user.full_name %>&nbsp;<%= post.message %></span>

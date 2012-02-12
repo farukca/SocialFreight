@@ -3,13 +3,15 @@
   <%= simple_form_for Post.new, :validate => true, :remote => true, :class => "post" do |f| %>
   <%= f.error_notification %>
     <tr>
-      <%= f.input :message, :as => :text, :input_html => {:rows => "1", :style => "width:100%"}, :label => false %>
+      <%= f.input :message, :as => :text, :input_html => {:rows => "1", :style => "width:95%"}, :label => false %>
     </tr>
     <tr>
       <td>
         <div class="clearfix">
           <span><a href="#">Attach a link</a></span>
-          <span class="rightside"><%= f.button :submit, :class => 'btn primary' %></span>
+          <span class="rightside">
+            <%= f.button :submit, :class => 'btn btn-info' %>
+          </span>
         </div>
       </td>
     </tr>

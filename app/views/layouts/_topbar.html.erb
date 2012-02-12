@@ -1,13 +1,15 @@
-<div class="topbar">
-  <div class="fill">
-    <div class="container fixed">
-      <h3><a href="#">SocialFreight</a></h3>
-      <ul class="nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner fill">
+    <div class="container">
+      <%= link_to "SocialFreight", root_url, :class => "brand" %>
+      <div class="nav-collapse">
+      <ul class="nav social">
+        <li><a class="twitter" href="https://twitter.com/socialfreight"></a></li>
+        <li><a class="facebook" href="https://www.socialfreight.com"></a></li>
+        <li><a class="mail" href="https://www.socialfreight.com"></a></li>
+        <li><a class="phone" href="https://www.socialfreight.com"></a></li>
       </ul>
-      <ul class="nav secondary-nav">
+      <ul class="nav pull-right">
         <% if current_user %>
           <% if current_patron %>
             <li><%= link_to current_patron.title, patron_path(current_patron) %></li>
@@ -20,6 +22,7 @@
           <li><%= link_to "Try SocialFreight", new_patron_path %></li>
         <% end %>
       </ul>
+      </div>
     </div>
   </div>
 </div>

@@ -1,10 +1,10 @@
 <tr>
   <%= f.input :vessel, :label => I18n.t("position.#{@position.operation}.label.vesselvoyage") do %>
-    <%= f.input_field :vessel, :class => "small" %>
-    <%= f.input_field :voyage, :class => "medium" %>
+    <%= f.input_field :vessel, :class => "input-small" %>
+    <%= f.input_field :voyage, :class => "input-medium" %>
   <% end %>
   <%= f.input :vessel2, :label => I18n.t("position.#{@position.operation}.label.vessel2voyage") do %>
-    <%= f.input_field :vessel2, :size => 15 %>
-    <%= f.input_field :voyage2, :size => 15 %>
+    <%= f.input_field :vessel2, :class => "input-small" %>
+    <%= f.input_field :voyage2, :class => "input-medium" %>
   <% end %>
 </tr>

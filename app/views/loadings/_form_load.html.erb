@@ -1,0 +1,61 @@
+<div class="pageBody">
+  <table style="width:100%" border="0" cellpadding="0" cellspacing="0">
+    <tr class="subHeader"><td colspan="2"><h4>Yükleme Bilgileri</h4></td></tr>
+    <tr>
+      <td class="dataCol">
+        <table class="detailList" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <%= f.input :departure_country do %>
+              <%= f.input_field :departure_country, :as => :select, :collection => Country.all, :include_blank => true, :class => "input-medium" %>
+              <%#= f.input :departure_city, :input_html => {:class => "token_input", "data-url" => "/cities.json", "data-pre" => @loading.departure_city ? @loading.departure_city.prepopulate_tokens.to_json : nil} %>
+              <%= f.grouped_collection_select :departure_city, Country.order_by(:name), :cities, :name, :id, :name, {:include_blank => true}, {:class => "input-medium"} %>
+            <% end %>
+          </tr>
+          <tr>
+            <%= f.input :load_point, :as => :select, :collection => Loading.point_types.map { |r| [r[1], r[0] ] } %>
+          </tr>
+          <tr>
+            <%= f.input :pickup_date, :label => "Prepared/Load Date", :input_html => {:class => "inline-inputs"} do %>
+              <%= f.input_field :pickup_date, :class => "input-small", "data-datepicker" => "datepicker" %>
+              <%= f.input_field :load_date, :class => "input-small", "data-datepicker" => "datepicker" %>
+            <% end %>
+          </tr>
+          <tr>
+            <%= f.input :load_place, :input_html => {:class => "token_input", "data-url" => "/places.json", "data-pre" => @loading.load_place ? @loading.load_place.prepopulate_tokens.to_json : nil} %>
+          </tr>
+          <tr>
+            <%= f.input :departure_district, :label => "Semt" do %>
+              <%= f.input_field :departure_district, :class => "input-medium" %>
+              <%= f.input_field :departure_postcode, :class => "input-small" %>
+            <% end %>
+          </tr>
+          <tr>
+            <%= f.input :departure_address, :as => :text, :input_html => {:rows => 1, :cols => 37} %>
+          </tr>
+        </table>
+      </td>
+      <td class="dataCol">
+        <table style="width:100%" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <%= f.input :sender, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.sender ? @loading.sender.prepopulate_tokens.to_json : nil } %>
+          </tr>
+          <tr>
+            <%= f.input :loader, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.loader ? @loading.loader.prepopulate_tokens.to_json : nil } %>
+          </tr>
+          <tr>
+            <%= f.input :customofficer, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.customofficer ? @loading.customofficer.prepopulate_tokens.to_json : nil } %>
+          </tr>
+          <tr>
+            <%= f.input :statement do %>
+              <%= f.input_field :statement, :class => "input-medium" %>
+              <%= f.input_field :statement_date, :class => "input-small", "data-datepicker" => "datepicker" %>
+            <% end %>
+          </tr>
+          <tr>
+            <%= f.input :loading_note, :as => :text, :input_html => {:rows => 1} %>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>

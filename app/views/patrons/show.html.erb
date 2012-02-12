@@ -1,4 +1,4 @@
-<div id="patron" class="row">
+<div id="patron">
   <!--div id="sidebar" class="span4 columns sidebar">
     <div id="profile-sidebar">
       <div id="profile-picture">
@@ -7,7 +7,7 @@
       <%= render 'tab_sidebar', :patron => @patron %>
     </div>
   </div-->
-  <div class="row">
+  <div>
     <div id="profile-picture">
       <%= link_to image_tag(@patron.logo_url(:profile)), "#", :class => 'togglebutton', "data-placement" => "below",  "rel" => 'twipsy', "title" => "Resmi Değiştirmek için Tıklayınız", "data-href" => "#logo_change_div" %>
     </div>
@@ -15,7 +15,7 @@
       <h3><%= @patron.title %></h3>
     </div>
   </div>
-  <div id="logo_change_div" class="row slidingDiv">
+  <div id="logo_change_div" class="slidingDiv">
     <%= form_for @patron, :remote => true, :html => {:multipart => true} do |f| %>
       <p>
         <label>Resim dosyası:</label>
@@ -27,12 +27,12 @@
       </p>
     <% end %>
   </div>
-  <div class="row">
+  <div>
     <div id="good" class="profile">
-      <ul class="tabs" data-tabs="tabs">
-        <li class="active"><a href="#patron_profile">Genel Bilgiler</a></li>
-        <li><a href="#users">Kullanıcılar</a></li>
-        <li><a href="#branches">Şubeler</a></li>
+      <ul class="nav nav-pills">
+        <li class="active"><a data-toggle="tab" href="#patron_profile"><i class="icon-home icon-white"></i>Genel Bilgiler</a></li>
+        <li><a data-toggle="tab" href="#users"><i class="icon-user icon-white"></i>Kullanıcılar</a></li>
+        <li><a data-toggle="tab" href="#branches"><i class="icon-move icon-white"></i>Şubeler</a></li>
       </ul>
       <div id="my-tab-content" class="tab-content">
         <%= render 'tab1', :patron => @patron %>

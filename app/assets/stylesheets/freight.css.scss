@@ -9,10 +9,6 @@ html, body {
     display: table;
     padding: 0;
 }
-.outer td {
-    vertical-align:middle;
-    border-bottom: 1px solid #ECECEC;
-}
 .outer td .sidebarCell {
     vertical-align:top;
 }
@@ -35,18 +31,17 @@ html, body {
     background:none repeat scroll 0 0 transparent;
 }
 .sidebarMenuHeader {
-    background-color: #1797C0;
     color:#FFFFFF;
     padding:0;
     font-weight:bold;
 }
 .sidebarMenuBody {
-    padding:6px 5px 10px 4px;
+    //padding:6px 5px 10px 4px;
     background-color: transparent;
-    padding:12px 9px 10px;
+    //padding:12px 9px 10px;
 }
 .recentItem {
-    padding:4px 5px 3px 25px;
+    padding:2px 0 2px 5px;
     position:relative;
     z-index:7;
 }
@@ -87,12 +82,14 @@ html, body {
     padding-bottom:3px;
     padding-top:3px;
     line-height: 18px;
+    color:#666;
 }
 .labelCol {
-    width:36%;
+    width:30%;
     font-size:91%;
     font-weight:bold;
     text-align:right;
+    margin-right: 5px;
 }
 .dataCol {
     width:50%;
@@ -127,10 +124,6 @@ html, body {
     border-radius:4px 4px 4px 4px;
     border-right:1px solid #EAEAEA;
     border-top:3px solid #236FBD;
-}
-.pageBody {
-    margin-top: 8px;
-    border-bottom:1px solid #EAEAEA;
 }
 .subHeader {
     background-color:#C4C5C6;
@@ -395,6 +388,7 @@ fieldset span {
 }
 #login_form label, #patron_form label {
     margin-right:5px;
+    color:#fff;
 }
 #login_image {
     margin-top: 40px;
@@ -574,19 +568,6 @@ form ul li label {
 .welcome_screen  p {
     font-weight:bold;
 }
-#createBtn {
-    background-color: #444444;
-    color: #FFFFFF;
-    width: 200px;
-    margin-left:0px;
-}
-#createBtn h3, h4 {
-    color: #FFFFFF;
-    margin-left:10px;
-}
-#createBtn a {
-    color: #EEEEEE;
-}
 .page-header h1, h4 {
   margin-bottom: 0px;
   color: #333333;
@@ -599,12 +580,11 @@ form ul li label {
 }
 #profile-picture {
     float: left;
-    margin-bottom: 10px;
     margin-left: 10px;
     margin-right: 10px;
     overflow: hidden;
     width: 120px;
-    height: 100px;
+    height: 35px;
 }
 #profile-title .title {
     width: 50%;
@@ -681,8 +661,7 @@ h4.profile-data-section {
     width:200px;
 }
 .box {
-    margin-bottom:15px;
-    margin-top:20px;
+    margin-bottom:20px;
 }
 .todoList {
     background:url("/assets/todoBack.png") repeat-x scroll 0 0 #FFE5A7;
@@ -805,4 +784,16 @@ label abbr {
   border-color: #c43c35 #c43c35 #882a25;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   color: #FFFFFF;
+}
+.nav-tabs, .nav-pills {
+    margin-bottom: 5px;
+}
+.icon-company {
+  background-position: -24px -120px;
+}
+.icon-position {
+  background-position: -240px 0;
+}
+.icon-loading {
+  background-position: -264px 0;
 }

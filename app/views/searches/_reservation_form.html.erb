@@ -6,23 +6,23 @@
     <%= f.input :id, :as => :hidden, :input_html => { :value => "" } %>
     <%= f.input :searched, :as => :hidden, :input_html => { :value => "false" } %>
     <%= f.input :operation, :as => :hidden %>
-  <table  class="detailList" border="0" cellpadding="0" cellspacing="0">
+  <table style="width:100%" border="0" cellpadding="0" cellspacing="0">
     <tr>
-      <%= f.input :direction, :label => false do %>
+      <%= f.input :direction do %>
         <%= f.input_field :direction, :as => :select, :collection => Position.direction_types.map { |r| [r[1], r[0] ] }, :class =>
- "medium", :include_blank => false %>
-        <%= f.input_field :branch, :as => :select, :collection => current_patron.branches, :class => "medium" %>
+ "input-medium", :include_blank => false %>
+        <%= f.input_field :branch, :as => :select, :collection => current_patron.branches, :class => "input-medium" %>
       <% end %>
       <%= f.input :docdate1, :label => "Load Date" do %>
-        <%= f.input_field :docdate1, :class => "small", "data-datepicker" => "datepicker" %>
-        <%= f.input_field :docdate2, :class => "small", "data-datepicker" => "datepicker" %>
-        <%= f.button :submit, "Search", :class => 'btn primary' %>
+        <%= f.input_field :docdate1, :class => "input-small", "data-datepicker" => "datepicker" %>
+        <%= f.input_field :docdate2, :class => "input-small", "data-datepicker" => "datepicker" %>
+        <%= f.button :submit, "Search", :class => 'btn btn-primary' %>
         <%= link_to (image_tag "advanced_search.png"), "#", :class => 'togglebutton', "data-placement" => "below",  "rel" => 'twipsy', "title" => "Detaylı Ara", "data-href" => "#res_form_details" %>
       <% end %>
     </tr>
     <tr id="res_form_details" class="slidingDiv">
       <%= f.input :company_id %>
-      <%= f.input :country, :as => :select, :collection => Country.all, :include_blank => false, :input_html => {:class => "medium"} %>
+      <%= f.input :country, :as => :select, :collection => Country.all, :include_blank => false, :input_html => {:class => "input-medium"} %>
     </tr>
   </table>
   </fieldset>

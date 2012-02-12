@@ -101,14 +101,6 @@ class Company
     self.address.blank? #|| (!self.location.blank?)
   end
 
-  private
-  def set_after_jobs
-    self.user.follow(self) if self.user
-    self.user.create_activity(self, name, patron_id, patron_token)
-    #patron.set_activity(self, 'create', user.id, 'created', user.full_name)
-    Patron.journal_record(patron, user, branch, nil, self.class.name, 1, 0)
-  end
-
   class << self
 
     def company_types()
@@ -134,4 +126,13 @@ class Company
   def to_s
     name
   end
+
+  private
+  def set_after_jobs
+    self.user.follow(self) if self.user
+    self.user.create_activity(self, name, patron_id, patron_token)
+    #patron.set_activity(self, 'create', user.id, 'created', user.full_name)
+    Patron.journal_record(patron, user, branch, nil, self.class.name, 1, 0)
+  end
+
 end

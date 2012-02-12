@@ -1,59 +1,23 @@
 <div class="pageBody">
-  <table  class="detailList" border="0" cellpadding="0" cellspacing="0">
-    <tr>
-      <%= f.input :sender, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.sender ? @loading.sender.prepopulate_tokens.to_json : nil } %>
-      <%= f.input :loader, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.loader ? @loading.loader.prepopulate_tokens.to_json : nil } %>
-    </tr>
-    <tr>
-      <%= f.input :customofficer, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.customofficer ? @loading.customofficer.prepopulate_tokens.to_json : nil } %>
-      <%= f.input :statement do %>
-        <%= f.input_field :statement, :class => "medium" %>
-        <%= f.input_field :statement_date, :class => "small", "data-datepicker" => "datepicker" %>
-      <% end %>
-    </tr>
-  </table>
-</div>
-<div class="subHeader">
-  <h5>Teslimat Bilgileri</h5>
-</div>
-<div class="pageBody">
-  <table  class="detailList" border="0" cellpadding="0" cellspacing="0">
-    <tr>
-      <%= f.input :consignee, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.consignee ? @loading.consignee.prepopulate_tokens.to_json : nil } %>
-      <%= f.input :deliver, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.deliver ? @loading.deliver.prepopulate_tokens.to_json : nil } %>
-    </tr>
-    <tr>
-      <%= f.input :notify, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.notify ? @loading.notify.prepopulate_tokens.to_json : nil } %>
-      <%= f.input :notify2, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.notify ? @loading.notify.prepopulate_tokens.to_json : nil } %>
-    </tr>
-    <tr>
-      <%= f.input :loading_note, :as => :text, :input_html => {:rows => 1, :cols => 37} %>
-      <%= f.input :delivery_note, :as => :text, :input_html => {:rows => 1, :cols => 37} %>
-    </tr>
-  </table>
-</div>
-<div class="subHeader">
-  <h5>Diğer Bilgiler</h5>
-</div>
-<div class="pageBody">
-  <table  class="detailList" border="0" cellpadding="0" cellspacing="0">
+  <table style="width:100%" border="0" cellpadding="0" cellspacing="0">
+    <tr class="subHeader"><td colspan="2"><h4>Ek Bilgiler</h4></td></tr>
     <tr>
       <%= f.input :producer, :input_html => {:class => "medium"} %>
       <%= f.input :product_price do %>
-        <%= f.input_field :product_price, :class => "small" %>
-        <%= f.input_field :product_curr, :as => :select, :collection => Currency.all, :include_blank => false, :class => "medium" %>
+        <%= f.input_field :product_price, :class => "input-small" %>
+        <%= f.input_field :product_curr, :as => :select, :collection => Currency.all, :include_blank => false, :class => "input-medium" %>
       <% end %>
     </tr>
     <tr>
       <%= f.input :agent, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.agent ? @loading.agent.prepopulate_tokens.to_json : nil } %>
-      <%= f.input :agent_reference, :input_html => {:class => "medium"} %>
+      <%= f.input :agent_reference, :input_html => {:class => "input-medium"} %>
     </tr>
     <tr>
       <%= f.input :stage do %>
-        <%= f.input_field :stage, :class => "medium", :as => :select, :collection => Loading.stages.map { |r| [r[1], r[0] ] }, :include_blank => false %>
-        <%= f.input_field :stage_date, :class => "small", "data-datepicker" => "datepicker" %>
+        <%= f.input_field :stage, :class => "input-medium", :as => :select, :collection => Loading.stages.map { |r| [r[1], r[0] ] }, :include_blank => false %>
+        <%= f.input_field :stage_date, :class => "input-small", "data-datepicker" => "datepicker" %>
       <% end %>
-      <%= f.input :customer_reference, :input_html => {:class => "medium"} %>
+      <%= f.input :customer_reference, :input_html => {:class => "input-medium"} %>
     </tr>
   </table>
 </div>

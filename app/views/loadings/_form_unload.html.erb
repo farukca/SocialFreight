@@ -1,0 +1,54 @@
+<div class="pageBody">
+  <table style="width:100%" border="0" cellpadding="0" cellspacing="0">
+    <tr class="subHeader"><td colspan="2"><h4>Boşaltma Bilgileri</h4></td></tr>
+    <tr>
+      <td class="dataCol">
+        <table style="width:100%" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <%= f.input :arrival_country do %>
+              <%= f.input_field :arrival_country, :as => :select, :collection => Country.all, :include_blank => false, :class => "input-medium" %>
+              <%= f.grouped_collection_select :arrival_city, Country.order_by(:name), :cities, :name, :id, :name, {:include_blank => true}, {:class => "input-medium"} %>
+            <% end %>
+          </tr>
+          <tr>
+            <%= f.input :unload_point, :as => :select, :collection => Loading.point_types.map { |r| [r[1], r[0] ] } %>
+          </tr>
+          <tr>
+            <%= f.input :unload_date, :input_html => {:class => "input-small", "data-datepicker" => "datepicker"} %>
+          </tr>
+          <tr>
+            <%= f.input :unload_place, :input_html => {:class => "token_input", "data-url" => "/places.json", "data-pre" => @loading.unload_place ? @loading.unload_place.prepopulate_tokens.to_json : nil} %>
+          </tr>
+          <tr>
+            <%= f.input :arrival_district, :label => "Semt" do %>
+              <%= f.input_field :arrival_district, :class => "input-medium" %>
+              <%= f.input_field :arrival_postcode, :class => "input-small" %>
+            <% end %>
+          </tr>
+          <tr>
+            <%= f.input :arrival_address, :as => :text, :input_html => {:rows => 1, :cols => 37} %>
+          </tr>
+        </table>
+      </td>
+      <td class="dataCol">
+        <table style="width:100%" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <%= f.input :consignee, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.consignee ? @loading.consignee.prepopulate_tokens.to_json : nil } %>
+          </tr>
+          <tr>
+            <%= f.input :deliver, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.deliver ? @loading.deliver.prepopulate_tokens.to_json : nil } %>
+          </tr>
+          <tr>
+            <%= f.input :notify, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.notify ? @loading.notify.prepopulate_tokens.to_json : nil } %>
+          </tr>
+          <tr>
+            <%= f.input :notify2, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.notify ? @loading.notify.prepopulate_tokens.to_json : nil } %>
+          </tr>
+          <tr>
+            <%= f.input :delivery_note, :as => :text, :input_html => {:rows => 1, :cols => 37} %>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>

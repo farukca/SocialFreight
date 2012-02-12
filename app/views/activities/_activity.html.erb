@@ -1,7 +1,7 @@
 <div id="item<%= activity.target_id %>" class="hoverable <%= activity.target_type.downcase %>Item">
   <div id="<%= activity.target_type.downcase %><%= activity.target_id %>" class="recentItem">
     <%= link_to activity.target, :title => "#{activity.target_type}: #{activity.target_name}" do %>
-      <%= image_tag "s.png",  :class => "#{activity.target_type.downcase}Icon" %>
+      <i class="icon-<%= activity.target_type.downcase %>"></i>
       <span class="mruText"><%= activity.target_name %></span>
     <% end %>
   </div>

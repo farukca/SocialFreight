@@ -7,18 +7,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require rails.validations
-//= require sf_min
 //= require jquery.tokeninput
-//= require megamenu
-//= require bootstrap-modal
-//= require bootstrap-alerts
-//= require bootstrap-twipsy
-//= require bootstrap-popover
-//= require bootstrap-dropdown
-//= require bootstrap-scrollspy
-//= require bootstrap-tabs
-//= require bootstrap-buttons
+//= require bootstrap
 //= require bootstrap-datepicker
 //= require facebox
 //= require highcharts
-//= require_tree .
+//= require loading
+//= require search
+//= require home
+// require_tree .
+// require sf_min
+

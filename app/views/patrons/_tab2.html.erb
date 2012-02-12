@@ -3,14 +3,14 @@
     <div id="new_user_btn">
       <%= link_to "Add User", "#", :class => "btn primary togglebutton", "data-placement" => "below", "data-href" => "#new_user_div" %>
     </div>
-    <div id="new_user_div" class="row slidingDiv">
+    <div id="new_user_div" class="slidingDiv">
       <%= render 'users/patron_user', :user => User.new() %>
     </div>
   </div>
 
-  <div class="row">
+  <div>
     <div id="users_list_div">
-      <table id="user_list" class="zebra-striped">
+      <table id="user_list" class="table table-striped table-condensed table-bordered">
         <%= render patron.users %>
       </table>
     </div>

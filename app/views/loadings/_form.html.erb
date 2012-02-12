@@ -5,22 +5,30 @@
 
   <div class="pageBlock">
     <%= render 'shared/form_buttonsh', :f => f, :header => "New Loading" %>
-    <%= render 'shared/form_header' %>
 
-    <div class="row">
-      <!--ul class="tabs" data-tabs="tabs">
-        <li class="active"><a href="#loading-main-form">Genel Yük Bilgileri</a></li>
-        <div class="rightside">
-          <%= f.button :submit, "Save Loading", :class => 'btn primary' %>
-        </div>
-      </ul-->
-
+    <div class="tabbable tabs-below">
 
       <div id="my-tab-content" class="tab-content">
-        <div id="loading-main-form" class="tab-pane active">
+        <div id="loading-main-form" class="tab-pane active" style="height: 300px; min-height: 300px;">
           <%= render 'form_main', :f => f %>
         </div>
+        <div id="loading-load-form" class="tab-pane" style="height: 300px; min-height: 300px;">
+          <%= render 'form_load', :f => f %>
+        </div>
+        <div id="loading-unload-form" class="tab-pane" style="height: 300px; min-height: 300px;">
+          <%= render 'form_unload', :f => f %>
+        </div>
+        <div id="loading-detail-form" class="tab-pane" style="height: 300px; min-height: 300px;">
+          <%= render 'form_detail', :f => f %>
+        </div>
       </div>
+
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#loading-main-form">1-Genel Yük Bilgileri</a></li>
+        <li><a data-toggle="tab" href="#loading-load-form">2-Yükleme Bilgileri</a></li>
+        <li><a data-toggle="tab" href="#loading-unload-form">3-Boşaltma Bilgileri</a></li>
+        <li><a data-toggle="tab" href="#loading-detail-form">4-Diğer Bilgiler</a></li>
+      </ul>
 
       <%= render 'shared/form_buttonsb', :f => f %>
     </div>

@@ -35,9 +35,15 @@
       </tr>
       <tr>
         <td class="labelCol2">Yükleme Adresi :</td>
-        <td class="dataCol2"><%= loading.departure_address %>&nbsp;<%= loading.departure_district %>&nbsp;<%= loading.departure_city.name if loading.departure_city %>&nbsp;<%= loading.departure_country.name if loading.departure_country %><span class="rightside"><a href="#">Show map</a></span></td>
+        <td class="dataCol2">
+          <span class="rightside"><a href="#"><i class="icon-map-marker"></i></a></span>
+          <%= loading.departure_address %>&nbsp;<%= loading.departure_district %>&nbsp;<%= loading.departure_city.name if loading.departure_city %>&nbsp;<%= loading.departure_country.name if loading.departure_country %>
+        </td>
         <td class="labelCol2">Boşaltma Adres :</td>
-        <td class="dataCol2"><%= loading.arrival_address %>&nbsp;<%= loading.arrival_district %>&nbsp;<%= loading.arrival_city.name if loading.arrival_city %>&nbsp;<%= loading.arrival_country.name if loading.arrival_country %><span class="rightside"><a href="#">Show map</a></span></td>
+        <td class="dataCol2">
+          <span class="rightside"><a href="#"><i class="icon-map-marker"></i></a></span>
+          <%= loading.arrival_address %>&nbsp;<%= loading.arrival_district %>&nbsp;<%= loading.arrival_city.name if loading.arrival_city %>&nbsp;<%= loading.arrival_country.name if loading.arrival_country %><span class="rightside"><a href="#">Show map</a></span>
+        </td>
       </tr>
       <tr>
         <td class="labelCol2">Yük Tanımı :</td>

@@ -3,11 +3,11 @@
     <tr>
       <td class="oRight" id="bodyCell">
   <div id="inner-content">
-    <div id="good" class="row profile">
-      <ul class="pills" data-tabs="tabs">
-        <li class="active"><a href="#good_profile">Yük Bilgisi</a></li>
-        <li><a href="#good_detail">Yük Detayları</a></li>
-        <li><a href="#good_docs">Adres Bilgileri</a></li>
+    <div id="good" class="profile">
+      <ul class="nav nav-pills">
+        <li class="active"><a data-toggle="tab" href="#good_profile">Yük Bilgisi</a></li>
+        <li><a data-toggle="tab" href="#good_detail">Yük Detayları</a></li>
+        <li><a data-toggle="tab" href="#good_docs">Adres Bilgileri</a></li>
       </ul>
       <div id="my-tab-content" class="tab-content">
         <%= render 'tab1', :loading => @loading %>

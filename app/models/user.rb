@@ -93,4 +93,10 @@ class User
     self.password_confirmation = "9516284"
   end
 
+  def create_activity(target, target_name, patron_id, patron_token)
+    #creator_id ||= target.user_id
+    target_name ||= target.to_s
+    Activity.log(self, target, target_name, patron_id, patron_token)
+  end
+  
 end

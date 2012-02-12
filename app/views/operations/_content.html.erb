@@ -1,10 +1,11 @@
 <div id="content">
-  <div id="operation" class="row profile">
-    <ul class="tabs" data-tabs="tabs">
-      <li class="active"><a href="#position_list">Positions</a></li>
-      <li><a href="#loading_list">Loadings</a></li>
-      <li><a href="#reservation_list">Reservations</a></li>
+  <div id="operation" class="profile tabbable">
+    <ul class="nav nav-tabs" data-tabs="tabs">
+      <li class="active"><a data-toggle="tab" href="#position_list">Positions</a></li>
+      <li><a data-toggle="tab" href="#loading_list">Loadings</a></li>
+      <li><a data-toggle="tab" href="#reservation_list">Reservations</a></li>
     </ul>
+
     <div id="my-tab-content" class="tab-content">
       <div id="position_list" class="tab-pane profile-content active">
         <%= render 'searches/position_form' %>

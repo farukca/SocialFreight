@@ -1,22 +1,30 @@
 <div id="createBtn" class="sidebarMenu">
-  <div class="topbar-wrapper" style="z-index: 5;">
-    <div class="topbar inline-dropdown" data-dropdown="dropdown">
-      <div class="topbar-inner">
-        <ul class="nav inline-nav">
-          <li class="dropdown">
-            <a class="dropdown-toggle" href="#">Yeni Kayıt Oluştur</a>
-            <ul class="dropdown-menu">
-              <li class="divider" />
-              <li><%= link_to "Müşteri", new_company_path %></li>
-              <li><%= link_to "Teklif", new_company_path %></li>
-              <li><%= link_to "Fırsat", new_company_path %></li>
-              <li class="divider" />
-              <li><%= link_to "Aktivite", new_company_path %></li>
-              <li><%= link_to "Kullanıcı", new_user_path %></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
+  <div class="btn-toolbar">
+    <div class="btn-group">
+      <a class="btn btn-success" href="#" data-toggle="dropdown"><i class="icon-plus-sign icon-white"></i>&nbsp;&nbsp;&nbsp;&nbsp;Yeni Kayıt Oluştur</a>
+      <a class="btn btn-success dropdown-toggle" href="#" data-toggle="dropdown">
+         <span class="caret" />
+      </a>
+      <ul class="dropdown-menu">
+        <li>
+          <%= link_to new_company_path do %>
+            <i class="icon-company"></i> Müşteri
+          <% end %>
+        </li>
+        <li>
+          <%= link_to new_company_path do %>
+            <i class="icon-list-alt"></i> Teklif
+          <% end %>
+        </li>
+        <li>
+          <%= link_to new_company_path do %>
+            <i class="icon-tags"></i> Fırsat
+          <% end %>
+        </li>
+        <li class="divider" />
+        <li><%= link_to new_company_path do %><i class="icon-glass"></i>Aktivite<% end %></li>
+        <li><%= link_to new_user_path    do %><i class="icon-user"></i>Kullanıcı<% end %></li>
+      </ul>
     </div>
   </div>
 </div>

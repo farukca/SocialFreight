@@ -5,10 +5,10 @@
         <td class="tdTitle">
           <img class="minWidth" width="1" height="1" title="" alt="" src="../assets/s.gif">
         </td>
-        <td id="topButtonRow" class="pbButton">
-          <input class="btn primary" type="submit" name="save" title="Save" value=" Save ">
-          <input class="btn primary" type="submit" name="save_new" title="Save & New" value="Save & New">
-          <input class="btn danger" type="submit" name="cancel" title="Cancel" value="Cancel">
+        <td style="width:85%;text-align:center">
+          <%= f.button :submit, "Kaydet", :class => 'btn btn-info' %>
+          <%= f.button :submit, "Kaydet & Yeni", :class => "btn btn-info", :name => "saveandnew" %>
+          <input class="btn btn-danger" type="submit" name="cancel" title="Cancel" value="Cancel">
         </td>
       </tr>
     </tbody>
