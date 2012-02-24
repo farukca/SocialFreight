@@ -2023,13 +2023,14 @@ button.btn.small, input[type="submit"].btn.small {
 }
 .alert {
   padding: 8px 35px 8px 14px;
-  margin-bottom: 18px;
+  margin-bottom: 1px;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   background-color: #fcf8e3;
   border: 1px solid #fbeed5;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
+  text-align: center;
 }
 .alert, .alert-heading {
   color: #c09853;
@@ -2040,11 +2041,11 @@ button.btn.small, input[type="submit"].btn.small {
   right: -21px;
   line-height: 18px;
 }
-.alert-success {
+.alert-success, .alert-notice {
   background-color: #dff0d8;
   border-color: #d6e9c6;
 }
-.alert-success, .alert-success .alert-heading {
+.alert-success, .alert-success .alert-heading, .alert-notice {
   color: #468847;
 }
 .alert-danger, .alert-error {

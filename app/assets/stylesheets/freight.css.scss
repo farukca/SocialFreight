@@ -78,7 +78,7 @@ html, body {
     width:16px;
     background-position:0 0;
 }
-.labelCol, .dataCol, .labelCol2, .dataCol2 {
+.labelCol, .control-group, .labelCol2, .dataCol2 {
     padding-bottom:3px;
     padding-top:3px;
     line-height: 18px;
@@ -91,7 +91,7 @@ html, body {
     text-align:right;
     margin-right: 5px;
 }
-.dataCol {
+.control-group {
     width:50%;
 }
 .labelCol2 {
@@ -379,15 +379,16 @@ fieldset span {
     background:none repeat scroll 0 0 transparent;
     margin-bottom:-6px;
 }
-#login_form {
-    border-top: 1px dotted #DDDDDD;
-}
 #login_form label {
     text-align:left;
     width:20%;
 }
 #login_form label, #patron_form label {
     margin-right:5px;
+    color:#fff;
+}
+#login_form a, #patron_form a {
+    margin-left:5px;
     color:#fff;
 }
 #login_image {
@@ -554,6 +555,10 @@ form ul li label {
   font-size: 12px;
   border-top: 1px dotted #DDDDDD;
   padding: 20px 0 0 0;
+  color: #fff;
+}
+#signupnote a {
+  color: #fff;
 }
 .welcome_screen {
     margin-top:200px;
@@ -584,7 +589,7 @@ form ul li label {
     margin-right: 10px;
     overflow: hidden;
     width: 120px;
-    height: 35px;
+    //height: 35px;
 }
 #profile-title .title {
     width: 50%;
@@ -784,9 +789,15 @@ label abbr {
   border-color: #c43c35 #c43c35 #882a25;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   color: #FFFFFF;
+  text-align: center;
+  font-weight: bold;
 }
 .nav-tabs, .nav-pills {
     margin-bottom: 5px;
+}
+.form_tab_pane {
+    height: 300px;
+    min-height: 300px;
 }
 .icon-company {
   background-position: -24px -120px;
@@ -797,3 +808,8 @@ label abbr {
 .icon-loading {
   background-position: -264px 0;
 }
+.autocomplete-w1 { background:url(/assets/shadow.png) no-repeat bottom right; position:absolute; top:0px; left:0px; margin:8px 0 0 6px; /* IE6 fix: */ _background:none; _margin:0; }
+.autocomplete { border:1px solid #999; background:#FFF; cursor:default; text-align:left; max-height:350px; overflow:auto; margin:-6px 6px 6px -6px; /* IE6 specific: */ _height:350px;  _margin:0; _overflow-x:hidden; }
+.autocomplete .selected { background:#F0F0F0; }
+.autocomplete div { padding:2px 5px; white-space:nowrap; }
+.autocomplete strong { font-weight:normal; color:#3399FF; }

@@ -1,7 +1,8 @@
 class OperationsController < ApplicationController
 
-  before_filter :require_login
-
+  before_filter :require_login 
+  before_filter :set_current_tab, :only => [:home]
+  
   def index
     @operations = Operation.all
 
@@ -71,5 +72,9 @@ class OperationsController < ApplicationController
       end
     end
   end
-
+  
+  def set_current_tab
+    set_tab(params[:id]+"navigator") if params[:id]
+  end
+  
 end

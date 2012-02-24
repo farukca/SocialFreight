@@ -3,7 +3,7 @@
     <tr class="subHeader"><td colspan="2"><h4>Yükleme Bilgileri</h4></td></tr>
     <tr>
       <td class="dataCol">
-        <table class="detailList" border="0" cellpadding="0" cellspacing="0">
+        <table style="width:100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <%= f.input :departure_country do %>
               <%= f.input_field :departure_country, :as => :select, :collection => Country.all, :include_blank => true, :class => "input-medium" %>
@@ -37,13 +37,13 @@
       <td class="dataCol">
         <table style="width:100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <%= f.input :sender, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.sender ? @loading.sender.prepopulate_tokens.to_json : nil } %>
+            <%= f.input :sender, :input_html => {:class => "lookup_input", "data-url" => "/companies.json", "data-pre" => @loading.sender ? @loading.sender.to_s : nil } %>
           </tr>
           <tr>
-            <%= f.input :loader, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.loader ? @loading.loader.prepopulate_tokens.to_json : nil } %>
+            <%= f.input :loader, :input_html => {:class => "lookup_input", "data-url" => "/companies.json", "data-pre" => @loading.loader ? @loading.loader.to_s : nil } %>
           </tr>
           <tr>
-            <%= f.input :customofficer, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.customofficer ? @loading.customofficer.prepopulate_tokens.to_json : nil } %>
+            <%= f.input :customofficer, :input_html => {:class => "lookup_input", "data-url" => "/companies.json", "data-pre" => @loading.customofficer ? @loading.customofficer.to_s : nil } %>
           </tr>
           <tr>
             <%= f.input :statement do %>

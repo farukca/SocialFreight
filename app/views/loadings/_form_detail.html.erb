@@ -9,7 +9,7 @@
       <% end %>
     </tr>
     <tr>
-      <%= f.input :agent, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.agent ? @loading.agent.prepopulate_tokens.to_json : nil } %>
+      <%= f.input :agent, :input_html => {:class => "lookup_input", "data-url" => "/companies.json", "data-pre" => @loading.agent ? @loading.agent.to_s : nil } %>
       <%= f.input :agent_reference, :input_html => {:class => "input-medium"} %>
     </tr>
     <tr>

@@ -1,14 +1,10 @@
 <div class="pageHeader">
-  <table cellspacing="0" cellpadding="0" border="0">
+  <table style="width:100%" cellspacing="0" cellpadding="0" border="0">
     <tbody>
       <tr>
-        <td class="tdTitle">
-          <img class="minWidth" width="1" height="1" title="" alt="" src="../assets/s.gif">
-        </td>
-        <td style="width:85%;text-align:center">
+        <td style="width:90%;text-align:center">
           <%= f.button :submit, "Kaydet", :class => 'btn btn-info' %>
           <%= f.button :submit, "Kaydet & Yeni", :class => "btn btn-info", :name => "saveandnew" %>
-          <input class="btn btn-danger" type="submit" name="cancel" title="Cancel" value="Cancel">
         </td>
       </tr>
     </tbody>

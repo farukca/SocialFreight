@@ -16,7 +16,7 @@
   <div id="wrapper">
     <div id="messages">
       <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}", :class => "alert-message #{name}" %>
+        <%= content_tag :div, msg, :id => "flash_#{name}", :class => "alert alert-#{name}" %>
       <% end %>
     </div>
     <table class="outer" width="100%" id="bodyTable" border="0" cellspacing="0" cellpadding="0">
@@ -38,4 +38,4 @@
 </footer>
 </body>
 </html>
-<script type="text/javascript">document.getElementById('homenavigator').classList.add('active');</script>
+<script type="text/javascript">document.getElementById('<%= current_tab %>').classList.add('active');</script>

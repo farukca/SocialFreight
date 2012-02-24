@@ -10,6 +10,15 @@ jQuery ->
   $(".togglebutton").show()
   $('.togglebutton').click ->
      $($(this).data('href')).slideToggle()
+
+  $(".lookup_input").each ->
+    el = $(this)
+    el.smartAutoComplete source: el.data("url"),
+      typeAhead: true,
+      forceSelect: true,
+      maxResults: 5,
+      minCharLimit: 3
+
   $(".token_input").each ->
     el = $(this)
     el.tokenInput el.data("url"),

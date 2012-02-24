@@ -19,7 +19,7 @@
     <tr class="subHeader"><td colspan="2"><h4>Yükleme Bilgileri</h4></td></tr>
     <tr>
       <%= f.input :position_name, :input_html => {:class => "medium disabled", :disabled => ""}, :label => "Position" %>
-      <%= f.input :company, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @loading.company ? @loading.company.prepopulate_tokens.to_json : nil }, :label => "Customer" %>
+      <%= f.input :company, :input_html => {:class => "lookup_input", "data-url" => "/companies.json", "data-pre" => @loading.company ? @loading.company.to_s : nil }, :label => "Customer" %>
     </tr>
     <tr>
       <%= f.input :brut_wg, :label => "Brüt Ağırlık" do %>

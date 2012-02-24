@@ -1,13 +1,13 @@
-<div id="transnode_form" class="row">
-<%= simple_form_for [@position, @transnode], :validate => true do |f| %>
-  <%= f.error_notification %>
+<!--div id="transnode_form">
+<%#= simple_form_for [object, object.transnodes.build()], :validate => true do |f| %>
+  <%#= f.error_notification %>
 
   <fieldset>
     <div class="row">
       <div class="page-header span16 columns">
         <h4>New MultiModal Node</h4>
       </div>
-      <div class="span8 columns">
+      <div class="span8 columns"-->
         <%= f.input :trans_method do %>
           <%= f.input_field :trans_method, :as => :select, :collection => Transnode.trans_methods.map { |r| [r[1], r[0] ] }, :include_blank => false, :class => "medium" %>
           <%= f.input_field :trans_type, :as => :select, :collection => Transnode.trans_types.map { |r| [r[1], r[0] ] }, :include_blank => false, :class => "medium" %>
@@ -34,12 +34,12 @@
         <% end %>
         <%= f.input :vessel2, :label => "Additional Vessel" %>
         <%= f.input :notes, :as => :text, :input_html => {:rows => "3"} %>
-        <div class="clearfix" style="margin-left:250px">
+        <!--div class="clearfix" style="margin-left:250px">
           <%= f.button :submit, :class => 'btn primary' %>
         </div>
       </div>
     </div>
   </fieldset>
 
-<% end %>
-</div>
+<%# end %>
+</div-->

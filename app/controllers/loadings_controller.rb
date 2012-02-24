@@ -58,8 +58,8 @@ class LoadingsController < ApplicationController
       if @loading.save
         #current_user.follow(@loading)
 
-        #format.html { redirect_to @loading, notice: 'Loading was successfully created.' }
-        format.html { render 'detail', notice: 'Loading was successfully created.' }
+        format.html { redirect_to @loading, notice: 'Loading was successfully created.' }
+        #format.html { render 'detail', notice: 'Loading was successfully created.' }
         format.json { render json: @loading, status: :created, location: @loading }
       else
         format.html { render action: "new" }

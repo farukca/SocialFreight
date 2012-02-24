@@ -3,12 +3,12 @@
     <tbody>
       <tr>
         <td class="pbTitle">
-          <h3 class="mainTitle"><%= header.humanize if header %></h3>
+          <h3 class="mainTitle"><%= (params[:action] + " " + params[:controller]).humanize %></h3>
         </td>
         <td style="width:85%;text-align:center">
           <%= f.button :submit, "Kaydet", :class => 'btn btn-info' %>
           <%= f.button :submit, "Kaydet & Yeni", :class => "btn btn-info", :name => "saveandnew" %>
-          <input class="btn btn-danger" type="submit" name="cancel" title="Cancel" value="Cancel">
+          <input class="btn btn-danger" type="reset" name="cancel" title="Cancel" value="Cancel">
         </td>
       </tr>
     </tbody>

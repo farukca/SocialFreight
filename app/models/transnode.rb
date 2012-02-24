@@ -6,7 +6,7 @@ class Transnode
   field :reference
   field :trans_method
   field :trans_type
-  belongs_to :position
+  belongs_to :multimodal, polymorphic: true
   belongs_to :supplier, :class_name => "Company", :inverse_of => :supplier_transnodes
   field :voyage
   field :vessel

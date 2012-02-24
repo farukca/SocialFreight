@@ -378,7 +378,7 @@ $.TokenList = function (input, url_or_data, settings) {
     }
 
     //Faruk Lookup icon
-    var lookup_icon = $("<img />")
+    var lookup_icon = $("<span class='add-on'><i class='icon-plus'/></span>")
         .attr("src", "../assets/"+settings.classes.lookupIcon)
         .addClass("lookupIcon")
     var lookup_link = $("<a />")
@@ -387,20 +387,13 @@ $.TokenList = function (input, url_or_data, settings) {
         //.attr("href", "javascript: alert('Kayıt Seçiniz')")
         //.attr("rel", "facebox")
         .append(lookup_icon)
-    var newrec_icon    = $("<img />")
-        .attr("src", "../assets/"+settings.classes.newrecIcon)
-        .addClass("lookupIcon")
-    var newrec_link = $("<a />")
-        //.attr("href", (settings.url.split(".json")[0] + "/new?lookup=1"))
+    var newrec_icon = $("<i />")
+        .addClass("icon-plus")
         .attr("href", "javascript: openLookup('"+settings.url.split(".json")[0]+"/q="+input_box.val().toLowerCase()+"',670,'1','&lksrch=1')")
-        //.attr("rel", "facebox")
+    var newrec_link = $("<span />")
+        .addClass("add-on")
         .append(newrec_icon)
-    var lookup_div = $("<div />")
-        //.addClass("rightside")
-        .addClass("lookupInput")
-        .insertAfter(token_list)
-        .append(lookup_link)
-        //.append(newrec_link)
+        .insertAfter(input_box)
     //Faruk Lookup icon bitti
 
     // Initialization is done
@@ -453,6 +446,7 @@ $.TokenList = function (input, url_or_data, settings) {
     function checkTokenLimit() {
         if(settings.tokenLimit !== null && token_count >= settings.tokenLimit) {
             input_box.hide();
+            newrec_link.hide();
             hide_dropdown();
             return;
         }
@@ -481,7 +475,7 @@ $.TokenList = function (input, url_or_data, settings) {
           .insertBefore(input_token);
 
         // The 'delete token' button
-        $("<span>" + settings.deleteText + "</span>")
+        $("<a class='close'>" + settings.deleteText + "</a>")
             .addClass(settings.classes.tokenDelete)
             .appendTo(this_token)
             .click(function () {

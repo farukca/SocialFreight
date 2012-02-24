@@ -3,7 +3,7 @@ class Position
   include Mongoid::Timestamps
   include Mongoid::Slug
   include Mongoid::Followee
-  
+
   field :reference
   field :operation
   field :direction
@@ -56,9 +56,11 @@ class Position
   auto_increment :rec_number
 
   has_many :loadings, dependent: :nullify
-  has_many :transnodes
+  has_many :transnodes, as: :multimodal, dependent: :delete
   has_many :comments, as: :commentable, dependent: :delete
 
+  accepts_nested_attributes_for :transnodes
+  
   #attr_accessible 
 
   #validates_confirmation_of :password

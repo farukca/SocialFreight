@@ -7,6 +7,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require rails.validations
+//= require jquery.autocomplete
 //= require jquery.tokeninput
 //= require bootstrap
 //= require bootstrap-datepicker

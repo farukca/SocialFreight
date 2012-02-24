@@ -1,4 +1,4 @@
-<%= simple_form_for [@loading, Package.new], :validate => true do |f| %>
+<%= simple_form_for [@loading, @loading.packages.build()], :validate => true do |f| %>
   <%= f.error_notification %>
 
   <fieldset>
@@ -6,8 +6,8 @@
       <tr class="span6">
         <td style="text-align:center"><h4>New Package</h4></td>
       </tr>
-      <%#= f.hidden_field :loading, :value => @package.loading ? @package.loading.id : nil %>
-      <%#= f.hidden_field :container, :value => @package.container ? @package.container.id : nil %>
+      <%= f.hidden_field :loading, :value => @package.loading ? @package.loading.id : nil %>
+      <%= f.hidden_field :container, :value => @package.container ? @package.container.id : nil %>
 
       <tr>
         <%= f.input :total do %>

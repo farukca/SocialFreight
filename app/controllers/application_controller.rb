@@ -1,10 +1,21 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :current_patron
+  helper_method :current_patron, :current_tab
 
   def follow_object(object)
     current_user.follow(object)
+  end
+
+  def set_tab(tab_id)
+    session[:current_tab] = tab_id
+  end
+  
+  protected
+  def current_tab
+    current_tab = "homenavigator"
+    current_tab = session[:current_tab] if session[:current_tab]
+    current_tab
   end
 
   protected
