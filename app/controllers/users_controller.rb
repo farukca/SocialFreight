@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
  
   before_filter :require_login
-  skip_before_filter :require_login, :only => [:new, :activate, :activation, :update]
+  skip_before_filter :require_login, :only => [:new, :create, :activate, :activation, :update]
 
   def index
     @users = User.all
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by_title!(params[:id])
+    @user = User.find(params[:id])
   end
 
   def create
@@ -46,12 +46,12 @@ class UsersController < ApplicationController
   end
 
   def activation
-    @user = User.find_by_title!(params[:id])
+    @user = User.find(params[:id])
     render :layout => 'guest' unless current_user
   end
 
   def update
-    @user = User.find_by_title!(params[:id])
+    @user = User.find(params[:id])
 
     if @user.update_attributes(params[:user])
       if @user.last_login_at.nil?

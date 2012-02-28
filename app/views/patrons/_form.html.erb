@@ -31,7 +31,7 @@
             <div class="clearfix">
               <label class="required">Operations</label>
               <div id="operations">
-                <%= f.collection_check_boxes :operations, Operation.all, :id, :name, :label => "Operations" %>
+                <%= f.association :operations, :as => :check_boxes, :collection => Operation.all %>
               </div>
             </div>
           </td>

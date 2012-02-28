@@ -1,59 +1,61 @@
-class Position
-  include Mongoid::Document
-  include Mongoid::Timestamps
-  include Mongoid::Slug
-  include Mongoid::Followee
-
-  field :reference
-  field :operation
-  field :direction
-  field :paid_at
-  field :mwb_no
-  field :emwb_no
+class Position < ActiveRecord::Base
+  #include Mongoid::Document
+  #include Mongoid::Timestamps
+  #include Mongoid::Slug
+  #include Mongoid::Followee
+  extend FriendlyId
+  friendly_id :reference, use: :slugged
+  
+  #field :reference
+  #field :operation
+  #field :direction
+  #field :paid_at
+  #field :mwb_no
+  #field :emwb_no
   belongs_to :patron
-  field :patron_token
+  #field :patron_token
   belongs_to :branch
-  field :master_reference
-  field :master_type
-  field :master_date
+  #field :master_reference
+  #field :master_type
+  #field :master_date
   belongs_to :transporter, :class_name => "Company", :inverse_of => :transporter_positions
   belongs_to :forwarder, :class_name => "Company", :inverse_of => :forwarder_positions
   belongs_to :supplier, :class_name => "Company", :inverse_of => :supplier_positions
   belongs_to :agent, :class_name => "Company", :inverse_of => :agent_positions
-  field :voyage
-  field :vessel
-  field :driver
-  field :voyage2
-  field :vessel2
-  field :driver2
-  field :ownership
-  field :load_type
+  #field :voyage
+  #field :vessel
+  #field :driver
+  #field :voyage2
+  #field :vessel2
+  #field :driver2
+  #field :ownership
+  #field :load_type
   belongs_to :load_place, :class_name => "Place", :inverse_of => :load_place
-  field :load_date, type: Date
-  field :load_time
+  #field :load_date, type: Date
+  #field :load_time
   belongs_to :unload_place, :class_name => "Place", :inverse_of => :unload_place
-  field :unload_date, type: Date
-  field :unload_time
-  field :freight_price, type: Float, default: 0;
-  field :freight_curr
-  field :agent_price, type: Float, default: 0;
-  field :agent_curr
-  field :status, default: 'A'
-  field :stage, default: 'R'
-  field :stage_date, type: Date
-  field :contract_no
-  field :agent_reference
-  field :other_reference
-  field :tircarnet1
-  field :tircarnet2
-  field :ex1
-  field :description
-  field :ordino_date, type: Date
-  field :sob_date, type: Date
-  field :report_date, type: Date
+  #field :unload_date, type: Date
+  #field :unload_time
+  #field :freight_price, type: Float, default: 0;
+  #field :freight_curr
+  #field :agent_price, type: Float, default: 0;
+  #field :agent_curr
+  #field :status, default: 'A'
+  #field :stage, default: 'R'
+  #field :stage_date, type: Date
+  #field :contract_no
+  #field :agent_reference
+  #field :other_reference
+  #field :tircarnet1
+  #field :tircarnet2
+  #field :ex1
+  #field :description
+  #field :ordino_date, type: Date
+  #field :sob_date, type: Date
+  #field :report_date, type: Date
   belongs_to :user
-  slug  :reference, :scope => :patron, :permanent => true
-  auto_increment :rec_number
+  #slug  :reference, :scope => :patron, :permanent => true
+  #auto_increment :rec_number
 
   has_many :loadings, dependent: :nullify
   has_many :transnodes, as: :multimodal, dependent: :delete

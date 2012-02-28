@@ -1,46 +1,48 @@
-class Company
-  include Mongoid::Document
-  include Mongoid::Timestamps
-  include Mongoid::Token
-  include Mongoid::Slug
-  include Mongoid::Followee
+class Company < ActiveRecord::Base
+  #include Mongoid::Document
+  #include Mongoid::Timestamps
+  #include Mongoid::Token
+  #include Mongoid::Slug
+  #include Mongoid::Followee
   include Gmaps4rails::ActsAsGmappable
-  include Mongoid::Spacial::Document
+  #include Mongoid::Spacial::Document
  
   acts_as_gmappable :process_geocoding => false, :validation => false
-
-  field :name
-  field :title
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+  
+  #field :name
+  #field :title
   belongs_to :patron
-  field :patron_token
+  #field :patron_token
   belongs_to :branch
-  field :company_type
-  field :address
-  field :district
-  field :postcode
+  #field :company_type
+  #field :address
+  #field :district
+  #field :postcode
   belongs_to :city
   belongs_to :state
   belongs_to :country
-  field :location, type: Array, spacial: {lng: :longitude, lat: :latitude, return_array: true }
-  field :gmaps, type: Boolean
-  field :tel
-  field :gsm
-  field :voip
-  field :email
-  field :website
-  field :fax
-  field :contact
-  field :sector
+  #field :location, type: Array, spacial: {lng: :longitude, lat: :latitude, return_array: true }
+  #field :gmaps, type: Boolean
+  #field :tel
+  #field :gsm
+  #field :voip
+  #field :email
+  #field :website
+  #field :fax
+  #field :contact
+  #field :sector
   belongs_to :user
   belongs_to :saler, :class_name => User, :inverse_of => :saler
-  field :twitter_url
-  field :facebook_url
-  field :linkedin_url
-  field :notes
-  field :description
-  token :length => 25, :contains => :alphanumeric
-  slug  :name, :scope => :patron, :permanent => true
-  auto_increment :rec_number
+  #field :twitter_url
+  #field :facebook_url
+  #field :linkedin_url
+  #field :notes
+  #field :description
+  #token :length => 25, :contains => :alphanumeric
+  #slug  :name, :scope => :patron, :permanent => true
+  #auto_increment :rec_number
   #acts_as_slugoid :generate_from => :name, :store_as => :slug
 
   has_many :transporter_positions, :class_name => "Position", :inverse_of => :transporter

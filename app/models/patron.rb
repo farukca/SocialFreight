@@ -1,39 +1,41 @@
-class Patron
-  include Mongoid::Document
-  include Mongoid::Timestamps
-  include Mongoid::Token
-  include Mongoid::Slug
+class Patron < ActiveRecord::Base
+  #include Mongoid::Document
+  #include Mongoid::Timestamps
+  #include Mongoid::Token
+  #include Mongoid::Slug
 
   #STATUS_NAMES = [:active, :inactive, :cancelled, :potential]
   #STATUSES = STATUS_NAMES.each_with_index.each_with_object({}) {|(name, code), all| all[name] = code }
-
-  field :name
-  field :title
-  field :email
-  field :website
-  field :tel
-  field :fax
-  field :gsm
-  field :postcode
-  field :address
-  field :contact_name
-  field :contact_surname
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+  
+  #field :name
+  #field :title
+  #field :email
+  #field :website
+  #field :tel
+  #field :fax
+  #field :gsm
+  #field :postcode
+  #field :address
+  #field :contact_name
+  #field :contact_surname
   belongs_to :city
   belongs_to :state
   belongs_to :country
-  field :patron_type
-  field :employees
-  field :language
-  field :status, default: "A"
-  field :logo
-  field :operations, type: Array
-  belongs_to :saler, :class_name => User, :inverse_of => :saler, :foreign_key => "saler_id" 
-  token :length => 7, :contains => :alphanumeric
-  slug :title, :as => :code
+  #field :patron_type
+  #field :employees
+  #field :language
+  #field :status, default: "A"
+  #field :logo
+  #field :operations, type: Array
+  #belongs_to :saler, :class_name => User, :inverse_of => :saler, :foreign_key => "saler_id" 
+  #token :length => 7, :contains => :alphanumeric
+  #slug :title, :as => :code
 
   mount_uploader :logo, LogoUploader
 
-  embeds_many :counters
+  has_many :counters
   has_many :branches
   has_many :users
   has_many :people
@@ -41,8 +43,9 @@ class Patron
   has_many :positions
   has_many :loadings
   has_many :activities
-  has_many :journals, as: :journaled, dependent: :delete
-
+  has_many :journals, as: :journaled, dependent: :destroy
+  has_and_belongs_to_many :operations
+  
   attr_accessible :title, :website, :tel, :fax, :postcode, :address, :city_id, :country_id, :status, :saler_id, 
                   :email, :operations, :contact_name, :contact_surname, :logo, :remove_logo
 

@@ -1,26 +1,28 @@
-class Branch
-  include Mongoid::Document
-  include Mongoid::Timestamps
-  include Mongoid::Slug
+class Branch < ActiveRecord::Base
+  #include Mongoid::Document
+  #include Mongoid::Timestamps
+  #include Mongoid::Slug
   include Gmaps4rails::ActsAsGmappable
-  include Mongoid::Spacial::Document
+  #include Mongoid::Spacial::Document
  
   acts_as_gmappable
-
-  field :name
-  field :tel
-  field :fax
-  field :email
-  field :postcode
-  field :address
-  field :district
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+  
+  #field :name
+  #field :tel
+  #field :fax
+  #field :email
+  #field :postcode
+  #field :address
+  #field :district
   belongs_to :city
   belongs_to :state
   belongs_to :country
-  field :location, type: Array, spacial: {lng: :longitude, lat: :latitude, return_array: true }
-  field :gmaps, type: Boolean  
-  field :status, default: "A"
-  slug :name
+  #field :location, type: Array, spacial: {lng: :longitude, lat: :latitude, return_array: true }
+  #field :gmaps, type: Boolean  
+  #field :status, default: "A"
+  #slug :name
 
   belongs_to :patron
   has_many :users

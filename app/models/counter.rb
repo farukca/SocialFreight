@@ -1,11 +1,11 @@
-class Counter
-  include Mongoid::Document
+class Counter < ActiveRecord::Base
+  #include Mongoid::Document
 
-  field :counter_type
-  field :operation
-  field :direction
-  field :count, :type => Integer, default: 0
-  embedded_in :patron
+  #field :counter_type
+  #field :operation
+  #field :direction
+  #field :count, :type => Integer, default: 0
+  belongs_to :patron
 
   validates_presence_of :counter_type
 

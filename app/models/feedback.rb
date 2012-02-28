@@ -1,12 +1,12 @@
-class Feedback
-  include Mongoid::Document
-  include Mongoid::Timestamps
+class Feedback < ActiveRecord::Base
+  #include Mongoid::Document
+  #include Mongoid::Timestamps
 
-  field :name
-  field :email
-  field :msg
+  #field :name
+  #field :email
+  #field :msg
 
-  index :email
+  #index :email
 
   validates_presence_of :name, :email, :msg, :message => "Lutfen bilgi giriniz"
   validates_length_of :name, maximum: 10, :message => "10 karakter giriniz"

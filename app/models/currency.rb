@@ -1,12 +1,12 @@
-class Currency
-  include Mongoid::Document
+class Currency < ActiveRecord::Base
+  #include Mongoid::Document
 
-  field :code
-  field :name
-  field :symbol
-  field :multiplier, :type => Float, default: 1
+  #field :code
+  #field :name
+  #field :symbol
+  #field :multiplier, :type => Float, default: 1
 
-  key :code
+  #key :code
 
   attr_accessible :code, :name, :symbol, :multiplier
 

@@ -1,40 +1,9 @@
-class User
-  include Mongoid::Document
-  include Mongoid::Timestamps
-  include Mongoid::Slug
-  include Mongoid::Follower
-  include Mongoid::Followee
+class User < ActiveRecord::Base
 
   authenticates_with_sorcery!
 
-  field :name
-  field :surname
-  field :email
-  field :crypted_password
-  field :salt
-  belongs_to :patron
-  belongs_to :branch
-  field :region
-  field :time_zone
-  field :user_type
-  field :locale
-  field :language
-  field :mail_encoding
-  field :last_login_at, type: DateTime
-  field :last_logout_at, type: DateTime
-  field :last_activity_at, type: DateTime
-  field :activation_state
-  field :activation_token
-  field :activation_token_expires_at, type: DateTime
-  field :password_reset_token
-  field :password_reset_email_time, type: DateTime
-  field :password_reset_token_expires_at, type: DateTime
-  field :failed_logins_count, type: Integer
-  field :lock_expires_at, type: DateTime
-  slug  :name, :surname, :as => :title, :scope => :patron, :permanent => true
-  auto_increment :rec_number
-  field :role
-  field :avatar
+  extend FriendlyId
+  friendly_id :full_name, use: :slugged
 
   mount_uploader :avatar, AvatarUploader
 
@@ -44,9 +13,9 @@ class User
   has_many :comments
   has_many :posts
   #has_many :companies
-  has_many :journals, as: :journaled, dependent: :delete
+  has_many :journals, as: :journaled, dependent: :destroy
 
-   attr_accessible :email, :password, :password_confirmation, :name, :surname, :patron_id, :avatar, :remove_avatar, 
+  attr_accessible :email, :password, :password_confirmation, :name, :surname, :patron_id, :avatar, :remove_avatar, 
                    :region, :time_zone, :user_type, :language, :locale, :mail_encoding, :role
   #attr_protected  :password
 

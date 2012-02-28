@@ -1,40 +1,42 @@
-class Person
-  include Mongoid::Document
-  include Mongoid::Timestamps
-  include Mongoid::Token
-  include Mongoid::Slug
-
-  field :name
-  field :surname
+class Person < ActiveRecord::Base
+  #include Mongoid::Document
+  #include Mongoid::Timestamps
+  #include Mongoid::Token
+  #include Mongoid::Slug
+  extend FriendlyId
+  friendly_id :name, :surname, use: :slugged
+  
+  #field :name
+  #field :surname
   belongs_to :patron
   belongs_to :branch
-  field :patron_token
-  field :task
-  field :departman
-  field :gsm
-  field :tel
-  field :voip
-  field :email
-  field :website
-  field :twitter_url
-  field :linkedin_url
-  field :facebook_url
-  field :address
-  field :district
-  field :postcode
+  #field :patron_token
+  #field :task
+  #field :departman
+  #field :gsm
+  #field :tel
+  #field :voip
+  #field :email
+  #field :website
+  #field :twitter_url
+  #field :linkedin_url
+  #field :facebook_url
+  #field :address
+  #field :district
+  #field :postcode
   belongs_to :city
   belongs_to :state
   belongs_to :country
-  field :avatar
-  field :public, type: Boolean
-  field :status, default: 'A'
-  field :start_date, type: Date
-  field :start_type
-  field :citizen_no
-  field :nation
-  token :length => 25, :contains => :alphanumeric
-  slug  :name, :surname, :scope => :patron, :permanent => true
-  auto_increment :rec_number
+  #field :avatar
+  #field :public, type: Boolean
+  #field :status, default: 'A'
+  #field :start_date, type: Date
+  #field :start_type
+  #field :citizen_no
+  #field :nation
+  #token :length => 25, :contains => :alphanumeric
+  #slug  :name, :surname, :scope => :patron, :permanent => true
+  #auto_increment :rec_number
 
   mount_uploader :avatar, AvatarUploader
 

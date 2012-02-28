@@ -1,37 +1,40 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.1.rc2'
+gem 'rails', '3.2.0'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-gem 'mongoid', '~> 2.2'
-gem 'bson_ext', '~> 1.3'
-gem 'mongoid_token', '~> 0.9.1'
-gem 'mongoid_slug'
-gem 'mongoid_auto_inc'
-gem 'mongoid_spacial'
-gem 'mongoid_follow'
-gem 'gmaps4rails'
+gem 'pg'
+#gem 'mongoid', '~> 2.2'
+#gem 'bson_ext', '~> 1.3'
+#gem 'mongoid_token', '~> 0.9.1'
+#gem 'mongoid_slug'
+#gem 'mongoid_auto_inc'
+#gem 'mongoid_spacial'
+#gem 'mongoid_follow'
+#gem 'gmaps4rails'
 
 gem 'sorcery'
 gem 'cancan'
 
 # Gems used only for assets and not required in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.1.0'
-  gem 'coffee-rails', '~> 3.1.0'
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'simple_form'
+gem 'simple_form', '>= 2.0'
 gem 'client_side_validations'
-gem 'rails3-jquery-autocomplete'
+#gem 'rails3-jquery-autocomplete'
 gem 'kaminari'
+gem 'friendly_id'
+#gem 'socialization'
 
 #File uploading
-gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+#gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem 'carrierwave'
 gem 'mini_magick'
 
 #PDF
@@ -56,11 +59,12 @@ gem 'therubyracer'
 gem 'rspec-rails', :group => [:test, :development]
 group :test do
   # Pretty printed test output
-  gem 'mongoid-rspec'
+  #gem 'mongoid-rspec'
+  #gem 'guard-rspec'
+  gem 'minitest'
   gem 'turn', :require => false
   gem 'factory_girl_rails'
   gem 'capybara'
-  gem 'guard-rspec'
   gem 'fakeweb'
   gem 'simplecov', :require => false
 end

@@ -1,26 +1,26 @@
 class Search
-  include Mongoid::Document
-  include Mongoid::Timestamps
+  #include Mongoid::Document
+  #include Mongoid::Timestamps
 
-  field :model
-  field :user_id
-  field :patron_id
-  field :patron_token
-  field :reference
-  field :operation
-  field :direction
-  field :paid_at
-  field :docdate1, type: Date
-  field :docdate2, type: Date
-  field :master_type
-  field :branch
-  field :saler_id
-  field :driver_id
-  field :company_id
-  field :transporter_id
-  field :country
-  field :city
-  field :searched, type: Boolean, default: true
+  #field :model
+  #field :user_id
+  #field :patron_id
+  #field :patron_token
+  #field :reference
+  #field :operation
+  #field :direction
+  #field :paid_at
+  #field :docdate1, type: Date
+  #field :docdate2, type: Date
+  #field :master_type
+  #field :branch
+  #field :saler_id
+  #field :driver_id
+  #field :company_id
+  #field :transporter_id
+  #field :country
+  #field :city
+  #field :searched, type: Boolean, default: true
 
   def positions
     @positions = find_positions

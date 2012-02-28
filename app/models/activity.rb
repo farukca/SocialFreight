@@ -1,18 +1,14 @@
-class Activity
-  include Mongoid::Document
-  include Mongoid::Timestamps
+class Activity < ActiveRecord::Base
 
-  field :patron_token
   belongs_to :user
   belongs_to :patron
   belongs_to :target, :polymorphic => true
-  field :target_name 
 
   attr_accessible :target_name, :target, :patron_id, :patron_token, :user_id
 
   validates_presence_of :user_id, :patron_id, :target_name, :target, :patron_token
 
-  scope :latests, order_by(:created_at, :desc)
+  scope :latests, order("created_at desc")
 
   after_create :create_comment
 

@@ -1,15 +1,15 @@
-class Operation
-  include Mongoid::Document
-  include Mongoid::Timestamps
+class Operation < ActiveRecord::Base
+  #include Mongoid::Document
+  #include Mongoid::Timestamps
 
-  field :code
-  field :name
-  field :longname
-  field :place
-  field :description
-  key   :code
-
-  attr_accessor :patron_token  
+  #field :code
+  #field :name
+  #field :longname
+  #field :place
+  #field :description
+  #key   :code
+  
+  OPERATION_TYPES = [:air, :sea, :road, :rail, :inland]  
   
   validates_presence_of :code, :message => I18n.t('patrons.errors.title.cant_be_blank')
   validates_presence_of :name, :message => I18n.t('patrons.errors.title.cant_be_blank')

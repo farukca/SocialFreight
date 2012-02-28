@@ -1,10 +1,10 @@
-class Comment
-  include Mongoid::Document
-  include Mongoid::Timestamps
+class Comment < ActiveRecord::Base
+  #include Mongoid::Document
+  #include Mongoid::Timestamps
 
-  field :comment_text
-  field :patron_token
-  field :commenter, default: "U"
+  #field :comment_text
+  #field :patron_token
+  #field :commenter, default: "U"
   belongs_to :user
   belongs_to :patron
   belongs_to :commentable, polymorphic: true

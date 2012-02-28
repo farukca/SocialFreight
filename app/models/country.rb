@@ -1,19 +1,21 @@
-class Country
-  include Mongoid::Document
-  include Mongoid::Timestamps
-  include Mongoid::Slug
+class Country < ActiveRecord::Base
+  #include Mongoid::Document
+  #include Mongoid::Timestamps
+  #include Mongoid::Slug
   include Gmaps4rails::ActsAsGmappable
-  include Mongoid::Spacial::Document
+  #include Mongoid::Spacial::Document
  
   acts_as_gmappable
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+  
+  #field :code
+  #field :name
+  #field :telcode
+  #field :location, type: Array, spacial: {lng: :longitude, lat: :latitude, return_array: true }
+  #field :gmaps, type: Boolean
 
-  field :code
-  field :name
-  field :telcode
-  field :location, type: Array, spacial: {lng: :longitude, lat: :latitude, return_array: true }
-  field :gmaps, type: Boolean
-
-  slug  :name, :permanent => true
+  #slug  :name, :permanent => true
 
   has_many :cities
   has_many :states

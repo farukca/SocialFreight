@@ -1,16 +1,16 @@
-class Container
-  include Mongoid::Document
-  include Mongoid::Timestamps
+class Container < ActiveRecord::Base
+  #include Mongoid::Document
+  #include Mongoid::Timestamps
 
-  field :name
-  field :sealno
-  field :container_type
-  field :free_day, type: Integer
-  field :demurrage, type: Float
-  field :demurrage_curr
-  field :notes
+  #field :name
+  #field :sealno
+  #field :container_type
+  #field :free_day, type: Integer
+  #field :demurrage, type: Float
+  #field :demurrage_curr
+  #field :notes
   belongs_to :loading
-  auto_increment :rec_number
+  #auto_increment :rec_number
 
   has_many :packages
 

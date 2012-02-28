@@ -1,29 +1,29 @@
-class Transnode
-  include Mongoid::Document
-  include Mongoid::Timestamps
-  include Mongoid::Slug
+class Transnode < ActiveRecord::Base
+  #include Mongoid::Document
+  #include Mongoid::Timestamps
+  #include Mongoid::Slug
   
-  field :reference
-  field :trans_method
-  field :trans_type
+  #field :reference
+  #field :trans_method
+  #field :trans_type
   belongs_to :multimodal, polymorphic: true
   belongs_to :supplier, :class_name => "Company", :inverse_of => :supplier_transnodes
-  field :voyage
-  field :vessel
-  field :driver
-  field :vessel2
-  field :driver2
+  #field :voyage
+  #field :vessel
+  #field :driver
+  #field :vessel2
+  #field :driver2
   belongs_to :load_place, :class_name => "Place", :inverse_of => :load_place
-  field :load_date, type: Date
+  #field :load_date, type: Date
   belongs_to :unload_place, :class_name => "Place", :inverse_of => :unload_place
-  field :unload_date, type: Date
-  field :freight_price, type: Float, default: 0;
-  field :freight_curr
-  field :ticket_no
-  field :ticket_date, type: Date
-  field :notes
-  slug  :reference, :scope => :position, :permanent => true
-  auto_increment :rec_number
+  #field :unload_date, type: Date
+  #field :freight_price, type: Float, default: 0;
+  #field :freight_curr
+  #field :ticket_no
+  #field :ticket_date, type: Date
+  #field :notes
+  #slug  :reference, :scope => :position, :permanent => true
+  #auto_increment :rec_number
 
   before_create :set_initials
 

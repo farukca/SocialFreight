@@ -1,15 +1,17 @@
 en:
   simple_form:
-    "yes": 'Yes'
-    "no": 'No'
-    required:
-      text: 'required'
-      mark: '*'
+    defaults:
+      "yes": 'Yes'
+      "no": 'No'
+      required:
+        text: 'required'
+        mark: '*'
       # You can uncomment the line below if you need to overwrite the whole required html.
       # When using html, text and mark won't be used.
       # html: '<abbr title="required">*</abbr>'
     error_notification:
-      default_message: "Some errors were found, please take a look:"
+      defaults:
+        default_message: "Some errors were found, please take a look:"
     # Labels and hints examples
     # labels:
     #   password: 'Password'
@@ -23,8 +25,9 @@ en:
     #   password: 'No special characters, please.'
     labels:
       position:
-        contract_no: "Contract"
-        notes:       "Notlar"
-        agent_price:  "Agent told Price"
-        load_date:    "Departure Date"
-        unload_date:  "Arrival Date"
+        defaults:
+          contract_no: "Contract"
+          notes:       "Notlar"
+          agent_price:  "Agent told Price"
+          load_date:    "Departure Date"
+          unload_date:  "Arrival Date"

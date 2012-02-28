@@ -1,27 +1,30 @@
 class Place
-  include Mongoid::Document
-  include Mongoid::Timestamps
-  include Mongoid::Slug
+  #include Mongoid::Document
+  #include Mongoid::Timestamps
+  #include Mongoid::Slug
   include Gmaps4rails::ActsAsGmappable
-  include Mongoid::Spacial::Document
+  #include Mongoid::Spacial::Document
  
   acts_as_gmappable
 
-  field :name
-  field :code
-  field :place_type
-  field :postcode
-  field :district
-  field :address
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+  
+  #field :name
+  #field :code
+  #field :place_type
+  #field :postcode
+  #field :district
+  #field :address
   belongs_to :city
   belongs_to :state
   belongs_to :country
-  field :location, type: Array, spacial: {lng: :longitude, lat: :latitude, return_array: true }
-  field :gmaps, type: Boolean
-  field :description
+  #field :location, type: Array, spacial: {lng: :longitude, lat: :latitude, return_array: true }
+  #field :gmaps, type: Boolean
+  #field :description
   #geocode
-  slug :name, :scope => :country, :permanent => true
-  auto_increment :rec_number
+  #slug :name, :scope => :country, :permanent => true
+  #auto_increment :rec_number
 
   attr_accessible :name, :code, :place_type, :postcode, :district, :city_id, :state_id, :country_id, :description, :address
 
