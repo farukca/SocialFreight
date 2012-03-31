@@ -1,7 +1,6 @@
 <div id="opform">
 <%= simple_form_for @loading, :validate => true do |f| %>
   <%= f.error_notification %>
-  <fieldset>
 
   <div class="pageBlock">
     <%= render 'shared/form_buttonsh', :f => f %>
@@ -13,10 +12,14 @@
           <%= render 'form_main', :f => f %>
         </div>
         <div id="loading-load-form" class="tab-pane form_tab_pane">
-          <%= render 'form_load', :f => f %>
+          <%= f.fields_for :departure, @loading.departure do |builder| %>
+            <%= render 'departure_fields', :f => builder %>
+          <% end %>
         </div>
         <div id="loading-unload-form" class="tab-pane form_tab_pane">
-          <%= render 'form_unload', :f => f %>
+          <%= f.fields_for :arrival, @loading.arrival do |builder| %>
+            <%= render 'arrival_fields', :f => builder %>
+          <% end %>
         </div>
         <div id="loading-detail-form" class="tab-pane form_tab_pane">
           <%= render 'form_detail', :f => f %>
@@ -30,10 +33,8 @@
         <li><a data-toggle="tab" href="#loading-detail-form">4-Diğer Bilgiler</a></li>
       </ul>
 
-      <%= render 'shared/form_buttonsb', :f => f %>
+      <%#= render 'shared/form_buttonsb', :f => f %>
     </div>
-
-  </fieldset>
 
 <% end %>
 </div>

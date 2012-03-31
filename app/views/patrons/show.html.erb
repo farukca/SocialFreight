@@ -1,33 +1,9 @@
-<div id="patron">
-  <!--div id="sidebar" class="span4 columns sidebar">
-    <div id="profile-sidebar">
-      <div id="profile-picture">
-        <%= image_tag "use_application.png" %>
-      </div>
-      <%= render 'tab_sidebar', :patron => @patron %>
-    </div>
-  </div-->
+<div id="patron" class="row-fluid">
   <div>
-    <div id="profile-picture">
-      <%= link_to image_tag(@patron.logo_url(:profile)), "#", :class => 'togglebutton', "data-placement" => "below",  "rel" => 'twipsy', "title" => "Resmi Değiştirmek için Tıklayınız", "data-href" => "#logo_change_div" %>
-    </div>
-    <div id="profile-title">
-      <h3><%= @patron.title %></h3>
-    </div>
+    <%= render 'profile_header' %>
   </div>
-  <div id="logo_change_div" class="slidingDiv">
-    <%= form_for @patron, :remote => true, :html => {:multipart => true} do |f| %>
-      <p>
-        <label>Resim dosyası:</label>
-        <%= f.file_field :logo %>
-        <%= f.submit "Değiştir" %>
-        <%if @patron.logo? %>
-          <%= f.check_box :remove_logo %>&nbsp;Logoyu Sil
-        <% end %>
-      </p>
-    <% end %>
-  </div>
-  <div>
+  
+  <div class="row-fluid">
     <div id="good" class="profile">
       <ul class="nav nav-pills">
         <li class="active"><a data-toggle="tab" href="#patron_profile"><i class="icon-home icon-white"></i>Genel Bilgiler</a></li>

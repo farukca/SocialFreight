@@ -14,6 +14,7 @@ Socialfreight::Application.routes.draw do
   end
   resources :sessions
   resources :password_resets
+  resources :betausers
 
   resources :patrons
   resources :operations do
@@ -52,6 +53,8 @@ Socialfreight::Application.routes.draw do
   resources :feedbacks
   resources :posts
   resources :activities
+
+  resources :setup
 
   get "air" => "home#air", :as => "air"
   get "sea" => "home#sea", :as => "sea"

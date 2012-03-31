@@ -1,13 +1,9 @@
 <%= simple_form_for @place, :validate => true do |f| %>
   <%= f.error_notification %>
 
-  <fieldset>
-    <div>
-      <div class="page-header">
-        <h4>New Place</h4>
-      </div>
-      <div class="span8 columns">
-        <%= f.input :place_type, :as => :radio, :collection => Operation.all.map { |o| [o.place, o.id]}, :include_blank => false %>
+  <div class="row-fluid">
+    <fieldset>
+        <%= f.input :place_type, :as => :select, :collection => Place.place_types.map { |r| [r[1], r[0] ] }, :include_blank => false %>
         <%= f.input :name %>
         <%= f.input :code %>
         <%= f.input :address %>
@@ -17,9 +13,9 @@
         <%#= f.input :state_id %>
         <%= f.input :city_id, :as => :select, :collection => City.all, :include_blank => false %>
         <%= f.input :description, :as => :text, :input_html => {:rows => "3"} %>
-        <%= f.button :submit, :class => 'btn primary' %>
-      </div>
-    </div>
-  </fieldset>
-
+        <div class="control">
+          <%= f.button :submit, :class => 'btn btn-primary' %>
+        </div>
+    </fieldset>
+  </div>
 <% end %>

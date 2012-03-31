@@ -13,10 +13,7 @@ gem 'pg'
 #gem 'mongoid_auto_inc'
 #gem 'mongoid_spacial'
 #gem 'mongoid_follow'
-#gem 'gmaps4rails'
-
-gem 'sorcery'
-gem 'cancan'
+gem 'gmaps4rails'
 
 # Gems used only for assets and not required in production environments by default.
 group :assets do
@@ -28,14 +25,18 @@ end
 gem 'simple_form', '>= 2.0'
 gem 'client_side_validations'
 #gem 'rails3-jquery-autocomplete'
-gem 'kaminari'
+gem 'kaminari', '~> 0.13.0'
 gem 'friendly_id'
-#gem 'socialization'
+gem 'socialization'
 
 #File uploading
 #gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'carrierwave'
 gem 'mini_magick'
+
+gem 'sorcery'
+gem 'cancan'
+gem 'wicked'
 
 #PDF
 gem 'prawn'
@@ -54,8 +55,9 @@ gem 'therubyracer'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
-
+group :development do
+  gem 'ruby-debug19', :require => 'ruby-debug'
+end
 gem 'rspec-rails', :group => [:test, :development]
 group :test do
   # Pretty printed test output

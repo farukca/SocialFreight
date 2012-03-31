@@ -1,0 +1,23 @@
+<div class="row-fluid">
+
+  <div class="span6">
+    <fieldset>
+      <%= f.input :container_type, :as => :select, :collection => Container.container_types.map { |r| [r[1], r[0] ] }, :include_blank => false %>
+      <%= f.input :name, :label => "Container No" %>
+      <%= f.input :sealno, :label => "Seal No" %>
+    </fieldset>
+  </div>
+  <div class="span6">
+    <fieldset>
+      <%= f.input :free_day %>
+      <%= f.input :demurrage, :label => "Daily Demurrage" do %>
+        <%= f.input_field :demurrage, class: "input-small" %>
+        <%= f.input_field :demurrage_curr, :as => :select, :collection => Currency.all, :include_blank => false, class: "input-small" %>
+      <% end %>
+      <%= f.input :notes, :as => :text, :input_html => {:rows => "3"}, :label => "Notes" %>
+    </fieldset>
+    <div class="controls">
+      <%= f.button :submit, "Kaydet >> Yük Bilgisine Git", :class => 'btn btn-info' %>
+    </div>
+  </div>
+</div>

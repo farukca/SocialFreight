@@ -22,10 +22,10 @@ class OperationsController < ApplicationController
   end
 
   def home
-    @operation = Operation.find(params[:id])
-    @operation.patron_token = current_patron.token
+    @operation = Operation.find_by_code(params[:id])
+    #@operation.patron_token = current_patron.token
     @search    = Search.new
-    @search.operation = @operation.id
+    @search.operation = @operation.code
 
     respond_to do |format|
       format.html # show.html.erb

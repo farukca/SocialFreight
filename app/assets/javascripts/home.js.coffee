@@ -6,19 +6,23 @@ jQuery ->
   $("a[rel=popover]").popover(offset: 10).click (e) ->
     e.preventDefault()
   $(".alert-message").alert()
+  $("abbr.timeago").timeago()
   $(".slidingDiv").hide()
   $(".togglebutton").show()
-  $('.togglebutton').click ->
+  $(".togglebutton").click ->
      $($(this).data('href')).slideToggle()
-
-  $(".lookup_input").each ->
+  $(".nexttab").click ->
+     $($(this).data('newtab')).click()
+  $(".chosen_input").each ->
     el = $(this)
-    el.smartAutoComplete source: el.data("url"),
-      typeAhead: true,
-      forceSelect: true,
-      maxResults: 5,
-      minCharLimit: 3
-
+    el.ajaxChosen
+      dataType: "json"
+      type: "GET"
+      url: el.data("url")
+    ,
+      processItems: (data) ->
+        data
+      loadingImg: "/assets/loading.gif"
   $(".token_input").each ->
     el = $(this)
     el.tokenInput el.data("url"),
@@ -26,5 +30,3 @@ jQuery ->
       tokenLimit: 1
       prePopulate: el.data("pre")
       preventDuplicates: true
-  $("a[rel*=facebox]").facebox()
-

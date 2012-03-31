@@ -206,7 +206,7 @@ jQuery('.images').cycle({
         jQuery(".alert-message").alert()
 
   
-            jQuery('.tabs').tabs()
+//        jQuery('.tabs').tabs()
     
 
         function before_cycle(curr, next, opts, fwd) {
@@ -220,7 +220,7 @@ jQuery('.images').cycle({
 
         }
 
-jQuery("a[rel^='prettyPhoto']").prettyPhoto();
+//jQuery("a[rel^='prettyPhoto']").prettyPhoto();
 
 
 

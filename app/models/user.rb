@@ -1,7 +1,11 @@
 class User < ActiveRecord::Base
-
   authenticates_with_sorcery!
 
+  acts_as_follower
+  acts_as_followable
+  acts_as_liker
+  acts_as_mentionable
+  
   extend FriendlyId
   friendly_id :full_name, use: :slugged
 

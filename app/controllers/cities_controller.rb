@@ -26,7 +26,7 @@ class CitiesController < ApplicationController
   end
 
   def show
-    @city = City.find_by_slug(params[:id])
+    @city = City.find(params[:id])
     @marker  = @city.to_gmaps4rails
 
     respond_to do |format|

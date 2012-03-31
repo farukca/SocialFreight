@@ -1,56 +1,41 @@
 class Patron < ActiveRecord::Base
-  #include Mongoid::Document
-  #include Mongoid::Timestamps
-  #include Mongoid::Token
-  #include Mongoid::Slug
 
   #STATUS_NAMES = [:active, :inactive, :cancelled, :potential]
   #STATUSES = STATUS_NAMES.each_with_index.each_with_object({}) {|(name, code), all| all[name] = code }
-  extend FriendlyId
-  friendly_id :name, use: :slugged
   
-  #field :name
-  #field :title
-  #field :email
-  #field :website
-  #field :tel
-  #field :fax
-  #field :gsm
-  #field :postcode
-  #field :address
-  #field :contact_name
-  #field :contact_surname
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+  serialize  :operations
   belongs_to :city
   belongs_to :state
   belongs_to :country
-  #field :patron_type
-  #field :employees
-  #field :language
-  #field :status, default: "A"
-  #field :logo
-  #field :operations, type: Array
-  #belongs_to :saler, :class_name => User, :inverse_of => :saler, :foreign_key => "saler_id" 
-  #token :length => 7, :contains => :alphanumeric
-  #slug :title, :as => :code
-
+ 
   mount_uploader :logo, LogoUploader
 
   has_many :counters
+  accepts_nested_attributes_for :counters, :allow_destroy => true
+  
   has_many :branches
+  accepts_nested_attributes_for :branches, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true
+  
   has_many :users
+  accepts_nested_attributes_for :users, :reject_if => lambda { |a| a[:email].blank? }, :allow_destroy => true  
+  
   has_many :people
   has_many :companies
   has_many :positions
   has_many :loadings
   has_many :activities
   has_many :journals, as: :journaled, dependent: :destroy
-  has_and_belongs_to_many :operations
+  #has_and_belongs_to_many :operations
   
-  attr_accessible :title, :website, :tel, :fax, :postcode, :address, :city_id, :country_id, :status, :saler_id, 
-                  :email, :operations, :contact_name, :contact_surname, :logo, :remove_logo
+  attr_accessible :title, :website, :tel, :fax, :postcode, :district, :address, :city_id, :country_id, :status, :saler_id, 
+                  :email, :operations, :contact_name, :contact_surname, :time_zone, :language, :logo, :remove_logo,
+                  :vehicle_owner, :depot_owner, :patron_type, :iata_code, :fmc_code,
+                  :counters_attributes, :users_attributes, :branches_attributes
 
-  before_create :generate_patron
-  after_create  :create_patron_user
+  before_create :set_initials
+  after_create  :create_patron_user, :create_head_office#, :create_company
 
   validates_presence_of :title#, :message => I18n.t('patrons.errors.title.cant_be_blank')
   validates_presence_of :email#, :message => I18n.t('patrons.errors.title.cant_be_blank')
@@ -62,26 +47,9 @@ class Patron < ActiveRecord::Base
   validates_length_of   :title, :maximum => 255#, :message => I18n.t('tasks.errors.name.too_long')
   validates_length_of   :tel, :maximum => 12#, :message => I18n.t('tasks.errors.name.too_long')
 
-  private
-  def generate_patron
-    self.name = self.title
-  end
-
-  private
-  def create_patron_user
-    #self.users.create(:name => self.contact_name, :surname => self.contact_surname, :email => self.email, :password => '9876543210', :password_confirmation => '9876543210');
-    @user = self.users.build()
-    @user.name = self.contact_name
-    @user.surname = self.contact_surname
-    @user.email = self.email
-    @user.password = '9876543210'
-    @user.password_confirmation = '9876543210'
-    @user.save!
-  end
-
   def generate_counter(ctype, operation, direction)
-    counter = self.counters.find_or_initialize_by(counter_type: ctype, operation: operation, direction: direction)
-    counter.inc(:count, 1)
+    counter = self.counters.find_or_initialize_by_counter_type_and_operation(ctype, operation)
+    counter.increment(:count, 1)
     counter.save!
     return counter.count
   end
@@ -110,16 +78,43 @@ class Patron < ActiveRecord::Base
       }
     end
 
-    def ranks()
-      ranks = {
-        '10' => 'Reservation',
-        '20' => 'Loading',
-        '30' => 'On Way',
-        '40' => 'Unloading'
+    def employee_ranks()
+      employee_ranks = {
+        '0..3'   => '0-3Employees',
+        '4..12'  => '4-12Employees',
+        '13..60' => '13-60Employees',
+        '61..99' => '61-99Employees',
+        '100..+' => '100+Employees'
       }
     end
 
   end
 
+  private
+  def set_initials
+    self.name = self.title
+  end
+
+  private
+  def create_patron_user
+    user = self.users.build()
+    user.name = self.contact_name
+    user.surname = self.contact_surname
+    user.email = self.email
+    user.password = '9876543210'
+    user.password_confirmation = '9876543210'
+    user.save!
+  end
+
+  def create_head_office
+    branch = self.branches.build()  
+    branch.name = 'Head Office'
+    branch.patron_token = self.token
+    branch.save!
+  end
+
+  def create_counters
+    
+  end
 
 end

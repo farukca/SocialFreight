@@ -1,95 +1,45 @@
 class Position < ActiveRecord::Base
-  #include Mongoid::Document
-  #include Mongoid::Timestamps
-  #include Mongoid::Slug
-  #include Mongoid::Followee
+
+  acts_as_followable
+  acts_as_likeable
+  acts_as_mentionable
+  
   extend FriendlyId
   friendly_id :reference, use: :slugged
   
-  #field :reference
-  #field :operation
-  #field :direction
-  #field :paid_at
-  #field :mwb_no
-  #field :emwb_no
   belongs_to :patron
-  #field :patron_token
   belongs_to :branch
-  #field :master_reference
-  #field :master_type
-  #field :master_date
-  belongs_to :transporter, :class_name => "Company", :inverse_of => :transporter_positions
-  belongs_to :forwarder, :class_name => "Company", :inverse_of => :forwarder_positions
-  belongs_to :supplier, :class_name => "Company", :inverse_of => :supplier_positions
-  belongs_to :agent, :class_name => "Company", :inverse_of => :agent_positions
-  #field :voyage
-  #field :vessel
-  #field :driver
-  #field :voyage2
-  #field :vessel2
-  #field :driver2
-  #field :ownership
-  #field :load_type
-  belongs_to :load_place, :class_name => "Place", :inverse_of => :load_place
-  #field :load_date, type: Date
-  #field :load_time
-  belongs_to :unload_place, :class_name => "Place", :inverse_of => :unload_place
-  #field :unload_date, type: Date
-  #field :unload_time
-  #field :freight_price, type: Float, default: 0;
-  #field :freight_curr
-  #field :agent_price, type: Float, default: 0;
-  #field :agent_curr
-  #field :status, default: 'A'
-  #field :stage, default: 'R'
-  #field :stage_date, type: Date
-  #field :contract_no
-  #field :agent_reference
-  #field :other_reference
-  #field :tircarnet1
-  #field :tircarnet2
-  #field :ex1
-  #field :description
-  #field :ordino_date, type: Date
-  #field :sob_date, type: Date
-  #field :report_date, type: Date
+  belongs_to :agent, :class_name => "Company", :foreign_key => "agent_id"
+  belongs_to :load_place, :class_name => "Place", :foreign_key => "load_place_id"
+  belongs_to :unload_place, :class_name => "Place", :foreign_key => "unload_place_id"
   belongs_to :user
-  #slug  :reference, :scope => :patron, :permanent => true
-  #auto_increment :rec_number
 
   has_many :loadings, dependent: :nullify
-  has_many :transnodes, as: :multimodal, dependent: :delete
-  has_many :comments, as: :commentable, dependent: :delete
+  has_many :comments, as: :commentable, dependent: :destroy
 
-  accepts_nested_attributes_for :transnodes
+  has_many :transnodes, dependent: :destroy
+  accepts_nested_attributes_for :transnodes, :reject_if => lambda { |a| a[:trans_method].blank? }, :allow_destroy => true
   
-  #attr_accessible 
+  attr_accessible :operation, :direction, :incoterm, :paid_at, :load_type, :agent_id, :user_id, :load_place_id, :load_date, 
+                   :unload_place_id, :unload_date, :freight_price, :freight_curr, :status, :report_date, :stage, :stage_date, 
+                   :ref_no1, :ref_type1, :ref_no2, :ref_type2, :ref_no3, :ref_type3, :ref_no4, :ref_type4, :notes, :agent_price, 
+                   :agent_curr, :branch_id, :waybill_no, :waybill_date, :transnodes_attributes
 
-  #validates_confirmation_of :password
   validates_presence_of :reference, :on => :update
   validates_presence_of :operation #, :message => I18n.t('tasks.errors.name.cant_be_blank')
   validates_presence_of :direction #, :message => I18n.t('tasks.errors.name.cant_be_blank')
   validates_presence_of :patron #, :message => I18n.t('tasks.errors.name.cant_be_blank')
   validates_presence_of :patron_token #, :message => I18n.t('tasks.errors.name.cant_be_blank')
-  validates_presence_of :branch #, :message => I18n.t('tasks.errors.name.cant_be_blank')
-  validates_uniqueness_of :reference, :case_sensitive => false #burada patron_id değerine göre unique key olmalı
-  #validates_presence_of :load_place #, :message => I18n.t('tasks.errors.name.cant_be_blank')
-  #validates_presence_of :unload_place #, :message => I18n.t('tasks.errors.name.cant_be_blank')
-  validates_presence_of :load_date #, :message => I18n.t('tasks.errors.name.cant_be_blank')
-  validates_presence_of :unload_date #, :message => I18n.t('tasks.errors.name.cant_be_blank')
+  validates_presence_of :branch_id #, :message => I18n.t('tasks.errors.name.cant_be_blank')
+  #validates_presence_of :load_place_id
+  #validates_uniqueness_of :reference, :case_sensitive => false #burada patron_id değerine göre unique key olmalı
+  #validates_presence_of :load_date #, :message => I18n.t('tasks.errors.name.cant_be_blank')
+  #validates_presence_of :unload_date #, :message => I18n.t('tasks.errors.name.cant_be_blank')
 
-  validates_inclusion_of :operation, in: ["air","sea","road","rail","inland"]
-  validates_inclusion_of :direction, in: ["E","I","T"]
+  #validates_inclusion_of :operation, in: ["air","sea","road","rail","inland"]
+  #validates_inclusion_of :direction, in: ["E","I","T"]
   validates_numericality_of :freight_price
   validates_numericality_of :agent_price
-  #validates_associated :transporter
-  validates_uniqueness_of :patron_token, :reference, :on => :update
-  #validates_length_of   :mwb, minimum: 11
-  #validates_format_of   :
-
-  index :patron_token, background: true
-  index :operation, background: true
-  index :load_date, background: true
 
   scope :patron, ->(token) { where(patron_token: token) }
   scope :active, where(status: "A")
@@ -102,26 +52,10 @@ class Position < ActiveRecord::Base
   scope :import, where(direction: "I")
 
   #scope :washed_up, where(:age.gt => 30)
-  scope :newones, order_by(:created_at, :desc)
+  scope :newones, order("created_at desc")
 
   before_create :set_initials
   after_create  :set_after_jobs
-
-  private
-  def set_initials
-    counter = self.patron.generate_counter("Position", self.operation, self.direction)
-    self.reference = self.operation + "." + self.direction + "." + sprintf('%07d', counter)
-    #self.patron_token = current_patron.token if self.patron_token.blank?
-    generate_slug!
-  end
-
-  private
-  def set_after_jobs
-    self.user.follow(self) if self.user
-    self.user.create_activity(self, reference, patron_id, patron_token)
-    #patron.set_activity(self, 'create', user.id, 'created', user.full_name)
-    Patron.journal_record(patron, user, branch, nil, self.class.name, 1, 0)
-  end
 
   class << self
     def direction_types()
@@ -161,6 +95,22 @@ class Position < ActiveRecord::Base
 
   def to_s
     reference
+  end
+
+  private
+  def set_initials
+    counter = self.patron.generate_counter("Position", self.operation, self.direction)
+    self.reference = self.operation + "." + self.direction + "." + sprintf('%07d', counter)
+    #self.patron_token = current_patron.token if self.patron_token.blank?
+    #set_friendly_id(self.reference)
+  end
+
+  private
+  def set_after_jobs
+    self.user.follow!(self) if self.user
+    self.user.create_activity(self, reference, patron_id, patron_token)
+    #patron.set_activity(self, 'create', user.id, 'created', user.full_name)
+    Patron.journal_record(patron, user, branch, nil, self.class.name, 1, 0)
   end
 
 end

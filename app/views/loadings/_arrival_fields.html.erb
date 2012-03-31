@@ -1,0 +1,27 @@
+<div class="row-fluid">
+  <div class="span6">
+    <fieldset>
+      <%= f.input :country_id do %>
+        <%= f.input_field :country_id, :as => :select, :collection => Country.all, :include_blank => false, :class => "input-medium" %>
+        <%= f.grouped_collection_select :city_id, Country.order(:name), :cities, :name, :id, :name, {:include_blank => true}, {:class => "input-medium"} %>
+      <% end %>
+      <%= f.input :unload_point, :as => :select, :collection => Loading.point_types.map { |r| [r[1], r[0] ] } %>
+      <%= f.input :unload_date, :as => :string, :input_html => {:class => "input-small", "data-datepicker" => "datepicker"} %>
+      <%= f.input :unload_place_id, :as => :select, :collection => [[@loading.arrival.unload_place_id ? @loading.arrival.unload_place.name : "", @loading.arrival.unload_place_id]], :input_html => {:class => "chosen_input", "data-url" => "/places.json"} %>
+      <%= f.input :district, :label => "Semt" do %>
+        <%= f.input_field :district, :class => "input-small" %>
+        <%= f.input_field :postcode, :class => "input-small" %>
+      <% end %>
+      <%= f.input :address, :as => :text, :input_html => {:rows => 1, :cols => 37} %>
+    </fieldset>
+  </div>
+  <div class="span6">
+    <fieldset>
+      <%= f.input :consignee_id, :as => :select, :collection => [[@loading.arrival.consignee_id ? @loading.arrival.consignee.name : "", @loading.arrival.consignee_id]], :input_html => {:class => "chosen_input", "data-url" => "/companies.json"} %>
+      <%= f.input :deliver_id, :as => :select, :collection => [[@loading.arrival.deliver_id ? @loading.arrival.deliver.name : "", @loading.arrival.deliver_id]], :input_html => {:class => "chosen_input", "data-url" => "/companies.json"} %>
+      <%= f.input :notify_id, :as => :select, :collection => [[@loading.arrival.notify_id ? @loading.arrival.notify.name : "", @loading.arrival.notify_id]], :input_html => {:class => "chosen_input", "data-url" => "/companies.json"} %>
+      <%= f.input :notify2_id, :as => :select, :collection => [[@loading.arrival.notify2_id ? @loading.arrival.notify2.name : "", @loading.arrival.notify2_id]], :input_html => {:class => "chosen_input", "data-url" => "/companies.json"} %>
+      <%= f.input :notes, :as => :text, :input_html => {:rows => 1, :cols => 37} %>
+    </fieldset>
+  </div>
+</div>

@@ -3,12 +3,12 @@ class PlacesController < ApplicationController
   before_filter :require_login
 
   def index
-    if params[:q]
-      strQ = params[:q].html_safe
-      @places = Place.where(:name => /#{strQ}/i).limit(10)
+    if params[:data] && params[:data][:q]
+       q = params[:q] ? "%#{params[:q]}%" : "%#{params[:data][:q]}%"
+       @places = Place.where("lower(name) like ?", q).limit(10)
     else
-      @places = Place.all
-      @json = Place.all.to_gmaps4rails
+       @places = Place.all
+       @json = Place.all.to_gmaps4rails
     end
 
     respond_to do |format|
@@ -21,7 +21,7 @@ class PlacesController < ApplicationController
     if params[:lookup]
       @place = Place.find(params[:id])
     else
-      @place = Place.find_by_slug(params[:id])
+      @place = Place.find(params[:id])
       @json  = @place.to_gmaps4rails
     end
     respond_to do |format|
@@ -40,7 +40,7 @@ class PlacesController < ApplicationController
   end
 
   def edit
-    @place = Place.find_by_slug(params[:id])
+    @place = Place.find(params[:id])
   end
 
   def create
@@ -58,7 +58,7 @@ class PlacesController < ApplicationController
   end
 
   def update
-    @place = Place.find_by_slug(params[:id])
+    @place = Place.find(params[:id])
 
     respond_to do |format|
       if @place.update_attributes(params[:place])
@@ -72,7 +72,7 @@ class PlacesController < ApplicationController
   end
 
   def destroy
-    @place = Place.find_by_slug(params[:id])
+    @place = Place.find([:id])
     @place.destroy
 
     respond_to do |format|

@@ -1,0 +1,40 @@
+<div class="row-fluid">
+
+  <div class="span6">
+    <fieldset>      
+
+      <%= f.input :total do %>
+        <%= f.input_field :total, :class => "input-small" %>
+        <%= f.input_field :pack_type, :as => :select, :collection => Package.pack_types.map { |r| [r[1], r[0] ] }, :class => "input-medium" %>
+      <% end %>
+      <%= f.input :dimension1 do %>
+        <%= f.input_field :dimension1, :class => "input-small" %>X
+        <%= f.input_field :dimension2, :class => "input-small" %>X
+        <%= f.input_field :dimension3, :class => "input-small" %>
+      <% end %>
+      <%= f.input :brutwg, :label => "Brüt/Net Weight" do %>
+        <%= f.input_field :brutwg, :class => "input-small" %>
+        <%= f.input_field :netwg,  :class => "input-small" %>
+      <% end %>
+      <%= f.input :volume, :label => "Volume/Ladameter" do %>
+        <%= f.input_field :volume, :class => "input-small" %>
+        <%= f.input_field :lada,  :class => "input-small" %>
+      <% end %>
+      <%= f.input :description, :label => "Package Detail" %>
+    </fieldset>
+  </div>
+  <div class="span6">
+    <fieldset>
+      <%= f.input :imo, :label => "Hazardous IMO No", :input_html => {:class => "input-medium" } %>
+      <%= f.input :gtip, :label => "G.Tip No", :input_html => {:class => "input-medium" } %>
+      <%= f.input :po, :label => "PO No", :input_html => {:class => "input-medium" } %>
+      <%= f.input :loading_notes, :as => :text, :input_html => {:rows => "3"}, :label => "Loading Note" %>
+      <div class="controls">
+        <%= f.button :submit, :class => 'btn btn-primary' %>
+      </div>
+    </fieldset>
+  </div>
+  <%= f.hidden_field :loading, :value => @package.loading ? @package.loading.id : nil %>
+  <%= f.hidden_field :container, :value => @package.container ? @package.container.id : nil %>
+
+</div>

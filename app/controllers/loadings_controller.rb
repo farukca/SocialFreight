@@ -12,7 +12,7 @@ class LoadingsController < ApplicationController
   end
 
   def show
-    @loading = Loading.find_by_slug!(params[:id])
+    @loading = Loading.find(params[:id])
     @package = @loading.packages.build()
     @container = @loading.containers.build()
     @comment = @loading.comments.build()
@@ -29,7 +29,8 @@ class LoadingsController < ApplicationController
 
   def new
 
-    @position = Position.find_by_slug(params[:position_id]) if params[:position_id]
+    @position = Position.find(params[:position_id]) if params[:position_id]
+    @loading  = nil
     unless @position.nil?
        @loading = @position.loadings.build(params[:loading])
        @loading.operation = @position.operation
@@ -38,7 +39,9 @@ class LoadingsController < ApplicationController
        @loading = current_patron.loadings.build(params[:loading])
        @loading.operation = params[:operation] if params[:operation]
     end
-
+    @loading.build_departure
+    @loading.build_arrival
+    
     respond_to do |format|
       format.html
       format.json { render json: @loading }
@@ -46,7 +49,7 @@ class LoadingsController < ApplicationController
   end
 
   def edit
-    @loading = Loading.find_by_slug(params[:id])
+    @loading = Loading.find(params[:id])
   end
 
   def create
@@ -69,7 +72,7 @@ class LoadingsController < ApplicationController
   end
 
   def update
-    @loading = Loading.find_by_slug(params[:id])
+    @loading = Loading.find(params[:id])
 
     respond_to do |format|
       if @loading.update_attributes(params[:loading])
@@ -83,7 +86,7 @@ class LoadingsController < ApplicationController
   end
 
   def destroy
-    @loading = Loading.find_by_slug(params[:id])
+    @loading = Loading.find(params[:id])
     @loading.destroy
 
     respond_to do |format|
@@ -93,12 +96,12 @@ class LoadingsController < ApplicationController
   end
 
   def follow
-    @loading = Loading.find_by_slug(params[:id])
+    @loading = Loading.find(params[:id])
     current_user.follow(@loading)
   end
 
   def unfollow
-    @loading = Loading.find_by_slug(params[:id])
+    @loading = Loading.find(params[:id])
     current_user.unfollow(@loading)
   end
 

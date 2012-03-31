@@ -7,7 +7,7 @@ class BranchesController < ApplicationController
   end
 
   def edit
-    @branch = Branch.find_by_slug(params[:id])
+    @branch = Branch.find(params[:id])
   end
 
   def create

@@ -1,12 +1,13 @@
 class Counter < ActiveRecord::Base
-  #include Mongoid::Document
 
-  #field :counter_type
-  #field :operation
-  #field :direction
-  #field :count, :type => Integer, default: 0
   belongs_to :patron
 
+  attr_accessible :counter_type, :operation, :patron_id, :prefix, :suffix, :period, :count
+
   validates_presence_of :counter_type
+
+  def set_reference
+    
+  end
 
 end

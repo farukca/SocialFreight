@@ -92,7 +92,8 @@ html, body {
     margin-right: 5px;
 }
 .control-group {
-    width:50%;
+    //width:50%;
+    //float:left;
 }
 .labelCol2 {
     width:13%;
@@ -105,9 +106,13 @@ html, body {
     font-size:91%;
     font-weight:normal;
     text-align:left;
+    text-indent:10px;
 }
 .dataCol2 .lastCol {
     width:17%;
+}
+.dataCol2 dl {
+    margin-bottom:0;
 }
 .requiredInput .requiredBlock {
     background-color:#CC0000;
@@ -383,9 +388,12 @@ fieldset span {
     text-align:left;
     width:20%;
 }
-#login_form label, #patron_form label {
+#login_form label, #patron_form label, #new_user label {
     margin-right:5px;
     color:#fff;
+}
+.quick_form label {
+    display:block;
 }
 #login_form a, #patron_form a {
     margin-left:5px;
@@ -396,7 +404,7 @@ fieldset span {
     text-align:center;
 }
 #login_roadmap {
-    margin-top: 60px;
+    margin-top: 40px;
     text-align:center;
 }
 form ul li {
@@ -706,7 +714,6 @@ h4.profile-data-section {
 }
 .incompleteClass {
     line-height:21px;
-    list-style:disc outside url("/img/chatter/wtdn_bullet.png");
     margin-left:1em;
     padding-left:0;
     text-decoration:none;
@@ -776,6 +783,15 @@ label abbr {
     height:18px;
     min-height: 16px;
 }
+#activation_form h4, #activation_form h4 p {
+    color: #fff;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+#activation_form label {
+    color: #fff;
+}
 .alert-message.alert {
   background-color: #c43c35;
   background-repeat: repeat-x;
@@ -810,8 +826,41 @@ label abbr {
 .icon-loading {
   background-position: -264px 0;
 }
-.autocomplete-w1 { background:url(/assets/shadow.png) no-repeat bottom right; position:absolute; top:0px; left:0px; margin:8px 0 0 6px; /* IE6 fix: */ _background:none; _margin:0; }
-.autocomplete { border:1px solid #999; background:#FFF; cursor:default; text-align:left; max-height:350px; overflow:auto; margin:-6px 6px 6px -6px; /* IE6 specific: */ _height:350px;  _margin:0; _overflow-x:hidden; }
-.autocomplete .selected { background:#F0F0F0; }
-.autocomplete div { padding:2px 5px; white-space:nowrap; }
-.autocomplete strong { font-weight:normal; color:#3399FF; }
+input.autocomplete-loading
+{
+	background-image:url(/assets/autocomplete.gif);
+	background-position: center right;
+	background-repeat:no-repeat;
+}
+ul.autocomplete 
+{
+    position: absolute;
+    overflow: hidden;
+    background-color: #fff;
+    border: 1px solid ButtonShadow;
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    color: #000;
+	display:none;
+	z-index:1000;
+}
+ul.autocomplete li 
+{
+  display: block; 
+  padding: 0.3em; 
+  overflow: hidden;
+  width: 100%;
+  cursor:pointer;
+}
+
+ul.autocomplete li.selected 
+{
+  background-color: Highlight ; 
+  color: #fff;
+}
+.help-block {
+  margin-top: 3px;
+  font-size: 11px;
+  line-height: 12px;
+}

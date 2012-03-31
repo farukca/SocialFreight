@@ -15,7 +15,7 @@ class CreatePositions < ActiveRecord::Migration
       t.timestamp :unload_date
       t.decimal :freight_price, :default => 0
       t.string  :freight_curr, :limit => 5
-      t.string  :status, :limit => 4
+      t.string  :status, :limit => 4, :default => 'A'
       t.date    :report_date
       t.string  :stage, :limit => 4
       t.timestamp :stage_date

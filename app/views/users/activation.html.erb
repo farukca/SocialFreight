@@ -1,18 +1,25 @@
-<div id="user_form" class="row">
+<div id="activation_form">
+  <div class="row">
+    <h4>Tebrikler, Hesabınızı Etkinleştirdiniz.</h4>
+  </div>
+  
+  <div class="row">
+    <h4>Giriş yapmak için kullanacağınız mail adresiniz;&nbsp;<%= @user.email %></h4>
+    <h4>Lütfen Şifrenizi Belirleyiniz;</h4>
+  </div>
+
 <%= simple_form_for @user, :validate => true  do |f| %>
   <%= f.error_notification %>
-
-  <div class="page-header span16 columns">
-    <h4>Activate Your Account</h4>
+  
+  <div class="row">
+    <div class="span6">
+      <fieldset>
+        <%= f.input :password, :label => "Şifreniz", :hint => "En az 8 karakter uzunluğunda olmalı" %>
+        <%= f.input :password_confirmation, :label => "Şifreyi Tekrar Giriniz" %>
+        <%= f.button :submit, "Kaydet", :class => 'btn btn-success' %>
+      </fieldset>
+    </div>
   </div>
-  <div>
-    <p>Your Mail:<%= @user.email %>
-  </div>
-  <fieldset>
-      <%= f.input :password %>
-      <%= f.input :password_confirmation, :label => "Confirm Password" %>
-      <%= f.button :submit, :class => 'btn primary' %>
-  </fieldset>
-
+  
 <% end %>
 </div>

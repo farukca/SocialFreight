@@ -5,9 +5,10 @@
  *= require reset
  *= require normalize
  *= require bootstrap
+ *= require bootstrap_changes
  *= require freight
  *= require gmaps4rails
  *= require token-input
- *= require facebox
+ *= require chosen
  * require_tree . 
 */

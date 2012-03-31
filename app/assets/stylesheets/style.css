@@ -86,7 +86,7 @@ p {
 .header {
     background: url(/assets/big_images/top-bar-shadow.png) top left repeat-x #fff;
     padding: 20px 0;
-    margin-top:50px;
+    margin-top:45px;
     -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.35);
     -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.35);
     -o-box-shadow: 0 0 2px rgba(0, 0, 0, 0.35);
@@ -160,7 +160,7 @@ p {
     background: none !important;
 }
 .slider {
-    margin-top: 30px;
+    margin-top: 20px;
     position: relative;
 }
 .slider-intro {
@@ -1348,4 +1348,7 @@ label {
 }
 #form-container tr, #form-container td, #form-container th {
     border: none !important;
+}
+form {
+  margin:0;
 }

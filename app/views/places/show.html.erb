@@ -1,11 +1,11 @@
-<div id="place" class="row">
-  <div id="pos-btn" class="row">
+<div id="place" class="row-fluid">
+  <div id="pos-btn" class="row-fluid">
     <ul class="pills rightside">
       <li><%= link_to "Edit Place", edit_place_path(@place), :class => "btn primary" %></li>
     </ul>
   </div>
-  <div class="profile-content row">
-    <div class="place span6 columns">
+  <div class="profile-content row-fluid">
+    <div class="place span6">
       <h3>
         <span id="reference"><%= @place.name %></span>
       </h3>
@@ -59,7 +59,7 @@
         </dd>
       </dl>
     </div>
-    <div class="span9 columns">
+    <div class="span6">
       <%#= gmaps("markers" => {"data" => @place.coordinate.to_json }) %>
       <%= gmaps4rails(@json) %>
     </div>

@@ -1,23 +1,17 @@
-<div class="pageBody">
-  <table style="width:100%" border="0" cellpadding="0" cellspacing="0">
-    <tr class="subHeader"><td colspan="2"><h4>Ek Bilgiler</h4></td></tr>
-    <tr>
-      <%= f.input :producer, :input_html => {:class => "medium"} %>
+<div class="row-fluid">
+  <div class="span6">
+    <fieldset>
+      <%= f.input :producer %>
       <%= f.input :product_price do %>
         <%= f.input_field :product_price, :class => "input-small" %>
-        <%= f.input_field :product_curr, :as => :select, :collection => Currency.all, :include_blank => false, :class => "input-medium" %>
+        <%= f.input_field :product_curr, :as => :select, :collection => Currency.all, :include_blank => false, :class => "input-small" %>
       <% end %>
-    </tr>
-    <tr>
-      <%= f.input :agent, :input_html => {:class => "lookup_input", "data-url" => "/companies.json", "data-pre" => @loading.agent ? @loading.agent.to_s : nil } %>
-      <%= f.input :agent_reference, :input_html => {:class => "input-medium"} %>
-    </tr>
-    <tr>
-      <%= f.input :stage do %>
-        <%= f.input_field :stage, :class => "input-medium", :as => :select, :collection => Loading.stages.map { |r| [r[1], r[0] ] }, :include_blank => false %>
-        <%= f.input_field :stage_date, :class => "input-small", "data-datepicker" => "datepicker" %>
-      <% end %>
-      <%= f.input :customer_reference, :input_html => {:class => "input-medium"} %>
-    </tr>
-  </table>
+    </fieldset>
+  </div>
+  <div class="span6">
+    <fieldset>
+      <%= f.input :agent_id, :input_html => {:class => "lookup_input", "data-url" => "/companies.json", "data-pre" => @loading.agent ? @loading.agent.to_s : nil } %>
+  <%#= f.input :agent_reference, :input_html => {:class => "input-medium"} %>
+  <%= f.input :marks_nos, :as => :text, :input_html => {:rows => 1}, :label => "Marks & Nos" %>
+  <%#= f.input :customer_reference, :input_html => {:class => "input-medium"} %>
 </div>

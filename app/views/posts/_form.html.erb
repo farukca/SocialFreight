@@ -1,20 +1,9 @@
-<div class="pageBody">
-  <table  class="detailList" border="0" cellpadding="0" cellspacing="0">
-  <%= simple_form_for Post.new, :validate => true, :remote => true, :class => "post" do |f| %>
-  <%= f.error_notification %>
-    <tr>
-      <%= f.input :message, :as => :text, :input_html => {:rows => "1", :style => "width:95%"}, :label => false %>
-    </tr>
-    <tr>
-      <td>
-        <div class="clearfix">
-          <span><a href="#">Attach a link</a></span>
-          <span class="rightside">
-            <%= f.button :submit, :class => 'btn btn-info' %>
-          </span>
-        </div>
-      </td>
-    </tr>
-  </table>
+<div class="row-fluid">
+  <%= simple_form_for Post.new, :validate => true, :remote => true do |f| %>
+    <div class="row-fluid">
+    <%= f.error_notification %>
+    <%= f.input :message, :as => :text, :input_html => {:rows => "1", :style => "width:95%"}, :label => false %>
+    <%= f.button :submit, :class => 'btn btn-info' %>
+     </div>
   <% end %>
 </div>

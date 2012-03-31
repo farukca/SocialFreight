@@ -3,7 +3,7 @@
     <!--span id="commentCount" class="rightside"><%= object.comments.count %></span-->
   </div>
       <ul>
-        <%= render object.comments.order_by(:created_at, :desc) %>
+        <%= render object.comments.order("created_at desc") %>
       </ul>
   </div>
 </div>

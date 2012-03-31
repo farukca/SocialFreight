@@ -1,10 +1,10 @@
 <div>
 
-  <div class="span7 columns">
+  <div class="span6 columns">
     <div id="login_image"></div>
-    <div>
+    <!--div>
       <div><h2>Sign up</h2></div>
-    </div>
+    </div-->
     <%= render 'form', :user => @user %>
     <div id="signupnote" class="row">
       <p>You have already an account?&nbsp;<%= link_to "Sign in", login_path%></p>
@@ -12,7 +12,7 @@
     </div>
   </div>
 
-  <div class="span5 columns">
+  <div class="span6 columns">
     <div id="login_roadmap">
       <%= image_tag "slide.jpg" %>
     </div>

@@ -1,61 +1,28 @@
-<%= simple_form_for [@loading, @loading.packages.build()], :validate => true do |f| %>
+<div id="package_form">
+<%= simple_form_for [@loading, @package], :validate => true do |f| %>
   <%= f.error_notification %>
 
   <fieldset>
-    <table>
-      <tr class="span6">
-        <td style="text-align:center"><h4>New Package</h4></td>
-      </tr>
-      <%= f.hidden_field :loading, :value => @package.loading ? @package.loading.id : nil %>
-      <%= f.hidden_field :container, :value => @package.container ? @package.container.id : nil %>
 
-      <tr>
-        <%= f.input :total do %>
-          <%= f.input_field :total, :class => "input-small" %>
-          <%= f.input_field :pack_type, :as => :select, :collection => Package.pack_types.map { |r| [r[1], r[0] ] }, :class => "input-medium" %>
-        <% end %>
-      </tr>
-      <tr>
-        <%= f.input :dimension1 do %>
-          <%= f.input_field :dimension1, :class => "input-small" %>X
-          <%= f.input_field :dimension2, :class => "input-small" %>X
-          <%= f.input_field :dimension3, :class => "input-small" %>
-        <% end %>
-      </tr>
-      <tr>
-        <%= f.input :imo, :label => "Hazardous IMO No", :input_html => {:class => "input-medium" } %>
-      </tr>
-      <tr>
-        <%= f.input :gtip, :label => "G.Tip No", :input_html => {:class => "input-medium" } %>
-      </tr>
-      <tr>
-        <%= f.input :po, :label => "PO No", :input_html => {:class => "input-medium" } %>
-      </tr>
-      <tr>
-        <%= f.input :brutwg, :label => "Brüt/Net Weight" do %>
-          <%= f.input_field :brutwg, :class => "input-small" %>
-          <%= f.input_field :netwg,  :class => "input-small" %>
-        <% end %>
-      </tr>
-      <tr>
-        <%= f.input :volume, :label => "Volume/Ladameter" do %>
-          <%= f.input_field :volume, :class => "input-small" %>
-          <%= f.input_field :lada,  :class => "input-small" %>
-        <% end %>
-      </tr>
-      <tr>
-        <%= f.input :description, :label => "Package Detail" %>
-      </tr>
-      <tr>
-        <%= f.input :notes, :as => :text, :input_html => {:rows => "3"}, :label => "Loading Note" %>
-      </tr>
-      <tr>
-        <td style="text-align:right">
-          <%= f.button :submit, :name => "Kapat", :class => 'btn', "data-dismiss" => "modal" %>
-          <%= f.button :submit, :class => 'btn btn-primary' %>
-        </td>
-      </tr>
-    </table>
+  <div class="pageBlock">
+    <%= render 'shared/form_buttonsh', :f => f %>
+ 
+    <!--div class="tabbable tabs-below"-->
+    <div>
+
+      <div id="my-tab-content" class="tab-content">
+        <legend>Koli Bilgileri</legend>
+        <div id="package-main-form" class="tab-pane active">
+          <%= render 'form_main', :f => f %>
+        </div>
+      </div>
+
+    </div>
+    <%= f.error :base %>
+  </div>
+
   </fieldset>
+  
 
 <% end %>
+</div>

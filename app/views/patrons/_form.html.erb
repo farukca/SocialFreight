@@ -3,44 +3,14 @@
   <%= f.error_notification %>
 
   <fieldset>
-    <div class="pageBody">
-      <table  class="detailList" border="0" cellpadding="0" cellspacing="0">
-        <tr>
-          <%= f.input :title, :label => "Company" %>
-        </tr>
-        <tr>
-          <%= f.input :contact_name, :label => "Name" %>
-        </tr>
-        <tr>
-          <%= f.input :contact_surname, :label => "Surname" %>
-        </tr>
-        <tr>
-          <%= f.input :tel  %>
-        </tr>
-        <tr>
-          <%= f.input :email %>
-        </tr>
-        <tr>
-          <%= f.input :employees %>
-        </tr>
-        <tr>
-          <%= f.input :language %>
-        </tr>
-        <!--tr>
-          <td>
-            <div class="clearfix">
-              <label class="required">Operations</label>
-              <div id="operations">
-                <%= f.association :operations, :as => :check_boxes, :collection => Operation.all %>
-              </div>
-            </div>
-          </td>
-        </tr-->
-        <tr>
-          <td class="dataCol rightside"><%= f.button :submit, "Try SocialFreight", :class => 'btn primary' %></td>
-        </tr>
-      </table>
-    </div>
+    <%= f.input :title, :label => "Company" %>
+    <%= f.input :contact_name, :label => "Name" %>
+    <%= f.input :contact_surname, :label => "Surname" %>
+    <%= f.input :tel  %>
+    <%= f.input :email %>
+    <%= f.input :employees, :as => :select, :collection => Patron.employee_ranks.map { |r| [r[1], r[0] ] }, :include_blank => false %>
+    <%#= f.input :language %>
+    <div class="controls"><%= f.button :submit, "Try SocialFreight", :class => 'btn btn-success' %></div>
   </fieldset>
 
 <% end %>

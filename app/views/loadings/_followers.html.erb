@@ -3,7 +3,7 @@
     <div class="todoListHeader">Followers</div>
     <div class="todoListContents">
       <ol class="listClass" id="follower_list">
-        <% for fower in loading.all_followers %>
+        <% for fower in loading.followers(User) %>
           <%= render "loadings/follower", :user => fower %>
         <% end %>
       </ol>

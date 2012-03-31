@@ -12,7 +12,7 @@ class PositionsController < ApplicationController
   end
 
   def show
-    @position  = Position.find_by_slug!(params[:id])
+    @position  = Position.find(params[:id])
     @transnode = Transnode.new
     respond_to do |format|
       format.html # show.html.erb
@@ -23,7 +23,8 @@ class PositionsController < ApplicationController
   def new
     @position = current_patron.positions.build(params[:position])
     @position.operation = params[:operation] if params[:operation]
-
+    @position.transnodes.build(:trans_method => @position.operation)
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @position }
@@ -32,7 +33,7 @@ class PositionsController < ApplicationController
 
   # GET /positions/1/edit
   def edit
-    @position = Position.find_by_slug(params[:id])
+    @position = Position.find(params[:id])
   end
 
   def create
@@ -42,9 +43,9 @@ class PositionsController < ApplicationController
 
     respond_to do |format|
       if @position.save
-        current_user.follow(@position)
         #format.html { redirect_to @position, notice: 'Position was successfully created.' }
-        format.html { redirect_to @position, notice: 'Position was successfully created.' }
+        #format.html { redirect_to @position, notice: 'Position was successfully created.' }
+        format.html { redirect_to new_position_transnode_path(@position, :fromwhere => 'position'), notice: 'Position was successfully created.' }
         format.json { render json: @position, status: :created, location: @position }
       else
         format.html { render action: "new" }
@@ -54,7 +55,7 @@ class PositionsController < ApplicationController
   end
 
   def update
-    @position = Position.find_by_slug(params[:id])
+    @position = Position.find(params[:id])
 
     respond_to do |format|
       if @position.update_attributes(params[:position])
@@ -68,7 +69,7 @@ class PositionsController < ApplicationController
   end
 
   def destroy
-    @position = Position.find_by_slug(params[:id])
+    @position = Position.find(params[:id])
     @position.destroy
 
     respond_to do |format|
@@ -90,12 +91,12 @@ class PositionsController < ApplicationController
   end
 
   def follow
-    @position = Position.find_by_slug(params[:id])
+    @position = Position.find(params[:id])
     current_user.follow(@position)
   end
 
   def unfollow
-    @position = Position.find_by_slug(params[:id])
+    @position = Position.find(params[:id])
     current_user.unfollow(@position)
   end
 

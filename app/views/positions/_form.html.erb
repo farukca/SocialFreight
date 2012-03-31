@@ -6,22 +6,32 @@
   <div class="pageBlock">
     <%= render 'shared/form_buttonsh', :f => f %>
  
+    <!--div class="tabbable tabs-below"-->
     <div>
-      <!--ul class="tabs" data-tabs="tabs">
-        <li class="active"><a href="#position-main-form">Pozisyon Bilgileri</a></li>
-        <div class="rightside">
-          <%= f.button :submit, "Save Position", :class => 'btn primary' %>
-        </div>
-      </ul-->
 
       <div id="my-tab-content" class="tab-content">
+        <legend>Pozisyon Bilgileri</legend>
         <div id="position-main-form" class="tab-pane active">
           <%= render 'form_main', :f => f %>
         </div>
+        <!--legend>Gemi Bilgileri</legend>
+        <div id="position-voyage-form" class="tab-pane active">
+          <%#= f.fields_for :transnodes, @position.transnodes do |builder| %>
+            <%#= render 'form_voyage', :f => builder %>
+          <%# end %>
+          <%#= f.fields_for :transnodes do |builder| %>
+            <%#= render 'transnodes_fields', :f => builder %>
+          <%# end %>
+
+        </div-->
       </div>
 
+      <!--ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#position-main-form">1-Pozisyon Bilgileri</a></li>
+        <li><a data-toggle="tab" href="#position-voyage-form">2-Gemi Bilgileri</a></li>
+      </ul-->
     </div>
-    <%= render 'shared/form_buttonsb', :f => f %>
+    <%= f.error :base %>
   </div>
 
   </fieldset>

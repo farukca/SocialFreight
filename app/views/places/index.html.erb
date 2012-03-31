@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row-fluid">
 <h3>Listing places</h3>
 <span class="rightside"><%= link_to 'New Place', new_place_path, :class => "btn primary" %></span>
 <table>
@@ -16,7 +16,7 @@
   <%= render @places %>
 
 </table>
-    <div class="span6 columns">
+    <div class="span6">
       <%= gmaps4rails(@json) %>
     </div>
 </div>

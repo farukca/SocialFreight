@@ -6,16 +6,21 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require gmaps4rails/gmaps4rails.googlemaps
 //= require rails.validations
-//= require jquery.autocomplete
 //= require jquery.tokeninput
+//= require jquery.timeago
+//= require jquery.autocomplete
 //= require bootstrap
 //= require bootstrap-datepicker
-//= require facebox
 //= require highcharts
+//= require chosen.jquery-0.9.5
+//= require chosen.ajaxaddition.jquery
+//= require patron
 //= require loading
 //= require search
 //= require home
+// require facebox
 // require_tree .
 // require sf_min
 

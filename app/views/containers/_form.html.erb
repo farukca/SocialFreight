@@ -1,29 +1,25 @@
+<div id="container_form">
 <%= simple_form_for [@loading, @container], :validate => true do |f| %>
   <%= f.error_notification %>
-
   <fieldset>
-    <div class="row">
-      <div class="page-header span16 columns">
-        <h4>New container</h4>
-      </div>
 
-      <div class="span8 columns">
-        <%= f.input :name, :label => "Container No" %>
-        <%= f.input :sealno, :label => "Seal No" %>
-        <%= f.input :notes, :as => :text, :input_html => {:rows => "3"}, :label => "Notes" %>
-      </div>
-      <div class="span8 columns">
-        <%= f.input :container_type, :as => :select, :collection => Container.container_types.map { |r| [r[1], r[0] ] }, :include_blank => false %>
-        <%= f.input :free_day %>
-        <%= f.input :demurrage, :label => "Daily Demurrage" do %>
-          <%= f.input_field :demurrage, :class => "small" %>
-          <%= f.input_field :demurrage_curr, :as => :select, :collection => Currency.all, :include_blank => false, :class => "medium" %>
-        <% end %>
-        <div class="clearfix" style="margin-left:250px">
-          <%= f.button :submit, :class => 'btn primary' %>
+  <div class="pageBlock">
+    <%= render 'shared/form_buttonsh', :f => f %>
+ 
+    <!--div class="tabbable tabs-below"-->
+    <div>
+
+      <div id="my-tab-content" class="tab-content">
+        <legend>Container Bilgileri</legend>
+        <div id="container-main-form" class="tab-pane active">
+          <%= render 'form_main', :f => f %>
         </div>
       </div>
-    </div>
-  </fieldset>
 
+    </div>
+    <%= f.error :base %>
+  </div>
+
+  </fieldset>
 <% end %>
+</div>

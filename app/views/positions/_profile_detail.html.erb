@@ -9,23 +9,22 @@
         </td>
       </tr>
       <tr>
-        <td class="labelCol2">Nakliyeci :</td>
-        <td class="dataCol2"><%= @position.transporter.name if @position.transporter %></td>
-        <td class="labelCol2">Yükleme:</td>
-        <td class="dataCol2"><%= @position.load_place.name if @position.load_place %></td>
+        <td class="dataCol2" colspan="2"><%= render 'tab_header', :position => @position %></td>
+        <td class="labelCol2">Konşimento No:</td>
+        <td class="dataCol2"><%= @position.waybill_no %></td>
         <td class="dataCol2" rowspan="3"></td>
       </tr>
       <tr>
-        <td class="labelCol2">Tedarikçi :</td>
-        <td class="dataCol2"><%= @position.supplier.name if @position.supplier %></td>
-        <td class="labelCol2">Boşaltma:</td>
-        <td class="dataCol2 lastCol"><%= @position.unload_place.name if @position.unload_place %></td>
+        <td class="labelCol2"></td>
+        <td class="dataCol2"><%#= @position.supplier.name if @position.supplier %></td>
+        <td class="labelCol2">Konşimento Tarihi:</td>
+        <td class="dataCol2"><%= @position.waybill_date %></td>
       </tr>
       <tr>
-        <td class="labelCol2"> Acenta:</td>
+        <td class="labelCol2">Acenta:</td>
         <td class="dataCol2 lastCol"><%= @position.agent.name if @position.agent %></td>
         <td class="labelCol2">Navlun:</td>
-        <td class="dataCol2"><%= @position.freight_price %>&nbsp;<%= @position.freight_curr.upcase %></td>
+        <td class="dataCol2"><%= @position.freight_price %>&nbsp;<%= @position.freight_curr.upcase if @position.freight_curr %></td>
       </tr>
     </table>
   </div>

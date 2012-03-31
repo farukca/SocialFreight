@@ -8,7 +8,7 @@ class PackagesController < ApplicationController
       @package = @container.packages.build(params[:package])
       @package.loading = @container.loading
     else
-      @loading = Loading.find_by_slug!(params[:loading_id]) if params[:loading_id]
+      @loading = Loading.find(params[:loading_id]) if params[:loading_id]
       @package = @loading.packages.build(params[:package])
     end
   end

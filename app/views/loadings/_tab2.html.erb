@@ -4,21 +4,21 @@
     <div id="good_goods" class="dlist">
       <dl>
         <dt>Gümrükçü</dt>
-        <dd><%= loading.customofficer.name if loading.customofficer %>&nbsp;</dd>
+        <dd><%#= loading.customofficer.name if loading.customofficer %>&nbsp;</dd>
         <dt>Notify</dt>
-        <dd><%= loading.notify.name if loading.notify %>&nbsp;</dd>
+        <dd><%#= loading.notify.name if loading.notify %>&nbsp;</dd>
         <dt>Notify(2)</dt>
-        <dd><%= loading.notify2.name if loading.notify2 %>&nbsp;</dd>
+        <dd><%#= loading.notify2.name if loading.notify2 %>&nbsp;</dd>
         <dt>Banka</dt>
-        <dd><%= loading.bank.name if loading.bank %>&nbsp;</dd>
+        <dd><%#= loading.bank.name if loading.bank %>&nbsp;</dd>
         <dt>İmalatçı</dt>
         <dd><%= loading.producer %>&nbsp;</dd>
         <dt>Mal Değeri</dt>
         <dd><%= loading.product_price %>&nbsp;<%= loading.product_curr.upcase if loading.product_curr %></dd>
         <dt>Özet Beyan</dt>
-        <dd><%= loading.statement %>&nbsp;<%= loading.statement_date %></dd>
+        <dd><%#= loading.statement %>&nbsp;<%#= loading.statement_date %></dd>
       <dt>Teslimat Firması</dt>
-      <dd class="company"><%= loading.deliver.name if loading.deliver %>&nbsp;</dd>
+      <dd class="company"><%#= loading.deliver.name if loading.deliver %>&nbsp;</dd>
       <dt>Durumu</dt>
       <dd><%= Loading.stages[loading.stage] %>&nbsp;<%= loading.stage_date %></dd>
 

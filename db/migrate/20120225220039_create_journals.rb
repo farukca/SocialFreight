@@ -12,6 +12,6 @@ class CreateJournals < ActiveRecord::Migration
     end
 
     add_index :journals, :patron_id
-    add_index :journals, [:journal_model, :process_date, :patron_id], :unique => true
+    #add_index :journals, [:journal_model, :process_date, :patron_id], :unique => true #MANUEL EKLEYELIM, ISIM UZUN, HATA VERIYOR
   end
 end

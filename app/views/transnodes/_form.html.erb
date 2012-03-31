@@ -1,45 +1,26 @@
-<!--div id="transnode_form">
-<%#= simple_form_for [object, object.transnodes.build()], :validate => true do |f| %>
-  <%#= f.error_notification %>
-
+<div id="opform">
+  <%= simple_form_for [@position, @transnode], :validate => true do |f| %>
+  <%= f.error_notification %>
   <fieldset>
-    <div class="row">
-      <div class="page-header span16 columns">
-        <h4>New MultiModal Node</h4>
-      </div>
-      <div class="span8 columns"-->
-        <%= f.input :trans_method do %>
-          <%= f.input_field :trans_method, :as => :select, :collection => Transnode.trans_methods.map { |r| [r[1], r[0] ] }, :include_blank => false, :class => "medium" %>
-          <%= f.input_field :trans_type, :as => :select, :collection => Transnode.trans_types.map { |r| [r[1], r[0] ] }, :include_blank => false, :class => "medium" %>
-        <% end %>
-        <%= f.input :vessel, :label => "Vessel-Voyage" do %>
-          <%= f.input_field :vessel, :class => "small" %>
-          <%= f.input_field :voyage, :class => "small" %>
-        <% end %>
-        <%= f.input :load_place, :input_html => {:class => "token_input", "data-url" => "/places.json", "data-pre" => @transnode.load_place ? @transnode.load_place.prepopulate_tokens.to_json : nil} %>
-        <%= f.input :load_date, :input_html => { :class => "small", "data-datepicker" => "datepicker" } %>
 
-        <%= f.input :unload_place, :input_html => {:class => "token_input", "data-url" => "/places.json", "data-pre" => @transnode.unload_place ? @transnode.unload_place.prepopulate_tokens.to_json : nil} %>
-        <%= f.input :unload_date, :input_html => { :class => "small", "data-datepicker" => "datepicker" } %>
-      </div>
-      <div class="span8 columns">
-        <%= f.input :supplier, :input_html => {:class => "token_input", "data-url" => "/companies.json", "data-pre" => @transnode.supplier ? @transnode.supplier.prepopulate_tokens.to_json : nil } %>
-        <%= f.input :freight_price do %>
-          <%= f.input_field :freight_price, :class => "small" %>
-          <%= f.input_field :freight_curr, :as => :select, :collection => Currency.all, :include_blank => false, :class => "medium" %>
-        <% end %>
-        <%= f.input :ticket_no do %>
-          <%= f.input_field :ticket_no, :class => "small" %>
-          <%= f.input_field :ticket_date, :class => "small", "data-datepicker" => "datepicker" %>
-        <% end %>
-        <%= f.input :vessel2, :label => "Additional Vessel" %>
-        <%= f.input :notes, :as => :text, :input_html => {:rows => "3"} %>
-        <!--div class="clearfix" style="margin-left:250px">
-          <%= f.button :submit, :class => 'btn primary' %>
+  <div class="pageBlock">
+    <%= render 'shared/form_buttonsh', :f => f %>
+ 
+    <!--div class="tabbable tabs-below"-->
+    <div>
+
+      <div id="my-tab-content" class="tab-content">
+        <legend>Gemi Bilgileri</legend>
+        <div id="transnode-main-form" class="tab-pane active">
+          <%= render 'form_main', :f => f %>
         </div>
-      </div>
-    </div>
-  </fieldset>
 
-<%# end %>
-</div-->
+      </div>
+
+    </div>
+    <%= f.error :base %>
+  </div>
+
+  </fieldset>
+<% end %>
+</div>

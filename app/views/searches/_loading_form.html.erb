@@ -1,30 +1,39 @@
-<div id="search-form" class="widget">
+<div id="search-form" class="profile widget">
 <%= simple_form_for @search do |f| %>
 
-  <fieldset>
-  <%= f.input :model, :as => :hidden, :input_html => { :value => "loadings" } %>
-  <%= f.input :operation, :as => :hidden %>
+  <div class="row-fluid">
+		<div class="span6">
+		  <fieldset>
+		    <%= f.input :direction, :label => "List Type" do %>
+          <%= f.input_field :model, :as => :select, :collection => Search.operation_models.map { |r| [r[1], r[0] ] }, :class => "input-small", :include_blank => false %>
+		      <%= f.input_field :direction, :as => :select, :collection => Position.direction_types.map { |r| [r[1], r[0] ] }, :class => "input-small", :include_blank => false %>
+		    <% end %>
+		  </fieldset>
+		</div>
+		<div class="span6">
+		  <fieldset>
+		    <%= f.input :docdate1, :label => I18n.t("position.#{@search.operation}.label.masterdate") do %>
+		      <%= f.input_field :docdate1, :as => "string", :class => "input-small", "data-datepicker" => "datepicker" %>
+		      <%= f.input_field :docdate2, :as => "string", :class => "input-small", "data-datepicker" => "datepicker" %>
+		      <%= f.button :submit, "Search", :class => 'btn btn-primary' %>
+		      <%= link_to (image_tag "advanced_search.png"), "#", :class => 'togglebutton', "data-placement" => "below",  "rel" => 'twipsy', "title" => "Detaylı Ara", "data-href" => "#load_form_details" %>
+		    <% end %>
+		  </fieldset>
+		</div>
+  </div>
+  <div id="load_form_details" class="row-fluid slidingDiv">
+    <div class="span6">
+      <fieldset>
+        <%= f.input :company_id %>
+      </fieldset>
+    </div>
+    <div class="span6">
+      <fieldset>
+        <%= f.input :branch_id, :as => :select, :collection => current_patron.branches %>
+      </fieldset>
+    </div>
+  </div>
 
-  <table style="width:100%" border="0" cellpadding="0" cellspacing="0">
-    <tr>
-      <%= f.input :direction do %>
-        <%= f.input_field :direction, :as => :select, :collection => Position.direction_types.map { |r| [r[1], r[0] ] }, :class => "input-small" %>
-        <%= f.input_field :paid_at, :as => :select, :collection => Position.payment_types.map { |r| [r[1], r[0] ] }, :class => "input-small" %>
-      <% end %>
-      <%= f.input :docdate1, :label => I18n.t("position.#{@search.operation}.label.masterdate") do %>
-        <%= f.input_field :docdate1, :class => "input-small", "data-datepicker" => "datepicker" %>
-        <%= f.input_field :docdate2, :class => "input-small", "data-datepicker" => "datepicker" %>
-        <%= f.button :submit, "Search", :class => 'btn btn-primary' %>
-        <%= link_to (image_tag "advanced_search.png"), "#", :class => 'togglebutton', "data-placement" => "below",  "rel" => 'twipsy', "title" => "Detaylı Ara", "data-href" => "#load_form_details" %>
-      <% end %>
-    </tr>
-    <tr id="load_form_details" class="slidingDiv">
-      <%= f.input :company_id %>
-      <%= f.input :branch do %>
-        <%= f.input_field :branch, :as => :select, :collection => current_patron.branches, :class => "input-medium" %>
-      <% end %>
-    </tr>
-  </table>
-  </fieldset>
+  <%= f.input :operation, :as => :hidden %>
 <% end %>
 </div>

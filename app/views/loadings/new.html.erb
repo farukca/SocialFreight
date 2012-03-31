@@ -1,6 +1,16 @@
 <%= content_for(:sidebar, render(:partial => 'operations/sidebar', :locals => {:operation => @loading.operation} )) %>
+<%= content_for(:quickform, render(:partial => 'companies/quick_form'))%>
 
 <div id="loading">
+
+  <div class="row-fluid">
+    <ul class="breadcrumb">
+      <li><a href="#">Pozisyon Bilgileri</a><span class="divider">>></span></li>
+      <li><a href="#">Gemi Bilgileri</a><span class="divider">>></span></li>
+      <li class="active">Yük Bilgileri<span class="divider">>></span></li>
+      <li><a href="#">Konteyner Bilgileri</a></li>
+    </ul>
+  </div>
+  
   <%= render 'form' %>
 </div>
-

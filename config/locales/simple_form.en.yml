@@ -31,3 +31,4 @@ en:
           agent_price:  "Agent told Price"
           load_date:    "Departure Date"
           unload_date:  "Arrival Date"
+          waybill_no:   "Konşimento No"

@@ -1,72 +1,30 @@
+<div id="company_form">
 <%= simple_form_for @company, :validate => true do |f| %>
   <%= f.error_notification %>
-
-  <fieldset>
 
   <div class="pageBlock">
     <%= render 'shared/form_buttonsh', :f => f, :header => "New Company" %>
 
-    <div class="subHeader">
-      <h5>Account Info</h5>
-    </div>
+    <div class="tabbable tabs-below">
 
-    <div>
       <div id="my-tab-content" class="tab-content">
         <div id="company-main-form" class="tab-pane active">
-          <div class="pageBody">
-            <table style="width:100%" border="0" cellpadding="0" cellspacing="0">
-              <tr>
-                <%= f.input :name, :label => "Short Name" %>
-                <%= f.input :title, :label => "Invoice Title" %>
-              </tr>
-              <tr>
-                <%= f.input :company_type do %>
-                  <%= f.select :company_type, Company.company_types.map { |r| [r[1], r[0] ] }, :include_blank => false %>
-                <% end %>
-                <%= f.input :sector %>
-              </tr>
-              <tr>
-                <%= f.input :contact %>
-                <%= f.input :branch, :as => :select, :collection => current_patron.branches, :include_blank => false %>
-              </tr>
-              <tr class="subHeader"><td colspan="2"><h5>İletişim Bilgileri</h5></td></tr>
-              <tr>
-                <%= f.input :tel  %>
-                <%= f.input :fax  %>
-              </tr>
-              <tr>
-                <%= f.input :email %>
-                <%= f.input :website %>
-              </tr>
-              <tr>
-                <%= f.input :country_id do %>
-                  <%= f.input_field :country_id, :class => "input-medium", :as => :select, :collection => Country.all, :include_blank => false %>
-                  <%= f.input_field :city_id, :class => "input-medium", :as => :select, :collection => City.all, :include_blank => false %>
-                <% end %>
-                <%= f.input :district do %>
-                  <%= f.input_field :district, :class => "input-medium" %>
-                  <%= f.input_field :postcode, :class => "input-small" %>
-                <% end %>
-              </tr>
-              <tr>
-                <%= f.input :address, :as => :text, :input_html => {:rows => "2", :cols => "35"} %>
-              </tr>
-              <tr>
-                <%= f.input :gsm  %>
-                <%= f.input :voip, :label => "Skype"  %>
-              </tr>
-              <tr>
-                <%= f.input :notes, :as => :text, :label =>"Operational Notes", :input_html => {:rows => "3", :cols => "35"} %>
-                <%= f.input :description, :as => :text, :label =>"Other Notes", :input_html => {:rows => "3", :cols => "35"} %>
-              </tr>
-            </table>
-          </div>
+          <%= render 'form_main', :f => f %>
+        </div>
+
+        <div id="company-invoice-form" class="tab-pane form_tab_pane">
+          <%= render 'form_invoice', :f => f %>
         </div>
       </div>
+
     </div>
-    <%= render 'shared/form_buttonsb' %>
+    
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#company-main-form">1-Firma Bilgileri</a></li>
+      <li><a data-toggle="tab" href="#company-invoice-form">2-Fatura Bilgileri</a></li>
+    </ul>
+    
   </div>
 
-  </fieldset>
-
 <% end %>
+</div>

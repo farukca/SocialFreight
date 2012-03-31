@@ -38,7 +38,7 @@ class UsersController < ApplicationController
       if @user.patron_id.nil?
         redirect_to(login_path, :notice => 'User activated successfully')
       else
-        redirect_to(activation_user_path(@user), :notice => 'User activated successfully')
+        redirect_to(activation_user_path(@user))
       end
     else
       not_authenticated

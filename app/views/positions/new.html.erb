@@ -1,6 +1,14 @@
 <%= content_for(:sidebar, render(:partial => 'operations/sidebar', :locals => {:operation => @position.operation} )) %>
 
 <div id="operation">
+  <div class="row-fluid">
+    <ul class="breadcrumb">
+      <li class="active">Pozisyon Bilgileri<span class="divider">>></span></li>
+      <li><a href="#">Gemi Bilgileri</a><span class="divider">>></span></li>
+      <li><a href="#">Yük Bilgileri</a><span class="divider">>></span></li>
+      <li><a href="#">Konteyner Bilgileri</a></li>
+    </ul>
+  </div>
   <%= render 'form' %>
 </div>
 

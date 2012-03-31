@@ -1,0 +1,49 @@
+<div id="setup_address">
+  <div class="row-fluid">
+    <ul class="breadcrumb">
+      <li><a href="#">Adress Bilgileri</a><span class="divider">>></span></li>
+      <li><a href="#">Lojistik Profil</a><span class="divider">>></span></li>
+      <li><a href="#">Referans Numaraları</a><span class="divider">>></span></li>
+      <li class="active">Şube Bilgileri</li>
+      <li><a href="#">Kullanıcı Bilgileri</a></li>
+    </ul>
+  </div>
+
+  <div id="opform">
+  <%= simple_form_for @patron, :url => wizard_path, :method => :put, :validate => true do |f| %>
+  <%= f.error_notification %>
+  <fieldset>
+
+  <div class="pageBlock">
+ 
+    <!--div class="tabbable tabs-below"-->
+    <div>
+
+      <div id="my-tab-content" class="tab-content">
+        <legend>Kullanıcı Bilgileri</legend>
+        <div id="position-main-form" class="tab-pane active">
+          <div class="row-fluid">
+            <div class="span12">
+              <fieldset>
+                <%= f.simple_fields_for :users do |cf| %>
+                  <%= render 'user_fields', :f => cf %>
+                <% end %>
+                <%= link_to_add_fields "Yeni Kullanıcı Ekle", f, :users %>
+              </fieldset>
+              <div class="controls">
+                <%= f.button :submit, "İleri >>", :class => 'btn btn-info' %>
+                <%= link_to "Bu Adımı Atla", next_wizard_path %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <%= f.error :base %>
+  </div>
+
+  </fieldset>
+  <% end %>
+  </div>
+</div>

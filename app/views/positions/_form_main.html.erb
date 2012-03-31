@@ -1,74 +1,35 @@
-<div class="pageBody">
-  <%= f.hidden_field :operation %>
-
-  <table style="width:100%" border="0" cellpadding="0" cellspacing="0">
-    <tr><td colspan="2" class="subHeader"><h5>Operasyon Bilgileri<%= render 'shared/required_field' %></h5></td></tr>
-    <tr>
+<div class="row-fluid">
+  <div class="span6">
+    <fieldset>
+      <%= f.hidden_field :operation %>
       <%= f.input :direction do %>
         <%= f.input_field :direction, :as => :select, :collection => Position.direction_types.map { |r| [r[1], r[0] ] }, :include_blank => false, :class => "input-small" %>
-        <%= f.input_field :paid_at, :as => :select, :collection => Position.payment_types.map { |r| [r[1], r[0] ] }, :include_blank => false, :class => "input-medium" %>
-        <%#= f.input_field :load_type, :as => :select, :collection => Position.load_types.map { |r| [I18n.t("position.#{@position.operation}.listitem.#{r[1]}"), r[0] ] }, :include_blank => false %>
+        <%= f.input_field :paid_at, :as => :select, :collection => Position.payment_types.map { |r| [r[1], r[0] ] }, :include_blank => false, :class => "input-small" %>
       <% end %>
-      <%= f.input :master_reference, :label => I18n.t("position.#{@position.operation}.label.masterno") %>
-    </tr>
-    <tr>
-      <%= f.input :branch do %>
-        <%= f.input_field :branch, :as => :select, :collection => current_patron.branches, :include_blank => false, :class => "input-medium" %>
+      <%= f.input :waybill_no, hint: "Master waybill number & date" do %>
+        <%= f.input_field :waybill_no, :class => "input-small" %>
+        <%= f.input_field :waybill_date, :as => "string", :class => "input-small", "data-datepicker" => "datepicker" %>
       <% end %>
-      <%= f.input :master_date, :label => I18n.t("position.#{@position.operation}.label.masterdate") do %>
-        <%= f.input_field :master_date, :class => "input-small", "data-datepicker" => "datepicker" %>
-        <%= f.input_field :master_type, :as => :select, :collection => Position.master_types.map { |r| [r[1], r[0] ] }, :include_blank => false, :class => "input-medium" %>
-      <% end %>
-    </tr>
-    <tr>
-      <%= f.input :transporter, :label => I18n.t("position.#{@position.operation}.label.transporter"), :input_html => {:class => "lookup_input", "data-url" => "/companies.json", "data-pre" => @position.transporter ? @position.transporter.to_s : nil } %>
-        <%= f.input :agent, :label => I18n.t("position.#{@position.operation}.label.agent"), :input_html => {:class => "lookup_input", "data-url" => "/companies.json", "data-pre" => @position.agent ? @position.agent.to_s : nil }  %>
-    </tr>
-
-    <%= render :partial => "#{@position.operation}_detail", :locals => {:f => f} %>
-
-    <tr><td colspan="2" class="subHeader"><h5>Adres Bilgileri</h5></td></tr>
-
-    <tr>
-      <%= f.input :load_place, :label => I18n.t("position.#{@position.operation}.label.load_place"), :input_html => {:class => "token_input", "data-url" => "/places.json", "data-pre" => @position.load_place ? @position.load_place.prepopulate_tokens.to_json : nil} %>
-      <%= f.input :unload_place, :label => I18n.t("position.#{@position.operation}.label.unload_place"), :input_html => {:class => "token_input", "data-url" => "/places.json", "data-pre" => @position.unload_place ? @position.unload_place.prepopulate_tokens.to_json : nil} %>
-    </tr>
-    <tr>
-      <%= f.input :load_date, :label => "Departure Date", :input_html => {:class => "input-small", "data-datepicker" => "datepicker"} %>
-      <%= f.input :unload_date, :label => "Arrival Date", :input_html => {:class => "input-small", "data-datepicker" => "datepicker"} %>
-    </tr>
-    <tr>
-      <%= f.input :agent_reference, :label => "References" %>
-      <%= f.input :other_reference, :class => "input-medium", :placeholder => I18n.t("position.#{@position.operation}.label.linerref") %>
-    </tr>
-
-    <tr><td colspan="2" class="subHeader"><h5>Diğer Bilgileri</h5></td></tr>
-    <tr>
-      <%= f.input :supplier, :label => I18n.t("position.#{@position.operation}.label.supplier"), :input_html => {:class => "lookup_input", "data-url" => "/companies.json", "data-pre" => @position.supplier ? @position.supplier.to_s : nil } %>
-      <%= f.input :contract_no, :input_html => {:class => "input-medium"} %>
-    </tr>
-    <tr>
-      <%= f.input :freight_price do %>
-        <%= f.input_field :freight_price, :class => "input-small" %>
-        <%= f.input_field :freight_curr, :as => :select, :collection => Currency.all, :include_blank => false, :class => "input-medium" %>
-      <% end %>
-      <%= f.input :agent_price do %>
-        <%= f.input_field :agent_price, :class => "input-small" %>
-        <%= f.input_field :agent_curr, :as => :select, :collection => Currency.all, :include_blank => false, :class => "input-medium" %>
-      <% end %>
-    </tr>
-    <tr>
-      <%= f.input :description, :as => :text, :input_html => {:rows => 1, :cols => 37}, :label => "Notes" %>
+      <%= f.input :load_type, :as => :select, :collection => Loading.load_types.map { |r| [I18n.t("listitems.loadtype.#{@position.operation}.#{r[1]}"), r[0] ] }, :include_blank => false, hint: "LCL or FCL selection" %>
+      <%= f.input :agent_id, :as => :select, :collection => [[@position.agent_id ? @position.agent.name : "", @position.agent_id]], :label => I18n.t("position.#{@position.operation}.label.agent"), :input_html => {:class => "chosen_input", "data-url" => "/companies.json" }, hint: "Destination Foreign Agent" %>
+      <%= f.input :branch_id, :as => :select, :collection => current_patron.branches, :include_blank => false %>
+    </fieldset>
+  </div>
+  <div class="span6">
+    <fieldset>
+      <%= f.input :load_place_id, :as => :select, :collection => [[@position.load_place_id ? @position.load_place.name : "", @position.load_place_id]], :label => I18n.t("position.#{@position.operation}.label.load_place"), :input_html => {:class => "chosen_input", "data-url" => "/places.json"} %>
+      <%= f.input :load_date, :as => "string", :input_html => {:class => "input-small", "data-datepicker" => "datepicker"}, :label => "Departure Date", hint: "First Departure Date" %>
+      <%= f.input :unload_place_id, :as => :select, :collection => [[@position.unload_place_id ? @position.unload_place.name : "", @position.unload_place_id]], :label => I18n.t("position.#{@position.operation}.label.unload_place"), :input_html => {:class => "chosen_input", "data-url" => "/places.json"}, hint: "Final unloading sea port" %>
+      <%= f.input :unload_date, :as => "string", :input_html => {:class => "input-small", "data-datepicker" => "datepicker"}, :label => "Arrival Date", hint: "Final Arrival Date" %>      
       <%= f.input :stage do %>
         <%= f.input_field :stage, :class => "input-medium", :as => :select, :collection => Position.stages.map { |r| [r[1], r[0] ] }, :include_blank => false %>
-        <%= f.input_field :stage_date, :class => "input-small", "data-datepicker" => "datepicker" %>
+        <%= f.input_field :stage_date, :as => "string", :class => "input-small", "data-datepicker" => "datepicker" %>
       <% end %>
-    </tr>
-    <tr>
-      <%= f.simple_fields_for :transnodes do |builder| %>
-        <%= render 'transnodes/form', :object => @position, :f => builder %>
-      <% end %>
-    </tr>
-  </table>
+    </fieldset>
+    <div class="controls">
+      <%= f.button :submit, "Kaydet >> Gemi Bilgilerine Devam Et", :class => 'btn btn-info' %>
+    </div>
+
+  </div>
+
 </div>
-</fieldset>

@@ -1,0 +1,33 @@
+<div class="row-fluid">
+  <div class="span6">
+    <fieldset>
+			<%= f.input :country_id do %>
+				<%= f.input_field :country_id, :as => :select, :collection => Country.all, :include_blank => true, :class => "input-medium" %>
+				<%= f.grouped_collection_select :city_id, Country.order(:name), :cities, :name, :id, :name, {:include_blank => true}, {:class => "input-medium"} %>
+			<% end %>
+			<%= f.input :load_point, :as => :select, :collection => Loading.point_types.map { |r| [r[1], r[0] ] } %>
+			<%= f.input :pickup_date, :label => "Prepared/Load Date", :input_html => {:class => "inline-inputs"} do %>
+				 <%= f.input_field :pickup_date, :as => :string, :class => "input-small", "data-datepicker" => "datepicker" %>
+				 <%= f.input_field :load_date, :as => :string, :class => "input-small", "data-datepicker" => "datepicker" %>
+			<% end %>
+      <%= f.input :load_place_id, :as => :select, :collection => [[@loading.departure.load_place_id ? @loading.departure.load_place.name : "", @loading.departure.load_place_id]], :input_html => {:class => "chosen_input", "data-url" => "/places.json" } %>
+      <%= f.input :district, :label => "Semt" do %>
+        <%= f.input_field :district, :class => "input-small" %>
+        <%= f.input_field :postcode, :class => "input-small" %>
+      <% end %>
+      <%= f.input :address, :as => :text, :input_html => {:rows => 1, :cols => 37} %>
+    </fieldset>
+  </div>
+  <div class="span6">
+    <fieldset>
+      <%= f.input :sender_id, :as => :select, :collection => [[@loading.departure.sender_id ? @loading.departure.sender.name : "", @loading.departure.sender_id]], :input_html => {:class => "chosen_input", "data-url" => "/companies.json" } %>
+      <%= f.input :loader_id, :as => :select, :collection => [[@loading.departure.loader_id ? @loading.departure.loader.name : "", @loading.departure.loader_id]], :input_html => {:class => "chosen_input", "data-url" => "/companies.json" } %>
+      <%= f.input :customofficer_id, :as => :select, :collection => [[@loading.departure.customofficer_id ? @loading.departure.customofficer.name : "", @loading.departure.customofficer_id]], :input_html => {:class => "chosen_input", "data-url" => "/companies.json" } %>
+      <%= f.input :statement do %>
+        <%= f.input_field :statement, :class => "input-small" %>
+        <%= f.input_field :statement_date, :as => :string, :class => "input-small", "data-datepicker" => "datepicker" %>
+      <% end %>
+      <%= f.input :notes, :as => :text, :input_html => {:rows => 1} %>
+    </fieldset>
+  </div>
+</div>

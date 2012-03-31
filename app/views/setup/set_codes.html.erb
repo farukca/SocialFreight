@@ -1,0 +1,59 @@
+<div id="setup_address">
+  <div class="row-fluid">
+    <ul class="breadcrumb">
+      <li><a href="#">Profil Bilgileri</a><span class="divider">>></span></li>
+      <li class="active">Lojistik Profil<span class="divider">>></span></li>
+      <li><a href="#">Referans Numaraları</a><span class="divider">>></span></li>
+      <li><a href="#">Şube Bilgileri</a></li>
+      <li><a href="#">Kullanıcı Bilgileri</a></li>
+    </ul>
+  </div>
+
+  <div id="patron-form">
+  <%= simple_form_for @patron, :url => wizard_path, :method => :put, :validate => true do |f| %>
+  <%= f.error_notification %>
+  <fieldset>
+
+  <div class="pageBlock">
+ 
+    <!--div class="tabbable tabs-below"-->
+    <div>
+
+      <div id="my-tab-content" class="tab-content">
+        <legend>Hoşgeldiniz, şimdi birkaç adımda sizi tanımaya çalışacağız, sabrınız için şimdiden teşekkürler :)</legend>
+        <div id="position-main-form" class="tab-pane active">
+          <div class="row-fluid">
+            <div class="span12">
+              <%= f.input :operations, :as => :check_boxes, :collection => Operation.all %>
+              <%= f.input :vehicle_owner %>
+              <%= f.input :depot_owner %>
+            </div>
+          </div>
+          <legend>Ek Bilgileri</legend>
+          <div class="row-fluid">
+            <div class="span6">
+              <%= f.input :patron_type, :as => :select, :collection => [ "3PL", "Freight Forwarder", "NVOCC", "Other"] %>
+              <%= f.input :fax, :as => :select, :collection => [ "C Yetki Belgesi", "K Yetki Belgesi", "R Yetki Belgesi", "L Yetki Belgesi"] %>
+              <div class="controls">
+                <%= link_to "Bu Adımı Atla >>", next_wizard_path, :class => 'btn btn-danger' %>
+              </div>
+            </div>
+            <div class="span6">
+              <%= f.input :iata_code %>
+              <%= f.input :fmc_code %>
+              <div class="controls">
+                <%= f.button :submit, "İleri >> Lojistik Profiliniz", :class => 'btn btn-info' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <%= f.error :base %>
+  </div>
+
+  </fieldset>
+  <% end %>
+  </div>
+</div>

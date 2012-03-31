@@ -1,0 +1,59 @@
+<div id="setup_address">
+  <div class="row-fluid">
+    <ul class="breadcrumb">
+      <li><a href="#">Adress Bilgileri</a><span class="divider">>></span></li>
+      <li><a href="#">Lojistik Profil</a><span class="divider">>></span></li>
+      <li class="active">Referans Numaraları<span class="divider">>></span></li>
+      <li><a href="#">Şube Bilgileri</a></li>
+      <li><a href="#">Kullanıcı Bilgileri</a></li>
+    </ul>
+  </div>
+
+  <div id="opform">
+  <%= simple_form_for @patron, :url => wizard_path, :method => :put, :validate => true do |f| %>
+  <%= f.error_notification %>
+  <fieldset>
+
+  <div class="pageBlock">
+ 
+    <!--div class="tabbable tabs-below"-->
+    <div>
+
+      <div id="my-tab-content" class="tab-content">
+        <legend>Referans No Tanımları</legend>
+        <div id="position-main-form" class="tab-pane active">
+          <div class="row-fluid">
+            <div class="span12">
+              <fieldset>
+                <%= f.simple_fields_for :counters do |cf| %>
+                  <%= cf.input :counter_type, :label => false do %>
+                    <span class="counter_sample"><%= cf.object.operation.humanize if cf.object.operation %></span>
+                    <span class="counter_sample"><%= cf.object.counter_type.humanize if cf.object.counter_type %></span>
+                    <%= cf.input_field :prefix, :class => "input-small" %>
+                    <%= cf.input_field :count, :class => "input-small" %>
+                    <%= cf.input_field :suffix, :class => "input-small" %>
+                    <span class="counter_sample">Örnek:<%= "#{cf.object.prefix}#{sprintf('%07d', cf.object.count)}#{cf.object.suffix}" %></span>
+                    <%= cf.input_field :operation, :as => :hidden %>
+                    <%= cf.input_field :counter_type, :as => :hidden %>
+                  <% end %>
+                <% end %>
+              </fieldset>
+              <div class="controls">
+                <%= f.button :submit, "İleri >>", :class => 'btn btn-info' %>
+              </div>
+              <div class="controls">
+                <%= link_to "Bu Adımı Atla >>", next_wizard_path, :class => 'btn btn-danger' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <%= f.error :base %>
+  </div>
+
+  </fieldset>
+  <% end %>
+  </div>
+</div>

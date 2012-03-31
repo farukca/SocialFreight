@@ -59,3 +59,17 @@ en:
     air:
       label:
         transporter:   "Airway"
+  listitems:
+    loadtype:
+      sea:
+        Full: "LCL"
+        Partial: "FCL"
+      air:
+        Full: "Master Only"
+        Partial: "Consolidated"
+      road:
+        Full: "Complete"
+        Partial: "Partial"
+      rail:
+        Full: "Complete"
+        Partial: "Partial"

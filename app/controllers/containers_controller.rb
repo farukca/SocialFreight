@@ -3,7 +3,7 @@ class ContainersController < ApplicationController
   before_filter :require_login
 
   def new
-    @loading   = Loading.find_by_slug!(params[:loading_id]) if params[:loading_id]
+    @loading   = Loading.find(params[:loading_id]) if params[:loading_id]
     @container = @loading.containers.build(params[:container])
   end
 
@@ -12,7 +12,7 @@ class ContainersController < ApplicationController
   end
 
   def create
-    @loading   = Loading.find_by_slug!(params[:loading_id])
+    @loading   = Loading.find(params[:loading_id])
     @container = @loading.containers.build(params[:container])
 
     respond_to do |format|

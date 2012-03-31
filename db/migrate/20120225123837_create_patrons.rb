@@ -13,10 +13,10 @@ class CreatePatrons < ActiveRecord::Migration
       t.string :address, :limit => 60
       t.string :contact_name, :limit => 40
       t.string :contact_surname, :limit => 40
-      t.integer :city
-      t.integer :state
-      t.integer :country
-      t.string :patron_type, :limit => 2
+      t.integer :city_id
+      t.integer :state_id
+      t.integer :country_id
+      t.string :patron_type, :limit => 20
       t.string :employees, :limit => 10
       t.string :language, :limit => 2
       t.string :status, :limit => 1, default: "A"

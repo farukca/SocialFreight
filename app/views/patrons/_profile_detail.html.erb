@@ -1,0 +1,33 @@
+<div id="quick-profile" class="patron">
+  <div>
+    <table style="width:100%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td><h3><%= @patron.name.upcase %></h3></td>
+        <td/>
+        <td colspan="3" style="text-align:right">
+          <%= link_to "Ayarlar", setup_path(:set_address), :class => 'btn btn-info' %>
+          <%= link_to "Edit", edit_patron_path(@patron), :class => 'btn btn-info' %>
+        </td>
+      </tr>
+      <tr>
+        <td class="labelCol2">:</td>
+        <td class="dataCol2"><%#= @patron.company.name if @patron.company %></td>
+        <td class="labelCol2">:</td>
+        <td class="dataCol2"><%#= @patron.departure.city.name if @patron.departure.city %></td>
+        <td class="dataCol2" rowspan="3"></td>
+      </tr>
+      <tr>
+        <td class="labelCol2">:</td>
+        <td class="dataCol2"><%#= @patron.consignee.name if @patron.consignee %></td>
+        <td class="labelCol2">:</td>
+        <td class="dataCol2 lastCol"><%#= @patron.departure.city.name if @patron.departure.city %></td>
+      </tr>
+      <tr>
+        <td class="labelCol2">:</td>
+        <td class="dataCol2 lastCol"><%#= @patron.sender.name if @patron.sender %></td>
+        <td class="labelCol2">:</td>
+        <td class="dataCol2"><%#= @patron.freight_price %></td>
+      </tr>
+    </table>
+  </div>
+</div>

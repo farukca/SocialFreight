@@ -12,9 +12,10 @@
 
 <div class="container" style="padding:0">
 
-  <div id="content">
+  <div id="content" class="row">
     <div id="messages">
       <% flash.each do |name, msg| %>
+        <a class="close" data-dismiss="alert" href="#">&times;</a>
         <%= content_tag :div, msg, :id => "flash_#{name}", :class => "alert alert-#{name}" %>
       <% end %>
     </div>
@@ -22,8 +23,8 @@
   </div>
 
 </div>
-<%= render 'shared/site_news' %>
-<%= render 'shared/site_footer' %>
+<%#= render 'shared/site_news' %>
+<%#= render 'shared/site_footer' %>
 
 </body>
 </html>

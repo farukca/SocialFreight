@@ -8,7 +8,9 @@
       <%= f.input :email %>
       <%= f.input :password %>
       <%= f.input :password_confirmation, :label => "Confirm Password" %>
-      <%= f.button :submit, :class => 'btn primary' %>
+      <div class="controls">
+        <%= f.button :submit, :class => 'btn btn-success' %>
+      </div>
   </fieldset>
 
 <% end %>

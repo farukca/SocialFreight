@@ -6,11 +6,13 @@
         <%= render loading.packages %>
         <li>
           <div class="rightside">
-            <%= link_to "Add Boxes", "#package_form", :class => "btn btn-primary", "data-toggle" => "modal" %>
+            <%#= link_to "Add Boxes", "#package_form", :class => "btn btn-primary", "data-toggle" => "modal" %>
+            <%= link_to "Add Boxes", new_loading_package_path(loading, @package), :class => "btn primary"%>
+
           </div>
-          <div class="modal hide fade" id="package_form">
-            <%= render 'packages/form' %>
-          </div>
+          <!--div class="modal hide fade" id="package_form">
+            <%#= render 'packages/form_main' %>
+          </div-->
         </li>
       </ol>
     </div>

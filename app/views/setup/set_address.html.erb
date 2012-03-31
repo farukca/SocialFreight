@@ -1,0 +1,68 @@
+<div id="setup_address">
+  <div class="row-fluid">
+    <ul class="breadcrumb">
+      <li class="active">Profil Bilgileri<span class="divider">>></span></li>
+      <li><a href="#">Lojistik Profil</a><span class="divider">>></span></li>
+      <li><a href="#">Referans Numaraları</a><span class="divider">>></span></li>
+      <li><a href="#">Şube Bilgileri</a></li>
+      <li><a href="#">Kullanıcı Bilgileri</a></li>
+    </ul>
+  </div>
+
+  <div id="patron-form">
+  <%= simple_form_for @patron, :url => wizard_path, :method => :put, :validate => true do |f| %>
+  <%= f.error_notification %>
+  <fieldset>
+
+  <div class="pageBlock">
+ 
+    <!--div class="tabbable tabs-below"-->
+    <div>
+
+      <div id="my-tab-content" class="tab-content">
+        <legend>Hoşgeldiniz, şimdi birkaç adımda sizi tanımaya çalışacağız, sabrınız için şimdiden teşekkürler :)</legend>
+        <div id="position-main-form" class="tab-pane active">
+          <div class="row-fluid">
+            <div class="span6">
+              <%= f.input :title, :label => "Tam Ünvan" %>
+              <%= f.input :website, :as => :url %>
+              <%= f.input :tel, :as => :tel %>
+              <%= f.input :fax, :as => :tel %>
+						  <%= f.input :logo, :as => :file %>
+            </div>
+            <div class="span6">
+              <%= f.input :address, :as => :text, :input_html => {:rows => 4} %>
+              <%= f.input :district do %>
+                <%= f.input_field :district, :class => "input-small" %>
+                <%= f.input_field :postcode, :class => "input-small" %>
+              <% end %>
+              <%= f.input :country_id, :as => :select, :collection => Country.all, :include_blank => false %>
+              <%= f.input :city_id, :as => :select, :collection => City.all, :include_blank => false %>
+            </div>
+          </div>
+          <legend>Ek Bilgileri</legend>
+          <div class="row-fluid">
+            <div class="span6">
+              <%= f.input :time_zone, :as => :time_zone, :label => "Timezone" %>
+              <div class="controls">
+                <%= link_to "Bu Adımı Atla >>", next_wizard_path, :class => 'btn btn-danger' %>
+              </div>
+            </div>
+            <div class="span6">
+              <%= f.input :language %>
+              <div class="controls">
+                <%= f.button :submit, "İleri >> Lojistik Profiliniz", :class => 'btn btn-info' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <%= f.error :base %>
+  </div>
+
+  </fieldset>
+  <% end %>
+  </div>
+</div>

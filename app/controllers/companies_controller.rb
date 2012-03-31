@@ -1,9 +1,15 @@
 class CompaniesController < ApplicationController
   
   before_filter :require_login
+  before_filter :set_current_tab, :only => [:index]
 
   def index
-    @companies = Company.where(:name => /#{params[:q]}/i).limit(10)
+    if params[:data] && params[:data][:q]
+       q = "%#{params[:data][:q]}%"
+       @companies = current_patron.companies.where("lower(name) like ?", q).limit(10)
+    else
+       @companies = current_patron.companies.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -27,7 +33,8 @@ class CompaniesController < ApplicationController
 
   def new
     @company = current_patron.companies.build(params[:company])
-
+    @company.contacts.build
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @company }
@@ -42,7 +49,8 @@ class CompaniesController < ApplicationController
     @company = current_patron.companies.build(params[:company])
     @company.patron_token = current_patron.token
     @company.user_id = current_user.id
-
+    #params[:company][:contacts_attributes][0][:user_id] = current_user.id
+    
     respond_to do |format|
       if @company.save
         format.html { redirect_to @company, notice: 'Company was successfully created.' }
@@ -76,5 +84,9 @@ class CompaniesController < ApplicationController
       format.html { redirect_to companies_url }
       format.json { head :ok }
     end
+  end
+  
+  def set_current_tab
+    set_tab("companynavigator")
   end
 end
