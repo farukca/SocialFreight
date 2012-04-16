@@ -8,6 +8,6 @@ class Team < ActiveRecord::Base
   #field :patron_token
   #field :name
 
-  has_many :journals, as: :journaled, dependent: :delete
+  #has_many :journals, as: :journaled, dependent: :destroy
 
 end
