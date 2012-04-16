@@ -1,6 +1,5 @@
 class Company < ActiveRecord::Base
 
-  include Gmaps4rails::ActsAsGmappable
   extend FriendlyId
    
   acts_as_gmappable :process_geocoding => false, :validation => false
@@ -28,7 +27,7 @@ class Company < ActiveRecord::Base
                   :notes, :description, :saler_id, :contacts_attributes
 
   validates_presence_of :name, :message => I18n.t('patrons.errors.title.cant_be_blank')
-  validates_presence_of :title, :message => I18n.t('patrons.errors.title.cant_be_blank')
+  #validates_presence_of :title, :message => I18n.t('patrons.errors.title.cant_be_blank')
   validates_presence_of :company_type, :message => I18n.t('patrons.errors.title.cant_be_blank')
   validates_presence_of :country, :message => I18n.t('patrons.errors.title.cant_be_blank')
   validates_presence_of :patron, :message => I18n.t('patrons.errors.title.cant_be_blank')
@@ -37,19 +36,13 @@ class Company < ActiveRecord::Base
   validates_length_of :name, :maximum => 40
   validates_length_of :title, :maximum => 100
 
-  before_save   :get_coordinates
+  #before_save   :get_coordinates
   before_create :set_initials
   after_create  :set_after_jobs
 
   def gmaps4rails_address
   #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
     "#{self.address}, #{self.district}, #{self.city.name}, #{self.country.name}" 
-  end
-
-  def get_coordinates
-    if self.address.present? && self.location.blank?
-      self.location = Gmaps4rails.geocode(gmaps4rails_address).first
-    end
   end
 
   def prevent_geocoding

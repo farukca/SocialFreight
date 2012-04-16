@@ -26,9 +26,7 @@
             <div class="span12">
               <fieldset>
                 <%= f.simple_fields_for :counters do |cf| %>
-                  <%= cf.input :counter_type, :label => false do %>
-                    <span class="counter_sample"><%= cf.object.operation.humanize if cf.object.operation %></span>
-                    <span class="counter_sample"><%= cf.object.counter_type.humanize if cf.object.counter_type %></span>
+                  <%= cf.input :counter_type, :label => "#{cf.object.operation} #{cf.object.counter_type}" do %>
                     <%= cf.input_field :prefix, :class => "input-small" %>
                     <%= cf.input_field :count, :class => "input-small" %>
                     <%= cf.input_field :suffix, :class => "input-small" %>
@@ -39,10 +37,8 @@
                 <% end %>
               </fieldset>
               <div class="controls">
-                <%= f.button :submit, "İleri >>", :class => 'btn btn-info' %>
-              </div>
-              <div class="controls">
                 <%= link_to "Bu Adımı Atla >>", next_wizard_path, :class => 'btn btn-danger' %>
+                <%= f.button :submit, "İleri >> Şube Tanımları", :class => 'btn btn-info' %>
               </div>
             </div>
           </div>

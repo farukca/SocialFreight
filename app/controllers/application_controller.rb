@@ -47,4 +47,19 @@ class ApplicationController < ActionController::Base
     end
   }
 
+  def set_locale
+    locale = logged_in? ? current_user.locale : (params[:locale])
+    I18n.locale = (locale.present? && I18n.available_locales.include?(locale.to_sym)) ? locale : I18n.default_locale
+  end
+  
+  def set_time_zone
+    if logged_in?
+      Time.use_zone(current_user.time_zone) do
+        yield
+      end
+    else
+      yield
+    end
+  end
+    
 end

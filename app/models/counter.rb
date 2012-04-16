@@ -6,8 +6,12 @@ class Counter < ActiveRecord::Base
 
   validates_presence_of :counter_type
 
-  def set_reference
-    
+  def get_reference
+    strRef = ""
+    strRef << self.prefix if self.prefix
+    strRef << sprintf('%07d', self.count)
+    strRef << self.suffix if self.suffix
+    return strRef.upcase
   end
 
 end

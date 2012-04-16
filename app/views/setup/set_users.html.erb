@@ -31,8 +31,8 @@
                 <%= link_to_add_fields "Yeni Kullanıcı Ekle", f, :users %>
               </fieldset>
               <div class="controls">
+                <%= link_to "Bu Adımı Atla >>", next_wizard_path, :class => 'btn btn-danger' %>
                 <%= f.button :submit, "İleri >>", :class => 'btn btn-info' %>
-                <%= link_to "Bu Adımı Atla", next_wizard_path %>
               </div>
             </div>
           </div>

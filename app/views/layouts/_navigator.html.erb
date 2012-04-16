@@ -1,18 +1,31 @@
 <div id="main-navigation" class="row profile" style="margin-top:45px;margin-left:5px;">
   <ul class="nav nav-tabs" data-tabs="tabs">
-    <li id="homenavigator"><%= link_to "Ana Sayfa", root_url %></li>
-    <li id="airnavigator"><%= link_to "Hava", home_operation_path(:air) %></li>
-    <li id="seanavigator"><%= link_to "Deniz", home_operation_path(:sea) %></li>
-    <li id="roadnavigator"><%= link_to "Kara", home_operation_path(:road) %></li>
-    <li id="railnavigator"><%= link_to "Demiryolu", home_operation_path(:rail) %></li>
+    <li id="homenavigator"><%= link_to root_url do %><i class="icon-home"></i>Ana Sayfa<% end %></li>
+    <li id="opernavigator" class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <i class="icon-cog"></i>
+        Operasyon Yönetimi
+        <b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu">
+        <li id="airnavigator"><%= link_to home_operation_path(:air) do %><i class="icon-plane"></i>Hava Operasyon<% end %></li>
+        <li id="seanavigator"><%= link_to home_operation_path(:sea) do %><i class="icon-flag"></i>Deniz Operasyon<% end %></li>
+        <li id="roadnavigator"><%= link_to home_operation_path(:road) do %><i class="icon-road"></i>Kara Operasyon<% end %></li>
+        <li id="railnavigator"><%= link_to home_operation_path(:rail) do %><i class="icon-random"></i>Demiryolu Operasyon<% end %></li>
+        <li id="inlandnavigator"><%= link_to home_operation_path(:inland) do %><i class="icon-qrcode"></i>Ulusal Dağıtım<% end %></li>
+
+      </ul>
+    </li>
     <%# current_patron.operations.each_with_index do |operation, index| %>
       <%# unless operation.to_s.blank? %>
         <!--li class="<%#= selected_navigation(operation.to_s) %>"><%#= link_to operation.to_s.humanize, home_operation_path(operation) %></li-->
       <%# end %>
     <%# end %>
-    <li id="inlandnavigator"><%= link_to "Ulusal Dağıtım", home_operation_path(:inland) %></li>
-    <li id="companynavigator"><%= link_to "Müşteriler", companies_path %></li>
-    <li id="adminnavigator"><%= link_to "Admin Panel", patron_path(current_patron) %></li>
-    <li id="othersnavigator"><%= link_to "Diğer İşlemler", "#" %></li>
+    <li id="companynavigator"><%= link_to companies_path do %><i class="icon-gift"></i>Müşteriler<% end %></li>
+    <li id="financenavigator"><%= link_to findocs_path do %><i class="icon-signal"></i>Finans<% end %></li>
+    <li id="glnavigator"><%= link_to "#" do %><i class="icon-list-all"></i>Muhasebe<% end %></li>
+    <li id="iknavigator"><%= link_to "#" do %><i class="icon-user"></i>İK<% end %></li>
+    <li id="adminnavigator"><%= link_to patron_path(current_patron) do %><i class="icon-warning-sign"></i>Admin Panel<% end %></li>
+    <li id="othersnavigator"><%= link_to "#" do %><i class="icon-resize-full"></i>Diğer İşlemler<% end %></li>
   </ul>
 </div>

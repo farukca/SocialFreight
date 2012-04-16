@@ -1,8 +1,8 @@
 class CompaniesController < ApplicationController
   
   before_filter :require_login
-  before_filter :set_current_tab, :only => [:index]
-
+  before_filter { |c| c.set_tab "companynavigator" }, :only => [:index]
+  
   def index
     if params[:data] && params[:data][:q]
        q = "%#{params[:data][:q]}%"
@@ -85,8 +85,5 @@ class CompaniesController < ApplicationController
       format.json { head :ok }
     end
   end
-  
-  def set_current_tab
-    set_tab("companynavigator")
-  end
+
 end

@@ -74,7 +74,7 @@ class OperationsController < ApplicationController
   end
   
   def set_current_tab
-    set_tab(params[:id]+"navigator") if params[:id]
+    set_tab("opernavigator")
   end
   
 end

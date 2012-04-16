@@ -10,6 +10,9 @@
       <div id="my-tab-content" class="tab-content">
         <div id="company-main-form" class="tab-pane active">
           <%= render 'form_main', :f => f %>
+          <%= f.fields_for :contacts do |builder| %>
+            <%= render 'contacts_fields', :f => builder %>
+          <% end %>
         </div>
 
         <div id="company-invoice-form" class="tab-pane form_tab_pane">

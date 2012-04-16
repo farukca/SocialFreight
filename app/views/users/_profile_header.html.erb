@@ -8,9 +8,9 @@
       </td>
       <td>
         <div id="profile-detail" class="loading">
-          <div id="profile-title">
+          <div id="profile-title" class="row-fluid">
             <div class="title">
-              <span><%= @user.full_name %></span>
+              <span><%= "#{@person.salutation} #{@person}" %></span>
             </div>
             <div class="buttons">
               <% if current_user.id = @user.id %>

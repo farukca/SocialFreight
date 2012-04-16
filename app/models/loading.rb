@@ -68,6 +68,8 @@ class Loading < ActiveRecord::Base
       stages = {
         'R' => 'Reservation',
         'B' => 'Booking',
+        'G' => 'Going on',
+        'D' => 'Delivered',
         'C' => 'Closed'
       }
     end
@@ -75,7 +77,10 @@ class Loading < ActiveRecord::Base
     def point_types()
       point_types = {
         'M' => 'Customer Place',
-        'P' => 'Airport'
+        'P' => 'Airport',
+        'S' => 'Seaport',
+        'R' => 'Rail Station',
+        'K' => 'Konsolidasyon Merkezi'
       }
     end
   end
@@ -95,8 +100,9 @@ class Loading < ActiveRecord::Base
 
   private
   def set_initials
-    counter = self.patron.generate_counter("Loading", self.operation, nil)
-    self.reference = self.operation + "." + self.direction + "." + sprintf('%07d', counter)
+    #counter = self.patron.generate_counter("Loading", self.operation, nil)
+    #self.reference = self.operation + "." + self.direction + "." + sprintf('%07d', counter)
+    self.reference = self.patron.generate_counter("Loading", self.operation, nil)
     self.patron_token = current_patron.token if self.patron_token.blank?
     #generate_slug!
   end

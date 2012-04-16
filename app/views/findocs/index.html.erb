@@ -1,0 +1,32 @@
+<h1>Listing findocs</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>Docdate</th>
+    <th>Amount</th>
+    <th>Curr</th>
+    <th>Process type</th>
+    <th>Target name</th>
+    <th>Docno</th>
+    <th>Extno</th>
+    <th>Doctype</th>
+    <th>Des</th>
+    <th>User</th>
+  </tr>
+
+<% @findocs.each do |findoc| %>
+  <tr>
+    <td><%= findoc.docdate %></td>
+    <td><%= findoc.amount %></td>
+    <td><%= findoc.curr %></td>
+    <td><%= findoc.process_type %></td>
+    <td><%= findoc.target_name %></td>
+    <td><%= findoc.docno %></td>
+    <td><%= findoc.extno %></td>
+    <td><%= findoc.doctype %></td>
+    <td><%= findoc.des %></td>
+    <td><%= findoc.user_id %></td>
+  </tr>
+<% end %>
+</table>
+<%= link_to 'New', new_findoc_path %>

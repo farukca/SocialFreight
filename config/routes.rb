@@ -24,6 +24,7 @@ Socialfreight::Application.routes.draw do
   end
   resources :places
   resources :companies
+  resources :findocs
   resources :branches
   resources :people
   resources :positions do

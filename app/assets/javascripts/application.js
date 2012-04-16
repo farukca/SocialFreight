@@ -6,7 +6,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require gmaps4rails/gmaps4rails.googlemaps
+//= require gmaps4rails/googlemaps.js
 //= require rails.validations
 //= require jquery.tokeninput
 //= require jquery.timeago
@@ -20,7 +20,4 @@
 //= require loading
 //= require search
 //= require home
-// require facebox
-// require_tree .
-// require sf_min
-
+// require_tree.

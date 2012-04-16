@@ -2,7 +2,8 @@ class UsersController < ApplicationController
  
   before_filter :require_login
   skip_before_filter :require_login, :only => [:new, :create, :activate, :activation, :update]
-
+  before_filter :set_current_tab, :only => [:show]
+  
   def index
     @users = User.all
   end
@@ -17,6 +18,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @person = @user.person if @user.person
   end
 
   def create
@@ -72,4 +74,8 @@ class UsersController < ApplicationController
 
   end
 
+  def set_current_tab
+    set_tab("homenavigator")
+  end
+  
 end

@@ -7,9 +7,11 @@
 </div-->
 <div id="good_branch">
   <dl class="yatay-info" id="headline">
+    <dd><%= loading.direction %></dd>
     <dd><%= loading.branch.name %></dd>
     <dd><%= Position.payment_types[loading.paid_at] %></dd>
     <dd><%= loading.incoterm %></dd>
+    <dd><%= Loading.load_types[loading.load_type] %></dd>
     <dd><%= link_to loading.position_name.upcase, position_path(loading.position) %></dd>
   </dl>
 </div>

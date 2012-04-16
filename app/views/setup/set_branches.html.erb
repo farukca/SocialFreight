@@ -31,8 +31,8 @@
                 <%= link_to_add_fields "Yeni Şube Ekle", f, :branches %>
               </fieldset>
               <div class="controls">
-                <%= f.button :submit, "İleri >>", :class => 'btn btn-info' %>
-                <%= link_to "Bu Adımı Atla", next_wizard_path %>
+                <%= link_to "Bu Adımı Atla >>", next_wizard_path, :class => 'btn btn-danger' %>
+                <%= f.button :submit, "İleri >> Kullanıcı Tanımları", :class => 'btn btn-info' %>
               </div>
             </div>
           </div>

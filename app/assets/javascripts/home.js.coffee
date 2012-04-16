@@ -3,8 +3,7 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ->
   $(".topbar").dropdown()
-  $("a[rel=popover]").popover(offset: 10).click (e) ->
-    e.preventDefault()
+  $("a[rel=popover]").popover(offset: 10, delay:{show:1000, hide:500})
   $(".alert-message").alert()
   $("abbr.timeago").timeago()
   $(".slidingDiv").hide()
@@ -30,3 +29,8 @@ jQuery ->
       tokenLimit: 1
       prePopulate: el.data("pre")
       preventDuplicates: true
+  $("a[data-toggle=modal]").click ->
+    target = $(this).attr('data-target')
+    url = $(this).attr('href')
+    $(target).load(url)
+    event.preventDefault()

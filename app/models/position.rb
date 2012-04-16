@@ -99,8 +99,9 @@ class Position < ActiveRecord::Base
 
   private
   def set_initials
-    counter = self.patron.generate_counter("Position", self.operation, self.direction)
-    self.reference = self.operation + "." + self.direction + "." + sprintf('%07d', counter)
+    self.reference = self.patron.generate_counter("Position", self.operation, self.direction)
+    #counter = self.patron.generate_counter("Position", self.operation, self.direction)
+    #self.reference = self.operation + "." + self.direction + "." + sprintf('%07d', counter)
     #self.patron_token = current_patron.token if self.patron_token.blank?
     #set_friendly_id(self.reference)
   end

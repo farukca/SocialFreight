@@ -48,10 +48,10 @@ class Patron < ActiveRecord::Base
   validates_length_of   :tel, :maximum => 12#, :message => I18n.t('tasks.errors.name.too_long')
 
   def generate_counter(ctype, operation, direction)
-    counter = self.counters.find_or_initialize_by_counter_type_and_operation(ctype, operation)
+    counter = self.counters.find_or_initialize_by_operation_and_counter_type(operation, ctype)
     counter.increment(:count, 1)
     counter.save!
-    return counter.count
+    return counter.get_reference
   end
 
   def set_activity(target, action, creator_id=nil, action_text, user_name)

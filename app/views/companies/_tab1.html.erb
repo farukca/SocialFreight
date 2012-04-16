@@ -18,7 +18,7 @@
       </tr>
       <tr>
         <td class="labelCol2">Tipi :</td>
-        <td class="dataCol2"><%= @company.company_type %></td>
+        <td class="dataCol2"><%= Company.company_types[@company.company_type] %></td>
         <td class="labelCol2">Sektör :</td>
         <td class="dataCol2"><%= @company.sector %></td>
         <td class="labelCol2">Yetkili :</td>

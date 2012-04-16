@@ -1,9 +1,10 @@
 <div class="row-fluid">
-  <%= simple_form_for Post.new, :validate => true, :remote => true do |f| %>
+  <%= form_for Post.new, :remote => true, :class => "form-inline" do |f| %>
     <div class="row-fluid">
-    <%= f.error_notification %>
-    <%= f.input :message, :as => :text, :input_html => {:rows => "1", :style => "width:95%"}, :label => false %>
-    <%= f.button :submit, :class => 'btn btn-info' %>
+    <%#= f.error_notification %>
+    <%= label_tag :message, "Mesajınız :" %>
+    <%= f.text_field :message, :class => "input-xlarge" %>
+    <%= f.submit("Paylaş", :class => 'btn btn-info') %>
      </div>
   <% end %>
 </div>

@@ -1,0 +1,24 @@
+<%= simple_form_for(@findoc) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.input :docdate %>
+    <%= f.input :amount %>
+    <%= f.input :curr %>
+    <%= f.input :unit_type %>
+    <%= f.input :unit_id %>
+    <%= f.input :unit_name %>
+    <%= f.input :process_type %>
+    <%= f.input :target_type %>
+    <%= f.input :target_id %>
+    <%= f.input :target_name %>
+    <%= f.input :docno %>
+    <%= f.input :extno %>
+    <%= f.input :doctype %>
+    <%= f.input :des %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

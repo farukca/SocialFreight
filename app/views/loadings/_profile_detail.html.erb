@@ -3,29 +3,29 @@
     <table style="width:100%" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td><h3><%= @loading.reference.upcase %></h3></td>
-        <td/>
-        <td colspan="3" style="text-align:right">
+        <td colspan="3"><%= render 'tab_header', :loading => @loading %></td>
+        <td style="text-align:right">
           <%= link_to "Edit", edit_loading_path(@loading), :class => 'btn primary' %>
         </td>
       </tr>
       <tr>
         <td class="labelCol2">Müşteri :</td>
         <td class="dataCol2"><%= @loading.company.name if @loading.company %></td>
-        <td class="labelCol2">Yükleme:</td>
-        <td class="dataCol2"><%= @loading.departure.city.name if @loading.departure.city %>&nbsp;<%= @loading.departure.country.name if @loading.departure.country %></td>
+        <td class="labelCol2">Acenta:</td>
+        <td class="dataCol2"><%= @loading.agent.name if @loading.agent %></td>
         <td class="dataCol2" rowspan="3"><%= @loading.commodity %></td>
       </tr>
       <tr>
-        <td class="labelCol2">Alıcı :</td>
-        <td class="dataCol2"><%#= @loading.consignee.name if @loading.consignee %></td>
-        <td class="labelCol2">Boşaltma:</td>
-        <td class="dataCol2 lastCol"><%= @loading.departure.city.name if @loading.departure.city %>&nbsp;<%= @loading.departure.country.name if @loading.departure.country %></td>
+        <td class="labelCol2">Navlun :</td>
+        <td class="dataCol2"><%= @loading.freight_price %>&nbsp;<%= @loading.freight_curr %></td>
+        <td class="labelCol2">Üretici:</td>
+        <td class="dataCol2 lastCol"><%= @loading.producer %></td>
       </tr>
       <tr>
-        <td class="labelCol2"> Gönderici:</td>
-        <td class="dataCol2 lastCol"><%#= @loading.sender.name if @loading.sender %></td>
-        <td class="labelCol2">Navlun:</td>
-        <td class="dataCol2"><%= @loading.freight_price %>&nbsp;<%= @loading.freight_curr.upcase if @loading.freight_curr %></td>
+        <td class="labelCol2">Brüt Ağırlık:</td>
+        <td class="dataCol2 lastCol"><%= @loading.brut_wg %></td>
+        <td class="labelCol2">Yük Fiyatı:</td>
+        <td class="dataCol2"><%= @loading.product_price %>&nbsp;<%= @loading.product_curr %></td>
       </tr>
     </table>
   </div>
