@@ -1,6 +1,6 @@
 require "bundler/capistrano"
 
-set :server "213.128.89.135", :web, :app, :db, primary: true
+server "213.128.89.135", :web, :app, :db, primary: true
 
 set :application, "SocialFreight"
 set :user, "freighter"
