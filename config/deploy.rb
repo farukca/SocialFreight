@@ -1,6 +1,6 @@
 require "bundler/capistrano"
 
-set :server "ec2-107-20-242-227.compute-1.amazonaws.com", :web, :app, :db, primary: true
+set :server "213.128.89.135", :web, :app, :db, primary: true
 
 set :application, "SocialFreight"
 set :user, "freighter"
