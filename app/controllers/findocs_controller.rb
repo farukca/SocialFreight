@@ -1,7 +1,6 @@
 class FindocsController < ApplicationController
   before_filter :require_login
-  #before_filter {set_current_tab{"financenavigator"}}, :only => [:index]
-  before_filter { |c| c.set_tab "financenavigator" }, :only => [:index]
+  before_filter(:only => [:index]) { |c| c.set_tab "financenavigator" }
 
   
   def index
