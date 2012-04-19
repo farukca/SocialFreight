@@ -1,11 +1,13 @@
+<div id="opform">
 <%= simple_form_for(@findoc) do |f| %>
   <%= f.error_notification %>
-
-  <div class="inputs">
-    <%= f.input :docdate %>
-    <%= f.input :amount %>
-    <%= f.input :curr %>
-    <%= f.input :unit_type %>
+  <fieldset>
+  <div class="pageBlock">
+    <%= f.input :docdate, :as => "string", :input_html => {:class => "input-small", "data-datepicker" => "datepicker"} %>
+    <%= f.input :amount do %>
+      <%= f.input_field :amount, :class => "input-small" %>
+      <%= f.input_field :curr, :as => :select, :collection => Currency.all, :include_blank => false, :class => "input-small" %>
+    <% end %>
     <%= f.input :unit_id %>
     <%= f.input :unit_name %>
     <%= f.input :process_type %>
@@ -16,9 +18,11 @@
     <%= f.input :extno %>
     <%= f.input :doctype %>
     <%= f.input :des %>
+    <%= f.input :unit_type, as: "hidden" %>
   </div>
 
   <div class="actions">
     <%= f.button :submit %>
   </div>
 <% end %>
+</div>

@@ -1,8 +1,8 @@
 class OperationsController < ApplicationController
 
   before_filter :require_login 
-  before_filter :set_current_tab, :only => [:home]
-  
+  before_filter(:only => [:home]) { |c| c.set_tab "opernavigator" }
+    
   def index
     @operations = Operation.all
 
@@ -71,10 +71,6 @@ class OperationsController < ApplicationController
         format.json { render json: @operation.errors, status: :unprocessable_entity }
       end
     end
-  end
-  
-  def set_current_tab
-    set_tab("opernavigator")
   end
   
 end

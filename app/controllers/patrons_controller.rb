@@ -2,8 +2,8 @@ class PatronsController < ApplicationController
 
   before_filter :require_login
   skip_before_filter :require_login, :only => [:new, :create]
-  before_filter :set_current_tab, :only => [:show]
-
+  before_filter(:only => [:show]) { |c| c.set_tab "adminnavigator" }
+  
   def index
     @patrons = Patron.all
 
@@ -68,9 +68,5 @@ class PatronsController < ApplicationController
       format.html { redirect_to patrons_url }
       format.json { head :ok }
     end
-  end
-  
-  def set_current_tab
-    set_tab("adminnavigator")
   end
 end
