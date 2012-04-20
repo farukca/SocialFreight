@@ -71,6 +71,8 @@ Socialfreight::Application.configure do
     :user_name            => 'farukca2000@gmail.com',
     :password             => '66210000',
     :authentication       => 'plain',
-    :enable_starttls_auto => true  }
+    :enable_starttls_auto => true,
+    :openssl_verify_mode  => 'none' # Only use this option for a self-signed and/or wildcard certificate
+  }
 
 end
