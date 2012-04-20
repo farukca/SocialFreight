@@ -57,4 +57,8 @@ Socialfreight::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  # Rack::Cache [GET /] miss error
+  config.action_dispatch.rack_cache[:verbose] = false
+
 end
