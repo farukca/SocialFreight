@@ -160,7 +160,7 @@ ActiveRecord::Schema.define(:version => 20120412204227) do
     t.string   "name",         :limit => 30
     t.string   "surname",      :limit => 30, :null => false
     t.integer  "company_id"
-    t.integer  "user_id"
+    t.integer  "user_id",                    :null => false
     t.string   "salutation",   :limit => 5
     t.string   "email",        :limit => 90
     t.string   "tel",          :limit => 15
@@ -201,6 +201,7 @@ ActiveRecord::Schema.define(:version => 20120412204227) do
     t.integer "period",                     :default => 0
   end
 
+  add_index "counters", ["counter_type", "patron_id"], :name => "index_counters_on_counter_type_and_patron_id", :unique => true
   add_index "counters", ["patron_id", "counter_type", "operation", "period"], :name => "counters_unique_index", :unique => true
 
   create_table "countries", :force => true do |t|
@@ -213,7 +214,7 @@ ActiveRecord::Schema.define(:version => 20120412204227) do
     t.string  "slug",      :limit => 40
   end
 
-  create_table "currencies", :force => true do |t|
+  create_table "currencies", :id => false, :force => true do |t|
     t.string "code",       :limit => 5,                   :null => false
     t.string "name",       :limit => 40,                  :null => false
     t.string "symbol",     :limit => 1
@@ -307,7 +308,6 @@ ActiveRecord::Schema.define(:version => 20120412204227) do
     t.string  "patron_token",   :limit => 20
   end
 
-  add_index "journals", ["journaled_type", "journaled_id", "journal_model", "process_date", "patron_id"], :name => "index_journals_on_journal_model_and_process_date_and_patron_id", :unique => true
   add_index "journals", ["patron_id"], :name => "index_journals_on_patron_id"
 
   create_table "likes", :force => true do |t|
@@ -378,7 +378,7 @@ ActiveRecord::Schema.define(:version => 20120412204227) do
   add_index "mentions", ["mentioner_id", "mentioner_type"], :name => "fk_mentions"
 
   create_table "operations", :id => false, :force => true do |t|
-    t.string "code",                         :null => false
+    t.string "code"
     t.string "name",           :limit => 40, :null => false
     t.string "operation_type", :limit => 20, :null => false
   end
@@ -490,7 +490,7 @@ ActiveRecord::Schema.define(:version => 20120412204227) do
   create_table "places", :force => true do |t|
     t.string   "name",        :limit => 50
     t.string   "code",        :limit => 20
-    t.string   "place_type",  :limit => 10
+    t.string   "place_type",  :limit => 4
     t.string   "district",    :limit => 30
     t.string   "postcode",    :limit => 5
     t.string   "address",     :limit => 100
@@ -690,6 +690,7 @@ ActiveRecord::Schema.define(:version => 20120412204227) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["patron_id", "patron_key"], :name => "index_users_on_patron_id_and_patron_key"
   add_index "users", ["remember_me_token"], :name => "index_users_on_remember_me_token"
+  add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true
 
   create_table "vehicles", :force => true do |t|
     t.string   "code",           :limit => 20,                   :null => false

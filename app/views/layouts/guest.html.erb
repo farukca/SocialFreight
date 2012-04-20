@@ -2,9 +2,11 @@
 <html>
 <head>
   <title>Socialfreight</title>
+  <meta charset='utf-8'>
   <%= stylesheet_link_tag    "socialfreight", :debug => Rails.env.development? %>
   <%= javascript_include_tag "socialfreight", :debug => Rails.env.development? %>
   <%= csrf_meta_tags %>
+  <%= yield :head %>
 </head>
 <body>
 <%= render 'layouts/topbar' %>
