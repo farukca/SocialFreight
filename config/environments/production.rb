@@ -67,7 +67,7 @@ Socialfreight::Application.configure do
   config.action_mailer.smtp_settings = {
     :address              => "smtp.gmail.com",
     :port                 => 587,
-    :domain               => 'gmail.com',
+    :domain               => 'socialfreight.com',
     :user_name            => 'farukca2000@gmail.com',
     :password             => '66210000',
     :authentication       => 'plain',
