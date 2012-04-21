@@ -63,16 +63,16 @@ Socialfreight::Application.configure do
   config.action_dispatch.rack_cache[:verbose] = false
 
   # Gmail settings
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :address              => "smtp.gmail.com",
-    :port                 => 587,
-    :domain               => 'socialfreight.com',
-    :user_name            => 'farukca2000@gmail.com',
-    :password             => '66210000',
-    :authentication       => 'plain',
-    :enable_starttls_auto => true,
-    :openssl_verify_mode  => 'none' # Only use this option for a self-signed and/or wildcard certificate
-  }
+  #config.action_mailer.delivery_method = :smtp
+  #config.action_mailer.smtp_settings = {
+  #  :address              => "smtp.gmail.com",
+  #  :port                 => 587,
+  #  :domain               => 'socialfreight.com',
+  #  :user_name            => 'faruk@socialfreight.com',
+  #  :password             => 'farukca6',
+  #  :authentication       => 'plain',
+  #  :enable_starttls_auto => true,
+  #  :openssl_verify_mode  => 'none' # Only use this option for a self-signed and/or wildcard certificate
+  #}
 
 end
