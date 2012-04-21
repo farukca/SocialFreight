@@ -1,6 +1,6 @@
 class Branch < ActiveRecord::Base
  
-  acts_as_gmappable
+  acts_as_gmappable :process_geocoding => false, :validation => false
   extend FriendlyId
   friendly_id :name, use: :slugged
   
@@ -21,7 +21,7 @@ class Branch < ActiveRecord::Base
   validates_length_of   :name, :maximum => 100#, :message => I18n.t('tasks.errors.name.too_long')
 
   def gmaps4rails_address
-    "#{self.address}, #{self.district}, #{self.city.name}, #{self.country.name}" 
+    "#{self.address}, #{self.district}, #{self.city.name if self.city}, #{self.country.name if self.country}" 
   end
   
   def prevent_geocoding

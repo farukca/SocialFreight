@@ -13,13 +13,10 @@ class Person < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
   attr_accessible :name, :surname, :postcode, :address, :district, :city_id, :country_id, :state_id, 
-                  :email, :website, :tel, :gsm, :voip, :twitter_url, :facebook_url, :linkedin_url, 
-                  :avatar
+                  :email, :website, :busitel, :gsm, :voip, :twitter, :facebook, :linkedin, :avatar, :patron_id, :patron_token
+
   validates_presence_of :name, :message => I18n.t('patrons.errors.title.cant_be_blank')
   validates_presence_of :surname, :message => I18n.t('patrons.errors.title.cant_be_blank')
-  validates_presence_of :email, :message => I18n.t('patrons.errors.title.cant_be_blank')
-  validates_presence_of :patron, :message => I18n.t('patrons.errors.title.cant_be_blank')
-  validates_presence_of :patron_token, :on => :create, :message => I18n.t('patrons.errors.title.cant_be_blank')
   validates_length_of   :name, :maximum => 40
   validates_length_of   :surname, :maximum => 100
 

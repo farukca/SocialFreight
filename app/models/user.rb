@@ -74,10 +74,12 @@ class User < ActiveRecord::Base
 
   private
   def create_person
-    person = self.person.build()
+    person = self.build_person()
     person.name = self.name
     person.surname = self.surname
     person.email = self.email
+    person.patron_id = self.patron_id
+    person.patron_token = self.patron_key
     person.save!
   end
 end

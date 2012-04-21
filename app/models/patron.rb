@@ -93,6 +93,7 @@ class Patron < ActiveRecord::Base
   private
   def set_initials
     self.name = self.title
+    self.token = SecureRandom.urlsafe_base64[0,20]
   end
 
   private
@@ -101,6 +102,8 @@ class Patron < ActiveRecord::Base
     user.name = self.contact_name
     user.surname = self.contact_surname
     user.email = self.email
+    user.patron_id = self.id
+    user.patron_key = self.token
     user.password = '9876543210'
     user.password_confirmation = '9876543210'
     user.save!
