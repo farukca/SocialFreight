@@ -1,2 +1,4 @@
-<div id="company_detail" class="tab-pane">
+<div id="company_contacts" class="tab-pane">
+  <%= render @company.contacts %>
+  <%= link_to "Add Contact", new_contact_path(:company_id => @company.id) %>
 </div>

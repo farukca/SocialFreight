@@ -1,38 +1,41 @@
-<div id="country" class="row">
+<div id="country" class="row-fluid">
 
   <div>
-    <div class="row">
-      <span><%= @country.name %></span>
-      <span class="rightside">
-	<%= link_to "Add City", new_user_path %>
-	<%= link_to "Add State", new_user_path %>
-      </span>
-    </div>
+    <span><%= @country.name %></span>
+    <span class="rightside">
+      <%= link_to "Add City", new_user_path %>
+      <%= link_to "Add State", new_user_path %>
+    </span>
+  </div>
 
-    <div id="new_city" class="row">
+  <div class="row-fluid">
+
+    <div id="new_city" class="span6">
       <%= simple_form_for ([@country.cities.build]), :validate => true do |f| %>
         <%= f.error_notification %>
-
-        <fieldset>
-          <div class="row">
-            <div class="page-header span16 columns">
+        <div class="row-fluid">
+          <fieldset>
+            <div class="page-header">
               <h4>Add City</h4>
             </div>
-            <div class="span8 columns">
+            <div class="span6">
               <%= f.input :country_id, :as => :hidden, :input_html => { :value => @country.id }  %>
               <%= f.input :code  %>
               <%= f.input :name %>
               <%= f.input :telcode %>
               <%= f.button :submit, :class => 'btn primary' %>
             </div>
-          </div>
-        </fieldset>
+          </fieldset>
+        </div>
 
       <% end %>
     </div>
 
-    <div id="cities" class="row">
-      <table>
+    <div id="cities" class="span6">
+      <div class="page-header">
+        <h4>City List</h4>
+      </div>
+      <table class="table table-stripped">
         <tr>
           <th>Name</th>
           <th>Kod</th>

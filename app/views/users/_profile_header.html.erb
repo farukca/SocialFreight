@@ -14,7 +14,7 @@
             </div>
             <div class="buttons">
               <% if current_user.id = @user.id %>
-                <%= link_to "Edit", edit_user_path(@user), :class => 'btn primary' %>
+                <%= link_to "Edit", edit_person_path(@user.person), :class => 'btn primary' %>
               <% end %>
             </div>
           </div>

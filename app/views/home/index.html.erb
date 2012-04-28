@@ -5,15 +5,15 @@
         <h1>Social Freight</h1>
         <p>Social Freight; 3PL, Freight Forwarder, NVOCC firmaları ve forwarding acentalarının; uluslararası nakliye operasyonlarını yönetmek üzere tasarlanmış lojistik yazılımıdır.</p>
         <p>Uluslararası ihracat/ithalat pozisyon ve yüklerinizi takip edebilir; tedarikçi ve müşteri tekliflerinizi yönetebilir; operasyonel dökümanlarınızı kolayca düzenleyip iletebilirsiniz. Depo ve antrepo gibi konsolidasyon merkezlerinizi yönetebilirsiniz.</p>
-        <a class="small-btn blue rounded-1" href="single-portfolio.html">Daha Fazlası için tıklayınız</a>
+        <%= link_to "Daha Fazlası için tıklayınız", features_path, :class => "small-btn blue rounded-1" %>
       </div>
       <div class="span-two-thirds">
         <div id="slider">
           <ul class="images">
-            <li><a href="single-portfolio.html"><img src="assets/big_images/slider-img-1.jpg" /></a></li>
-            <li><a href="single-portfolio.html"><img src="assets/big_images/slider-img-3.jpg" /></a></li>
-            <li><a href="single-portfolio.html"><img src="assets/big_images/slider-img-2.jpg" /></a></li>
-            <li><a href="single-portfolio.html"><img src="assets/big_images/slider-img-4.jpg" /></a></li>
+            <li><%= link_to image_tag("big_images/slider-img-1.jpg"), road_path %></li>
+            <li><%= link_to image_tag("big_images/slider-img-3.jpg"), air_path %></li>
+            <li><%= link_to image_tag("big_images/slider-img-2.jpg"), sea_path %></li>
+            <li><%= link_to image_tag("big_images/slider-img-4.jpg"), rail_path %></li>
             <!--<li><a href="single-portfolio.html"><img src="assets/big_images/slider-img-3.jpg" alt="" /></a></li>-->
           </ul>
           <ul class="slider-nav clearfix">

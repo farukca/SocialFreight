@@ -6,25 +6,22 @@
           <div id="profile-info" class="profile company">
             <ul class="nav nav-pills">
               <li class="active"><a data-toggle="tab" href="#company_profile">Profile</a></li>
-              <li><a data-toggle="tab" href="#company_detail">Yetkililer</a></li>
+              <li><a data-toggle="tab" href="#company_contacts">Yetkililer</a></li>
               <li><a data-toggle="tab" href="#company_docs">Taşımalar</a></li>
               <li><a data-toggle="tab" href="#company_docs">Açık İşlemler</a></li>
               <li><a data-toggle="tab" href="#company_docs">Aktiviteler</a></li>
               <li><a data-toggle="tab" href="#company_docs">Fırsatlar</a></li>
               <li><a data-toggle="tab" href="#company_docs">İlişkili Firmalar</a></li>
               <li><a data-toggle="tab" href="#company_docs">Notlar/Dosyalar</a></li>
-							<li class="dropdown">
-								<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-								  İşlemler
-								  <b class="caret"></b>
-								</a>
-								<ul class="dropdown-menu">
-            <li><%= link_to "Add Contact", edit_company_path(@company) %></li>
-            <li><%= link_to "Add Activity", edit_company_path(@company) %></li>
-            <li><%= link_to "Add Opportunity", edit_company_path(@company) %></li>
-            <li><%= link_to "Edit Company", edit_company_path(@company) %></li>
-								</ul>
-							</li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">İşlemler<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Add Contact", new_contact_path(:company_id => @company.id) %></li>
+                  <li><%= link_to "Add Activity", edit_company_path(@company) %></li>
+                  <li><%= link_to "Add Opportunity", edit_company_path(@company) %></li>
+                  <li><%= link_to "Edit Company", edit_company_path(@company) %></li>
+                </ul>
+              </li>
             </ul>
             <div id="my-tab-content" class="tab-content">
               <%= render 'tab1', :position => @position %>

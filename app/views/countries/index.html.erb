@@ -1,7 +1,7 @@
-<div class="row">
+<div class="row-fluid">
 <h3>Country List</h3>
 <span class="rightside"><%= link_to 'New Country', new_country_path, :class => "btn primary" %></span>
-<table>
+<table class="table table-stripped">
   <tr>
     <th>Name</th>
     <th>Code</th>
@@ -11,7 +11,7 @@
   <%= render @countries %>
 
 </table>
-    <div class="span6 columns">
+    <div class="span6">
       <%#= gmaps4rails(@json) %>
     </div>
 </div>

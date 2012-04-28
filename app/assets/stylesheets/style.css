@@ -85,7 +85,7 @@ p {
 }
 .header {
     background: url(/assets/big_images/top-bar-shadow.png) top left repeat-x #fff;
-    padding: 20px 0;
+    padding: 15px 0 5px;
     margin-top:45px;
     -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.35);
     -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.35);

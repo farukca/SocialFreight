@@ -1,73 +1,31 @@
-<div id="person_form" class="row">
+<div id="person_form">
 <%= simple_form_for @person, :validate => true do |f| %>
   <%= f.error_notification %>
 
-  <fieldset>
-    <div class="row">
-      <div class="page-header span16 columns">
-        <h4>New Person</h4>
-      </div>
-      <div class="span8 columns">
-        <%= f.input :name, :label => "Name Surname" do %>
-          <%= f.input_field :name, :size => "20" %>
-          <%= f.input_field :surname, :size => "20" %>
-        <% end %>
-        <%= f.input :email %>
-      </div>
-      <div class="span8 columns">
-        <%= f.input :password %>
-        <%= f.input :password_confirmation, :label => "Confirm Password" %>
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="page-header span16 columns">
-        <h4>Firma Bilgileri</h4>
-      </div>
-      <div class="span8 columns">
-        <%= f.input :task %>
-        <%= f.input :branch do %>
-          <%= f.input_field :branch, :as => :select, :collection => current_patron.branches, :include_blank => false, :class => "medium" %>
-        <% end %>
-        <%= f.input :start_date do %>
-          <%= f.input_field :start_date,:class => "small datepicker" %>
-          <%= f.input_field :start_type,:class => "medium" %>
-        <% end %>
-        <%= f.input :citizen_no %>
-      </div>
-      <div class="span8 columns">
-        <%= f.input :departman %>
-        <%= f.input :status %>
-        <%= f.input :public %>
-        <%= f.input :nation, :as => :select, :collection => Country.all, :input_html => {:class => "medium"} %>
-      </div>
-    </div>
+  <div class="pageBlock">
+    <%= render 'shared/form_buttonsh', :f => f, :header => "New Person" %>
 
-    <div class="row">
-      <div class="page-header span16 columns">
-        <h4>Adres&İletişim Bilgileri</h4>
-      </div>
-      <div class="span8 columns">
-        <%= f.input :country, :as => :select, :collection => Country.all, :include_blank => false, :input_html => {:class => "medium"} %>
-        <%= f.input :city, :input_html => {:class => "token_input", "data-url" => "/cities.json", "data-pre" => @person.city ? @person.city.prepopulate_tokens.to_json : nil } %>
-        <%= f.input :district do %>
-          <%= f.input_field :district, :size => "20" %>
-          <%= f.input_field :postcode, :size => "10" %>
-        <% end %>
-        <%= f.input :address, :as => :text, :input_html => {:rows => 2, :cols => 37} %>
-      </div>
-      <div class="span8 columns">
-        <%= f.input :website, :label => "Blog/Website Url" %>
-        <%= f.input :twitter_url %>
-        <%= f.input :facebook_url %>
-        <%= f.input :linkedin_url %>
-        <%= f.input :avatar, :as => :file, :label => "Picture" %>
-        <div class="clearfix" style="margin-left:250px">
-          <%= f.button :submit, :class => 'btn primary' %>
+    <div class="tabbable tabs-below">
+
+      <div id="my-tab-content" class="tab-content">
+        <div id="person-main-form" class="tab-pane active">
+          <%= render 'form_main', :f => f %>
+        </div>
+
+        <div id="person-detail-form" class="tab-pane form_tab_pane">
+          <%= render 'form_detail', :f => f %>
         </div>
       </div>
+
     </div>
-  </fieldset>
+    
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#person-main-form">1-Profil Bilgileri</a></li>
+      <li><a data-toggle="tab" href="#person-detail-form">2-Kişisel Bilgiler</a></li>
+    </ul>
+    
+  </div>
 
 <% end %>
 </div>

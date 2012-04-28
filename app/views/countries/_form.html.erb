@@ -1,18 +1,18 @@
 <%= simple_form_for @country, :validate => true do |f| %>
   <%= f.error_notification %>
 
-  <fieldset>
-    <div class="row">
-      <div class="page-header span16 columns">
+  <div class="row-fluid">
+
+    <fieldset>
+      <div class="page-header span12">
         <h4>Country</h4>
       </div>
-      <div class="span8 columns">
+      <div class="span6">
         <%= f.input :code  %>
         <%= f.input :name %>
         <%= f.input :telcode %>
         <%= f.button :submit, :class => 'btn primary' %>
       </div>
-    </div>
-  </fieldset>
-
+    </fieldset>
+  </div>
 <% end %>

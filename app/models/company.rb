@@ -29,7 +29,6 @@ class Company < ActiveRecord::Base
   validates_presence_of :name, :message => I18n.t('patrons.errors.title.cant_be_blank')
   #validates_presence_of :title, :message => I18n.t('patrons.errors.title.cant_be_blank')
   validates_presence_of :company_type, :message => I18n.t('patrons.errors.title.cant_be_blank')
-  validates_presence_of :country, :message => I18n.t('patrons.errors.title.cant_be_blank')
   validates_presence_of :patron, :message => I18n.t('patrons.errors.title.cant_be_blank')
   validates_presence_of :patron_token, :on => :create, :message => I18n.t('patrons.errors.title.cant_be_blank')
   #validates_uniqueness_of :name, :case_sensitive => false

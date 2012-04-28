@@ -21,7 +21,7 @@ class CompaniesController < ApplicationController
     if params[:lookup]
       @company = Company.find(params[:id])
     else
-      @company = Company.find_by_slug(params[:id])
+      @company = Company.find(params[:id])
       @marker = @company.to_gmaps4rails
     end
 

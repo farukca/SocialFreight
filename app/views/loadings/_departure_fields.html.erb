@@ -1,15 +1,15 @@
 <div class="row-fluid">
   <div class="span6">
     <fieldset>
-			<%= f.input :country_id do %>
-				<%= f.input_field :country_id, :as => :select, :collection => Country.all, :include_blank => true, :class => "input-medium" %>
-				<%= f.grouped_collection_select :city_id, Country.order(:name), :cities, :name, :id, :name, {:include_blank => true}, {:class => "input-medium"} %>
-			<% end %>
-			<%= f.input :load_point, :as => :select, :collection => Loading.point_types.map { |r| [r[1], r[0] ] } %>
-			<%= f.input :pickup_date, :label => "Prepared/Load Date", :input_html => {:class => "inline-inputs"} do %>
-				 <%= f.input_field :pickup_date, :as => :string, :class => "input-small", "data-datepicker" => "datepicker" %>
-				 <%= f.input_field :load_date, :as => :string, :class => "input-small", "data-datepicker" => "datepicker" %>
-			<% end %>
+      <%= f.input :country_id do %>
+        <%= f.input_field :country_id, :as => :select, :collection => Country.all, :include_blank => true, :class => "input-medium" %>
+        <%= f.grouped_collection_select :city_id, Country.order(:name), :cities, :name, :id, :name, {:include_blank => true}, {:class => "input-medium"} %>
+      <% end %>
+      <%= f.input :load_point, :as => :select, :collection => Loading.point_types.map { |r| [r[1], r[0] ] } %>
+      <%= f.input :pickup_date, :label => "Prepared/Load Date", :input_html => {:class => "inline-inputs"} do %>
+        <%= f.input_field :pickup_date, :as => :string, :class => "input-small", "data-datepicker" => "datepicker" %>
+        <%= f.input_field :load_date, :as => :string, :class => "input-small", "data-datepicker" => "datepicker" %>
+      <% end %>
       <%= f.input :load_place_id, :as => :select, :collection => [[@loading.departure.load_place_id ? @loading.departure.load_place.name : "", @loading.departure.load_place_id]], :input_html => {:class => "chosen_input", "data-url" => "/places.json" } %>
       <%= f.input :district, :label => "Semt" do %>
         <%= f.input_field :district, :class => "input-small" %>

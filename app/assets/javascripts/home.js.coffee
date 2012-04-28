@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ->
-  $(".topbar").dropdown()
+  $(".dropdown-toggle").dropdown()
   $("a[rel=popover]").popover(offset: 10, delay:{show:1000, hide:500})
   $(".alert-message").alert()
   $("abbr.timeago").timeago()
