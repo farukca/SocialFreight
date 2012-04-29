@@ -1,0 +1,43 @@
+<div id="departure_<%= departure.id %>" class="tab-pane active">
+  <div class="pageBody">
+    <div class="profile-content">
+    <legend>1. Yükleme Bilgisi</legend>
+    <table class="detailList" style="width:100%" border="0" cellpatding="0" cellspacing="0">
+      <tr>
+        <td class="labelCol2">Pickup Tarihi :</td>
+        <td class="dataCol2"><%= departure.pickup_date %></td>
+        <td class="labelCol2">Gönderici:</td>
+        <td class="dataCol2"><%= departure.sender.name if departure.sender %></td>
+      </tr>
+      <tr>
+        <td class="labelCol2">Gerçek Yükleme Tarihi :</td>
+        <td class="dataCol2"><%= departure.load_date %></td>
+        <td class="labelCol2">Yükleyici:</td>
+        <td class="dataCol2"><%= departure.loader.name if departure.loader %></td>
+      </tr>
+      <tr>
+        <td class="labelCol2">Yükleme Yeri :</td>
+        <td class="dataCol2"><%= Loading.point_types[departure.load_point] %></td>
+        <td class="labelCol2">Gümrükçü :</td>
+        <td class="dataCol2"><%= departure.customofficer.name if departure.customofficer %></td>
+      </tr>
+      <tr>
+        <td class="labelCol2">Yükleme Noktası :</td>
+        <td class="dataCol2"><%= departure.load_place.name if departure.load_place %></td>
+        <td class="labelCol2">Özet Beyanname No&Tarih :</td>
+        <td class="dataCol2"><%= "#{departure.statement} - #{departure.statement_date}" %></td>
+      </tr>
+      <tr>
+        <td class="labelCol2">Yükleme Adresi :</td>
+        <td class="dataCol2">
+          <span class="rightside"><a href="#"><i class="icon-map-marker"></i></a></span>
+          <%= departure.address %>&nbsp;<%= departure.district %>&nbsp;<%= departure.city.name if departure.city %>&nbsp;<%= departure.country.name if departure.country %>
+        </td>
+        <td class="labelCol2">Yükleme Notu:</td>
+        <td class="dataCol2"><%= departure.notes %></td>
+      </tr>
+    </table>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,48 @@
+<div id="arrival_<%= arrival.id %>" class="tab-pane active">
+  <div class="pageBody">
+    <div class="profile-content">
+    <table class="detailList" style="width:100%" border="0" cellpatding="0" cellspacing="0">
+      <tr>
+        <td class="labelCol2">Boşaltma Tarihi :</td>
+        <td class="dataCol2"><%= arrival.unload_date %></td>
+        <td class="labelCol2">Alıcı:</td>
+        <td class="dataCol2"><%= arrival.consignee.name if arrival.consignee %></td>
+      </tr>
+      <tr>
+        <td class="labelCol2">Teslim Tarihi :</td>
+        <td class="dataCol2"><%= arrival.delivery_date %></td>
+        <td class="labelCol2">Teslim Edilen:</td>
+        <td class="dataCol2"><%= arrival.deliver.name if arrival.deliver %></td>
+      </tr>
+      <tr>
+        <td class="labelCol2">Yükleme Yeri :</td>
+        <td class="dataCol2"><%= Loading.point_types[arrival.unload_point] %></td>
+        <td class="labelCol2">Gümrükçü :</td>
+        <td class="dataCol2"><%= arrival.customofficer.name if arrival.customofficer %></td>
+      </tr>
+      <tr>
+        <td class="labelCol2">Yükleme Noktası :</td>
+        <td class="dataCol2"><%= arrival.unload_place.name if arrival.unload_place %></td>
+        <td class="labelCol2">Özet Beyanname No&Tarih :</td>
+        <td class="dataCol2"><%= "#{arrival.statement} - #{arrival.statement_date}" %></td>
+      </tr>
+      <tr>
+        <td class="labelCol2">Boşaltma Adresi :</td>
+        <td class="dataCol2">
+          <span class="rightside"><a href="#"><i class="icon-map-marker"></i></a></span>
+          <%= arrival.address %>&nbsp;<%= arrival.district %>&nbsp;<%= arrival.city.name if arrival.city %>&nbsp;<%= arrival.country.name if arrival.country %>
+        </td>
+        <td class="labelCol2">Teslimat Notu:</td>
+        <td class="dataCol2"><%= arrival.notes %></td>
+      </tr>
+      <tr>
+        <td class="labelCol2">Notify 1 :</td>
+        <td class="dataCol2"><%= arrival.notify.name if arrival.notify %></td>
+        <td class="labelCol2">Notify 2 :</td>
+        <td class="dataCol2"><%= arrival.notify2.name if arrival.notify2 %></td>
+      </tr>
+    </table>
+    </div>
+  </div>
+</div>
+

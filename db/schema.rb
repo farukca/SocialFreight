@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120427121352) do
+ActiveRecord::Schema.define(:version => 20120428212443) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                    :null => false
@@ -290,6 +290,22 @@ ActiveRecord::Schema.define(:version => 20120427121352) do
     t.string   "patron_token", :limit => 40,                     :null => false
     t.datetime "created_at",                                     :null => false
     t.datetime "updated_at",                                     :null => false
+  end
+
+  create_table "finunits", :force => true do |t|
+    t.string   "name",         :limit => 50, :null => false
+    t.string   "curr",         :limit => 5,  :null => false
+    t.string   "unit_type",    :limit => 10, :null => false
+    t.integer  "branch_id"
+    t.integer  "bank_id"
+    t.string   "bank_branch",  :limit => 30
+    t.string   "account",      :limit => 20
+    t.string   "iban",         :limit => 50
+    t.integer  "person_id"
+    t.integer  "patron_id",                  :null => false
+    t.string   "patron_token",               :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   create_table "follows", :force => true do |t|

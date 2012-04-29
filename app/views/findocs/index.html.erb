@@ -29,4 +29,29 @@
   </tr>
 <% end %>
 </table>
-<%= link_to 'New', new_findoc_path %>
+    <div class="btn-group">
+      <a class="btn btn-success dropdown-toggle" href="#" data-toggle="dropdown"><i class="icon-plus-sign icon-white"></i>Yeni Evrak Girişi</a>
+      <a class="btn btn-success dropdown-toggle" href="#" data-toggle="dropdown">
+         <span class="caret" />
+      </a>
+      <ul class="dropdown-menu">
+        <li>
+          <%= link_to "Kasa Evrağı", new_findoc_path(:unit_type => "Cash") %>
+          <%= link_to "Banka Hesap Evrağı", new_findoc_path(:unit_type => "Bank") %>
+          <%= link_to "Çek Portföy Evrağı", new_findoc_path(:unit_type => "Portfoy") %>
+          <%= link_to "Çek Koçan Evrağı", new_findoc_path(:unit_type => "Kocan") %>
+      </ul>
+    </div>
+
+    <div class="btn-group">
+      <a class="btn btn-success dropdown-toggle" href="#" data-toggle="dropdown"><i class="icon-plus-sign icon-white"></i>Parametre Tanımları</a>
+      <a class="btn btn-success dropdown-toggle" href="#" data-toggle="dropdown">
+         <span class="caret" />
+      </a>
+      <ul class="dropdown-menu">
+        <li>
+          <%= link_to "Kasa Tanımı", new_finunit_path(:unit_type => "Cash") %>
+          <%= link_to "Banka Hesap Tanımı", new_finunit_path(:unit_type => "Bank") %>
+          <%= link_to "Çek Portföy Tanımı", new_finunit_path(:unit_type => "Portfoy") %>
+      </ul>
+    </div>

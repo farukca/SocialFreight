@@ -1,0 +1,22 @@
+legend {
+  margin-left: 10px;
+  font-size: 16px;
+}
+legend span.title {
+  margin-left: 10px;
+  font-size: 12px;
+}
+.breadcrumb {
+  padding: 10px 14px;
+  margin: 0 0 0px;
+}
+.input-small {
+  width: 98px;
+}
+select.input-small {
+  width: 108px;
+}
+[class^="icon-"] {
+  margin-left: 5px;
+  margin-right: 5px;
+}
