@@ -28,7 +28,7 @@
               <label>Resim dosyası:</label>
               <%= f.file_field :avatar %>
               <%= f.submit "Değiştir" %>
-              <%if person.avatar? %>
+              <%if @user.avatar? %>
                 <%= f.check_box :remove_avatar %>&nbsp;Logoyu Sil
               <% end %>
             </p>
