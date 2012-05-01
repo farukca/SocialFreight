@@ -1,7 +1,7 @@
 <li>
   <div class="feedline">
     <a href="#" class="img-load"><%= image_tag comment.user.avatar_url(:small) %></a> 
-    <span><%= comment.user.full_name %></span>&nbsp;
+    <span><%= comment.user %></span>&nbsp;
     <span><%= comment.comment_text %></span>
     <p class="rightside">
       <abbr class="timeago" title="<%= comment.created_at.round(0).iso8601(10) %>"></abbr>

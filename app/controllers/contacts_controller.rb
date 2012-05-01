@@ -1,7 +1,7 @@
 class ContactsController < ApplicationController
 
   before_filter :require_login
-  before_filter(:only => [:index]) { |c| c.set_tab "companynavigator" }
+  #before_filter(:only => [:index]) { |c| c.set_tab "companynavigator" }
 
   def index
   end

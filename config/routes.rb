@@ -1,7 +1,5 @@
 Socialfreight::Application.routes.draw do
 
-  resources :finunits
-
   get "logout" => "sessions#destroy", :as => "logout"
   get "login"  => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
@@ -11,7 +9,7 @@ Socialfreight::Application.routes.draw do
 
   resources :users do
     member do
-      get :activate, :activation
+      get :activate, :activation, :follow
     end
   end
   resources :sessions
@@ -27,6 +25,7 @@ Socialfreight::Application.routes.draw do
   resources :places
   resources :companies
   resources :contacts
+  resources :finunits
   resources :findocs
   resources :branches
   resources :people
@@ -34,17 +33,16 @@ Socialfreight::Application.routes.draw do
     resources :transnodes
     resources :comments
     member do
-      get :follow, :unfollow, :addload
+      get :addload
     end
   end
   resources :loadings do
     resources :packages
     resources :containers
     resources :comments
-    member do
-      get :follow, :unfollow
-    end
   end
+  resources :departures
+  resources :arrivals
   resources :vehicles
   resources :searches do
     member do

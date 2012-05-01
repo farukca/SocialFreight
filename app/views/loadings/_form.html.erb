@@ -11,16 +11,18 @@
         <div id="loading-main-form" class="tab-pane active form_tab_pane">
           <%= render 'form_main', :f => f %>
         </div>
+        <% unless params[:action] == "edit" %>
         <div id="loading-load-form" class="tab-pane form_tab_pane">
-          <%= f.fields_for :departure, @loading.departure do |builder| %>
+          <%= f.fields_for :departures do |builder| %>
             <%= render 'departure_fields', :f => builder %>
           <% end %>
         </div>
         <div id="loading-unload-form" class="tab-pane form_tab_pane">
-          <%= f.fields_for :arrival, @loading.arrival do |builder| %>
+          <%= f.fields_for :arrivals do |builder| %>
             <%= render 'arrival_fields', :f => builder %>
           <% end %>
         </div>
+        <% end %>
         <div id="loading-detail-form" class="tab-pane form_tab_pane">
           <%= render 'form_detail', :f => f %>
         </div>
@@ -28,8 +30,10 @@
 
       <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#loading-main-form">1-Genel Yük Bilgileri</a></li>
+        <% unless params[:action] == "edit" %>
         <li><a data-toggle="tab" href="#loading-load-form">2-Yükleme Bilgileri</a></li>
         <li><a data-toggle="tab" href="#loading-unload-form">3-Boşaltma Bilgileri</a></li>
+        <% end %>
         <li><a data-toggle="tab" href="#loading-detail-form">4-Diğer Bilgiler</a></li>
       </ul>
 

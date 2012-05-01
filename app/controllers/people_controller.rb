@@ -1,5 +1,19 @@
 class PeopleController < ApplicationController
+
+  before_filter :require_login
+
   def index
+    if params[:data][:q]
+       q = "%#{params[:data][:q]}%"
+       @people = Person.where("lower(name) like ?", q).limit(10)
+    else
+       @people = Person.all
+    end
+    respond_to do |format|
+      format.html
+      format.json { render json: @people.map(&:token_inputs) }
+    end
+
   end
 
   def new
@@ -19,7 +33,7 @@ class PeopleController < ApplicationController
 
     respond_to do |format|
       if @person.update_attributes(params[:person])
-        format.html { redirect_to @person, notice: 'Profile updated successfully.' }
+        format.html { redirect_to root_url, notice: 'Profile updated successfully.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

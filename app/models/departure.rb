@@ -10,6 +10,8 @@ class Departure < ActiveRecord::Base
   belongs_to :customofficer, :class_name => "Company", :foreign_key => "customofficer_id"
   belongs_to :load_place, :class_name => "Place", :foreign_key => "load_place_id"
 
+  validate :loading_id, :presence => true
+
   def gmaps4rails_address
     "#{self.address}, #{self.district}, #{self.city.name}, #{self.country.name}"
   end

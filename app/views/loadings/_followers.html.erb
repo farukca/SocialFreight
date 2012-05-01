@@ -8,11 +8,7 @@
         <% end %>
       </ol>
       <div class="rightside">
-        <% unless current_user.follows?(loading) %>
-          <%= link_to "Follow", "#", :class => "btn primary follow_button", :id => "followme", "data-loadid" => "#{loading.slug}", "data-model" => "loadings" %>
-        <% else %>
-          <%= link_to "UnFollow", "#", :class => "btn danger unfollow_button", "data-loadid" => "#{loading.slug}", "data-model" => "loadings" %>
-        <% end %>
+        <%= render 'shared/follow_button', object: loading %>
       </div>
     </div>
   </div>

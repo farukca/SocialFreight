@@ -3,27 +3,27 @@
     <tr>
       <td class="span2 noborder">
         <div id="profile-picture" class="loading">
-          <%= link_to image_tag(@user.avatar_url(:profile)), "#", :class => 'togglebutton', "data-placement" => "below",  "rel" => 'twipsy', "title" => "Resmi Değiştirmek için Tıklayınız", "data-href" => "#logo_change_div" %>
+          <%= link_to image_tag(person.avatar_url(:profile)), "#", :class => 'togglebutton', "data-placement" => "below",  "rel" => 'twipsy', "title" => "Resmi Değiştirmek için Tıklayınız", "data-href" => "#logo_change_div" %>
         </div>
       </td>
       <td>
         <div id="profile-detail" class="loading">
           <div id="profile-title" class="row-fluid">
             <div class="title">
-              <span><%= "#{@user}" %></span>
+              <span><%= "#{person}" %></span>
             </div>
             <div class="buttons">
-              <% if current_user.id = @user.id %>
-                <%= link_to "Edit", edit_person_path(@user.person), :class => 'btn primary' %>
+              <% if current_user.id = person.user_id %>
+                <%= link_to "Edit", edit_person_path(person), :class => 'btn primary' %>
               <% else %>
-                <%= render 'shared/follow_button', object: @user %>
+                <%= render 'shared/follow_button', object: person.user %>
               <% end %>
             </div>
           </div>
-          <%= render 'people/profile_detail', :person => @user.person %>
+          <%= render 'people/profile_detail', :person => person %>
         </div>
         <div id="logo_change_div" class="slidingDiv">
-          <%= form_for @user, :remote => true, :html => {:multipart => true} do |f| %>
+          <%= form_for person, :remote => true, :html => {:multipart => true} do |f| %>
             <p>
               <label>Resim dosyası:</label>
               <%= f.file_field :avatar %>

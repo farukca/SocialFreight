@@ -39,8 +39,8 @@ class LoadingsController < ApplicationController
        @loading = current_patron.loadings.build(params[:loading])
        @loading.operation = params[:operation] if params[:operation]
     end
-    @loading.build_departure
-    @loading.build_arrival
+    @loading.departures.build()
+    @loading.arrivals.build()
     
     respond_to do |format|
       format.html

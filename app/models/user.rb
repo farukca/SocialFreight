@@ -7,10 +7,11 @@ class User < ActiveRecord::Base
   acts_as_mentionable
   
   extend FriendlyId
-  friendly_id :full_name, use: :slugged
+  friendly_id :to_s, use: :slugged
 
   mount_uploader :avatar, AvatarUploader
 
+  belongs_to :patron
   has_one  :person
   has_many :positions
   has_many :loadings
@@ -59,7 +60,7 @@ class User < ActiveRecord::Base
     end while User.exists?(conditions: {column: self[column]})
   end
 
-  def full_name
+  def to_s
     self.name + " " + self.surname
   end
 
@@ -76,17 +77,21 @@ class User < ActiveRecord::Base
 
   private
   def set_initials
-    self.patron_token = self.patron.token if self.patron_token.blank?
+    if self.patron_key.blank? && self.patron
+      self.patron_key = self.patron.token
+    end
   end
 
   private
   def create_person
-    person = self.build_person()
-    person.name = self.name
-    person.surname = self.surname
-    person.email = self.email
-    person.patron_id = self.patron_id
-    person.patron_token = self.patron_key
-    person.save!
+    if self.patron.present?
+      person = self.build_person()
+      person.name = self.name
+      person.surname = self.surname
+      person.email = self.email
+      person.patron_id = self.patron_id
+      person.patron_token = self.patron_key
+      person.save!
+    end
   end
 end

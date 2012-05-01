@@ -1,7 +1,7 @@
 <div id="departure_<%= departure.id %>" class="tab-pane active">
   <div class="pageBody">
     <div class="profile-content">
-    <legend>1. Yükleme Bilgisi</legend>
+    <legend>Yükleme Bilgisi <%= link_to edit_departure_path(departure) do %><i class="icon-edit"></i><% end %></legend>
     <table class="detailList" style="width:100%" border="0" cellpatding="0" cellspacing="0">
       <tr>
         <td class="labelCol2">Pickup Tarihi :</td>

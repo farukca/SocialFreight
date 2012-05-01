@@ -15,9 +15,9 @@ class Loading < ActiveRecord::Base
   belongs_to :user
   belongs_to :saler, :class_name => "User", :foreign_key => "saler_id"
 
-  has_one    :departure
-  has_one    :arrival
-  accepts_nested_attributes_for :departure, :arrival
+  has_many   :departures
+  has_many   :arrivals
+  accepts_nested_attributes_for :departures, :arrivals
 
   has_many :containers
   has_many :packages

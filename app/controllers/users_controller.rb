@@ -74,4 +74,18 @@ class UsersController < ApplicationController
 
   end
   
+  def follow
+    @followable = find_followable
+    unless current_user.follows?(@followable)
+      current_user.follow!(@followable)
+    else
+      current_user.unfollow!(@followable)
+    end
+  end
+
+  private
+  def find_followable
+    return params[:model_name].classify.constantize.find(params[:object_id])
+  end
+
 end
