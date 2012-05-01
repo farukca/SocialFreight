@@ -1,28 +1,31 @@
-<div id="opform">
+<div id="findoc">
 <%= simple_form_for(@findoc) do |f| %>
   <%= f.error_notification %>
-  <fieldset>
+
   <div class="pageBlock">
-    <%= f.input :docdate, :as => "string", :input_html => {:class => "input-small", "data-datepicker" => "datepicker"} %>
-    <%= f.input :amount do %>
-      <%= f.input_field :amount, :class => "input-small" %>
-      <%= f.input_field :curr, :as => :select, :collection => Currency.all, :include_blank => false, :class => "input-small" %>
-    <% end %>
-    <%= f.input :unit_id %>
-    <%= f.input :unit_name %>
-    <%= f.input :process_type %>
-    <%= f.input :target_type %>
-    <%= f.input :target_id %>
-    <%= f.input :target_name %>
-    <%= f.input :docno %>
-    <%= f.input :extno %>
-    <%= f.input :doctype %>
-    <%= f.input :des %>
-    <%= f.input :unit_type, as: "hidden" %>
+    <%= render 'shared/form_buttonsh', :f => f %>
+    <fieldset>
+      <div class="row-fluid">
+        <div class="span6">
+          <%= f.input :docdate, :as => "string", :input_html => {:class => "input-small", "data-datepicker" => "datepicker"} %>
+          <%= f.input :unit_id, :as => :select, :collection => Finunit.where(unit_type: params[:unit_type]), :include_blank => false %>
+          <%= f.input :process_type, :as => :select, :collection => ["Credit","Debit"] %>
+          <%= f.input :amount do %>
+            <%= f.input_field :amount, :class => "input-small" %>
+            <%= f.input_field :curr, :as => :select, :collection => Currency.all, :include_blank => false, :class => "input-small" %>
+          <% end %>
+          <%= f.input :doctype %>
+          <%= f.input :unit_type, as: "hidden" %>
+        </div>
+        <div class="span6">
+          <%= f.input :target_type, :as => :select, :collection => ["Cash","Bank","Firma","Personel","Diğer"] %>
+          <%= f.input :target_id, :as => :select, :collection => [[@findoc.target_name, @findoc.target_id]], :input_html => {:class => "chosen_input", "data-url" => "/companies.json"}, :label => "Karşı kod" %>
+          <%= f.input :extno %>
+          <%= f.input :des, :as => :text, :input_html => {:rows => 2, :cols => 37} %>
+        </div>
+      </div>
+    </fieldset>
   </div>
 
-  <div class="actions">
-    <%= f.button :submit %>
-  </div>
 <% end %>
 </div>

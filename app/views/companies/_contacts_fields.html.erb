@@ -3,12 +3,14 @@
     <legend>Yetkili Bilgisi</legend>
     <div class="span6">
       <%= f.input :name do %>
+        <%= f.input_field :salutation, :as => :select, :collection => ['Mr', 'Ms', 'Mrs', 'Dr'], :class => "input-mini" %>
         <%= f.input_field :name, :class => "input-small" %>
         <%= f.input_field :surname, :class => "input-small" %>      
       <% end %>
     </div>
     <div class="span6">
       <%= f.input :email %>
+      <%= f.input :user_id, as: :hidden %>
     </div>
   </fieldset>
 </div>

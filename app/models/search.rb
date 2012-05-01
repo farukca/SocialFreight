@@ -17,7 +17,7 @@ class Search < ActiveRecord::Base
     positions = Position.patron(self.patron_token).active
     positions = positions.where(operation: self.operation) if self.operation.present?
     positions = positions.where(direction: self.direction) if self.direction.present?
-    positions = positions.where(branch_id: self.branch) if self.branch.present?
+    positions = positions.where(branch_id: self.branch_id) if self.branch_id.present?
     positions
   end
 

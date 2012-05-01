@@ -33,7 +33,7 @@ class CompaniesController < ApplicationController
 
   def new
     @company = current_patron.companies.build(params[:company])
-    @company.contacts.build
+    @company.contacts.build(user_id: current_user.id)
     
     respond_to do |format|
       format.html # new.html.erb

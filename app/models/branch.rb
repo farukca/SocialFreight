@@ -20,6 +20,8 @@ class Branch < ActiveRecord::Base
   validates_presence_of :patron#, :message => I18n.t('patrons.errors.title.cant_be_blank')
   validates_length_of   :name, :maximum => 100#, :message => I18n.t('tasks.errors.name.too_long')
 
+  before_create :set_initials
+
   def gmaps4rails_address
     "#{self.address}, #{self.district}, #{self.city.name if self.city}, #{self.country.name if self.country}" 
   end
@@ -28,4 +30,9 @@ class Branch < ActiveRecord::Base
     self.address.blank? #|| (!self.location.blank?)
   end
   
+  private
+  def set_initials
+    self.patron_token = self.patron.token if self.patron_token.blank?
+  end
+
 end

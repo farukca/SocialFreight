@@ -2,6 +2,9 @@ html, body {
   margin: 0;
   padding: 0;
 }
+form {
+  margin: 0;
+}
 .inline-dropdown {
     position:inherit;
 }
@@ -253,6 +256,9 @@ fieldset span {
     text-align:left;
 //    display: block;
 //    padding-left: 200px;
+}
+#profile-detail {
+    min-height:90px;
 }
 #profile-details td {
     font-size:11px;
@@ -735,6 +741,7 @@ h4.profile-data-section {
     background:url("/assets/feedbg.png") repeat-x scroll left -40px #FFFFFF;
     border-top-left-radius:5px;
     border-top-right-radius:5px;
+    margin-top: 5px;
 }
 
 .publishercontainer {

@@ -31,6 +31,7 @@ class User < ActiveRecord::Base
   validates_presence_of :surname
   validates_uniqueness_of :email, :case_sensitive => false
 
+  before_create :set_initials
   after_create  :create_person, :send_activation_mail
 
   def send_activation_mail
@@ -71,6 +72,11 @@ class User < ActiveRecord::Base
     #creator_id ||= target.user_id
     target_name ||= target.to_s
     Activity.log(self, target, target_name, patron_id, patron_token)
+  end
+
+  private
+  def set_initials
+    self.patron_token = self.patron.token if self.patron_token.blank?
   end
 
   private

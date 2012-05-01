@@ -4,4 +4,4 @@
   <%#= f.input :state_id %>
   <%= f.input_field :city_id, :as => :select, :collection => City.all, :include_blank => false %>
 <% end %>
-
+<%= f.input :patron_token, :as => :hidden %>

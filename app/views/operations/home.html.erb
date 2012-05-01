@@ -1,7 +1,10 @@
 <%= content_for(:sidebar, render(:partial => 'sidebar', :locals => {:operation => @operation.code} )) %>
 
 <div id="operation">
-
-  <%= render 'content' %>
-
+  <div>
+    <%= render 'profile_header' %>
+  </div>
+  <div>
+    <%= render 'profile_content' %>
+  </div>
 </div>

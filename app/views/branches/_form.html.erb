@@ -1,22 +1,27 @@
-<div id="branch-form" class="span16 columns">
+<div id="branch-form">
 <%= simple_form_for @branch, :validate => true do |f| %>
   <%= f.error_notification %>
 
   <fieldset>
     <div class="row-fluid">
-      <div class="page-header span16 columns">
-        <h4>New Branch</h4>
-      </div>
-      <div class="span8 columns">
+      <legend>New Branch</legend>
+
+      <div class="span6">
         <%= f.input :name %>
         <%= f.input :tel  %>
         <%= f.input :email %>
+      </div>
+      <div class="span6">
         <%= f.input :address %>
-        <%= f.input :postcode %>
-        <%= f.input :district %>
-        <%= f.input :country_id, :as => :select, :collection => Country.all, :include_blank => false %>
-        <%#= f.input :state_id %>
-        <%= f.input :city_id, :as => :select, :collection => City.all, :include_blank => false %>
+        <%= f.input :district, :label => "Semt" do %>
+          <%= f.input_field :district, :class => "input-small" %>
+          <%= f.input_field :postcode, :class => "input-small" %>
+        <% end %>
+        <%= f.input :country_id do %>
+          <%= f.input_field :country_id, :as => :select, :collection => Country.all, :include_blank => false, :class => "input-small" %>
+          <%= f.grouped_collection_select :city_id, Country.order(:name), :cities, :name, :id, :name, {:include_blank => true}, {:class => "input-small"} %>
+        <% end %>
+
         <%= f.button :submit, :class => 'btn primary' %>
       </div>
     </div>

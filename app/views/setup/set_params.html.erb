@@ -33,6 +33,7 @@
                     <span class="counter_sample">Örnek:<%= "#{cf.object.prefix}#{sprintf('%07d', cf.object.count)}#{cf.object.suffix}" %></span>
                     <%= cf.input_field :operation, :as => :hidden %>
                     <%= cf.input_field :counter_type, :as => :hidden %>
+                    <%= cf.input_field :id, :as => :hidden %>
                   <% end %>
                 <% end %>
               </fieldset>

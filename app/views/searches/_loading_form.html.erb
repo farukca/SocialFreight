@@ -32,8 +32,8 @@
         <%= f.input :branch_id, :as => :select, :collection => current_patron.branches %>
       </fieldset>
     </div>
+    <%= f.input :operation, :as => :hidden %>
   </div>
 
-  <%= f.input :operation, :as => :hidden %>
 <% end %>
 </div>

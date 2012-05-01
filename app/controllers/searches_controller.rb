@@ -5,13 +5,12 @@ class SearchesController < ApplicationController
   def new
     @search = Search.new
     @search.operation = params[:operation] if params[:operation]
-    @search.patron_id = current_patron.id
-    @search.patron_token = current_patron.token
   end
 
   def create
     @search = Search.new(params[:search])
     @search.patron_id = current_patron.id
+    @search.user_id = current_user.id
     @search.patron_token = current_patron.token
 
     @search.save!
@@ -38,6 +37,7 @@ class SearchesController < ApplicationController
     @search = Search.new(params[:search])
     @search.patron_id = current_patron.id
     @search.patron_token = current_patron.token
+    @search.user_id = current_user.id
 
     @search.save!
     redirect_to @search

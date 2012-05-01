@@ -23,6 +23,7 @@ class FindocsController < ApplicationController
 
   def new
     @findoc = Findoc.new
+    @findoc.unit_type = params[:unit_type] if params[:unit_type]
 
     respond_to do |format|
       format.html # new.html.erb

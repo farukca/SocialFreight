@@ -10,6 +10,10 @@ class Operation < ActiveRecord::Base
   validates_uniqueness_of :code, :case_sensitive => false
   validates_uniqueness_of :name, :case_sensitive => false
 
+  def to_s
+    name
+  end
+
   def positions
     @positions = find_positions
   end
