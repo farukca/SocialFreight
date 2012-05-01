@@ -1,0 +1,43 @@
+<div id="content">
+
+  <%= render 'searches/loading_form' %>
+        
+  <div id="operation" class="profile tabbable">
+    <ul class="nav nav-tabs" data-tabs="tabs">
+      <li class="active"><a data-toggle="tab" href="#position_list">Positions</a></li>
+      <li><a data-toggle="tab" href="#loading_list">Loadings</a></li>
+      <li><a data-toggle="tab" href="#reservation_list">Reservations</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          Yeni Kayıt Oluştur
+          <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li><%= link_to new_position_path(:operation => @operation.code) do %><i class="icon-position"></i>Pozisyon<% end %></li>
+          <li><%= link_to new_loading_path(:operation => @operation.code) do %><i class="icon-loading"></i>Reservasyon<% end %></li>
+        </ul>
+      </li>
+    </ul>
+
+    <div id="my-tab-content" class="tab-content">
+      <div id="position_list" class="tab-pane profile-content active">
+        <% if @operation.positions %>
+          <%= render 'positions/positions', :positions => @operation.positions %>
+        <% end %>
+      </div>
+
+      <div id="loading_list" class="tab-pane profile-content">
+        <% if @operation.loadings %>
+          <%= render 'loadings/loadings', :loadings => @operation.loadings %>
+        <% end %>
+      </div>
+
+      <div id="reservation_list" class="tab-pane profile-content">
+        <% if @operation.loadings %>
+          <%= render 'loadings/loadings', :loadings => @operation.reservations %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

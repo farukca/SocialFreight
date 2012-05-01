@@ -1,0 +1,26 @@
+<div id="profile-header" class="profile-content">
+  <table class="outer" width="100%" id="headerTable" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="span2 noborder">
+        <div id="profile-picture" class="loading">
+          <%= image_tag("#{@operation.code}.png") %>
+        </div>
+      </td>
+      <td style="vertical-align:top">
+        <div id="profile-detail">
+          <div id="profile-title" class="row-fluid">
+            <div class="title">
+              <span><%= "#{@operation}" %></span>
+            </div>
+            <div class="buttons">
+              <%# if current_user.admin = @user.id %>
+                <%#= link_to "Edit Parameters", edit_params_path(@operation), :class => 'btn primary' %>
+              <%# end %>
+            </div>
+          </div>
+          <%= render 'profile_detail' %>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
