@@ -3,11 +3,16 @@ class FinunitsController < ApplicationController
   before_filter :require_login
 
   def index
-    @finunits = Finunit.all
+    if params[:data][:q]
+       q = "%#{params[:data][:q]}%"
+       @finunits = Finunit.where("lower(name) like ? and patron_id = ?", q, current_patron.id).limit(10)
+    else
+      @finunits = Finunit.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @finunits }
+      format.json { render json: @finunits.map(&:token_inputs) }
     end
   end
 

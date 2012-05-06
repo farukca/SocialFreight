@@ -155,7 +155,7 @@ form {
     position:relative;
 }
 .togglebutton {
-    display:inline;
+    display:inline-block;
 }
 .togglebutton img {
     position:absolute;
@@ -400,7 +400,7 @@ fieldset span {
     text-align:left;
     width:20%;
 }
-#login_form label, #patron_form label, #new_user label {
+#login_form label, #patron_form label label {
     margin-right:5px;
     color:#fff;
 }
@@ -825,10 +825,6 @@ label abbr {
 }
 .nav-tabs, .nav-pills {
     margin-bottom: 5px;
-}
-.form_tab_pane {
-    height: 300px;
-    min-height: 300px;
 }
 .icon-company {
   background-position: -24px -120px;

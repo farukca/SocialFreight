@@ -1,6 +1,7 @@
 <div id="company_form">
 <%= simple_form_for @company, :validate => true do |f| %>
   <%= f.error_notification %>
+  <%= f.error :base, :error_method => :to_sentence %>
 
   <div class="pageBlock">
     <%= render 'shared/form_buttonsh', :f => f, :header => "New Company" %>
@@ -10,8 +11,10 @@
       <div id="my-tab-content" class="tab-content">
         <div id="company-main-form" class="tab-pane active">
           <%= render 'form_main', :f => f %>
-          <%= f.fields_for :contacts do |builder| %>
-            <%= render 'contacts_fields', :f => builder %>
+          <% unless params[:action] == "edit" %>
+            <%= f.fields_for :contacts do |builder| %>
+              <%= render 'contacts_fields', :f => builder %>
+            <% end %>
           <% end %>
         </div>
 
@@ -19,12 +22,11 @@
           <%= render 'form_invoice', :f => f %>
         </div>
       </div>
-
     </div>
     
     <ul class="nav nav-tabs">
       <li class="active"><a data-toggle="tab" href="#company-main-form">1-Firma Bilgileri</a></li>
-      <li><a data-toggle="tab" href="#company-invoice-form">2-Fatura Bilgileri</a></li>
+      <li><a data-toggle="tab" href="#company-invoice-form">2-Finans Bilgileri</a></li>
     </ul>
     
   </div>

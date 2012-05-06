@@ -6,7 +6,7 @@ class CompaniesController < ApplicationController
   def index
     if params[:data] && params[:data][:q]
        q = "%#{params[:data][:q]}%"
-       @companies = current_patron.companies.where("lower(name) like ?", q).limit(10)
+       @companies = current_patron.companies.where("lower(name) like ? and patron_id = ?", q, current_patron.id).limit(10)
     else
        @companies = current_patron.companies.all
     end

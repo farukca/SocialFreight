@@ -1,8 +1,9 @@
 legend {
   margin-left: 10px;
   font-size: 16px;
+  line-height: 20px;
 }
-legend span.title {
+legend span.subtitle {
   margin-left: 10px;
   font-size: 12px;
 }
@@ -19,4 +20,7 @@ select.input-small {
 [class^="icon-"] {
   margin-left: 5px;
   margin-right: 5px;
+}
+.tab-pane {
+    min-height: 300px;
 }

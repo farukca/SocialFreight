@@ -1,5 +1,5 @@
-<%= f.input :name do %>
-  <%= f.input_field :name %>
-  <%= f.input_field :surname %>
-  <%= f.input_field :email %>
+<%= f.input :name, :label => "Kullanıcı Bilgileri" do %>
+  <%= f.input_field :name, :placeholder => "Kullanıcı Adı" %>
+  <%= f.input_field :surname, :placeholder => "Kullanıcı Soyadı" %>
+  <%= f.input_field :email, :placeholder => "Mail Adresi" %>
 <% end %>

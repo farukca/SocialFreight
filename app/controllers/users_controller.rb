@@ -60,7 +60,8 @@ class UsersController < ApplicationController
         login_user = login(@user.email, params[:user][:password], params[:remember_me])
         if login_user
           session[:patron_id] = login_user.patron_id if login_user.patron_id
-          redirect_back_or_to root_url, notice: 'Welcome to SocialFreight.'
+          #redirect_back_or_to root_url, notice: 'Welcome to SocialFreight.'
+           redirect_to edit_person_path(login_user.person), notice: 'Welcome to SocialFreight.'
         else
           render :new, :notice => "Email or password is invalid"
         end

@@ -6,24 +6,12 @@
   </div>
   <div class="span10">
     <div id="profile-detail" class="company">
-      <div id="profile-title" class="row">
-        <div class="title">
-          <span><%= @company.name %></span>
-        </div>
-        <div class="rightside">
-        <!--div class="btn-group">
-          <a class="btn btn-success" data-toggle="dropdown" href="#">
-            <i class="icon-plus icon-white"></i>Firma İşlemleri
-            <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li><%= link_to "Add Contact", edit_company_path(@company) %></li>
-            <li><%= link_to "Add Activity", edit_company_path(@company) %></li>
-            <li><%= link_to "Add Opportunity", edit_company_path(@company) %></li>
-            <li><%= link_to "Edit Company", edit_company_path(@company) %></li>
-          </ul>
-        </div-->
-        </div>
+      <div id="profile-title" class="row-fluid">
+        <legend>
+          <i class="icon-company"></i><%= @company.name %>&nbsp;
+          <span class="subtitle"><%= Company.company_types[@company.company_type] %>&nbsp;-&nbsp;No:<%= @company.company_no %></span>
+          <span class="socialicons"></span>
+        </legend>
       </div>
       <%= render 'profile_detail' %>
     </div>

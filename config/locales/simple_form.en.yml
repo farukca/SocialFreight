@@ -24,6 +24,15 @@ en:
     #   username: 'User name to sign in.'
     #   password: 'No special characters, please.'
     labels:
+      defaults:
+        branch_id: "Şube"
+        website: "Websitesi"
+        country_id: "Ülke"
+        district: "İlçe"
+        tel: "Telefon"
+        fax: "Faks"
+        address: "Adres"
+        name: "Ad Soyad"
       position:
         defaults:
           contract_no: "Contract"

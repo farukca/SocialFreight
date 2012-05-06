@@ -2,6 +2,20 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  defaults:
+    label:
+      branch: "Branch"
+      tel:    "Phone"
+      fax:    "Fax"
+      email:  "EMail"
+      website: "Website"
+      country: "Country"
+      city:   "City"
+  companies:
+    label:
+      name: "Short Name"
+      type: "Company Type"
+
   position:
     air:
       label:

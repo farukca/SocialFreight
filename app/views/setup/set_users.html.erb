@@ -26,7 +26,11 @@
             <div class="span12">
               <fieldset>
                 <%= f.simple_fields_for :users do |cf| %>
-                  <%= render 'user_fields', :f => cf %>
+                  <% if cf.object.new_record? %>
+                    <%= render 'user_fields', :f => cf %>
+                  <%# else %>
+                    <%#= render 'users/user', :user => cf.object %>
+                  <% end %>
                 <% end %>
                 <%= link_to_add_fields "Yeni Kullanıcı Ekle", f, :users %>
               </fieldset>

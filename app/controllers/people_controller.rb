@@ -5,7 +5,7 @@ class PeopleController < ApplicationController
   def index
     if params[:data][:q]
        q = "%#{params[:data][:q]}%"
-       @people = Person.where("lower(name) like ?", q).limit(10)
+       @people = Person.where("lower(name) like ? and patron_id = ?", q, current_patron.id).limit(10)
     else
        @people = Person.all
     end

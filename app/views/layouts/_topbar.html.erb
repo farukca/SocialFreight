@@ -17,7 +17,7 @@
           <li><%= link_to current_user.email, root_url %></li>
           <li><%= link_to "Log out", logout_path %></li>
         <% else %>
-          <li><%= link_to "Kayıt Ol", signup_path %> </li>
+          <li><%#= link_to "Kayıt Ol", signup_path %> </li>
           <li><%= link_to "Giriş Yap", login_path %></li>
           <li><%= link_to "Ücretsiz Deneyin", new_patron_path %></li>
         <% end %>

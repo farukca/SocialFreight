@@ -1,22 +1,10 @@
-<div>
+<div id="user">
 
-  <div class="span6 columns">
-    <div id="login_image"></div>
-    <!--div>
-      <div><h2>Sign up</h2></div>
-    </div-->
-    <%= render 'form', :user => @user %>
-    <div id="signupnote" class="row">
-      <p>You have already an account?&nbsp;<%= link_to "Sign in", login_path%></p>
-      <p>You have freight operations?&nbsp;<%= link_to "Try SocialFreight.", try_path%></p>
-    </div>
-  </div>
-
-  <div class="span6 columns">
-    <div id="login_roadmap">
-      <%= image_tag "slide.jpg" %>
-    </div>
-  </div>
+  <% if current_user %>
+    <%= render 'patron_user' %>
+  <% else %>
+    <%= render 'new_user' %>
+  <% end %>
 
 </div>
 

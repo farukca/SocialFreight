@@ -1,28 +1,35 @@
-<div id="profile-header" class="profile-content">
-  <table class="outer" width="100%" id="headerTable" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="span2">
-        <div id="profile-picture" class="patron">
-          <%= link_to image_tag(@patron.logo_url(:profile)), "#", :class => 'togglebutton', "data-placement" => "below",  "rel" => 'twipsy', "title" => "Resmi Değiştirmek için Tıklayınız", "data-href" => "#logo_change_div" %>
-        </div>
-      </td>
-      <td style="vertical-align:top">
-        <div id="profile-detail" class="loading">
-          <%= render 'profile_detail' %>
-        </div>
-				<div id="logo_change_div" class="slidingDiv">
-					<%= form_for @patron, :remote => true, :html => {:multipart => true} do |f| %>
-						<p>
-						  <label>Resim dosyası:</label>
-						  <%= f.file_field :logo %>
-						  <%= f.submit "Değiştir" %>
-						  <%if @patron.logo? %>
-						    <%= f.check_box :remove_logo %>&nbsp;Logoyu Sil
-						  <% end %>
-						</p>
-					<% end %>
-				</div>
-      </td>
-    </tr>
-  </table>
+<div id="profile-header" class="profile-content row-fluid">
+  <div class="span2">
+    <div id="profile-picture" class="patron">
+      <%#= image_tag(@patron.logo_url(:profile)) %>
+      <%= link_to image_tag(@patron.logo_url(:profile)), "#", :class => 'togglebutton', "data-placement" => "below",  "rel" => 'twipsy', "title" => "Resmi Değiştirmek için Tıklayınız", "data-href" => "#logo_change_div" %>
+    </div>
+  </div>
+  <div class="span10">
+    <div id="profile-detail" class="patron">
+      <div id="profile-title" class="row-fluid">
+        <legend>
+          <i class="icon-company"></i><%= @patron.name %>
+          <span class="socialicons"></span>
+          <span class="rightside">
+            <%= link_to "Ayarlar", setup_path(:set_address), :class => 'btn btn-info' %>
+            <%= link_to "Edit", edit_patron_path(@patron), :class => 'btn btn-info' %>
+          </span>
+        </legend>
+      </div>
+      <%= render 'profile_detail' %>
+    </div>
+    <div id="logo_change_div" class="slidingDiv">
+      <%= form_for @patron, :remote => true, :html => {:multipart => true} do |f| %>
+        <p>
+          <label>Resim dosyası:</label>
+          <%= f.file_field :logo %>
+          <%= f.submit "Değiştir" %>
+          <% if @patron.logo? %>
+            <%= f.check_box :remove_logo %>&nbsp;Logoyu Sil
+          <% end %>
+        </p>
+      <% end %>
+    </div>
+  </div>
 </div>
