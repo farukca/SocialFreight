@@ -1,0 +1,6 @@
+<% cache "countries_and_cities" do %>
+  <%= f.input :country_id do %>
+    <%= f.input_field :country_id, :class => "input-small", :as => :select, :collection => Country.all, :include_blank => false %>
+    <%= f.input_field :city_id, :class => "input-small", :as => :select, :collection => City.all, :include_blank => false %>
+  <% end %>
+<% end %>

@@ -1,6 +1,7 @@
 class CitiesController < ApplicationController
 
   before_filter :require_login
+  caches_action :index
 
   def new
     @city = City.new

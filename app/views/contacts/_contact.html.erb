@@ -1,7 +1,7 @@
-<div id="contact_<%= contact.id %>" class="tab-pane active">
+<div id="contact_<%= contact.id %>" class="active">
 
   <div class="row-fluid">
-    <legend><i class="icon-user"></i><%= contact.to_s %>&nbsp;<span class="subtitle"><%= contact.jobtitle %></span></legend>
+    <legend><i class="icon-user"></i><%= contact.to_s %>&nbsp;<span class="subtitle"><%= contact.jobtitle %>&nbsp;<%= contact.department %></span></legend>
     <dl class="yatay-info" id="headline">
       <dd><%= link_to edit_contact_path(contact), :title => "Bilgileri Güncelleyebilirsiniz" do %><i class="icon-edit"></i><% end %></dd>
       <dd class="email">
@@ -17,7 +17,6 @@
         <i class="icon-tag"></i> <%= contact.gsm %>
       <% end %>
       </dd>
-      <dd class="twitter"><%= contact.department %></dd>
       <dd class="twitter">
         <%= link_to "@#{contact.twitter}", "https://twitter.com/#!/#{contact.twitter}", :target => "_blank" unless contact.twitter.blank? %>
       </dd>

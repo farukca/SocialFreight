@@ -1,10 +1,11 @@
-<div id="findoc">
+<div class="row-fluid">
 <%= simple_form_for(@findoc) do |f| %>
   <%= f.error_notification %>
 
   <div class="pageBlock">
     <%= render 'shared/form_buttonsh', :f => f %>
     <fieldset>
+      <legend>Yeni Finans Evrağı</legend>
       <div class="row-fluid">
         <div class="span6">
           <%= f.input :docdate, :as => "string", :input_html => {:class => "input-small", "data-datepicker" => "datepicker"} %>
@@ -14,13 +15,15 @@
             <%= f.input_field :amount, :class => "input-small" %>
             <%= f.input_field :curr, :as => :select, :collection => Currency.all, :include_blank => false, :class => "input-small" %>
           <% end %>
-          <%= f.input :doctype %>
+          <%= f.input :branch_id, :as => :select, :collection => current_patron.branches, :include_blank => false %>
           <%= f.input :unit_type, as: "hidden" %>
         </div>
         <div class="span6">
-          <%= f.input :target_type, :as => :select, :collection => ["Cash","Bank","Firma","Personel","Diğer"] %>
+          <%= f.input :target_type, :as => :select, :collection => ["Cash","Bank","Firma","Personel","Diğer"], :include_blank => false %>
           <%= f.input :target_id, :as => :select, :collection => [[@findoc.target_name, @findoc.target_id]], :input_html => {:class => "chosen_input", "data-url" => "/companies.json"}, :label => "Karşı kod" %>
           <%= f.input :extno %>
+          <%= f.input :doctype %>
+          <%= f.input :doc_group %>
           <%= f.input :des, :as => :text, :input_html => {:rows => 2, :cols => 37} %>
         </div>
       </div>

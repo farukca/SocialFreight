@@ -24,3 +24,6 @@ select.input-small {
 .tab-pane {
     min-height: 300px;
 }
+dl {
+  margin-bottom: 5px;
+}

@@ -2,7 +2,7 @@
   <fieldset>
     <legend>Firma Bilgisi</legend>
     <div class="span6">
-      <%= f.input :name, :label => "Short Name" %>
+      <%= f.input :name %>
       <%= f.input :company_type do %>
         <%= f.select :company_type, Company.company_types.map { |r| [r[1], r[0] ] }, :include_blank => false %>
       <% end %>
@@ -14,10 +14,11 @@
     <div class="span6">
       <%= f.input :email %>
       <%= f.input :website %>
-      <%= f.input :country_id do %>
-        <%= f.input_field :country_id, :class => "input-small", :as => :select, :collection => Country.all, :include_blank => false %>
-        <%= f.input_field :city_id, :class => "input-small", :as => :select, :collection => City.all, :include_blank => false %>
-      <% end %>
+      <%= render 'shared/country_city_fields', :f => f %>
+      <%#= f.input :country_id do %>
+        <%#= f.input_field :country_id, :class => "input-small", :as => :select, :collection => Country.all, :include_blank => false %>
+        <%#= f.input_field :city_id, :class => "input-small", :as => :select, :collection => City.all, :include_blank => false %>
+      <%# end %>
       <%= f.input :district do %>
         <%= f.input_field :district, :class => "input-small" %>
         <%= f.input_field :postcode, :class => "input-small" %>

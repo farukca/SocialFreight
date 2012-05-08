@@ -1,6 +1,7 @@
 class CountriesController < ApplicationController
 
   before_filter :require_login
+  caches_action :index
 
   def new
     @country = Country.new

@@ -1,6 +1,7 @@
 <div id="opform">
   <%= simple_form_for [@position, @transnode], :validate => true do |f| %>
   <%= f.error_notification %>
+  <%= f.error :base, :error_method => :to_sentence %>
   <fieldset>
 
   <div class="pageBlock">
@@ -10,15 +11,13 @@
     <div>
 
       <div id="my-tab-content" class="tab-content">
-        <legend>Taşıma Bilgileri</legend>
         <div id="transnode-main-form" class="tab-pane active">
-          <%= render 'form_main', :f => f %>
+          <%= render "form_#{@transnode.trans_method}", :f => f %>
         </div>
 
       </div>
 
     </div>
-    <%= f.error :base %>
   </div>
 
   </fieldset>

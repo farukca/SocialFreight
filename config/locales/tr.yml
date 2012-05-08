@@ -1,0 +1,89 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+tr:
+  defaults:
+    label:
+      branch: "Şube"
+      tel:    "Telefon"
+      fax:    "Faks"
+      email:  "E-Posta"
+      website: "Website"
+      country: "Ülke"
+      city:   "Şehir"
+  companies:
+    label:
+      name: "Firma Adı"
+      type: "Firma Tipi"
+
+  position:
+    air:
+      label:
+        transporter:   "Havayolu"
+        agent:         "Yurtdışı Acenta"
+        supplier:      "Tedarikçi"
+        vesselvoyage:  "Uçak & Sefer No"
+        vessel2voyage: "Second Plane & Flight"
+        load_place:    "Çıkış Havalimanı"
+        unload_place:  "Varış Havalimanı"
+        masterno:      "MAWB No"
+        masterdate:    "MAWB Tarihi"
+        agentref:      "Acenta Referans No"
+        linerref:      "Hava Acenta Referans"
+    sea:
+      label:
+        transporter:   "Shipowner"
+        agent:         "Foreign Agent"
+        supplier:      "Line Agent"
+        vesselvoyage:  "Ship & Voyage"
+        vessel2voyage: "Sec. Ship & Voyage"
+        load_place:    "Departure Seaport"
+        unload_place:  "Arrival Seaport"
+        masterno:      "MBL No"
+        masterdate:    "MBL Date"
+        agentref:      "Agent Reference"
+        linerref:      "Liner Reference"
+    road:
+      label:
+        transporter:   "Vehicle Owner"
+        agent:         "Foreign Agent"
+        supplier:      "Transporter"
+        vesselvoyage:  "Trailer & Voyage"
+        vessel2voyage: "Truck & Driver"
+        load_place:    "Loading Custom"
+        unload_place:  "Unloading Custom"
+        masterno:      "CMR No"
+        masterdate:    "CMR Date"
+        agentref:      "Agent Reference"
+        linerref:      "Transporter Reference"
+    rail:
+      label:
+        transporter:   "Train Operator"
+        agent:         "Foreign Agent"
+        supplier:      "Rail Agency"
+        vesselvoyage:  "Wagon & Voyage"
+        vessel2voyage: "Second Wagon & Voyage"
+        load_place:    "Departure Station"
+        unload_place:  "Arrival Station"
+        masterno:      "TNR No"
+        masterdate:    "TNR Date"
+        agentref:      "Agent Reference"
+        linerref:      "Rail Agency Reference"
+  loading:
+    air:
+      label:
+        transporter:   "Airway"
+  listitems:
+    loadtype:
+      sea:
+        Full: "LCL"
+        Partial: "FCL"
+      air:
+        Full: "Master Only"
+        Partial: "Consolidated"
+      road:
+        Full: "Complete"
+        Partial: "Partial"
+      rail:
+        Full: "Complete"
+        Partial: "Partial"

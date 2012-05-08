@@ -1,17 +1,17 @@
 en:
   simple_form:
     defaults:
-      "yes": 'Yes'
-      "no": 'No'
+      "yes": 'Evet'
+      "no": 'Hayır'
       required:
-        text: 'required'
+        text: 'Zorunlu alan'
         mark: '*'
       # You can uncomment the line below if you need to overwrite the whole required html.
       # When using html, text and mark won't be used.
       # html: '<abbr title="required">*</abbr>'
     error_notification:
       defaults:
-        default_message: "Some errors were found, please take a look:"
+        default_message: "Formda hatalı veya eksik alanlar mevcut, kontrol ediniz:"
     # Labels and hints examples
     # labels:
     #   password: 'Password'
@@ -25,23 +25,23 @@ en:
     #   password: 'No special characters, please.'
     labels:
       defaults:
-        branch_id: "Branch"
-        website: "Website"
-        country_id: "Country"
-        district: "District"
-        tel: "Phone"
-        fax: "Fax"
-        address: "Address"
+        branch_id: "Şube"
+        website: "Websitesi"
+        country_id: "Ülke"
+        district: "İlçe"
+        tel: "Telefon"
+        fax: "Faks"
+        address: "Adres"
         email: "E-Mail"
-        name: "Name & Surname"
-        department: "Department"
-        sector: "Sector"
+        name: "Ad & Soyad"
+        department: "Departman"
+        sector: "Sektör"
       company:
-        name: "Company Name"
-        title: "Invoice Title"
-        company_type: "Company Type"
+        name: "Firma Adı"
+        title: "Fatura Ünvanı"
+        company_type: "Firma Tipi"
       contact:
-        jobtitle: "Job Title"
+        jobtitle: "Ünvan"
       position:
         defaults:
           contract_no: "Contract"

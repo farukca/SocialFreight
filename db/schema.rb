@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120501144059) do
+ActiveRecord::Schema.define(:version => 20120508131152) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                    :null => false
@@ -290,6 +290,8 @@ ActiveRecord::Schema.define(:version => 20120501144059) do
     t.string   "patron_token", :limit => 40,                     :null => false
     t.datetime "created_at",                                     :null => false
     t.datetime "updated_at",                                     :null => false
+    t.integer  "branch_id",                                      :null => false
+    t.string   "doc_group",    :limit => 20
   end
 
   create_table "finunits", :force => true do |t|
