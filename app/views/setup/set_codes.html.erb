@@ -1,10 +1,11 @@
 <div id="setup_address">
+  <legend class="alert alert-success">Hoşgeldiniz, şimdi birkaç adımda sizi tanımaya çalışacağız, sabrınız için şimdiden teşekkürler :)</legend>
   <div class="row-fluid">
     <ul class="breadcrumb">
       <li><a href="#">Profil Bilgileri</a><span class="divider">>></span></li>
       <li class="active">Lojistik Profil<span class="divider">>></span></li>
       <li><a href="#">Referans Numaraları</a><span class="divider">>></span></li>
-      <li><a href="#">Şube Bilgileri</a></li>
+      <li><a href="#">Şube Bilgileri</a><span class="divider">>></span></li>
       <li><a href="#">Kullanıcı Bilgileri</a></li>
     </ul>
   </div>
@@ -20,8 +21,8 @@
     <div>
 
       <div id="my-tab-content" class="tab-content">
-        <legend>Hoşgeldiniz, şimdi birkaç adımda sizi tanımaya çalışacağız, sabrınız için şimdiden teşekkürler :)</legend>
         <div id="position-main-form" class="tab-pane active">
+          <legend>Operasyon Bilgileri</legend>
           <div class="row-fluid">
             <div class="span12">
               <%= f.input :operations, :as => :check_boxes, :collection => Operation.all %>

@@ -1,3 +1,6 @@
+ul, ol {
+  margin:0;
+}
 legend {
   margin-left: 10px;
   font-size: 16px;

@@ -35,7 +35,7 @@ class Patron < ActiveRecord::Base
                   :counters_attributes, :users_attributes, :branches_attributes
 
   before_create :set_initials
-  after_create  :create_patron_user, :create_head_office#, :create_company
+  after_create  :create_head_office, :create_patron_user #, :create_company
 
   validates_presence_of :title#, :message => I18n.t('patrons.errors.title.cant_be_blank')
   validates_presence_of :email#, :message => I18n.t('patrons.errors.title.cant_be_blank')
@@ -104,9 +104,11 @@ class Patron < ActiveRecord::Base
     user.email = self.email
     user.patron_id = self.id
     user.patron_key = self.token
+    user.branch_id  = self.branches.first.id
     user.password = '9876543210'
     user.password_confirmation = '9876543210'
     user.save!
+    user.add_role :patron_admin
   end
 
   def create_head_office

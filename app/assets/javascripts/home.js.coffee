@@ -5,6 +5,7 @@ jQuery ->
   $(".dropdown-toggle").dropdown()
   $("a[rel=popover]").popover(offset: 10, delay:{show:1000, hide:500})
   $(".alert-message").alert()
+  $(".collapse").collapse('show')
   $("abbr.timeago").timeago()
   $(".slidingDiv").hide()
   $(".togglebutton").show()

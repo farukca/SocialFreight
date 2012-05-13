@@ -1,4 +1,5 @@
 <div id="setup_address">
+  <legend class="alert alert-success">Hoşgeldiniz, şimdi birkaç adımda sizi tanımaya çalışacağız, sabrınız için şimdiden teşekkürler :)</legend>
   <div class="row-fluid">
     <ul class="breadcrumb">
       <li><a href="#">Adress Bilgileri</a><span class="divider">>></span></li>
@@ -20,20 +21,14 @@
     <div>
 
       <div id="my-tab-content" class="tab-content">
-        <legend>Referans No Tanımları</legend>
         <div id="position-main-form" class="tab-pane active">
+          <legend>Operasyonel Sayaç Tanımları</legend>
           <div class="row-fluid">
             <div class="span12">
               <fieldset>
                 <%= f.simple_fields_for :counters do |cf| %>
-                  <%= cf.input :counter_type, :label => "#{cf.object.operation} #{cf.object.counter_type}" do %>
-                    <%= cf.input_field :prefix, :class => "input-small" %>
-                    <%= cf.input_field :count, :class => "input-small" %>
-                    <%= cf.input_field :suffix, :class => "input-small" %>
-                    <span class="counter_sample">Örnek:<%= "#{cf.object.prefix}#{sprintf('%07d', cf.object.count)}#{cf.object.suffix}" %></span>
-                    <%= cf.input_field :operation, :as => :hidden %>
-                    <%= cf.input_field :counter_type, :as => :hidden %>
-                    <%= cf.input_field :id, :as => :hidden %>
+                  <% unless cf.object.operation.blank? %>
+                    <%= render 'counter_fields', :f => cf %>                    
                   <% end %>
                 <% end %>
               </fieldset>

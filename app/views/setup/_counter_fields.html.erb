@@ -1,0 +1,9 @@
+<%= f.input :counter_type, :label => "#{f.object.operation.humanize} #{f.object.counter_type}" do %>
+  <%= f.input_field :prefix, :class => "input-small" %>
+  <%= f.input_field :count, :class => "input-small" %>
+  <%= f.input_field :suffix, :class => "input-small" %>
+  <span class="counter_sample">Örnek:<%= "#{f.object.prefix}#{sprintf('%07d', f.object.count)}#{f.object.suffix}" %></span>
+  <%= f.input_field :operation, :as => :hidden %>
+  <%= f.input_field :counter_type, :as => :hidden %>
+  <%= f.input_field :id, :as => :hidden %>
+<% end %>

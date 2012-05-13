@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
+  rolify
 
   acts_as_follower
   acts_as_followable
@@ -73,6 +74,10 @@ class User < ActiveRecord::Base
     #creator_id ||= target.user_id
     target_name ||= target.to_s
     Activity.log(self, target, target_name, patron_id, patron_token)
+  end
+
+  def social_posts
+    @social_posts = Post.find(:all, :conditions => ["user_id IN (?) OR user_id = ? ", self.followees(User), self.id], :limit => 10)
   end
 
   private

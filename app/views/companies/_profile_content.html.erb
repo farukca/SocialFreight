@@ -4,7 +4,7 @@
       <td class="oRight" id="bodyCell">
         <div id="inner-content">
           <div id="profile-info" class="profile company">
-            <ul class="nav nav-pills">
+            <!--ul class="nav nav-pills">
               <li class="active"><a data-toggle="tab" href="#company_profile">Profile</a></li>
               <li><a data-toggle="tab" href="#company_contacts">Yetkililer</a></li>
               <li><a data-toggle="tab" href="#company_docs">Taşımalar</a></li>
@@ -26,11 +26,55 @@
                   </ul>
                 </div>
               </li>
-            </ul>
-            <div id="my-tab-content" class="tab-content">
-              <%= render 'tab1', :position => @position %>
-              <%= render 'tab2', :position => @position %>
-              <%= render 'tab3', :position => @position %>
+            </ul-->
+            <!--div id="my-tab-content" class="tab-content">
+              <%#= render 'tab1', :position => @position %>
+              <%#= render 'tab2', :position => @position %>
+              <%#= render 'tab3', :position => @position %>
+            </div-->
+            <div id="company-accordion" class="accordion">
+              <div class="accordion-group">
+                <div class="accordion-heading">
+                  <a class="accordion-toggle" href="#company_profile" data-parent="#company-accordion" data-toggle="collapse"><i class="icon-gift"></i>Firma Profil</a>
+                </div>
+                <%= render 'tab1', :position => @position %>
+              </div>
+              <div class="accordion-group">
+                <div class="accordion-heading">
+                  <a class="accordion-toggle" href="#company_contacts" data-parent="#company-accordion" data-toggle="collapse"><i class="icon-user"></i>Firma Yetkilileri</a>
+                </div>
+                <%= render 'tab2', :position => @position %>
+              </div>
+              <div class="accordion-group">
+                <div class="accordion-heading">
+                  <a class="accordion-toggle" href="#company_docs" data-parent="#company-accordion" data-toggle="collapse">Adres Bilgileri</a>
+                </div>
+                <%= render 'tab3', :position => @position %>
+              </div>
+              <div class="accordion-group">
+                <div class="accordion-heading">
+                  <a class="accordion-toggle" href="#company_oppors" data-parent="#company-accordion" data-toggle="collapse">Sosyal & Web Linkleri</a>
+                </div>
+                <%= render 'tab3', :position => @position %>
+              </div>
+              <div class="accordion-group">
+                <div class="accordion-heading">
+                  <a class="accordion-toggle" href="#company_loads" data-parent="#company-accordion" data-toggle="collapse">Notlar</a>
+                </div>
+                <%= render 'tab3', :position => @position %>
+              </div>
+              <div class="accordion-group">
+                <div class="accordion-heading">
+                  <a class="accordion-toggle" href="#company_finance" data-parent="#company-accordion" data-toggle="collapse">Aktiviteler</a>
+                </div>
+                <%= render 'tab3', :position => @position %>
+              </div>
+              <div class="accordion-group">
+                <div class="accordion-heading">
+                  <a class="accordion-toggle" href="#company_finance" data-parent="#company-accordion" data-toggle="collapse">Fırsatlar</a>
+                </div>
+                <%= render 'tab3', :position => @position %>
+              </div>
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner fill">
-    <div class="container">
+    <div class="container-fluid">
       <%= link_to "SocialFreight", root_url, :class => "brand" %>
       <div class="nav-collapse">
       <ul class="nav social">
@@ -16,6 +16,7 @@
           <% end %>
           <li><%= link_to current_user.email, root_url %></li>
           <li><%= link_to "Log out", logout_path %></li>
+          <li><%= link_to "Others", "#", :class => 'togglebutton', "data-href" => "#socialCell" %></li>
         <% else %>
           <li><%#= link_to "Kayıt Ol", signup_path %> </li>
           <li><%= link_to "Giriş Yap", login_path %></li>

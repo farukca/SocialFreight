@@ -36,6 +36,7 @@ gem 'mini_magick'
 
 gem 'sorcery'
 gem 'cancan'
+gem 'rolify'
 gem 'wicked'
 
 #PDF

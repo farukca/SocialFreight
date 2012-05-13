@@ -1,0 +1,18 @@
+<div class="row-fluid">
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#user_messages">Bildirimler</a></li>
+    <li><a data-toggle="tab" href="#other_users">Kişiler</a></li>
+  </ul>
+  <div id="social-tab-content" class="tab-content feeds">
+    <div id="user_messages" class="tab-pane active">
+      <ul>
+        <%= render :partial => "posts/sidebar_post", :collection => current_user.social_posts,  :as => :post %>
+      </ul>
+    </div>
+    <div id="other_users"  class="tab-pane">
+      <ul>
+        <%= render :partial => "users/sidebar_user", :collection => current_patron.users,  :as => :user %>
+      </ul>
+    </div>
+  </div>
+</div>

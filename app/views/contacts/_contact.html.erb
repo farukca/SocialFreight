@@ -1,9 +1,12 @@
 <div id="contact_<%= contact.id %>" class="active">
 
   <div class="row-fluid">
-    <legend><i class="icon-user"></i><%= contact.to_s %>&nbsp;<span class="subtitle"><%= contact.jobtitle %>&nbsp;<%= contact.department %></span></legend>
+    <legend>
+      <%= link_to edit_contact_path(contact), :title => "Bilgileri Güncelleyebilirsiniz" do %><i class="icon-edit"></i><% end %>
+      <%= contact.to_s %>&nbsp;<span class="subtitle"><%= contact.jobtitle %>&nbsp;<%= contact.department %></span>
+    </legend>
     <dl class="yatay-info" id="headline">
-      <dd><%= link_to edit_contact_path(contact), :title => "Bilgileri Güncelleyebilirsiniz" do %><i class="icon-edit"></i><% end %></dd>
+      <dd></dd>
       <dd class="email">
         <%= mail_to contact.email, contact.email %>
       </dd>

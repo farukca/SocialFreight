@@ -1,0 +1,10 @@
+<li>
+  <div class="feedline">
+    <a href="#" class="img-load"><%= image_tag user.avatar_url(:small) %></a>
+    <span>
+      <div class="rightside">
+        <%= render 'shared/follow_button', object: user %>
+      </div>
+    </span>
+  </div>
+</li>
