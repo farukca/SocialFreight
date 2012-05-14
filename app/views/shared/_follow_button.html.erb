@@ -1,5 +1,5 @@
 <div class="follow-button-combo <%= current_user.follows?(object) ? 'is-following' : 'not-following' %>">
-  <%= link_to controller: "users", action: "follow", object_id: object.id, model_name: object.class.name, remote: true, class: "btn btn-success" do %>
+  <%= link_to controller: "users", action: "follow", object_id: object.id, model_name: object.class.name, remote: true, :method => :put, class: "btn btn-success" do %>
     <div class="is-following">Following</div>
     <div class="to-follow">Follow</div>
     <div class="to-unfollow">Unfollow</div>
