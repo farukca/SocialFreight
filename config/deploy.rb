@@ -17,7 +17,7 @@ default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 
 # if you want to clean up old releases on each deploy uncomment this:
- after "deploy", "deploy:cleanup"
+after "deploy", "deploy:cleanup"
 
 # if you're still using the script/reaper helper you will need
 # these http://github.com/rails/irs_process_scripts
@@ -70,7 +70,7 @@ namespace :deploy do
     desc <<-EOD
       Creates the upload folders unless they exist and sets the proper upload permissions.
     EOD
-    task :setup, :except => { :no_release => true } do
+    task :setup, :except => { :no_release => true }, roles: :app do
       dirs = uploads_dirs.map { |d| File.join(shared_path, d) }
       run "#{try_sudo} mkdir -p #{dirs.join(' ')} && #{try_sudo} chmod g+w #{dirs.join(' ')}"
     end
@@ -78,7 +78,7 @@ namespace :deploy do
     desc <<-EOD
       [internal] Creates the symlink to uploads shared folder for the most recently deployed version.
     EOD
-    task :symlink, :except => { :no_release => true } do
+    task :symlink, :except => { :no_release => true }, roles: :app do
       run "rm -rf #{release_path}/public/uploads"
       run "ln -nfs #{shared_path}/uploads #{release_path}/public/uploads"
     end
@@ -86,13 +86,13 @@ namespace :deploy do
     desc <<-EOD
       [internal] Computes uploads directory paths and registers them in Capistrano environment.
     EOD
-    task :register_dirs do
+    task :register_dirs, roles: :app do
       set :uploads_dirs,    %w(uploads uploads/user uploads/patron uploads/person)
       set :shared_children, fetch(:shared_children) + fetch(:uploads_dirs)
     end
 
     after "deploy:finalize_update", "uploads:symlink"
-    on :start, "uploads:register_dirs"
+    before "deploy", "uploads:register_dirs"
   end
 
 end
