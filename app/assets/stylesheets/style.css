@@ -388,6 +388,8 @@ p {
     -webkit-border-radius: 5px 5px 0 0;
     -o-border-radius: 5px 5px 0 0;
     opacity: 1;
+    height:182px;
+    width:300px;
     -moz-transition:opacity 0.3s ease-in;
     -webkit-transition:opacity 0.3s ease-in;
     -o-transition:opacity 0.3s ease-in;
@@ -1164,6 +1166,7 @@ blockquote:after {
 }
 .span-one-third {
     z-index: 2;
+    width:300px;
 }
 .isotope-hidden.span-one-third {
     pointer-events: none;

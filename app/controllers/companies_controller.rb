@@ -8,7 +8,7 @@ class CompaniesController < ApplicationController
        q = "%#{params[:data][:q]}%"
        @companies = current_patron.companies.where("lower(name) like ? and patron_id = ?", q, current_patron.id).limit(10)
     else
-       @companies = current_patron.companies.all
+       @companies = current_patron.companies.latest.limit(10)
     end
 
     respond_to do |format|

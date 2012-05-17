@@ -1,5 +1,61 @@
-<h1>Listing findocs</h1>
-
+<div id="finance_home">
+  <div class="profile-content">
+  <table class="outer" width="100%" id="headerTable" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="span2 noborder">
+        <div id="profile-picture" class="loading">
+          <%= image_tag("finance.png") %>
+        </div>
+      </td>
+      <td style="vertical-align:top">
+        <div id="profile-detail">
+          <div id="profile-title" class="row-fluid">
+            <div class="title">
+              <span>Finans Yönetimi</span>
+            </div>
+            <div class="buttons">
+  
+      <div style="float:left;margin-right:5px;">
+      <a class="btn btn-success dropdown-toggle" href="#" data-toggle="dropdown"><i class="icon-plus-sign icon-white"></i>Yeni Evrak Girişi<i class="icon-chevron-down icon-white"></i></a>
+      <ul class="dropdown-menu">
+        <li><%= link_to "Kasa Evrağı", new_findoc_path(:unit_type => "cash") %></li>
+        <li><%= link_to "Banka Hesap Evrağı", new_findoc_path(:unit_type => "bank") %></li>
+        <li><%= link_to "Çek Portföy Evrağı", new_findoc_path(:unit_type => "portfoy") %></li>
+        <li><%= link_to "Çek Koçan Evrağı", new_findoc_path(:unit_type => "cheque") %></li>
+      </ul>
+      </div>
+      <div style="float:left;">
+      <a class="btn btn-success dropdown-toggle" href="#" data-toggle="dropdown"><i class="icon-cog icon-white"></i>Parametre Tanımları<i class="icon-chevron-down icon-white"></i></a>
+      <ul class="dropdown-menu">
+        <li><%= link_to "Kasa Tanımı", new_finunit_path(:unit_type => "Cash") %></li>
+        <li><%= link_to "Banka Hesap Tanımı", new_finunit_path(:unit_type => "Bank") %></li>
+        <li><%= link_to "Çek Portföy Tanımı", new_finunit_path(:unit_type => "Portfoy") %></li>
+      </ul>
+      </div>
+            </div>
+          </div>
+          <%#= render 'home_profile_detail' %>
+        </div>
+      </td>
+    </tr>
+  </table>
+  </div>
+  <div class="profile-content">
+    <div class="row-fluid">
+      <div class="span6">
+        <div class="row-fluid">
+          <legend>Finance Links</legend>
+          
+        </div>        
+      </div>
+      <div class="span6">
+        <div class="row-fluid">
+          <legend>Your Tasks</legend>
+          
+        </div>
+      </div>
+    </div>
+    <div class="row-fluid">
 <table class="table table-striped">
   <tr>
     <th>Docdate</th>
@@ -29,29 +85,7 @@
   </tr>
 <% end %>
 </table>
-    <div class="btn-group">
-      <a class="btn btn-success dropdown-toggle" href="#" data-toggle="dropdown"><i class="icon-plus-sign icon-white"></i>Yeni Evrak Girişi</a>
-      <a class="btn btn-success dropdown-toggle" href="#" data-toggle="dropdown">
-         <span class="caret" />
-      </a>
-      <ul class="dropdown-menu">
-        <li>
-          <%= link_to "Kasa Evrağı", new_findoc_path(:unit_type => "cash") %>
-          <%= link_to "Banka Hesap Evrağı", new_findoc_path(:unit_type => "bank") %>
-          <%= link_to "Çek Portföy Evrağı", new_findoc_path(:unit_type => "portfoy") %>
-          <%= link_to "Çek Koçan Evrağı", new_findoc_path(:unit_type => "cheque") %>
-      </ul>
-    </div>
 
-    <div class="btn-group">
-      <a class="btn btn-success dropdown-toggle" href="#" data-toggle="dropdown"><i class="icon-plus-sign icon-white"></i>Parametre Tanımları</a>
-      <a class="btn btn-success dropdown-toggle" href="#" data-toggle="dropdown">
-         <span class="caret" />
-      </a>
-      <ul class="dropdown-menu">
-        <li>
-          <%= link_to "Kasa Tanımı", new_finunit_path(:unit_type => "Cash") %>
-          <%= link_to "Banka Hesap Tanımı", new_finunit_path(:unit_type => "Bank") %>
-          <%= link_to "Çek Portföy Tanımı", new_finunit_path(:unit_type => "Portfoy") %>
-      </ul>
     </div>
+  </div>
+</div>

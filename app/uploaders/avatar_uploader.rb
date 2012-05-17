@@ -12,7 +12,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # storage :fog
 
   configure do |config|
-    config.remove_previously_stored_files_after_update = false
+    config.root = Rails.root
+    config.remove_previously_stored_files_after_update = true
   end
 
   # Override the directory where uploaded files will be stored.

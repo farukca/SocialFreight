@@ -66,7 +66,9 @@ namespace :deploy do
     end
   end
 
-  namespace :uploads do
+end
+
+namespace :uploads do
     desc <<-EOD
       Creates the upload folders unless they exist and sets the proper upload permissions.
     EOD
@@ -87,12 +89,10 @@ namespace :deploy do
       [internal] Computes uploads directory paths and registers them in Capistrano environment.
     EOD
     task :register_dirs, roles: :app do
-      set :uploads_dirs,    %w(uploads uploads/user uploads/patron uploads/person)
+      set :uploads_dirs,    %w(uploads)
       set :shared_children, fetch(:shared_children) + fetch(:uploads_dirs)
     end
 
     after "deploy:finalize_update", "uploads:symlink"
-    before "deploy", "uploads:register_dirs"
-  end
-
+    on :start, "uploads:register_dirs"
 end

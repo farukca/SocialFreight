@@ -30,6 +30,8 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     addressable (2.2.7)
+    akami (1.0.0)
+      gyoku (>= 0.4.0)
     ansi (1.3.0)
     archive-tar-minitar (0.5.2)
     arel (3.0.2)
@@ -80,8 +82,12 @@ GEM
     friendly_id (4.0.0)
     gmaps4rails (1.4.8)
       json
+    gyoku (0.4.4)
+      builder (>= 2.1.2)
     highline (1.6.11)
     hike (1.2.1)
+    httpi (0.9.7)
+      rack
     i18n (0.6.0)
     journey (1.0.3)
     jquery-rails (1.0.18)
@@ -115,6 +121,7 @@ GEM
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
     nokogiri (1.5.0)
+    nori (1.1.0)
     oauth (0.4.5)
     oauth2 (0.5.2)
       faraday (~> 0.7)
@@ -126,6 +133,9 @@ GEM
     prawn (0.12.0)
       pdf-reader (>= 0.9.0)
       ttfunk (~> 1.0.2)
+    queue_classic (2.0.0rc13)
+      pg (~> 0.13.2)
+      scrolls (~> 0.0.8)
     rack (1.4.1)
     rack-cache (1.1)
       rack (>= 0.4)
@@ -182,6 +192,15 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+    savon (0.9.9)
+      akami (~> 1.0)
+      builder (>= 2.1.2)
+      gyoku (>= 0.4.0)
+      httpi (~> 0.9)
+      nokogiri (>= 1.4.0)
+      nori (~> 1.1)
+      wasabi (~> 2.1)
+    scrolls (0.0.9)
     selenium-webdriver (2.7.0)
       childprocess (>= 0.2.1)
       ffi (>= 1.0.7)
@@ -225,6 +244,8 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    wasabi (2.1.0)
+      nokogiri (>= 1.4.0)
     wicked (0.1.2)
       activesupport (>= 3.0.7)
       rails (>= 3.0.7)
@@ -252,11 +273,13 @@ DEPENDENCIES
   minitest
   pg
   prawn
+  queue_classic (= 2.0.0rc13)
   rails (= 3.2.0)
   rolify
   rspec-rails
   ruby-debug19
   sass-rails (~> 3.2.3)
+  savon
   simple_form (>= 2.0)
   simplecov
   socialization
