@@ -33,7 +33,6 @@ GEM
     akami (1.0.0)
       gyoku (>= 0.4.0)
     ansi (1.3.0)
-    archive-tar-minitar (0.5.2)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     builder (3.0.0)
@@ -63,7 +62,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.2.0)
-    columnize (0.3.6)
     diff-lcs (1.1.3)
     erubis (2.7.0)
     execjs (1.2.9)
@@ -101,8 +99,6 @@ GEM
       railties (>= 3.0.0)
     kgio (2.7.4)
     libv8 (3.3.10.2)
-    linecache19 (0.5.12)
-      ruby_core_source (>= 0.1.4)
     mail (2.4.1)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -176,16 +172,6 @@ GEM
       activesupport (~> 3.0)
       railties (~> 3.0)
       rspec (~> 2.6.0)
-    ruby-debug-base19 (0.11.25)
-      columnize (>= 0.3.1)
-      linecache19 (>= 0.5.11)
-      ruby_core_source (>= 0.1.4)
-    ruby-debug19 (0.11.6)
-      columnize (>= 0.3.1)
-      linecache19 (>= 0.5.11)
-      ruby-debug-base19 (>= 0.11.19)
-    ruby_core_source (0.1.5)
-      archive-tar-minitar (>= 0.5.2)
     rubyzip (0.9.4)
     sass (3.1.15)
     sass-rails (3.2.4)
@@ -277,7 +263,6 @@ DEPENDENCIES
   rails (= 3.2.0)
   rolify
   rspec-rails
-  ruby-debug19
   sass-rails (~> 3.2.3)
   savon
   simple_form (>= 2.0)
