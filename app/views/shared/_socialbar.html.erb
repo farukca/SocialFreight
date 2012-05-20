@@ -5,6 +5,11 @@
   </ul>
   <div id="social-tab-content" class="tab-content feeds">
     <div id="user_messages" class="tab-pane active">
+      <div id="post-home">
+        <div class="post-module-in">
+          <%= render 'posts/form' %>
+        </div>
+      </div>
       <ul>
         <%= render :partial => "posts/sidebar_post", :collection => current_user.social_posts,  :as => :post %>
       </ul>

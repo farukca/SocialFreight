@@ -3,11 +3,11 @@ class Position < ActiveRecord::Base
   acts_as_followable
   acts_as_likeable
   acts_as_mentionable
-  
   extend FriendlyId
-  friendly_id :reference, use: :slugged
+
+  belongs_to :patron  
+  friendly_id :reference, use: :slugged, use: :scoped, scope: :patron
   
-  belongs_to :patron
   belongs_to :branch
   belongs_to :agent, :class_name => "Company", :foreign_key => "agent_id"
   belongs_to :load_place, :class_name => "Place", :foreign_key => "load_place_id"

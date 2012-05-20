@@ -2,12 +2,13 @@ class Loading < ActiveRecord::Base
 
   acts_as_followable
   acts_as_likeable
-  
   extend FriendlyId
-  friendly_id :reference, use: :slugged
+
+
+  belongs_to :patron  
+  friendly_id :reference, use: :slugged, use: :scoped, scope: :patron
   
   belongs_to :position
-  belongs_to :patron
   belongs_to :branch
   belongs_to :company
   belongs_to :agent, :class_name => "Company", :foreign_key => "agent_id"
@@ -104,9 +105,9 @@ class Loading < ActiveRecord::Base
     #self.reference = self.operation + "." + self.direction + "." + sprintf('%07d', counter)
     self.reference = self.patron.generate_counter("Loading", self.operation, nil)
     self.patron_token = current_patron.token if self.patron_token.blank?
-    #generate_slug!
+    set_slug(self.reference)
   end
-	private
+  private
   def set_after_jobs
     self.user.follow!(self) if self.user
     self.user.create_activity(self, reference, patron_id, patron_token)

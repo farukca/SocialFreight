@@ -14,7 +14,7 @@ class Company < ActiveRecord::Base
   belongs_to :user
   belongs_to :saler, :class_name => User, :inverse_of => :saler
 
-  friendly_id :name, use: :slugged#, :scope => :patron
+  friendly_id :name, use: :slugged, use: :scoped, scope: :patron
   
   has_many :contacts
   accepts_nested_attributes_for :contacts, :reject_if => lambda { |a| a[:surname].blank? }, :allow_destroy => true

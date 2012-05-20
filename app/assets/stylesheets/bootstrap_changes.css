@@ -30,3 +30,6 @@ select.input-small {
 dl {
   margin-bottom: 5px;
 }
+.btn-toolbar {
+  margin-bottom: 0;
+}

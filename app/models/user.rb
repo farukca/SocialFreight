@@ -6,13 +6,13 @@ class User < ActiveRecord::Base
   acts_as_followable
   acts_as_liker
   acts_as_mentionable
-  
   extend FriendlyId
-  friendly_id :to_s, use: :slugged
+
+  belongs_to :patron
+  friendly_id :to_s, use: :slugged, use: :scoped, scope: :patron
 
   mount_uploader :avatar, AvatarUploader
 
-  belongs_to :patron
   has_one  :person
   has_many :positions
   has_many :loadings

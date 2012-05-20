@@ -1,7 +1,9 @@
 class Person < ActiveRecord::Base
 
   extend FriendlyId
-  friendly_id :to_s, use: :slugged
+
+  belongs_to :patron
+  friendly_id :to_s, use: :slugged, use: :scoped, scope: :patron
 
   belongs_to :user
   belongs_to :branch

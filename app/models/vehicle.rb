@@ -4,29 +4,11 @@ class Vehicle < ActiveRecord::Base
   #include Mongoid::Token
   #include Mongoid::Followee
   extend FriendlyId
-  friendly_id :code, use: :slugged
-  
-  #field :code
-  belongs_to :country
-  #field :vehicle_type
-  #field :vehicle_class
-  #field :brand
-  #field :model
-  #field :model_year
-  #field :status
-  #field :ownership
-  #field :vehicle_price
-  #field :price_curr
-  #field :fuel_capacity
-  #field :fuel_capacity2
-  #field :fuel_type
-  #field :sat_no
-  #field :barcode
-  #field :tire_size
-  #field :link_type
 
-  #token :length => 25, :contains => :alphanumeric
-  #auto_increment :rec_number
+  belongs_to :patron
+  friendly_id :code, use: :slugged, use: :scoped, scope: :patron
+  
+  belongs_to :country
 
   def token_inputs
     { :id => code, :name => code }

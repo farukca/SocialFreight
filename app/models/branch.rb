@@ -2,13 +2,14 @@ class Branch < ActiveRecord::Base
  
   acts_as_gmappable :process_geocoding => false, :validation => false
   extend FriendlyId
-  friendly_id :name, use: :slugged
+
+  belongs_to :patron
+  friendly_id :name, use: :slugged, use: :scoped, scope: :patron
   
   belongs_to :city
   belongs_to :state
   belongs_to :country
 
-  belongs_to :patron
   has_many :users
   has_many :positions
   has_many :loadings
