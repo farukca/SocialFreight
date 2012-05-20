@@ -55,6 +55,7 @@ Socialfreight::Application.routes.draw do
   resources :feedbacks
   resources :posts
   resources :activities
+  resources :vessels
 
   resources :setup
 

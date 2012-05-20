@@ -1,0 +1,18 @@
+<%= simple_form_for @vessel, :validate => true do |f| %>
+  <%= f.error_notification %>
+
+  <fieldset>
+    <div class="row">
+      <div class="page-header">
+        <h4>New vessel</h4>
+      </div>
+      <div class="span8 columns">
+        <%= f.input :name %>
+        <%= f.input :owner %>
+        <%= f.input :vesseltype %>
+        <%= f.button :submit, :class => 'btn primary' %>
+      </div>
+    </div>
+  </fieldset>
+
+<% end %>

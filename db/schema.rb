@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120517220209) do
+ActiveRecord::Schema.define(:version => 20120520153126) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                    :null => false
@@ -765,6 +765,18 @@ ActiveRecord::Schema.define(:version => 20120517220209) do
 
   add_index "vehicles", ["code", "patron_id"], :name => "index_vehicles_on_code_and_patron_id", :unique => true
   add_index "vehicles", ["patron_id"], :name => "index_vehicles_on_patron_id"
+
+  create_table "vessels", :force => true do |t|
+    t.string   "name",       :limit => 40
+    t.string   "vesseltype", :limit => 40
+    t.string   "owner",      :limit => 60
+    t.string   "vesselflag", :limit => 2
+    t.integer  "teu"
+    t.string   "imo",        :limit => 30
+    t.string   "bodytype",   :limit => 40
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
 
   create_table "waybills", :force => true do |t|
     t.string   "reference",        :limit => 40
