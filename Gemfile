@@ -57,10 +57,6 @@ gem 'therubyracer'
 # Deploy with Capistrano
  gem 'capistrano'
 
-# To use debugger
-group :development do
-  gem 'ruby-debug19', :require => 'ruby-debug'
-end
 gem 'rspec-rails', :group => [:test, :development]
 group :test do
   # Pretty printed test output

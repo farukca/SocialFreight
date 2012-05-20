@@ -14,7 +14,7 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.new
     if current_user
       @feedback.email = current_user.email
-      @feedback.name  = current_user.full_name
+      @feedback.name  = current_user
     end
   end
 
