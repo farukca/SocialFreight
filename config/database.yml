@@ -3,8 +3,8 @@ development:
   encoding: unicode
   database: socialfreight_development
   pool: 5
-  username: aydogan
-  password: 1234
+  username: postgres
+  password: 12345
   host: localhost
   port: 5432
 
@@ -25,15 +25,5 @@ test:
   encoding: unicode
   database: socialfreight_test
   pool: 5
-  username: aydogan
-  password: 1234
-
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: socialfreight_production
-  pool: 5
-  username: aydogan
-  password: 1234
-  host: localhost
-  port: 5432
+  username: postgres
+  password: 12345

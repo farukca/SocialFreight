@@ -1,11 +1,10 @@
 class Company < ActiveRecord::Base
 
-  extend FriendlyId
-   
   acts_as_gmappable :process_geocoding => false, :validation => false
   acts_as_followable
   acts_as_likeable
-  
+  extend FriendlyId
+
   belongs_to :patron
   belongs_to :branch
   belongs_to :city
@@ -13,27 +12,26 @@ class Company < ActiveRecord::Base
   belongs_to :country
   belongs_to :user
   belongs_to :saler, :class_name => User, :inverse_of => :saler
-
   friendly_id :name, use: :slugged, use: :scoped, scope: :patron
   
   has_many :contacts
   accepts_nested_attributes_for :contacts, :reject_if => lambda { |a| a[:surname].blank? }, :allow_destroy => true
-  #has_many :arrivals
-  #has_many :departures
   has_many :comments, as: :commentable, dependent: :destroy
 
   attr_accessible :name, :title, :company_type, :branch_id, :postcode, :address, :district, :city_id, :country_id, :state_id, 
                   :email, :website, :tel, :gsm, :voip, :fax, :contact, :sector, :twitter_url, :facebook_url, :linkedin_url, 
                   :notes, :description, :saler_id, :contacts_attributes
 
-  validates_presence_of :name, :message => I18n.t('patrons.errors.title.cant_be_blank')
-  #validates_presence_of :title, :message => I18n.t('patrons.errors.title.cant_be_blank')
-  validates_presence_of :company_type, :message => I18n.t('patrons.errors.title.cant_be_blank')
-  validates_presence_of :patron, :message => I18n.t('patrons.errors.title.cant_be_blank')
-  validates_presence_of :patron_token, :on => :create, :message => I18n.t('patrons.errors.title.cant_be_blank')
-  #validates_uniqueness_of :name, :case_sensitive => false
-  validates_length_of :name, :maximum => 40
-  validates_length_of :title, :maximum => 100
+  #validates :name, :uniqueness => { :scope => :patron, :message => I18n.t('defaults.inputerror.must_be_unique') }
+  validates :name, :presence => { :message => I18n.t('defaults.inputerror.cant_be_blank') }
+  validates :name, :length => { :maximum => 50 }
+  validates :title, :length => { :maximum => 100 }
+  validates :tel, :fax, :gsm, :voip, :length => { :maximum => 15 }
+  validates :email, :length => { :maximum => 40 }, :format => { :with => /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i }, :unless => Proc.new { |a| a.email.blank? }
+  validates :postcode, :length => { :maximum => 5 }
+  validates :patron, :presence => { :message => I18n.t('defaults.inputerror.firmid_is_blank') }
+  validates :patron_token, :presence => { :message => I18n.t('defaults.inputerror.firmid_is_blank') }
+  validates :branch_id, :presence => { :message => I18n.t('defaults.inputerror.branch_is_blank') }
 
   #before_save   :get_coordinates
   before_create :set_initials
@@ -86,7 +84,6 @@ class Company < ActiveRecord::Base
   def set_after_jobs
     self.user.follow!(self) if self.user
     self.user.create_activity(self, name, patron_id, patron_token)
-    #patron.set_activity(self, 'create', user.id, 'created', user.full_name)
     Patron.journal_record(patron, user, branch, nil, self.class.name, 1, 0)
   end
 

@@ -11,6 +11,11 @@ en:
       website: "Website"
       country: "Country"
       city:   "City"
+    inputerror:
+      cant_be_blank:   "This field can not be blank"
+      firmid_is_blank: "Firm info is missing, login again please"
+      branch_is_blank: "Branch info  can not be blank"
+      must_be_unique:  "This has been used, please choose another value"
   companies:
     label:
       name: "Short Name"
