@@ -1,27 +1,20 @@
-<div class="row-fluid">
-  <div class="span6">
-    <fieldset>
-      <%= f.input :country_id do %>
-        <%= f.input_field :country_id, :as => :select, :collection => Country.all, :include_blank => false, :class => "input-small" %>
-        <%= f.grouped_collection_select :city_id, Country.order(:name), :cities, :name, :id, :name, {:include_blank => true}, {:class => "input-small"} %>
-      <% end %>
-      <%= f.input :unload_point, :as => :select, :collection => Loading.point_types.map { |r| [r[1], r[0] ] } %>
-      <%= f.input :unload_date, :as => :string, :input_html => {:class => "input-small", "data-datepicker" => "datepicker"} %>
-      <%= f.input :unload_place_id, :as => :select, :collection => [[@arrival.unload_place_id ? @arrival.unload_place.name : "", @arrival.unload_place_id]], :input_html => {:class => "chosen_input", "data-url" => "/places.json"} %>
-      <%= f.input :district, :label => "Semt" do %>
-        <%= f.input_field :district, :class => "input-small" %>
-        <%= f.input_field :postcode, :class => "input-small" %>
-      <% end %>
-      <%= f.input :address, :as => :text, :input_html => {:rows => 1, :cols => 37} %>
-    </fieldset>
-  </div>
-  <div class="span6">
-    <fieldset>
-      <%= f.input :consignee_id, :collection => [[@arrival.consignee_id ? @arrival.consignee.name : "", @arrival.consignee_id]], :as => :select, :input_html => {:class => "chosen_input", "data-url" => "/companies.json"} %>
-      <%= f.input :deliver_id, :collection => [[@arrival.deliver_id ? @arrival.deliver.name : "", @arrival.deliver_id]], :as => :select, :input_html => {:class => "chosen_input", "data-url" => "/companies.json"} %>
-      <%= f.input :notify_id, :collection => [[@arrival.notify_id ? @arrival.notify.name : "", @arrival.notify_id]], :as => :select, :input_html => {:class => "chosen_input", "data-url" => "/companies.json"} %>
-      <%= f.input :notify2_id, :collection => [[@arrival.notify2_id ? @arrival.notify2.name : "", @arrival.notify2_id]], :as => :select, :input_html => {:class => "chosen_input", "data-url" => "/companies.json"} %>
-      <%= f.input :notes, :as => :text, :input_html => {:rows => 1, :cols => 37} %>
-    </fieldset>
-  </div>
+<div id="opform">
+<%= simple_form_for @arrival, :validate => true do |f| %>
+  <%= f.error_notification %>
+
+  <div class="pageBlock">
+    <%= render 'shared/form_buttonsh', :f => f %>
+
+    <div class="tabbable tabs-below">
+
+      <div id="my-tab-content" class="tab-content">
+        <div id="loading-main-form" class="tab-pane active form_tab_pane">
+          <%= render 'form_fields', :f => f %>
+        </div>
+      </div>
+
+      <%= render 'shared/form_buttonsb', :f => f %>
+    </div>
+
+<% end %>
 </div>

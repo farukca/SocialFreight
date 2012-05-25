@@ -27,3 +27,12 @@ test:
   pool: 5
   username: postgres
   password: 12345
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: socialfreight_prod
+  pool: 5
+  host: localhost
+  username: postgres
+  password: 12345

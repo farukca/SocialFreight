@@ -14,12 +14,12 @@
         <% unless params[:action] == "edit" %>
         <div id="loading-load-form" class="tab-pane form_tab_pane">
           <%= f.fields_for :departures do |builder| %>
-            <%= render 'departure_fields', :f => builder %>
+            <%= render 'departures/form_fields', :f => builder %>
           <% end %>
         </div>
         <div id="loading-unload-form" class="tab-pane form_tab_pane">
           <%= f.fields_for :arrivals do |builder| %>
-            <%= render 'arrival_fields', :f => builder %>
+            <%= render 'arrivals/form_fields', :f => builder %>
           <% end %>
         </div>
         <% end %>

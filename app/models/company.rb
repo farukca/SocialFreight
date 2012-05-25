@@ -81,10 +81,10 @@ class Company < ActiveRecord::Base
   end
   
   private
-  def set_after_jobs
-    self.user.follow!(self) if self.user
-    self.user.create_activity(self, name, patron_id, patron_token)
-    Patron.journal_record(patron, user, branch, nil, self.class.name, 1, 0)
-  end
+    def set_after_jobs
+      self.user.follow!(self) if self.user
+      self.user.create_activity(self, name, patron_id, patron_token)
+      Patron.journal_record(patron, user, branch, nil, self.class.name, 1, 0)
+    end
 
 end

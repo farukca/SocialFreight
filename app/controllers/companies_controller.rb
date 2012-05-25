@@ -42,7 +42,7 @@ class CompaniesController < ApplicationController
   end
 
   def edit
-    @company = Company.find_by_slug(params[:id])
+    @company = Company.find(params[:id])
   end
 
   def create
@@ -63,7 +63,7 @@ class CompaniesController < ApplicationController
   end
 
   def update
-    @company = Company.find_by_slug(params[:id])
+    @company = Company.find(params[:id])
 
     respond_to do |format|
       if @company.update_attributes(params[:company])
@@ -76,14 +76,14 @@ class CompaniesController < ApplicationController
     end
   end
 
-  def destroy
-    @company = Company.find(params[:id])
-    @company.destroy
+  #def destroy
+  #  @company = Company.find(params[:id])
+  #  @company.destroy
 
-    respond_to do |format|
-      format.html { redirect_to companies_url }
-      format.json { head :ok }
-    end
-  end
+  #  respond_to do |format|
+  #    format.html { redirect_to companies_url }
+  #    format.json { head :ok }
+  #  end
+  #end
 
 end
