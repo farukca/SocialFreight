@@ -28,7 +28,7 @@ class ArrivalsController < ApplicationController
     
     respond_to do |format|
       if @arrival.save
-        format.html { redirect_to @arrival, notice: 'Arrival was successfully created.' }
+        format.html { redirect_to @arrival.loading, notice: 'Arrival was successfully created.' }
         format.json { render json: @arrival, status: :created, location: @arrival }
       else
         format.html { render action: "new" }
@@ -42,7 +42,7 @@ class ArrivalsController < ApplicationController
 
     respond_to do |format|
       if @arrival.update_attributes(params[:arrival])
-        format.html { redirect_to @arrival, notice: 'Arrival was successfully updated.' }
+        format.html { redirect_to @arrival.loading, notice: 'Arrival was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

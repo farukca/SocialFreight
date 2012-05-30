@@ -2,45 +2,30 @@
   <div class="pageBody">
     <div class="profile-content">
     <legend>Boşaltma Bilgisi <%= link_to edit_arrival_path(arrival) do %><i class="icon-edit"></i><% end %></legend>
-    <table class="detailList" style="width:100%" border="0" cellpatding="0" cellspacing="0">
+    <table class="detailList" style="width:100%;text-align:center" border="0" cellpatding="0" cellspacing="0">
       <tr>
-        <td class="labelCol2">Boşaltma Tarihi :</td>
-        <td class="dataCol2"><%= arrival.unload_date %></td>
-        <td class="labelCol2">Alıcı:</td>
-        <td class="dataCol2"><%= arrival.consignee.name if arrival.consignee %></td>
+        <th>Boşaltma Tarihi</th>
+        <th>Özet Beyan</th>
+        <th>Gümrük</th>
+        <th>Gümrükçü</th>
+        <th>Alıcı</th>
+        <th>Yükleyici</th>
+        <th>Notify</th>
       </tr>
       <tr>
-        <td class="labelCol2">Teslim Tarihi :</td>
-        <td class="dataCol2"><%= arrival.delivery_date %></td>
-        <td class="labelCol2">Teslim Edilen:</td>
-        <td class="dataCol2"><%= arrival.deliver.name if arrival.deliver %></td>
+        <td><%= arrival.unload_date.strftime("%d/%m/%Y %I:%M") if arrival.unload_date %></td>
+        <td><%= "#{arrival.statement} - #{arrival.statement_date}" %></td>
+        <td>Ambarlı Gümrük</td>
+        <td><%= arrival.customofficer.name if arrival.customofficer %></td>
+        <td><%= arrival.consignee.name if arrival.consignee %></td>
+        <td><%= arrival.deliver.name if arrival.deliver %></td>
+        <td><%= arrival.notify.name if arrival.notify %><br><%= arrival.notify2.name if arrival.notify2 %></td>
       </tr>
       <tr>
-        <td class="labelCol2">Yükleme Yeri :</td>
-        <td class="dataCol2"><%= Loading.point_types[arrival.unload_point] %></td>
-        <td class="labelCol2">Gümrükçü :</td>
-        <td class="dataCol2"><%= arrival.customofficer.name if arrival.customofficer %></td>
-      </tr>
-      <tr>
-        <td class="labelCol2">Yükleme Noktası :</td>
-        <td class="dataCol2"><%= arrival.unload_place.name if arrival.unload_place %></td>
-        <td class="labelCol2">Özet Beyanname No&Tarih :</td>
-        <td class="dataCol2"><%= "#{arrival.statement} - #{arrival.statement_date}" %></td>
-      </tr>
-      <tr>
-        <td class="labelCol2">Boşaltma Adresi :</td>
-        <td class="dataCol2">
-          <span class="rightside"><a href="#"><i class="icon-map-marker"></i></a></span>
-          <%= arrival.address %>&nbsp;<%= arrival.district %>&nbsp;<%= arrival.city.name if arrival.city %>&nbsp;<%= arrival.country.name if arrival.country %>
-        </td>
-        <td class="labelCol2">Teslimat Notu:</td>
-        <td class="dataCol2"><%= arrival.notes %></td>
-      </tr>
-      <tr>
-        <td class="labelCol2">Notify 1 :</td>
-        <td class="dataCol2"><%= arrival.notify.name if arrival.notify %></td>
-        <td class="labelCol2">Notify 2 :</td>
-        <td class="dataCol2"><%= arrival.notify2.name if arrival.notify2 %></td>
+        <th>Adres:</th>
+        <td colspan="2"><%= arrival.address %>&nbsp;<%= arrival.district %>&nbsp;<%= arrival.city.name if arrival.city %>&nbsp;<%= arrival.country.name if arrival.country %></td>
+        <th>Not:</th>
+        <td colspan="3"><%= arrival.notes %></td>
       </tr>
     </table>
     </div>

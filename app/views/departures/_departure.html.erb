@@ -2,39 +2,30 @@
   <div class="pageBody">
     <div class="profile-content">
     <legend>Yükleme Bilgisi <%= link_to edit_departure_path(departure) do %><i class="icon-edit"></i><% end %></legend>
-    <table class="detailList" style="width:100%" border="0" cellpatding="0" cellspacing="0">
+    <table class="detailList" style="width:100%;text-align:center" border="0" cellpatding="0" cellspacing="0">
       <tr>
-        <td class="labelCol2">Pickup Tarihi :</td>
-        <td class="dataCol2"><%= departure.pickup_date %></td>
-        <td class="labelCol2">Gönderici:</td>
-        <td class="dataCol2"><%= departure.sender.name if departure.sender %></td>
+        <th>Yükleme Tarihi</th>
+        <th>Özet Beyan</th>
+        <th>Gümrük</th>
+        <th>Gümrükçü</th>
+        <th>Gönderici</th>
+        <th>Yükleyici</th>
+        <th>Notify</th>
       </tr>
       <tr>
-        <td class="labelCol2">Gerçek Yükleme Tarihi :</td>
-        <td class="dataCol2"><%= departure.load_date %></td>
-        <td class="labelCol2">Yükleyici:</td>
-        <td class="dataCol2"><%= departure.loader.name if departure.loader %></td>
+        <td><%= departure.load_date.strftime("%d/%m/%Y %I:%M") if departure.load_date %></td>
+        <td><%= "#{departure.statement} - #{departure.statement_date}" %></td>
+        <td>Ambarlı Gümrük</td>
+        <td><%= departure.customofficer.name if departure.customofficer %></td>
+        <td><%= departure.sender.name if departure.sender %></td>
+        <td><%= departure.loader.name if departure.loader %></td>
+        <td>Notify Notify2 Notify3</td>
       </tr>
       <tr>
-        <td class="labelCol2">Yükleme Yeri :</td>
-        <td class="dataCol2"><%= Loading.point_types[departure.load_point] %></td>
-        <td class="labelCol2">Gümrükçü :</td>
-        <td class="dataCol2"><%= departure.customofficer.name if departure.customofficer %></td>
-      </tr>
-      <tr>
-        <td class="labelCol2">Yükleme Noktası :</td>
-        <td class="dataCol2"><%= departure.load_place.name if departure.load_place %></td>
-        <td class="labelCol2">Özet Beyanname No&Tarih :</td>
-        <td class="dataCol2"><%= "#{departure.statement} - #{departure.statement_date}" %></td>
-      </tr>
-      <tr>
-        <td class="labelCol2">Yükleme Adresi :</td>
-        <td class="dataCol2">
-          <span class="rightside"><a href="#"><i class="icon-map-marker"></i></a></span>
-          <%= departure.address %>&nbsp;<%= departure.district %>&nbsp;<%= departure.city.name if departure.city %>&nbsp;<%= departure.country.name if departure.country %>
-        </td>
-        <td class="labelCol2">Yükleme Notu:</td>
-        <td class="dataCol2"><%= departure.notes %></td>
+        <th>Adres:</th>
+        <td colspan="2"><%= departure.address %>&nbsp;<%= departure.district %>&nbsp;<%= departure.city.name if departure.city %>&nbsp;<%= departure.country.name if departure.country %></td>
+        <th>Not:</th>
+        <td colspan="3"><%= departure.notes %></td>
       </tr>
     </table>
     </div>

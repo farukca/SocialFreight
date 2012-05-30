@@ -31,7 +31,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: socialfreight_prod
+  database: socialfreight_production
   pool: 5
   host: localhost
   username: postgres

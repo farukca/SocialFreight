@@ -33,7 +33,7 @@ class DeparturesController < ApplicationController
     
     respond_to do |format|
       if @departure.save
-        format.html { redirect_to @departure, notice: 'Departure was successfully created.' }
+        format.html { redirect_to @departure.loading, notice: 'Departure was successfully created.' }
         format.json { render json: @departure, status: :created, location: @departure }
       else
         format.html { render action: "new" }
@@ -46,8 +46,8 @@ class DeparturesController < ApplicationController
     @departure = Departure.find(params[:id])
 
     respond_to do |format|
-      if @departure.update_attributes(params[:Departure])
-        format.html { redirect_to @departure, notice: 'Departure was successfully updated.' }
+      if @departure.update_attributes(params[:departure])
+        format.html { redirect_to @departure.loading, notice: 'Departure was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
