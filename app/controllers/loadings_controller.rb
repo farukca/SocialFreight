@@ -105,4 +105,12 @@ class LoadingsController < ApplicationController
     current_user.unfollow(@loading)
   end
 
+  def addtoplan
+    loadid = params[:id]
+    debugger
+    i = session[:loading_ids].length
+    session[:loading_ids][i] = params[:id]
+    @loading = Loading.find(params[:id])
+  end
+
 end

@@ -12,7 +12,7 @@
       <% end %>
       <%= f.input :load_type, :as => :select, :collection => Loading.load_types.map { |r| [I18n.t("listitems.loadtype.#{@position.operation}.#{r[1]}"), r[0] ] }, :include_blank => false, hint: "LCL or FCL selection" %>
       <%= f.input :agent_id, :as => :select, :collection => [[@position.agent_id ? @position.agent.name : "", @position.agent_id]], :label => I18n.t("position.#{@position.operation}.label.agent"), :input_html => {:class => "chosen_input", "data-url" => "/companies.json" }, hint: "Destination Foreign Agent" %>
-      <%= f.input :branch_id, :as => :select, :collection => current_patron.branches, :include_blank => false %>
+      <%= f.input :branch_id, :as => :select, :collection => current_patron.branches, :include_blank => false, :selected => current_user.branch_id %>
     </fieldset>
   </div>
   <div class="span6">

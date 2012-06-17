@@ -885,3 +885,15 @@ ul.autocomplete li.selected
 #my-tab-content {
   min-height: 100px;
 }
+div.addIcon {
+  background:url("/assets/add.png") no-repeat scroll 0 100% transparent;
+  cursor:pointer;
+  display:block;
+  height:16px;
+  margin:0;
+  visibility:hidden;
+  width:16px;
+}
+.loadingRow:hover .addIcon {
+  visibility:visible;
+}

@@ -1,4 +1,5 @@
-class SetupController < Wicked::WizardController
+class SetupController < ApplicationController
+  include Wicked::Wizard
 
   before_filter :require_login
   

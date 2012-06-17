@@ -1,0 +1,17 @@
+<div id="departure">
+
+  <%= render 'breadcrumb' %>
+
+  <%= simple_form_for @departure, :url => wizard_path, :method => :put, :html => {:class => 'form-horizontal'}, :validate => true do |f| %>
+    <%= f.error_notification %>
+    
+    <%= render 'departures/form_fields', :f => f %>
+
+    <div class="controls rightside">
+      <%#= link_to "<< Bir Önceki Adıma Dön", previous_wizard_path, :class => 'btn btn-danger' %> 
+      <%= link_to "Bu Adımı Atla >>", next_wizard_path, :class => 'btn btn-danger' %>
+      <%= f.button :submit, "Kaydet & Boşaltma Bilgilerine Devam Et >>", :class => 'btn btn-info' %>
+    </div>
+  <% end %>
+
+</div>

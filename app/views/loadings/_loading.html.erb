@@ -1,11 +1,12 @@
-<tr>
+<tr class="loadingRow">
+  <td><div class="addIcon" data-loadid="<%= loading.id %>"></div></td>
   <td><%= link_to loading.reference, loading %></td>
-  <td><%= loading.direction %></td>
+  <td><%= Position.direction_types[loading.direction] %></td>
   <td><%= loading.company.name if loading.company %></td>
+  <td><%= Loading.load_types[loading.load_type] %></td>
   <td><%#= loading.load_place.name if loading.load_place %></td>
-  <td><%#= loading.load_date %></td>
   <td><%#= loading.unload_place.name if loading.unload_place %></td>
-  <td><%#= loading.load_date %></td>
-  <td><%= loading.commodity %></td>
   <td><%= loading.freight_price %> &nbsp; <%= loading.freight_curr %></td>
+  <td><%= loading.brut_wg %></td>
+  <td><%= loading.commodity[0..20] %></td>
 </tr>

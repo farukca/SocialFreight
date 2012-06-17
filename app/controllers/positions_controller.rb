@@ -87,7 +87,6 @@ class PositionsController < ApplicationController
         @loading.update_attributes(:position_id => @position.id)
       end
     end
- 
   end
 
   def follow

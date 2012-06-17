@@ -1,5 +1,5 @@
 <div id="opform">
-<%= simple_form_for @departure, :validate => true do |f| %>
+<%= simple_form_for @departure, :html => { :class => 'form-horizontal' }, :validate => true do |f| %>
   <%= f.error_notification %>
 
   <div class="pageBlock">
@@ -9,7 +9,7 @@
 
       <div id="my-tab-content" class="tab-content">
         <div id="loading-main-form" class="tab-pane active form_tab_pane">
-          <%= render 'form_fields', :f => f %>
+          <%= render 'departures/form_fields', :f => f %>
         </div>
       </div>
 

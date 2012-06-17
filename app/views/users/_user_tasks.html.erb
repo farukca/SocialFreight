@@ -1,0 +1,7 @@
+<div class="row-fluid">
+  <div class="todoListHeader">Tasks</div>
+      <ul>
+        <%= render @user.tasks.order("created_at desc") %>
+      </ul>
+  </div>
+</div>

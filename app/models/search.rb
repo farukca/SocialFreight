@@ -1,5 +1,7 @@
 class Search < ActiveRecord::Base
 
+  attr_accessor :session_loading_ids
+
   def positions
     @positions = find_positions
   end
@@ -34,6 +36,7 @@ class Search < ActiveRecord::Base
     reservations = Loading.patron(self.patron_token).active.reservations
     reservations = reservations.where(operation: self.operation) if self.operation.present?
     reservations = reservations.where(direction: self.direction) if self.direction.present?
+    reservations = reservations.where('id not in (?)', self.session_loading_ids) if self.session_loading_ids.present?
     reservations
   end
   

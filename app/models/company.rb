@@ -17,6 +17,7 @@ class Company < ActiveRecord::Base
   has_many :contacts
   accepts_nested_attributes_for :contacts, :reject_if => lambda { |a| a[:surname].blank? }, :allow_destroy => true
   has_many :comments, as: :commentable, dependent: :destroy
+  has_many :partners
 
   attr_accessible :name, :title, :company_type, :branch_id, :postcode, :address, :district, :city_id, :country_id, :state_id, 
                   :email, :website, :tel, :gsm, :voip, :fax, :contact, :sector, :twitter_url, :facebook_url, :linkedin_url, 

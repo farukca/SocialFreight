@@ -1,0 +1,18 @@
+<div id="loading">
+
+  <%= render 'breadcrumb' %>
+  <div id="opform">
+    <%= simple_form_for @loading, :url => wizard_path, :method => :put, :html => {:class => 'form-horizontal'}, :validate => true do |f| %>
+      <%= f.error_notification %>
+      <div class="pageBlock">
+        <%= render 'shared/form_buttonsh', :f => f %>
+        <%= render 'loadings/form_main', :f => f %>
+        <%= f.error :base %>
+        <div class="controls rightside">
+          <%= link_to "Bu Adımı Atla >>", next_wizard_path, :class => 'btn btn-danger' %>
+          <%= f.button :submit, "Kaydet & Yükleme Bilgilerine Devam Et >>", :class => 'btn btn-info' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

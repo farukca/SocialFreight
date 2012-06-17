@@ -8,6 +8,7 @@
 //= require jquery_ujs
 //= require gmaps4rails/googlemaps.js
 //= require rails.validations
+//= require simpleform_clientsidev
 //= require jquery.tokeninput
 //= require jquery.timeago
 //= require jquery.autocomplete
@@ -20,4 +21,5 @@
 //= require loading
 //= require search
 //= require home
+//= require transplan
 // require_tree.

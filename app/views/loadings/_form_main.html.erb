@@ -10,7 +10,7 @@
   <%= f.input :paid_at, :as => :select, :collection => Position.payment_types.map { |r| [r[1], r[0] ] }, :include_blank => false %>
   <%= f.input :incoterm, :as => :select, :collection => Loading.incoterms.map { |r| [r[1], r[0] ] }, :include_blank => false %>
   <%#= f.input :waybill_no, :input_html => { :class => "input-medium" } %>
-  <%= f.input :branch_id, :as => :select, :collection => current_patron.branches, :include_blank => false %>
+  <%= f.input :branch_id, :as => :select, :collection => current_patron.branches, :include_blank => false, :selected => current_user.branch_id %>
   </fieldset>
   </div>
   <div class="span6">

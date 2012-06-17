@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120520153126) do
+ActiveRecord::Schema.define(:version => 20120609134822) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                    :null => false
@@ -160,7 +160,7 @@ ActiveRecord::Schema.define(:version => 20120520153126) do
     t.string   "name",         :limit => 30
     t.string   "surname",      :limit => 30, :null => false
     t.integer  "company_id"
-    t.integer  "user_id",                    :null => false
+    t.integer  "user_id"
     t.string   "salutation",   :limit => 5
     t.string   "email",        :limit => 90
     t.string   "tel",          :limit => 15
@@ -208,7 +208,6 @@ ActiveRecord::Schema.define(:version => 20120520153126) do
     t.integer "period",                     :default => 0
   end
 
-  add_index "counters", ["counter_type", "patron_id"], :name => "index_counters_on_counter_type_and_patron_id", :unique => true
   add_index "counters", ["patron_id", "counter_type", "operation", "period"], :name => "counters_unique_index", :unique => true
 
   create_table "countries", :force => true do |t|
@@ -221,7 +220,7 @@ ActiveRecord::Schema.define(:version => 20120520153126) do
     t.string  "slug",      :limit => 40
   end
 
-  create_table "currencies", :id => false, :force => true do |t|
+  create_table "currencies", :force => true do |t|
     t.string "code",       :limit => 5,                   :null => false
     t.string "name",       :limit => 40,                  :null => false
     t.string "symbol",     :limit => 1
@@ -333,6 +332,7 @@ ActiveRecord::Schema.define(:version => 20120520153126) do
     t.string  "patron_token",   :limit => 20
   end
 
+  add_index "journals", ["journaled_type", "journaled_id", "journal_model", "process_date", "patron_id"], :name => "index_journals_on_journal_model_and_process_date_and_patron_id", :unique => true
   add_index "journals", ["patron_id"], :name => "index_journals_on_patron_id"
 
   create_table "likes", :force => true do |t|
@@ -402,8 +402,19 @@ ActiveRecord::Schema.define(:version => 20120520153126) do
   add_index "mentions", ["mentionable_id", "mentionable_type"], :name => "fk_mentionables"
   add_index "mentions", ["mentioner_id", "mentioner_type"], :name => "fk_mentions"
 
+  create_table "nicks", :force => true do |t|
+    t.string   "name",           :limit => 30
+    t.integer  "patron_id"
+    t.integer  "nicknamed_id"
+    t.string   "nicknamed_type"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
+
+  add_index "nicks", ["patron_id", "name"], :name => "unique_nick_name", :unique => true
+
   create_table "operations", :id => false, :force => true do |t|
-    t.string "code"
+    t.string "code",                         :null => false
     t.string "name",           :limit => 40, :null => false
     t.string "operation_type", :limit => 20, :null => false
   end
@@ -430,6 +441,19 @@ ActiveRecord::Schema.define(:version => 20120520153126) do
   end
 
   add_index "packages", ["loading_id", "container_id"], :name => "index_packages_on_loading_id_and_container_id"
+
+  create_table "partners", :force => true do |t|
+    t.integer  "company_id",                 :null => false
+    t.integer  "partner_id",                 :null => false
+    t.integer  "user_id",                    :null => false
+    t.string   "partner_type", :limit => 20, :null => false
+    t.string   "notes"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  add_index "partners", ["company_id", "partner_id", "partner_type"], :name => "company_partner_unique_index", :unique => true
+  add_index "partners", ["company_id"], :name => "index_partners_on_company_id"
 
   create_table "patrons", :force => true do |t|
     t.string   "name",            :limit => 40,                     :null => false
@@ -516,7 +540,7 @@ ActiveRecord::Schema.define(:version => 20120520153126) do
   create_table "places", :force => true do |t|
     t.string   "name",        :limit => 50
     t.string   "code",        :limit => 20
-    t.string   "place_type",  :limit => 4
+    t.string   "place_type",  :limit => 10
     t.string   "district",    :limit => 30
     t.string   "postcode",    :limit => 5
     t.string   "address",     :limit => 100
@@ -594,6 +618,15 @@ ActiveRecord::Schema.define(:version => 20120520153126) do
   add_index "posts", ["patron_id", "patron_token"], :name => "index_posts_on_patron_id_and_patron_token"
   add_index "posts", ["target_type", "target_id"], :name => "index_posts_on_target_type_and_target_id"
 
+  create_table "queue_classic_jobs", :force => true do |t|
+    t.string   "q_name"
+    t.string   "method"
+    t.text     "args"
+    t.datetime "locked_at"
+  end
+
+  add_index "queue_classic_jobs", ["q_name", "id"], :name => "idx_qc_on_name_only_unlocked"
+
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.integer  "resource_id"
@@ -647,6 +680,24 @@ ActiveRecord::Schema.define(:version => 20120520153126) do
   end
 
   add_index "states", ["country_id"], :name => "index_states_on_country_id"
+
+  create_table "tasks", :force => true do |t|
+    t.integer  "user_id",                                        :null => false
+    t.string   "task_text",   :limit => 1000,                    :null => false
+    t.string   "task_code",   :limit => 50
+    t.string   "i18n_code",   :limit => 50
+    t.integer  "cruser_id"
+    t.string   "status",      :limit => 1,    :default => "A"
+    t.date     "due_date"
+    t.date     "closed_date"
+    t.string   "close_text"
+    t.boolean  "system_task",                 :default => false
+    t.integer  "patron_id",                                      :null => false
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
+  end
+
+  add_index "tasks", ["user_id", "status", "patron_id"], :name => "user_tasks"
 
   create_table "teams", :force => true do |t|
     t.string   "name",         :limit => 40
@@ -728,7 +779,6 @@ ActiveRecord::Schema.define(:version => 20120520153126) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["patron_id", "patron_key"], :name => "index_users_on_patron_id_and_patron_key"
   add_index "users", ["remember_me_token"], :name => "index_users_on_remember_me_token"
-  add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true
 
   create_table "users_roles", :id => false, :force => true do |t|
     t.integer "user_id"

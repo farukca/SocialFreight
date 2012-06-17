@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :posts
   has_many :contacts
+  has_many :tasks
   has_many :journals, as: :journaled, dependent: :destroy
 
   attr_accessible :email, :password, :password_confirmation, :name, :surname, :patron_id, :avatar, :remove_avatar, 

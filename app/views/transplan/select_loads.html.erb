@@ -1,0 +1,48 @@
+<div id="position" class="row-fluid">
+
+  <%= render 'breadcrumb' %>
+
+  <div id="selected-loads" class="row-fluid">
+  	<table class="table" id="selected-loads-table">
+      <tr>
+        <th style="width:2%"></th>
+        <th class="span1">Referans</th>
+        <th class="span1">Direction</th>
+        <th>Müşteri</th>
+        <th class="span1">Tipi</th>
+        <th>Yükl. Ülke</th>
+        <th>Boşl. Ülke</th>
+        <th>Navlun</th>
+        <th class="span1">Ağırlık</th>
+        <th>Mal Detayı</th>
+      </tr>      
+  	  <%= render @loadings %>
+    </table>
+  </div>
+
+  <div class="row-fluid">
+    <%= simple_form_for @position, :url => wizard_path, :method => :put, :validate => true do |f| %>
+      <%= f.error_notification %>
+      <!--fieldset>
+        <%#= f.collection_radio_buttons :load_type, [['F', 'Full'],['P','Partial']], :first, :last  %>
+      </fieldset-->
+      <%= f.error :base %>
+      
+      <div class="controls rightside">
+        <%#= link_to "Bu Adımı Atla >>", next_wizard_path, :class => 'btn btn-danger' %>
+        <%= link_to "Başka Yükler Eklemek İstiyorum", "#", :class => 'togglebutton btn btn-info', "data-placement" => "below",  "rel" => 'twipsy', "title" => "Detaylı Ara", "data-href" => "#reservation-search-form" %>
+        <%= f.button :submit, "Yük Seçimini Tamamladım & Devam Et >>", :class => 'btn btn-info' %>
+        <%#= link_to "Yük Seçimini Tamamladım & Devam Et >>", next_wizard_path, :class => 'btn btn-info' %>
+      </div>
+    <% end %>
+  </div>
+
+  <div id="reservation-search-form" class="row-fluid slidingDiv">
+  	<%= render 'searches/reservation_form' %>
+    <div id="reservations" class="row-fluid">
+      <table class="table" id="reservations-table">
+      
+      </table>
+    </div>
+  </div>
+</div>

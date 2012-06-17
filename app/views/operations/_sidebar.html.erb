@@ -6,6 +6,7 @@
         <li><%= link_to new_position_path(:operation => operation) do %><i class="icon-position"></i> Pozisyon<% end %></li>
         <li><%= link_to new_loading_path(:operation => operation) do %><i class="icon-loading"></i> Reservasyon<% end %></li>
         <li><%= link_to new_loading_path(:operation => operation) do %><i class="icon-list-alt"></i> Teklif<% end %></li>
+        <li><%= link_to "yeni yük", reservation_path(:load_info, :operation => operation) %></li>
         <li class="divider" />
         <li><%= link_to new_company_path do %><i class="icon-company"></i> Müşteri<% end %></li>
         <li><%= link_to new_company_path do %><i class="icon-tags"></i> Fırsat<% end %></li>

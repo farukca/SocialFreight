@@ -12,6 +12,7 @@ class SearchesController < ApplicationController
     @search.patron_id = current_patron.id
     @search.user_id = current_user.id
     @search.patron_token = current_patron.token
+    @search.session_loading_ids = session[:loading_ids] if session[:loading_ids]
 
     @search.save!
     redirect_to @search

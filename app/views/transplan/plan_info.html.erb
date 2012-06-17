@@ -1,0 +1,16 @@
+<div id="position">
+
+  <%= render 'breadcrumb' %>
+  <div id="opform">
+    <%= simple_form_for @position, :html => {:class => 'form-horizontal'}, :validate => true do |f| %>
+      <%= f.error_notification %>
+
+      <%= render 'positions/form_main', :f => f %>
+
+      <div class="controls rightside">
+        <%#= link_to "Bu Adımı Atla >>", next_wizard_path, :class => 'btn btn-danger' %>
+        <%= f.button :submit, "Kaydet & Güzergah Seçimine Devam Et >>", :class => 'btn btn-info' %>
+      </div>
+    <% end %>
+  </div>
+</div>

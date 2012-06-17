@@ -1,0 +1,17 @@
+<div id="arrival">
+
+  <%= render 'breadcrumb' %>
+  
+  <%= simple_form_for @arrival, :url => wizard_path, :method => :put, :html => {:class => 'form-horizontal'}, :validate => true do |f| %>
+    <%= f.error_notification %>
+    
+    <%= render 'arrivals/form_fields', :f => f %>
+
+    <div class="controls rightside">
+      <%#= link_to "<< Bir Önceki Adıma Dön", previous_wizard_path, :class => 'btn btn-danger' %>	
+      <%= link_to "Bu Adımı Atla >>", next_wizard_path, :class => 'btn btn-danger' %>
+      <%= f.button :submit, "Kaydet & Yük Detay Bilgilerine Devam Et >>", :class => 'btn btn-info' %>
+    </div>
+  <% end %>
+
+</div>

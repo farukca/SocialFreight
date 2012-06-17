@@ -113,6 +113,7 @@ class Loading < ActiveRecord::Base
     self.user.create_activity(self, reference, patron_id, patron_token)
     #patron.set_activity(self, 'create', user.id, 'created', user.full_name)
     Patron.journal_record(patron, user, branch, nil, self.class.name, 1, 0)
+    Nick.log(self, self.slug, patron_id)
   end
   
 end

@@ -22,8 +22,10 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+#gem 'client_side_validations'
+gem 'client_side_validations', '3.2.0.beta.3', :git => 'https://github.com/bcardarella/client_side_validations.git'
 gem 'simple_form', '>= 2.0'
-gem 'client_side_validations'
+
 #gem 'rails3-jquery-autocomplete'
 gem 'kaminari', '~> 0.13.0'
 gem 'friendly_id'
@@ -44,6 +46,8 @@ gem 'savon'
 #PDF
 gem 'prawn'
 
+gem 'exception_notification'
+
 gem 'jquery-rails'
 gem 'execjs'
 gem 'therubyracer'
@@ -58,6 +62,7 @@ gem 'therubyracer'
  gem 'capistrano'
 
 gem 'rspec-rails', :group => [:test, :development]
+gem 'ruby-debug19', :group => [:development]
 group :test do
   # Pretty printed test output
   #gem 'mongoid-rspec'

@@ -40,6 +40,9 @@ Socialfreight::Application.routes.draw do
     resources :packages
     resources :containers
     resources :comments
+    member do
+      get :addtoplan
+    end
   end
   resources :departures
   resources :arrivals
@@ -56,8 +59,12 @@ Socialfreight::Application.routes.draw do
   resources :posts
   resources :activities
   resources :vessels
+  resources :tasks
+  resources :nicks
 
   resources :setup
+  resources :reservation
+  resources :transplan
 
   get "air" => "home#air", :as => "air"
   get "sea" => "home#sea", :as => "sea"
