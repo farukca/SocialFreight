@@ -7,7 +7,7 @@ class CreateDepartures < ActiveRecord::Migration
       t.string  :load_point, :limit => 1
       t.integer :load_place_id
       t.integer :city_id
-      t.integer :country_id
+      t.string  :country_id, :limit => 2
       t.string  :district, :limit => 30
       t.string  :postcode, :limit => 5
       t.string  :address, :limit => 100

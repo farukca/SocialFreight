@@ -8,7 +8,7 @@ class CreatePlaces < ActiveRecord::Migration
       t.string  :postcode, :limit => 5
       t.string  :address, :limit => 100
       t.integer :city_id
-      t.integer :country_id
+      t.string  :country_id, :limit => 2
       t.float   :longitude
       t.float   :latitude
       t.boolean :gmaps

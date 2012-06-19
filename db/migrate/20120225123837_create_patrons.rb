@@ -15,15 +15,18 @@ class CreatePatrons < ActiveRecord::Migration
       t.string :contact_surname, :limit => 40
       t.integer :city_id
       t.integer :state_id
-      t.integer :country_id
+      t.string :country_id, :limit => 2
       t.string :patron_type, :limit => 20
       t.string :employees, :limit => 10
       t.string :language, :limit => 2
       t.string :status, :limit => 1, default: "A"
       t.string :logo
+      t.string :token, :limit => 40
+      t.string :slug, :limit => 40
 
       t.timestamps
     end
+    add_index :patrons, :slug, :unique => true
   end
 
 end

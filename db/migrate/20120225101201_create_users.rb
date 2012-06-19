@@ -28,13 +28,14 @@ class CreateUsers < ActiveRecord::Migration
       t.string   :role
       t.string   :avatar
       t.string   :slug
+      t.integer :branch_id, :null => false, :default => 0
 
       t.timestamps
     end
     
     add_index :users, :email, :unique => true
     add_index :users, [:patron_id, :patron_key]
-    add_index :users, :slug, :unique => true
+    add_index :users, [:patron_id, :slug], :unique => true
   end
   
 end

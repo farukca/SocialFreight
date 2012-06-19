@@ -19,7 +19,7 @@ class CreateSearches < ActiveRecord::Migration
       t.string  :status, :limit => 4
       t.date    :report_date1
       t.date    :report_date2
-      t.integer :country_id
+      t.string  :country_id, :limit => 2
       t.integer :city_id
       t.boolean :searched, :default => true
       t.integer :patron_id, :null => false

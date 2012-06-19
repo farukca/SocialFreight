@@ -1,7 +1,6 @@
 class Operation < ActiveRecord::Base
 
-  #has_and_belongs_to_many :patrons
-  #attr_accessor :patron_key
+  set_primary_key :code
   
   OPERATION_TYPES = [:air, :sea, :road, :rail, :inland]
   

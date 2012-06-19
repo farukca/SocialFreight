@@ -10,7 +10,7 @@ class CreateBranches < ActiveRecord::Migration
       t.string  :district, :limit => 40
       t.integer :city_id
       t.integer :state_id
-      t.integer :country_id
+      t.string  :country_id, :limit => 2
       t.string  :status, :limit => 1, :default => 'A'
       t.integer :patron_id, :null => false
       t.string  :patron_token, :limit => 20, :null => false

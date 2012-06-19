@@ -7,6 +7,7 @@ class CreatePositions < ActiveRecord::Migration
       t.string  :incoterm, :limit => 20
       t.string  :paid_at, :limit => 20
       t.string  :load_type, :limit => 1
+      t.integer :branch_id, :null => false
       t.integer :agent_id
       t.integer :user_id, :null => false
       t.integer :load_place_id
@@ -15,6 +16,10 @@ class CreatePositions < ActiveRecord::Migration
       t.timestamp :unload_date
       t.decimal :freight_price, :default => 0
       t.string  :freight_curr, :limit => 5
+      t.decimal :agent_price, :default => 0.0
+      t.string  :agent_curr, :limit => 3
+      t.string :waybill_no, :limit => 30
+      t.date :waybill_date
       t.string  :status, :limit => 4, :default => 'A'
       t.date    :report_date
       t.string  :stage, :limit => 4
@@ -36,6 +41,7 @@ class CreatePositions < ActiveRecord::Migration
     end
 
     add_index :positions, [:reference, :patron_id, :patron_token], :unique => true
-    add_index :positions, [:patron_id, :patron_token]
+    add_index :positions, [:patron_id, :patron_token, :branch_id]
+    add_index :positions, [:operation, :direction]
   end
 end

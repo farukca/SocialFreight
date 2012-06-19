@@ -1,7 +1,7 @@
 class City < ActiveRecord::Base
   include Gmaps4rails::ActsAsGmappable
  
-  acts_as_gmappable
+  acts_as_gmappable :process_geocoding => false, :validation => false
   extend FriendlyId
   friendly_id :name, use: :slugged
   

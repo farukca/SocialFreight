@@ -19,7 +19,7 @@
               <h4>Add City</h4>
             </div>
             <div class="span6">
-              <%= f.input :country_id, :as => :hidden, :input_html => { :value => @country.id }  %>
+              <%= f.input :country_id, :as => :hidden, :input_html => { :value => @country.code }  %>
               <%= f.input :code  %>
               <%= f.input :name %>
               <%= f.input :telcode %>

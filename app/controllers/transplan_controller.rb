@@ -56,6 +56,6 @@ class TransplanController < ApplicationController
         @patron.update_attributes(params[:position])
         #render_wizard @position
     end
-    render_wizard @position
+    render_wizard
   end
 end

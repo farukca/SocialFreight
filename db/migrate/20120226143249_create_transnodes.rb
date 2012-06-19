@@ -25,6 +25,8 @@ class CreateTransnodes < ActiveRecord::Migration
       t.string  :doc3_no, :limit => 20
       t.string  :doc4_no, :limit => 20      
       t.string  :notes, :limit => 500
+      t.string  :departure_coun, :limit => 2
+      t.string  :arrival_coun, :limit => 2
 
       t.timestamps
     end

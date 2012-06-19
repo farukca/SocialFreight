@@ -1,5 +1,5 @@
 <div id="person_form">
-<%= simple_form_for @person, :validate => true do |f| %>
+<%= simple_form_for @person, html: { class: 'form-horizontal' }, :validate => true do |f| %>
   <%= f.error_notification %>
 
 

@@ -27,7 +27,7 @@ en:
       defaults:
         branch_id: "Branch"
         website: "Website"
-        country_id: "Country"
+        country: "Country"
         district: "District"
         tel: "Phone"
         fax: "Fax"

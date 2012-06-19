@@ -11,7 +11,6 @@ class CreateJournals < ActiveRecord::Migration
       t.string  :patron_token, :limit => 20
     end
 
-    add_index :journals, :patron_id
-    #add_index :journals, [:journal_model, :process_date, :patron_id], :unique => true #MANUEL EKLEYELIM, ISIM UZUN, HATA VERIYOR
+    add_index :journals, [:patron_id, :journaled_type, :journaled_id]
   end
 end

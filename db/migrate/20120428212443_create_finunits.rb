@@ -15,5 +15,7 @@ class CreateFinunits < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :finunits, [:patron_id, :branch_id, :unit_type]
   end
 end

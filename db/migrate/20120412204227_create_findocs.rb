@@ -21,10 +21,14 @@ class CreateFindocs < ActiveRecord::Migration
       t.boolean :glstatus, :default => false
       t.integer :gldocno
       t.integer :user_id, :null => false
+      t.integer :branch_id, :null => false
+      t.string  :doc_group, :limit => 20
       t.integer :patron_id, :null => false, :null => false
       t.string  :patron_token, :limit => 40, :null => false
 
       t.timestamps
     end
+
+    add_index :findocs, [:patron_id, :branch_id, :docdate, :doctype], :name => "index_findocs_of_patron_branch"
   end
 end

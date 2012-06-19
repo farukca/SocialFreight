@@ -4,7 +4,7 @@ class CreateStates < ActiveRecord::Migration
       t.string  :name, :limit => 40, :null => false
       t.string  :code, :limit => 10
       t.string  :telcode, :limit => 10
-      t.integer :country_id
+      t.string  :country_id, :limit => 2
       t.float   :latitude
       t.float   :longitude
       t.boolean :gmaps

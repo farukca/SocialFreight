@@ -11,7 +11,7 @@
   </div>
 
   <div id="patron-form">
-  <%= simple_form_for @patron, :url => wizard_path, :method => :put, :validate => true do |f| %>
+  <%= simple_form_for @patron, url: wizard_path, method: :put, html: { class: 'form-horizontal'}, validate: true do |f| %>
   <%= f.error_notification %>
   <fieldset>
 

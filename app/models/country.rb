@@ -1,13 +1,14 @@
 class Country < ActiveRecord::Base
 
+  set_primary_key :code
   include Gmaps4rails::ActsAsGmappable
  
-  acts_as_gmappable
+  acts_as_gmappable :process_geocoding => false, :validation => false
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  has_many :cities
-  has_many :states
+  has_many :cities, :foreign_key => "country_id"
+  has_many :states, :foreign_key => "country_id"
   
   attr_accessible :name, :code, :telcode
   

@@ -11,5 +11,7 @@ class CreateVessels < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :vessels, :owner
   end
 end

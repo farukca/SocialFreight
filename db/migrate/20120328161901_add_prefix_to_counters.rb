@@ -5,6 +5,6 @@ class AddPrefixToCounters < ActiveRecord::Migration
       t.string :suffix, :limit => 10
       t.integer :period, :default => 0
     end
-    add_index :counters, ["patron_id", "counter_type", "operation", "period"], :name => "counters_unique_index", :unique => true
+    add_index :counters, ["patron_id", "counter_type", "operation", "period"], :name => "index_counters_unique", :unique => true
   end
 end

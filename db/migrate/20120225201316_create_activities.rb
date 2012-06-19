@@ -4,6 +4,7 @@ class CreateActivities < ActiveRecord::Migration
       t.integer :user_id, :null => false
       t.string  :target_type, :limit => 40
       t.integer :target_id
+      t.string :target_name, :limit => 60
       t.integer :patron_id, :null => false
       t.string :patron_token, :limit => 20, :null => false
       

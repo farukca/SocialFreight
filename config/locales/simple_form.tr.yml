@@ -27,7 +27,7 @@ en:
       defaults:
         branch_id: "Şube"
         website: "Websitesi"
-        country_id: "Ülke"
+        country: "Ülke"
         district: "İlçe"
         tel: "Telefon"
         fax: "Faks"

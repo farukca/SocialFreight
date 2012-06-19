@@ -17,11 +17,11 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
     t.integer  "user_id",                    :null => false
     t.string   "target_type",  :limit => 40
     t.integer  "target_id"
+    t.string   "target_name",  :limit => 60
     t.integer  "patron_id",                  :null => false
     t.string   "patron_token", :limit => 20, :null => false
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
-    t.string   "target_name",  :limit => 60
   end
 
   add_index "activities", ["user_id", "patron_id", "patron_token"], :name => "index_activities_on_user_id_and_patron_id_and_patron_token"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
     t.string   "unload_point",     :limit => 1
     t.integer  "unload_place_id"
     t.integer  "city_id"
-    t.integer  "country_id"
+    t.string   "country_id",       :limit => 2
     t.string   "district",         :limit => 30
     t.string   "postcode",         :limit => 5
     t.string   "address",          :limit => 100
@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
     t.string   "district",     :limit => 40
     t.integer  "city_id"
     t.integer  "state_id"
-    t.integer  "country_id"
+    t.string   "country_id",   :limit => 2
     t.string   "status",       :limit => 1,  :default => "A"
     t.integer  "patron_id",                                   :null => false
     t.string   "patron_token", :limit => 20,                  :null => false
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
     t.string  "code",       :limit => 10
     t.string  "telcode",    :limit => 10
     t.integer "state_id"
-    t.integer "country_id"
+    t.string  "country_id", :limit => 2
     t.float   "latitude"
     t.float   "longitude"
     t.boolean "gmaps"
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
   end
 
   add_index "comments", ["commentable_type", "commentable_id"], :name => "index_comments_on_commentable_type_and_commentable_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "companies", :force => true do |t|
     t.string   "name",         :limit => 50,                   :null => false
@@ -131,7 +132,7 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
     t.string   "district",     :limit => 40
     t.integer  "city_id"
     t.integer  "state_id"
-    t.integer  "country_id"
+    t.string   "country_id",   :limit => 2
     t.string   "status",       :limit => 1,   :default => "A"
     t.integer  "branch_id"
     t.integer  "patron_id",                                    :null => false
@@ -145,11 +146,11 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
     t.string   "notes",        :limit => 250
     t.string   "description",  :limit => 250
     t.integer  "saler_id"
+    t.integer  "user_id",                                      :null => false
     t.integer  "company_no"
     t.string   "slug",         :limit => 40
     t.datetime "created_at",                                   :null => false
     t.datetime "updated_at",                                   :null => false
-    t.integer  "user_id",                                      :null => false
   end
 
   add_index "companies", ["name", "patron_id", "patron_token"], :name => "index_companies_on_name_and_patron_id_and_patron_token", :unique => true
@@ -160,26 +161,28 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
     t.string   "name",         :limit => 30
     t.string   "surname",      :limit => 30, :null => false
     t.integer  "company_id"
-    t.integer  "user_id"
+    t.integer  "user_id",                    :null => false
     t.string   "salutation",   :limit => 5
     t.string   "email",        :limit => 90
     t.string   "tel",          :limit => 15
     t.string   "gsm",          :limit => 15
-    t.string   "twitter",      :limit => 50
-    t.string   "facebook",     :limit => 50
-    t.string   "linkedin",     :limit => 50
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
-    t.string   "slug",         :limit => 60
-    t.string   "patron_token", :limit => 40
     t.string   "jobtitle",     :limit => 40
     t.string   "department",   :limit => 60
     t.string   "tel2",         :limit => 20
     t.string   "fax",          :limit => 20
     t.date     "birthdate"
     t.integer  "patron_id"
+    t.string   "patron_token", :limit => 20
+    t.string   "twitter",      :limit => 50
+    t.string   "facebook",     :limit => 50
+    t.string   "linkedin",     :limit => 50
     t.string   "des"
+    t.string   "slug",         :limit => 60
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
+
+  add_index "contacts", ["company_id", "user_id"], :name => "index_contacts_on_company_id_and_user_id"
 
   create_table "containers", :force => true do |t|
     t.integer  "name",                                           :null => false
@@ -208,11 +211,13 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
     t.integer "period",                     :default => 0
   end
 
-  add_index "counters", ["patron_id", "counter_type", "operation", "period"], :name => "counters_unique_index", :unique => true
+  add_index "counters", ["counter_type", "patron_id"], :name => "index_counters_on_counter_type_and_patron_id", :unique => true
+  add_index "counters", ["patron_id", "counter_type", "operation", "period"], :name => "index_counters_unique", :unique => true
+  add_index "counters", ["patron_id", "operation"], :name => "index_counters_on_patron_id_and_operation"
 
-  create_table "countries", :force => true do |t|
+  create_table "countries", :id => false, :force => true do |t|
+    t.string  "code",      :limit => 2,  :null => false
     t.string  "name",      :limit => 40, :null => false
-    t.string  "code",      :limit => 10, :null => false
     t.string  "telcode",   :limit => 10
     t.float   "latitude"
     t.float   "longitude"
@@ -220,7 +225,9 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
     t.string  "slug",      :limit => 40
   end
 
-  create_table "currencies", :force => true do |t|
+  add_index "countries", ["slug"], :name => "index_countries_on_slug"
+
+  create_table "currencies", :id => false, :force => true do |t|
     t.string "code",       :limit => 5,                   :null => false
     t.string "name",       :limit => 40,                  :null => false
     t.string "symbol",     :limit => 1
@@ -234,7 +241,7 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
     t.string   "load_point",       :limit => 1
     t.integer  "load_place_id"
     t.integer  "city_id"
-    t.integer  "country_id"
+    t.string   "country_id",       :limit => 2
     t.string   "district",         :limit => 30
     t.string   "postcode",         :limit => 5
     t.string   "address",          :limit => 100
@@ -286,13 +293,15 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
     t.boolean  "glstatus",                    :default => false
     t.integer  "gldocno"
     t.integer  "user_id",                                        :null => false
+    t.integer  "branch_id",                                      :null => false
+    t.string   "doc_group",    :limit => 20
     t.integer  "patron_id",                                      :null => false
     t.string   "patron_token", :limit => 40,                     :null => false
     t.datetime "created_at",                                     :null => false
     t.datetime "updated_at",                                     :null => false
-    t.integer  "branch_id",                                      :null => false
-    t.string   "doc_group",    :limit => 20
   end
+
+  add_index "findocs", ["patron_id", "branch_id", "docdate", "doctype"], :name => "index_findocs_of_patron_branch"
 
   create_table "finunits", :force => true do |t|
     t.string   "name",         :limit => 50, :null => false
@@ -309,6 +318,8 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
   end
+
+  add_index "finunits", ["patron_id", "branch_id", "unit_type"], :name => "index_finunits_on_patron_id_and_branch_id_and_unit_type"
 
   create_table "follows", :force => true do |t|
     t.string   "follower_type"
@@ -332,8 +343,7 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
     t.string  "patron_token",   :limit => 20
   end
 
-  add_index "journals", ["journaled_type", "journaled_id", "journal_model", "process_date", "patron_id"], :name => "index_journals_on_journal_model_and_process_date_and_patron_id", :unique => true
-  add_index "journals", ["patron_id"], :name => "index_journals_on_patron_id"
+  add_index "journals", ["patron_id", "journaled_type", "journaled_id"], :name => "index_journals_on_patron_id_and_journaled_type_and_journaled_id"
 
   create_table "likes", :force => true do |t|
     t.string   "liker_type"
@@ -355,6 +365,7 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
     t.string   "paid_at",       :limit => 20
     t.string   "channel",       :limit => 30
     t.string   "load_type",     :limit => 1
+    t.integer  "branch_id",                                     :null => false
     t.integer  "company_id",                                    :null => false
     t.integer  "agent_id"
     t.integer  "user_id",                                       :null => false
@@ -380,15 +391,19 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
     t.string   "patron_token",  :limit => 20,                   :null => false
     t.string   "commodity",     :limit => 500
     t.string   "notes",         :limit => 500
-    t.datetime "created_at",                                    :null => false
-    t.datetime "updated_at",                                    :null => false
+    t.string   "load_coun",     :limit => 2
+    t.string   "unload_coun",   :limit => 2
     t.string   "status",        :limit => 1,   :default => "A"
-    t.integer  "branch_id",                                     :null => false
     t.string   "stage",         :limit => 4
     t.datetime "stage_date"
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
   end
 
-  add_index "loadings", ["patron_id", "patron_token"], :name => "index_loadings_on_patron_id_and_patron_token"
+  add_index "loadings", ["company_id", "load_coun", "unload_coun"], :name => "index_loadings_on_company_id_and_load_coun_and_unload_coun"
+  add_index "loadings", ["operation", "direction"], :name => "index_loadings_on_operation_and_direction"
+  add_index "loadings", ["patron_id", "patron_token", "branch_id"], :name => "index_loadings_on_patron_id_and_patron_token_and_branch_id"
+  add_index "loadings", ["position_id"], :name => "index_loadings_on_position_id"
   add_index "loadings", ["reference", "patron_id", "patron_token"], :name => "index_loadings_on_reference_and_patron_id_and_patron_token", :unique => true
 
   create_table "mentions", :force => true do |t|
@@ -414,7 +429,7 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
   add_index "nicks", ["patron_id", "name"], :name => "unique_nick_name", :unique => true
 
   create_table "operations", :id => false, :force => true do |t|
-    t.string "code",                         :null => false
+    t.string "code",           :limit => 20
     t.string "name",           :limit => 40, :null => false
     t.string "operation_type", :limit => 20, :null => false
   end
@@ -452,7 +467,7 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
     t.datetime "updated_at",                 :null => false
   end
 
-  add_index "partners", ["company_id", "partner_id", "partner_type"], :name => "company_partner_unique_index", :unique => true
+  add_index "partners", ["company_id", "partner_id", "partner_type"], :name => "index_company_partner_unique", :unique => true
   add_index "partners", ["company_id"], :name => "index_partners_on_company_id"
 
   create_table "patrons", :force => true do |t|
@@ -469,16 +484,16 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
     t.string   "contact_surname", :limit => 40
     t.integer  "city_id"
     t.integer  "state_id"
-    t.integer  "country_id"
+    t.string   "country_id",      :limit => 2
     t.string   "patron_type",     :limit => 20
     t.string   "employees",       :limit => 10
     t.string   "language",        :limit => 2
     t.string   "status",          :limit => 1,   :default => "A"
     t.string   "logo"
+    t.string   "token",           :limit => 40
+    t.string   "slug",            :limit => 40
     t.datetime "created_at",                                        :null => false
     t.datetime "updated_at",                                        :null => false
-    t.string   "slug",            :limit => 40
-    t.string   "token",           :limit => 40
     t.string   "time_zone",       :limit => 30
     t.string   "district",        :limit => 40
     t.string   "currency",        :limit => 10
@@ -500,6 +515,7 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
     t.string   "gender",       :limit => 1
     t.string   "email",        :limit => 40,                   :null => false
     t.string   "jobtitle",     :limit => 40
+    t.string   "department",   :limit => 40
     t.string   "hometel",      :limit => 15
     t.string   "busitel",      :limit => 15
     t.string   "exttel",       :limit => 15
@@ -512,7 +528,7 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
     t.string   "district",     :limit => 40
     t.integer  "city_id"
     t.integer  "state_id"
-    t.integer  "country_id"
+    t.string   "country_id",   :limit => 2
     t.string   "status",       :limit => 1,   :default => "A"
     t.integer  "branch_id"
     t.integer  "patron_id",                                    :null => false
@@ -530,7 +546,6 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
     t.string   "slug",         :limit => 60
     t.datetime "created_at",                                   :null => false
     t.datetime "updated_at",                                   :null => false
-    t.string   "department",   :limit => 40
   end
 
   add_index "people", ["patron_id", "patron_token"], :name => "index_people_on_patron_id_and_patron_token"
@@ -540,12 +555,12 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
   create_table "places", :force => true do |t|
     t.string   "name",        :limit => 50
     t.string   "code",        :limit => 20
-    t.string   "place_type",  :limit => 10
+    t.string   "place_type",  :limit => 4
     t.string   "district",    :limit => 30
     t.string   "postcode",    :limit => 5
     t.string   "address",     :limit => 100
     t.integer  "city_id"
-    t.integer  "country_id"
+    t.string   "country_id",  :limit => 2
     t.float    "longitude"
     t.float    "latitude"
     t.boolean  "gmaps"
@@ -564,6 +579,7 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
     t.string   "incoterm",        :limit => 20
     t.string   "paid_at",         :limit => 20
     t.string   "load_type",       :limit => 1
+    t.integer  "branch_id",                                       :null => false
     t.integer  "agent_id"
     t.integer  "user_id",                                         :null => false
     t.integer  "load_place_id"
@@ -572,6 +588,10 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
     t.datetime "unload_date"
     t.decimal  "freight_price",                  :default => 0.0
     t.string   "freight_curr",    :limit => 5
+    t.decimal  "agent_price",                    :default => 0.0
+    t.string   "agent_curr",      :limit => 3
+    t.string   "waybill_no",      :limit => 30
+    t.date     "waybill_date"
     t.string   "status",          :limit => 4,   :default => "A"
     t.date     "report_date"
     t.string   "stage",           :limit => 4
@@ -590,14 +610,10 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
     t.string   "patron_token",    :limit => 20,                   :null => false
     t.datetime "created_at",                                      :null => false
     t.datetime "updated_at",                                      :null => false
-    t.decimal  "agent_price",                    :default => 0.0
-    t.string   "agent_curr",      :limit => 3
-    t.integer  "branch_id",                                       :null => false
-    t.string   "waybill_no",      :limit => 30
-    t.date     "waybill_date"
   end
 
-  add_index "positions", ["patron_id", "patron_token"], :name => "index_positions_on_patron_id_and_patron_token"
+  add_index "positions", ["operation", "direction"], :name => "index_positions_on_operation_and_direction"
+  add_index "positions", ["patron_id", "patron_token", "branch_id"], :name => "index_positions_on_patron_id_and_patron_token_and_branch_id"
   add_index "positions", ["reference", "patron_id", "patron_token"], :name => "index_positions_on_reference_and_patron_id_and_patron_token", :unique => true
 
   create_table "posts", :force => true do |t|
@@ -617,6 +633,7 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
 
   add_index "posts", ["patron_id", "patron_token"], :name => "index_posts_on_patron_id_and_patron_token"
   add_index "posts", ["target_type", "target_id"], :name => "index_posts_on_target_type_and_target_id"
+  add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
 
   create_table "queue_classic_jobs", :force => true do |t|
     t.string   "q_name"
@@ -657,7 +674,7 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
     t.string   "status",         :limit => 4
     t.date     "report_date1"
     t.date     "report_date2"
-    t.integer  "country_id"
+    t.string   "country_id",     :limit => 2
     t.integer  "city_id"
     t.boolean  "searched",                     :default => true
     t.integer  "patron_id",                                      :null => false
@@ -672,7 +689,7 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
     t.string  "name",       :limit => 40, :null => false
     t.string  "code",       :limit => 10
     t.string  "telcode",    :limit => 10
-    t.integer "country_id"
+    t.string  "country_id", :limit => 2
     t.float   "latitude"
     t.float   "longitude"
     t.boolean "gmaps"
@@ -735,6 +752,8 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
     t.string   "doc3_no",         :limit => 20
     t.string   "doc4_no",         :limit => 20
     t.string   "notes",           :limit => 500
+    t.string   "departure_coun",  :limit => 2
+    t.string   "arrival_coun",    :limit => 2
     t.datetime "created_at",                                      :null => false
     t.datetime "updated_at",                                      :null => false
   end
@@ -769,15 +788,16 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
     t.string   "role"
     t.string   "avatar"
     t.string   "slug"
+    t.integer  "branch_id",                                     :default => 0,                            :null => false
     t.datetime "created_at",                                                                              :null => false
     t.datetime "updated_at",                                                                              :null => false
     t.string   "remember_me_token"
     t.datetime "remember_me_token_expires_at"
-    t.integer  "branch_id",                                     :default => 0,                            :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["patron_id", "patron_key"], :name => "index_users_on_patron_id_and_patron_key"
+  add_index "users", ["patron_id", "slug"], :name => "index_users_on_patron_id_and_slug", :unique => true
   add_index "users", ["remember_me_token"], :name => "index_users_on_remember_me_token"
 
   create_table "users_roles", :id => false, :force => true do |t|
@@ -827,6 +847,8 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
   end
+
+  add_index "vessels", ["owner"], :name => "index_vessels_on_owner"
 
   create_table "waybills", :force => true do |t|
     t.string   "reference",        :limit => 40

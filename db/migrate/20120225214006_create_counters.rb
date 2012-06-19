@@ -8,6 +8,6 @@ class CreateCounters < ActiveRecord::Migration
       t.integer :patron_id, :null => false
     end
 
-    add_index :counters, [:counter_type, :patron_id], :unique => true
+    add_index :counters, [:patron_id, :counter_type, :operation], :unique => true
   end
 end

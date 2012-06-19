@@ -9,7 +9,7 @@ class CreatePartners < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :partners, ["company_id", "partner_id", "partner_type"], :name => "company_partner_unique_index", :unique => true
+    add_index :partners, ["company_id", "partner_id", "partner_type"], :name => "index_company_partner_unique", :unique => true
     add_index :partners, :company_id
   end
 end

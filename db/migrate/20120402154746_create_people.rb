@@ -9,6 +9,7 @@ class CreatePeople < ActiveRecord::Migration
       t.string  :gender, :limit => 1
       t.string  :email, :limit => 40, :null => false
       t.string  :jobtitle, :limit => 40
+      t.string  :department, :limit => 40
       t.string  :hometel, :limit => 15
       t.string  :busitel, :limit => 15
       t.string  :exttel, :limit => 15
@@ -21,7 +22,7 @@ class CreatePeople < ActiveRecord::Migration
       t.string  :district, :limit => 40
       t.integer :city_id
       t.integer :state_id
-      t.integer :country_id
+      t.string  :country_id, :limit => 2
       t.string  :status, :limit => 1, :default => 'A'
       t.integer :branch_id
       t.integer :patron_id, :null => false

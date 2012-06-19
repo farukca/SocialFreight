@@ -17,5 +17,6 @@ class CreatePosts < ActiveRecord::Migration
     
     add_index :posts, [:target_type, :target_id]
     add_index :posts, [:patron_id, :patron_token]
+    add_index :posts, :user_id
   end
 end

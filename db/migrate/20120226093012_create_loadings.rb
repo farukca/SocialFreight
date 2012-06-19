@@ -9,6 +9,7 @@ class CreateLoadings < ActiveRecord::Migration
       t.string  :paid_at, :limit => 20
       t.string  :channel, :limit => 30
       t.string  :load_type, :limit => 1
+      t.integer :branch_id, :null => false
       t.integer :company_id, :null => false
       t.integer :agent_id
       t.integer :user_id, :null => false
@@ -34,11 +35,19 @@ class CreateLoadings < ActiveRecord::Migration
       t.string  :patron_token, :limit => 20, :null => false
       t.string  :commodity, :limit => 500
       t.string  :notes, :limit => 500
-            
+      t.string  :load_coun, :limit => 2
+      t.string  :unload_coun, :limit => 2
+      t.string  :status, :limit => 1, :default => 'A'
+      t.string  :stage, :limit => 4
+      t.timestamp :stage_date
+      
       t.timestamps
     end
     
     add_index :loadings, [:reference, :patron_id, :patron_token], :unique => true
-    add_index :loadings, [:patron_id, :patron_token]
+    add_index :loadings, [:patron_id, :patron_token, :branch_id]
+    add_index :loadings, :position_id
+    add_index :loadings, [:operation, :direction]
+    add_index :loadings, [:company_id, :load_coun, :unload_coun]
   end
 end
