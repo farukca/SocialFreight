@@ -1,1 +1,1 @@
-ENV["DATABASE_URL"] = "postgres://postgres:12345@localhost/socialfreight_development"
+ENV["DATABASE_URL"] = "postgres://sfadmin:freighter6@localhost/sf_prod"
