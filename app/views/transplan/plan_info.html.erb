@@ -1,16 +1,35 @@
-<div id="position">
+<div id="opform" class="row-fluid">
 
-  <%= render 'breadcrumb' %>
-  <div id="opform">
-    <%= simple_form_for @position, :html => {:class => 'form-horizontal'}, :validate => true do |f| %>
-      <%= f.error_notification %>
+  <div class="pageBlock">
 
-      <%= render 'positions/form_main', :f => f %>
+    <%= render 'shared/form_header', message: "Planlama Yük Seçimi" %>
+    <%= render 'breadcrumb' %>
+    
+    <div id="selected-loads" class="row-fluid">
+      <%= render 'loadings/loadings', loadings: @loadings, showsums: true  %>
+    </div>
 
-      <div class="controls rightside">
-        <%#= link_to "Bu Adımı Atla >>", next_wizard_path, :class => 'btn btn-danger' %>
-        <%= f.button :submit, "Kaydet & Güzergah Seçimine Devam Et >>", :class => 'btn btn-info' %>
-      </div>
-    <% end %>
+    <div class="row-fluid">
+      <%= simple_form_for @position, url: wizard_path, method: :put, html: { class: 'form-horizontal'}, validate: true do |f| %>
+        <%= f.error_notification %>
+
+        <%#= render 'positions/form_main', :f => f %>
+        <%= f.error :base %>
+        
+        <div class="controls rightside">
+          <%#= link_to "<< Önceki Adıma Geri Dön", previous_wizard_path, :class => 'btn btn-danger' %>
+          <%= link_to "Mevcut Pozisyona Ekleyeceğim", "#", :class => 'togglebutton btn btn-info', "data-placement" => "below",  "rel" => 'twipsy', "title" => "Detaylı Ara", "data-href" => "#position-search-form" %>
+          <%= f.button :submit, "Yeni Pozisyon Açacağım >>", :class => 'btn btn-info' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div id="position-search-form" class="row-fluid slidingDiv">
+    <%= render 'searches/position_form' %>
+    <div id="positions" class="row-fluid">
+      <table class="table" id="positions-table">
+      
+      </table>
+    </div>
   </div>
 </div>

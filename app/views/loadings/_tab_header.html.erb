@@ -12,8 +12,12 @@
     <dd><%= Position.payment_types[loading.paid_at] %></dd>
     <dd><%= loading.incoterm %></dd>
     <dd><%= Loading.load_types[loading.load_type] %></dd>
-    <dd><%= link_to "Ayarlar", transplan_path(:select_loads, :loading_ids => loading.id), :class => 'btn btn-info' %></dd>
-    <dd><%= link_to loading.position_name.upcase, position_path(loading.position) %></dd>
+    <dd>
+      <% if loading.position_id.nil? %>
+        <%= link_to "Taşıma Planlanmamış, Planlamak için tıklayınız", transplan_path(:select_loads, :loading_ids => loading.id), :class => 'btn btn-info' %></dd>
+      <% else %>
+        <%= link_to loading.position.reference, position_path(loading.position) %>
+      <% end %>
   </dl>
 </div>
 

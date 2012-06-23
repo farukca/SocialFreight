@@ -2,13 +2,13 @@
 <%= simple_form_for @search, :html => {:class => 'form-horizontal'}, :remote => true do |f| %>
   <fieldset>
   <div class="row-fluid">
-    <div class="span5">
+    <div class="span6">
     <%= f.input :direction do %>
       <%= f.input_field :direction, :as => :select, :collection => Position.direction_types.map { |r| [r[1], r[0] ] },:class => "input-medium", :include_blank => false %>
       <%= f.input_field :branch_id, :as => :select, :collection => current_patron.branches, :class => "input-medium" %>
     <% end %>
     </div>
-    <div class="span7">
+    <div class="span6">
     <%= f.input :docdate1, :label => "Load Date" do %>
       <%= f.input_field :docdate1, :as => "string", :class => "input-small", "data-datepicker" => "datepicker" %>
       <%= f.input_field :docdate2, :as => "string", :class => "input-small", "data-datepicker" => "datepicker" %>

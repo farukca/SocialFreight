@@ -8,4 +8,14 @@ jQuery ->
       url: "/loadings/" + $(this).data('loadid') + "/addtoplan"
       success: ->
         parentTR.toggle()
+      errors: (evt, xhr, status, error) ->
+	    try
+	      errors = $.parseJSON(xhr.responseText)
+	    catch err
+	      errors = message: "Please reload the page and try again"
+	    errorText = "There were errors with the submission: \n<ul>"
+	    for error of errors
+	      errorText += "<li>" + error + ": " + errors[error] + "</li> "
+	    errorText += "</ul>"
+	    $("#messages").html errorText
     return false

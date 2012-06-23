@@ -107,10 +107,18 @@ class LoadingsController < ApplicationController
 
   def addtoplan
     loadid = params[:id]
-    debugger
+    @loading = Loading.find(loadid)
+    @plan_operation = session[:plan_operation]
+    @plan_direction = session[:plan_direction]
+    if @loading.operation != @plan_operation
+      errors.add('Operations different')
+    end
+    if @loading.direction != @plan_direction
+      errors.add('Import Export selection must be different')
+    end
+    
     i = session[:loading_ids].length
     session[:loading_ids][i] = params[:id]
-    @loading = Loading.find(params[:id])
   end
 
 end

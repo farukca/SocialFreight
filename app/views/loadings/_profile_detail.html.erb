@@ -3,10 +3,10 @@
     <table style="width:100%" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td><h3><%= @loading.reference.upcase %></h3></td>
-        <td colspan="3"><%= render 'tab_header', :loading => @loading %></td>
-        <td style="text-align:right">
-          <%= link_to "Edit", edit_loading_path(@loading), :class => 'btn primary' %>
-        </td>
+        <td colspan="4"><%= render 'tab_header', :loading => @loading %></td>
+        <!--td style="text-align:right">
+          <%#= link_to "Edit", edit_loading_path(@loading), :class => 'btn primary' %>
+        </td-->
       </tr>
       <tr>
         <td class="labelCol2">Müşteri :</td>

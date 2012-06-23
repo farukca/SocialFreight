@@ -1,0 +1,30 @@
+<div id="opform" class="row-fluid">
+
+  <div class="pageBlock">
+
+    <%= render 'shared/form_header', message: "Planlama Yük Seçimi" %>
+    <%= render 'breadcrumb' %>
+
+    <div class="row-fluid">
+      <%= simple_form_for @position, url: wizard_path, method: :put, html: { class: 'form-horizontal'}, validate: true do |f| %>
+        <%= f.error_notification %>
+
+        <%#= render 'positions/form_main', :f => f %>
+        <%= f.error :base %>
+        <%= f.fields_for :transnodes do |builder| %>
+          <%= render 'positions/transnodes_fields', :f => builder %>
+        <% end %>
+
+        <%= f.input :operation, :as => :hidden %>
+        <%= f.input :direction, :as => :hidden %>
+
+        <div class="controls rightside">
+          <%#= link_to "<< Önceki Adıma Geri Dön", previous_wizard_path, :class => 'btn btn-danger' %>
+          <%#= link_to "Mevcut Pozisyona Ekleyeceğim", "#", :class => 'togglebutton btn btn-info', "data-placement" => "below",  "rel" => 'twipsy', "title" => "Detaylı Ara", "data-href" => "#position-search-form" %>
+          <%= f.button :submit, "Yükleri Bu Pozisyona Bağla >>", :class => 'btn btn-info' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>

@@ -19,7 +19,9 @@ class Position < ActiveRecord::Base
 
   has_many :transnodes, dependent: :destroy
   accepts_nested_attributes_for :transnodes, :reject_if => lambda { |a| a[:trans_method].blank? }, :allow_destroy => true
-  
+
+  attr_accessor :loading_ids
+
   attr_accessible :operation, :direction, :incoterm, :paid_at, :load_type, :agent_id, :user_id, :load_place_id, :load_date, 
                    :unload_place_id, :unload_date, :freight_price, :freight_curr, :status, :report_date, :stage, :stage_date, 
                    :ref_no1, :ref_type1, :ref_no2, :ref_type2, :ref_no3, :ref_type3, :ref_no4, :ref_type4, :notes, :agent_price, 
@@ -97,17 +99,30 @@ class Position < ActiveRecord::Base
     reference
   end
 
+    def normalize_friendly_id(string)
+      super.upcase.gsub("-", ".")
+    end
+
   private
   def set_initials
     self.reference = self.patron.generate_counter("Position", self.operation, self.direction)
     #counter = self.patron.generate_counter("Position", self.operation, self.direction)
     #self.reference = self.operation + "." + self.direction + "." + sprintf('%07d', counter)
     #self.patron_token = current_patron.token if self.patron_token.blank?
-    #set_friendly_id(self.reference)
+    set_slug(self.reference)
   end
 
   private
   def set_after_jobs
+    if self.loading_ids.length > 0
+      loading_ids.each do |loadid|
+        @loading = Loading.find(loadid)
+        if @loading
+          @loading.position_id = self.id
+          @loading.save
+        end
+      end
+    end
     self.user.follow!(self) if self.user
     self.user.create_activity(self, reference, patron_id, patron_token)
     #patron.set_activity(self, 'create', user.id, 'created', user.full_name)

@@ -1,18 +1,20 @@
 <div id="loading_list">
-  <table class="table table-striped table-bordered table-condensed">
-    <tr>
-      <th style="width:2%"></th>
-      <th class="span1">Referans</th>
-      <th class="span1">Direction</th>
-      <th>Müşteri</th>
-      <th class="span1">Tipi</th>
-      <th>Yükl. Ülke</th>
-      <th>Boşl. Ülke</th>
-      <th>Navlun</th>
-      <th class="span1">Ağırlık</th>
-      <th>Mal Detayı</th>
-    </tr>
-
+  <table id="selected-loads-table" class="table table-striped table-bordered table-condensed">
+    <%= render 'loadings/table_tr' %>
     <%= render loadings %>
+    <% if showsums.present? %>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th>TOPLAM</th>
+        <th><%= loadings.sum(&:freight_price) %></th>
+        <th><%= loadings.sum(&:brut_wg) %></th>
+        <th></th>
+      </tr>
+    <% end %>
   </table>
 </div>

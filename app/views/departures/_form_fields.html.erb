@@ -5,17 +5,17 @@
         <%= f.input_field :country_id, :as => :select, :collection => Country.all, :include_blank => true, :class => "input-small" %>
         <%= f.grouped_collection_select :city_id, Country.order(:name), :cities, :name, :id, :name, {:include_blank => true}, {:class => "input-small"} %>
       <% end %>
-      <%= f.input :load_point, :as => :select, :collection => Loading.point_types.map { |r| [r[1], r[0] ] } %>
-      <%= f.input :pickup_date, :label => "Prepared/Load Date", :input_html => {:class => "inline-inputs"} do %>
-        <%= f.input_field :pickup_date, :as => :string, :class => "input-small", "data-datepicker" => "datepicker" %>
-        <%= f.input_field :load_date, :as => :string, :class => "input-small", "data-datepicker" => "datepicker" %>
-      <% end %>
       <%= f.input :load_place_id, :as => :select, :input_html => {:class => "chosen_input", "data-url" => "/places.json" } %>
+      <%= f.input :load_point, :as => :select, :collection => Loading.point_types.map { |r| [r[1], r[0] ] }, :include_blank => false %>
+      <%= f.input :load_date, :as => :string, :input_html => { :class => "input-small", "data-datepicker" => "datepicker" } %>
+      <div id="customer_loading_address">
       <%= f.input :district, :label => "Semt" do %>
         <%= f.input_field :district, :class => "input-small" %>
         <%= f.input_field :postcode, :class => "input-small" %>
       <% end %>
-      <%= f.input :address, :as => :text, :input_html => {:rows => 1, :cols => 37} %>
+      <%= f.input :address, :as => :text, :input_html => {:rows => 2, :cols => 37} %>
+      <%= f.input :pickup_date, :as => :string, :input_html => { :class => "input-small", "data-datepicker" => "datepicker" } %>
+      </div>
     </fieldset>
   </div>
   <div class="span6">
@@ -27,7 +27,7 @@
         <%= f.input_field :statement, :class => "input-small" %>
         <%= f.input_field :statement_date, :as => :string, :class => "input-small", "data-datepicker" => "datepicker" %>
       <% end %>
-      <%= f.input :notes, :as => :text, :input_html => {:rows => 1} %>
+      <%= f.input :notes, :as => :text, :input_html => {:rows => 2} %>
     </fieldset>
   </div>
 </div>
