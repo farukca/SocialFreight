@@ -1,7 +1,7 @@
 class CitiesController < ApplicationController
 
   before_filter :require_login
-  caches_action :index
+  #caches_action :index
 
   def new
     @city = City.new
@@ -17,7 +17,8 @@ class CitiesController < ApplicationController
   end
 
   def index
-    @cities = City.where(:name => /#{params[:q]}/i).limit(10)
+    #@cities = City.where(:name => /#{params[:q]}/i).limit(10)
+    @cities = City.where("country_id = ?", params[:country_id] )
 
     respond_to do |format|
       format.html # index.html.erb

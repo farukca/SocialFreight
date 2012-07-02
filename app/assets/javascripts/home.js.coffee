@@ -35,3 +35,6 @@ jQuery ->
     url = $(this).attr('href')
     $(target).load(url)
     event.preventDefault()
+
+jQuery ->
+  $("form:not(.filter) :input:visible:enabled:first").focus()

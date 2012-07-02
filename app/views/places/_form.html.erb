@@ -9,9 +9,9 @@
         <%= f.input :address %>
         <%= f.input :postcode %>
         <%= f.input :district %>
-        <%= f.input :country_id, :as => :select, :collection => Country.all, :include_blank => false %>
+        <%= f.input :country_id, :as => :select, :collection => Country.all, :include_blank => false, input_html: { class: "country_select" }, "data-placeholder" => "Ülkesini Seçiniz" %>
         <%#= f.input :state_id %>
-        <%= f.input :city_id, :as => :select, :collection => City.all, :include_blank => false %>
+        <%= f.input :city_id, :as => :select, :collection => [[@place.city_id ? @place.city.name : "", @place.city_id]], :include_blank => false, input_html: { class: "city_select" }, "data-placeholder" => "Şehir Seçiniz" %>
         <%= f.input :description, :as => :text, :input_html => {:rows => "3"} %>
         <div class="control">
           <%= f.button :submit, :class => 'btn btn-primary' %>

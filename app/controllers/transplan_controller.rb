@@ -30,7 +30,7 @@ class TransplanController < ApplicationController
         @position.operation = session[:plan_operation]
         @position.direction = session[:plan_direction]
 
-        @position.transnodes.build(trans_method: @position.operation)
+        @transport = @position.transports.build(trans_method: @position.operation)
     end
 
     @search = Search.new
@@ -58,6 +58,7 @@ class TransplanController < ApplicationController
         @position.loading_ids  = session[:loading_ids]
         @position.save!
         session[:loading_ids] = []
+        redirect_to @position
     end
     render_wizard
   end

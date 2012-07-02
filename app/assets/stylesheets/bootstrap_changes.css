@@ -17,6 +17,12 @@ legend span.subtitle {
 .input-small {
   width: 98px;
 }
+.input-date {
+  width: 70px;
+}
+.input-hour {
+  width: 40px;
+}
 select.input-small {
   width: 108px;
 }
@@ -32,4 +38,11 @@ dl {
 }
 .btn-toolbar {
   margin-bottom: 0;
+}
+.form-horizontal table.inline-form-table .controls {
+margin-left: 0px;
+}
+.table th, .table td {
+  padding: 0px;
+  text-align: center;
 }

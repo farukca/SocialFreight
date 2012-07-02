@@ -24,11 +24,11 @@ class City < ActiveRecord::Base
   end
 
   def token_inputs
-    { :id => _id, :name => name }
+    { :id => id, :name => name }
   end
 
   def prepopulate_tokens
-    [{ :id => _id, :name => name }]
+    [{ :id => id, :name => name }]
   end
 
 end

@@ -4,7 +4,7 @@
     <dd><%= position.branch.name %></dd>
     <dd><%= Position.direction_types[@position.direction] %></dd>
     <dd><%= Position.payment_types[position.paid_at] %></dd>
-    <dd><%= I18n.t("listitems.loadtype.#{position.operation}.#{Loading.load_types[position.load_type]}") %></dd>
+    <dd><%= I18n.t("listitems.loadtype.#{position.operation}.#{Loading.load_types[position.load_type]}") if position.load_type %></dd>
     <dd>&nbsp;</dd>
   </dl>
 </div>

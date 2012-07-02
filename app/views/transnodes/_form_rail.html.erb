@@ -1,0 +1,25 @@
+<legend>Vagon-Sefer Bilgileri</legend>
+<div class="row-fluid">
+  <div class="span6">
+      <%= f.input :vessel, :label => "TNR No", hint: "TNR No" %>
+      <%= f.input :voyage, :label => "Sefer No", hint: "Sefer/Katar No" %>
+      <%= f.input :departure_place, :class => "input-small", label: "Departure Station" %>
+      <%= f.input :departure_date, :as => "string", :input_html => {:class => "input-small", "data-datepicker" => "datepicker"} %>
+
+      <%= f.input :arrival_place, :class => "input-small", label: "Final Arrival Station" %>
+      <%= f.input :arrival_date, :as => "string", :input_html => {:class => "input-small", "data-datepicker" => "datepicker"} %>
+      <%= f.input :trans_method, :as => :hidden %>
+      <%= f.input :fromwhere, :as => :hidden %>
+  </div>
+  <div class="span6">
+      <%= f.input :doc1_no, :label => "Vagon No(s)", hint: "Vagon Numaraları, virgül ile birden fazla girebilirsiniz" %>
+      <%= f.input :transporter_id, :as => :select, :collection => [[@transnode.transporter_id ? @transnode.transporter.name : "", @transnode.transporter_id]], :label => I18n.t("position.#{@transnode.trans_method}.label.transporter"), :input_html => {:class => "chosen_input", "data-url" => "/companies.json" }, hint: "Demiryolu Firması, T.C.D.D. gibi" %>
+      <%= f.input :supplier_id, :as => :select, :collection => [[@transnode.supplier_id ? @transnode.supplier.name : "", @transnode.supplier_id]], :label => I18n.t("position.#{@transnode.trans_method}.label.supplier"), :input_html => {:class => "chosen_input", "data-url" => "/companies.json" }, hint: "Demiryolu Acentası" %>
+      <%= f.input :freight_price do %>
+        <%= f.input_field :freight_price, :class => "input-small" %>
+        <%= f.input_field :freight_curr, :as => :select, :collection => Currency.all, :include_blank => false, :class => "input-small" %>
+      <% end %>
+      <%#= f.input :vessel2, :label => "Additional Vessel" %>
+      <%= f.input :notes, :as => :text, :input_html => {:rows => "2"} %>
+  </div>
+</div>

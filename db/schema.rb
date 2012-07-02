@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120609134822) do
+ActiveRecord::Schema.define(:version => 20120630234350) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                    :null => false
@@ -211,9 +211,7 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
     t.integer "period",                     :default => 0
   end
 
-  add_index "counters", ["counter_type", "patron_id"], :name => "index_counters_on_counter_type_and_patron_id", :unique => true
   add_index "counters", ["patron_id", "counter_type", "operation", "period"], :name => "index_counters_unique", :unique => true
-  add_index "counters", ["patron_id", "operation"], :name => "index_counters_on_patron_id_and_operation"
 
   create_table "countries", :id => false, :force => true do |t|
     t.string  "code",      :limit => 2,  :null => false
@@ -429,7 +427,7 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
   add_index "nicks", ["patron_id", "name"], :name => "unique_nick_name", :unique => true
 
   create_table "operations", :id => false, :force => true do |t|
-    t.string "code",           :limit => 20
+    t.string "code",           :limit => 20, :null => false
     t.string "name",           :limit => 40, :null => false
     t.string "operation_type", :limit => 20, :null => false
   end
@@ -759,6 +757,40 @@ ActiveRecord::Schema.define(:version => 20120609134822) do
   end
 
   add_index "transnodes", ["position_id"], :name => "index_transnodes_on_position_id"
+
+  create_table "transports", :force => true do |t|
+    t.integer  "position_id"
+    t.string   "trans_method",   :limit => 20
+    t.string   "vessel",         :limit => 20
+    t.string   "truck",          :limit => 20
+    t.string   "voyage",         :limit => 20
+    t.string   "vagon"
+    t.string   "waybill_no",     :limit => 40
+    t.date     "waybill_date"
+    t.string   "driver_name",    :limit => 60
+    t.integer  "driver_id"
+    t.integer  "owner_id"
+    t.integer  "supplier_id"
+    t.integer  "dep_place_id"
+    t.integer  "dep_city_id"
+    t.string   "dep_country_id", :limit => 2
+    t.integer  "arv_place_id"
+    t.integer  "arv_city_id"
+    t.string   "arv_country_id", :limit => 2
+    t.date     "departure_date",                                    :null => false
+    t.string   "departure_hour", :limit => 5
+    t.date     "arrival_date",                                      :null => false
+    t.string   "arrival_hour",   :limit => 5
+    t.decimal  "freight_price",                  :default => 0.0
+    t.string   "freight_curr",   :limit => 5
+    t.string   "notes",          :limit => 1000
+    t.datetime "created_at",                                        :null => false
+    t.datetime "updated_at",                                        :null => false
+    t.boolean  "waybill_flag",                   :default => false
+    t.integer  "user_id",                                           :null => false
+    t.string   "dep_place_type", :limit => 1
+    t.string   "arv_place_type", :limit => 1
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                           :limit => 40,                                           :null => false

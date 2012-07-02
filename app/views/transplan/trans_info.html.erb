@@ -11,8 +11,8 @@
 
         <%#= render 'positions/form_main', :f => f %>
         <%= f.error :base %>
-        <%= f.fields_for :transnodes do |builder| %>
-          <%= render 'positions/transnodes_fields', :f => builder %>
+        <%= f.fields_for :transports do |builder| %>
+          <%= render "transports/form_#{@position.operation}", f: builder %>
         <% end %>
 
         <%= f.input :operation, :as => :hidden %>

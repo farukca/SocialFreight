@@ -1,0 +1,25 @@
+<div id="opform">
+  <%= simple_form_for [@position, @transport], html: { class: 'form-horizontal' }, validate: true do |f| %>
+  <%= f.error_notification %>
+  <%= f.error :base, :error_method => :to_sentence %>
+  <fieldset>
+
+  <div class="pageBlock">
+    <%= render 'shared/form_buttonsh', :f => f %>
+ 
+    <!--div class="tabbable tabs-below"-->
+    <div>
+
+      <div id="my-tab-content" class="tab-content">
+        <div id="transport-main-form" class="tab-pane active">
+          <%= render "form_#{@transport.trans_method}", :f => f %>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  </fieldset>
+<% end %>
+</div>

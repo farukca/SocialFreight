@@ -1,5 +1,7 @@
 Socialfreight::Application.routes.draw do
 
+  get "transports/index"
+
   get "logout" => "sessions#destroy", :as => "logout"
   get "login"  => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
@@ -30,7 +32,7 @@ Socialfreight::Application.routes.draw do
   resources :branches
   resources :people
   resources :positions do
-    resources :transnodes
+    resources :transports
     resources :comments
     member do
       get :addload

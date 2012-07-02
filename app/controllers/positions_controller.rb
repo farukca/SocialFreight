@@ -79,13 +79,10 @@ class PositionsController < ApplicationController
   end
 
   def addload
-    @position = Position.find(params[:id])
     @loadids  = params[:loadids]
-    @loadids.split(',').each do |load|
-      @loading = Load.find_by_id(load)
-      if @loading.position_id.nil?
-        @loading.update_attributes(:position_id => @position.id)
-      end
+    unless @loadids.blank?
+      @position = Position.find(params[:id])  
+      @position.connect_loadings(loadids)
     end
   end
 

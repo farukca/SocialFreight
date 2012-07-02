@@ -17,8 +17,8 @@ class Position < ActiveRecord::Base
   has_many :loadings, dependent: :nullify
   has_many :comments, as: :commentable, dependent: :destroy
 
-  has_many :transnodes, dependent: :destroy
-  accepts_nested_attributes_for :transnodes, :reject_if => lambda { |a| a[:trans_method].blank? }, :allow_destroy => true
+  has_many :transports, dependent: :destroy
+  accepts_nested_attributes_for :transports, :reject_if => lambda { |a| a[:trans_method].blank? }, :allow_destroy => true
 
   attr_accessor :loading_ids
 
@@ -99,9 +99,9 @@ class Position < ActiveRecord::Base
     reference
   end
 
-    def normalize_friendly_id(string)
-      super.upcase.gsub("-", ".")
-    end
+  def normalize_friendly_id(string)
+    super.upcase.gsub("-", ".")
+  end
 
   private
   def set_initials
@@ -109,24 +109,31 @@ class Position < ActiveRecord::Base
     #counter = self.patron.generate_counter("Position", self.operation, self.direction)
     #self.reference = self.operation + "." + self.direction + "." + sprintf('%07d', counter)
     #self.patron_token = current_patron.token if self.patron_token.blank?
-    set_slug(self.reference)
+    set_slug(self.reference.gsub("-", "."))
   end
 
   private
   def set_after_jobs
     if self.loading_ids.length > 0
-      loading_ids.each do |loadid|
-        @loading = Loading.find(loadid)
-        if @loading
-          @loading.position_id = self.id
-          @loading.save
-        end
-      end
+      connect_loadings(self.loading_ids)
     end
     self.user.follow!(self) if self.user
     self.user.create_activity(self, reference, patron_id, patron_token)
     #patron.set_activity(self, 'create', user.id, 'created', user.full_name)
     Patron.journal_record(patron, user, branch, nil, self.class.name, 1, 0)
+    Nick.log(self, self.slug, patron_id)
+  end
+
+  private
+  def connect_loadings(loadids)
+    loadids.each do |loadid|
+      @loading = Loading.find(loadid)
+      if @loading && (@loading.operation == self.operation) && (@loading.direction == self.direction) && @loading.position_id.nil?
+        @loading.update_attributes(:position_id => self.id)
+        #@loading.position_id = self.id
+        #@loading.save
+      end
+    end
   end
 
 end
