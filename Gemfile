@@ -53,6 +53,7 @@ gem 'exception_notification'
 gem 'jquery-rails'
 gem 'execjs'
 gem 'therubyracer'
+gem 'select2-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

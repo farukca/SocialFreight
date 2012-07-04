@@ -38,5 +38,27 @@ jQuery ->
     $(target).load(url)
     event.preventDefault()
 
-jQuery ->
+  $("#e7").select2
+    placeholder:
+      title: "Search for a movie"
+
+    minimumInputLength: 3
+    ajax:
+      url: "http://api.rottentomatoes.com/api/public/v1.0/movies.json"
+      dataType: "jsonp"
+      quietMillis: 100
+      data: (term, page) ->
+        q: term
+        page_limit: 10
+        page: page
+        apikey: "ju6z9mjyajq2djue3gbvv26t"
+
+      results: (data, page) ->
+        more = (page * 10) < data.total
+        results: data.movies
+        more: more
+
+    formatResult: format
+    formatSelection: format
+
   $("form:not(.filter) :input:visible:enabled:first").focus()

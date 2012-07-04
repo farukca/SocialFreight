@@ -17,6 +17,7 @@
 //= require highcharts
 //= require chosen.jquery-0.9.5
 //= require chosen.ajaxaddition.jquery
+//= require select2
 //= require patron
 //= require loading
 //= require search

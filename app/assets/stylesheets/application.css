@@ -11,5 +11,6 @@
  *= require gmaps4rails
  *= require token-input
  *= require chosen
+ * require select2
  * require_tree . 
 */

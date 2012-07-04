@@ -160,7 +160,7 @@ jQuery('.images').cycle({
         });
 
         jQuery(".tweet").tweet({
-            username: "envato",
+            username: "socialfreight",
             join_text: "",
             count: 2,
             auto_join_text_ed: "",
