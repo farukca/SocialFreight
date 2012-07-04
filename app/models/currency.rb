@@ -1,6 +1,6 @@
 class Currency < ActiveRecord::Base
 
-  set_primary_key :code
+  self.primary_key = 'code'
 
   attr_accessible :code, :name, :symbol, :multiplier
 

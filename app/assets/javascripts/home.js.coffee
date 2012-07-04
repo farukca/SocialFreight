@@ -13,6 +13,8 @@ jQuery ->
      $($(this).data('href')).slideToggle()
   $(".nexttab").click ->
      $($(this).data('newtab')).click()
+  $(".chosen_select").each ->
+    $(this).chosen()
   $(".chosen_input").each ->
     el = $(this)
     el.ajaxChosen

@@ -25,7 +25,15 @@ class SetupController < ApplicationController
   
   def update
     @patron = current_patron
+    case step
+      when :set_users
+        params[:patron][:users_attributes].each do |key, user|
+          user[:password] = "987654321"
+          user[:password_confirmation] = "987654321"
+        end if params[:patron][:users_attributes]
+    end
     @patron.update_attributes(params[:patron])
+
     render_wizard @patron
   end
       

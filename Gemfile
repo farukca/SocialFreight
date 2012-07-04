@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.0'
+gem 'rails', '3.2.6'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -30,11 +30,13 @@ gem 'simple_form', '>= 2.0'
 gem 'kaminari', '~> 0.13.0'
 gem 'friendly_id'
 gem 'socialization'
+gem 'twitter-text'
 
 #File uploading
 #gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'cloudinary'
 
 gem 'sorcery'
 gem 'cancan'

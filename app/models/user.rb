@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   has_many :journals, as: :journaled, dependent: :destroy
 
   attr_accessible :email, :password, :password_confirmation, :name, :surname, :patron_id, :avatar, :remove_avatar, 
-                   :region, :time_zone, :user_type, :language, :locale, :mail_encoding, :role
+                   :region, :time_zone, :user_type, :language, :locale, :mail_encoding, :role, :branch_id
   #attr_protected  :password
 
   validates_confirmation_of :password

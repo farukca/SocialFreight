@@ -196,21 +196,21 @@ form .span8 {
 	font-size:25px;
 }
 .feeds ul {
-    list-style-position:outside;
-    list-style-type:none;
-    margin:0;
-    padding:0;
+  list-style-position:outside;
+  list-style-type:none;
+  margin:0;
+  padding:0;
 }
 .feeds ul li {
 	border-bottom:1px solid #D1D1D1;
-    float:left;
-    margin-top:5px;
-    width:100%;
+  float:left;
+  margin-top:5px;
+  width:100%;
 }
 .feeds ul li a {
-    border:medium none;
+  border:medium none;
 	text-decoration:none;
-	color:#343434;
+	color:#0088CC;
 }
 .feeds ul li a img {
     float:left;
@@ -896,4 +896,9 @@ div.addIcon {
 }
 .loadingRow:hover .addIcon {
   visibility:visible;
+}
+.tweet-url {
+  font-weight: bold;
+  color: #0088CC;
+  text-decoration: none;
 }

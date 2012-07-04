@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: socialfreight
+  api_key: '923373523991598'
+  api_secret: 67Jl57ZZJ0jzmL2ufmrvSWL5Df8
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: socialfreight
+  api_key: '923373523991598'
+  api_secret: 67Jl57ZZJ0jzmL2ufmrvSWL5Df8
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: socialfreight
+  api_key: '923373523991598'
+  api_secret: 67Jl57ZZJ0jzmL2ufmrvSWL5Df8
+  enhance_image_tag: true
+  static_image_support: false

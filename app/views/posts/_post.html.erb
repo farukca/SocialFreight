@@ -5,7 +5,7 @@
       <i class="icon-<%= post.target_type.downcase %>"></i>
       <span class="mruText"><%= post.target_name %></span>
     <% end if post.target_id %>
-    <span><%= post.user %>&nbsp;<%= post.message %></span>
+    <span><%= post.user %>&nbsp;<%= sanitize(auto_link(post.message)) %></span>
     <p class="rightside">
       <abbr class="timeago" title="<%= post.created_at.round(0).iso8601(10) %>"></abbr>
       <%#= link_to "#{post.created_at.strftime("%d/%m/%Y %I:%M%p")}", "#" %>

@@ -23,7 +23,8 @@ class OperationsController < ApplicationController
 
   def home
     @operation = Operation.find_by_code(params[:id])
-    #@operation.patron_token = current_patron.token
+    session[:current_operation] = @operation.code
+
     @search    = Search.new
     @search.operation = @operation.code
 

@@ -1,6 +1,6 @@
 class Country < ActiveRecord::Base
 
-  set_primary_key :code
+  self.primary_key = 'code'
   include Gmaps4rails::ActsAsGmappable
  
   acts_as_gmappable :process_geocoding => false, :validation => false

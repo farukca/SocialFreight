@@ -1,5 +1,8 @@
 <%= f.input :name, :label => "Kullanıcı Bilgileri" do %>
-  <%= f.input_field :name, :placeholder => "Kullanıcı Adı" %>
-  <%= f.input_field :surname, :placeholder => "Kullanıcı Soyadı" %>
-  <%= f.input_field :email, :placeholder => "Mail Adresi" %>
+  <%= f.input_field :name, placeholder: "Kullanıcı Adı", class: "input-medium" %>
+  <%= f.input_field :surname, placeholder: "Kullanıcı Soyadı", class: "input-medium" %>
+  <%= f.input_field :email, placeholder: "Mail Adresi", class: "input-large" %>
+  <%= f.input_field :branch_id, as: :select, collection: current_patron.branches, include_blank: false, class: "input-medium" %>
+  <%= f.input_field :password, as: :hidden %>
+  <%= f.input_field :password_confirmation, as: :hidden %>
 <% end %>

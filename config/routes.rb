@@ -67,6 +67,7 @@ Socialfreight::Application.routes.draw do
   resources :setup
   resources :reservation
   resources :transplan
+  resources :operation_wizard
 
   get "air" => "home#air", :as => "air"
   get "sea" => "home#sea", :as => "sea"

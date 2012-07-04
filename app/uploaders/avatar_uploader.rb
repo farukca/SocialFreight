@@ -2,25 +2,28 @@
 
 class AvatarUploader < CarrierWave::Uploader::Base
 
+  include Cloudinary::CarrierWave
+  process :convert => 'png'
+  process :tags => ['user_image']  
   # Include RMagick or ImageScience support:
   # include CarrierWave::RMagick
-  include CarrierWave::MiniMagick
+  #include CarrierWave::MiniMagick
   # include CarrierWave::ImageScience
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  #storage :file
   # storage :fog
 
-  configure do |config|
-    config.root = Rails.root
-    config.remove_previously_stored_files_after_update = true
-  end
+  #configure do |config|
+  #  config.root = Rails.root
+  #  config.remove_previously_stored_files_after_update = true
+  #end
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
-  def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  end
+  #def store_dir
+  #  "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  #end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url
@@ -54,5 +57,9 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+  
+  def public_id
+    return "#{model.slug}-#{model.id}"
+  end
 
 end

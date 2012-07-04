@@ -43,7 +43,7 @@
           <%= f.input :dep_country_id, as: :select, collection: Country.all, include_blank: true, label: false, input_html: { class: "input-medium country_select", "data-placeholder" => "Çıkış Ülkesi" } %>
         </td>
         <td>
-          <%= f.input :dep_city_id, as: :select, :collection => [[@transport.dep_city_id ? @transport.dep_city.name : "", @transport.dep_city_id]], include_blank: true, label: false, input_html: { class: "input-medium city_select", "data-placeholder" => "Çıkış Şehri" } %>
+          <%= f.input :dep_city_id, as: :select, collection: City.find(:all, conditions: ["country_id = :c", { :c => @transport.dep_country_id } ]), include_blank: true, label: false, input_html: { class: "input-medium city_select", "data-placeholder" => "Çıkış Şehri" } %>
           <%#= f.grouped_collection_select :dep_city_id, Country.order(:name), :cities, :name, :id, :name, {:include_blank => true}, {:class => "input-medium chosen_input"} %>
         </td>
       </tr>
@@ -70,13 +70,13 @@
           <%= f.input :arv_place_type, as: :select, collection: Loading.point_types.map { |r| [r[1], r[0] ] }, include_blank: false, label: false, hint: "Aracın varış noktası", input_html: { class: "chosen_input input-medium", "data-placeholder" => "Varış Yeri Tipi" } %>
         </td>
         <td>
-          <%= f.input :arv_place_id, :as => :select, :collection => [[@transport.arv_place_id ? @transport.dep_place.name : "", @transport.dep_place_id]], "data-url" => "/places.json", label: false, hint: "Aracın Sefere Başladığı Yer Bilgisi", input_html: { class: "chosen_input", "data-placeholder" => "Varış Noktası"} %>
+          <%= f.input :arv_place_id, :as => :select, :collection => [[@transport.arv_place_id ? @transport.arv_place.name : "", @transport.arv_place_id]], "data-url" => "/places.json", label: false, hint: "Aracın Sefere Başladığı Yer Bilgisi", input_html: { class: "chosen_input", "data-placeholder" => "Varış Noktası"} %>
         </td>
         <td>
           <%= f.input :arv_country_id, as: :select, collection: Country.all, include_blank: true, label: false, input_html: { class: "input-medium country_select", "data-placeholder" => "Varış Ülkesi"} %>
         </td>
         <td>
-          <%= f.input :arv_city_id, as: :select, collection: [[@transport.arv_city_id ? @transport.arv_city.name : "", @transport.arv_city_id]], include_blank: true, label: false, input_html: { class: "input-medium city_select", "data-placeholder" => "Varış Şehri" } %>
+          <%= f.input :arv_city_id, as: :select, collection: City.find(:all, conditions: ["country_id = :c", { :c => @transport.arv_country_id } ]), include_blank: true, label: false, input_html: { class: "input-medium city_select", "data-placeholder" => "Varış Şehri" } %>
         </td>
       </tr>
     </table>

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :current_patron, :current_tab
+  helper_method :current_patron, :current_operation, :current_tab
 
   def follow_object(object)
     current_user.follow(object)
@@ -21,6 +21,11 @@ class ApplicationController < ActionController::Base
   protected
   def current_patron
     @current_patron ||= Patron.find(session[:patron_id]) if session[:patron_id]
+  end
+
+  protected
+  def current_operation
+    @current_operation = session[:current_operation] if session[:current_operation]
   end
 
   def require_patron

@@ -1,5 +1,7 @@
 class Post < ActiveRecord::Base
 
+  acts_as_mentioner
+
   belongs_to :user
   belongs_to :patron
   belongs_to :target, :polymorphic => true
