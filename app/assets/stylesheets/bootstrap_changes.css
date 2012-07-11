@@ -30,9 +30,6 @@ select.input-small {
   margin-left: 5px;
   margin-right: 5px;
 }
-.tab-pane {
-    min-height: 300px;
-}
 dl {
   margin-bottom: 5px;
 }

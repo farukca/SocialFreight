@@ -36,7 +36,9 @@
         <li><%= link_to new_company_path do %><i class="icon-glass"></i>Hızlı Firma Oluştur<% end %></li>
         <li><%= link_to new_user_path    do %><i class="icon-user"></i>Hızlı Yetkili Oluştur<% end %></li>
         <li><%= link_to places_path    do %><i class="icon-screenshot"></i>Hızlı Havalimanı Girişi<% end %></li>
+        <li><%= link_to "Modal Firma", new_company_path(:nolayout => 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" %></li>        
       </ul>
     </div>
   </div>
+  <div id="newAgileRecord" class="modal fade" />
 </div>

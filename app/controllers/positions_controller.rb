@@ -23,7 +23,7 @@ class PositionsController < ApplicationController
   def new
     @position = current_patron.positions.build(params[:position])
     @position.operation = params[:operation] if params[:operation]
-    @position.transnodes.build(:trans_method => @position.operation)
+    @position.transports.build(:trans_method => @position.operation)
     
     respond_to do |format|
       format.html # new.html.erb

@@ -57,6 +57,8 @@
 					$('<option value="' + value + '">' + text + '</option>').appendTo(select);
 				});
 			}
+			//FCXX
+			$('<option value="new_record"><a href="#" class="btn btn-success">Yeni Kayıt Oluştur</a></option>').appendTo(select);
 			//update chosen
 			select.trigger("liszt:updated");
 			//right key, for highlight options after ajax is performed

@@ -1,4 +1,4 @@
-<div id="company_form">
+<div id="company_form" class="main-model-form">
 <%= simple_form_for @company, :html => {:class => 'form-horizontal'}, :validate => true do |f| %>
   <%= f.error_notification %>
   <%= f.error :base, :error_method => :to_sentence %>
@@ -33,3 +33,4 @@
 
 <% end %>
 </div>
+<script type="text/javascript">$("#new_company").validate();</script>

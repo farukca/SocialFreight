@@ -1,0 +1,26 @@
+<div id="company_form" class="main-model-form">
+<%= simple_form_for @company, html: { class: 'form-horizontal' }, remote: true, validate: true do |f| %>
+  <%= f.error_notification %>
+  <%= f.error :base, :error_method => :to_sentence %>
+
+  <div class="pageBlock">
+    <%= render 'shared/form_buttonsh', :f => f, :header => "New Company" %>
+
+    <div class="row-fluid">
+      <fieldset>
+        <legend>Firma Bilgisi</legend>
+          <%= f.input :name %>
+          <%= f.input :company_type do %>
+            <%= f.select :company_type, Company.company_types.map { |r| [r[1], r[0] ] }, :include_blank => false %>
+          <% end %>
+          <%= f.input :tel  %>
+          <%= f.input :email %>
+          <%= f.input :branch_id, :as => :select, :collection => current_patron.branches, :include_blank => false, :selected => current_user.branch_id %>
+      </fieldset>
+    </div>
+
+  </div>
+
+<% end %>
+</div>
+<script type="text/javascript">$("#new_company").validate();</script>

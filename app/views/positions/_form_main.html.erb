@@ -11,15 +11,16 @@
         <%= f.input_field :waybill_date, :as => "string", :class => "input-small", "data-datepicker" => "datepicker" %>
       <% end %>
       <%= f.input :load_type, :as => :select, :collection => Loading.load_types.map { |r| [I18n.t("listitems.loadtype.#{@position.operation}.#{r[1]}"), r[0] ] }, :include_blank => false, hint: "LCL or FCL selection" %>
-      <%= f.input :agent_id, :as => :select, :collection => [[@position.agent_id ? @position.agent.name : "", @position.agent_id]], :label => I18n.t("position.#{@position.operation}.label.agent"), :input_html => {:class => "chosen_input", "data-url" => "/companies.json" }, hint: "Destination Foreign Agent" %>
+      <%#= f.input :agent_id, :as => :select, :collection => [[@position.agent_id ? @position.agent.name : "", @position.agent_id]], :label => I18n.t("position.#{@position.operation}.label.agent"), :input_html => {:class => "chosen_input", "data-url" => "/companies.json" }, hint: "Destination Foreign Agent" %>
+      <%= f.input :agent_id, as: :hidden, label: "Agent", input_html: {:class => "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => "Agenta seçiniz."} %>
       <%= f.input :branch_id, :as => :select, :collection => current_patron.branches, :include_blank => false, :selected => current_user.branch_id %>
     </fieldset>
   </div>
   <div class="span6">
     <fieldset>
-      <%= f.input :load_place_id, :as => :select, :collection => [[@position.load_place_id ? @position.load_place.name : "", @position.load_place_id]], :label => I18n.t("position.#{@position.operation}.label.load_place"), :input_html => {:class => "chosen_input", "data-url" => "/places.json"} %>
+      <%= f.input :load_place_id, :as => :select, :collection => [[@position.load_place_id ? @position.load_place.name : "", @position.load_place_id]], :label => I18n.t("position.#{@position.operation}.label.load_place"), :input_html => {:class => "chosen_input2", "data-url" => "/places.json"} %>
       <%= f.input :load_date, :as => "string", :input_html => {:class => "input-small", "data-datepicker" => "datepicker"}, :label => "Departure Date", hint: "First Departure Date" %>
-      <%= f.input :unload_place_id, :as => :select, :collection => [[@position.unload_place_id ? @position.unload_place.name : "", @position.unload_place_id]], :label => I18n.t("position.#{@position.operation}.label.unload_place"), :input_html => {:class => "chosen_input", "data-url" => "/places.json"}, hint: "Final unloading sea port" %>
+      <%= f.input :unload_place_id, :as => :select, :collection => [[@position.unload_place_id ? @position.unload_place.name : "", @position.unload_place_id]], :label => I18n.t("position.#{@position.operation}.label.unload_place"), :input_html => {:class => "chosen_input2", "data-url" => "/places.json"}, hint: "Final unloading sea port" %>
       <%= f.input :unload_date, :as => "string", :input_html => {:class => "input-small", "data-datepicker" => "datepicker"}, :label => "Arrival Date", hint: "Final Arrival Date" %>      
       <%= f.input :stage do %>
         <%= f.input_field :stage, :class => "input-medium", :as => :select, :collection => Position.stages.map { |r| [r[1], r[0] ] }, :include_blank => false %>

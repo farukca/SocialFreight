@@ -68,7 +68,7 @@ class Company < ActiveRecord::Base
   end
 
   def prepopulate_tokens
-    [{ :id => id, :name => name }]
+    { id: id, text: name }
   end
 
   def to_s

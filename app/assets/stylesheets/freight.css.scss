@@ -897,8 +897,27 @@ div.addIcon {
 .loadingRow:hover .addIcon {
   visibility:visible;
 }
+.main_links_table td {
+  font-size: 14px;
+  line-height: 25px;
+  margin-left: 20px;
+  padding: 0;
+  text-align: left;
+}
+.small-tables td {
+  text-align: left;
+}
 .tweet-url {
   font-weight: bold;
   color: #0088CC;
   text-decoration: none;
+}
+.select2-buttons {
+  display: inline-block;
+  margin-left: 5px;
+  position: absolute;
+}
+.small-size-link {
+  float:right;
+  font-size: 10px;
 }

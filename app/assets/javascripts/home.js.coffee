@@ -15,16 +15,47 @@ jQuery ->
      $($(this).data('newtab')).click()
   $(".chosen_select").each ->
     $(this).chosen()
+  #$(".chosen_input").each ->
+  #  el = $(this)
+  #  el.ajaxChosen
+  #    dataType: "json"
+  #    type: "GET"
+  #    url: el.data("url")
+  #  ,
+  #    processItems: (data) ->
+  #      data
+  #    loadingImg: "/assets/loading.gif"
   $(".chosen_input").each ->
     el = $(this)
-    el.ajaxChosen
-      dataType: "json"
-      type: "GET"
-      url: el.data("url")
-    ,
-      processItems: (data) ->
-        data
-      loadingImg: "/assets/loading.gif"
+    el.select2
+      placeholder:
+        title: "Kayıt Seçiniz"
+
+      minimumInputLength: 3
+      newRecordUrl:  el.data("newrecurl")
+
+      ajax:
+        url: el.data("url")
+        dataType: "json"
+        data: (term, page) ->
+          q: term
+          page_limit: 10
+          page: page
+          apikey: "ju6z9mjyajq2djue3gbvv26t"
+
+        results: (data, page) ->
+          results: data.results
+
+    initVal = el.data("selected")
+    unless initVal is ""
+      el.select2 "val",
+        id: el.val()
+        text: initVal
+
+  #    initSelection: (element, callback) ->
+  #      $.getJSON (el.data("url")) + "?id=" + (element.val()), null, (data) ->
+  #        callback data if $.isFunction(callback)
+
   $(".token_input").each ->
     el = $(this)
     el.tokenInput el.data("url"),
@@ -32,33 +63,10 @@ jQuery ->
       tokenLimit: 1
       prePopulate: el.data("pre")
       preventDuplicates: true
-  $("a[data-toggle=modal]").click ->
+  $("a[data-toggle=modal]").live 'click', ->
     target = $(this).attr('data-target')
     url = $(this).attr('href')
     $(target).load(url)
-    event.preventDefault()
+    $("#new_company").validate()
 
-  $("#e7").select2
-    placeholder:
-      title: "Search for a movie"
-
-    minimumInputLength: 3
-    ajax:
-      url: "http://api.rottentomatoes.com/api/public/v1.0/movies.json"
-      dataType: "jsonp"
-      quietMillis: 100
-      data: (term, page) ->
-        q: term
-        page_limit: 10
-        page: page
-        apikey: "ju6z9mjyajq2djue3gbvv26t"
-
-      results: (data, page) ->
-        more = (page * 10) < data.total
-        results: data.movies
-        more: more
-
-    formatResult: format
-    formatSelection: format
-
-  $("form:not(.filter) :input:visible:enabled:first").focus()
+  $("form input:visible:first").focus()

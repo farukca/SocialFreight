@@ -2,7 +2,7 @@
   Referans No: <%= loading.reference.upcase %>
   <%= link_to "(PDF)", loading_path(loading, format: "pdf") %>
   <span id="positionref" class="rightside">
-    <%= link_to loading.position_name, position_path(loading.position) %>
+    <%= link_to loading.position_name, position_path(loading.position) unless loading.position_id.nil? %>
   </span>
 </div-->
 <div id="good_branch">

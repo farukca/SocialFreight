@@ -5,7 +5,8 @@
         <%= f.input_field :country_id, :as => :select, :collection => Country.all, :include_blank => false, :class => "input-small" %>
         <%= f.grouped_collection_select :city_id, Country.order(:name), :cities, :name, :id, :name, {:include_blank => true}, {:class => "input-small"} %>
       <% end %>
-      <%= f.input :unload_place_id, :as => :select, :input_html => {:class => "chosen_input", "data-url" => "/places.json"} %>
+      <%#= f.input :unload_place_id, :as => :select, :input_html => {:class => "chosen_input", "data-url" => "/places.json"} %>
+      <%= f.input :unload_place_id, as: :hidden, label: "Yükleme Yeri", input_html: {:class => "chosen_input", "data-url" => "/places.json", "data-newrecurl" => "/places/new", "data-placeholder" => "Boşaltma Yerini Seçiniz."} %>
       <%= f.input :unload_point, :as => :select, :collection => Loading.point_types.map { |r| [r[1], r[0] ] }, :include_blank => false %>
       <%= f.input :unload_date, :as => :string, :input_html => {:class => "input-small", "data-datepicker" => "datepicker"} %>
       <div id="customer_unloading_address">
@@ -19,10 +20,18 @@
   </div>
   <div class="span6">
     <fieldset>
-      <%= f.input :consignee_id, :as => :select, :input_html => {:class => "chosen_input", "data-url" => "/companies.json"} %>
-      <%= f.input :deliver_id, :as => :select, :input_html => {:class => "chosen_input", "data-url" => "/companies.json"} %>
-      <%= f.input :notify_id, :as => :select, :input_html => {:class => "chosen_input", "data-url" => "/companies.json"} %>
-      <%= f.input :notify2_id, :as => :select, :input_html => {:class => "chosen_input", "data-url" => "/companies.json"} %>
+      <%#= f.input :consignee_id, :as => :select, :input_html => {:class => "chosen_input", "data-url" => "/companies.json"} %>
+      <%= f.input :consignee_id, as: :hidden, label: "Alıcı", input_html: {:class => "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => "Alıcı Firmayı Seçiniz"} %>
+
+      <%#= f.input :deliver_id, :as => :select, :input_html => {:class => "chosen_input", "data-url" => "/companies.json"} %>
+      <%= f.input :deliver_id, as: :hidden, label: "Teslim Firması", input_html: {:class => "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => "Yükün Teslim Edileceği Firma"} %>
+
+      <%#= f.input :notify_id, :as => :select, :input_html => {:class => "chosen_input", "data-url" => "/companies.json"} %>
+      <%= f.input :notify_id, as: :hidden, label: "Notify", input_html: {:class => "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => "Notify Firmayı Seçiniz"} %>
+
+      <%#= f.input :notify2_id, :as => :select, :input_html => {:class => "chosen_input", "data-url" => "/companies.json"} %>
+      <%= f.input :notify2_id, as: :hidden, label: "Notify", input_html: {:class => "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => "2.Notify Firmayı Seçiniz"} %>
+
       <%= f.input :notes, :as => :text, :input_html => {:rows => 2, :cols => 37} %>
     </fieldset>
   </div>
