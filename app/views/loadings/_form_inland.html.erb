@@ -1,0 +1,32 @@
+<div id="opform">
+<%= simple_form_for @loading, :html => {:class => 'form-horizontal'}, :validate => true do |f| %>
+  <%= f.error_notification %>
+
+  <fieldset>
+    <div class="row-fluid">
+      <div class="row-fluid">
+        <div class="span6">
+          <%#= f.input :company_id, :input_html => {:class => "chosen_input", "data-url" => "/companies.json"}, :label => "Customer" %>
+          <%= f.input :company_id, label: "Müşteri", input_html: {:class => "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-selected" => @loading.company_id ? @loading.company.name : "", "data-placeholder" => "Müşteri Seçiniz."} %>
+          <%= f.input :branch_id, as: :select, collection: current_patron.branches, include_blank: false, selected: current_user.branch_id %>
+          <%= f.input :freight_price do %>
+            <%= f.input_field :freight_price, class: "input-small" %>
+            <%= f.input_field :freight_curr, as: :select, collection: Currency.all, include_blank: false, class: "input-small" %>
+        <% end %>
+        </div>
+        <div class="span6">
+          <%= f.input :brut_wg, label: "Brüt Ağırlık" do %>
+            <%= f.input_field :brut_wg, :class => "input-small" %>&nbsp;KG
+            <%#= f.input_field :wg_type, :as => :select, :collection => Loading.weight_types.map { |r| [r[1], r[0] ] }, :class => "small" %>
+          <% end %>
+          <%= f.input :commodity, as: :text, input_html: {:rows => 1}, label: "Yük İçeriği" %>
+        </div>
+      </div>
+
+      <%= f.hidden_field :position_id %>
+      <%= f.hidden_field :operation %>
+      <%= f.hidden_field :direction %>
+    </div>
+  </fieldset>
+<% end %>
+</div>

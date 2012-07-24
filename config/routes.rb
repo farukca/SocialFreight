@@ -1,7 +1,5 @@
 Socialfreight::Application.routes.draw do
 
-  get "transports/index"
-
   get "logout" => "sessions#destroy", :as => "logout"
   get "login"  => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
@@ -48,7 +46,10 @@ Socialfreight::Application.routes.draw do
   end
   resources :departures
   resources :arrivals
+  resources :rentals
   resources :vehicles
+  resources :vessels
+
   resources :searches do
     member do
       get :planning
@@ -60,7 +61,6 @@ Socialfreight::Application.routes.draw do
   resources :feedbacks
   resources :posts
   resources :activities
-  resources :vessels
   resources :tasks
   resources :nicks
 
@@ -77,6 +77,11 @@ Socialfreight::Application.routes.draw do
   get "roadmap" => "home#roadmap", :as => "roadmap"
   get "security" => "home#security", :as => "security"
   get "features" => "home#features", :as => "features"
+
+  get "crm" => "companies#home"
+  get "finance" => "findocs#home"
+  get "fleetman" => "vehicles#home"
+  
 
   root :to => 'home#index'
 

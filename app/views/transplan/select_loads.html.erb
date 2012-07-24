@@ -3,10 +3,12 @@
   <div class="pageBlock">
 
     <%= render 'shared/form_header', message: "Planlama Pozisyon Seçimi" %>
-    <%= render 'breadcrumb' %>
+    <%= render 'breadcrumb', step: 2 %>
     
     <div id="selected-loads" class="row-fluid">
-      <%= render 'loadings/loadings', loadings: @loadings, locals: { @showsums => true } %>
+      <% unless @loadings.nil? %>
+        <%= render 'loadings/loadings', loadings: @loadings, locals: { @showsums => true } %>
+      <% end %>
     </div>
 
     <div class="row-fluid">

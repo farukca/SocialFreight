@@ -3,7 +3,7 @@ class PlacesController < ApplicationController
   before_filter :require_login
 
   def index
-    if params[:data] && params[:data][:q]
+    if params[:q]
        q = params[:q] ? "%#{params[:q]}%" : "%#{params[:data][:q]}%"
        @places = Place.where("lower(name) like ?", q).limit(10)
     else
@@ -13,7 +13,7 @@ class PlacesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @places.map(&:token_inputs) }
+      format.json { render json: {results: @places.map(&:token_inputs)} }
     end
   end
 
@@ -78,6 +78,16 @@ class PlacesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to places_url }
       format.json { head :ok }
+    end
+  end
+
+  def lookup
+    q = params[:q] ? "%#{params[:q]}%" : "%%"
+    @places = Place.where("lower(name) like ?", q).limit(10)
+
+    respond_to do |format|
+      #format.html
+      format.json { render json: @places.map(&:token_inputs) }
     end
   end
 end

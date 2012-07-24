@@ -1,28 +1,50 @@
-<legend>Uçak Bilgileri</legend>
 <div class="row-fluid">
   <div class="span6">
-      <%= f.input :vessel, :label => "Plane & Voyage No", hint: "Plane Name & Voyage Number" do %>
+      <%= f.input :vessel, :label => "Uçak & Sefer No", hint: "Uçak Adı ile Uçak Sefer Numarası" do %>
         <%= f.input_field :vessel, :class => "input-small" %>
         <%= f.input_field :voyage, :class => "input-small" %>
       <% end %>
-      <%= f.input :departure_place, :class => "input-small", hint: "Departure airport" %>
-      <%= f.input :departure_date, :as => "string", :input_html => {:class => "input-small", "data-datepicker" => "datepicker"} %>
-
-      <%= f.input :arrival_place, :class => "input-small", hint: "Final Arrival airport" %>
-      <%= f.input :arrival_date, :as => "string", :input_html => {:class => "input-small", "data-datepicker" => "datepicker"} %>
-      <%= f.input :trans_method, :as => :hidden %>
-      <%= f.input :fromwhere, :as => :hidden %>
+      <%= f.input :owner_id, :as => :select, :collection => [[@transport.owner_id ? @transport.owner.name : "", @transport.owner_id]], :label => "Havayolu", :input_html => {:class => "chosen_input", "data-url" => "/companies.json" }, hint: "Havayolu" %>
   </div>
   <div class="span6">
-      <%= f.input :owner_id, :as => :select, :collection => [[@transporter.owner_id ? @transporter.transporter.name : "", @transporter.owner_id]], :label => I18n.t("position.#{@transporter.trans_method}.label.transporter"), :input_html => {:class => "chosen_input", "data-url" => "/companies.json" }, hint: "Airline Company" %>
-      <%= f.input :supplier_id, :as => :select, :collection => [[@transporter.supplier_id ? @transporter.supplier.name : "", @transporter.supplier_id]], :label => I18n.t("position.#{@transporter.trans_method}.label.supplier"), :input_html => {:class => "chosen_input", "data-url" => "/companies.json" }, hint: "Liner Agent" %>
-      <%= f.input :freight_price do %>
+      <%= f.input :supplier_id, :as => :select, :collection => [[@transport.supplier_id ? @transport.supplier.name : "", @transport.supplier_id]], :label => I18n.t("position.#{@transport.trans_method}.label.supplier"), :input_html => {:class => "chosen_input", "data-url" => "/companies.json" }, hint: "Liner Agent" %>
+      <%= f.input :freight_price, label: "Taşıma Ücret", hint: "Kiralık araçlarda, araç sahibi ile anlaşılan fiyat" do %>
         <%= f.input_field :freight_price, :class => "input-small" %>
         <%= f.input_field :freight_curr, :as => :select, :collection => Currency.all, :include_blank => false, :class => "input-small" %>
       <% end %>
-      <%= f.input :ticket_no, hint: "Freight document number & date" do %>
-        <%= f.input_field :ticket_no, :class => "input-small" %>
-        <%= f.input_field :ticket_date, :as => "string", :class => "input-small", "data-datepicker" => "datepicker" %>
-      <% end %>
   </div>
+  <!--legend>Çıkış Bilgisi</legend-->
+  <div class="span12" style="float:left">
+    <table class="inline-form-table table" style="width:96%">
+      <tr>
+        <th colspan="2">Çıkış Tarih & Saati</th>
+        <th>Çıkış Havalimanı</th>
+        <th></th>
+        <th colspan="2">Varış Tarih & Saati</th>
+        <th>Varış Havalimanı</th>       
+      </tr>
+      <tr>
+        <td>
+        <%= f.input :departure_date, as: :string, label: false, hint: "Aracın Çıkış Tarihi", input_html: { class: "input-date", "data-datepicker" => "datepicker" } %>
+        </td>
+        <td>
+          <%= f.input :departure_hour, label: false, hint: "ve Saati", input_html: { class: "input-hour" } %>
+        </td>
+        <td>
+          <%= f.input :dep_place_id, :as => :select, :collection => [[@transport.dep_place_id ? @transport.dep_place.name : "", @transport.dep_place_id]], label: false, hint: "Aracın Sefere Başladığı Yer Bilgisi", input_html: { class: "chosen_input", "data-url" => "/places.json" } %>
+        </td>
+        <td></td>
+        <td>
+        <%= f.input :arrival_date, as: :string, label: false, hint: "Aracın Varış Tarihi", input_html: { class: "input-date", "data-datepicker" => "datepicker" } %>
+        </td>
+        <td>
+          <%= f.input :arrival_hour, label: false, hint: "ve Saati", input_html: { class: "input-hour" } %>
+        </td>
+        <td>
+          <%= f.input :arv_place_id, :as => :select, :collection => [[@transport.arv_place_id ? @transport.arv_place.name : "", @transport.arv_place_id]], "data-url" => "/places.json", label: false, hint: "Aracın Sefere Başladığı Yer Bilgisi", input_html: { class: "chosen_input", "data-placeholder" => "Varış Noktası"} %>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <%= f.input :trans_method, :as => :hidden %>
 </div>

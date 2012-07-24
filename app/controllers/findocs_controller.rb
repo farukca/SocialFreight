@@ -1,7 +1,9 @@
 class FindocsController < ApplicationController
   before_filter :require_login
-  before_filter(:only => [:index]) { |c| c.set_tab "financenavigator" }
+  before_filter(:only => [:home]) { |c| c.set_tab "financenavigator" }
 
+  def home
+  end
   
   def index
     @findocs = Findoc.all

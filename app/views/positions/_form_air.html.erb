@@ -1,0 +1,24 @@
+<div class="row-fluid">
+  <fieldset>
+  <div class="row-fluid">
+    <div class="span6">
+      <%= f.hidden_field :operation %>
+      <%= f.input :direction, as: :select, collection: Position.direction_types.map { |r| [r[1], r[0] ] }, include_blank: false %>
+      <%= f.input :load_type, as: :select, collection: Loading.load_types.map { |r| [I18n.t("listitems.loadtype.#{@position.operation}.#{r[1]}"), r[0] ] }, include_blank: false, hint: "LCL or FCL selection" %>
+    </div>
+    <div class="span6">
+      <%= f.input :agent_id, as: :hidden, label: "Agent", input_html: {:class => "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => "Agenta seçiniz."} %>
+      <%= f.input :branch_id, as: :select, collection: current_patron.branches, include_blank: false, selected: current_user.branch_id %>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <%= f.fields_for :transports do |builder| %>
+      <%= render 'transports/form_air', :f => builder %>
+    <% end %>
+  </div>  
+  </fieldset>
+  <div class="controls">
+    <%= f.button :submit, "Kaydet", :class => 'btn btn-info' %>
+  </div>
+
+</div>

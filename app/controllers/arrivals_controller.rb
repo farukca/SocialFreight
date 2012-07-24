@@ -4,6 +4,7 @@ class ArrivalsController < ApplicationController
 
   def show
     @arrival = Arrival.find(params[:id])
+    @marker = @departure.to_gmaps4rails
 
     respond_to do |format|
       format.html # show.html.erb
@@ -12,8 +13,13 @@ class ArrivalsController < ApplicationController
   end
 
   def new
-    @loading = Loading.find(params[:loading_id])
-    @arrival = @loading.arrivals.build()
+    @loading = current_patron.loadings.find(params[:loading_id])
+    @arrival = @loading.arrivals.build(params[:arrival])
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @departure }
+    end
   end
 
   def edit
@@ -21,10 +27,9 @@ class ArrivalsController < ApplicationController
   end
 
   def create
-    #@loading = Loading.find(params[:loading_id])
-    @arrival = Arrival.build(params[:arrival])
-    @arrival.patron_id    = current_patron.id
-    @arrival.patron_token = current_patron.token
+    @loading = current_patron.loadings.find(params[:arrival][:loading_id])
+    @arrival = @loading.arrivals.build(params[:arrival])
+    #@arrival.user_id = current_user.id
     
     respond_to do |format|
       if @arrival.save
@@ -51,4 +56,13 @@ class ArrivalsController < ApplicationController
     end
   end
 
+  def destroy
+    @departure = Departure.find(params[:id])
+    @departure.destroy
+
+    respond_to do |format|
+      format.html { redirect_to companies_url }
+      format.json { head :ok }
+    end
+  end
 end

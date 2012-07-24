@@ -6,11 +6,7 @@
     <div class="row-fluid">
       <div id="operation_links">
         <legend>Operasyon Menü</legend>
-        <table class="table main_links_table">
-          <tr><td><%= link_to "Yeni Reservasyon Oluştur", new_loading_path(operation: @operation.code) %></td></tr>
-          <tr><td><%= link_to "Yeni Uçak Pozisyonu", new_position_path(operation: @operation.code) %></td></tr>
-          <tr><td><%= link_to "Yük & Uçak Planlama", positions_path(operation: @operation.code) %></td></tr>
-        </table>
+        <%= render "operations/menu_#{@operation.code}" %>
       </div>
     </div>
 

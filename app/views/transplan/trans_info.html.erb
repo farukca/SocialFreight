@@ -3,7 +3,7 @@
   <div class="pageBlock">
 
     <%= render 'shared/form_header', message: "Planlama Yük Seçimi" %>
-    <%= render 'breadcrumb' %>
+    <%= render 'breadcrumb', step: 4 %>
 
     <div class="row-fluid">
       <%= simple_form_for @position, url: wizard_path, method: :put, html: { class: 'form-horizontal'}, validate: true do |f| %>
@@ -17,6 +17,13 @@
 
         <%= f.input :operation, :as => :hidden %>
         <%= f.input :direction, :as => :hidden %>
+        <%= f.input :load_type, :as => :hidden %>
+        <%= f.input :waybill_no, :as => :hidden %>
+        <%= f.input :waybill_date, :as => :hidden %>
+        <%= f.input :branch_id, :as => :hidden %>
+        <%= f.input :agent_id, :as => :hidden %>
+        <%= f.input :report_date, :as => :hidden %>
+        <%= f.input :loading_ids, :as => :hidden %>
 
         <div class="controls rightside">
           <%#= link_to "<< Önceki Adıma Geri Dön", previous_wizard_path, :class => 'btn btn-danger' %>

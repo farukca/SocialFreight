@@ -1,8 +1,8 @@
 <div class="row-fluid">
   <ul class="breadcrumb">
-    <li class="active"><a href="#">Yük Bilgileri</a><span class="divider">>></span></li>
-    <li><a href="#">Yükleme Bilgileri</a><span class="divider">>></span></li>
-    <li><a href="#">Boşaltma Bilgileri</a><span class="divider">>></span></li>
-    <li><a href="#">Yük Detay Bilgileri</a></li>
+    <li class="<%= (step == 1 ? 'active' : '')%>"><a href="#">Yük Bilgileri</a><span class="divider">>></span></li>
+    <li class="<%= (step == 2 ? 'active' : '')%>"><a href="#">Yükleme Bilgileri</a><span class="divider">>></span></li>
+    <li class="<%= (step == 3 ? 'active' : '')%>"><a href="#">Boşaltma Bilgileri</a><span class="divider">>></span></li>
+    <li class="<%= (step == 4 ? 'active' : '')%>"><a href="#">Yük Detay Bilgileri</a></li>
   </ul>
 </div>

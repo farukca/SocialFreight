@@ -38,16 +38,3 @@ jQuery ->
         $(this).addClass('follow_button')
         $(this).addClass('primary')
     return false
-  
-  $('#departure_load_point').change ->
-    place = $('#departure_load_point :selected').val()
-    if (place != 'M')
-      $('#customer_loading_address').hide()
-    else
-      $('#customer_loading_address').show()
-  $('#arrival_unload_point').change ->
-    place = $('#arrival_unload_point :selected').val()
-    if (place != 'M')
-      $('#customer_unloading_address').hide()
-    else
-      $('#customer_unloading_address').show()

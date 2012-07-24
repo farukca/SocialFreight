@@ -1,7 +1,10 @@
 class CompaniesController < ApplicationController
   
   before_filter :require_login
-  before_filter(:only => [:index]) { |c| c.set_tab "companynavigator" }
+  before_filter(:only => [:home]) { |c| c.set_tab "companynavigator" }
+  
+  def home
+  end
   
   def index
     if params[:q]

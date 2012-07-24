@@ -1,0 +1,20 @@
+<%= simple_form_for(@rental) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :rent_type %>
+    <%= f.input :vehicle %>
+    <%= f.input :vehicle_type %>
+    <%= f.input :start_date %>
+    <%= f.input :finish_date %>
+    <%= f.input :rent_status %>
+    <%= f.input :company_id %>
+    <%= f.input :rent_price %>
+    <%= f.input :price_curr %>
+    <%= f.input :notes %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

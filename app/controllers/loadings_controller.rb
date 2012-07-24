@@ -111,10 +111,10 @@ class LoadingsController < ApplicationController
     @plan_operation = session[:plan_operation]
     @plan_direction = session[:plan_direction]
     if @loading.operation != @plan_operation
-      errors.add('Operations different')
+      @loading.errors.add_to_base('Operations different')
     end
     if @loading.direction != @plan_direction
-      errors.add('Import Export selection must be different')
+      @loading.errors.add_to_base('Import Export selection must be different')
     end
     
     i = session[:loading_ids].length

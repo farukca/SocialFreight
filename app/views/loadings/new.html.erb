@@ -11,6 +11,10 @@
       <li><a href="#">Konteyner Bilgileri</a></li>
     </ul>
   </div>
+  <% if @loading.operation == 'inland' %>
+    <%= render 'form_inland' %>
+  <% else %>
+    <%= render 'form' %>
+  <% end %>
   
-  <%= render 'form' %>
 </div>

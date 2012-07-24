@@ -1,12 +1,28 @@
 <div id="departure">
 
-  <%= render 'breadcrumb' %>
+  <%= render 'breadcrumb', step: 2 %>
+
+  <%= render 'loadings/profile_header' %>
 
   <%= simple_form_for @departure, :url => wizard_path, :method => :put, :html => {:class => 'form-horizontal'}, :validate => true do |f| %>
     <%= f.error_notification %>
     
-    <%= render 'departures/form_fields', :f => f %>
+    <% if current_operation == 'inland' %>
 
+      <%= render 'departures/form_fields_inland', :f => f %>
+
+      <div class="row-fluid">
+        <legend>Koli Bilgileri</legend>
+        <%= f.fields_for :packages do |builder| %>
+          <%= render 'packages/form_simple', :f => builder %>
+        <% end %>
+        <%= link_to_add_fields "Koli Bilgisi Ekle", f, :packages, "packages/form_simple" %>
+      </div>
+
+    <% else %>
+      <%= render 'departures/form_fields', :f => f %>
+    <% end %>
+    
     <div class="controls rightside">
       <%#= link_to "<< Bir Önceki Adıma Dön", previous_wizard_path, :class => 'btn btn-danger' %> 
       <%= link_to "Bu Adımı Atla >>", next_wizard_path, :class => 'btn btn-danger' %>

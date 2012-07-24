@@ -22,6 +22,7 @@
 //= require loading
 //= require search
 //= require home
+//= require reservation
 //= require transplan
 //= require transports
 //= require operation_wizard

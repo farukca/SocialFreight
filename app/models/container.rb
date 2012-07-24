@@ -1,22 +1,12 @@
 class Container < ActiveRecord::Base
-  #include Mongoid::Document
-  #include Mongoid::Timestamps
 
-  #field :name
-  #field :sealno
-  #field :container_type
-  #field :free_day, type: Integer
-  #field :demurrage, type: Float
-  #field :demurrage_curr
-  #field :notes
   belongs_to :loading
-  #auto_increment :rec_number
 
-  has_many :packages
+  has_many :packages, as: :packed, dependent: :destroy
+  accepts_nested_attributes_for :packages
 
-  #before_create :set_initials  
-
-  attr_accessible :name, :sealno, :container_type, :free_day, :demurrage, :demurrage_curr, :notes
+  attr_accessible :name, :sealno, :container_type, :free_day, :demurrage, :demurrage_curr, :notes,
+                  :packages_attributes
   
   validates_presence_of :name, :container_type, :loading
   #validates_length_of   :code, :maximum => 2  

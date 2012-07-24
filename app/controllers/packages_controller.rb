@@ -3,14 +3,8 @@ class PackagesController < ApplicationController
   before_filter :require_login
 
   def new
-    if params[:container_id]
-      @container = Container.find(params[:container_id])
-      @package = @container.packages.build(params[:package])
-      @package.loading = @container.loading
-    else
-      @loading = Loading.find(params[:loading_id]) if params[:loading_id]
-      @package = @loading.packages.build(params[:package])
-    end
+    @packed = find_packed
+    @package = @packed.packages.build(params[:package])
   end
 
   def edit
@@ -54,6 +48,16 @@ class PackagesController < ApplicationController
       format.html { redirect_to @loading, notice: 'Package deleted.' }
       format.json { head :ok }
     end
+  end
+
+  private
+  def find_packed
+    params.each do |name, value|
+      if name =~ /(.+)_id$/
+        return $1.classify.constantize.find(value)
+      end
+    end
+    nil
   end
 
 end

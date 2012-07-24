@@ -64,7 +64,7 @@ class Company < ActiveRecord::Base
   end
 
   def token_inputs
-    { :id => id, :text => name }
+    { id: id, text: name }
   end
 
   def prepopulate_tokens

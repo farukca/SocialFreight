@@ -21,10 +21,18 @@ class Loading < ActiveRecord::Base
   accepts_nested_attributes_for :departures, :arrivals
 
   has_many :containers
-  has_many :packages
+  has_many :packages, as: :packed, dependent: :destroy
+  accepts_nested_attributes_for :packages, :containers
+    
   has_many :waybills, as: :waybillable, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
-  
+
+  attr_accessible :position_id, :operation, :direction, :incoterm, :paid_at, :load_type, :channel, :branch_id, :company_id,
+                  :agent_id, :user_id, :saler_id, :freight_price, :freight_curr, :agent_price, :agent_curr, :agent_share,
+                  :product_price, :product_curr, :bank_flag, :bank_id, :producer, :marks_nos, :hts_no, :brut_wg, 
+                  :volume, :ladameter, :price_wg, :commodity, :notes, :load_coun, :unload_coun, :status, :stage, :stage_date,
+                  :report_date, :packages_attributes, :containers_attributes
+
   #validates_presence_of :reference, :except => :create
   validates_uniqueness_of :reference, :case_sensitive => false
   validates_presence_of :operation, :direction, :patron_id, :patron_token, :branch_id
@@ -77,11 +85,8 @@ class Loading < ActiveRecord::Base
 
     def point_types()
       point_types = {
-        'M' => 'Customer Place',
-        'P' => 'Airport',
-        'S' => 'Seaport',
-        'R' => 'Rail Station',
-        'K' => 'Konsolidasyon Merkezi'
+        'P' => 'Airport/Seaport/Rail Station',
+        'M' => 'Customer Place'
       }
     end
   end
@@ -97,6 +102,15 @@ class Loading < ActiveRecord::Base
 
   def to_s
     reference
+  end
+
+  def setup
+    if self.operation == 'inland'
+      self.direction = "D"
+
+    else
+
+    end
   end
 
   private

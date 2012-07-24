@@ -1,6 +1,6 @@
 <div id="loading">
 
-  <%= render 'breadcrumb' %>
+  <%= render 'breadcrumb', step: 4 %>
   <div id="opform">
     <%= simple_form_for @loading, :url => wizard_path, :method => :put, :html => {:class => 'form-horizontal'}, :validate => true do |f| %>
       <%= f.error_notification %>

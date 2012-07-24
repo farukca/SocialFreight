@@ -43,3 +43,6 @@ margin-left: 0px;
   padding: 0px;
   text-align: center;
 }
+.control-group.error > label, .control-group.error .help-block, .control-group.error .help-inline {
+  display: block;
+}

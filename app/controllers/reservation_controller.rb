@@ -13,14 +13,17 @@ class ReservationController < ApplicationController
       when :load_info
         @loading = current_patron.loadings.new
         @loading.operation = params[:operation]
-
+        @loading.setup
+        
       when :departure_info
 		    @loading = current_patron.loadings.find(session[:wicked_loading_id])
         @departure = @loading.departures.new
+        @departure.packages.build()
 
       when :arrival_info
         @loading = current_patron.loadings.find(session[:wicked_loading_id])
         @arrival = @loading.arrivals.new
+        @arrival.packages.build()
 
       when :load_detail
         @loading = current_patron.loadings.find(session[:wicked_loading_id])
@@ -50,6 +53,7 @@ class ReservationController < ApplicationController
         if @departure.save
           redirect_to_next(:arrival_info)
         else
+          debugger
           render_wizard
         end
       when :arrival_info

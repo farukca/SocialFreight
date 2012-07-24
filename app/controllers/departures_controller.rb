@@ -14,7 +14,7 @@ class DeparturesController < ApplicationController
 
   def new
   	@loading = current_patron.loadings.find(params[:loading_id])
-    @departure = @loading.build(params[:departure])
+    @departure = @loading.departures.build(params[:departure])
     
     respond_to do |format|
       format.html # new.html.erb
@@ -27,8 +27,8 @@ class DeparturesController < ApplicationController
   end
 
   def create
-  	@loading = current_patron.loadings.find(params[:loading_id])
-    @departure = @loading.build(params[:departure])
+  	@loading = current_patron.loadings.find(params[:departure][:loading_id])
+    @departure = @loading.departures.build(params[:departure])
     #@departure.user_id = current_user.id
     
     respond_to do |format|

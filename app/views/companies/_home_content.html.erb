@@ -1,0 +1,70 @@
+<div id="companies_home_content" class="row-fluid">
+
+  <div class="span6">
+
+    <div class="row-fluid">
+      <div id="operation_links">
+        <legend>Müşteri İşlemleri</legend>
+          <table class="table main_links_table">
+            <tr><td><%= link_to "Firma Oluştur", new_company_path %></td></tr>
+            <tr><td><%= link_to "Yetkili Oluştur", new_contact_path %></td></tr>
+            <tr><td><%= link_to "Aktivite Oluştur", "#" %></td></tr>
+          </table>
+      </div>
+    </div>
+
+    <div class="row-fluid">
+      <legend>Son Yapılan İşlemler</legend>
+      <div id="last_companies" class="profile tabbable">
+        <ul class="nav nav-tabs" data-tabs="tabs">
+          <li class="active"><a data-toggle="tab" href="#company_list">Yeni Firmalar</a></li>
+          <li><a data-toggle="tab" href="#activity_list">Son Aktiviteler</a></li>
+          <li><a data-toggle="tab" href="#opportunity_list">Yeni Fırsatlar</a></li>
+          <li><%= link_to "Detaylı Ara >>", new_search_path, class: "small-size-link" %></li>
+        </ul>
+
+        <div id="my-tab-content" class="tab-content">
+
+          <div id="company_list" class="tab-pane profile-content active">
+            <%= render current_patron.companies %>
+          </div>
+
+          <div id="activity_list" class="tab-pane profile-content">
+            
+          </div>
+
+          <div id="opportunity_list" class="tab-pane profile-content">
+            
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="span6">
+    <div class="row-fluid">
+      <div id="crm_tasks">
+        <legend>Raporlar</legend>
+        <table class="table small-tables">
+          <tr><td><%= link_to "Borçlu Müşteriler Listesi", companies_path %></td></tr>      
+          <tr><td><%= link_to "Aktif Müşteriler Listesi", companies_path %></td></tr>
+          <tr><td><%= link_to "Alacaklı Tedarikçiler Listesi", companies_path %></td></tr>
+        </table>
+
+        <legend>Görevler & Notlar</legend>
+        <table class="table small-tables">
+          <tr><td>TK253 Nolu sefer kontrol edilecek, Beko'ya bilgi verilecek</td></tr>
+          <tr><td>@KRF545654 yük dosyası kapatılmalı %></td></tr>
+          <tr><td>@KRF854126 yük taşıması tamamlanınca faturası kesilecek</td></tr>
+          <tr><td>CASS yeni stok talebi yapılacak</td></tr>
+          <tr><td>Haftalık genel taşıma raporu düzenlenecek</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div id="companies_chart">
+
+    </div>
+  </div>
+</div>

@@ -3,7 +3,7 @@
   <div class="pageBlock">
 
     <%= render 'shared/form_header', message: "Planlama Yük Seçimi" %>
-    <%= render 'breadcrumb' %>
+    <%= render 'breadcrumb', step: 3 %>
     
     <div id="selected-loads" class="row-fluid">
       <%= render 'loadings/loadings', loadings: @loadings, locals: { @showsums => true }  %>

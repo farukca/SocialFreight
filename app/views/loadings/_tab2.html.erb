@@ -1,4 +1,5 @@
 <div id="arrivals" class="tab-pane">
   <%= render @loading.arrivals %>
+  <%= link_to "Boşaltma Noktası Ekle", new_arrival_path(loading_id: @loading.slug), class: "btn btn-info" %>
 </div>
 

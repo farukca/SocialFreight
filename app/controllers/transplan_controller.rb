@@ -3,40 +3,34 @@ class TransplanController < ApplicationController
 
   before_filter :require_login
 
-  steps :select_loads, :plan_info, :trans_info
+  steps :select_loads, :position_info, :trans_info#:plan_info, :trans_info
 
   def show
     
     case step
+
       when :select_loads
-        session[:loading_ids]=[]
-      	@loadings = Loading.find(params[:loading_ids]) if params[:loading_ids]
+        @position = Position.new(operation: current_operation)
         
-        if @loadings
-          session[:loading_ids][0] = @loadings.id
-          session[:plan_operation] = @loadings.operation
-          session[:plan_direction] = @loadings.direction
-        end
+        @search = Search.new
+        @search.operation = session[:plan_operation]
+        @search.direction = session[:plan_direction]
 
-        @position = Position.new
-      when :plan_info
+      when :position_info
+        @position = Position.new(operation: current_operation)
 
-        @position = current_patron.positions.build(params[:position])
-
-        @loadings = Loading.find(session[:loading_ids])
-        #flash[:notice] = "Added Loadings #{strRef}!"
+      #when :plan_info
+      #  @position = current_patron.positions.build(params[:position])
+      #  @loadings = Loading.find(session[:loading_ids])
+      #  #flash[:notice] = "Added Loadings #{strRef}!"
       when :trans_info
-        @position = current_patron.positions.build()
+        @position = current_patron.positions.build(params[:position])
         @position.operation = session[:plan_operation]
         @position.direction = session[:plan_direction]
 
         @transport = @position.transports.build(trans_method: @position.operation)
     end
 
-    @search = Search.new
-    @search.operation = session[:plan_operation]
-    @search.direction = session[:plan_direction]
- 
     render_wizard
       
   end
@@ -45,10 +39,30 @@ class TransplanController < ApplicationController
 
     case step
       when :select_loads
-        skip_step
 
-      when :plan_info
-        skip_step
+        session[:loading_ids]=[]
+        @loadings = Loading.find(params[:loading_ids]) if params[:loading_ids]
+        
+        if @loadings
+          session[:loading_ids][0] = @loadings.id
+          session[:plan_operation] = @loadings.operation
+          session[:plan_direction] = @loadings.direction
+        end
+        @position = current_patron.positions.build()
+        @position.operation = session[:plan_operation]
+        @position.direction = session[:plan_direction]
+        @position.loading_ids = params[:loading_ids] if params[:loading_ids]
+
+        render_step(:position_info)
+
+      when :position_info
+        @position = current_patron.positions.build(params[:position])
+        @transport = @position.transports.build(trans_method: @position.operation)
+        render_step(:trans_info)
+        #skip_step 
+
+      #when :plan_info
+      #  skip_step
 
       when :trans_info
         @position = current_patron.positions.build(params[:position])
@@ -60,6 +74,6 @@ class TransplanController < ApplicationController
         session[:loading_ids] = []
         redirect_to @position
     end
-    render_wizard
+    #render_wizard
   end
 end

@@ -3,7 +3,7 @@
     <table style="width:100%" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td><h3><%= @loading.reference.upcase %></h3></td>
-        <td colspan="4"><%= render 'tab_header', :loading => @loading %></td>
+        <td colspan="4"><%= render 'loadings/tab_header', :loading => @loading %></td>
         <!--td style="text-align:right">
           <%#= link_to "Edit", edit_loading_path(@loading), :class => 'btn primary' %>
         </td-->
@@ -11,21 +11,16 @@
       <tr>
         <td class="labelCol2">Müşteri :</td>
         <td class="dataCol2"><%= @loading.company.name if @loading.company %></td>
-        <td class="labelCol2">Acenta:</td>
-        <td class="dataCol2"><%= @loading.agent.name if @loading.agent %></td>
-        <td class="dataCol2" rowspan="3"><%= @loading.commodity %></td>
+        <td class="labelCol2">Yük Açıklaması:</td>
+        <td class="dataCol2"><%= @loading.commodity %></td>
+        <td class="dataCol2 lastCol">Kayıt Sahibi:<%= @loading.user %></td>
       </tr>
       <tr>
         <td class="labelCol2">Navlun :</td>
         <td class="dataCol2"><%= @loading.freight_price %>&nbsp;<%= @loading.freight_curr %></td>
-        <td class="labelCol2">Üretici:</td>
-        <td class="dataCol2 lastCol"><%= @loading.producer %></td>
-      </tr>
-      <tr>
         <td class="labelCol2">Brüt Ağırlık:</td>
-        <td class="dataCol2 lastCol"><%= @loading.brut_wg %></td>
-        <td class="labelCol2">Yük Fiyatı:</td>
-        <td class="dataCol2"><%= @loading.product_price %>&nbsp;<%= @loading.product_curr %></td>
+        <td class="dataCol2"><%= @loading.brut_wg %></td>
+        <td class="dataCol2 lastCol">Kayıt Zamanı:<%= @loading.created_at %></td>
       </tr>
     </table>
   </div>

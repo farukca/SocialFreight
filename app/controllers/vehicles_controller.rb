@@ -2,6 +2,9 @@ class VehiclesController < ApplicationController
 
   before_filter :require_login
 
+  def home
+  end
+  
   def index
     if params[:q]
       strQ = params[:q].html_safe

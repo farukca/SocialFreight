@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120630234350) do
+ActiveRecord::Schema.define(:version => 20120716121303) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                    :null => false
@@ -253,8 +253,9 @@ ActiveRecord::Schema.define(:version => 20120630234350) do
     t.string   "statement",        :limit => 20
     t.date     "statement_date"
     t.string   "notes",            :limit => 250
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.datetime "created_at",                                         :null => false
+    t.datetime "updated_at",                                         :null => false
+    t.boolean  "pre_trans",                       :default => false
   end
 
   add_index "departures", ["city_id", "country_id"], :name => "index_departures_on_city_id_and_country_id"
@@ -433,8 +434,6 @@ ActiveRecord::Schema.define(:version => 20120630234350) do
   end
 
   create_table "packages", :force => true do |t|
-    t.integer  "loading_id",                                    :null => false
-    t.integer  "container_id"
     t.string   "pack_type",                                     :null => false
     t.integer  "total",                        :default => 0
     t.integer  "dimension1"
@@ -451,9 +450,11 @@ ActiveRecord::Schema.define(:version => 20120630234350) do
     t.string   "loading_notes", :limit => 200
     t.datetime "created_at",                                    :null => false
     t.datetime "updated_at",                                    :null => false
+    t.integer  "packed_id"
+    t.string   "packed_type"
   end
 
-  add_index "packages", ["loading_id", "container_id"], :name => "index_packages_on_loading_id_and_container_id"
+  add_index "packages", ["packed_type", "packed_id"], :name => "index_packages_parent"
 
   create_table "partners", :force => true do |t|
     t.integer  "company_id",                 :null => false

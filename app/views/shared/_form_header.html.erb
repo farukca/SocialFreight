@@ -3,7 +3,11 @@
     <tbody>
       <tr style="width:100%">
         <td class="pbTitle"  style="width:50%;text-align:left">
-          <h3 class="mainTitle"><%= message.humanize if message.present? %></h3>
+          <% unless message.nil? %> 
+            <h3 class="mainTitle"><%= message.humanize if message.present? %></h3>
+          <% else %>
+            <h3 class="mainTitle"><%= (params[:action] + " " + params[:controller]).humanize %></h3>
+          <% end %>
         </td>
       </tr>
     </tbody>

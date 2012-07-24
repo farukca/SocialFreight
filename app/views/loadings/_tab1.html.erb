@@ -1,4 +1,5 @@
 <div id="departures" class="tab-pane active">
   <%= render @loading.departures %>
+  <%= link_to "Yükleme Noktası Ekle", new_departure_path(loading_id: @loading.slug), class: "btn btn-info" %>
 </div>
 

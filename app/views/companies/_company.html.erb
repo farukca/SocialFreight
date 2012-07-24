@@ -1,0 +1,22 @@
+<div id="company_<%= company.id %>" class="active">
+
+  <div class="row-fluid">
+    <dl class="yatay-info">
+      <dd></dd>
+      <dd class="email">
+        <%= link_to company.name, company_path(company) %>
+      </dd>
+      <dd class="email">
+        <%= mail_to company.email, company.email %>
+      </dd>
+      <dd class="tel"><%= company.tel %></dd>
+      <dd class="tel"><%= company.fax %></dd>
+      <dd class="twitter">
+        <%= link_to "@#{company.twitter_url}", "https://twitter.com/#!/#{company.twitter_url}", :target => "_blank" unless company.twitter_url.blank? %>
+      </dd>
+      <dd><%= link_to edit_company_path(company) do %><i class="icon-edit"></i><% end %></dd>
+    </dl>
+  </div>
+ 
+</div>
+

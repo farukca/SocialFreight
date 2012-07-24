@@ -1,5 +1,6 @@
 <div id="package_form">
-<%= simple_form_for [@loading, @package], :validate => true do |f| %>
+
+<%= simple_form_for [@packed, @package], :validate => true do |f| %>
   <%= f.error_notification %>
 
   <fieldset>
@@ -13,7 +14,7 @@
       <div id="my-tab-content" class="tab-content">
         <legend>Koli Bilgileri</legend>
         <div id="package-main-form" class="tab-pane active">
-          <%= render 'form_main', :f => f %>
+          <%= render 'packages/form_main', :f => f %>
         </div>
       </div>
 

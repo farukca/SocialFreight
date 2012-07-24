@@ -1,0 +1,15 @@
+<legend>Yükleme Yeri Bilgileri</legend>
+<div class="row-fluid">
+  <div class="span6">
+    <%#= f.input :load_place_id, :as => :select, :input_html => {:class => "chosen_input", "data-url" => "/places.json" } %>
+    <%= f.input :load_place_id, as: :hidden, label: "Yükleme Yeri", input_html: {:class => "chosen_input", "data-url" => "/places.json", "data-newrecurl" => "/places/new", "data-selected" => @departure.load_place_id ? @departure.load_place.name : "", "data-placeholder" => "Yükleme Yerini Seçiniz."} %>
+    <%= f.input :country_id do %>
+      <%= f.input_field :country_id, :as => :select, :collection => Country.all, :include_blank => true, :class => "input-small" %>
+      <%= f.grouped_collection_select :city_id, Country.order(:name), :cities, :name, :id, :name, {:include_blank => true}, {:class => "input-small"} %>
+    <% end %>
+  </div>
+  <div class="span6">
+    <%= f.input :load_date, as: :string, input_html: { class: "input-small", "data-datepicker" => "datepicker" } %>
+    <%= f.input :notes, as: :text, input_html: {rows: 2} %>
+  </div>
+</div>
