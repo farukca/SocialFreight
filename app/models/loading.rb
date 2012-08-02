@@ -24,8 +24,11 @@ class Loading < ActiveRecord::Base
   has_many :packages, as: :packed, dependent: :destroy
   accepts_nested_attributes_for :packages, :containers
     
-  has_many :waybills, as: :waybillable, dependent: :destroy
+  #has_many :waybills, as: :waybillable, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
+  has_many :documents, as: :documented, dependent: :destroy
+  has_many :costs, as: :costable, dependent: :destroy
+  has_many :invoitems, as: :invoitem_owner, dependent: :destroy
 
   attr_accessible :position_id, :operation, :direction, :incoterm, :paid_at, :load_type, :channel, :branch_id, :company_id,
                   :agent_id, :user_id, :saler_id, :freight_price, :freight_curr, :agent_price, :agent_curr, :agent_share,

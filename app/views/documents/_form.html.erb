@@ -1,0 +1,32 @@
+<div class="row-fluid">
+  <%= simple_form_for @document, html: { class: 'form-horizontal' }, validate: true do |f| %>
+    <%= f.error_notification %>
+    <%= f.error :base, :error_method => :to_sentence %>
+
+    <fieldset>
+      <div class="row-fluid">
+        <div class="span6">
+          <%= f.input :document_type, as: :select, collection: Place.place_types.map { |r| [r[1], r[0] ] }, include_blank: true %>
+          <%= f.input :document_date, as: :string, :input_html => {:class => "input-small", "data-datepicker" => "datepicker"} %>
+          <%= f.input :document_no %>
+          <%= f.input :document_file, :as => :file, :label => "Upload File" %>
+          <%#= f.input :country_id, as: :select, collection: Country.find(:all, order: :name), include_blank: true, input_html: { class: "country_select", "data-placeholder" => "Ülke Seçiniz" } %>
+          <%#= f.input :city_id, as: :select, collection: City.find(:all, conditions: ["country_id = :c", { :c => @document.country_id } ]), include_blank: true, input_html: { class: "city_select", "data-placeholder" => "Şehir Seçiniz"} %>
+        </div>
+        <div class="span6">
+          <%= f.input :operation, as: :select, collection: Operation.all %>
+          <%= f.input :owner_reference %>
+          <%= f.input :status, as: :select %>
+          <%#= f.input :page_number %>
+          <%= f.input :description, as: :text, input_html: {rows: "3"} %>
+          <div class="control">
+            <%= f.button :submit, :class => 'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+      <%= f.input :documented_type, as: :hidden %>
+      <%= f.input :documented_id, as: :hidden %>
+    </fieldset>
+
+  <% end %>
+</div>

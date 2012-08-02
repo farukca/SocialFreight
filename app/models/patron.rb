@@ -27,6 +27,9 @@ class Patron < ActiveRecord::Base
   has_many :loadings
   has_many :activities
   has_many :journals, as: :journaled, dependent: :destroy
+  has_many :documents
+  has_many :costs
+  has_many :invoitems
   #has_and_belongs_to_many :operations
   
   attr_accessible :title, :website, :tel, :fax, :postcode, :district, :address, :city_id, :country_id, :status, :saler_id, 
@@ -42,6 +45,7 @@ class Patron < ActiveRecord::Base
   validates_presence_of :contact_name#, :message => I18n.t('patrons.errors.title.cant_be_blank')
   validates_presence_of :contact_surname#, :message => I18n.t('patrons.errors.title.cant_be_blank')
   validates_presence_of :tel#,   :message => I18n.t('patrons.errors.title.cant_be_blank')
+  validates_presence_of :country_id
   validates_uniqueness_of :email, :case_sensitive => false
 
   validates_length_of   :title, :maximum => 255#, :message => I18n.t('tasks.errors.name.too_long')
@@ -94,6 +98,12 @@ class Patron < ActiveRecord::Base
   def set_initials
     self.name = self.title
     self.token = SecureRandom.urlsafe_base64[0,20]
+    if self.country_id.present?
+      self.locale = self.country.locale
+      self.language = self.country.language
+      self.time_zone = self.country.time_zone
+      self.mail_encoding = self.country.mail_encoding
+    end
   end
 
   private

@@ -1,0 +1,11 @@
+<tr>
+  <td><%= cost.cost_type %></td>
+  <td><%= cost.document_date.strftime("%d/%m/%Y") %></td>
+  <td><%= cost.cost_price %></td>
+  <td><%= cost.costable_reference %></td>
+  <td><%= cost.cost_source %></td>
+  <td><%= cost.user.to_s if cost.user %></td>
+  <td><%= cost.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+  <td><%= cost.cost_file if cost.cost_file %></td>
+  <td><%= link_to edit_cost_path(cost) do %><i class="icon-edit"></i><% end %></td>
+</tr>

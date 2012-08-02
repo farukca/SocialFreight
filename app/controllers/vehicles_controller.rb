@@ -1,6 +1,7 @@
 class VehiclesController < ApplicationController
 
   before_filter :require_login
+  before_filter(:only => [:home]) { |c| c.set_tab "fleetnavigator" }
 
   def home
   end

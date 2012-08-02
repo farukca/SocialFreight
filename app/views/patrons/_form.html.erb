@@ -8,6 +8,7 @@
     <%= f.input :contact_surname, :label => "Surname" %>
     <%= f.input :tel  %>
     <%= f.input :email %>
+    <%= f.input :country_id, as: :select, collection: Country.find(:all, order: :name), include_blank: false, input_html: { class: "country_select", "data-placeholder" => "Ülke Seçiniz" }, selected: "TR" %>
     <%= f.input :employees, :as => :select, :collection => Patron.employee_ranks.map { |r| [r[1], r[0] ] }, :include_blank => false %>
     <%#= f.input :language %>
     <div class="controls"><%= f.button :submit, "Try SocialFreight", :class => 'btn btn-success' %></div>

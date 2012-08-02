@@ -1,0 +1,42 @@
+<div class="row-fluid">
+  <%= simple_form_for @invoitem, html: { class: 'form-horizontal' }, validate: true do |f| %>
+    <%= f.error_notification %>
+    <%= f.error :base, :error_method => :to_sentence %>
+
+    <fieldset>
+      <div class="row-fluid">
+        <div class="span6">
+          <%= f.input :credit_debit, as: :select, collection: Place.place_types.map { |r| [r[1], r[0] ] }, include_blank: true %>
+          <%= f.input :company_id, as: :hidden, label: "Müşteri", input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-selected" => @invoitem.company_id ? @invoitem.company.name : "", "data-placeholder" => "Müşteri/Tedarikçi Seçiniz."} %>
+          <%= f.input :unit_name %>
+          <%= f.input :item_price do %>
+            <%= f.input_field :item_price, class: "input-small" %>
+            <%= f.input_field :price_curr, :as => :select, :collection => Currency.all, :include_blank => false, class: "input-small" %>
+          <% end %>
+          <%= f.input :item_vat do %>
+            <%= f.input_field :vat_rate, class: "input-small" %>
+            <%= f.input_field :item_vat, class: "input-small" %>
+          <% end %>
+        </div>
+        <div class="span6">
+          <%= f.input :operation do %>
+            <%= f.input_field :operation, class: "input-small" %>
+            <%= f.input_field :service, class: "input-small" %>
+          <% end %>
+          <%= f.input :owner_reference do %>
+            <%= f.input_field :owner_reference, class: "input-small", "disabled" => "disabled" %>
+            <%= f.input_field :branch_id, as: :select, collection: current_patron.branches, selected: current_user.branch_id, class: "input-small" %>
+          <% end %>
+          <%= f.input :status, as: :select %>
+          <%= f.input :description, as: :text, input_html: {rows: "3"} %>
+          <div class="control">
+            <%= f.button :submit, class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+      <%= f.input :invoitem_owner_type, as: :hidden %>
+      <%= f.input :invoitem_owner_id, as: :hidden %>
+    </fieldset>
+
+  <% end %>
+</div>

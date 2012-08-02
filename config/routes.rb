@@ -27,6 +27,8 @@ Socialfreight::Application.routes.draw do
   resources :contacts
   resources :finunits
   resources :findocs
+  resources :invoitems
+  
   resources :branches
   resources :people
   resources :positions do
@@ -49,12 +51,15 @@ Socialfreight::Application.routes.draw do
   resources :rentals
   resources :vehicles
   resources :vessels
+  resources :documents
+  resources :costs
 
   resources :searches do
     member do
       get :planning
     end
-  end  
+  end
+
   resources :countries
   resources :cities
   resources :currencies

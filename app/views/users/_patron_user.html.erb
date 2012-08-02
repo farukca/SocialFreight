@@ -1,5 +1,5 @@
 <div id="user_form">
-<%= simple_form_for @user, :validate => true  do |f| %>
+<%= simple_form_for @user, html: { class: 'form-horizontal' }, :validate => true  do |f| %>
   <%= f.error_notification %>
 
   <div class="pageBlock">
@@ -16,6 +16,7 @@
                 <%= f.input :name %>
                 <%= f.input :surname %>
                 <%= f.input :email %>
+                <%= f.input :branch_id, :as => :select, :collection => current_patron.branches, :include_blank => false, :selected => current_user.branch_id %>                
                 <%= f.input :role %>
                 <%= f.input :user_type %>
               </div>

@@ -14,7 +14,7 @@
     <dd><%= Loading.load_types[loading.load_type] %></dd>
     <dd>
       <% if loading.position_id.nil? %>
-        <%= link_to "Taşıma Planlanmamış, Planlamak için tıklayınız", transplan_path(:select_loads, :loading_ids => loading.id), :class => 'btn btn-info' %></dd>
+        <%= link_to "Taşıma Planlanmamış, Planlamak için tıklayınız", transplan_path(:select_loads, :loading_id => loading.id), :class => 'btn btn-info' %></dd>
       <% else %>
         <%= link_to loading.position.reference, position_path(loading.position) %>
       <% end %>

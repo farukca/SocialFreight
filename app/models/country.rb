@@ -19,7 +19,7 @@ class Country < ActiveRecord::Base
   validates_length_of   :name, :maximum => 100
 
   #before_save :get_coordinates
-  
+
   def gmaps4rails_address
     self.name
   end

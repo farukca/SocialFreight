@@ -7,12 +7,16 @@
       <ul class="nav nav-pills">
         <li class="active"><a data-toggle="tab" href="#departures">Yükleme Detayları</a></li>
         <li><a data-toggle="tab" href="#arrivals">Boşaltma Detayları</a></li>
-        <li><a data-toggle="tab" href="#good_docs">Dosyalar</a></li>
+        <li><a data-toggle="tab" href="#documents">Dosyalar</a></li>
+        <li><a data-toggle="tab" href="#costs">Masraflar</a></li>
+        <li><a data-toggle="tab" href="#invoices">Faturalar & Fatura Kalemleri</a></li>
       </ul>
       <div id="my-tab-content" class="tab-content">
         <%= render 'tab1', :loading => @loading %>
         <%= render 'tab2', :loading => @loading %>
         <%= render 'tab3', :loading => @loading %>
+        <%= render 'tab4', :loading => @loading %>
+        <%= render 'tab5', :loading => @loading %>
       </div>
     </div>
     <div id="loading_comments" class="feeds">

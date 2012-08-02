@@ -20,7 +20,7 @@
         <td class="dataCol2"><%= @loading.freight_price %>&nbsp;<%= @loading.freight_curr %></td>
         <td class="labelCol2">Brüt Ağırlık:</td>
         <td class="dataCol2"><%= @loading.brut_wg %></td>
-        <td class="dataCol2 lastCol">Kayıt Zamanı:<%= @loading.created_at %></td>
+        <td class="dataCol2 lastCol">Kayıt Zamanı:<%= @loading.created_at.strftime("%d/%m/%Y %H:%M") %></td>
       </tr>
     </table>
   </div>

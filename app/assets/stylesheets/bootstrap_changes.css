@@ -46,3 +46,7 @@ margin-left: 0px;
 .control-group.error > label, .control-group.error .help-block, .control-group.error .help-inline {
   display: block;
 }
+.hidden {
+  padding: 0px;
+  margin: 0px;
+}

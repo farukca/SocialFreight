@@ -41,7 +41,7 @@ class ReservationController < ApplicationController
         @loading.patron_token = current_patron.token
         @loading.user_id = current_user.id
         #session[:wicked_loading_id] = 
-        if @loading.save
+        if @loading.save!
           session[:wicked_loading_id] = @loading.id
           redirect_to_next(:departure_info)
         else
@@ -53,7 +53,6 @@ class ReservationController < ApplicationController
         if @departure.save
           redirect_to_next(:arrival_info)
         else
-          debugger
           render_wizard
         end
       when :arrival_info

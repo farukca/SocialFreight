@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   has_many :contacts
   has_many :tasks
   has_many :journals, as: :journaled, dependent: :destroy
+  has_many :documents
 
   attr_accessible :email, :password, :password_confirmation, :name, :surname, :patron_id, :avatar, :remove_avatar, 
                    :region, :time_zone, :user_type, :language, :locale, :mail_encoding, :role, :branch_id
@@ -33,6 +34,7 @@ class User < ActiveRecord::Base
   validates_presence_of :name
   validates_presence_of :surname
   validates_uniqueness_of :email, :case_sensitive => false
+  validates_presence_of :branch_id
 
   before_create :set_initials
   after_create  :create_person, :send_activation_mail

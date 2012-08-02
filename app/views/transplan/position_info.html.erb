@@ -3,12 +3,18 @@
   <div class="pageBlock">
 
     <%= render 'shared/form_header', message: "Temel Pozisyon Bilgisi" %>
-    <%= render 'breadcrumb', step: 1 %>
+    <%= render 'breadcrumb', step: 2 %>
     
+    <div id="selected-loads" class="row-fluid">
+      <% unless @loadings.nil? %>
+        <%= render 'loadings/loadings', loadings: @loadings, locals: { @showsums => true } %>
+      <% end %>
+    </div>
+
     <div class="row-fluid">
       <%= simple_form_for @position, url: wizard_path, method: :put, html: { class: 'form-horizontal'}, validate: true do |f| %>
         <%= f.error_notification %>
-
+        <%= f.error :base %>
         <fieldset>
           <div class="row-fluid">
             <div class="span6">

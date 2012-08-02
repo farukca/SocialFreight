@@ -72,7 +72,7 @@ class LoadingsController < ApplicationController
   end
 
   def update
-    @loading = Loading.find(params[:id])
+    @loading = current_patron.loadings.find(params[:id])
 
     respond_to do |format|
       if @loading.update_attributes(params[:loading])
@@ -107,18 +107,19 @@ class LoadingsController < ApplicationController
 
   def addtoplan
     loadid = params[:id]
-    @loading = Loading.find(loadid)
-    @plan_operation = session[:plan_operation]
-    @plan_direction = session[:plan_direction]
-    if @loading.operation != @plan_operation
-      @loading.errors.add_to_base('Operations different')
+    @loading = current_patron.loadings.find(loadid)
+    if @loading
+
+      if @loading.operation != session[:plan_operation]
+        @loading.errors.add_to_base('Operations different')
+      end
+
+      if @loading.direction != session[:plan_direction]
+        @loading.errors.add_to_base('Import Export selection must be different')
+      end
+
+      session[:wicked_loading_ids] << @loading.id
     end
-    if @loading.direction != @plan_direction
-      @loading.errors.add_to_base('Import Export selection must be different')
-    end
-    
-    i = session[:loading_ids].length
-    session[:loading_ids][i] = params[:id]
   end
 
 end

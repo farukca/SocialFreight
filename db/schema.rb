@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120716121303) do
+ActiveRecord::Schema.define(:version => 20120801103954) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                    :null => false
@@ -200,6 +200,41 @@ ActiveRecord::Schema.define(:version => 20120716121303) do
   add_index "containers", ["loading_id"], :name => "index_containers_on_loading_id"
   add_index "containers", ["name", "loading_id"], :name => "index_containers_on_name_and_loading_id", :unique => true
 
+  create_table "costs", :force => true do |t|
+    t.string   "cost_source",        :limit => 50,                    :null => false
+    t.string   "cost_type",          :limit => 50,                    :null => false
+    t.integer  "owner_id"
+    t.string   "operation",          :limit => 20
+    t.integer  "costable_id"
+    t.string   "costable_type"
+    t.string   "costable_reference", :limit => 50
+    t.decimal  "cost_price",                        :default => 0.0
+    t.string   "price_curr",         :limit => 10
+    t.decimal  "cost_vat",                          :default => 0.0
+    t.float    "curr_rate",                         :default => 1.0
+    t.decimal  "local_cost_price",                  :default => 0.0
+    t.decimal  "local_price_vat",                   :default => 0.0
+    t.string   "truck",              :limit => 20
+    t.string   "vehicle",            :limit => 20
+    t.string   "document_no",        :limit => 20
+    t.date     "document_date"
+    t.string   "cost_firm",          :limit => 100
+    t.string   "cost_taxoffice",     :limit => 100
+    t.string   "cost_taxno",         :limit => 20
+    t.string   "country_id",         :limit => 20
+    t.integer  "city_id"
+    t.integer  "branch_id"
+    t.boolean  "settlement_flag",                   :default => true
+    t.decimal  "settlement_price",                  :default => 0.0
+    t.string   "settlement_curr",    :limit => 10
+    t.string   "description"
+    t.string   "cost_file"
+    t.integer  "user_id",                                             :null => false
+    t.integer  "patron_id"
+    t.datetime "created_at",                                          :null => false
+    t.datetime "updated_at",                                          :null => false
+  end
+
   create_table "counters", :force => true do |t|
     t.string  "counter_type", :limit => 40,                :null => false
     t.string  "operation",    :limit => 20
@@ -214,13 +249,17 @@ ActiveRecord::Schema.define(:version => 20120716121303) do
   add_index "counters", ["patron_id", "counter_type", "operation", "period"], :name => "index_counters_unique", :unique => true
 
   create_table "countries", :id => false, :force => true do |t|
-    t.string  "code",      :limit => 2,  :null => false
-    t.string  "name",      :limit => 40, :null => false
-    t.string  "telcode",   :limit => 10
+    t.string  "code",          :limit => 2,  :null => false
+    t.string  "name",          :limit => 40, :null => false
+    t.string  "telcode",       :limit => 10
     t.float   "latitude"
     t.float   "longitude"
     t.boolean "gmaps"
-    t.string  "slug",      :limit => 40
+    t.string  "slug",          :limit => 40
+    t.string  "locale",        :limit => 20
+    t.string  "language",      :limit => 10
+    t.string  "time_zone"
+    t.string  "mail_encoding", :limit => 20
   end
 
   add_index "countries", ["slug"], :name => "index_countries_on_slug"
@@ -260,6 +299,27 @@ ActiveRecord::Schema.define(:version => 20120716121303) do
 
   add_index "departures", ["city_id", "country_id"], :name => "index_departures_on_city_id_and_country_id"
   add_index "departures", ["loading_id"], :name => "index_departures_on_loading_id"
+
+  create_table "documents", :force => true do |t|
+    t.string   "document_type",   :limit => 50,                :null => false
+    t.date     "document_date",                                :null => false
+    t.string   "document_no"
+    t.string   "operation",       :limit => 20
+    t.integer  "documented_id"
+    t.string   "documented_type"
+    t.string   "owner_reference", :limit => 50
+    t.integer  "user_id",                                      :null => false
+    t.integer  "patron_id",                                    :null => false
+    t.date     "due_date"
+    t.integer  "page_number",                   :default => 1
+    t.string   "status",          :limit => 1
+    t.string   "country_id",      :limit => 20
+    t.integer  "city_id"
+    t.string   "description"
+    t.string   "document_file"
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
+  end
 
   create_table "feedbacks", :force => true do |t|
     t.string   "name",       :limit => 40,  :null => false
@@ -331,6 +391,38 @@ ActiveRecord::Schema.define(:version => 20120716121303) do
   add_index "follows", ["followable_id", "followable_type"], :name => "fk_followables"
   add_index "follows", ["follower_id", "follower_type"], :name => "fk_follows"
 
+  create_table "invoitems", :force => true do |t|
+    t.integer  "invoice_id"
+    t.string   "unit_name",           :limit => 100,                  :null => false
+    t.string   "invoice_name",        :limit => 100
+    t.integer  "unit_number",                        :default => 1,   :null => false
+    t.decimal  "unit_price",                         :default => 0.0, :null => false
+    t.decimal  "item_price",                         :default => 0.0, :null => false
+    t.decimal  "item_vat",                           :default => 0.0, :null => false
+    t.string   "price_curr",          :limit => 10,                   :null => false
+    t.string   "status",              :limit => 10,                   :null => false
+    t.string   "credit_debit",        :limit => 10,                   :null => false
+    t.integer  "company_id",                                          :null => false
+    t.float    "vat_rate",                           :default => 0.0, :null => false
+    t.float    "curr_rate",                          :default => 1.0, :null => false
+    t.decimal  "local_price",                        :default => 0.0, :null => false
+    t.decimal  "local_vat",                          :default => 0.0, :null => false
+    t.string   "local_curr",          :limit => 10,                   :null => false
+    t.integer  "branch_id",                                           :null => false
+    t.string   "operation",           :limit => 20
+    t.string   "service",             :limit => 10
+    t.integer  "invoitem_owner_id"
+    t.string   "invoitem_owner_type"
+    t.string   "owner_reference",     :limit => 50
+    t.integer  "user_id",                                             :null => false
+    t.boolean  "approved"
+    t.integer  "approver_id"
+    t.integer  "patron_id"
+    t.text     "description"
+    t.datetime "created_at",                                          :null => false
+    t.datetime "updated_at",                                          :null => false
+  end
+
   create_table "journals", :force => true do |t|
     t.date    "process_date",                                  :null => false
     t.string  "journal_model",  :limit => 40
@@ -354,6 +446,24 @@ ActiveRecord::Schema.define(:version => 20120716121303) do
 
   add_index "likes", ["likeable_id", "likeable_type"], :name => "fk_likeables"
   add_index "likes", ["liker_id", "liker_type"], :name => "fk_likes"
+
+  create_table "listheaders", :force => true do |t|
+    t.string   "code"
+    t.string   "name"
+    t.string   "i18n_code"
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "listitems", :force => true do |t|
+    t.string   "code"
+    t.string   "name"
+    t.string   "list_code"
+    t.string   "i18n_code"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "loadings", :force => true do |t|
     t.string   "reference",     :limit => 30,                   :null => false
@@ -501,6 +611,8 @@ ActiveRecord::Schema.define(:version => 20120716121303) do
     t.boolean  "depot_owner",                    :default => false
     t.string   "iata_code",       :limit => 30
     t.string   "fmc_code",        :limit => 30
+    t.string   "locale",          :limit => 20
+    t.string   "mail_encoding",   :limit => 20
   end
 
   add_index "patrons", ["slug"], :name => "index_patrons_on_slug", :unique => true
@@ -642,6 +754,31 @@ ActiveRecord::Schema.define(:version => 20120716121303) do
   end
 
   add_index "queue_classic_jobs", ["q_name", "id"], :name => "idx_qc_on_name_only_unlocked"
+
+  create_table "rentals", :force => true do |t|
+    t.string   "referans",        :limit => 20,                    :null => false
+    t.string   "rent_direction",  :limit => 1
+    t.string   "vehicle",         :limit => 50
+    t.string   "vehicle_class",   :limit => 20
+    t.string   "vehicle_type",    :limit => 20
+    t.string   "vehicle_brand",   :limit => 50
+    t.string   "vehicle_model",   :limit => 20
+    t.integer  "vehicle_firstkm",               :default => 0
+    t.integer  "vehicle_lastkm",                :default => 0
+    t.string   "operator",        :limit => 50
+    t.boolean  "fuel_flag",                     :default => false
+    t.date     "start_date",                                       :null => false
+    t.date     "finish_date",                                      :null => false
+    t.string   "rent_status",     :limit => 1
+    t.integer  "company_id",                                       :null => false
+    t.decimal  "rent_price"
+    t.string   "price_curr",      :limit => 1
+    t.integer  "patron_id"
+    t.integer  "user_id"
+    t.string   "notes"
+    t.datetime "created_at",                                       :null => false
+    t.datetime "updated_at",                                       :null => false
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"

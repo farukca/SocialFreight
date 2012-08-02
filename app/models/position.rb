@@ -25,7 +25,7 @@ class Position < ActiveRecord::Base
   attr_accessible :operation, :direction, :incoterm, :paid_at, :load_type, :agent_id, :user_id, :load_place_id, :load_date, 
                    :unload_place_id, :unload_date, :freight_price, :freight_curr, :status, :report_date, :stage, :stage_date, 
                    :ref_no1, :ref_type1, :ref_no2, :ref_type2, :ref_no3, :ref_type3, :ref_no4, :ref_type4, :notes, :agent_price, 
-                   :agent_curr, :branch_id, :waybill_no, :waybill_date, :transnodes_attributes
+                   :agent_curr, :branch_id, :waybill_no, :waybill_date, :transports_attributes, :loading_ids
 
   validates_presence_of :reference, :on => :update
   validates_presence_of :operation #, :message => I18n.t('tasks.errors.name.cant_be_blank')
@@ -129,6 +129,7 @@ class Position < ActiveRecord::Base
     loadids.each do |loadid|
       @loading = Loading.find(loadid)
       if @loading && (@loading.operation == self.operation) && (@loading.direction == self.direction) && @loading.position_id.nil?
+        #TODO control loading and position attributes
         @loading.update_attributes(:position_id => self.id)
         #@loading.position_id = self.id
         #@loading.save

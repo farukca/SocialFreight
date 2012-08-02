@@ -8,9 +8,8 @@
     <div class="row-fluid">
       <%= simple_form_for @position, url: wizard_path, method: :put, html: { class: 'form-horizontal'}, validate: true do |f| %>
         <%= f.error_notification %>
-
-        <%#= render 'positions/form_main', :f => f %>
         <%= f.error :base %>
+        
         <%= f.fields_for :transports do |builder| %>
           <%= render "transports/form_#{@position.operation}", f: builder %>
         <% end %>
@@ -28,7 +27,11 @@
         <div class="controls rightside">
           <%#= link_to "<< Önceki Adıma Geri Dön", previous_wizard_path, :class => 'btn btn-danger' %>
           <%#= link_to "Mevcut Pozisyona Ekleyeceğim", "#", :class => 'togglebutton btn btn-info', "data-placement" => "below",  "rel" => 'twipsy', "title" => "Detaylı Ara", "data-href" => "#position-search-form" %>
-          <%= f.button :submit, "Yükleri Bu Pozisyona Bağla >>", :class => 'btn btn-info' %>
+          <% unless @position.loading_ids.blank? %>
+            <%= f.button :submit, "Yükleri Bu Pozisyona Bağla >>", :class => 'btn btn-info' %>
+          <% else %>
+            <%= f.button :submit, "Kaydet", :class => 'btn btn-info' %>
+          <% end %>
         </div>
       <% end %>
     </div>
