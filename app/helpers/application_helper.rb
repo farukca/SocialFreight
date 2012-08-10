@@ -18,4 +18,11 @@ module ApplicationHelper
     link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")")
   end
 
+  def new_record_path(model_type, parent=nil)
+    if parent.nil?
+      send("new_#{model_type.to_s}_path")
+    else
+      send("new_#{model_type.to_s}_path", "#{parent.class.to_s.downcase}_id" => parent.id)
+    end
+  end
 end

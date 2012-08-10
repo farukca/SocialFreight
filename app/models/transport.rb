@@ -5,6 +5,7 @@ class Transport < ActiveRecord::Base
   belongs_to :owner, class_name: "Company", foreign_key: "owner_id"
   belongs_to :dep_place, class_name: "Place", foreign_key: "dep_place_id"
   belongs_to :arv_place, class_name: "Place", foreign_key: "arv_place_id"
+  has_many   :payoff
 
   attr_accessible :position_id, :trans_method, :vessel, :voyage, :truck, :vagon, :driver_name, :driver_id, 
                   :owner_id, :supplier_id, :dep_place_id, :dep_city_id, :dep_country_id, :arv_place_id,

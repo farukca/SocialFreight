@@ -1,0 +1,36 @@
+<h1>Listing payoffs</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Payoff date</th>
+    <th>Staff</th>
+    <th>Truck</th>
+    <th>Vehicle</th>
+    <th>Voyage</th>
+    <th>Departure date</th>
+    <th>Departure place</th>
+    <th>Return date</th>
+    <th>Return place</th>
+    <th>Approved</th>
+    <th>Approved Date</th>
+    <th></th>
+  </tr>
+
+<% @payoffs.each do |payoff| %>
+  <tr>
+    <td><%= payoff.name %></td>
+    <td><%= payoff.payoff_date %></td>
+    <td><%= payoff.staff.to_s %></td>
+    <td><%= payoff.truck %></td>
+    <td><%= payoff.vehicle %></td>
+    <td><%= payoff.voyage %></td>
+    <td><%= payoff.departure_date %></td>
+    <td><%= payoff.return_date %></td>
+    <td><%= payoff.return_place %></td>
+    <td><%= payoff.approved %></td>
+    <td><%= payoff.approved_date %></td>
+    <td><%= link_to 'Show', payoff %></td>
+  </tr>
+<% end %>
+</table>

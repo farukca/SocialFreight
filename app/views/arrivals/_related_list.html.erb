@@ -1,0 +1,23 @@
+<%= table_for objects, table_html: { class: "table table-condensed table-striped"}, 
+              header_row_html: { class: "headerRow" },
+              row_html: { class: "dataRow" } do |table| %>
+  <% table.column :action, column_html: { class: "actionCol", scope: "col" } do |arrival| %>
+    <%= link_to "Güncelle", edit_arrival_path(arrival) %> 
+    | 
+    <%= link_to "Sil", arrival, method: :delete, confirm: "Are you sure?" %>
+  <% end %>
+  <% table.column :unload_date, column_html: { class: "dateCol", scope: "col" } %>
+  <% table.column :country, column_html: { scope: "col" } do |arrival| %>
+    <%= arrival.country.name %>
+  <% end %>
+  <% table.column :city, column_html: { scope: "col" } do |arrival| %>
+    <%= arrival.city.name %>
+  <% end %>
+  <% table.column :unload_place, column_html: { scope: "col" } do |arrival| %>
+    <%= arrival.unload_place.name %>
+  <% end %>
+  <% table.column :statement, column_html: { scope: "col" } %>
+  <% table.column :statement_date, column_html: { scope: "col" } %>
+  <% table.column :delivery_date, column_html: { class: "dateCol", scope: "col" } %>
+
+<% end %>

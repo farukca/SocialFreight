@@ -1,0 +1,10 @@
+<div id="#{parent.id}_#{list_model}List" class="pageBlock subRecordList">
+  <div class="listSubRecords #{list_model}">
+    <div class="pPageBlock brndScnBrd secondaryPalette">
+      <%= render "shared/list_header", listItem: list_model, object: parent %>
+      <div id="#{parent.id}_#{list_model}List_Body" class="listBody">
+        <%= render "#{list_model.pluralize}/related_list", objects: objects %>
+      </div>
+    </div>
+  </div>
+</div>

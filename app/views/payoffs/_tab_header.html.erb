@@ -1,0 +1,15 @@
+<div id="good_branch">
+  <dl class="yatay-info" id="headline">
+    <dd><%= payoff.staff.to_s %></dd>
+    <dd><%= payoff.payoff_date %></dd>
+    <dd><%= payoff.truck %></dd>
+    <dd><%= payoff.vehicle %></dd>
+    <dd><%= payoff.voyage %></dd>
+    <dd></dd>
+    <% if payoff.approved %>
+      <dd>Hesaplaşma Tarihi:<%= payoff.approved_date %></dd>
+      <dd>Hesaplaşma Sonucu:<%= "#{payoff.payoff_price} #{payoff.price_curr}" %></dd>
+      <dd><%= payoff.credit_debit %></dd>
+    <% end %>
+  </dl>
+</div>

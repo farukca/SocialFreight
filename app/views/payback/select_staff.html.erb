@@ -1,0 +1,20 @@
+<div class="row-fluid">
+  <%= simple_form_for @payoff, url: wizard_path, method: :put, validate: true do |f| %>
+    <%= f.error_notification %>
+  
+    <fieldset>
+
+      <div class="row-fluid">
+        <div class="span3">
+          <%= f.input :staff_id %>
+        </div>
+        <div class="span3">
+          <%= f.input :payoff_type, as: :select %>
+        </div>
+      </div>
+      
+      <%= f.button :submit, "Devam Et >>" %>
+
+    </fieldset>
+  <% end %>
+</div>

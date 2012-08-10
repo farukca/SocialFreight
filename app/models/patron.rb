@@ -30,6 +30,7 @@ class Patron < ActiveRecord::Base
   has_many :documents
   has_many :costs
   has_many :invoitems
+  has_many :payoffs
   #has_and_belongs_to_many :operations
   
   attr_accessible :title, :website, :tel, :fax, :postcode, :district, :address, :city_id, :country_id, :status, :saler_id, 

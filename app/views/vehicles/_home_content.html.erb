@@ -7,7 +7,7 @@
         <legend>İşlemler</legend>
           <table class="table main_links_table">
             <tr><td><%= link_to "Sürücü/Çekici İş Emri Oluştur", new_contact_path %></td></tr>
-            <tr><td><%= link_to "Sürücü Avans/Masraf Hesaplaşması", new_company_path %></td></tr>
+            <tr><td><%= link_to "Sürücü Avans/Masraf Hesaplaşması", payback_path(:select_staff) %></td></tr>
             <tr><td><%= link_to "", "#" %></td></tr>
           </table>
       </div>

@@ -5,9 +5,9 @@
         <td class="labelCol2">Gemi Adı:</td>
         <td class="dataCol2"><%= transport.vessel %></td>
         <td class="labelCol2">Kalkış Limanı:</td>
-        <td class="dataCol2"><%= transport.departure_place %></td>
+        <td class="dataCol2"><%#= transport.departure_place %></td>
         <td class="labelCol2">Varış Limanı:</td>
-        <td class="dataCol2"><%= transport.arrival_place %></td>
+        <td class="dataCol2"><%#= transport.arrival_place %><%= link_to "A", new_payoff_path(:transport_id => transport.id)%></td>
       </tr>
       <tr>
         <td class="labelCol2">Sefer No:</td>

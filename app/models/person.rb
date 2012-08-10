@@ -11,6 +11,7 @@ class Person < ActiveRecord::Base
   belongs_to :state
   belongs_to :country
   belongs_to :manager, :class_name => "Person", :foreign_key => "manager_id"
+  has_many   :payoffs
 
   mount_uploader :avatar, AvatarUploader
 
@@ -34,7 +35,7 @@ class Person < ActiveRecord::Base
   end
 
   def prepopulate_tokens
-    [{ :id => id, :name => to_s }]
+    { :id => id, :text => to_s }
   end
 
 end

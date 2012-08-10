@@ -1,0 +1,14 @@
+<div id="profile-header" class="profile-content">
+  <table class="outer" width="100%" id="headerTable" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="span2 noborder">
+        <div id="profile-picture" class="loading">
+          <%= image_tag(payoff.staff.avatar_url(:profile)) %>
+        </div>
+      </td>
+      <td>
+        <%= render 'profile_detail', payoff: payoff %>
+      </td>
+    </tr>
+  </table>
+</div>

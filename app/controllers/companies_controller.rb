@@ -9,7 +9,7 @@ class CompaniesController < ApplicationController
   def index
     if params[:q]
        q = "%#{params[:q]}%"
-       @companies = current_patron.companies.where("lower(name) like ? and patron_id = ?", q, current_patron.id).limit(10)
+       @companies = current_patron.companies.where("lower(name) like ?", q).order_by(:name).limit(10)
     else
        if params[:id]
          @companies = current_patron.companies.find_by_id(params[:id])

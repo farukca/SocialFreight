@@ -3,15 +3,15 @@ class PeopleController < ApplicationController
   before_filter :require_login
 
   def index
-    if params[:data][:q]
-       q = "%#{params[:data][:q]}%"
-       @people = Person.where("lower(name) like ? and patron_id = ?", q, current_patron.id).limit(10)
+    if params[:q]
+       q = "%#{params[:q]}%"
+       @people = current_patron.people.where("lower(name) like ?", q).order(:name, :surname).limit(10)
     else
        @people = Person.all
     end
     respond_to do |format|
       format.html
-      format.json { render json: @people.map(&:token_inputs) }
+      format.json { render json: {results: @people.map(&:token_inputs) } }
     end
 
   end

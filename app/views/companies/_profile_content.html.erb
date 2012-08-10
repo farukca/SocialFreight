@@ -4,88 +4,49 @@
       <td class="oRight" id="bodyCell">
         <div id="inner-content">
           <div id="profile-info" class="profile company">
-            <!--ul class="nav nav-pills">
-              <li class="active"><a data-toggle="tab" href="#company_profile">Profile</a></li>
-              <li><a data-toggle="tab" href="#company_contacts">Yetkililer</a></li>
-              <li><a data-toggle="tab" href="#company_docs">Taşımalar</a></li>
-              <li><a data-toggle="tab" href="#company_docs">Açık İşlemler</a></li>
-              <li><a data-toggle="tab" href="#company_docs">Aktiviteler</a></li>
-              <li><a data-toggle="tab" href="#company_docs">Fırsatlar</a></li>
-              <li><a data-toggle="tab" href="#company_docs">İlişkili Firmalar</a></li>
-              <li><a data-toggle="tab" href="#company_docs">Notlar/Dosyalar</a></li>
-              <li class="dropdown">
-                <div class="btn-group">
-                  <a class="dropdown-toggle btn btn-success" data-toggle="dropdown" href="#">
-                    <i class="icon-cog icon-white"></i>İşlemler<i class="icon-chevron-down icon-white"></i>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><%= link_to "Add Contact", new_contact_path(:company_id => @company.id) %></li>
-                    <li><%= link_to "Add Activity", edit_company_path(@company) %></li>
-                    <li><%= link_to "Add Opportunity", edit_company_path(@company) %></li>
-                    <li><%= link_to "Edit Company", edit_company_path(@company) %></li>
-                  </ul>
-                </div>
-              </li>
-            </ul-->
-            <!--div id="my-tab-content" class="tab-content">
-              <%#= render 'tab1', :position => @position %>
-              <%#= render 'tab2', :position => @position %>
-              <%#= render 'tab3', :position => @position %>
-            </div-->
             <div id="company-accordion" class="accordion">
               <div class="accordion-group">
                 <div class="accordion-heading">
                   <a class="accordion-toggle" href="#company_profile" data-parent="#company-accordion" data-toggle="collapse"><i class="icon-gift"></i>Firma Profil</a>
                 </div>
-                <%= render 'tab1', :position => @position %>
-              </div>
-              <div class="accordion-group">
-                <div class="accordion-heading">
-                  <a class="accordion-toggle" href="#company_contacts" data-parent="#company-accordion" data-toggle="collapse"><i class="icon-user"></i>Firma Yetkilileri</a>
-                </div>
-                <%= render 'tab2', :position => @position %>
-              </div>
-              <div class="accordion-group">
-                <div class="accordion-heading">
-                  <a class="accordion-toggle" href="#company_docs" data-parent="#company-accordion" data-toggle="collapse">Adres Bilgileri</a>
-                </div>
-                <%= render 'tab3', :position => @position %>
-              </div>
-              <div class="accordion-group">
-                <div class="accordion-heading">
-                  <a class="accordion-toggle" href="#company_oppors" data-parent="#company-accordion" data-toggle="collapse">Sosyal & Web Linkleri</a>
-                </div>
-                <%= render 'tab3', :position => @position %>
-              </div>
-              <div class="accordion-group">
-                <div class="accordion-heading">
-                  <a class="accordion-toggle" href="#company_loads" data-parent="#company-accordion" data-toggle="collapse">Notlar</a>
-                </div>
-                <%= render 'tab3', :position => @position %>
-              </div>
-              <div class="accordion-group">
-                <div class="accordion-heading">
-                  <a class="accordion-toggle" href="#company_finance" data-parent="#company-accordion" data-toggle="collapse">Aktiviteler</a>
-                </div>
-                <%= render 'tab3', :position => @position %>
-              </div>
-              <div class="accordion-group">
-                <div class="accordion-heading">
-                  <a class="accordion-toggle" href="#company_finance" data-parent="#company-accordion" data-toggle="collapse">Fırsatlar</a>
-                </div>
-                <%= render 'tab3', :position => @position %>
+                <%= render 'tab1' %>
               </div>
             </div>
           </div>
         </div>
       </td>
-      <!--td id="rightCell" class="sidebarCell">
-        <div id="rightbar">
-          <%= render 'news', :company => @company %>
-          <%= render 'numbers', :company => @company %>
-          <%= render 'followers', :company => @company %>
-        </div>
-      </td-->
     </tr>
   </table>
+  
+  <div class="row-fluid" style="padding-bottom:10px;">
+    <table class="table table-condensed">
+      <tr>
+        <td>Contacts</td><td>Partners</td><td>Documents</td><td>Activities</td><td>Cases</td><td>Opportunities</td>
+      </tr>
+    </table>
+  </div>
+  
+  <div class="row-fluid" style="padding-bottom:10px;">
+    <%= render "shared/related_list", list_model: "contact", parent: @company, objects: @company.contacts %>
+  </div>
+
+  <div class="row-fluid" style="padding-bottom:10px;">
+    <%= render "shared/related_list", list_model: "partner", parent: @company, objects: @company.partners %>
+  </div>
+
+  <div class="row-fluid" style="padding-bottom:10px;">
+
+    <div id="#{@company.slug}_ActivityList" class="pageBlock subRecordList">
+      <div class="listSubRecords contacts">
+        <div class="pPageBlock brndScnBrd secondaryPalette">
+          <%= render "shared/list_header", listItem: "activity", object: @company %>
+          <div id="#{@company.slug}_ActivityList_Body" class="listBody">
+            <span class="norecord">Kayıt Bulunamadı...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
 </div>

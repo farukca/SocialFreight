@@ -39,10 +39,6 @@ dl {
 .form-horizontal table.inline-form-table .controls {
 margin-left: 0px;
 }
-.table th, .table td {
-  padding: 0px;
-  text-align: center;
-}
 .control-group.error > label, .control-group.error .help-block, .control-group.error .help-inline {
   display: block;
 }

@@ -1,0 +1,14 @@
+<%= table_for objects, table_html: { class: "table table-condensed table-striped"}, 
+              header_row_html: { class: "headerRow" },
+              row_html: { class: "dataRow" } do |table| %>
+  <% table.column :action, column_html: { class: "actionCol", scope: "col" } do |document| %>
+    <%= link_to "Güncelle", edit_document_path(document) %> 
+    | 
+    <%= link_to "Sil", document, method: :delete, confirm: "Are you sure?" %>
+  <% end %>
+  <% table.column :document_type, column_html: { class: "dateCol", scope: "col" } %>
+  <% table.column :document_date, column_html: { class: "dateCol", scope: "col" } %>
+  <% table.column :document_no, column_html: { class: "dateCol", scope: "col" } %>
+  <% table.column :status, column_html: { scope: "col" } %>
+  <% table.column :document_file, column_html: { scope: "col" } %>
+<% end %>

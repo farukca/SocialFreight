@@ -921,3 +921,19 @@ div.addIcon {
   float:right;
   font-size: 10px;
 }
+.table .actionCol {
+  width: 1%;
+  padding: 5px 5px 2px;
+  color: #999999;
+  white-space: nowrap;
+}
+.table .currencyCol, .table .phoneCol, .table .dateCol, .table .emailCol {
+  white-space: nowrap;
+}
+.headerRow th {
+  background:url("/assets/todoBack.png") repeat-x scroll 0 0 #FFE5A7;
+}
+.dataRow:hover {
+  background-color: #E3F3EE;
+  cursor: hand;
+}

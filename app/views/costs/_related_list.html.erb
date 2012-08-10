@@ -1,0 +1,23 @@
+<%= table_for objects, table_html: { class: "table table-condensed table-striped"}, 
+              header_row_html: { class: "headerRow" },
+              row_html: { class: "dataRow" } do |table| %>
+  <% table.column :action, column_html: { class: "actionCol", scope: "col" } do |cost| %>
+    <%= link_to "Güncelle", edit_cost_path(cost) %> 
+    | 
+    <%= link_to "Sil", cost, method: :delete, confirm: "Are you sure?" %>
+  <% end %>
+  <% table.column :cost_date, column_html: { class: "dateCol", scope: "col" } %>
+  <% table.column :cost_type, column_html: { class: "dateCol", scope: "col" } %>
+  <% table.column :cost_price, column_html: { scope: "col" } do |cost| %>
+    <%= "#{cost.cost_price} #{cost.price_curr}" %>
+  <% end %>
+  <% table.column :cost_vat, column_html: { scope: "col" } %>
+  <% table.column :document_no, column_html: { scope: "col" } %>
+  <% table.column :document_date, column_html: { class: "dateCol", scope: "col" } %>
+  <% table.column :country, column_html: { scope: "col" } do |cost| %>
+    <%= cost.country.name %>
+  <% end %>
+  <% table.column :city, column_html: { scope: "col" } do |cost| %>
+    <%= cost.city.name %>
+  <% end %>
+<% end %>

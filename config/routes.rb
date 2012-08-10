@@ -53,6 +53,7 @@ Socialfreight::Application.routes.draw do
   resources :vessels
   resources :documents
   resources :costs
+  resources :payoffs
 
   resources :searches do
     member do
@@ -73,6 +74,8 @@ Socialfreight::Application.routes.draw do
   resources :reservation
   resources :transplan
   resources :operation_wizard
+  resources :payback
+  
 
   get "air" => "home#air", :as => "air"
   get "sea" => "home#sea", :as => "sea"
@@ -86,7 +89,6 @@ Socialfreight::Application.routes.draw do
   get "crm" => "companies#home"
   get "finance" => "findocs#home"
   get "fleetman" => "vehicles#home"
-  
 
   root :to => 'home#index'
 
