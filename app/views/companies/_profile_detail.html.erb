@@ -2,26 +2,25 @@
   <div>
     <table style="width:100%" border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td class="labelCol2">Mail :</td>
-        <td class="dataCol2 lastCol"><%= @company.email %></td>
-        <td class="labelCol2">Website :</td>
-        <td class="dataCol2"><%= @company.website %></td>
-        <td class="dataCol2" rowspan="3">
-          <%= @company.address %><br/><%= @company.district %>&nbsp;<%= @company.postcode %><br/>
-          <%= @company.city.name if @company.city %>&nbsp;<%= @company.country.name if @company.country %>
-        </td>
+        <td><h3><%= @company.name %></h3></td>
+        <td colspan="4"><%= render 'companies/tab_header', company: @company %></td>
       </tr>
       <tr>
-        <td class="labelCol2">Telefon :</td>
-        <td class="dataCol2"><%= @company.tel %></td>
+        <td class="dataCol2"><i class="icon-volume-up"></i><%= @company.tel %></td>
+        <td class="labelCol2">Website :</td>
+        <td class="dataCol2">
+          <%= link_to @company.website, url_with_protocol(@company.website), :target => '_blank' %>
+        </td>
+        <td class="labelCol2">Firma Tipi :</td>
+        <td class="dataCol2 lastCol"><%= Company.company_types[@company.company_type] %></td>
+
+      </tr>
+      <tr>
+        <td class="dataCol2"><i class="icon-print"></i><%= @company.fax %></td>
+        <td class="labelCol2">Grup Firması :</td>
+        <td class="dataCol2"></td>
         <td class="labelCol2">Sektör :</td>
         <td class="dataCol2 lastCol"><%= @company.sector %></td>
-      </tr>
-      <tr>
-        <td class="labelCol2">Fax :</td>
-        <td class="dataCol2"><%= @company.fax %></td>
-        <td class="labelCol2">Şube :</td>
-        <td class="dataCol2 lastCol"><%= @company.branch.name if @company.branch %></td>
       </tr>
     </table>
   </div>

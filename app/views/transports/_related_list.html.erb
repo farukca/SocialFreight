@@ -1,0 +1,15 @@
+<%= table_for objects, table_html: { class: "table table-condensed table-striped"}, 
+              header_row_html: { class: "headerRow" },
+              row_html: { class: "dataRow" } do |table| %>
+  <% table.column :action, column_html: { class: "actionCol", scope: "col" } do |transport| %>
+    <%= link_to "Güncelle", edit_transport_path(transport) %> 
+    | 
+    <%= link_to "Sil", transport, method: :delete, confirm: "Are you sure?" %>              
+  <% end %>
+  <% table.column :trans_method, column_html: { scope: "col" } %>
+  <% table.column :departure_date, column_html: { scope: "col" } %>
+  <% table.column :vessel, column_html: { scope: "col" } %>
+  <% table.column :truck, column_html: { class: "emailCol", scope: "col" } %>
+  <% table.column :voyage, column_html: { class: "phoneCol", scope: "col" } %>
+  <% table.column :driver_name, column_html: { class: "phoneCol", scope: "col" } %>
+<% end %>

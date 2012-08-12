@@ -1,46 +1,43 @@
-<div class="profile-content">
-  <table class="outer" width="100%" id="contentTable" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="oRight" id="bodyCell">
-        <div id="inner-content">
-          <div id="profile-info" class="profile company">
-            <div id="company-accordion" class="accordion">
-              <div class="accordion-group">
-                <div class="accordion-heading">
-                  <a class="accordion-toggle" href="#company_profile" data-parent="#company-accordion" data-toggle="collapse"><i class="icon-gift"></i>Firma Profil</a>
-                </div>
-                <%= render 'tab1' %>
-              </div>
-            </div>
-          </div>
-        </div>
-      </td>
-    </tr>
-  </table>
-  
-  <div class="row-fluid" style="padding-bottom:10px;">
-    <table class="table table-condensed">
-      <tr>
-        <td>Contacts</td><td>Partners</td><td>Documents</td><td>Activities</td><td>Cases</td><td>Opportunities</td>
-      </tr>
-    </table>
+<div class="row-fluid profile-content">
+
+  <div class="row-fluid" style="padding-bottom:10px;text-align:center;">
+    <%= link_to "Contacts(2)", "##{@company.id}_contactList" %> |
+    <%= link_to "Partners(0)", "##{@company.id}_partnerList" %> |
+    <%= link_to "Documents(0)", "##{@company.id}_documentList" %> |
+    <%= link_to "Activities(0)", "##{@company.id}_activityList" %> |
+    <%= link_to "Cases(0)", "##{@company.id}_caseList" %> |
+    <%= link_to "Opportunities(0)", "##{@company.id}_opportunityList" %>
   </div>
-  
-  <div class="row-fluid" style="padding-bottom:10px;">
+
+  <div class="row-fluid profile-section">  
+    <%= render 'shared/section_profile_header', object: @company %>
+    <%= render 'tab1' %>
+  </div>
+
+  <div class="row-fluid profile-sub-header" id="sub_<%= @company.id%>_head">
+    <%= image_tag("s.png", class: "hideSubHeader") %>
+    <h4>Additional Information</h4>
+  </div>
+
+  <div class="row-fluid profile-sub-data">
+    <%= render 'tab1' %>
+  </div>
+
+  <div class="row-fluid profile-section">
     <%= render "shared/related_list", list_model: "contact", parent: @company, objects: @company.contacts %>
   </div>
 
-  <div class="row-fluid" style="padding-bottom:10px;">
+  <div class="row-fluid profile-section">
     <%= render "shared/related_list", list_model: "partner", parent: @company, objects: @company.partners %>
   </div>
 
-  <div class="row-fluid" style="padding-bottom:10px;">
+  <div class="row-fluid profile-section">
 
-    <div id="#{@company.slug}_ActivityList" class="pageBlock subRecordList">
+    <div id="#{@company.id}_activityList" class="pageBlock subRecordList">
       <div class="listSubRecords contacts">
         <div class="pPageBlock brndScnBrd secondaryPalette">
-          <%= render "shared/list_header", listItem: "activity", object: @company %>
-          <div id="#{@company.slug}_ActivityList_Body" class="listBody">
+          <%= render "shared/section_list_header", listItem: "activity", object: @company %>
+          <div id="#{@company.id}_ActivityList_Body" class="listBody">
             <span class="norecord">Kayıt Bulunamadı...</span>
           </div>
         </div>

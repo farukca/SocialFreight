@@ -1,0 +1,17 @@
+<div id="good_branch">
+  <dl class="yatay-info" id="headline">
+    <dd><%= company.branch.name if @company.branch %></dd>
+    <dd>No:<%= @company.company_no %></dd>
+    <dd>
+      <%= @company.city.name if @company.city %>&nbsp;<%= @company.country.name if @company.country %>
+    </dd>
+    <dd>
+        <a href="#"><i class="icon-envelope"></i></a>
+        |
+        <a href="#"><i class="icon-envelope"></i></a>
+        |
+        <a href="#"><i class="icon-envelope"></i></a>
+    </dd>
+  </dl>
+</div>
+

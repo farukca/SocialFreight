@@ -8,15 +8,15 @@
   <% end %>
   <% table.column :load_date, column_html: { class: "dateCol", scope: "col" } %>
   <% table.column :country, column_html: { scope: "col" } do |departure| %>
-    <%= departure.country.name %>
+    <%= departure.country.name if departure.country %>
   <% end %>
   <% table.column :city, column_html: { scope: "col" } do |departure| %>
-    <%= departure.city.name %>
+    <%= departure.city.name if departure.city %>
   <% end %>
   <% table.column :load_place, column_html: { scope: "col" } do |departure| %>
-    <%= departure.load_place.name %>
+    <%= departure.load_place.name if departure.load_place %>
   <% end %>
   <% table.column :statement, column_html: { scope: "col" } %>
-  <% table.column :statement_date, column_html: { scope: "col" } %>
+  <% table.column :statement_date, column_html: { class: "dateCol", scope: "col" }, label: "State.Date" %>
   <% table.column :pickup_date, column_html: { class: "dateCol", scope: "col" } %>
 <% end %>

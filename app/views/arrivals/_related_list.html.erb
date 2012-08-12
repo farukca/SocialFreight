@@ -8,16 +8,16 @@
   <% end %>
   <% table.column :unload_date, column_html: { class: "dateCol", scope: "col" } %>
   <% table.column :country, column_html: { scope: "col" } do |arrival| %>
-    <%= arrival.country.name %>
+    <%= arrival.country.name if arrival.country %>
   <% end %>
   <% table.column :city, column_html: { scope: "col" } do |arrival| %>
-    <%= arrival.city.name %>
+    <%= arrival.city.name if arrival.city %>
   <% end %>
   <% table.column :unload_place, column_html: { scope: "col" } do |arrival| %>
-    <%= arrival.unload_place.name %>
+    <%= arrival.unload_place.name if arrival.unload_place %>
   <% end %>
   <% table.column :statement, column_html: { scope: "col" } %>
-  <% table.column :statement_date, column_html: { scope: "col" } %>
+  <% table.column :statement_date, column_html: { class: "dateCol", scope: "col" }, label: "State.Date" %>
   <% table.column :delivery_date, column_html: { class: "dateCol", scope: "col" } %>
 
 <% end %>

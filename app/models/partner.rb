@@ -1,4 +1,5 @@
 class Partner < ActiveRecord::Base
+
   belongs_to :company
   belongs_to :partner, :class_name => "Company", :foreign_key => "partner_id"
 

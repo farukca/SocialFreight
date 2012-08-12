@@ -25,4 +25,13 @@ module ApplicationHelper
       send("new_#{model_type.to_s}_path", "#{parent.class.to_s.downcase}_id" => parent.id)
     end
   end
+
+  def edit_record_path(object)
+    send("edit_#{object.class.to_s.downcase}_path", id: object.id)
+  end
+
+  def url_with_protocol(url)
+    /^http/.match(url) ? url : "http://#{url}"
+  end
+
 end

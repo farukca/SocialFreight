@@ -7,13 +7,19 @@
         <%= f.select :company_type, Company.company_types.map { |r| [r[1], r[0] ] }, :include_blank => false %>
       <% end %>
       <%= f.input :branch_id, :as => :select, :collection => current_patron.branches, :include_blank => false, :selected => current_user.branch_id %>
-      <%= f.input :tel  %>
-      <%= f.input :fax  %>
-      <%#= f.input :gsm  %>
     </div>
     <div class="span6">
-      <%= f.input :email %>
+      <%= f.input :tel  %>
+      <%= f.input :fax  %>
       <%= f.input :website %>
+    </div>
+    <legend>Ek Bilgiler</legend>
+    <div class="span6">
+      <%= f.input :company_type, as: :select, collection: Company.company_types.map { |r| [r[1], r[0] ] }, :include_blank => false %>
+      <%= f.input :sector %>
+      <%= f.input :notes, :as => :text, :input_html => {:rows => "1", :cols => "35"} %>
+    </div>
+    <div class="span6">
       <%= f.input :country_id do %>
         <%= f.input_field :country_id, :class => "input-small", :as => :select, :collection => Country.all, :include_blank => false %>
         <%= f.input_field :city_id, :class => "input-small", :as => :select, :collection => City.all, :include_blank => false %>
@@ -22,11 +28,7 @@
         <%= f.input_field :district, :class => "input-small" %>
         <%= f.input_field :postcode, :class => "input-small" %>
       <% end %>
-      <%= f.input :address, :as => :text, :input_html => {:rows => "2", :cols => "35"} %>
-      <%#= f.input :voip, :label => "Skype"  %>
-
-      <%#= f.input :notes, :as => :text, :label =>"Operational Notes", :input_html => {:rows => "3", :cols => "35"} %>
-      <%#= f.input :description, :as => :text, :label =>"Other Notes", :input_html => {:rows => "3", :cols => "35"} %>
+      <%= f.input :address, :as => :text, :input_html => {:rows => "1", :cols => "35"} %>
     </div>
   </fieldset>
 </div>

@@ -1,41 +1,55 @@
 <div class="profile-content">
-  <table class="outer" width="100%" id="contentTable" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="oRight" id="bodyCell">
-  <div id="inner-content">
-    <div id="good" class="profile">
-      <ul class="nav nav-pills">
-        <li class="active"><a data-toggle="tab" href="#departures">Yükleme Detayları</a></li>
-        <li><a data-toggle="tab" href="#arrivals">Boşaltma Detayları</a></li>
-        <li><a data-toggle="tab" href="#documents">Dosyalar</a></li>
-        <li><a data-toggle="tab" href="#costs">Masraflar</a></li>
-        <li><a data-toggle="tab" href="#invoices">Faturalar & Fatura Kalemleri</a></li>
-      </ul>
-      <div id="my-tab-content" class="tab-content">
-        <%= render 'tab1', :loading => @loading %>
-        <%= render 'tab2', :loading => @loading %>
-        <%= render 'tab3', :loading => @loading %>
-        <%= render 'tab4', :loading => @loading %>
-        <%= render 'tab5', :loading => @loading %>
-      </div>
-    </div>
-    <div id="loading_comments" class="feeds">
-      <%= render 'comments/commentable', :object => @loading %>
-    </div>
-  </div>
 
-      </td>
+  <!--table class="outer" width="100%" id="contentTable" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="oRight" id="bodyCell"-->
+
+        <div class="row-fluid" style="padding-bottom:10px;text-align:center;">
+          <%= link_to "Yükleme Noktası(1)", "##{@loading.id}_departureList" %> |
+          <%= link_to "Boşaltma Noktası(1)", "##{@loading.id}_arrivalList" %> |
+          <%= link_to "Dosyalar(2)", "##{@loading.id}_documentList" %> |
+          <%= link_to "Fatura Kalemleri(2)", "##{@loading.id}_invoitemList" %> |
+          <%= link_to "Masraflar(1)", "##{@loading.id}_costList" %> |
+        </div>
+        
+        <div class="row-fluid profile-section">
+          <%= render "shared/related_list", list_model: "departure", parent: @loading, objects: @loading.departures %>
+        </div>
+
+        <div class="row-fluid profile-section">
+          <%= render "shared/related_list", list_model: "arrival", parent: @loading, objects: @loading.arrivals %>
+        </div>
+
+        <div class="row-fluid profile-section">
+          <%= render "shared/related_list", list_model: "document", parent: @loading, objects: @loading.documents %>
+        </div>
+
+        <div class="row-fluid profile-section">
+          <%= render "shared/related_list", list_model: "invoitem", parent: @loading, objects: @loading.invoitems %>
+        </div>
+
+        <div class="row-fluid profile-section">
+          <%= render "shared/related_list", list_model: "cost", parent: @loading, objects: @loading.costs %>
+        </div>
+
+        <div class="row-fluid profile-section">
+          <div id="loading_comments" class="feeds">
+            <%= render 'comments/commentable', :object => @loading %>
+          </div>
+        </div>
+
+      <!--/td>
       <td id="rightCell" class="sidebarCell">
-  <div id="rightbar">
-    <%= render 'todos', :loading => @loading %>
-    <% if @loading.operation == 'sea' %>
-      <%= render 'containers', :loading => @loading %>
-    <% else %>
-      <%= render 'boxes', :loading => @loading %>
-    <% end %>
-    <%= render 'followers', :loading => @loading %>
-  </div>
+        <div id="rightbar">
+          <%= render 'todos', :loading => @loading %>
+          <% if @loading.operation == 'sea' %>
+            <%= render 'containers', :loading => @loading %>
+          <% else %>
+            <%= render 'boxes', :loading => @loading %>
+          <% end %>
+          <%= render 'followers', :loading => @loading %>
+        </div>
       </td>
     </tr>
-  </table>
+  </table-->
 </div>

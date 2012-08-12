@@ -1,0 +1,17 @@
+<%= table_for objects, table_html: { class: "table table-condensed table-striped"}, 
+              header_row_html: { class: "headerRow" },
+              row_html: { class: "dataRow" } do |table| %>
+  <% table.column :action, column_html: { class: "actionCol", scope: "col" } do |container| %>
+    <%= link_to "Güncelle", edit_container_path(container) %> 
+    | 
+    <%= link_to "Sil", container, method: :delete, confirm: "Are you sure?" %>              
+  <% end %>
+  <% table.column :container_type, column_html: { scope: "col" } %>
+  <% table.column :name, column_html: { scope: "col" } %>
+  <% table.column :sealno, column_html: { scope: "col" } %>
+  <% table.column :freeday, column_html: { scope: "col" } %>
+  <% table.column :demurrage, column_html: { scope: "col" } do |container| %>
+    <%= "#{container.demurrage} #{container.demurrage_curr}" %>
+  <% end %>
+
+<% end %>

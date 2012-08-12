@@ -1,0 +1,18 @@
+<%= table_for objects, table_html: { class: "table table-condensed table-striped"}, 
+              header_row_html: { class: "headerRow" },
+              row_html: { class: "dataRow" } do |table| %>
+  <% table.column :action, column_html: { class: "actionCol", scope: "col" } do |package| %>
+    <%= link_to "Güncelle", edit_package_path(package) %> 
+    | 
+    <%= link_to "Sil", package, method: :delete, confirm: "Are you sure?" %>              
+  <% end %>
+  <% table.column :total, column_html: { scope: "col" } %>
+  <% table.column :pack_type, column_html: { scope: "col" } %>
+  <% table.column :dimension1, column_html: { scope: "col" } do |package| %>
+    <%= "#{package.dimension1}X#{package.dimension2}X#{package.dimension3}" %>
+  <% end %>
+  <% table.column :brutwg, column_html: { scope: "col" } %>
+  <% table.column :netwg, column_html: { scope: "col" } %>
+  <% table.column :po, column_html: { scope: "col" } %>
+  <% table.column :gtip, column_html: { scope: "col" } %>
+<% end %>

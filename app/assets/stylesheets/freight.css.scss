@@ -635,8 +635,7 @@ form ul li label {
     float: right;
 }
 .profile-section {
-    margin-bottom:28px;
-    margin-top:20px;
+    padding-bottom:20px;
 }
 .profile-data-body {
     color:#999999;
@@ -936,4 +935,25 @@ div.addIcon {
 .dataRow:hover {
   background-color: #E3F3EE;
   cursor: hand;
+}
+.profile-sub-header {
+  background-color: transparent;
+  border-style: solid;
+  border-width: 2px 0 0;
+  color: #27282E;
+  padding: 4px 3px;
+}
+.profile-sub-header img {
+    background-repeat: no-repeat;
+    height: 11px;
+    margin-right: 4px;
+    width: 11px;
+    float:left;
+}
+.profile-sub-header .hideSubHeader {
+  cursor: pointer;
+  background: url("/assets/toggle_sprite.png") no-repeat scroll 0 -11px transparent;
+}
+.profile-sub-data {
+  margin-bottom:20px;
 }

@@ -6,18 +6,20 @@
     | 
     <%= link_to "Sil", cost, method: :delete, confirm: "Are you sure?" %>
   <% end %>
-  <% table.column :cost_date, column_html: { class: "dateCol", scope: "col" } %>
+  <% table.column :created_at, column_html: { class: "dateCol", scope: "col" } do |cost| %>
+    <%= cost.created_at.strftime("%d/%m/%Y") %>
+  <% end %>
   <% table.column :cost_type, column_html: { class: "dateCol", scope: "col" } %>
   <% table.column :cost_price, column_html: { scope: "col" } do |cost| %>
     <%= "#{cost.cost_price} #{cost.price_curr}" %>
   <% end %>
   <% table.column :cost_vat, column_html: { scope: "col" } %>
   <% table.column :document_no, column_html: { scope: "col" } %>
-  <% table.column :document_date, column_html: { class: "dateCol", scope: "col" } %>
+  <% table.column :document_date, column_html: { class: "dateCol", scope: "col" }, label: "Doc.Date" %>
   <% table.column :country, column_html: { scope: "col" } do |cost| %>
-    <%= cost.country.name %>
+    <%= cost.country.name if cost.country %>
   <% end %>
   <% table.column :city, column_html: { scope: "col" } do |cost| %>
-    <%= cost.city.name %>
+    <%= cost.city.name if cost.city %>
   <% end %>
 <% end %>

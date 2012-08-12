@@ -3,15 +3,20 @@
     <legend>Yetkili Bilgisi</legend>
     <div class="span6">
       <%= f.input :name do %>
-        <%= f.input_field :salutation, :as => :select, :collection => ['Mr', 'Ms', 'Mrs', 'Dr'], :class => "input-mini" %>
-        <%= f.input_field :name, :class => "input-small" %>
-        <%= f.input_field :surname, :class => "input-small" %>      
+        <%= f.input_field :salutation, as: :select, collection: ['Mr', 'Ms', 'Mrs', 'Dr'], class: "input-mini", include_blank: false %>
+        <%= f.input_field :name, class: "input-small", placeholder: "Name" %>
+        <%= f.input_field :surname, class: "input-small", placeholder: "Surname" %>
+      <% end %>
+      <%= f.input :jobtitle do %>
+        <%= f.input_field :jobtitle, class: "input-small", placeholder: "Title" %>
+        <%= f.input_field :department, class: "input-small", placeholder: "Department" %>
       <% end %>
     </div>
     <div class="span6">
-      <%= f.input :email %>
-      <%= f.input :user_id, as: :hidden %>
+      <%= f.input :email, placeholder: "E-mail" %>
+      <%= f.input :tel, placeholder: "Phone number" %>
     </div>
+    <%= f.input :user_id, as: :hidden %>
   </fieldset>
 </div>
 

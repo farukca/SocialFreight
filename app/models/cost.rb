@@ -1,5 +1,7 @@
 class Cost < ActiveRecord::Base
 
+  belongs_to :country
+  belongs_to :city
   belongs_to :user
   belongs_to :patron
   belongs_to :costable, polymorphic: true

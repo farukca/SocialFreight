@@ -1,19 +1,16 @@
-<div id="profile-header" class="profile-content row-fluid">
-  <div class="span2">
-    <div id="profile-picture" class="company">
-      <%= image_tag("/assets/company.png") %>
-    </div>
-  </div>
-  <div class="span10">
-    <div id="profile-detail" class="company">
-      <div id="profile-title" class="row-fluid">
-        <legend>
-          <i class="icon-company"></i><%= @company.name %>&nbsp;
-          <span class="subtitle"><%= Company.company_types[@company.company_type] %>&nbsp;-&nbsp;No:<%= @company.company_no %></span>
-          <span class="socialicons"></span>
-        </legend>
-      </div>
-      <%= render 'profile_detail' %>
-    </div>
-  </div>
+<div id="profile-header" class="profile-content">
+  <table class="outer" width="100%" id="headerTable" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="span2">
+        <div id="profile-picture" class="loading">
+          <%= image_tag("/assets/def_company_pic.png") %>
+        </div>
+      </td>
+      <td style="vertical-align:top">
+        <div id="profile-detail" class="loading">
+          <%= render 'companies/profile_detail' %>
+        </div>
+      </td>
+    </tr>
+  </table>
 </div>
