@@ -6,7 +6,9 @@
     | 
     <%= link_to "Sil", departure, method: :delete, confirm: "Are you sure?" %>
   <% end %>
-  <% table.column :load_date, column_html: { class: "dateCol", scope: "col" } %>
+  <% table.column :load_date, column_html: { class: "dateCol", scope: "col" } do |departure| %>
+    <%= departure.load_date.strftime("%d/%m/%Y") if departure.load_date %>
+  <% end %>
   <% table.column :country, column_html: { scope: "col" } do |departure| %>
     <%= departure.country.name if departure.country %>
   <% end %>
@@ -18,5 +20,7 @@
   <% end %>
   <% table.column :statement, column_html: { scope: "col" } %>
   <% table.column :statement_date, column_html: { class: "dateCol", scope: "col" }, label: "State.Date" %>
-  <% table.column :pickup_date, column_html: { class: "dateCol", scope: "col" } %>
+  <% table.column :pickup_date, column_html: { class: "dateCol", scope: "col" } do |departure| %>
+    <%= departure.pickup_date.strftime("%d/%m/%Y") if departure.pickup_date %>
+  <% end %>
 <% end %>

@@ -30,7 +30,13 @@ jQuery ->
     el.select2
       placeholder:
         title: "Kayıt Seçiniz"
-
+      minimumInputLength: 2
+      width: "element"
+      initSelection: (element, callback) ->
+        data = []
+        data.push
+          id: $(element.val())
+          text: $(element.data('selected'))
       minimumInputLength: 3
       newRecordUrl:  el.data("newrecurl")
 
@@ -69,4 +75,4 @@ jQuery ->
     $(target).load(url)
     $("#new_company").validate()
 
-  $("form input:visible:first").focus()
+  $(".simple_form").find("input[type=text],textarea,select").filter(":visible:first").focus()

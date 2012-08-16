@@ -12,6 +12,7 @@ class Company < ActiveRecord::Base
   belongs_to :country
   belongs_to :user
   belongs_to :saler, :class_name => User, :inverse_of => :saler
+  belongs_to :parent, :class_name => Company, :inverse_of => :parent
   friendly_id :name, use: :slugged, use: :scoped, scope: :patron
   
   has_many :contacts
@@ -24,8 +25,7 @@ class Company < ActiveRecord::Base
                   :notes, :description, :saler_id, :contacts_attributes
 
   #validates :name, :uniqueness => { :scope => :patron, :message => I18n.t('defaults.inputerror.must_be_unique') }
-  validates :name, :presence => { :message => I18n.t('defaults.inputerror.cant_be_blank') }
-  validates :name, :length => { :maximum => 50 }
+  validates :name, presence: { message: I18n.t('defaults.inputerror.cant_be_blank') }, length: { maximum: 50 }
   validates :title, :length => { :maximum => 100 }
   validates :tel, :fax, :gsm, :voip, :length => { :maximum => 15 }
   validates :email, :length => { :maximum => 40 }, :format => { :with => /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i }, :unless => Proc.new { |a| a.email.blank? }

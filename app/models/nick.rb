@@ -12,9 +12,9 @@ class Nick < ActiveRecord::Base
     nick
   end
 
-  private
-  def nick_exists(nickname, patron_id)?
+  #private
+  #def nick_exists(nickname, patron_id)
     
-  end
+  #end
 
 end

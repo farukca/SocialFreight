@@ -65,8 +65,9 @@ gem 'select2-rails'
 # Deploy with Capistrano
  gem 'capistrano'
 
-gem 'rspec-rails', :group => [:test, :development]
-gem 'ruby-debug19', :group => [:development]
+gem 'bullet', group: :development
+gem 'rspec-rails', group: [:test, :development]
+gem 'ruby-debug19', group: [:development]
 group :test do
   # Pretty printed test output
   #gem 'mongoid-rspec'

@@ -1,7 +1,9 @@
 <div id="opform">
+
 <%= simple_form_for @arrival, :html => { :class => 'form-horizontal' }, :validate => true do |f| %>
   <%= f.error_notification %>
 
+  <fieldset>
   <div class="pageBlock">
     <%= render 'shared/form_buttonsh', :f => f %>
 
@@ -16,6 +18,9 @@
       <%= f.hidden_field :loading_id %>
       <%= render 'shared/form_buttonsb', :f => f %>
     </div>
+  </div>
+  </fieldset>
 
 <% end %>
+
 </div>

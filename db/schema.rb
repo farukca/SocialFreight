@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120804234154) do
+ActiveRecord::Schema.define(:version => 20120814131841) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                    :null => false
@@ -151,6 +151,8 @@ ActiveRecord::Schema.define(:version => 20120804234154) do
     t.string   "slug",         :limit => 40
     t.datetime "created_at",                                   :null => false
     t.datetime "updated_at",                                   :null => false
+    t.integer  "parent_id"
+    t.integer  "updater_id"
   end
 
   add_index "companies", ["name", "patron_id", "patron_token"], :name => "index_companies_on_name_and_patron_id_and_patron_token", :unique => true

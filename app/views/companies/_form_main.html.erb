@@ -3,6 +3,7 @@
     <legend>Firma Bilgisi</legend>
     <div class="span6">
       <%= f.input :name %>
+      <%= f.input :parent_id, as: :hidden, label: "Grup Firması", input_html: {:class => "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-selected" => @company.parent_id ? @company.parent.name : "", "data-placeholder" => "Grup Firması Seçiniz."} %>
       <%= f.input :company_type do %>
         <%= f.select :company_type, Company.company_types.map { |r| [r[1], r[0] ] }, :include_blank => false %>
       <% end %>

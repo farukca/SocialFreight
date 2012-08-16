@@ -1,39 +1,46 @@
 <div class="row-fluid">
+  <fieldset>
+  <legend>Yük Bilgisi</legend>
   <div class="span6">
- <fieldset>
+    <%#= f.input :company_id, :input_html => {:class => "chosen_input", "data-url" => "/companies.json"}, :label => "Customer" %>
+    <%= f.input :company_id, as: :hidden, label: "Müşteri", input_html: {:class => "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-selected" => @loading.company_id ? @loading.company.name : "", "data-placeholder" => "Müşteri Seçiniz."} %>
+    <!--legend>Operasyon Bilgileri</legend-->
+    <%= f.input :direction, :as => :select, :collection => Position.direction_types.map{|r| [r[1], r[0] ]}, :include_blank => false %>
+    <%= f.input :branch_id, :as => :select, :collection => current_patron.branches, :include_blank => false, :selected => current_user.branch_id %>
+    <%#= f.input :position_name, :input_html => {:class => "medium disabled", :disabled => ""}, :label => "Position" %>
+  </div>
+  <div class="span6">
+    <%= f.input :load_type, :as => :select, :collection => Loading.load_types.map { |r| [r[1], r[0] ] }, :label => "Yük Tipi", :include_blank => false%>
+    <!--legend>Yükleme Bilgileri</legend-->
+    <%= f.input :commodity, :as => :text, :input_html => {:rows => 3}, :label => "Yük İçeriği" %>
+  </div>
+
+  <legend>Ek Bilgiler</legend>
+  <div class="span6">
+    <%= f.input :paid_at, :as => :select, :collection => Position.payment_types.map { |r| [r[1], r[0] ] }, :include_blank => true %>
+    <%= f.input :incoterm, :as => :select, :collection => Loading.incoterms.map { |r| [r[1], r[0] ] }, :include_blank => true %>
+    <%#= f.input :waybill_no, :input_html => { :class => "input-medium" } %>
+  </div>
+  <div class="span6">
+    <%= f.input :brut_wg, :label => "Brüt Ağırlık" do %>
+      <%= f.input_field :brut_wg, :class => "input-small" %>&nbsp;KG
+      <%#= f.input_field :wg_type, :as => :select, :collection => Loading.weight_types.map { |r| [r[1], r[0] ] }, :class => "small" %>
+    <% end %>
+    <%= f.input :freight_price do %>
+      <%= f.input_field :freight_price, :class => "input-small" %>
+      <%= f.input_field :freight_curr, :as => :select, :collection => Currency.all, :include_blank => false, :class => "input-small" %>
+    <% end %>
+    <%#= f.input :stage do %>
+      <%#= f.input_field :stage, :class => "input-medium", :as => :select, :collection => Loading.stages.map { |r| [r[1], r[0] ] }, :include_blank => false %>
+      <%#= f.input_field :stage_date, :as => "string", :class => "input-small", "data-datepicker" => "datepicker" %>
+    <%# end %>
+    <!--div class="controls">
+      <a class="nexttab btn btn-success" data-newtab="#loading-load-form">Sonraki Tab</a>
+    </div-->
+  </div>
+  
   <%= f.hidden_field :position_id %>
   <%= f.hidden_field :operation %>
-  <%#= f.input :company_id, :input_html => {:class => "chosen_input", "data-url" => "/companies.json"}, :label => "Customer" %>
-  <%= f.input :company_id, as: :hidden, label: "Müşteri", input_html: {:class => "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-selected" => @loading.company_id ? @loading.company.name : "", "data-placeholder" => "Müşteri Seçiniz."} %>
-  <!--legend>Operasyon Bilgileri</legend-->
-  <%= f.input :direction, :as => :select, :collection => Position.direction_types.map{|r| [r[1], r[0] ]}, :include_blank => false %>
-  <%= f.input :branch_id, :as => :select, :collection => current_patron.branches, :include_blank => false, :selected => current_user.branch_id %>
-  <%#= f.input :position_name, :input_html => {:class => "medium disabled", :disabled => ""}, :label => "Position" %>
-  <%= f.input :paid_at, :as => :select, :collection => Position.payment_types.map { |r| [r[1], r[0] ] }, :include_blank => true %>
-  <%= f.input :incoterm, :as => :select, :collection => Loading.incoterms.map { |r| [r[1], r[0] ] }, :include_blank => true %>
-  <%#= f.input :waybill_no, :input_html => { :class => "input-medium" } %>
   </fieldset>
-  </div>
-  <div class="span6">
-  <fieldset>
-  <%= f.input :load_type, :as => :select, :collection => Loading.load_types.map { |r| [r[1], r[0] ] }, :label => "Yük Tipi", :include_blank => false%>
-  <!--legend>Yükleme Bilgileri</legend-->
-  <%= f.input :brut_wg, :label => "Brüt Ağırlık" do %>
-    <%= f.input_field :brut_wg, :class => "input-small" %>&nbsp;KG
-    <%#= f.input_field :wg_type, :as => :select, :collection => Loading.weight_types.map { |r| [r[1], r[0] ] }, :class => "small" %>
-  <% end %>
-  <%= f.input :freight_price do %>
-    <%= f.input_field :freight_price, :class => "input-small" %>
-    <%= f.input_field :freight_curr, :as => :select, :collection => Currency.all, :include_blank => false, :class => "input-small" %>
-  <% end %>
-  <%= f.input :commodity, :as => :text, :input_html => {:rows => 3}, :label => "Yük İçeriği" %>
-  <%#= f.input :stage do %>
-    <%#= f.input_field :stage, :class => "input-medium", :as => :select, :collection => Loading.stages.map { |r| [r[1], r[0] ] }, :include_blank => false %>
-    <%#= f.input_field :stage_date, :as => "string", :class => "input-small", "data-datepicker" => "datepicker" %>
-  <%# end %>
-  <!--div class="controls">
-    <a class="nexttab btn btn-success" data-newtab="#loading-load-form">Sonraki Tab</a>
-  </div-->
-  </fieldset>
-  </div>
+
 </div>

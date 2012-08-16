@@ -4,6 +4,7 @@
   <div id="opform">
     <%= simple_form_for @loading, :url => wizard_path, :method => :put, :html => {:class => 'form-horizontal'}, :validate => true do |f| %>
       <%= f.error_notification %>
+
       <div class="pageBlock">
         <%= render 'shared/form_header', message: "Yeni Yük Oluşturma" %>
 
@@ -19,6 +20,7 @@
           <%= f.button :submit, "Kaydet & Yükleme Bilgilerine Devam Et >>", :class => 'btn btn-info' %>
         </div>
       </div>
+
     <% end %>
   </div>
 </div>

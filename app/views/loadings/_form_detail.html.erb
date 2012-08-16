@@ -1,17 +1,18 @@
 <div class="row-fluid">
-  <div class="span6">
-    <fieldset>
+  <fieldset>
+    <legend>Yük Detay Bilgileri</legend>
+    <div class="span6">
       <%= f.input :producer %>
       <%= f.input :product_price do %>
         <%= f.input_field :product_price, :class => "input-small" %>
         <%= f.input_field :product_curr, :as => :select, :collection => Currency.all, :include_blank => false, :class => "input-small" %>
       <% end %>
-    </fieldset>
-  </div>
-  <div class="span6">
-    <fieldset>
+    </div>
+    <div class="span6">
       <%= f.input :agent_id, :input_html => {:class => "lookup_input", "data-url" => "/companies.json", "data-pre" => @loading.agent ? @loading.agent.to_s : nil } %>
-  <%#= f.input :agent_reference, :input_html => {:class => "input-medium"} %>
-  <%= f.input :marks_nos, :as => :text, :input_html => {:rows => 1}, :label => "Marks & Nos" %>
-  <%#= f.input :customer_reference, :input_html => {:class => "input-medium"} %>
+      <%#= f.input :agent_reference, :input_html => {:class => "input-medium"} %>
+      <%= f.input :marks_nos, :as => :text, :input_html => {:rows => 1}, :label => "Marks & Nos" %>
+      <%#= f.input :customer_reference, :input_html => {:class => "input-medium"} %>
+    </div>
+  </fieldset>
 </div>

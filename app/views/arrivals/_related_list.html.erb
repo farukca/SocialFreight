@@ -6,7 +6,9 @@
     | 
     <%= link_to "Sil", arrival, method: :delete, confirm: "Are you sure?" %>
   <% end %>
-  <% table.column :unload_date, column_html: { class: "dateCol", scope: "col" } %>
+  <% table.column :unload_date, column_html: { class: "dateCol", scope: "col" } do |arrival| %>
+    <%= arrival.unload_date.strftime("%d/%m/%Y") if arrival.unload_date %>
+  <% end %> 
   <% table.column :country, column_html: { scope: "col" } do |arrival| %>
     <%= arrival.country.name if arrival.country %>
   <% end %>
