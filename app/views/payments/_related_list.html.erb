@@ -1,0 +1,22 @@
+<%= table_for objects, table_html: { class: "table table-condensed table-striped"}, 
+              header_row_html: { class: "headerRow" },
+              row_html: { class: "dataRow" } do |table| %>
+  <% table.column :action, column_html: { class: "actionCol", scope: "col" } do |payment| %>
+    <%= link_to "Güncelle", edit_payment_path(payment) %> 
+    | 
+    <%= link_to "Sil", payment, method: :delete, confirm: "Are you sure?" %>
+  <% end %>
+  <% table.column :payment_date, column_html: { class: "dateCol", scope: "col" } do |payment| %>
+    <%= payment.payment_date.strftime("%d/%m/%Y") %>
+  <% end %>
+  <% table.column :staff, column_html: { scope: "col" } do |payment| %>
+    <%= payment.staff.name if payment.staff %>
+  <% end %>
+  <% table.column :payment_price, column_html: { scope: "col" } do |payment| %>
+    <%= "#{payment.payment_price} #{payment.price_curr}" %>
+  <% end %>
+  <% table.column :payment_docno, column_html: { scope: "col" } %>
+  <% table.column :branch, column_html: { scope: "col" } do |payment| %>
+    <%= payment.branch.name if payment.branch %>
+  <% end %>
+<% end %>

@@ -1,0 +1,37 @@
+<div id="payoff_form" class="main-model-form">
+  <%= simple_form_for @payment, validate: true do |f| %>
+    <%= f.error_notification %>
+  
+    <div class="pageBlock">
+    <%= render 'shared/form_buttonsh', :f => f, :header => "New Driver Settlement" %>  
+    <fieldset>
+
+      <div class="row-fluid">
+        <div class="span6">
+          <%= f.input :staff_id, as: :hidden, label: "Sürücü/Personel", input_html: {:class => "chosen_input", "data-url" => "/people.json", "data-newrecurl" => "/people/new", "data-selected" => @payoff.staff_id ? @payoff.staff.to_s : "", "data-placeholder" => "Sürücü/Personel Seçiniz."} %>
+          <%= f.input :payment_price do %>
+            <%= f.input_field :payment_price, class: "input-small" %>
+            <%= f.input_field :price_curr, class: "input-small" %>
+          <% end %>
+        </div>
+        <div class="span6">
+          <%= f.input :payment_date do %>
+            <%= f.input_field :payment_date, class: "input-small", placeholder: "Avans Tarihi" %>
+            <%= f.input_field :payment_docno, class: "input-small", placeholder: "Belge No" %>
+          <% end %>
+          <%= f.input :branch_id, placeholder: "Şube" %>
+          <%= f.input :finunit_id, placeholder: "Finunit" %>
+        </div>
+      </div>
+
+      <div class="row-fluid">
+        <div class="span12">
+          <%= f.input :notes, input_html: { rows: 1, class: "span6" } %>
+        </div>
+      </div>
+      <%= f.input :payoff_id, as: :hidden %>
+    </fieldset>
+    </div>
+    <%= f.button :submit %>
+  <% end %>
+</div>

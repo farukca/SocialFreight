@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120814131841) do
+ActiveRecord::Schema.define(:version => 20120817131525) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                    :null => false
@@ -235,7 +235,13 @@ ActiveRecord::Schema.define(:version => 20120814131841) do
     t.integer  "patron_id"
     t.datetime "created_at",                                          :null => false
     t.datetime "updated_at",                                          :null => false
+    t.integer  "payoff_id"
   end
+
+  add_index "costs", ["costable_type", "costable_id"], :name => "index_costable_costs"
+  add_index "costs", ["owner_id"], :name => "index_owners_costs"
+  add_index "costs", ["payoff_id"], :name => "index_payoffs_costs"
+  add_index "costs", ["truck", "vehicle"], :name => "index_trucks_costs"
 
   create_table "counters", :force => true do |t|
     t.string  "counter_type", :limit => 40,                :null => false
@@ -392,6 +398,34 @@ ActiveRecord::Schema.define(:version => 20120814131841) do
 
   add_index "follows", ["followable_id", "followable_type"], :name => "fk_followables"
   add_index "follows", ["follower_id", "follower_type"], :name => "fk_follows"
+
+  create_table "fuels", :force => true do |t|
+    t.date     "process_date",                                 :null => false
+    t.string   "process_type",                                 :null => false
+    t.string   "truck",         :limit => 20
+    t.string   "vehicle",       :limit => 20
+    t.integer  "staff_id",                                     :null => false
+    t.decimal  "fuel_amount",                 :default => 0.0
+    t.string   "amount_type",   :limit => 20,                  :null => false
+    t.string   "document_no",   :limit => 20
+    t.string   "document_date"
+    t.decimal  "fuel_price",                  :default => 0.0
+    t.string   "price_curr",    :limit => 20
+    t.string   "payment_type",  :limit => 20
+    t.string   "payment_card",  :limit => 20
+    t.integer  "depot_id"
+    t.string   "payment_firm",  :limit => 50
+    t.integer  "payoff_id"
+    t.text     "notes"
+    t.string   "country_id"
+    t.integer  "city_id"
+    t.integer  "branch_id",                                    :null => false
+    t.integer  "patron_id",                                    :null => false
+    t.integer  "creater_id",                                   :null => false
+    t.integer  "updater_id",                                   :null => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
+  end
 
   create_table "invoitems", :force => true do |t|
     t.integer  "invoice_id"
@@ -618,6 +652,26 @@ ActiveRecord::Schema.define(:version => 20120814131841) do
   end
 
   add_index "patrons", ["slug"], :name => "index_patrons_on_slug", :unique => true
+
+  create_table "payments", :force => true do |t|
+    t.integer  "staff_id",                                       :null => false
+    t.date     "payment_date",                                   :null => false
+    t.string   "payment_docno", :limit => 20
+    t.decimal  "payment_price",               :default => 0.0
+    t.string   "price_curr",                                     :null => false
+    t.boolean  "confirmed",                   :default => false
+    t.integer  "confirmer_id"
+    t.date     "confirm_date"
+    t.text     "notes"
+    t.integer  "finunit_id"
+    t.integer  "payoff_id",                                      :null => false
+    t.integer  "branch_id",                                      :null => false
+    t.integer  "patron_id",                                      :null => false
+    t.integer  "creater_id",                                     :null => false
+    t.integer  "updater_id",                                     :null => false
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
+  end
 
   create_table "payoffs", :force => true do |t|
     t.string   "name",            :limit => 30,                     :null => false

@@ -55,7 +55,9 @@ Socialfreight::Application.routes.draw do
   resources :documents
   resources :costs
   resources :payoffs
-
+  resources :payments
+  resources :fuels
+  
   resources :searches do
     member do
       get :planning

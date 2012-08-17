@@ -1,0 +1,30 @@
+<%= table_for objects, table_html: { class: "table table-condensed table-striped"}, 
+              header_row_html: { class: "headerRow" },
+              row_html: { class: "dataRow" } do |table| %>
+  <% table.column :action, column_html: { class: "actionCol", scope: "col" } do |fuel| %>
+    <%= link_to "Güncelle", edit_fuel_path(fuel) %> 
+    | 
+    <%= link_to "Sil", fuel, method: :delete, confirm: "Are you sure?" %>
+  <% end %>
+  <% table.column :process_date, column_html: { class: "dateCol", scope: "col" } do |fuel| %>
+    <%= fuel.process_date.strftime("%d/%m/%Y") %>
+  <% end %>
+  <% table.column :truck, column_html: { class: "dateCol", scope: "col" } do |fuel| %>
+    <%= "#{fuel.truck}/#{fuel.vehicle}" %>
+  <% end %>
+  <% table.column :fuel_price, column_html: { scope: "col" } do |fuel| %>
+    <%= "#{fuel.fuel_price} #{fuel.price_curr}" %>
+  <% end %>
+  <%# table.column :staff_id, column_html: { class: "dateCol", scope: "col" } do |fuel| %>
+    <%#= fuel.staff.to_s %>
+  <%# end %>
+  <% table.column :payment_type, column_html: { scope: "col" } do |fuel| %>
+    <%= "#{fuel.payment_type} #{fuel.payment_card}" %>
+  <% end %> %>
+  <% table.column :country, column_html: { scope: "col" } do |fuel| %>
+    <%= fuel.country.name if fuel.country %>
+  <% end %>
+  <% table.column :city, column_html: { scope: "col" } do |fuel| %>
+    <%= fuel.city.name if fuel.city %>
+  <% end %>
+<% end %>

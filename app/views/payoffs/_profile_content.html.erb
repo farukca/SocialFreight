@@ -2,10 +2,16 @@
   
   <div class="span6">
     <legend>Avans İşlemleri</legend>
+    <div class="row-fluid profile-section">
+      <%= render "shared/related_list", list_model: "payment", parent: @payoff, objects: @payoff.payments %>
+    </div>
   </div>
   
   <div class="span6">
     <legend>Yakıt İşlemleri</legend>
+    <div class="row-fluid profile-section">
+      <%= render "shared/related_list", list_model: "fuel", parent: @payoff, objects: @payoff.fuels %>
+    </div>    
   </div>
 
 </div>
@@ -14,6 +20,9 @@
 
   <div class="span12">
     <legend>Masraf & Harcama İşlemleri</legend>
+    <div class="row-fluid profile-section">
+      <%= render "shared/related_list", list_model: "cost", parent: @payoff, objects: @payoff.costs %>
+    </div>
   </div>
 
 </div>

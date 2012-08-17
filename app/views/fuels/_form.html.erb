@@ -1,0 +1,53 @@
+<div class="row-fluid">
+  <%= simple_form_for @fuel, html: { class: 'form-horizontal' }, validate: true do |f| %>
+    <%= f.error_notification %>
+    <%= f.error :base, error_method: :to_sentence %>
+
+    <fieldset>
+      <div class="row-fluid">
+        <div class="span6">
+          <%= f.input :process_type do %>
+            <%= f.input_field :process_type, class: "input-small" %>
+            <%= f.input_field :process_date, as: :string, class: "input-small", "data-datepicker" => "datepicker" %>
+          <% end %>
+          <%= f.input :fuel_amount do %>
+            <%= f.input_field :fuel_amount, class: "input-small" %>
+            <%= f.input_field :amount_type, as: :select, collection: Currency.all, include_blank: false, class: "input-small" %>
+          <% end %>
+          <%= f.input :fuel_price do %>
+            <%= f.input_field :fuel_price, class: "input-small" %>
+            <%= f.input_field :price_curr, as: :select, collection: Currency.all, include_blank: false, class: "input-small" %>
+          <% end %>
+          <%= f.input :document_no do %>
+            <%= f.input_field :document_no, class: "input-small" %>
+            <%= f.input_field :document_date, as: :string, class: "input-small","data-datepicker" => "datepicker" %>
+          <% end %>
+          <%= f.input :payment_type do %>
+            <%= f.input_field :payment_type, class: "input-small" %>
+            <%= f.input_field :payment_card, as: :string, class: "input-small" %>
+          <% end %>
+          
+        </div>
+        <div class="span6">
+          <%= f.input :staff_id, as: :hidden, label: "Personel", input_html: {class: "chosen_input", "data-url" => "/people.json", "data-newrecurl" => "/people/new", "data-selected" => @fuel.staff_id ? @fuel.staff.to_s : "", "data-placeholder" => "Personel/Sürücü Seçiniz."} %>
+          <%= f.input :truck do %>
+            <%= f.input_field :truck, class: "input-small" %>
+            <%= f.input_field :vehicle, class: "input-small" %>
+          <% end %>
+          <%#= f.input :settlement_price do %>
+            <%#= f.input_field :settlement_price, class: "input-small" %>
+            <%#= f.input_field :settlement_curr, as: :select, collection: Currency.all, include_blank: false, class: "input-small" %>
+          <%# end %>
+          <%= f.input :country_id, as: :select, collection: Country.find(:all, order: :name), include_blank: true, input_html: { class: "country_select", "data-placeholder" => "Ülke Seçiniz" } %>
+          <%= f.input :city_id, as: :select, collection: City.find(:all, conditions: ["country_id = :c", { :c => @fuel.country_id } ]), include_blank: true, input_html: { class: "city_select", "data-placeholder" => "Şehir Seçiniz"} %>
+          <%= f.input :notes, as: :text, input_html: {rows: "2"} %>
+          <div class="control">
+            <%= f.button :submit, class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+      <%= f.input :payoff_id, as: :hidden %>
+    </fieldset>
+
+  <% end %>
+</div>
