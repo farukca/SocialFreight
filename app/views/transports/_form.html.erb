@@ -1,5 +1,5 @@
 <div id="opform">
-  <%= simple_form_for [@position, @transport], html: { class: 'form-horizontal' }, validate: true do |f| %>
+  <%= simple_form_for @transport, html: { class: 'form-horizontal' }, validate: true do |f| %>
   <%= f.error_notification %>
   <%= f.error :base, :error_method => :to_sentence %>
   <fieldset>
@@ -19,7 +19,7 @@
 
     </div>
   </div>
-
+  <%= f.input :position_id, :as => :hidden %>
   </fieldset>
 <% end %>
 </div>

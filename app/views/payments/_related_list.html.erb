@@ -16,7 +16,7 @@
     <%= "#{payment.payment_price} #{payment.price_curr}" %>
   <% end %>
   <% table.column :payment_docno, column_html: { scope: "col" } %>
-  <% table.column :branch, column_html: { scope: "col" } do |payment| %>
+  <% table.column :branch_id, column_html: { scope: "col" } do |payment| %>
     <%= payment.branch.name if payment.branch %>
   <% end %>
 <% end %>

@@ -1,4 +1,5 @@
 class TransportsController < ApplicationController
+  
   before_filter :require_login
 
   def new
@@ -17,8 +18,10 @@ class TransportsController < ApplicationController
   end
 
   def create
-    @position   = Position.find(params[:position_id])
+    @position   = Position.find(params[:transport][:position_id])
     @transport  = @position.transports.build(params[:transport])
+    @transport.user_id = current_user.id
+
     fromwhere   = params[:transport][:fromwhere] if params[:transport][:fromwhere]
     
     respond_to do |format|

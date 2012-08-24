@@ -16,6 +16,7 @@ class CostsController < ApplicationController
   def new
     @costable = find_costable
     @cost     = @costable.costs.build()
+    #TODO her masraf bir payoff ile ilişkili olmalı, masraf veya avans vermeden önce payoff oluşmalı
     @cost.costable_reference = @costable.to_s
     @cost.operation          = @costable.operation if @costable.respond_to?("operation")
     respond_with @cost

@@ -99,9 +99,9 @@ class Position < ActiveRecord::Base
     reference
   end
 
-  def normalize_friendly_id(string)
-    super.upcase.gsub("-", ".")
-  end
+  #def normalize_friendly_id(string)
+  #  super.upcase.gsub("-", ".")
+  #end
 
   private
   def set_initials
@@ -109,7 +109,7 @@ class Position < ActiveRecord::Base
     #counter = self.patron.generate_counter("Position", self.operation, self.direction)
     #self.reference = self.operation + "." + self.direction + "." + sprintf('%07d', counter)
     #self.patron_token = current_patron.token if self.patron_token.blank?
-    set_slug(self.reference.gsub("-", "."))
+    set_slug(self.reference) #.gsub(/[.?*!^%&/(_)=]/, '').parameterize
   end
 
   private

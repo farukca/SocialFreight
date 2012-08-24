@@ -3,8 +3,15 @@ class Transport < ActiveRecord::Base
   belongs_to :position
   belongs_to :supplier, class_name: "Company", foreign_key: "supplier_id"
   belongs_to :owner, class_name: "Company", foreign_key: "owner_id"
+  belongs_to :driver, class_name: "Person", foreign_key: "driver_id"
+
   belongs_to :dep_place, class_name: "Place", foreign_key: "dep_place_id"
+  belongs_to :dep_country, class_name: "Country", foreign_key: "dep_country_id"
+  belongs_to :dep_city, class_name: "City", foreign_key: "dep_city_id"
   belongs_to :arv_place, class_name: "Place", foreign_key: "arv_place_id"
+  belongs_to :arv_country, class_name: "Country", foreign_key: "arv_country_id"
+  belongs_to :arv_city, class_name: "City", foreign_key: "arv_city_id"
+  
   has_many   :payoff
 
   attr_accessible :position_id, :trans_method, :vessel, :voyage, :truck, :vagon, :driver_name, :driver_id, 
@@ -36,4 +43,5 @@ class Transport < ActiveRecord::Base
       }
     end
   end
+
 end

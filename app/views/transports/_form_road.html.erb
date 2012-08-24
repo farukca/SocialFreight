@@ -7,7 +7,8 @@
         <%= f.input_field :truck, :class => "input-small", "data-placeholder" => "Çekici Plaka" %>
       <% end %>
       <%= f.input :voyage, "data-placeholder" => "Sefer No" %>
-      <%= f.input :driver_name, "data-placeholder" => "Sürücü" %>
+      <%#= f.input :driver_name, "data-placeholder" => "Sürücü" %>
+      <%= f.input :driver_id, as: :hidden, label: "Sürücü", input_html: {class: "chosen_input", "data-url" => "/people.json", "data-newrecurl" => "/people/new", "data-selected" => @transport.driver_id ? @transport.driver.to_s : "", "data-placeholder" => "Sürücü Seçiniz."} %>
       <%#= f.input :waybill_flag, hint: "CMR belgesini biz düzenleyeceğiz" %>
   </div>
   <div class="span6">

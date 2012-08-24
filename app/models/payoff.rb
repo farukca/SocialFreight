@@ -7,7 +7,7 @@ class Payoff < ActiveRecord::Base
   has_many :costs
   
   belongs_to :transport
-  belongs_to :staff, :class_name => "Person", :foreign_key => "staff_id"
+  belongs_to :staff, class_name: "Person", foreign_key: "staff_id"
   belongs_to :patron
   friendly_id :name, use: :slugged, use: :scoped, scope: :patron
 
@@ -16,7 +16,7 @@ class Payoff < ActiveRecord::Base
                   :transport_id, :truck, :vehicle, :voyage
 
   validates :name, :payoff_date, :staff_id, :payoff_type, :user_id, :patron_id, presence: true
-  validates :departure_km, :arrival_km, :return_km, :numericality => { :only_integer => true }
+  validates :departure_km, :arrival_km, :return_km, numericality: { only_integer: true }
 
   before_create :set_initials
 

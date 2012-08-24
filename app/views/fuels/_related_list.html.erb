@@ -21,10 +21,10 @@
   <% table.column :payment_type, column_html: { scope: "col" } do |fuel| %>
     <%= "#{fuel.payment_type} #{fuel.payment_card}" %>
   <% end %> %>
-  <% table.column :country, column_html: { scope: "col" } do |fuel| %>
+  <% table.column :country_id, column_html: { scope: "col" } do |fuel| %>
     <%= fuel.country.name if fuel.country %>
   <% end %>
-  <% table.column :city, column_html: { scope: "col" } do |fuel| %>
+  <% table.column :city_id, column_html: { scope: "col" } do |fuel| %>
     <%= fuel.city.name if fuel.city %>
   <% end %>
 <% end %>

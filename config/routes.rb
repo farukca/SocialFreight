@@ -33,12 +33,12 @@ Socialfreight::Application.routes.draw do
   resources :branches
   resources :people
   resources :positions do
-    resources :transports
     resources :comments
     member do
       get :addload
     end
   end
+  resources :transports
   resources :loadings do
     resources :packages
     resources :containers

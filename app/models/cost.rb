@@ -1,11 +1,11 @@
 class Cost < ActiveRecord::Base
 
-  belongs_to :country
-  belongs_to :city
-  belongs_to :user
+  belongs_to :owner, class_name: "Person", foreign_key: "owner_id"
   belongs_to :patron
   belongs_to :costable, polymorphic: true
-
+  belongs_to :country
+  belongs_to :city
+  
   mount_uploader :cost_file, DocumentUploader
 
   attr_accessible :cost_source, :cost_type, :owner_id, :operation, :costable_type, :costable_id, :costable_reference, 

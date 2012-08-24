@@ -15,11 +15,11 @@
             <span class="caret" />
           </a>
           <ul class="dropdown-menu">
-            <li><%= link_to "Gemi/RORO Taşıma Bilgisi Ekle", new_position_transport_path(@position, :trans_method => "sea") %></li>
-            <li><%= link_to "Tır Taşıma Bilgisi Ekle", new_position_transport_path(@position, :trans_method => "road") %></li>
-            <li><%= link_to "Tren Taşıma Bilgisi Ekle", new_position_transport_path(@position, :trans_method => "rail") %></li>
-            <li><%= link_to "Uçak Taşıma Bilgisi Ekle", new_position_transport_path(@position, :trans_method => "air") %></li>
-            <li><%= link_to "Dahili(Ön/Son) Taşıma Bilgisi Ekle", new_position_transport_path(@position, :trans_method => "inland") %></li>
+            <li><%= link_to "Gemi/RORO Taşıma Bilgisi Ekle", new_transport_path(position_id: @position.id, :trans_method => "sea") %></li>
+            <li><%= link_to "Tır Taşıma Bilgisi Ekle", new_transport_path(position_id: @position.id, :trans_method => "road") %></li>
+            <li><%= link_to "Tren Taşıma Bilgisi Ekle", new_transport_path(position_id: @position.id, :trans_method => "rail") %></li>
+            <li><%= link_to "Uçak Taşıma Bilgisi Ekle", new_transport_path(position_id: @position.id, :trans_method => "air") %></li>
+            <li><%= link_to "Dahili(Ön/Son) Taşıma Bilgisi Ekle", new_transport_path(position_id: @position.id, :trans_method => "inland") %></li>
           </ul>
         </div>
                 </li>

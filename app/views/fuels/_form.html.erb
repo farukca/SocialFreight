@@ -26,7 +26,7 @@
             <%= f.input_field :payment_type, class: "input-small" %>
             <%= f.input_field :payment_card, as: :string, class: "input-small" %>
           <% end %>
-          
+          <%= f.input :branch_id, as: :select, collection: current_patron.branches, include_blank: false, selected: current_user.branch_id %>          
         </div>
         <div class="span6">
           <%= f.input :staff_id, as: :hidden, label: "Personel", input_html: {class: "chosen_input", "data-url" => "/people.json", "data-newrecurl" => "/people/new", "data-selected" => @fuel.staff_id ? @fuel.staff.to_s : "", "data-placeholder" => "Personel/Sürücü Seçiniz."} %>

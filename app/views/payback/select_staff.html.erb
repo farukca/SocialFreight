@@ -1,19 +1,17 @@
 <div class="row-fluid">
-  <%= simple_form_for @payoff, url: wizard_path, method: :put, validate: true do |f| %>
+  <%= simple_form_for @payoff, url: wizard_path, method: :put, html: {class: 'form-horizontal'}, validate: true do |f| %>
     <%= f.error_notification %>
   
     <fieldset>
 
       <div class="row-fluid">
-        <div class="span3">
-          <%= f.input :staff_id %>
+        <div class="span6">
+          <%= f.input :staff_id, as: :hidden, label: "Sürücü/Personel", input_html: {class: "chosen_input", "data-url" => "/people.json", "data-newrecurl" => "/people/new", "data-selected" => @payoff.staff_id ? @payoff.staff.to_s : "", "data-placeholder" => "Sürücü/Personel Seçiniz."} %>
         </div>
-        <div class="span3">
-          <%= f.input :payoff_type, as: :select %>
+        <div class="span6">
+          <%= f.button :submit, "Devam Et >>" %>
         </div>
-      </div>
-      
-      <%= f.button :submit, "Devam Et >>" %>
+      </div>     
 
     </fieldset>
   <% end %>
