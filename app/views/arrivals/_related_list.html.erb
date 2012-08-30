@@ -4,7 +4,7 @@
   <% table.column :action, column_html: { class: "actionCol", scope: "col" } do |arrival| %>
     <%= link_to "Güncelle", edit_arrival_path(arrival) %> 
     | 
-    <%= link_to "Sil", arrival, method: :delete, confirm: "Are you sure?" %>
+    <%= link_to "Sil", arrival, method: :delete, data: {confirm: "Are you sure?"} %>
   <% end %>
   <% table.column :unload_date, column_html: { class: "dateCol", scope: "col" } do |arrival| %>
     <%= arrival.unload_date.strftime("%d/%m/%Y") if arrival.unload_date %>

@@ -4,7 +4,7 @@
   <% table.column :action, column_html: { class: "actionCol", scope: "col" } do |partner| %>
     <%= link_to "Güncelle", edit_partner_path(partner) %> 
     | 
-    <%= link_to "Sil", partner, method: :delete, confirm: "Are you sure?" %>
+    <%= link_to "Sil", partner, method: :delete, data: {confirm: "Are you sure?"} %>
   <% end %>
   <% table.column :partner, column_html: { scope: "col" } do |partner| %>
     <%= partner.partner.name %>

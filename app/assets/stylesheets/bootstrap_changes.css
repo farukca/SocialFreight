@@ -9,17 +9,14 @@ ul, ol {
   margin:0;
 }
 legend {
-  margin-left: 10px;
   font-size: 1em;
   font-weight:bold;
-  line-height: 18px;
+  line-height: 20px;
   background-image: url("/assets/legend.png");
   background-color: #8A9EBE;
   border-top: 1px solid #FFFFFF;
   border-width: 1px 0 0;
   color: #000000;
-  padding: 3px 16px;
-  width: 97%;
 }
 legend.first {
     border-top: medium none;
@@ -29,8 +26,12 @@ legend span.subtitle {
   font-size: 12px;
 }
 .breadcrumb {
-  padding: 10px 14px;
-  margin: 0 0 0px;
+  padding: 5px 15px;
+  margin: 0;
+  text-align: center;
+}
+.breadcrumb .active a {
+  text-decoration: underline;
 }
 .input-small {
   width: 98px;
@@ -60,10 +61,46 @@ margin-left: 0px;
 .control-group.error > label, .control-group.error .help-block, .control-group.error .help-inline {
   display: block;
 }
-.control-group {
+.form-horizontal .control-group {
   margin-bottom: 2px;
 }
 .hidden {
   padding: 0px;
   margin: 0px;
+}
+*Faruk Celik bootstrap 2.1 changes
+.row-fluid [class*="span"] {
+  min-height: 20px;
+  margin-left: 0;
+}
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+  height: 16px;
+  font-size: 13px;
+  line-height: 16px;
+}
+select,
+input[type="file"] {
+  height: 25px;
+  line-height: 25px;
+}
+.form-horizontal .control-group {
+  margin-bottom: 4px;
+}
+.table-condensed th, .table-condensed td {
+  padding: 3px 5px;
 }

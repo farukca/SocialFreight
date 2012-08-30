@@ -1,32 +1,37 @@
 <div id="arrival">
 
-  <%= render 'breadcrumb', step: 3 %>
-  
   <%= render 'loadings/profile_header' %>
   
+  <div id="opform" class="row-fluid">
   <%= simple_form_for @arrival, :url => wizard_path, :method => :put, :html => {:class => 'form-horizontal'}, :validate => true do |f| %>
     <%= f.error_notification %>
     
-    <% if current_operation == 'inland' %>
-      <%= render 'arrivals/form_fields_inland', :f => f %>
-  
-      <div class="row-fluid">
-        <legend>Koli Bilgileri</legend>
-        <%= f.fields_for :packages do |builder| %>
-          <%= render 'packages/form_simple', :f => builder %>
-        <% end %>
-        <%= link_to_add_fields "Koli Bilgisi Ekle", f, :packages, "packages/form_simple" %>
+    <div class="row-fluid">
+      <% if current_operation == 'inland' %>
+
+        <%= render 'arrivals/form_fields_inland', :f => f %>
+    
+        <div class="row-fluid">
+          <legend>Koli Bilgileri</legend>
+          <%= f.fields_for :packages do |builder| %>
+            <%= render 'packages/form_simple', :f => builder %>
+          <% end %>
+          <%= link_to_add_fields "Koli Bilgisi Ekle", f, :packages, "packages/form_simple" %>
+        </div>
+
+      <% else %>
+        <%= render 'arrivals/form_fields', :f => f %>
+      <% end %>
+
+      <div class="controls rightside">
+        <%#= link_to "<< Bir Önceki Adıma Dön", previous_wizard_path, :class => 'btn btn-danger' %>	
+        <%= link_to "Bu Adımı Atla >>", next_wizard_path, :class => 'btn btn-danger' %>
+        <%= f.button :submit, "Kaydet & Yük Detay Bilgilerine Devam Et >>", :class => 'btn btn-info' %>
       </div>
-
-    <% else %>
-      <%= render 'arrivals/form_fields', :f => f %>
-    <% end %>
-
-    <div class="controls rightside">
-      <%#= link_to "<< Bir Önceki Adıma Dön", previous_wizard_path, :class => 'btn btn-danger' %>	
-      <%= link_to "Bu Adımı Atla >>", next_wizard_path, :class => 'btn btn-danger' %>
-      <%= f.button :submit, "Kaydet & Yük Detay Bilgilerine Devam Et >>", :class => 'btn btn-info' %>
     </div>
   <% end %>
+  </div>
+
+  <%= render 'breadcrumb', step: 3 %>  
 
 </div>

@@ -1,6 +1,7 @@
 <div class="row-fluid">
   <fieldset>
     <legend>Yük Detay Bilgileri</legend>
+    <div class="row-fluid">
     <div class="span6">
       <%= f.input :producer %>
       <%= f.input :product_price do %>
@@ -13,6 +14,7 @@
       <%#= f.input :agent_reference, :input_html => {:class => "input-medium"} %>
       <%= f.input :marks_nos, :as => :text, :input_html => {:rows => 1}, :label => "Marks & Nos" %>
       <%#= f.input :customer_reference, :input_html => {:class => "input-medium"} %>
+    </div>
     </div>
   </fieldset>
 </div>

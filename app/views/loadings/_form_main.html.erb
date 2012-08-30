@@ -1,9 +1,10 @@
 <div class="row-fluid">
   <fieldset>
   <legend>Yük Bilgisi</legend>
+  <div class="row-fluid">
   <div class="span6">
     <%#= f.input :company_id, :input_html => {:class => "chosen_input", "data-url" => "/companies.json"}, :label => "Customer" %>
-    <%= f.input :company_id, as: :hidden, label: "Müşteri", input_html: {:class => "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-selected" => @loading.company_id ? @loading.company.name : "", "data-placeholder" => "Müşteri Seçiniz."} %>
+    <%= f.input :company_id, as: :hidden, label: "Müşteri", input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-selected" => @loading.company_id ? @loading.company.name : "", "data-placeholder" => "Müşteri Seçiniz." } %>
     <!--legend>Operasyon Bilgileri</legend-->
     <%= f.input :direction, :as => :select, :collection => Position.direction_types.map{|r| [r[1], r[0] ]}, :include_blank => false %>
     <%= f.input :branch_id, :as => :select, :collection => current_patron.branches, :include_blank => false, :selected => current_user.branch_id %>
@@ -14,8 +15,9 @@
     <!--legend>Yükleme Bilgileri</legend-->
     <%= f.input :commodity, :as => :text, :input_html => {:rows => 3}, :label => "Yük İçeriği" %>
   </div>
-
+  </div>
   <legend>Ek Bilgiler</legend>
+  <div class="row-fluid">
   <div class="span6">
     <%= f.input :paid_at, :as => :select, :collection => Position.payment_types.map { |r| [r[1], r[0] ] }, :include_blank => true %>
     <%= f.input :incoterm, :as => :select, :collection => Loading.incoterms.map { |r| [r[1], r[0] ] }, :include_blank => true %>
@@ -38,7 +40,7 @@
       <a class="nexttab btn btn-success" data-newtab="#loading-load-form">Sonraki Tab</a>
     </div-->
   </div>
-  
+  </div>
   <%= f.hidden_field :position_id %>
   <%= f.hidden_field :operation %>
   </fieldset>

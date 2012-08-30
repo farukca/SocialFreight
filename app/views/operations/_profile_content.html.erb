@@ -34,19 +34,19 @@
 
           <div id="loading_list" class="tab-pane profile-content active">
             <% if @operation.loadings %>
-              <%= render 'loadings/loadings', :loadings => @operation.loadings %>
+              <%= render partial: 'loadings/small_list', locals: { objects: @operation.loadings } %>
             <% end %>
           </div>
 
           <div id="reservation_list" class="tab-pane profile-content">
             <% if @operation.loadings %>
-              <%= render 'loadings/loadings', :loadings => @operation.reservations %>
+              <%= render partial: 'loadings/small_list', locals: { objects: @operation.reservations } %>
             <% end %>
           </div>
 
           <div id="position_list" class="tab-pane profile-content">
             <% if @operation.positions %>
-              <%= render 'positions/positions', :positions => @operation.positions %>
+              <%= render partial: 'positions/small_list', locals: { objects: @operation.positions } %>
             <% end %>
           </div>
         </div>
@@ -59,14 +59,14 @@
     <div class="row-fluid">
       <div id="operation_tasks">
         <legend>Raporlar</legend>
-        <table class="table small-tables">
+        <table class="table table-condensed">
           <tr><td><%= link_to "Yük & Pozisyon Listesi", new_search_path(operation: @operation.code) %></td></tr>      
           <tr><td><%= link_to "CASS Raporu", positions_path(operation: @operation.code) %></td></tr>
           <tr><td><%= link_to "Uçuş Bilgileri Sorgulama", positions_path(operation: @operation.code) %></td></tr>
         </table>
 
         <legend>Görevler & Notlar</legend>
-        <table class="table small-tables">
+        <table class="table table-condensed">
           <tr><td>TK253 Nolu sefer kontrol edilecek, Beko'ya bilgi verilecek</td></tr>
           <tr><td>@KRF545654 yük dosyası kapatılmalı %></td></tr>
           <tr><td>@KRF854126 yük taşıması tamamlanınca faturası kesilecek</td></tr>

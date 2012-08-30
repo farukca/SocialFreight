@@ -1,7 +1,6 @@
 <div id="loading">
 
-  <%= render 'breadcrumb', step: 1 %>
-  <div id="opform">
+  <div id="opform" class="row-fluid">
     <%= simple_form_for @loading, :url => wizard_path, :method => :put, :html => {:class => 'form-horizontal'}, :validate => true do |f| %>
       <%= f.error_notification %>
 
@@ -23,4 +22,7 @@
 
     <% end %>
   </div>
+
+  <%= render 'breadcrumb', step: 1 %>
+
 </div>

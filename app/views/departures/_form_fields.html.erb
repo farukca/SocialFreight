@@ -1,6 +1,7 @@
 <div class="row-fluid">
   <fieldset>
   <legend>Yükleme Bilgileri</legend>
+    <div class="row-fluid">
     <div class="span6">
       <%= f.input :load_place_id, as: :hidden, label: "Yükleme Yeri", input_html: {:class => "chosen_input", "data-url" => "/places.json", "data-newrecurl" => "/places/new", "data-selected" => @departure.load_place_id ? @departure.load_place.name : "", "data-placeholder" => "Yükleme Yerini Seçiniz."} %>
       <%#= f.input :load_place_id, :as => :select, :input_html => {:class => "chosen_input", "data-url" => "/places.json" } %>
@@ -21,8 +22,9 @@
       <% end %>
   
     </div>
-
+    </div>
     <legend>Ön Taşıma İşlemi Yapılacak ise</legend>
+    <div class="row-fluid">
     <div class="span6">
       <%= f.input :load_point, as: :select, collection: Loading.point_types.map { |r| [r[1], r[0] ] }, include_blank: false %>
     </div>
@@ -39,6 +41,7 @@
         <%= f.input :address, :as => :text, :input_html => {:rows => 2, :cols => 37} %>
         <%= f.input :pickup_date, :as => :string, :input_html => { :class => "input-small", "data-datepicker" => "datepicker" } %>
       </div>
+    </div>
     </div>
   </fieldset>
 

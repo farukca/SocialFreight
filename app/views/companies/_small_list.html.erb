@@ -1,0 +1,15 @@
+<%= table_for objects, table_html: { class: "table table-condensed table-striped"}, 
+              header_row_html: { class: "headerRow" },
+              row_html: { class: "dataRow" } do |table| %>
+  <% table.column :name, column_html: { scope: "col" } do |company| %>
+    <%= link_to company.name, company_path(company) %>
+  <% end %>
+  <% table.column :tel, column_html: { scope: "col" } %>
+  <% table.column :website, column_html: { scope: "col" } do |company| %>
+    <a href="<%= company.website%>" target="_blank"><%= company.website %></a>
+  <% end %>
+  <% table.column :fax, column_html: { class: "emailCol", scope: "col" } %>
+  <% table.column :action, column_html: { class: "actionCol", scope: "col" } do |company| %>
+    <%= link_to edit_company_path(company) do %><i class="icon-edit"></i><% end %>            
+  <% end %>
+<% end %>

@@ -1,7 +1,8 @@
 <div id="loading">
 
-  <%= render 'breadcrumb', step: 4 %>
-  <div id="opform">
+  <%= render 'loadings/profile_header' %>
+
+  <div id="opform" class="row-fluid">
     <%= simple_form_for @loading, :url => wizard_path, :method => :put, :html => {:class => 'form-horizontal'}, :validate => true do |f| %>
       <%= f.error_notification %>
       <div class="pageBlock">
@@ -10,10 +11,13 @@
         <%= render 'loadings/form_detail', :f => f %>
 
         <div class="controls rightside">
-          <%= link_to "Bu Adımı Atla >>", next_wizard_path, :class => 'btn btn-danger' %>
-          <%= f.button :submit, "Kaydet & Yükleme Bilgilerine Devam Et >>", :class => 'btn btn-info' %>
+          <%#= link_to "Bu Adımı Atla >>", next_wizard_path, :class => 'btn btn-danger' %>
+          <%= f.button :submit, "Kaydet & Yükleme Profil Sayfasını Aç >>", :class => 'btn btn-info' %>
         </div>
       </div>
     <% end %>
   </div>
+
+  <%= render 'breadcrumb', step: 4 %>
+  
 </div>

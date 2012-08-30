@@ -5,7 +5,7 @@
     <div class="row-fluid">
       <div id="operation_links">
         <legend>Müşteri İşlemleri</legend>
-          <table class="table main_links_table">
+          <table class="table table-condensed">
             <tr><td><%= link_to "Firma Oluştur", new_company_path %></td></tr>
             <tr><td><%= link_to "Yetkili Oluştur", new_contact_path %></td></tr>
             <tr><td><%= link_to "Aktivite Oluştur", "#" %></td></tr>
@@ -26,7 +26,7 @@
         <div id="my-tab-content" class="tab-content">
 
           <div id="company_list" class="tab-pane profile-content active">
-            <%= render current_patron.companies %>
+            <%= render partial: "small_list", locals: { objects: current_patron.companies } %>
           </div>
 
           <div id="activity_list" class="tab-pane profile-content">
@@ -46,14 +46,14 @@
     <div class="row-fluid">
       <div id="crm_tasks">
         <legend>Raporlar</legend>
-        <table class="table small-tables">
+        <table class="table small-tables table-condensed">
           <tr><td><%= link_to "Borçlu Müşteriler Listesi", companies_path %></td></tr>      
           <tr><td><%= link_to "Aktif Müşteriler Listesi", companies_path %></td></tr>
           <tr><td><%= link_to "Alacaklı Tedarikçiler Listesi", companies_path %></td></tr>
         </table>
 
         <legend>Görevler & Notlar</legend>
-        <table class="table small-tables">
+        <table class="table small-tables table-condensed">
           <tr><td>TK253 Nolu sefer kontrol edilecek, Beko'ya bilgi verilecek</td></tr>
           <tr><td>@KRF545654 yük dosyası kapatılmalı %></td></tr>
           <tr><td>@KRF854126 yük taşıması tamamlanınca faturası kesilecek</td></tr>

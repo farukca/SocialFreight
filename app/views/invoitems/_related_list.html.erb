@@ -4,7 +4,7 @@
   <% table.column :action, column_html: { class: "actionCol", scope: "col" } do |invoitem| %>
     <%= link_to "Güncelle", edit_invoitem_path(invoitem) %> 
     | 
-    <%= link_to "Sil", invoitem, method: :delete, confirm: "Are you sure?" %>
+    <%= link_to "Sil", invoitem, method: :delete, data: {confirm: "Are you sure?"} %>
   <% end %>
   <% table.column :unit_name, column_html: { class: "dateCol", scope: "col" } %>
   <% table.column :credit_debit, column_html: { class: "dateCol", scope: "col" } %>

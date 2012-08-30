@@ -19,16 +19,18 @@
         <div class="row-fluid">
           <fieldset>
             <legend>Pozisyon Bilgileri</legend>
-            <div class="span6">
-              <%= f.hidden_field :operation %>
-              <%= f.input :direction, as: :select, collection: Position.direction_types.map { |r| [r[1], r[0] ] }, include_blank: false %>
-              <%= f.input :load_type, as: :select, collection: Loading.load_types.map { |r| [I18n.t("listitems.loadtype.#{@position.operation}.#{r[1]}"), r[0] ] }, include_blank: false, hint: "LCL or FCL selection" %>
-              <%= f.input :waybill_no %>
-            </div>
-            <div class="span6">
-              <%= f.input :branch_id, as: :select, collection: current_patron.branches, include_blank: false, selected: current_user.branch_id %>
-              <%= f.input :agent_id, as: :hidden, label: "Agent", input_html: {:class => "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => "Agenta seçiniz."} %>
-              <%= f.input :report_date, as: :string, input_html: { class: "input-small", "data-datepicker" => "datepicker"} %>
+            <div class="row-fluid">
+              <div class="span6">
+                <%= f.hidden_field :operation %>
+                <%= f.input :direction, as: :select, collection: Position.direction_types.map { |r| [r[1], r[0] ] }, include_blank: false %>
+                <%= f.input :load_type, as: :select, collection: Loading.load_types.map { |r| [I18n.t("listitems.loadtype.#{@position.operation}.#{r[1]}"), r[0] ] }, include_blank: false, hint: "LCL or FCL selection" %>
+                <%= f.input :waybill_no %>
+              </div>
+              <div class="span6">
+                <%= f.input :branch_id, as: :select, collection: current_patron.branches, include_blank: false, selected: current_user.branch_id %>
+                <%= f.input :agent_id, as: :hidden, label: "Agent", input_html: {:class => "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => "Agenta seçiniz."} %>
+                <%= f.input :report_date, as: :string, input_html: { class: "input-small", "data-datepicker" => "datepicker"} %>
+              </div>
             </div>
             <%= f.button :submit, "Kaydet ve Sefer Bilgisine Devam Et >>", :class => 'btn btn-info' %>
           </fieldset>

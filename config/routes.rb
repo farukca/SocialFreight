@@ -40,8 +40,6 @@ Socialfreight::Application.routes.draw do
   end
   resources :transports
   resources :loadings do
-    resources :packages
-    resources :containers
     resources :comments
     member do
       get :addtoplan
@@ -49,6 +47,9 @@ Socialfreight::Application.routes.draw do
   end
   resources :departures
   resources :arrivals
+  resources :packages
+  resources :containers
+
   resources :rentals
   resources :vehicles
   resources :vessels

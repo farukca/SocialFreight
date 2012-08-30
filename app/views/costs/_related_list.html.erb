@@ -4,7 +4,7 @@
   <% table.column :action, column_html: { class: "actionCol", scope: "col" } do |cost| %>
     <%= link_to "Güncelle", edit_cost_path(cost) %> 
     | 
-    <%= link_to "Sil", cost, method: :delete, confirm: "Are you sure?" %>
+    <%= link_to "Sil", cost, method: :delete, data: {confirm: "Are you sure?"} %>
   <% end %>
   <% table.column :created_at, column_html: { class: "dateCol", scope: "col" } do |cost| %>
     <%= cost.created_at.strftime("%d/%m/%Y") %>

@@ -1,4 +1,4 @@
-<table class="table main_links_table">
+<table class="table table-condensed">
   <tr><td><%= link_to "Yük Reservasyonu Oluştur", reservation_path(:load_info, operation: @operation.code) %></td></tr>
   <!--tr><td><%= link_to "Yeni Uçak Pozisyonu Oluştur", new_position_path(operation: @operation.code) %></td></tr-->
   <tr><td><%= link_to "Yeni Uçak Pozisyonu Oluştur", transplan_path(:position_info, operation: @operation.code) %></td></tr>

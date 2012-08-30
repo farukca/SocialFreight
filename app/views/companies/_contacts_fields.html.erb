@@ -1,6 +1,7 @@
 <div class="row-fluid">
   <fieldset>
     <legend>Yetkili Bilgisi</legend>
+    <div class="row-fluid">
     <div class="span6">
       <%= f.input :name do %>
         <%= f.input_field :salutation, as: :select, collection: ['Mr', 'Ms', 'Mrs', 'Dr'], class: "input-mini", include_blank: false %>
@@ -15,6 +16,7 @@
     <div class="span6">
       <%= f.input :email, placeholder: "E-mail" %>
       <%= f.input :tel, placeholder: "Phone number" %>
+    </div>
     </div>
     <%= f.input :user_id, as: :hidden %>
   </fieldset>

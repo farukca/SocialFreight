@@ -1,5 +1,41 @@
 <div class="profile-content">
-  <table class="outer" width="100%" id="contentTable" border="0" cellspacing="0" cellpadding="0">
+
+        <div class="row-fluid" style="padding-bottom:10px;text-align:center;">
+          <%= link_to "Yükler(1)", "##{@position.id}_loadingList" %> |
+          <%= link_to "Taşımalar(1)", "##{@position.id}_transportList" %> |
+          <%= link_to "Dosyalar(2)", "##{@position.id}_documentList" %> |
+          <%= link_to "Fatura Kalemleri(2)", "##{@position.id}_invoitemList" %> |
+          <%= link_to "Masraflar(1)", "##{@position.id}_costList" %> |
+        </div>
+        <div class="row-fluid profile-section">
+          <%= render "shared/related_list", list_model: "loading", parent: @position, objects: @position.loadings %>
+        </div>
+
+        <div class="row-fluid profile-section">
+          <%= render "shared/related_list", list_model: "transport", parent: @position, objects: @position.transports %>
+        </div>
+
+        <div class="row-fluid profile-section">
+          <%= render "shared/related_list", list_model: "document", parent: @position, objects: @position.documents %>
+        </div>
+
+        <div class="row-fluid profile-section">
+          <%= render "shared/related_list", list_model: "invoitem", parent: @position, objects: @position.invoitems %>
+        </div>
+
+        <div class="row-fluid profile-section">
+          <%= render "shared/related_list", list_model: "cost", parent: @position, objects: @position.costs %>
+        </div>
+
+        <div class="row-fluid profile-section">
+          <div id="position_comments" class="feeds">
+            <%= render 'comments/commentable', :object => @position %>
+          </div>
+        </div>
+
+</div>
+
+  <!--table class="outer" width="100%" id="contentTable" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <td class="oRight" id="bodyCell">
           <div id="inner-content">
@@ -15,34 +51,33 @@
             <span class="caret" />
           </a>
           <ul class="dropdown-menu">
-            <li><%= link_to "Gemi/RORO Taşıma Bilgisi Ekle", new_transport_path(position_id: @position.id, :trans_method => "sea") %></li>
-            <li><%= link_to "Tır Taşıma Bilgisi Ekle", new_transport_path(position_id: @position.id, :trans_method => "road") %></li>
-            <li><%= link_to "Tren Taşıma Bilgisi Ekle", new_transport_path(position_id: @position.id, :trans_method => "rail") %></li>
-            <li><%= link_to "Uçak Taşıma Bilgisi Ekle", new_transport_path(position_id: @position.id, :trans_method => "air") %></li>
-            <li><%= link_to "Dahili(Ön/Son) Taşıma Bilgisi Ekle", new_transport_path(position_id: @position.id, :trans_method => "inland") %></li>
+            <li><%#= link_to "Gemi/RORO Taşıma Bilgisi Ekle", new_transport_path(position_id: @position.id, :trans_method => "sea") %></li>
+            <li><%#= link_to "Tır Taşıma Bilgisi Ekle", new_transport_path(position_id: @position.id, :trans_method => "road") %></li>
+            <li><%#= link_to "Tren Taşıma Bilgisi Ekle", new_transport_path(position_id: @position.id, :trans_method => "rail") %></li>
+            <li><%#= link_to "Uçak Taşıma Bilgisi Ekle", new_transport_path(position_id: @position.id, :trans_method => "air") %></li>
+            <li><%#= link_to "Dahili(Ön/Son) Taşıma Bilgisi Ekle", new_transport_path(position_id: @position.id, :trans_method => "inland") %></li>
           </ul>
         </div>
                 </li>
               </ul>
               <div id="my-tab-content" class="tab-content">
-                <%= render 'tab1', :position => @position %>
-                <%= render 'tab2', :position => @position %>
-                <%= render 'tab3', :position => @position %>
+                <%#= render 'tab1', :position => @position %>
+                <%#= render 'tab2', :position => @position %>
+                <%#= render 'tab3', :position => @position %>
               </div>
             </div>
             <div id="position_comments" class="feeds">
-              <%= render 'comments/commentable', :object => @position %>
+              <%#= render 'comments/commentable', :object => @position %>
             </div>
           </div>
       </td>
       <td id="rightCell" class="sidebarCell">
           <div id="rightbar">
-            <%= render 'goods', :position => @position %>
-            <%= render 'todos', :position => @position %>
-            <%= render 'loadings/followers', :loading => @position %>
+            <%#= render 'goods', :position => @position %>
+            <%#= render 'todos', :position => @position %>
+            <%#= render 'loadings/followers', :loading => @position %>
           </div>
       </td>
     </tr>
   </table>
-  <div class="modal fade" id="loadModalList"></div>
-</div>
+  <div class="modal fade" id="loadModalList"></div-->

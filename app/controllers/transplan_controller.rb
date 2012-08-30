@@ -88,15 +88,20 @@ class TransplanController < ApplicationController
       #  skip_step
 
       when :trans_info
-        @position = current_patron.positions.build(params[:position])
-        @position.save!
+        @transport = Transport.new(params[:transport])
+        @transport.user_id = current_user.id
+        if @transport.save!
 
-        session[:wicked_loading_ids] = []
-        session[:wicked_position_id] = nil
-        session[:plan_operation]     = nil
-        session[:plan_direction]     = nil
-
-        redirect_to @position
+          session[:wicked_loading_ids] = []
+          session[:wicked_position_id] = nil
+          session[:plan_operation]     = nil
+          session[:plan_direction]     = nil
+         
+          redirect_to @transport.position
+        else
+          render_wizard
+        end
+          
     end
     #render_wizard
   end

@@ -4,12 +4,12 @@
   <% table.column :action, column_html: { class: "actionCol", scope: "col" } do |container| %>
     <%= link_to "Güncelle", edit_container_path(container) %> 
     | 
-    <%= link_to "Sil", container, method: :delete, confirm: "Are you sure?" %>              
+    <%= link_to "Sil", container, method: :delete, data: {confirm: "Are you sure?"} %>              
   <% end %>
   <% table.column :container_type, column_html: { scope: "col" } %>
   <% table.column :name, column_html: { scope: "col" } %>
   <% table.column :sealno, column_html: { scope: "col" } %>
-  <% table.column :freeday, column_html: { scope: "col" } %>
+  <% table.column :free_day, column_html: { scope: "col" } %>
   <% table.column :demurrage, column_html: { scope: "col" } do |container| %>
     <%= "#{container.demurrage} #{container.demurrage_curr}" %>
   <% end %>

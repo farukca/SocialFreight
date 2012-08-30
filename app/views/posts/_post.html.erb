@@ -1,6 +1,6 @@
 <li>
   <div class="feedline">
-    <a href="#" class="img-load"><%= image_tag post.user.avatar_url(:small) %></a>
+    <a href="#" class="img-load"><%= image_tag post.user.avatar_url(:small), class: "img-circle" %></a>
     <%= link_to polymorphic_url(post.target), :title => "#{post.target_type}: #{post.target_name}" do %>
       <i class="icon-<%= post.target_type.downcase %>"></i>
       <span class="mruText"><%= post.target_name %></span>

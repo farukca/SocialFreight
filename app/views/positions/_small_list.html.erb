@@ -1,0 +1,13 @@
+<%= table_for objects, table_html: { class: "table table-condensed table-striped"}, 
+              header_row_html: { class: "headerRow" },
+              row_html: { class: "dataRow" } do |table| %>
+  <% table.column :reference, column_html: { scope: "col" } %>
+  <% table.column :direction, column_html: { scope: "col" } %>
+  <% table.column :load_type, column_html: { class: "phoneCol", scope: "col" } %>
+  <% table.column :branch, column_html: { scope: "col" } do |position| %>
+    <%= position.branch.name %>
+  <% end %>
+  <% table.column :action, column_html: { class: "actionCol", scope: "col" } do |position| %>
+    <%= link_to edit_position_path(position) do %><i class="icon-edit"></i><% end %>            
+  <% end %>
+<% end %>

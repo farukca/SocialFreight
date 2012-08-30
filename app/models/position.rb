@@ -15,6 +15,9 @@ class Position < ActiveRecord::Base
   belongs_to :user
 
   has_many :loadings, dependent: :nullify
+  has_many :costs, as: :costable, dependent: :destroy
+  has_many :invoitems, as: :invoitem_owner, dependent: :destroy
+  has_many :documents, as: :documented, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
 
   has_many :transports, dependent: :destroy
@@ -109,7 +112,7 @@ class Position < ActiveRecord::Base
     #counter = self.patron.generate_counter("Position", self.operation, self.direction)
     #self.reference = self.operation + "." + self.direction + "." + sprintf('%07d', counter)
     #self.patron_token = current_patron.token if self.patron_token.blank?
-    set_slug(self.reference) #.gsub(/[.?*!^%&/(_)=]/, '').parameterize
+    set_slug(self.reference.parameterize) #.gsub(/[.?*!^%&/(_)=]/, '').parameterize
   end
 
   private

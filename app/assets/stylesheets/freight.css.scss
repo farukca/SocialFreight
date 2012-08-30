@@ -92,9 +92,6 @@ form {
     background-position:0 0;
 }
 .labelCol, .control-group, .labelCol2, .dataCol2 {
-    padding-bottom:3px;
-    padding-top:3px;
-    line-height: 18px;
     color:#666;
 }
 .labelCol {
@@ -180,9 +177,6 @@ form {
 }
 .rightside {
 	float:right;
-}
-form .span8 {
-    margin-left:0px;
 }
 .numbers td, th {
 	width :60px;
@@ -407,12 +401,7 @@ fieldset span {
     background:none repeat scroll 0 0 transparent;
     margin-bottom:-6px;
 }
-#login_form label {
-    text-align:left;
-    width:20%;
-}
-#login_form label, #patron_form label label {
-    margin-right:5px;
+#login_form label, #patron_form label {
     color:#fff;
 }
 .quick_form label {
@@ -896,16 +885,6 @@ div.addIcon {
 .loadingRow:hover .addIcon {
   visibility:visible;
 }
-.main_links_table td {
-  font-size: 14px;
-  line-height: 25px;
-  margin-left: 20px;
-  padding: 0;
-  text-align: left;
-}
-.small-tables td {
-  text-align: left;
-}
 .tweet-url {
   font-weight: bold;
   color: #0088CC;
@@ -956,4 +935,7 @@ div.addIcon {
 }
 .profile-sub-data {
   margin-bottom:20px;
+}
+.listSubRecords h5 {
+  margin: 0px;
 }

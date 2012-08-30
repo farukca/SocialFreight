@@ -1,11 +1,13 @@
 <div class="row-fluid">
-  <%= form_for [object, object.comments.build()], :remote => true, :class => "form-inline" do |f| %>
+  <%= form_for [object, object.comments.build()], remote: true, html: { class: "form-horizontal" } do |f| %>
     <div class="row-fluid">
     <%#= f.error_notification %>
     <%#= f.input :comment_text, :as => :text, :input_html => {:rows => "1", :style => "width:95%"}, :label => "Yorum Ekle" %>
-    <%= label_tag 'comment_text', "Yorum Ekle" %>
-    <%= f.text_field :comment_text, :class => "input-xlarge" %>
-    <%= f.submit("Paylaş", :class => 'btn btn-info') %>
-     </div>
+      <%= label_tag 'comment_text', "Yorum Ekle", class: "control-label" %>
+      <div class="input-append">
+        <%= f.text_field :comment_text, :class => "input-xlarge" %>
+        <%= f.submit("Paylaş", :class => 'btn btn-info') %>
+      </div>
+    </div>
   <% end %>
 </div>

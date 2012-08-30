@@ -5,7 +5,7 @@
     <div class="row-fluid">
       <div id="operation_links">
         <legend>İşlemler</legend>
-          <table class="table main_links_table">
+          <table class="table table-condensed">
             <tr><td><%= link_to "Sürücü/Çekici İş Emri Oluştur", new_contact_path %></td></tr>
             <tr><td><%= link_to "Sürücü Avans/Masraf Hesaplaşması", payback_path(:select_staff) %></td></tr>
             <tr><td><%= link_to "", "#" %></td></tr>
@@ -46,14 +46,14 @@
     <div class="row-fluid">
       <div id="crm_tasks">
         <legend>Raporlar</legend>
-        <table class="table small-tables">
+        <table class="table table-condensed">
           <tr><td><%= link_to "Fatura Listesi", fleetman_path %></td></tr>      
           <tr><td><%= link_to "Ödeme/Tahsilat Listesi", fleetman_path %></td></tr>
           <tr><td><%= link_to "Nakit Akışı", fleetman_path %></td></tr>
         </table>
 
         <legend>Görevler & Notlar</legend>
-        <table class="table small-tables">
+        <table class="table table-condensed">
           <tr><td>TK253 Nolu sefer kontrol edilecek, Beko'ya bilgi verilecek</td></tr>
           <tr><td>@KRF545654 yük dosyası kapatılmalı %></td></tr>
           <tr><td>@KRF854126 yük taşıması tamamlanınca faturası kesilecek</td></tr>

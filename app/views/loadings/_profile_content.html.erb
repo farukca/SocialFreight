@@ -20,6 +20,16 @@
           <%= render "shared/related_list", list_model: "arrival", parent: @loading, objects: @loading.arrivals %>
         </div>
 
+        <% if @loading.operation == "sea" %>
+          <div class="row-fluid profile-section">
+            <%= render "shared/related_list", list_model: "container", parent: @loading, objects: @loading.containers %>
+          </div>
+        <% else %>
+          <div class="row-fluid profile-section">
+            <%= render "shared/related_list", list_model: "package", parent: @loading, objects: @loading.packages %>
+          </div>
+        <% end %>
+
         <div class="row-fluid profile-section">
           <%= render "shared/related_list", list_model: "document", parent: @loading, objects: @loading.documents %>
         </div>
@@ -41,13 +51,13 @@
       <!--/td>
       <td id="rightCell" class="sidebarCell">
         <div id="rightbar">
-          <%= render 'todos', :loading => @loading %>
-          <% if @loading.operation == 'sea' %>
-            <%= render 'containers', :loading => @loading %>
-          <% else %>
-            <%= render 'boxes', :loading => @loading %>
-          <% end %>
-          <%= render 'followers', :loading => @loading %>
+          <%#= render 'todos', :loading => @loading %>
+          <%# if @loading.operation == 'sea' %>
+            <%#= render 'containers', :loading => @loading %>
+          <%# else %>
+            <%#= render 'boxes', :loading => @loading %>
+          <%# end %>
+          <%#= render 'followers', :loading => @loading %>
         </div>
       </td>
     </tr>

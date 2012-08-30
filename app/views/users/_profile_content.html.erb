@@ -1,13 +1,11 @@
 <div class="profile-content">
-  <table class="outer" width="100%" id="contentTable" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="dataCol" id="bodyCell" style="vertical-align:top;">
-        <%= render 'user_posts' %>
-      </td>
-      <td class="dataCol" id="bodyCell" style="vertical-align:top; text-align:center;">
-        <%= render 'user_tasks' %>
-        <%= render 'user_statics' %>
-      </td>
-    </tr>
-  </table>
+  <div class="row-fluid">
+    <div class="span7">
+      <%= render 'user_posts' %>
+    </div>
+    <div class="span5">
+      <%= render 'user_tasks' %>
+      <%= render 'user_statics' %>
+    </div>
+  </div>
 </div>
