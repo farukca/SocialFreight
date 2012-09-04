@@ -13,8 +13,13 @@ class Loading < ActiveRecord::Base
   belongs_to :company
   belongs_to :agent, :class_name => "Company", :foreign_key => "agent_id"
   #belongs_to :bank, :class_name => "Company", :foreign_key => "bank_id"
+  belongs_to :sender, :class_name => "Company", :foreign_key => "sender_id"
+  belongs_to :consignee, :class_name => "Company", :foreign_key => "consignee_id"
+
   belongs_to :user
   belongs_to :saler, :class_name => "User", :foreign_key => "saler_id"
+  belongs_to :creater, :class_name => "User", :foreign_key => "creater_id"
+  belongs_to :updater, :class_name => "User", :foreign_key => "updater_id"
 
   has_many   :departures
   has_many   :arrivals
@@ -34,7 +39,7 @@ class Loading < ActiveRecord::Base
                   :agent_id, :user_id, :saler_id, :freight_price, :freight_curr, :agent_price, :agent_curr, :agent_share,
                   :product_price, :product_curr, :bank_flag, :bank_id, :producer, :marks_nos, :hts_no, :brut_wg, 
                   :volume, :ladameter, :price_wg, :commodity, :notes, :load_coun, :unload_coun, :status, :stage, :stage_date,
-                  :report_date, :packages_attributes, :containers_attributes
+                  :report_date, :sender_id, :consignee_id, :packages_attributes, :containers_attributes
 
   #validates_presence_of :reference, :except => :create
   validates_uniqueness_of :reference, :case_sensitive => false

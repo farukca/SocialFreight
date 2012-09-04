@@ -10,11 +10,11 @@
         <div id="profile-detail" class="loading">
           <div id="profile-title" class="row-fluid">
             <div class="title">
-              <span><%= "#{person}" %></span>
+              <h5><%= "#{person}" %></h5>
             </div>
             <div class="buttons">
               <% if current_user.id = person.user_id %>
-                <%= link_to "Edit", edit_person_path(person), :class => 'btn primary' %>
+                <%= link_to "Edit", edit_person_path(person), :class => 'btn btn-info btn-mini' %>
               <% else %>
                 <%= render 'shared/follow_button', object: person.user %>
               <% end %>
@@ -23,15 +23,14 @@
           <%= render 'people/profile_detail', :person => person %>
         </div>
         <div id="logo_change_div" class="slidingDiv">
-          <%= form_for person, :remote => true, :html => {:multipart => true} do |f| %>
-            <p>
+          <%= form_for person, remote: true, html: {multipart: true, class: 'form-inline'} do |f| %>
               <label>Resim dosyası:</label>
+              <%= f.hidden_field :avatar_cache %>
               <%= f.file_field :avatar %>
-              <%= f.submit "Değiştir" %>
-              <%if person.avatar? %>
-                <%= f.check_box :remove_avatar %>&nbsp;Logoyu Sil
-              <% end %>
-            </p>
+              <%= f.submit "Profil Resmini Değiştir", :class => "btn btn-mini btn-success" %>
+              <%#if person.avatar? %>
+                <%#= f.check_box :remove_avatar %><!--&nbsp;Logoyu Sil-->
+              <%# end %>
           <% end %>
         </div>
       </td>

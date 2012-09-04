@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120817131525) do
+ActiveRecord::Schema.define(:version => 20120902114734) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                    :null => false
@@ -543,6 +543,10 @@ ActiveRecord::Schema.define(:version => 20120817131525) do
     t.datetime "stage_date"
     t.datetime "created_at",                                    :null => false
     t.datetime "updated_at",                                    :null => false
+    t.integer  "sender_id"
+    t.integer  "consignee_id"
+    t.integer  "creater_id"
+    t.integer  "updater_id"
   end
 
   add_index "loadings", ["company_id", "load_coun", "unload_coun"], :name => "index_loadings_on_company_id_and_load_coun_and_unload_coun"
