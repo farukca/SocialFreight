@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   acts_as_liker
   acts_as_mentionable
   extend FriendlyId
+  include GeneratesNick
 
   belongs_to :patron
   friendly_id :to_s, use: :slugged, use: :scoped, scope: :patron
@@ -66,6 +67,10 @@ class User < ActiveRecord::Base
 
   def to_s
     self.name + " " + self.surname
+  end
+
+  def social_name
+    self.slug
   end
 
   def generate_temp_password

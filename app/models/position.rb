@@ -4,6 +4,7 @@ class Position < ActiveRecord::Base
   acts_as_likeable
   acts_as_mentionable
   extend FriendlyId
+  include GeneratesNick
 
   belongs_to :patron  
   friendly_id :reference, use: :slugged, use: :scoped, scope: :patron
@@ -102,6 +103,9 @@ class Position < ActiveRecord::Base
     reference
   end
 
+  def social_name
+    self.slug
+  end
   #def normalize_friendly_id(string)
   #  super.upcase.gsub("-", ".")
   #end
@@ -124,7 +128,7 @@ class Position < ActiveRecord::Base
     self.user.create_activity(self, reference, patron_id, patron_token)
     #patron.set_activity(self, 'create', user.id, 'created', user.full_name)
     Patron.journal_record(patron, user, branch, nil, self.class.name, 1, 0)
-    Nick.log(self, self.slug, patron_id)
+    #Nick.log(self, self.slug, patron_id)
   end
 
   private

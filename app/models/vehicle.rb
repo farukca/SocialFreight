@@ -1,9 +1,7 @@
 class Vehicle < ActiveRecord::Base
-  #include Mongoid::Document
-  #include Mongoid::Timestamps
-  #include Mongoid::Token
-  #include Mongoid::Followee
+  
   extend FriendlyId
+  include GeneratesNick
 
   belongs_to :patron
   friendly_id :code, use: :slugged, use: :scoped, scope: :patron
@@ -20,6 +18,10 @@ class Vehicle < ActiveRecord::Base
 
   def to_s
     code
+  end
+
+  def social_name
+    self.slug
   end
 
   class << self

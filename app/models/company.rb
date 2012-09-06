@@ -4,7 +4,8 @@ class Company < ActiveRecord::Base
   acts_as_followable
   acts_as_likeable
   extend FriendlyId
-
+  include GeneratesNick
+  
   belongs_to :patron
   belongs_to :branch
   belongs_to :city
@@ -73,6 +74,10 @@ class Company < ActiveRecord::Base
 
   def to_s
     name
+  end
+
+  def social_name
+    self.slug
   end
 
   private
