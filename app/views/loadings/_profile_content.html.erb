@@ -20,15 +20,13 @@
           <%= render "shared/related_list", list_model: "arrival", parent: @loading, objects: @loading.arrivals %>
         </div>
 
-        <% if @loading.operation == "sea" %>
-          <div class="row-fluid profile-section">
-            <%= render "shared/related_list", list_model: "container", parent: @loading, objects: @loading.containers %>
-          </div>
-        <% else %>
-          <div class="row-fluid profile-section">
-            <%= render "shared/related_list", list_model: "package", parent: @loading, objects: @loading.packages %>
-          </div>
-        <% end %>
+        <div class="row-fluid profile-section">
+          <%= render "shared/related_list", list_model: "container", parent: @loading, objects: @loading.containers %>
+        </div>
+
+        <div class="row-fluid profile-section">
+          <%= render "shared/related_list", list_model: "package", parent: @loading, objects: @loading.packages %>
+        </div>
 
         <div class="row-fluid profile-section">
           <%= render "shared/related_list", list_model: "document", parent: @loading, objects: @loading.documents %>

@@ -3,42 +3,44 @@
     <legend>Boşaltma Bilgileri</legend>
     <div class="row-fluid">
     <div class="span6">
-      <%= f.input :unload_place_id, as: :hidden, label: "Boşaltma Yeri", input_html: {:class => "chosen_input", "data-url" => "/places.json", "data-newrecurl" => "/places/new", "data-selected" => @arrival.unload_place_id ? @arrival.unload_place.name : "", "data-placeholder" => "Boşaltma Yerini Seçiniz."} %>
+      <%= f.input :unload_place, label: "Boşaltma Yeri" %>
+      <%#= f.input :unload_place_id, as: :hidden, label: "Boşaltma Yeri", input_html: {:class => "chosen_input", "data-url" => "/places.json", "data-newrecurl" => "/places/new", "data-selected" => @arrival.unload_place_id ? @arrival.unload_place.name : "", "data-placeholder" => "Boşaltma Yerini Seçiniz."} %>
       <%#= f.input :unload_place_id, :as => :select, :input_html => {:class => "chosen_input", "data-url" => "/places.json"} %>
-      <%= f.input :unload_date, :as => :string, :input_html => {:class => "input-small", "data-datepicker" => "datepicker"} %>
-      <%= f.input :notes, :as => :text, :input_html => {:rows => 2, :cols => 37} %>
+      <%= f.input :unload_date, as: :string, input_html: {class: "input-small", "data-datepicker" => "datepicker"} %>
+      <%= f.input :notes, as: :text, input_html: {rows: 2} %>
     </div>
     <div class="span6">
-      <%#= f.input :consignee_id, :as => :select, :input_html => {:class => "chosen_input", "data-url" => "/companies.json"} %>
-      <%= f.input :consignee_id, as: :hidden, label: "Alıcı", input_html: {:class => "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => "Alıcı Firmayı Seçiniz"} %>
+      <%#= f.input :consignee_id, as: :select, input_html: {class: "chosen_input", "data-url" => "/companies.json"} %>
+      <%= f.input :consignee_id, as: :hidden, label: "Alıcı", input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => "Alıcı Firmayı Seçiniz"} %>
 
-      <%#= f.input :deliver_id, :as => :select, :input_html => {:class => "chosen_input", "data-url" => "/companies.json"} %>
-      <%= f.input :deliver_id, as: :hidden, label: "Teslim Firması", input_html: {:class => "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => "Yükün Teslim Edileceği Firma"} %>
+      <%#= f.input :deliver_id, as: :select, input_html: {class: "chosen_input", "data-url" => "/companies.json"} %>
+      <%= f.input :deliver_id, as: :hidden, label: "Teslim Firması", input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => "Yükün Teslim Edileceği Firma"} %>
 
-      <%#= f.input :notify_id, :as => :select, :input_html => {:class => "chosen_input", "data-url" => "/companies.json"} %>
-      <%= f.input :notify_id, as: :hidden, label: "Notify", input_html: {:class => "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => "Notify Firmayı Seçiniz"} %>
+      <%#= f.input :notify_id, as: :select, input_html: {class: "chosen_input", "data-url" => "/companies.json"} %>
+      <%= f.input :notify_id, as: :hidden, label: "Notify", input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => "Notify Firmayı Seçiniz"} %>
 
-      <%#= f.input :notify2_id, :as => :select, :input_html => {:class => "chosen_input", "data-url" => "/companies.json"} %>
-      <%= f.input :notify2_id, as: :hidden, label: "Notify", input_html: {:class => "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => "2.Notify Firmayı Seçiniz"} %>
+      <%#= f.input :notify2_id, as: :select, input_html: {class: "chosen_input", "data-url" => "/companies.json"} %>
+      <%= f.input :notify2_id, as: :hidden, label: "Notify", input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => "2.Notify Firmayı Seçiniz"} %>
     </div>
     </div>
     <legend>Son Taşıma İşlemi yapılacak ise</legend>
     <div class="row-fluid">
     <div class="span6">
-      <%= f.input :unload_point, :as => :select, :collection => Loading.point_types.map { |r| [r[1], r[0] ] }, :include_blank => false %>
+      <%#= f.input :unload_point, as: :select, :collection => Loading.point_types.map { |r| [r[1], r[0] ] }, :include_blank => false %>
+      <%= f.input :post_trans, label: "Son Taşıma Yapılacak mı ?" %>
     </div>
     <div class="span6">
       <div id="customer_unloading_address">
       <%= f.input :country_id do %>
-        <%= f.input_field :country_id, :as => :select, :collection => Country.all, :include_blank => false, :class => "input-small" %>
-        <%= f.grouped_collection_select :city_id, Country.order(:name), :cities, :name, :id, :name, {:include_blank => true}, {:class => "input-small"} %>
+        <%= f.input_field :country_id, as: :select, :collection => Country.all, :include_blank => false, class: "input-small" %>
+        <%= f.grouped_collection_select :city_id, Country.order(:name), :cities, :name, :id, :name, {:include_blank => true}, {class: "input-small"} %>
       <% end %>
 
-        <%= f.input :district, :label => "Semt" do %>
-          <%= f.input_field :district, :class => "input-small" %>
-          <%= f.input_field :postcode, :class => "input-small" %>
+        <%= f.input :district, label: "Semt" do %>
+          <%= f.input_field :district, class: "input-small" %>
+          <%= f.input_field :postcode, class: "input-small" %>
         <% end %>
-        <%= f.input :address, :as => :text, :input_html => {:rows => 1, :cols => 37} %>
+        <%= f.input :address, as: :text, input_html: {rows: 1} %>
       </div>
     </div>
     </div>

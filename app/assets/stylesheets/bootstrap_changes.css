@@ -42,6 +42,9 @@ legend span.subtitle {
 .input-hour {
   width: 40px;
 }
+.input-mini50 {
+  width: 50px;
+}
 select.input-small {
   width: 108px;
 }
@@ -103,4 +106,11 @@ input[type="file"] {
 }
 .table-condensed th, .table-condensed td {
   padding: 3px 5px;
+}
+.table-fixed {
+  table-layout: fixed;
+}
+.table-fixed th, .table-fixed td {
+  overflow: hidden;
+  white-space: nowrap;
 }

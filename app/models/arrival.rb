@@ -10,7 +10,7 @@ class Arrival < ActiveRecord::Base
   belongs_to :notify, :class_name => "Company", :foreign_key => "notify_id"
   belongs_to :notify2, :class_name => "Company", :foreign_key => "notify2_id"
   belongs_to :customofficer, :class_name => "Company", :foreign_key => "customofficer_id"
-  belongs_to :unload_place, :class_name => "Place", :foreign_key => "unload_place_id"
+  #belongs_to :unload_place, :class_name => "Place", :foreign_key => "unload_place_id"
 
   has_many :packages, as: :packed, dependent: :destroy
   accepts_nested_attributes_for :packages

@@ -1,5 +1,5 @@
 <div id="container_form">
-<%= simple_form_for [@loading, @container], html: { class: 'form-horizontal' }, :validate => true do |f| %>
+<%= simple_form_for @container, html: { class: 'form-horizontal' }, :validate => true do |f| %>
   <%= f.error_notification %>
   <fieldset>
 

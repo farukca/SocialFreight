@@ -1,7 +1,7 @@
 module GeneratesNick
 
   def self.included(base)
-    base.send(:after_save, :generate_nick)
+    base.send(:after_create, :generate_nick)
   end
 
   def generate_nick

@@ -1,6 +1,6 @@
 <div id="package_form">
 
-<%= simple_form_for [@packed, @package], :validate => true do |f| %>
+<%= simple_form_for @package, validate: true, html: {class: 'form-horizontal'} do |f| %>
   <%= f.error_notification %>
 
   <fieldset>

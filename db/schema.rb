@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120902114734) do
+ActiveRecord::Schema.define(:version => 20120908203446) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                    :null => false
@@ -49,8 +49,10 @@ ActiveRecord::Schema.define(:version => 20120902114734) do
     t.string   "statement",        :limit => 20
     t.date     "statement_date"
     t.string   "notes",            :limit => 250
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.datetime "created_at",                                         :null => false
+    t.datetime "updated_at",                                         :null => false
+    t.boolean  "post_trans",                      :default => false
+    t.string   "unload_place",     :limit => 60
   end
 
   add_index "arrivals", ["city_id", "country_id"], :name => "index_arrivals_on_city_id_and_country_id"
@@ -303,6 +305,7 @@ ActiveRecord::Schema.define(:version => 20120902114734) do
     t.datetime "created_at",                                         :null => false
     t.datetime "updated_at",                                         :null => false
     t.boolean  "pre_trans",                       :default => false
+    t.string   "load_place",       :limit => 60
   end
 
   add_index "departures", ["city_id", "country_id"], :name => "index_departures_on_city_id_and_country_id"
@@ -602,6 +605,7 @@ ActiveRecord::Schema.define(:version => 20120902114734) do
     t.datetime "updated_at",                                    :null => false
     t.integer  "packed_id"
     t.string   "packed_type"
+    t.string   "container_no",  :limit => 40
   end
 
   add_index "packages", ["packed_type", "packed_id"], :name => "index_packages_parent"

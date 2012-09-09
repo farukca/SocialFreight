@@ -10,7 +10,7 @@
         <div id="operation-profile-detail">
           <div id="profile-title" class="row-fluid">
             <div class="title">
-              <span><%= "#{@operation}" %></span>
+              <span><%= t "operations.title.#{@operation.code}operation" %></span>
             </div>
             <div class="buttons">
               <%# if current_user.admin = @user.id %>

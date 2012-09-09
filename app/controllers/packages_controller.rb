@@ -16,7 +16,7 @@ class PackagesController < ApplicationController
 
     respond_to do |format|
       if @package.save
-        format.html { redirect_to @package.loading, notice: 'Package added successfully.' }
+        format.html { redirect_to @package.packed, notice: 'Package added successfully.' }
         format.json { render json: @package, status: :created, location: @package }
       else
         format.html { render action: "new" }
@@ -30,7 +30,7 @@ class PackagesController < ApplicationController
 
     respond_to do |format|
       if @package.update_attributes(params[:package])
-        format.html { redirect_to @package.loading, notice: 'Package was successfully updated.' }
+        format.html { redirect_to @package.packed, notice: 'Package was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -41,11 +41,11 @@ class PackagesController < ApplicationController
 
   def destroy
     @package = Package.find(params[:id])
-    @loading = @package.loading
+    @packed = @package.packed
     @package.destroy
 
     respond_to do |format|
-      format.html { redirect_to @loading, notice: 'Package deleted.' }
+      format.html { redirect_to @packed, notice: 'Package deleted.' }
       format.json { head :ok }
     end
   end

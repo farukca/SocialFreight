@@ -13,8 +13,6 @@ class LoadingsController < ApplicationController
 
   def show
     @loading = Loading.find(params[:id])
-    @package = @loading.packages.build()
-    @container = @loading.containers.build()
     @comment = @loading.comments.build()
 
     respond_to do |format|

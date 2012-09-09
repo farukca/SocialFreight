@@ -1,4 +1,4 @@
-<%= table_for objects, table_html: { class: "table table-condensed table-striped"}, 
+<%= table_for objects, table_html: { class: "table table-condensed table-striped table-fixed"}, 
               header_row_html: { class: "headerRow" },
               row_html: { class: "dataRow" } do |table| %>
   <% table.column :action, column_html: { class: "actionCol", scope: "col" } do |arrival| %>
@@ -15,9 +15,10 @@
   <% table.column :city, column_html: { scope: "col" } do |arrival| %>
     <%= arrival.city.name if arrival.city %>
   <% end %>
-  <% table.column :unload_place, column_html: { scope: "col" } do |arrival| %>
-    <%= arrival.unload_place.name if arrival.unload_place %>
-  <% end %>
+  <% table.column :unload_place, column_html: { scope: "col" } %>
+  <%# table.column :unload_place, column_html: { scope: "col" } do |arrival| %>
+    <%#= arrival.unload_place.name if arrival.unload_place %>
+  <%# end %>
   <% table.column :statement, column_html: { scope: "col" } %>
   <% table.column :statement_date, column_html: { class: "dateCol", scope: "col" }, label: "State.Date" %>
   <% table.column :delivery_date, column_html: { class: "dateCol", scope: "col" } %>

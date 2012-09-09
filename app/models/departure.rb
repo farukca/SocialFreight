@@ -8,7 +8,7 @@ class Departure < ActiveRecord::Base
   belongs_to :sender, :class_name => "Company", :foreign_key => "sender_id"
   belongs_to :loader, :class_name => "Company", :foreign_key => "loader_id"
   belongs_to :customofficer, :class_name => "Company", :foreign_key => "customofficer_id"
-  belongs_to :load_place, :class_name => "Place", :foreign_key => "load_place_id"
+  #belongs_to :load_place, :class_name => "Place", :foreign_key => "load_place_id"
 
   has_many :packages, as: :packed, dependent: :destroy
   accepts_nested_attributes_for :packages, allow_destroy: true, reject_if: proc { |attributes| attributes['pack_type'].blank? }

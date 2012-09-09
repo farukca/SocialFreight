@@ -3,10 +3,6 @@
 
 en:
   defaults:
-    title:
-      last_items: "Son İşlemler"
-      reports: "Raporlar"
-      tasks: "Görevler"
     label:
       branch: "Branch"
       tel:    "Phone"
@@ -15,39 +11,11 @@ en:
       website: "Website"
       country: "Country"
       city:   "City"
-    hint:
-    link:
-      detailed_search: "Detaylı Ara >>"
-    validmsg:
-    errormsg:
     inputerror:
       cant_be_blank:   "This field can not be blank"
       firmid_is_blank: "Firm info is missing, login again please"
       branch_is_blank: "Branch info  can not be blank"
       must_be_unique:  "This has been used, please choose another value"
-  operations:
-    title:
-      airoperation: "Hava Operasyon"
-      seaoperation: "Deniz Operasyon"
-      roadoperation: "Kara Operasyon"
-      railoperation: "Demiryolu Operasyon"
-      inlandoperation: "Dahili Operasyon"
-      planned_loadings: "Planlanmış Yükler"
-      reservations: "Rezervasyonlar"
-      planned_transports: "Planlanmış Taşımalar"
-      process_list: "Operasyon Menü"
-    label:
-    hint:
-    link:
-      new_loading: "Yük Reservasyonu Oluştur"
-      new_planning: "Reservasyon & Uçak Planlama"
-      loading_list: "Yük Listesi"
-      position_list: "Sefer(Taşıma) Listesi"
-      transport_list: "Taşıma Listesi"
-      cass_report: "CASS Raporu"
-    validmsg:
-    errormsg:
-
   companies:
     label:
       name: "Short Name"
