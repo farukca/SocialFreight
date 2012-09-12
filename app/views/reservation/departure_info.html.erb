@@ -12,11 +12,11 @@
         <%= render 'departures/form_fields_inland', :f => f %>
 
         <div class="row-fluid">
-          <legend>Koli Bilgileri</legend>
+          <legend><%= t("operations.title.package_info") %></legend>
           <%= f.fields_for :packages do |builder| %>
             <%= render 'packages/form_simple', :f => builder %>
           <% end %>
-          <%= link_to_add_fields "Koli Bilgisi Ekle", f, :packages, "packages/form_simple" %>
+          <%= link_to_add_fields t("operations.button.add_package"), f, :packages, "packages/form_simple" %>
         </div>
 
       <% else %>
@@ -25,8 +25,8 @@
       
       <div class="controls rightside">
         <%#= link_to "<< Bir Önceki Adıma Dön", previous_wizard_path, :class => 'btn btn-danger' %> 
-        <%= link_to "Bu Adımı Atla >>", next_wizard_path, :class => 'btn btn-danger' %>
-        <%= f.button :submit, "Kaydet & Boşaltma Bilgilerine Devam Et >>", :class => 'btn btn-info' %>
+        <%= link_to t("operations.button.skip_this_step"), next_wizard_path, :class => 'btn btn-danger' %>
+        <%= f.button :submit, t("operations.button.save_departure_continue_to_arrival"), :class => 'btn btn-info' %>
       </div>
     </div>
   <% end %>

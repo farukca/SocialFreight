@@ -15,6 +15,33 @@ en:
       website: "Website"
       country: "Country"
       city:   "City"
+      customer: "Müşteri"
+      service: "Servis"
+      load_country: "Yükleme Ülkesi"
+      load_place: "Yükleme Yeri"
+      load_airport: "Yükleme Havalimanı"
+      load_seaport: "Yükleme Limanı"
+      load_station: "Yükleme İstasyonu"
+      load_date: "Yükleme Tarihi"
+      load_note: "Yükleme Notu"
+      pickup_date: "Teslim Alma Tarihi"
+      unload_country: "Boşaltma Ülkesi"
+      unload_place: "Boşaltma Yeri"
+      unload_airport: "Boşaltma Havalimanı"
+      unload_seaport: "Boşaltma Limanı"
+      unload_station: "Boşaltma İstasyonu"
+      unload_date: "Boşaltma Tarihi"
+      delivery_date: "Teslim Tarihi"
+      load_type: "Yük Tipi"
+      commodity: "Yük İçeriği"
+      incoterm: "Incoterm"
+      freight_collect: "Freight Collect"
+      freight_price: "Navlun Fiyatı"
+      brut_weight: "Brüt Ağırlık
+      
+      sender: "Gönderici"
+      consignee: "Alıcı"
+      notes: "Notlar"
     hint:
     link:
       detailed_search: "Detaylı Ara >>"
@@ -36,7 +63,22 @@ en:
       reservations: "Rezervasyonlar"
       planned_transports: "Planlanmış Taşımalar"
       process_list: "Operasyon Menü"
+      new_loading: "Yeni Yük Oluşturma"
+      package_info: "Koli Bilgileri"
+      departure_info: "Yükleme Bilgisi"
+      pre_trans_info: "Ön Taşıma Bilgisi"
     label:
+      loader_firm: "Gerçek Yükleyici"
+      delivery_firm: "Teslimat Firması"
+      customofficer: "Gümrükçü"
+      settlement_info: "Gümrük Beyannamesi No-Tarihi"
+      load_country_city: "Yükleme Ülkesi-Şehir"
+      load_district: "Yükleme Semt & Posta Kod"
+      load_address: "Yükleme Adresi"
+      pre_trans: "Ön Taşıma Yapılacak mı?+5498"
+    placeholder:
+      sender: "Gönderici Firmayı Seçiniz"
+      consignee: "Alıcı Firmayı Seçiniz"
     hint:
     link:
       new_loading: "Yük Reservasyonu Oluştur"
@@ -45,6 +87,11 @@ en:
       position_list: "Sefer(Taşıma) Listesi"
       transport_list: "Taşıma Listesi"
       cass_report: "CASS Raporu"
+    button:
+      skip_this_step: "Bu Adımı Atla >>"
+      save_loading_continue_to_departure: "Kaydet & Yükleme Bilgilerine Devam Et >>"
+      save_departure_continue_to_arrival: "Kaydet & Boşaltma Bilgilerine Devam Et >>"
+      add_package: "Koli Bilgisi Ekle"
     validmsg:
     errormsg:
 

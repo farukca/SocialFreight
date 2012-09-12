@@ -5,7 +5,7 @@
       <%= f.error_notification %>
 
       <div class="pageBlock">
-        <%= render 'shared/form_header', message: "Yeni Yük Oluşturma" %>
+        <%= render 'shared/form_header', message: t("operations.title.new_loading") %>
 
         <% if @loading.operation == 'inland' %>
           <%= render 'loadings/form_inland', :f => f %>
@@ -16,7 +16,7 @@
         <%= f.error :base %>
         <div class="controls rightside">
           <%#= link_to "Bu Adımı Atla >>", next_wizard_path, :class => 'btn btn-danger' %>
-          <%= f.button :submit, "Kaydet & Yükleme Bilgilerine Devam Et >>", :class => 'btn btn-info' %>
+          <%= f.button :submit, t("operations.button.save_loading_continue_to_departure"), :class => 'btn btn-info' %>
         </div>
       </div>
 
