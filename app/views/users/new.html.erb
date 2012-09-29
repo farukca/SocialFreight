@@ -1,11 +1,11 @@
-<div id="user">
-
-  <% if current_user %>
-    <%= render 'patron_user' %>
-  <% else %>
-    <%= render 'new_user' %>
-  <% end %>
-
+<div id="user" class="container">
+  <div class="row">
+	  <% if current_user %>
+	    <%= render 'patron_user' %>
+	  <% else %>
+	    <%= render 'new_user' %>
+	  <% end %>
+  </div>
 </div>
 
 

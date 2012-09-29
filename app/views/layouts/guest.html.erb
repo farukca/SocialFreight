@@ -2,6 +2,8 @@
 <html>
 <head>
   <title>Socialfreight</title>
+  <meta name="description" content="SocialFreight, Bulut tabanlı multimodal lojistik yazılımı" />
+  <meta name="keywords" content="SocialFreight, Sosyal Nakliye Lojistik, Bulut tabanlı multimodal lojistik yazılımı, saas lojistik nakliye, nakliye operasyon yönetimi, filo yönetimi" />
   <meta charset='utf-8'>
   <meta name="google-site-verification" content="YBxTWCsF7NumqEi-_IkfMvp4F61RxGpQ19ElYC27UEE" />
   <%= stylesheet_link_tag    "socialfreight", :debug => Rails.env.development? %>
@@ -10,10 +12,10 @@
   <%= yield :head %>
 </head>
 <body>
-<%= render 'layouts/topbar' %>
+<%#= render 'layouts/topbar' %>
 <%= render 'shared/site_header' %>
 
-<div class="container" style="padding:0">
+<div class="container-fluid" style="padding:0">
 
   <div id="content" class="row">
     <div id="messages">
@@ -24,11 +26,10 @@
     </div>
     <%= yield %>
   </div>
-
 </div>
 <%#= render 'shared/site_news' %>
-<%#= render 'shared/site_footer' %>
-
+<%= render 'shared/site_footer' %>
+<%= link_to (image_tag "feedback-button.png", alt: "Let us know what you think"), new_feedback_path, class: "Feedback", title: "Let us know what you think" %>
 </body>
 <script type="text/javascript">
 

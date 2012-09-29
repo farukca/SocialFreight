@@ -1,15 +1,25 @@
 <%= table_for objects, table_html: { class: "table table-condensed table-striped table-fixed"}, 
               header_row_html: { class: "headerRow" },
               row_html: { class: "dataRow" } do |table| %>
-  <% table.column :action, column_html: { class: "actionCol", scope: "col" } do |transport| %>
-    <%= link_to "Güncelle", edit_transport_path(transport) %> 
+  <% table.column :action, label: t("defaults.link.action"), column_html: { class: "actionCol", scope: "col" } do |transport| %>
+    <%= link_to t("defaults.link.edit"), edit_transport_path(transport) %> 
     | 
-    <%= link_to "Sil", transport, method: :delete, data: {confirm: "Are you sure?"} %>              
+    <%= link_to t("defaults.link.destroy"), transport, method: :delete, data: {confirm: t("defaults.messages.destroy_confirm")} %>              
   <% end %>
-  <% table.column :trans_method, column_html: { scope: "col" } %>
-  <% table.column :departure_date, column_html: { scope: "col" } %>
-  <% table.column :vessel, column_html: { scope: "col" } %>
-  <% table.column :truck, column_html: { class: "emailCol", scope: "col" } %>
-  <% table.column :voyage, column_html: { class: "phoneCol", scope: "col" } %>
-  <% table.column :driver_name, column_html: { class: "phoneCol", scope: "col" } %>
+  <% table.column :trans_method, label: t("operations.label.trans_method"), column_html: { scope: "col" } do |transport| %>
+    <%= link_to t("operations.label.#{transport.trans_method}_transport"), transport_path(transport) %>
+  <% end %>
+  <% table.column :departure_date, label: t("operations.label.departure_date"), column_html: { scope: "col" } %>
+  <% table.column :dep_place, label: t("operations.label.departure_place"), column_html: { scope: "col" } do |transport| %>
+    <%= transport.dep_place.name if transport.dep_place %>
+  <% end %>
+  <% table.column :arrival_date, label: t("operations.label.arrival_date"), column_html: { scope: "col" } %> 
+  <% table.column :arv_place, label: t("operations.label.arrival_place"), column_html: { scope: "col" } do |transport| %>
+    <%= transport.arv_place.name if transport.arv_place %>
+  <% end %>
+  <% table.column :vessel, label: t("operations.label.vessel"), column_html: { scope: "col" } do |transport| %>
+    <%= "#{transport.vessel} #{transport.truck}" %>
+  <% end %>
+  <% table.column :voyage, label: t("operations.label.voyage"), column_html: { class: "phoneCol", scope: "col" } %>
+  <% table.column :driver_name, label: t("operations.label.driver"), column_html: { class: "phoneCol", scope: "col" } %>
 <% end %>

@@ -43,7 +43,7 @@ class Loading < ActiveRecord::Base
 
   #validates_presence_of :reference, :except => :create
   validates_uniqueness_of :reference, :case_sensitive => false
-  validates_presence_of :operation, :direction, :patron_id, :patron_token, :branch_id
+  validates_presence_of :operation, :direction, :patron_id, :patron_token, :branch_id, :load_coun, :unload_coun, :load_type
   validates_presence_of :company_id
   #validates_associated :company
   validates_presence_of :commodity

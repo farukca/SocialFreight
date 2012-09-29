@@ -4,7 +4,7 @@
   <div class="row-fluid">
   <div class="span6">
     <%#= f.input :company_id, :input_html => {:class => "chosen_input", "data-url" => "/companies.json"}, :label => "Customer" %>
-    <%= f.input :company_id, as: :hidden, label: t("defaults.label.customer"), input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-selected" => @loading.company_id ? @loading.company.name : "", "data-placeholder" => "Müşteri Seçiniz." } %>
+    <%= f.input :company_id, as: :hidden, label: t("defaults.label.customer"), input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-selected" => @loading.company_id ? @loading.company.name : "", "data-placeholder" => t("operations.placeholder.customer") } %>
     <!--legend>Operasyon Bilgileri</legend-->
     <%= f.input :direction, as: :select, label: t("defaults.label.service"), collection: Position.direction_types.map{|r| [r[1], r[0] ]}, include_blank: true %>
     <%= f.input :load_coun, as: :select, label: t("defaults.label.load_country"), collection: Country.all, include_blank: true %>
@@ -14,7 +14,7 @@
   <div class="span6">
     <%= f.input :load_type, as: :select, label: t("defaults.label.load_type"), collection: Loading.load_types.map { |r| [r[1], r[0] ] }, include_blank: false %>
     <%= f.input :branch_id, as: :select, label: t("defaults.label.branch"), collection: current_patron.branches, include_blank: false, :selected => current_user.branch_id %>
-    <!--legend>Yükleme Bilgileri</legend-->
+    <%= f.input :agent_id, as: :hidden, label: t("defaults.label.agent"), input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-selected" => @loading.agent_id ? @loading.agent.name : "", "data-placeholder" => t("operations.placeholder.agent") } %>
     <%= f.input :commodity, as: :text, label: t("defaults.label.commodity"), input_html: {rows: 3} %>
   </div>
   </div>

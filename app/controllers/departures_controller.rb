@@ -15,6 +15,7 @@ class DeparturesController < ApplicationController
   def new
   	@loading = current_patron.loadings.find(params[:loading_id])
     @departure = @loading.departures.build(params[:departure])
+    @departure.country_id = @loading.load_coun if @loading.load_coun
     
     respond_to do |format|
       format.html # new.html.erb
@@ -61,7 +62,7 @@ class DeparturesController < ApplicationController
     @departure.destroy
 
     respond_to do |format|
-      format.html { redirect_to companies_url }
+      format.html { redirect_to @departure.loading }
       format.json { head :ok }
     end
   end

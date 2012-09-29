@@ -3,17 +3,18 @@
     <legend>Yük Detay Bilgileri</legend>
     <div class="row-fluid">
     <div class="span6">
-      <%= f.input :producer %>
-      <%= f.input :product_price do %>
-        <%= f.input_field :product_price, :class => "input-small" %>
-        <%= f.input_field :product_curr, :as => :select, :collection => Currency.all, :include_blank => false, :class => "input-small" %>
-      <% end %>
+      <%= f.input :category, as: :select, label: t("operations.label.category") %>
+      <%#= f.input :bank_flag, label: t("operations.label.bank_flag") %>
+      <%= f.input :bank, label: t("operations.label.bank") %>
+      <%= f.input :notes, as: :text, label: t("operations.label.loading_notes") %>
     </div>
     <div class="span6">
-      <%= f.input :agent_id, :input_html => {:class => "lookup_input", "data-url" => "/companies.json", "data-pre" => @loading.agent ? @loading.agent.to_s : nil } %>
-      <%#= f.input :agent_reference, :input_html => {:class => "input-medium"} %>
-      <%= f.input :marks_nos, :as => :text, :input_html => {:rows => 1}, :label => "Marks & Nos" %>
-      <%#= f.input :customer_reference, :input_html => {:class => "input-medium"} %>
+      <%= f.input :producer, label: t("operations.label.producer") %>
+      <%= f.input :product_price, label: t("operations.label.product_price") do %>
+        <%= f.input_field :product_price, class: "input-small" %>
+        <%= f.input_field :product_curr, as: :select, collection: Currency.all, include_blank: false, class: "input-small" %>
+      <% end %>
+      <%= f.input :marks_nos, as: :text, input_html: { rows: 1 }, label: t("operations.label.marks_nos") %>
     </div>
     </div>
   </fieldset>

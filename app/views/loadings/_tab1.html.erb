@@ -1,5 +1,41 @@
-<div id="departures" class="tab-pane active">
-  <%= render @loading.departures %>
-  <%= link_to "Yükleme Noktası Ekle", new_departure_path(loading_id: @loading.slug), class: "btn btn-info" %>
+<div id="loading_profile" class="accordion-body collapse">
+  <div class="pageBody accordion-inner">
+    <table class="detailList" width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td class="labelCol2"><%= t("defaults.label.load_country") %> :</td>
+        <td class="dataCol2"><%= @loading.load_coun %></td>
+        <td class="labelCol2"><%= t("defaults.label.sender") %> :</td>
+        <td class="dataCol2"><%= @loading.sender.name if @loading.sender %></td>
+        <td class="labelCol2"><%= t("operations.label.category") %> :</td>
+        <td class="dataCol2 lastCol"><%= @loading.category %></td>
+      </tr>
+      <tr>
+        <td class="labelCol2"><%= t("defaults.label.unload_country") %> :</td>
+        <td class="dataCol2"><%= @loading.load_coun %></td>
+        <td class="labelCol2"><%= t("defaults.label.consignee") %> :</td>
+        <td class="dataCol2"><%= @loading.consignee.name if @loading.consignee %></td>
+        <td class="labelCol2"><%= t("operations.label.bank") %> :</td>
+        <td class="dataCol2 lastCol"><%= @loading.bank %></td>
+      </tr>
+      <tr>
+        <td class="labelCol2"><%= t("defaults.label.agent") %> :</td>
+        <td class="dataCol2"><%= @loading.agent.name if @loading.agent %></td>
+        <td class="labelCol2"><%= t("operations.label.producer") %> :</td>
+        <td class="dataCol2"><%= @loading.producer %></td>
+        <td class="labelCol2"><%= t("operations.label.product_price") %> :</td>
+        <td class="dataCol2 lastCol"><%= "#{@loading.product_price} #{@loading.product_curr}" %></td>
+      </tr>
+      <tr>
+        <td class="labelCol2"><%= t("operations.label.loading_notes") %> :</td>
+        <td class="dataCol2"><%= @loading.notes %></td>
+        <td class="labelCol2"><%= t("operations.label.marks_nos") %> :</td>
+        <td class="dataCol2"><%= @loading.marks_nos %></td>
+        <td class="labelCol2"><%= t("defaults.label.update_info") %> :</td>
+        <td class="dataCol2 lastCol">
+        	<%= @loading.updater.to_s if @loading.updater %><br/>
+            <%= @loading.updated_at.strftime("%d/%m/%Y %H:%M") %>
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>
-

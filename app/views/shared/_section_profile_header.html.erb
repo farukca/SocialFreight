@@ -3,12 +3,12 @@
     <tbody>
       <tr style="width:100%">
         <td class="listTitle"  style="width:30%;text-align:left">
-          <h4 class="mainTitle"><%= object.class.name %> Profile</h4>
+          <h5 class="mainTitle"><%= t("operations.title.#{object.class.to_s.downcase}_profile") %></h5>
         </td>
         <td class="listButtons" style="width:50%;text-align:left">
           
-          <%= link_to "New #{object.class.to_s}", new_record_path(object.class.to_s.downcase), class: "btn btn-mini btn-info" %>
-          <%= link_to "Edit #{object.class.to_s}", edit_record_path(object), class: "btn btn-mini btn-info" %>
+          <%= link_to t("defaults.link.new_#{object.class.to_s.downcase}"), new_record_path(object.class.to_s.downcase), class: "btn btn-mini btn-info" %>
+          <%= link_to t("defaults.link.edit_#{object.class.to_s.downcase}"), edit_record_path(object), class: "btn btn-mini btn-info" %>
         </td>
         <td class="listHelp" style="width:20%;text-align:right;padding-right:10px;">
           <%= link_to "#" do %><%= "#{object.class.name.humanize.pluralize} Help" %>

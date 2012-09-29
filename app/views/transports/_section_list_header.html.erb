@@ -3,19 +3,19 @@
     <tbody>
       <tr style="width:100%">
         <td class="listTitle"  style="width:30%;text-align:left">
-          <h5 class="mainTitle"><%= listItem.humanize.pluralize %></h5>
+          <h5 class="mainTitle"><%= t("defaults.title.#{listItem.pluralize}") %></h5>
         </td>
         <td class="listButtons" style="width:50%;text-align:left">
           <%#= link_to "New #{listItem.humanize}", new_record_path(listItem, object), class: "btn btn-mini btn-info" %>
 
           <div class="btn-group">
-            <a class="btn btn-info btn-mini dropdown-toggle" href="#" data-toggle="dropdown"><i class="icon-plus-sign icon-white"></i>Taşıma Bilgisi Ekle<i class="icon-chevron-down icon-white"></i></a>
+            <a class="btn btn-info btn-mini dropdown-toggle" href="#" data-toggle="dropdown"><i class="icon-plus-sign icon-white"></i><%= t("defaults.link.new_transport") %><i class="icon-chevron-down icon-white"></i></a>
             <ul class="dropdown-menu">
-              <li><%= link_to "Gemi/RORO Taşıma Bilgisi Ekle", new_transport_path(position_id: object.id, :trans_method => "sea") %></li>
-              <li><%= link_to "Tır Taşıma Bilgisi Ekle", new_transport_path(position_id: object.id, :trans_method => "road") %></li>
-              <li><%= link_to "Tren Taşıma Bilgisi Ekle", new_transport_path(position_id: object.id, :trans_method => "rail") %></li>
-              <li><%= link_to "Uçak Taşıma Bilgisi Ekle", new_transport_path(position_id: object.id, :trans_method => "air") %></li>
-              <li><%= link_to "Dahili(Ön/Son) Taşıma Bilgisi Ekle", new_transport_path(position_id: object.id, :trans_method => "inland") %></li>
+              <li><%= link_to t("operations.link.new_sea_transport"), new_transport_path(position_id: object.id, :trans_method => "sea") %></li>
+              <li><%= link_to t("operations.link.new_road_transport"), new_transport_path(position_id: object.id, :trans_method => "road") %></li>
+              <li><%= link_to t("operations.link.new_rail_transport"), new_transport_path(position_id: object.id, :trans_method => "rail") %></li>
+              <li><%= link_to t("operations.link.new_air_transport"), new_transport_path(position_id: object.id, :trans_method => "air") %></li>
+              <li><%= link_to t("operations.link.new_inland_transport"), new_transport_path(position_id: object.id, :trans_method => "inland") %></li>
             </ul>
           </div>
         </td>

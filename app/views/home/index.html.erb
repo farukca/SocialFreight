@@ -3,8 +3,8 @@
     <div class="row">
       <div class="span-one-third slider-intro">
         <h1>Social Freight</h1>
-        <p>Social Freight; 3PL, Freight Forwarder, NVOCC firmaları ve forwarding acentalarının; uluslararası nakliye operasyonlarını yönetmek üzere tasarlanmış lojistik yazılımıdır.</p>
-        <p>Uluslararası ihracat/ithalat pozisyon ve yüklerinizi takip edebilir; tedarikçi ve müşteri tekliflerinizi yönetebilir; operasyonel dökümanlarınızı kolayca düzenleyip iletebilirsiniz. Depo ve antrepo gibi konsolidasyon merkezlerinizi yönetebilirsiniz.</p>
+        <p style="font-size:14px;">3PL, Freight Forwarder, NVOCC firmalarının uluslararası nakliye operasyonları ile Dahili Nakliye ve Dağıtım firmalarının süreçlerini yönetmek üzere tasarlanmış, bulut tabanlı multimodal lojistik yazılımıdır.</p>
+        <p style="font-size:14px;">Donanım, yazılım lisansı gibi maliyetler olmaksızın, en güncel lojistik yazılımını kullanmak için;&nbsp;<%= link_to "hemen üye olabilirsiniz", new_patron_path %></p>
         <%= link_to "Daha Fazlası için tıklayınız", features_path, :class => "small-btn blue rounded-1" %>
       </div>
       <div class="span-two-thirds">
@@ -28,13 +28,14 @@
     </div>
   </div>
 </div>
-<div class="callout container clearfix">
-  <div class="callout-info">
-    <%= render 'betausers/form' %>
+<div id="index-portofilo" class="row">
+  <div class="callout container clearfix">
+    <div class="callout-info">
+      <%= render 'betausers/form' %>
+    </div>
   </div>
-</div>
 
-<%= render 'shared/site_portofilo' %>
-<%= render 'shared/site_footer' %>
+  <%= render 'shared/site_portofilo' %>
+</div>
 <script type="text/javascript">document.getElementById('home').classList.add('active');</script>
 

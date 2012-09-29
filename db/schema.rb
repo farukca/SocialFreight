@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120908203446) do
+ActiveRecord::Schema.define(:version => 20120921205053) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                    :null => false
@@ -30,13 +30,13 @@ ActiveRecord::Schema.define(:version => 20120908203446) do
     t.integer  "loading_id"
     t.datetime "unload_date"
     t.datetime "delivery_date"
-    t.string   "unload_point",     :limit => 1
+    t.string   "unload_point",      :limit => 1
     t.integer  "unload_place_id"
     t.integer  "city_id"
-    t.string   "country_id",       :limit => 2
-    t.string   "district",         :limit => 30
-    t.string   "postcode",         :limit => 5
-    t.string   "address",          :limit => 100
+    t.string   "country_id",        :limit => 2
+    t.string   "district",          :limit => 30
+    t.string   "postcode",          :limit => 5
+    t.string   "address",           :limit => 100
     t.float    "longitude"
     t.float    "latitude"
     t.boolean  "gmaps"
@@ -46,13 +46,17 @@ ActiveRecord::Schema.define(:version => 20120908203446) do
     t.integer  "deliver_id"
     t.integer  "custom_id"
     t.integer  "customofficer_id"
-    t.string   "statement",        :limit => 20
+    t.string   "statement",         :limit => 20
     t.date     "statement_date"
-    t.string   "notes",            :limit => 250
-    t.datetime "created_at",                                         :null => false
-    t.datetime "updated_at",                                         :null => false
-    t.boolean  "post_trans",                      :default => false
-    t.string   "unload_place",     :limit => 60
+    t.string   "notes",             :limit => 250
+    t.datetime "created_at",                                          :null => false
+    t.datetime "updated_at",                                          :null => false
+    t.boolean  "post_trans",                       :default => false
+    t.string   "unload_place",      :limit => 60
+    t.string   "unload_city",       :limit => 100
+    t.string   "unload_place_code", :limit => 20
+    t.integer  "creater_id",                       :default => 0
+    t.integer  "updater_id",                       :default => 0
   end
 
   add_index "arrivals", ["city_id", "country_id"], :name => "index_arrivals_on_city_id_and_country_id"
@@ -306,6 +310,10 @@ ActiveRecord::Schema.define(:version => 20120908203446) do
     t.datetime "updated_at",                                         :null => false
     t.boolean  "pre_trans",                       :default => false
     t.string   "load_place",       :limit => 60
+    t.string   "load_city",        :limit => 100
+    t.string   "load_place_code",  :limit => 20
+    t.integer  "creater_id",                      :default => 0
+    t.integer  "updater_id",                      :default => 0
   end
 
   add_index "departures", ["city_id", "country_id"], :name => "index_departures_on_city_id_and_country_id"
@@ -527,7 +535,6 @@ ActiveRecord::Schema.define(:version => 20120908203446) do
     t.string   "product_curr"
     t.string   "slug",          :limit => 40
     t.boolean  "bank_flag"
-    t.integer  "bank_id"
     t.string   "producer",      :limit => 60
     t.string   "marks_nos",     :limit => 50
     t.string   "hts_no",        :limit => 20
@@ -550,6 +557,8 @@ ActiveRecord::Schema.define(:version => 20120908203446) do
     t.integer  "consignee_id"
     t.integer  "creater_id"
     t.integer  "updater_id"
+    t.string   "bank",          :limit => 100
+    t.string   "category",      :limit => 60
   end
 
   add_index "loadings", ["company_id", "load_coun", "unload_coun"], :name => "index_loadings_on_company_id_and_load_coun_and_unload_coun"

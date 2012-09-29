@@ -8,6 +8,9 @@ input, textarea, select, .uneditable-input {
 ul, ol {
   margin:0;
 }
+.alert {
+  text-align: center;
+}
 legend {
   font-size: 1em;
   font-weight:bold;
@@ -113,4 +116,18 @@ input[type="file"] {
 .table-fixed th, .table-fixed td {
   overflow: hidden;
   white-space: nowrap;
+}
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+  font-style: italic;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  font-style: italic;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  font-style: italic;
 }

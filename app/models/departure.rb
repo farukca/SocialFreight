@@ -2,7 +2,7 @@ class Departure < ActiveRecord::Base
 
   acts_as_gmappable :process_geocoding => false, :validation => false
 
-  belongs_to :loading
+  belongs_to :loading, touch: true
   belongs_to :country
   belongs_to :city
   belongs_to :sender, :class_name => "Company", :foreign_key => "sender_id"

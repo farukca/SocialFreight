@@ -3,15 +3,15 @@
   <%= f.error_notification %>
 
   <fieldset>
-    <%= f.input :title, :label => "Company" %>
-    <%= f.input :contact_name, :label => "Name" %>
-    <%= f.input :contact_surname, :label => "Surname" %>
-    <%= f.input :tel  %>
-    <%= f.input :email %>
-    <%= f.input :country_id, as: :select, collection: Country.find(:all, order: :name), include_blank: false, input_html: { class: "country_select", "data-placeholder" => "Ülke Seçiniz" }, selected: "TR" %>
-    <%= f.input :employees, :as => :select, :collection => Patron.employee_ranks.map { |r| [r[1], r[0] ] }, :include_blank => false %>
+    <%= f.input :title, label: t("web.label.company_name"), placeholder: t("web.placeholder.company_name") %>
+    <%= f.input :contact_name, label: t("web.label.name"), placeholder: t("web.placeholder.name") %>
+    <%= f.input :contact_surname, label: t("web.label.surname"), placeholder: t("web.placeholder.surname") %>
+    <%= f.input :tel, label: t("web.label.phone"), placeholder: t("web.placeholder.phone")  %>
+    <%= f.input :email, label: t("web.label.email"), placeholder: t("web.placeholder.email") %>
+    <%= f.input :country_id, as: :select, label: t("web.label.country"), collection: Country.find(:all, order: :name), include_blank: false, input_html: { class: "country_select", "data-placeholder" => "Ülke Seçiniz" }, selected: "TR" %>
+    <%= f.input :employees, as: :select, label: t("web.label.employee_number"), collection: Patron.employee_ranks.map { |r| [r[1], r[0] ] }, include_blank: false %>
     <%#= f.input :language %>
-    <div class="controls"><%= f.button :submit, "Try SocialFreight", :class => 'btn btn-success' %></div>
+    <div class="controls"><%= f.button :submit, t("web.label.signup"), :class => 'btn btn-success' %></div>
   </fieldset>
 
 <% end %>

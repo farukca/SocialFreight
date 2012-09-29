@@ -15,6 +15,7 @@ class ArrivalsController < ApplicationController
   def new
     @loading = current_patron.loadings.find(params[:loading_id])
     @arrival = @loading.arrivals.build(params[:arrival])
+    @arrival.country_id = @loading.unload_coun if @loading.unload_coun
 
     respond_to do |format|
       format.html # new.html.erb
@@ -57,11 +58,11 @@ class ArrivalsController < ApplicationController
   end
 
   def destroy
-    @departure = Departure.find(params[:id])
-    @departure.destroy
+    @arrival = Arrival.find(params[:id])
+    @arrival.destroy
 
     respond_to do |format|
-      format.html { redirect_to companies_url }
+      format.html { redirect_to @arrival.loading }
       format.json { head :ok }
     end
   end

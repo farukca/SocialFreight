@@ -18,11 +18,13 @@ class ReservationController < ApplicationController
       when :departure_info
 		    @loading = current_patron.loadings.find(session[:wicked_loading_id])
         @departure = @loading.departures.new
+        @departure.country_id = @loading.load_coun if @loading.load_coun
         @departure.packages.build()
 
       when :arrival_info
         @loading = current_patron.loadings.find(session[:wicked_loading_id])
         @arrival = @loading.arrivals.new
+        @arrival.country_id = @loading.unload_coun if @loading.unload_coun
         @arrival.packages.build()
 
       when :load_detail

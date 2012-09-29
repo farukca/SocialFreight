@@ -1,21 +1,23 @@
 <%= table_for objects, table_html: { class: "table table-condensed table-striped table-fixed"}, 
               header_row_html: { class: "headerRow" },
               row_html: { class: "dataRow" } do |table| %>
-  <% table.column :action, column_html: { class: "actionCol", scope: "col" } do |loading| %>
-    <%= link_to "Güncelle", edit_loading_path(loading) %> 
+  <% table.column :action, label: t("defaults.link.action"), column_html: { class: "actionCol", scope: "col" } do |loading| %>
+    <%= link_to t("defaults.link.edit"), edit_loading_path(loading) %> 
     | 
-    <%= link_to "Sil", loading, method: :delete, data: {confirm: "Are you sure?"} %>
+    <%= link_to t("defaults.link.destroy"), loading, method: :delete, data: {confirm: t("defaults.messages.destroy_confirm")} %>
   <% end %>
-  <% table.column :reference, column_html: { scope: "col" } %>
-  <% table.column :company, column_html: { scope: "col" } do |loading| %>
+  <% table.column :reference, label: t("defaults.label.reference"), column_html: { scope: "col" } do |loading| %>
+    <%= link_to loading.reference, loading_path(loading) %>
+  <% end %>  
+  <% table.column :company, label: t("defaults.label.customer"), column_html: { scope: "col" } do |loading| %>
     <%= loading.company.name %>
   <% end %>
-  <% table.column :load_type, column_html: { scope: "col" } %>
-  <% table.column :incoterm, column_html: { class: "emailCol", scope: "col" } %>
-  <% table.column :load_coun, column_html: { class: "phoneCol", scope: "col" } %>
-  <% table.column :unload_coun, column_html: { class: "phoneCol", scope: "col" } %>
-  <% table.column :freight_price, column_html: { scope: "col" } do |loading| %>
+  <% table.column :load_type, label: t("defaults.label.load_type"), column_html: { scope: "col" } %>
+  <% table.column :incoterm, label: t("defaults.label.incoterm"), column_html: { class: "emailCol", scope: "col" } %>
+  <% table.column :load_coun, label: t("defaults.label.load_country"), column_html: { class: "phoneCol", scope: "col" } %>
+  <% table.column :unload_coun, label: t("defaults.label.unload_country"), column_html: { class: "phoneCol", scope: "col" } %>
+  <% table.column :freight_price, label: t("defaults.label.freight_price"), column_html: { scope: "col" } do |loading| %>
     <%= "#{loading.freight_price} #{loading.freight_curr}" %>
   <% end %>
-  <% table.column :commodity, column_html: { scope: "col"} %>
+  <% table.column :commodity, label: t("defaults.label.commodity"), column_html: { scope: "col"} %>
 <% end %>

@@ -9,18 +9,17 @@
         </td-->
       </tr>
       <tr>
-        <td class="labelCol2">Müşteri :</td>
+        <td class="labelCol2"><%= t("defaults.label.customer") %> :</td>
         <td class="dataCol2"><%= @loading.company.name if @loading.company %></td>
-        <td class="labelCol2">Yük Açıklaması:</td>
+        <td class="labelCol2"><%= t("defaults.label.commodity")%> :</td>
         <td class="dataCol2"><%= @loading.commodity %></td>
-        <td class="dataCol2 lastCol">Kayıt Sahibi:<%= @loading.user %></td>
+        <td rowspan="2" class="dataCol2 lastCol"><%= t("defaults.label.create_info")%>:<%= @loading.creater.to_s if @loading.creater %><br/><%= @loading.created_at.strftime("%d/%m/%Y %H:%M") %></td>
       </tr>
       <tr>
-        <td class="labelCol2">Navlun :</td>
+        <td class="labelCol2"><%= t("defaults.label.freight_price") %> :</td>
         <td class="dataCol2"><%= @loading.freight_price %>&nbsp;<%= @loading.freight_curr %></td>
-        <td class="labelCol2">Brüt Ağırlık:</td>
-        <td class="dataCol2"><%= @loading.brut_wg %></td>
-        <td class="dataCol2 lastCol">Kayıt Zamanı:<%= @loading.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+        <td class="labelCol2"><%= t("defaults.label.brut_weight") %>:</td>
+        <td class="dataCol2 lastCol"><%= @loading.brut_wg %></td>
       </tr>
     </table>
   </div>

@@ -1,4 +1,4 @@
-<%= simple_form_for @feedback, :validate => true do |f| %>
+<%= simple_form_for @feedback, validate: true, html: { class: "form-horizontal" } do |f| %>
   <%= f.error_notification %>
 
   <fieldset>
@@ -6,12 +6,14 @@
       <div class="page-header">
         <h4>New Feedback</h4>
       </div>
-      <div class="span8 columns">
+      <div class="span6 columns">
         <%#= f.input :place_type, :as => :checkbox, :collection => Operation.all.map { |o| [o.place, o.id]}, :include_blank => false %>
         <%= f.input :name %>
         <%= f.input :email %>
-        <%= f.input :msg %>
-        <%= f.button :submit, :class => 'btn primary' %>
+        <%= f.input :msg, as: :text %>
+        <div class="input-controls">
+          <%= f.button :submit, class: 'btn btn-success' %>
+        </div>
       </div>
     </div>
   </fieldset>
