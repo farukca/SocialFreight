@@ -1,0 +1,24 @@
+<div class="row-fluid">
+  <fieldset>
+    <legend>Durum Bilgisi</legend>
+    <div class="row-fluid">
+      <div class="span6">
+        <%= f.input :company_id, as: :select, collection: [[@case.company_id ? @case.company.name : "", @case.company_id]], input_html: {class: "chosen_input", "data-url" => "/companies.json"}, label: "Company" %>
+        <%= f.input :case_type, as: :select, collection: ['Mr', 'Ms', 'Mrs', 'Dr', 'Prof'] %>
+        <%= f.input :case_date, as: :string, input_html: {class: "input-small", "data-datepicker" => "datepicker"} %>
+      </div>
+      <div class="span6">
+        <%= f.input :case_status, as: :select, collection: ['Mr', 'Ms', 'Mrs', 'Dr', 'Prof'] %>
+        <%= f.input :description  %>
+      </div>
+    </div>
+    <div id="case-source-div" class="row-fluid">
+      <div class="span6">
+        <%= f.input :case_source, as: :select, collection: ['Mr', 'Ms', 'Mrs', 'Dr', 'Prof'] %>>
+      </div>
+      <div class="span6">
+        <%= f.input :source_url  %>
+      </div>
+    </div>
+  </fieldset>
+</div>

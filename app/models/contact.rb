@@ -3,7 +3,7 @@ class Contact < ActiveRecord::Base
   extend FriendlyId
   
   belongs_to :patron
-  belongs_to :company
+  belongs_to :company, counter_cache: true
   belongs_to :user
 
   friendly_id :to_s, use: :slugged, use: :scoped, scope: :company

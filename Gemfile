@@ -66,7 +66,7 @@ gem 'select2-rails'
  gem 'capistrano'
 
 gem 'bullet', group: :development
-gem 'rspec-rails', group: [:test, :development]
+#gem 'rspec-rails', group: [:test, :development]
 gem 'ruby-debug19', group: [:development]
 group :test do
   # Pretty printed test output

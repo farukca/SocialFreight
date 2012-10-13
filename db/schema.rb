@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120930185032) do
+ActiveRecord::Schema.define(:version => 20121013102650) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                    :null => false
@@ -122,43 +122,48 @@ ActiveRecord::Schema.define(:version => 20120930185032) do
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "companies", :force => true do |t|
-    t.string   "name",         :limit => 50,                   :null => false
-    t.string   "title",        :limit => 100
-    t.string   "company_type", :limit => 5
-    t.string   "tel",          :limit => 15
-    t.string   "fax",          :limit => 15
-    t.string   "gsm",          :limit => 15
-    t.string   "voip",         :limit => 15
-    t.string   "website",      :limit => 30
-    t.string   "contact",      :limit => 40
-    t.string   "sector",       :limit => 40
-    t.string   "email",        :limit => 40
-    t.string   "postcode",     :limit => 5
-    t.string   "address",      :limit => 80
-    t.string   "district",     :limit => 40
+    t.string   "name",           :limit => 50,                   :null => false
+    t.string   "title",          :limit => 100
+    t.string   "company_type",   :limit => 5
+    t.string   "tel",            :limit => 15
+    t.string   "fax",            :limit => 15
+    t.string   "gsm",            :limit => 15
+    t.string   "voip",           :limit => 15
+    t.string   "website",        :limit => 30
+    t.string   "contact",        :limit => 40
+    t.string   "sector",         :limit => 40
+    t.string   "email",          :limit => 40
+    t.string   "postcode",       :limit => 5
+    t.string   "address",        :limit => 80
+    t.string   "district",       :limit => 40
     t.integer  "city_id"
     t.integer  "state_id"
-    t.string   "country_id",   :limit => 2
-    t.string   "status",       :limit => 1,   :default => "A"
+    t.string   "country_id",     :limit => 2
+    t.string   "status",         :limit => 1,   :default => "A"
     t.integer  "branch_id"
-    t.integer  "patron_id",                                    :null => false
-    t.string   "patron_token", :limit => 20,                   :null => false
+    t.integer  "patron_id",                                      :null => false
+    t.string   "patron_token",   :limit => 20,                   :null => false
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps"
-    t.string   "twitter_url",  :limit => 30
-    t.string   "facebook_url", :limit => 50
-    t.string   "linkedin_url", :limit => 50
-    t.string   "notes",        :limit => 250
-    t.string   "description",  :limit => 250
+    t.string   "twitter_url",    :limit => 30
+    t.string   "facebook_url",   :limit => 50
+    t.string   "linkedin_url",   :limit => 50
+    t.string   "notes",          :limit => 250
+    t.string   "description",    :limit => 250
     t.integer  "saler_id"
-    t.integer  "user_id",                                      :null => false
+    t.integer  "user_id",                                        :null => false
     t.integer  "company_no"
-    t.string   "slug",         :limit => 40
-    t.datetime "created_at",                                   :null => false
-    t.datetime "updated_at",                                   :null => false
+    t.string   "slug",           :limit => 40
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
     t.integer  "parent_id"
     t.integer  "updater_id"
+    t.string   "city",           :limit => 40
+    t.string   "state",          :limit => 40
+    t.integer  "contacts_count",                :default => 0
+    t.integer  "cases_count",                   :default => 0
+    t.integer  "partners_count",                :default => 0
   end
 
   add_index "companies", ["name", "patron_id", "patron_token"], :name => "index_companies_on_name_and_patron_id_and_patron_token", :unique => true

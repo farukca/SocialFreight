@@ -1,0 +1,15 @@
+<div class="row-fluid">
+  <fieldset>
+    <legend>İş Ortağı Bilgisi</legend>
+    <div class="row-fluid">
+      <div class="span6">
+        <%= f.input :company_id, as: :hidden, label: "Company", input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-selected" => @partner.company_id ? @partner.company.name : "", "data-placeholder" => "Firma Seçiniz."} %>
+        <%= f.input :partner_id, as: :select, collection: [[@partner.partner_id ? @partner.partner.name : "", @partner.partner_id]], input_html: {class: "chosen_input", "data-url" => "/companies.json"}, label: "Partner" %>
+      </div>
+      <div class="span6">
+        <%= f.input :partner_type, as: :select, collection: ['Mr', 'Ms', 'Mrs', 'Dr', 'Prof'] %>
+        <%= f.input :notes  %>
+      </div>
+    </div>
+  </fieldset>
+</div>

@@ -3,12 +3,12 @@
     <legend>Yetkili Bilgisi</legend>
     <div class="row-fluid">
       <div class="span6">
-        <%= f.input :company_id, :as => :select, :collection => [[@contact.company_id ? @contact.company.name : "", @contact.company_id]], :input_html => {:class => "chosen_input", "data-url" => "/companies.json"}, :label => "Customer" %>
+        <%= f.input :company_id, as: :hidden, label: "Company", input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-selected" => @contact.company_id ? @contact.company.name : "", "data-placeholder" => "Firma Seçiniz."} %>
         <%= f.input :name do %>
-          <%= f.input_field :name, :class => "input-small" %>
-          <%= f.input_field :surname, :class => "input-small" %>      
+          <%= f.input_field :name, class: "input-small" %>
+          <%= f.input_field :surname, class: "input-small" %>      
         <% end %>
-        <%= f.input :salutation, :as => :select, :collection => ['Mr', 'Ms', 'Mrs', 'Dr', 'Prof'] %>
+        <%= f.input :salutation, as: :select, collection: ['Mr', 'Ms', 'Mrs', 'Dr', 'Prof'] %>
         <%= f.input :jobtitle %>
       </div>
       <div class="span6">

@@ -1,11 +1,9 @@
 <div class="row-fluid profile-content">
 
   <div class="row-fluid" style="padding-bottom:10px;text-align:center;">
-    <%= link_to "Contacts(2)", "##{@company.id}_contactList" %> |
-    <%= link_to "Partners(0)", "##{@company.id}_partnerList" %> |
-    <%= link_to "Documents(0)", "##{@company.id}_documentList" %> |
-    <%= link_to "Activities(0)", "##{@company.id}_activityList" %> |
-    <%= link_to "Cases(0)", "##{@company.id}_caseList" %> |
+    <%= link_to "Contacts(#{@company.contacts.size})", "##{@company.id}_contactList" %> |
+    <%= link_to "Partners(#{@company.partners.size})", "##{@company.id}_partnerList" %> |
+    <%= link_to "Cases(#{@company.cases.size})", "##{@company.id}_caseList" %> |
     <%= link_to "Opportunities(0)", "##{@company.id}_opportunityList" %>
   </div>
 
@@ -28,22 +26,12 @@
   </div>
 
   <div class="row-fluid profile-section">
-    <%= render "shared/related_list", list_model: "partner", parent: @company, objects: @company.partners %>
+    <%= render "shared/related_list", list_model: "case", parent: @company, objects: @company.cases %>
   </div>
 
   <div class="row-fluid profile-section">
-
-    <div id="#{@company.id}_activityList" class="pageBlock subRecordList">
-      <div class="listSubRecords contacts">
-        <div class="pPageBlock brndScnBrd secondaryPalette">
-          <%= render "shared/section_list_header", listItem: "activity", object: @company %>
-          <div id="#{@company.id}_ActivityList_Body" class="listBody">
-            <span class="norecord">Kayıt Bulunamadı...</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    <%= render "shared/related_list", list_model: "partner", parent: @company, objects: @company.partners %>
   </div>
+
 
 </div>

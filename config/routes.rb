@@ -26,6 +26,7 @@ Socialfreight::Application.routes.draw do
   resources :companies
   resources :partners
   resources :contacts
+  resources :cases
   resources :finunits
   resources :findocs
   resources :invoitems
