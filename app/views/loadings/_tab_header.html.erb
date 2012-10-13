@@ -15,10 +15,11 @@
     <dd><%= Loading.load_types[loading.load_type] %></dd>
     <dd>
       <% if loading.position_id.nil? %>
-        <%= link_to "Taşıma Planlanmamış, Planlamak için tıklayınız", transplan_path(:select_loads, :loading_id => loading.id), :class => 'btn btn-info btn-mini' %></dd>
+        <%= link_to t("operations.label.reservation"), transplan_path(:select_loads, :loading_id => loading.id), class: 'btn btn-info btn-mini', title: "Taşımayı Planlamak için Tıklayınız" %>
       <% else %>
         <%= link_to loading.position.reference, position_path(loading.position) %>
       <% end %>
+    </dd>
   </dl>
 </div>
 

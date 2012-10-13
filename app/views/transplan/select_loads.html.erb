@@ -1,9 +1,9 @@
 <div id="opform" class="row-fluid">
 
   <div class="pageBlock">
-
-    <%= render 'shared/form_header', message: "Planlama Pozisyon Seçimi" %>
+    
     <%= render 'breadcrumb', step: 2 %>
+    <%= render 'shared/form_header', message: "Planlama Pozisyon Seçimi" %>
     
     <div id="selected-loads" class="row-fluid">
       <% unless @loading.nil? %>

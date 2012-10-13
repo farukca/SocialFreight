@@ -9,26 +9,26 @@
         <div class="row">
           <div class="customer_intro">
             <%= link_to login_path, class: "btn btn-info" do %>
-              <i class="icon-off icon-white"></i>Müşteri Girişi
+              <i class="icon-off icon-white"></i><%= t("web.label.login") %>
             <% end %>
           </div>
         </div>
         <div class="row">
           <ul id="main-nav" class="sf-menu">
             <li><%= link_to "Ana Sayfa", root_url, :id => "home" %></li>
+            <li><%= link_to "Niçin SocialFreight", features_path, :id => "features" %></li>
             <li><%= link_to "Güvenlik", security_path, :id => "security" %></li>
-            <li><%= link_to "Servisler", "#", :id => "services" %>
+            <li><%= link_to "Servisler", services_path, :id => "services" %>
               <ul>
                 <li><%= link_to "Kara Taşımacılığı", road_path %></li>
                 <li><%= link_to "Hava Taşımacılığı", air_path %></li>
                 <li><%= link_to "Deniz Taşımacılığı", sea_path %></li>
                 <li><%= link_to "Demiryolu Taşımacılığı", rail_path %></li>
-                <li><%= link_to "Ulusal Dağıtım", inland_path %></li>
+                <!--li><%#= link_to "Ulusal Dağıtım", inland_path %></li-->
               </ul>
             </li>
-            <li><%= link_to "Niçin SocialFreight", features_path, :id => "features" %></li>
             <li><%= link_to "Roadmap", roadmap_path, :id => "roadmap" %></li>
-            <li><%= link_to "İletişim", "?", :id => "contact_link" %></li>
+            <li><%= link_to "İletişim", aboutus_path, :id => "contact_link" %></li>
           </ul>
         </div>
       </div>

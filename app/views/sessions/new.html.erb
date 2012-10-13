@@ -1,4 +1,4 @@
-<div class="container">
+<div id="login_page" class="container">
   <div class="row">
     <div class="span6 columns">
       <div id="login_image" style="padding:20px;">
@@ -10,7 +10,7 @@
           <div class="control-group">
             <%= label_tag :email, t("web.label.email"), class: "control-label" %>
             <div class="controls">
-              <%= text_field_tag :email, session[:socialfreight_mail].to_s, class: "medium" %>
+              <%= text_field_tag :email, cookies[:socialfreight_mail].to_s, class: "medium" %>
             </div>
           </div>
           <div class="control-group">
@@ -22,7 +22,7 @@
           <div class="control-group">
             <div class="controls">
               <%= label_tag :remember_me, class: "checkbox" do %>
-                <%= check_box_tag :remember_me, 1, params[:remember_me] %>&nbsp;<%= t("web.label.remember_me") %>
+                <%= check_box_tag :remember_me, 1, cookies[:socialfreight_rememberme] %>&nbsp;<%= t("web.label.remember_me") %>
               <% end %>
             </div>
           </div>
@@ -47,6 +47,3 @@
     </div>
   </div>
 </div>
-
-
-

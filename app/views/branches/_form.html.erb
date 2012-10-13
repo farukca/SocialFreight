@@ -1,38 +1,38 @@
 <div id="branch-form">
-<%= simple_form_for @branch, :validate => true do |f| %>
+<%= simple_form_for @branch, validate: true, html: { class: "form-horizontal" } do |f| %>
   <%= f.error_notification %>
 
   <div class="pageBlock">
     <%= render 'shared/form_buttonsh', :f => f, :header => "New User" %>
 
     <!--div class="tabbable tabs-below"-->
-
+    <fieldset>
       <div id="my-tab-content" class="tab-content">
         <div id="user-main-form" class="tab-pane active">
+          <legend>New Branch</legend>
           <div class="row-fluid">
-            <fieldset>
-              <legend>New Branch</legend>
               <div class="span6">
-                <%= f.input :name %>
+                <%= f.input :name, label: "Şube Adı" %>
                 <%= f.input :tel  %>
                 <%= f.input :email %>
               </div>
               <div class="span6">
                 <%= f.input :country_id do %>
-                  <%= f.input_field :country_id, :as => :select, :collection => Country.all, :include_blank => false, :class => "input-small" %>
+                  <%= f.input_field :country_id, as: :select, collection: Country.all, include_blank: false, class: "input-small" %>
                   <%= f.grouped_collection_select :city_id, Country.order(:name), :cities, :name, :id, :name, {:include_blank => true}, {:class => "input-small"} %>
                 <% end %>
-                <%= f.input :district, :label => "Semt" do %>
-                  <%= f.input_field :district, :class => "input-small" %>
-                  <%= f.input_field :postcode, :class => "input-small" %>
+                <%= f.input :district, label: "Semt & Posta kodu" do %>
+                  <%= f.input_field :district, class: "input-small", placeholder: "Semt Adı" %>
+                  <%= f.input_field :postcode, class: "input-small", placeholder: "Posta kodu" %>
                 <% end %>
-                <%= f.input :address %>
+                <%= f.input :address, placeholder: "Adresi" %>
               </div>
-            </fieldset>
           </div>
         </div>
       </div>
-    </div>
+    </fieldset>
+
+  </div>
   <!--/div-->
 <% end %>
 </div>

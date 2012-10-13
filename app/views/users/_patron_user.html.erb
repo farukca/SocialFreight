@@ -1,5 +1,5 @@
 <div id="user_form">
-<%= simple_form_for @user, html: { class: 'form-horizontal' }, :validate => true  do |f| %>
+<%= simple_form_for @user, html: { class: "form-horizontal", id: "new_patron_user" }, validate: true  do |f| %>
   <%= f.error_notification %>
 
   <div class="pageBlock">
@@ -12,20 +12,22 @@
           <div class="row-fluid">
             <fieldset>
               <legend>Kullanıcı Bilgisi</legend>
-              <div class="span6">
-                <%= f.input :name %>
-                <%= f.input :surname %>
-                <%= f.input :email %>
-                <%= f.input :branch_id, :as => :select, :collection => current_patron.branches, :include_blank => false, :selected => current_user.branch_id %>                
-                <%= f.input :role %>
-                <%= f.input :user_type %>
-              </div>
-              <div class="span6">
-                <%= f.input :region %>
-                <%= f.input :time_zone %>
-                <%= f.input :locale %>
-                <%= f.input :language %>
-                <%= f.input :mail_encoding %>
+              <div class="row-fluid">
+                <div class="span6">
+                  <%= f.input :name %>
+                  <%= f.input :surname %>
+                  <%= f.input :email %>
+                  <%= f.input :branch_id, :as => :select, :collection => current_patron.branches, :include_blank => false, :selected => current_user.branch_id %>                
+                  <%= f.input :role %>
+                  <%= f.input :user_type %>
+                </div>
+                <div class="span6">
+                  <%= f.input :region %>
+                  <%= f.input :time_zone %>
+                  <%= f.input :locale %>
+                  <%= f.input :language %>
+                  <%= f.input :mail_encoding %>
+                </div>
               </div>
             </fieldset>
           </div>

@@ -33,6 +33,15 @@ class Container < ActiveRecord::Base
         '40HCP' => '40 High Cube Palette Wide'
       }
     end
+
+    def air_container_types()
+      air_container_types = {
+        '20DRY' => '20 Dry',
+        '20FRA' => '20 Flat Rack',
+        '20OPT' => '20 Open Top',
+        '20RFR' => '20 Reefer'
+      }
+    end
   end
 
   public

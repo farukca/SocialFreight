@@ -1,24 +1,14 @@
-<h1>SocialFreight Customer Info</h1>
-
-<div id="patron_form" class="span16 columns">
-<%= simple_form_for @patron, :validate => true do |f| %>
+<div id="edit_patron_form" class="span16 columns">
+<%= simple_form_for @patron, validate: true, html: { class: "form-horizontal" } do |f| %>
   <%= f.error_notification %>
 
   <fieldset>
-    <div class="row">
-      <div class="page-header span16 columns">
-        <h4>Customer</h4>
-      </div>
-      <div class="span8 columns">
+    <div class="row-fluid">
+      <div class="span6 columns">
         <%= f.input :title, :label => "Company" %>
         <%= f.input :contact_name %>
         <%= f.input :contact_surname %>
         <%= f.input :tel  %>
-        <%#= f.association :operations, :as => :check_boxes, :collection => Operation.all %>
-        <div class="clearfix">
-          <label class="required">Operations</label>
-          <%= f.collection_check_boxes :operations, Operation.all, :id, :name, :label => "Operations" %>
-        </div>
         <%= f.button :submit, :class => 'btn primary' %>
       </div>
     </div>

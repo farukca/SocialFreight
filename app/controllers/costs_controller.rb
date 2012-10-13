@@ -33,7 +33,8 @@ class CostsController < ApplicationController
     @cost = current_patron.costs.build(params[:cost])
     @cost.user_id  = current_user.id
     @cost.patron_id  = current_patron.id
-   
+    @cost.cost_source = @cost.operation if @cost.cost_source.blank?
+
     @cost.save!
     respond_with @cost, :success => "Cost saved successfully"
   end

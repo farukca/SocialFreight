@@ -1,42 +1,35 @@
-<div id="alternate">
+<div class="alternate">
   <div class="container">
-    <div class="row">
-      <!--div class="span3">
-        <h4>SocialFreight</h4>
-        <p>Kimler Kullanmalı</p>
-        <p>Güvenlik</p>
-        <p>Servisler</p>
-        <a style="margin-top: 10px;" class="small-btn blue rounded-1" href="#">Read more</a>
-      </div>
-      <div class="span3">
-        <h4>Our Mission</h4>
-        <p>Sektörel Sosyal Ağ</p>
-        <p>Harita Servisleri</p>
-        <p>Araç Takip Entegrasyonu</p>
-        <a style="margin-top: 10px;" class="small-btn blue rounded-1" href="#">Read more</a>
-      </div>
-      <div class="span3">
-        <h4>Roadmap</h4>
-        <p>Antrepo Yönetimi</p>
-        <p>Yakıt Yönetimi</p>
-        <p>Kariyer Yönetimi</p>
-        <a style="margin-top: 10px;" class="small-btn blue rounded-1" href="#">Read more</a>
-      </div>
-      <div class="span3">
-        <h4>From Twitter</h4>
-        <div class="tweet"></div>
-        <a class="small-btn blue rounded-1" href="http://www.twitter.com/socialfreight" target="_blank">Follow us</a>
-      </div-->
-      <div class="span6">
-        <h4>SocialFreight & ERP</h4>
-        <p class="footerp">SocialFreight, lojistik ve nakliye hizmeti sunan firmaların bütün süreçlerini yönetmek üzere geliştirilmekte olan bir yazılım sistemidir. Aynı amaçlı ERP sistemleri ile karşılaştırdığımızda;
-        SocialFreight, ERP sistemleri gibi bir donanım yatırımı gerektirmez. Yine yazılım lisansı gibi ilk edinim maliyetleri yoktur. Kullanımı daha kolaydır, ERP sistemleri gibi karmaşık süreçler içermez. SocialFreight ile her daim en güncel yazılımı kullanırsınız, ERP sistemleri gibi belirli aralıklar ile güncelleme yapmanız gerekmez. Araç takip sistemleri, harita sistemleri ile entegrasyon için ekstra maliyet istemez.</p>
-      </div>
-      <div class="span6">
-        <h4>Bulut Sistemler ve SAAS</h4>
-        <p class="footerp">Bulut Sistemler (Cloud Based), genel olarak kullanıcıların herhangi bir donanıma yatırım yapmalarına gerek olmaksınız, bu sistemleri ihtiyaçları oldukça kiralayarak kullanmalarını sağlayan sistemlerdir. SAAS ise Software-as-a-service kelimelerinin baş harflerinden gelen bir terimdir, yazılımın servis olarak sunulması anlamına gelir. Bir anlamda yazılımın ihtiyaç duyulan kısımlarının kiralanarak, ihtiyaç duyulan süre boyunca kullanılabilmesidir.</p>
-      </div>
+    <div class="span3">
+      <h4>Company</h4>
+      <ul>
+        <li><%= link_to "Niçin SocialFreight", features_path %></li>
+        <li><%= link_to "Güvenlik", security_path %></li>
+        <li><%= link_to "Servisler", services_path %></li>
+        <li><%= link_to "Roadmap", roadmap_path %></li>
+        <li><%= link_to "Hakkımızda", aboutus_path %></li>
+      </ul>
     </div>
+
+    <div class="span3">
+      <h4>İletişim</h4>
+      <p class="footerp">
+        Cevizli Mah. Zuhal Cad. No:1<br/>
+        Maltepe İstanbul Türkiye
+      </p>
+      <p class="footerp">GSM: +90 555 289 1072<br/>Mail: <%= mail_to "info@socialfreight.com", "info@socialfreight.com" %></p>
+    </div>
+
+    <div class="span2">
+      <h4>Follow</h4>
+      <ul>
+        <li><a href="http://www.twitter.com/socialfreight" target="_blank">Twitter</a></li>
+        <li><a href="http://www.facebook.com/socialfreight" target="_blank">Facebook</a></li>
+        <li><a href="http://www.plus.google.com/socialfreight" target="_blank">Circle Us</a></li>
+        <li><a href="http://www.linkedin.com/socialfreight" target="_blank">Linkedin</a></li>
+      </ul>
+    </div>
+
   </div>
-  <div class="footer-left"><p>Copyright © SocialFreight 2012. All rights reserved.</p></div>
+  <div class="rightside"><p class="footerp">Copyright © SocialFreight 2012. All rights reserved.</p></div>
 </div>

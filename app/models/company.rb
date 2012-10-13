@@ -23,7 +23,7 @@ class Company < ActiveRecord::Base
 
   attr_accessible :name, :title, :company_type, :branch_id, :postcode, :address, :district, :city_id, :country_id, :state_id, 
                   :email, :website, :tel, :gsm, :voip, :fax, :contact, :sector, :twitter_url, :facebook_url, :linkedin_url, 
-                  :notes, :description, :saler_id, :contacts_attributes
+                  :notes, :description, :saler_id, :parent_id, :contacts_attributes
 
   #validates :name, :uniqueness => { :scope => :patron, :message => I18n.t('defaults.inputerror.must_be_unique') }
   validates :name, presence: { message: I18n.t('defaults.inputerror.cant_be_blank') }#, length: { maximum: 50 }

@@ -10,7 +10,7 @@ body {
 }
 #index-portofilo {
     background-image: none;
-    background-color: highlighttext;
+    background-color: #fff;
 }
 h2 {
     margin-bottom: 10px;
@@ -192,7 +192,7 @@ p {
 }
 #slider {
     position: relative;
-    margin-bottom: 410px;
+    margin-bottom: 360px;
 }
 #slider-thumbs {
     position: relative;
@@ -217,7 +217,7 @@ p {
     -o-border-radius: 0 0 5px 5px;
     position: absolute;
     z-index: 2;
-    bottom: -388px;
+    bottom: -340px;
     left: 0;
     width: 618px;
 }
@@ -338,7 +338,8 @@ p {
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
     -o-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
     width: 890px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 .callout{	/* IE7 */
           *margin-top: 130px;
@@ -548,12 +549,6 @@ p {
 .small-footer a {
     color: #555;
 }
-.footer-left {
-    float: left;
-}
-.footer-right {
-    float: right;
-}
 .next {
     background: url(/assets/big_images/arrow-right.png) no-repeat top left;
     width: 11px;
@@ -727,7 +722,7 @@ blockquote:after {
 .warning p { 
     text-shadow: 1px 1px rgba(255,255,255, 0.3);
 }
-#alternate {
+.alternate {
     background: #2c2f32;
     border: 1px solid #1f1f1f;
     -moz-box-shadow: inset 0 1px 0 rgba(255,255,255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.7);
@@ -736,13 +731,21 @@ blockquote:after {
     padding: 40px 0;
     *margin-top: 40px;
 }
-#alternate h4 {
+.alternate h4, a {
     color: #fff;
-    text-shadow: 1px 2px rgba(0,0,0, 0.3);
+    *text-shadow: 1px 2px rgba(0,0,0, 0.3);
 }
-#alternate p.footerp {
+.alternate a:hover {
+    text-decoration: none;
+    color: #fff;
+}
+.alternate p.footerp {
     color: #fff;
     font-size: 12px;
+}
+.alternate .nav-tabs {
+    border: none;
+    margin-bottom: 7px;
 }
 .sidebar .blog-widget-article {
     margin-top: 15px;
@@ -1130,6 +1133,10 @@ blockquote:after {
     padding-bottom: 0;
     border: none;
 }
+.blog-article a, a:hover {
+    color: #666666;
+    *text-decoration: none;
+}
 #blog-pagination {
     border-top: 1px solid #cbcbcb;
     padding-top: 25px;
@@ -1372,4 +1379,29 @@ form {
 .customer_intro {
   float: right;
   margin-top: -10px;
+}
+#login_page {
+  margin-bottom: 100px;
+}
+.features {
+  margin-top:25px;
+}
+.features h4 {
+  margin-bottom:15px;
+}
+.features p {
+  color: #666666;
+  font-size: 16px;
+  line-height: 22px;
+  margin: 0px 0px 26px;
+}
+#aboutus {
+  margin-bottom: 150px;
+}
+#aboutus h4 {
+  color: #fff;
+}
+#aboutus p {
+  color: #fff;
+  font-size:14px;
 }

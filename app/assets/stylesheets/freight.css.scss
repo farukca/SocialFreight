@@ -401,8 +401,12 @@ fieldset span {
     background:none repeat scroll 0 0 transparent;
     margin-bottom:-6px;
 }
-#login_form label, #patron_form label, #new_user label {
+#login_form label, #patron_form label, #new_user label, #new_feedback label {
     color:#fff;
+}
+#new_feedback textarea {
+    height:60px;
+    width:300px;
 }
 .quick_form label {
     display:block;

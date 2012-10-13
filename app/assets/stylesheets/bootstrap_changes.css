@@ -131,3 +131,8 @@ input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {
   font-style: italic;
 }
+.alert-notice {
+  color: #468847;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}

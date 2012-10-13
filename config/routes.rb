@@ -87,7 +87,7 @@ Socialfreight::Application.routes.draw do
   get "rail" => "home#rail", :as => "rail"
   get "inland" => "home#inland", :as => "inland"
 
-  %w[roadmap security features].each do |page|
+  %w[roadmap security features services aboutus].each do |page|
     get page, controller: "home", action: page
   end
 

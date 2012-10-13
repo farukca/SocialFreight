@@ -31,12 +31,7 @@ jQuery ->
       placeholder:
         title: "Kayıt Seçiniz"
       minimumInputLength: 2
-      width: "element"
-      initSelection: (element, callback) ->
-        data = []
-        data.push
-          id: $(element.val())
-          text: $(element.data('selected'))
+      width: "220px"
       minimumInputLength: 3
       newRecordUrl:  el.data("newrecurl")
 
@@ -51,12 +46,16 @@ jQuery ->
 
         results: (data, page) ->
           results: data.results
+      initSelection: (element, callback) ->
+        callback
+          id: $(element.val())
+          text: $(element.data("selected"))
 
-    initVal = el.data("selected")
-    unless initVal is ""
-      el.select2 "val",
-        id: el.val()
-        text: initVal
+  #  initVal = el.data("selected")
+  #  unless initVal is ""
+  #    el.select2 "val",
+  #      id: el.val()
+  #      text: initVal
 
   #    initSelection: (element, callback) ->
   #      $.getJSON (el.data("url")) + "?id=" + (element.val()), null, (data) ->

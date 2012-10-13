@@ -1,16 +1,18 @@
 <div class="row-fluid">
   <fieldset>
     <legend>Ek Bilgileri</legend>
-    <div class="span6">
-      <%= f.input :fax %>
-      <%= f.input :tel2, :label => "Other Tel" %>
-      <%= f.input :des, :as => :text, :input_html => {:rows => 2}, :label => "Notes" %>
-    </div>
-    <div class="span6">
-      <%= f.input :birthdate, :as => "string", :input_html => {:class => "input-small", "data-datepicker" => "datepicker"} %>
-      <%= f.input :twitter %>
-      <%= f.input :linkedin %>
-      <%= f.input :facebook %>
+    <div class="row-fluid">
+      <div class="span6">
+        <%= f.input :fax %>
+        <%= f.input :tel2, :label => "Other Tel" %>
+        <%= f.input :des, :as => :text, :input_html => {:rows => 2}, :label => "Notes" %>
+      </div>
+      <div class="span6">
+        <%= f.input :birthdate, :as => "string", :input_html => {:class => "input-small", "data-datepicker" => "datepicker"} %>
+        <%= f.input :twitter %>
+        <%= f.input :linkedin %>
+        <%= f.input :facebook %>
+      </div>
     </div>
   </fieldset>
 </div>

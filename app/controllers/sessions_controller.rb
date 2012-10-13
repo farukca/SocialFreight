@@ -9,10 +9,12 @@ class SessionsController < ApplicationController
     user = login(params[:email], params[:password], params[:remember_me])
     if user
       session[:patron_id] = user.patron_id if user.patron_id
-      if params[:remember_me]
-        session[:socialfreight_mail] = params[:email]
+      if params[:remember_me].present?
+        cookies[:socialfreight_mail] = params[:email]
+        cookies[:socialfreight_rememberme] = params[:remember_me]
       else
-        session[:socialfreight_mail] = nil
+        cookies.delete :socialfreight_mail
+        cookies.delete :socialfreight_rememberme
       end
       redirect_back_or_to root_url
     else
@@ -22,11 +24,8 @@ class SessionsController < ApplicationController
   end
   
   def destroy
-    usermail = session[:socialfreight_mail] if session[:socialfreight_mail]
     logout
-    session[:socialfreight_mail] = usermail.to_s
-
-    redirect_to root_url, :notice => "Bye bye happiness..."
+    redirect_to root_url
   end
 
 end

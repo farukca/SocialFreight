@@ -18,7 +18,7 @@
       <tr>
         <td class="dataCol2"><i class="icon-print"></i><%= @company.fax %></td>
         <td class="labelCol2">Grup Firması :</td>
-        <td class="dataCol2"></td>
+        <td class="dataCol2"><%= link_to @company.parent.name, @company.parent if @company.parent %></td>
         <td class="labelCol2">Sektör :</td>
         <td class="dataCol2 lastCol"><%= @company.sector %></td>
       </tr>

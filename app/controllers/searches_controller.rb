@@ -5,6 +5,7 @@ class SearchesController < ApplicationController
   def new
     @search = Search.new
     @search.operation = params[:operation] if params[:operation]
+    @search.model     = params[:model] if params[:model]
   end
 
   def create

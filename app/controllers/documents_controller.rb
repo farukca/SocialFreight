@@ -34,7 +34,8 @@ class DocumentsController < ApplicationController
     #@document.patron_id  = current_patron.id
    
     @document.save!
-    respond_with @document, :success => "Document saved successfully"
+    #respond_with @document, :success => "Document saved successfully"
+    redirect_to @document.documented, :success => "Document saved successfully"
   end
 
   def update

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120921205053) do
+ActiveRecord::Schema.define(:version => 20120930185032) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                    :null => false
@@ -250,14 +250,15 @@ ActiveRecord::Schema.define(:version => 20120921205053) do
   add_index "costs", ["truck", "vehicle"], :name => "index_trucks_costs"
 
   create_table "counters", :force => true do |t|
-    t.string  "counter_type", :limit => 40,                :null => false
+    t.string  "counter_type", :limit => 40,                    :null => false
     t.string  "operation",    :limit => 20
     t.string  "direction",    :limit => 1
-    t.integer "count",                      :default => 0, :null => false
-    t.integer "patron_id",                                 :null => false
+    t.integer "count",                      :default => 0,     :null => false
+    t.integer "patron_id",                                     :null => false
     t.string  "prefix",       :limit => 10
     t.string  "suffix",       :limit => 10
     t.integer "period",                     :default => 0
+    t.boolean "confirmed",                  :default => false
   end
 
   add_index "counters", ["patron_id", "counter_type", "operation", "period"], :name => "index_counters_unique", :unique => true
@@ -559,6 +560,8 @@ ActiveRecord::Schema.define(:version => 20120921205053) do
     t.integer  "updater_id"
     t.string   "bank",          :limit => 100
     t.string   "category",      :limit => 60
+    t.string   "waybill_no",    :limit => 60
+    t.date     "waybill_date"
   end
 
   add_index "loadings", ["company_id", "load_coun", "unload_coun"], :name => "index_loadings_on_company_id_and_load_coun_and_unload_coun"

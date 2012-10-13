@@ -35,4 +35,11 @@ class HomeController < ApplicationController
   def features
   end
 
+  def services
+  end
+
+  def aboutus
+    @feedback = Feedback.new
+  end
+  
 end

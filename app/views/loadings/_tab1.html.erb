@@ -30,11 +30,10 @@
         <td class="dataCol2"><%= @loading.notes %></td>
         <td class="labelCol2"><%= t("operations.label.marks_nos") %> :</td>
         <td class="dataCol2"><%= @loading.marks_nos %></td>
-        <td class="labelCol2"><%= t("defaults.label.update_info") %> :</td>
+        <!--td class="labelCol2"><%= t("defaults.label.update_info") %> :</td>
         <td class="dataCol2 lastCol">
-        	<%= @loading.updater.to_s if @loading.updater %><br/>
-            <%= @loading.updated_at.strftime("%d/%m/%Y %H:%M") %>
-        </td>
+        	<%#= @loading.updater.to_s if @loading.updater %>&nbsp;<%#= @loading.updated_at.strftime("%d/%m/%Y %H:%M") %>
+        </td-->
       </tr>
     </table>
   </div>

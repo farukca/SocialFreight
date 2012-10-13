@@ -21,8 +21,20 @@ class PositionsController < ApplicationController
   end
 
   def new
+    #control selected operation
+    operation = current_operation
+    if operation.blank?
+      operation = params[:operation] if params[:operation]
+      #TODO if operation still blank, go to operation select page
+      #if operation.blank?
+        #session[:operation_select_return_path] = "new_position"
+        #redirect_to select_operation_path
+      #end
+    end
+
     @position = current_patron.positions.build(params[:position])
-    @position.operation = params[:operation] if params[:operation]
+    @position.operation = operation
+    
     @transport = @position.transports.build(:trans_method => @position.operation)
     
     respond_to do |format|

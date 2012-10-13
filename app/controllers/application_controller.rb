@@ -53,7 +53,17 @@ class ApplicationController < ActionController::Base
   }
 
   def set_locale
-    locale = logged_in? ? current_user.locale : (params[:locale])
+    #locale = logged_in? ? current_user.locale : (params[:locale])
+    if logged_in?
+      locale = current_user.language
+    end
+    if not locale.present?
+      locale = cookies[:socialfreight_locale]
+    end
+    if not locale.present?
+      locale = Timeout::timeout(5) { Net::HTTP.get_response(URI.parse('http://api.hostip.info/country.php?ip=' + request.remote_ip )).body } rescue I18n.default_locale
+      cookies[:socialfreight_locale] = locale
+    end
     I18n.locale = (locale.present? && I18n.available_locales.include?(locale.to_sym)) ? locale : I18n.default_locale
   end
   

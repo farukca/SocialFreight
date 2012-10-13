@@ -39,7 +39,7 @@ class Loading < ActiveRecord::Base
                   :agent_id, :user_id, :saler_id, :freight_price, :freight_curr, :agent_price, :agent_curr, :agent_share,
                   :product_price, :product_curr, :bank_flag, :bank_id, :producer, :marks_nos, :hts_no, :brut_wg, 
                   :volume, :ladameter, :price_wg, :commodity, :notes, :load_coun, :unload_coun, :status, :stage, :stage_date,
-                  :report_date, :sender_id, :consignee_id, :packages_attributes, :containers_attributes
+                  :report_date, :sender_id, :consignee_id, :waybill_no, :waybill_date, :packages_attributes, :containers_attributes
 
   #validates_presence_of :reference, :except => :create
   validates_uniqueness_of :reference, :case_sensitive => false

@@ -1,5 +1,5 @@
 <div id="contact_form">
-<%= simple_form_for @contact, :validate => true do |f| %>
+<%= simple_form_for @contact, html: { class: "form-horizontal" }, validate: true do |f| %>
   <%= f.error_notification %>
 
   <div class="pageBlock">

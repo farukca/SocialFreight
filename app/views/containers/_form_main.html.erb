@@ -2,7 +2,11 @@
 
   <div class="span6">
     <fieldset>
-      <%= f.input :container_type, as: :select, collection: Container.container_types.map { |r| [r[1], r[0] ] }, include_blank: false %>
+      <% if @loading && (@loading.operation == "air") %>
+        <%= f.input :container_type, as: :select, collection: Container.air_container_types.map { |r| [r[1], r[0] ] }, include_blank: false %>
+      <% else %>
+        <%= f.input :container_type, as: :select, collection: Container.container_types.map { |r| [r[1], r[0] ] }, include_blank: false %>
+      <% end %>
       <%= f.input :name, label: "Container No" %>
       <%= f.input :sealno, label: "Seal No" %>
     </fieldset>

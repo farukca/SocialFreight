@@ -1,21 +1,23 @@
 <div class="row-fluid">
   <fieldset>
     <legend>Yetkili Bilgisi</legend>
-    <div class="span6">
-      <%= f.input :company_id, :as => :select, :collection => [[@contact.company_id ? @contact.company.name : "", @contact.company_id]], :input_html => {:class => "chosen_input", "data-url" => "/companies.json"}, :label => "Customer" %>
-      <%= f.input :name do %>
-        <%= f.input_field :name, :class => "input-small" %>
-        <%= f.input_field :surname, :class => "input-small" %>      
-      <% end %>
-      <%= f.input :salutation, :as => :select, :collection => ['Mr', 'Ms', 'Mrs', 'Dr', 'Prof'] %>
-      <%= f.input :jobtitle %>
-    </div>
-    <div class="span6">
-      <%= f.input :email %>
-      <%= f.input :tel  %>
-      <%#= f.input :fax  %>
-      <%= f.input :gsm  %>
-      <%= f.input :department %>
+    <div class="row-fluid">
+      <div class="span6">
+        <%= f.input :company_id, :as => :select, :collection => [[@contact.company_id ? @contact.company.name : "", @contact.company_id]], :input_html => {:class => "chosen_input", "data-url" => "/companies.json"}, :label => "Customer" %>
+        <%= f.input :name do %>
+          <%= f.input_field :name, :class => "input-small" %>
+          <%= f.input_field :surname, :class => "input-small" %>      
+        <% end %>
+        <%= f.input :salutation, :as => :select, :collection => ['Mr', 'Ms', 'Mrs', 'Dr', 'Prof'] %>
+        <%= f.input :jobtitle %>
+      </div>
+      <div class="span6">
+        <%= f.input :email %>
+        <%= f.input :tel  %>
+        <%#= f.input :fax  %>
+        <%= f.input :gsm  %>
+        <%= f.input :department %>
+      </div>
     </div>
   </fieldset>
 </div>

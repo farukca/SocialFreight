@@ -30,11 +30,15 @@ class InvoitemsController < ApplicationController
   def create
 
     @invoitem = current_patron.invoitems.build(params[:invoitem])
+    if @invoitem.local_curr.blank?
+      @invoitem.local_curr = current_patron.currency
+    end
     @invoitem.user_id  = current_user.id
     @invoitem.patron_id  = current_patron.id
    
     @invoitem.save!
-    respond_with @invoitem, :success => "Document saved successfully"
+    #respond_with @invoitem, :success => "Document saved successfully"
+    redirect_to @invoitem.invoitem_owner, :success => "Document saved successfully"
   end
 
   def update

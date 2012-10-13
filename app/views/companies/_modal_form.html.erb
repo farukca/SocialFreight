@@ -4,11 +4,10 @@
   <%= f.error :base, :error_method => :to_sentence %>
 
   <div class="pageBlock">
-    <%= render 'shared/form_buttonsh', :f => f, :header => "New Company" %>
-
-    <div class="row-fluid">
-      <fieldset>
-        <legend>Firma Bilgisi</legend>
+    <%= render 'shared/form_header', message: "Hızlı Firma Oluştur" %>
+    <fieldset>
+      <legend>Firma Bilgisi</legend>
+      <div class="row-fluid">
           <%= f.input :name %>
           <%= f.input :company_type do %>
             <%= f.select :company_type, Company.company_types.map { |r| [r[1], r[0] ] }, :include_blank => false %>
@@ -16,9 +15,11 @@
           <%= f.input :tel  %>
           <%= f.input :email %>
           <%= f.input :branch_id, :as => :select, :collection => current_patron.branches, :include_blank => false, :selected => current_user.branch_id %>
-      </fieldset>
-    </div>
-
+          <div class="input-controls">
+            <%= f.submit "Kaydet", class: "btn btn-success" %>
+          </div>
+      </div>
+    </fieldset>
   </div>
 
 <% end %>

@@ -4,7 +4,7 @@
   <%= f.error :base, :error_method => :to_sentence %>
 
   <div class="pageBlock">
-    <%= render 'shared/form_buttonsh', :f => f, :header => "New Company" %>
+    <%= render 'shared/form_header', message: "New Company" %>
 
     <div class="tabbable tabs-below">
 
@@ -21,6 +21,10 @@
         <!--div id="company-invoice-form" class="tab-pane form_tab_pane">
           <%#= render 'form_invoice', :f => f %>
         </div-->
+        <div class="controls rightside">
+          <%#= link_to "Bu Adımı Atla >>", next_wizard_path, :class => 'btn btn-danger' %>
+          <%= f.button :submit, t("defaults.action.save"), :class => 'btn btn-info' %>
+        </div>
       </div>
     </div>
     
@@ -33,4 +37,3 @@
 
 <% end %>
 </div>
-<script type="text/javascript">$("#new_company").validate();</script>
