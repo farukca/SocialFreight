@@ -171,7 +171,7 @@ jQuery('.images').cycle({
         })
 
         jQuery(".sidebar-tweet").tweet({
-            username: "ddstudios",
+            username: "socialfreight",
             join_text: "",
             count: 3,
             auto_join_text_ed: "",
