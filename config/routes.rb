@@ -6,6 +6,7 @@ Socialfreight::Application.routes.draw do
   get "try"    => "patrons#new", :as => "try"
   #get "today" => "home#today", :as => "today"
   #get "today" => "home#egitim", :as => "egitim"
+  get "dashboard" => "dashboard#index", :as => "dashboard"
 
   resources :users do
     member do

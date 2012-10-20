@@ -1,5 +1,7 @@
 <table class="table table-condensed">
   <tr><td><%= link_to "Yük Reservasyonu Oluştur", reservation_path(:load_info, operation: @operation.code) %></td></tr>
-  <tr><td><%= link_to "Gemi Pozisyonu Oluştur", transplan_path(:position_info, operation: @operation.code) %></td></tr>
-  <tr><td><%= link_to "Reservasyon & Gemi Planlama", transplan_path(:select_loads, operation: @operation.code) %></td></tr>
+  <tr><td><%= link_to "Yeni Deniz Taşıma Projesi Başlat", new_position_path(operation: @operation.code) %></td></tr>
+  <!--tr><td><%#= link_to "Yeni Deniz Taşıma Projesi Başlat", transplan_path(:position_info, operation: @operation.code) %></td></tr-->
+  <!--tr><td><%#= link_to "Reservasyon & Gemi Planlama", transplan_path(:select_loads, operation: @operation.code) %></td></tr-->
+  <tr><td></td></tr>
 </table>

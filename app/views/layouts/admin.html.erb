@@ -2,6 +2,8 @@
 <html>
 <head>
   <title>Socialfreight</title>
+  <meta charset='utf-8'>
+  <meta name="google-site-verification" content="YBxTWCsF7NumqEi-_IkfMvp4F61RxGpQ19ElYC27UEE" />
   <%= stylesheet_link_tag    "application", :debug => Rails.env.development? %>
   <%= javascript_include_tag "application", :debug => Rails.env.development? %>
   <%= csrf_meta_tags %>
@@ -12,28 +14,24 @@
 
 <div class="container-fluid">
   <%= render 'layouts/navigator' %>
-  <!--div id="leftmenu">
-    <ul id="menu">
-      <%= render 'layouts/menu' %>
-    </ul>
-  </div-->
 
   <div id="wrapper">
-    <div id="messages" class="span16">
+    
+    <div id="messages" class="row-fluid">
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => "flash_#{name}", :class => "alert-message #{name}" %>
       <% end %>
     </div>
-    <table class="outer" width="100%" id="bodyTable" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td id="sidebarCell" class="sidebarCell">
-          <%= content_for?(:sidebar) ? yield(:sidebar) : render(:partial => 'shared/sidebar')%>
-        </td>
-        <td class="oRight" id="bodyCell">
-          <%= yield %>
-        </td>
-      </tr>
-    </table>
+
+    <div class="row-fluid">
+      <div class="span2">
+        <%= render "dashboard/admin_sidebar" %>
+      </div>
+      <div class="span10">
+        <%= yield %>
+      </div>
+    </div>
+
   </div>
 
 </div>

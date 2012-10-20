@@ -4,23 +4,23 @@
 
     <div class="row-fluid">
       <div id="operation_links">
-        <legend>Müşteri İşlemleri</legend>
+        <legend><%= t("companies.title.company_menu") %></legend>
           <table class="table table-condensed">
-            <tr><td><%= link_to "Firma Oluştur", new_company_path %></td></tr>
-            <tr><td><%= link_to "Yetkili Oluştur", new_contact_path %></td></tr>
-            <tr><td><%= link_to "Aktivite Oluştur", "#" %></td></tr>
+            <tr><td><%= link_to t("companies.link.new_company"), new_company_path %></td></tr>
+            <tr><td><%= link_to t("companies.link.new_contact"), new_contact_path %></td></tr>
+            <tr><td><%= link_to t("companies.link.new_case"), new_case_path %></td></tr>
           </table>
       </div>
     </div>
 
     <div class="row-fluid">
-      <legend>Son Yapılan İşlemler</legend>
+      <legend><%= t("defaults.title.last_items") %></legend>
       <div id="last_companies" class="profile tabbable">
         <ul class="nav nav-tabs" data-tabs="tabs">
-          <li class="active"><a data-toggle="tab" href="#company_list">Yeni Firmalar</a></li>
-          <li><a data-toggle="tab" href="#activity_list">Son Aktiviteler</a></li>
-          <li><a data-toggle="tab" href="#opportunity_list">Yeni Fırsatlar</a></li>
-          <li><%= link_to "Detaylı Ara >>", new_search_path, class: "small-size-link" %></li>
+          <li class="active"><a data-toggle="tab" href="#company_list"><%= t("companies.title.last_companies") %></a></li>
+          <!--li><a data-toggle="tab" href="#activity_list">Son Aktiviteler</a></li>
+          <li><a data-toggle="tab" href="#opportunity_list">Yeni Fırsatlar</a></li-->
+          <li><%= link_to t("defaults.link.detailed_search"), new_search_path, class: "small-size-link" %></li>
         </ul>
 
         <div id="my-tab-content" class="tab-content">
@@ -29,13 +29,13 @@
             <%= render partial: "small_list", locals: { objects: current_patron.companies } %>
           </div>
 
-          <div id="activity_list" class="tab-pane profile-content">
+          <!--div id="activity_list" class="tab-pane profile-content">
             
           </div>
 
           <div id="opportunity_list" class="tab-pane profile-content">
             
-          </div>
+          </div-->
         </div>
 
       </div>
@@ -45,14 +45,16 @@
   <div class="span6">
     <div class="row-fluid">
       <div id="crm_tasks">
-        <legend>Raporlar</legend>
+        <legend><%= t("defaults.title.reports") %></legend>
         <table class="table small-tables table-condensed">
-          <tr><td><%= link_to "Borçlu Müşteriler Listesi", companies_path %></td></tr>      
-          <tr><td><%= link_to "Aktif Müşteriler Listesi", companies_path %></td></tr>
-          <tr><td><%= link_to "Alacaklı Tedarikçiler Listesi", companies_path %></td></tr>
+          <tr><td><%= link_to t("companies.link.company_list"), companies_path %></td></tr>
+          <tr><td><%= link_to t("companies.link.contact_list"), contacts_path %></td></tr>
+          <tr><td><%= link_to t("companies.link.case_list"), cases_path %></td></tr>
+          <!--tr><td><%#= link_to "Alacaklı Tedarikçiler Listesi", companies_path %></td></tr>
+          <tr><td><%#= link_to "Borçlu Müşteriler Listesi", companies_path %></td></tr-->
         </table>
 
-        <legend>Görevler & Notlar</legend>
+        <legend><%= t("defaults.title.tasks") %></legend>
         <table class="table small-tables table-condensed">
           <tr><td>TK253 Nolu sefer kontrol edilecek, Beko'ya bilgi verilecek</td></tr>
           <tr><td>@KRF545654 yük dosyası kapatılmalı %></td></tr>

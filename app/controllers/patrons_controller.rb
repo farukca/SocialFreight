@@ -2,7 +2,7 @@ class PatronsController < ApplicationController
 
   before_filter :require_login
   skip_before_filter :require_login, :only => [:new, :create]
-  before_filter(:only => [:show]) { |c| c.set_tab "adminnavigator" }
+  layout "admin"
   
   def index
     @patrons = Patron.all

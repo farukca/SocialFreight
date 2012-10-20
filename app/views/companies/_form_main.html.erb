@@ -3,33 +3,33 @@
     <legend>Firma Bilgisi</legend>
     <div class="row-fluid">
     <div class="span6">
-      <%= f.input :name %>
-      <%= f.input :parent_id, as: :hidden, label: "Grup Firması", input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-selected" => @company.parent_id ? @company.parent.name : "", "data-placeholder" => "Grup Firması Seçiniz."} %>
-      <%= f.input :branch_id, as: :select, collection: current_patron.branches, include_blank: false, selected: current_user.branch_id %>
+      <%= f.input :name, label: t("companies.label.name") %>
+      <%= f.input :parent_id, as: :hidden, label: t("companies.label.parent_company"), input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-selected" => @company.parent_id ? @company.parent.name : "", "data-placeholder" => "Grup Firması Seçiniz."} %>
+      <%= f.input :branch_id, as: :select, collection: current_patron.branches, include_blank: false, selected: current_user.branch_id, label: t("defaults.label.branch") %>
     </div>
     <div class="span6">
-      <%= f.input :tel  %>
-      <%= f.input :fax  %>
-      <%= f.input :website %>
+      <%= f.input :tel, label: t("defaults.label.tel")  %>
+      <%= f.input :fax, label: t("defaults.label.fax")  %>
+      <%= f.input :website, label: t("defaults.label.website") %>
     </div>
     </div>
-    <legend>Ek Bilgiler</legend>
+    <legend><%= t("defaults.title.additional_info") %></legend>
     <div class="row-fluid">
     <div class="span6">
-      <%= f.input :company_type, as: :select, collection: Company.company_types.map { |r| [r[1], r[0] ] }, include_blank: false %>
-      <%= f.input :sector %>
-      <%= f.input :notes, as: :text, input_html: {rows: "2", cols: "35"} %>
+      <%= f.input :company_type, as: :select, collection: Company.company_types.map { |r| [r[1], r[0] ] }, include_blank: false, label: t("companies.label.company_type") %>
+      <%= f.input :sector, label: t("companies.label.sector") %>
+      <%= f.input :notes, as: :text, label: t("defaults.label.notes"), input_html: {rows: "2", cols: "35"} %>
     </div>
     <div class="span6">
-      <%= f.input :country_id do %>
+      <%= f.input :country_id, label: t("defaults.label.country") do %>
         <%= f.input_field :country_id, class: "input-small", as: :select, collection: Country.all, include_blank: false %>
         <%= f.input_field :city_id, class: "input-small", as: :select, collection: City.all, include_blank: false %>
       <% end %>
-      <%= f.input :district do %>
+      <%= f.input :district, label: t("defaults.label.district") do %>
         <%= f.input_field :district, class: "input-small" %>
         <%= f.input_field :postcode, class: "input-small" %>
       <% end %>
-      <%= f.input :address, as: :text, input_html: {rows: "2", cols: "35"} %>
+      <%= f.input :address, as: :text, label: t("defaults.label.address"), input_html: {rows: "2", cols: "35"} %>
     </div>
     </div>
   </fieldset>

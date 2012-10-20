@@ -1,35 +1,37 @@
-<div id="main-navigation" class="row profile" style="margin-top:50px;margin-left:5px;">
-  <ul class="nav nav-tabs" data-tabs="tabs">
-    <li id="homenavigator"><%= link_to root_url do %><i class="icon-home"></i>Ana Sayfa<% end %></li>
-    <li id="opernavigator" class="dropdown">
-      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-        <i class="icon-cog"></i>
-        Operasyon Yönetimi
-        <b class="caret"></b>
-      </a>
-      <ul class="dropdown-menu">
-        <li id="airnavigator"><%= link_to home_operation_path(:air) do %><i class="icon-plane"></i>Hava Operasyon<% end %></li>
-        <li id="seanavigator"><%= link_to home_operation_path(:sea) do %><i class="icon-flag"></i>Deniz Operasyon<% end %></li>
-        <li id="roadnavigator"><%= link_to home_operation_path(:road) do %><i class="icon-road"></i>Kara Operasyon<% end %></li>
-        <li id="railnavigator"><%= link_to home_operation_path(:rail) do %><i class="icon-random"></i>Demiryolu Operasyon<% end %></li>
-        <li id="inlandnavigator"><%= link_to home_operation_path(:inland) do %><i class="icon-qrcode"></i>Dahili Nakliye<% end %></li>
-        <li id="distronavigator"><%= link_to home_operation_path(:distro) do %><i class="icon-qrcode"></i>Ulusal Dağıtım<% end %></li>
-        <li id="heavynavigator"><%= link_to home_operation_path(:heavy) do %><i class="icon-qrcode"></i>Ağır Nakliye<% end %></li>
+<div class="navbar">
+  <div id="main-navigation" class="row profile navbar-inner" style="margin-top:50px;margin-left:5px;">
+    <ul class="nav">
+      <li id="homenavigator"><%= link_to root_url do %><i class="icon-home"></i>Ana Sayfa<% end %></li>
+      <li id="opernavigator" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          <i class="icon-cog"></i>
+          Operasyon Yönetimi
+          <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li id="airnavigator"><%= link_to home_operation_path(:air) do %><i class="icon-plane"></i>Hava Operasyon<% end %></li>
+          <li id="seanavigator"><%= link_to home_operation_path(:sea) do %><i class="icon-flag"></i>Deniz Operasyon<% end %></li>
+          <li id="roadnavigator"><%= link_to home_operation_path(:road) do %><i class="icon-road"></i>Kara Operasyon<% end %></li>
+          <li id="railnavigator"><%= link_to home_operation_path(:rail) do %><i class="icon-random"></i>Demiryolu Operasyon<% end %></li>
+          <li id="inlandnavigator"><%= link_to home_operation_path(:inland) do %><i class="icon-qrcode"></i>Dahili Nakliye<% end %></li>
+          <li id="distronavigator"><%= link_to home_operation_path(:distro) do %><i class="icon-qrcode"></i>Ulusal Dağıtım<% end %></li>
+          <li id="heavynavigator"><%= link_to home_operation_path(:heavy) do %><i class="icon-qrcode"></i>Ağır Nakliye<% end %></li>
 
-      </ul>
-    </li>
-    <%# current_patron.operations.each_with_index do |operation, index| %>
-      <%# unless operation.to_s.blank? %>
-        <!--li class="<%#= selected_navigation(operation.to_s) %>"><%#= link_to operation.to_s.humanize, home_operation_path(operation) %></li-->
+        </ul>
+      </li>
+      <%# current_patron.operations.each_with_index do |operation, index| %>
+        <%# unless operation.to_s.blank? %>
+          <!--li class="<%#= selected_navigation(operation.to_s) %>"><%#= link_to operation.to_s.humanize, home_operation_path(operation) %></li-->
+        <%# end %>
       <%# end %>
-    <%# end %>
-    
-    <li id="fleetnavigator"><%= link_to fleetman_path do %><i class="icon-gift"></i>Filo Yönetimi<% end %></li>
-    <li id="companynavigator"><%= link_to crm_path do %><i class="icon-gift"></i>Müşteriler<% end %></li>
-    <li id="financenavigator"><%= link_to finance_path do %><i class="icon-signal"></i>Finans<% end %></li>
-    <!--li id="glnavigator"><%#= link_to "#" do %><i class="icon-list-all"></i>Muhasebe<%# end %></li>
-    <li id="iknavigator"><%#= link_to "#" do %><i class="icon-user"></i>İK<%# end %></li-->
-    <li id="adminnavigator"><%= link_to patron_path(current_patron) do %><i class="icon-warning-sign"></i>Admin Panel<% end %></li>
-    <!--li id="othersnavigator"><%#= link_to "#" do %><i class="icon-resize-full"></i>Diğer İşlemler<%# end %></li-->
-  </ul>
+      
+      <li id="fleetnavigator"><%= link_to fleetman_path do %><i class="icon-gift"></i>Filo Yönetimi<% end %></li>
+      <li id="companynavigator"><%= link_to crm_path do %><i class="icon-gift"></i>Müşteriler<% end %></li>
+      <li id="financenavigator"><%= link_to finance_path do %><i class="icon-signal"></i>Finans<% end %></li>
+      <!--li id="glnavigator"><%#= link_to "#" do %><i class="icon-list-all"></i>Muhasebe<%# end %></li>
+      <li id="iknavigator"><%#= link_to "#" do %><i class="icon-user"></i>İK<%# end %></li-->
+      <li id="adminnavigator"><%= link_to patron_path(current_patron) do %><i class="icon-warning-sign"></i>Admin Panel<% end %></li>
+      <!--li id="othersnavigator"><%#= link_to "#" do %><i class="icon-resize-full"></i>Diğer İşlemler<%# end %></li-->
+    </ul>
+  </div>
 </div>

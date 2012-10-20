@@ -1,17 +1,17 @@
 <div class="row-fluid">
   <fieldset>
-    <legend>Ek Bilgileri</legend>
+    <legend><%= t("defaults.title.additional_info") %></legend>
     <div class="row-fluid">
       <div class="span6">
-        <%= f.input :fax %>
-        <%= f.input :tel2, :label => "Other Tel" %>
-        <%= f.input :des, :as => :text, :input_html => {:rows => 2}, :label => "Notes" %>
+        <%= f.input :fax, label: t("defaults.label.fax") %>
+        <%= f.input :tel2, label: t("defaults.label.tel") %>
+        <%= f.input :des, as: :text, input_html: {rows: 2}, label: t("defaults.label.notes") %>
       </div>
       <div class="span6">
-        <%= f.input :birthdate, :as => "string", :input_html => {:class => "input-small", "data-datepicker" => "datepicker"} %>
-        <%= f.input :twitter %>
-        <%= f.input :linkedin %>
-        <%= f.input :facebook %>
+        <%= f.input :birthdate, as: :string, label: t("defaults.vocabulary.birthdate"), input_html: {class: "input-small", "data-datepicker" => "datepicker"} %>
+        <%= f.input :twitter, label: t("companies.label.twitter_link") %>
+        <%= f.input :linkedin, label: t("companies.label.linkedin_link") %>
+        <%= f.input :facebook, label: t("companies.label.facebook_link") %>
       </div>
     </div>
   </fieldset>

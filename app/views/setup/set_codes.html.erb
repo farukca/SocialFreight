@@ -1,12 +1,12 @@
 <div id="setup_address">
-  <legend class="alert alert-success">Hoşgeldiniz, şimdi birkaç adımda sizi tanımaya çalışacağız, sabrınız için şimdiden teşekkürler :)</legend>
+  <!--legend class="alert alert-success">Hoşgeldiniz, şimdi birkaç adımda sizi tanımaya çalışacağız, sabrınız için şimdiden teşekkürler :)</legend-->
   <div class="row-fluid">
     <ul class="breadcrumb">
       <li><a href="#">Profil Bilgileri</a><span class="divider">>></span></li>
       <li class="active">Lojistik Profil<span class="divider">>></span></li>
-      <li><a href="#">Referans Numaraları</a><span class="divider">>></span></li>
+      <!--li><a href="#">Referans Numaraları</a><span class="divider">>></span></li>
       <li><a href="#">Şube Bilgileri</a><span class="divider">>></span></li>
-      <li><a href="#">Kullanıcı Bilgileri</a></li>
+      <li><a href="#">Kullanıcı Bilgileri</a></li-->
     </ul>
   </div>
 
@@ -25,7 +25,8 @@
           <legend>Operasyon Bilgileri</legend>
           <div class="row-fluid">
             <div class="span12">
-              <%= f.input :operations, :as => :check_boxes, :collection => Operation.all %>
+              <%#= f.input :operations, :as => :check_boxes, :collection => Operation.all %>
+              <%= f.input :patron_type, :as => :select, :collection => [ "3PL", "Freight Forwarder", "NVOCC", "Other"] %>
               <%= f.input :vehicle_owner %>
               <%= f.input :depot_owner %>
             </div>
@@ -33,8 +34,6 @@
           <legend>Ek Bilgileri</legend>
           <div class="row-fluid">
             <div class="span6">
-              <%= f.input :patron_type, :as => :select, :collection => [ "3PL", "Freight Forwarder", "NVOCC", "Other"] %>
-              <%= f.input :fax, :as => :select, :collection => [ "C Yetki Belgesi", "K Yetki Belgesi", "R Yetki Belgesi", "L Yetki Belgesi"] %>
               <div class="controls">
                 <%= link_to "Bu Adımı Atla >>", next_wizard_path, :class => 'btn btn-danger' %>
               </div>

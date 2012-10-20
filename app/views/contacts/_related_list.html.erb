@@ -2,16 +2,16 @@
               header_row_html: { class: "headerRow" },
               row_html: { class: "dataRow" } do |table| %>
   <% table.column :action, column_html: { class: "actionCol", scope: "col" } do |contact| %>
-    <%= link_to "Güncelle", edit_contact_path(contact) %> 
+    <%= link_to t("defaults.link.edit"), edit_contact_path(contact) %> 
     | 
-    <%= link_to "Sil", contact, method: :delete, data: {confirm: "Are you sure?"} %>              
+    <%= link_to t("defaults.link.destroy"), contact, method: :delete, data: {confirm: "Are you sure?"} %>              
   <% end %>
-  <% table.column :name, column_html: { scope: "col" } do |contact| %>
+  <% table.column :name, label: t("companies.label.contact_name"), column_html: { scope: "col" } do |contact| %>
     <%= contact.to_s %>
   <% end %>
-  <% table.column :jobtitle, column_html: { scope: "col" } %>
-  <% table.column :department, column_html: { scope: "col" } %>
-  <% table.column :email, column_html: { class: "emailCol", scope: "col" } %>
-  <% table.column :tel, column_html: { class: "phoneCol", scope: "col" } %>
+  <% table.column :jobtitle, label: t("companies.label.jobtitle") , column_html: { scope: "col" } %>
+  <% table.column :department, label: t("companies.label.department"), column_html: { scope: "col" } %>
+  <% table.column :email, label: t("dedfaults.label.email"), column_html: { class: "emailCol", scope: "col" } %>
+  <% table.column :tel, label: t("dedfaults.label.tel"), column_html: { class: "phoneCol", scope: "col" } %>
 
 <% end %>

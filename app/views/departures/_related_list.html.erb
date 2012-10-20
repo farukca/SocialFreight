@@ -23,9 +23,9 @@
   <% table.column :statement, label: t("operations.label.settlement_info"), column_html: { scope: "col" } do |departure| %>
     <%= "#{departure.statement} - #{departure.statement_date}" %>
   <% end %>
-  <% table.column :pre_trans, label: t("operations.label.pre_trans") do |departure| %>
-    <%= departure.pre_trans == true ? t("defaults.vocabulary.yes") : t("defaults.vocabulary.no") %>
-  <% end %>
+  <%# table.column :pre_trans, label: t("operations.label.pre_trans") do |departure| %>
+    <%#= departure.pre_trans == true ? t("defaults.vocabulary.yes") : t("defaults.vocabulary.no") %>
+  <%# end %>
   <% table.column :pickup_date, label: t("defaults.label.pickup_date"), column_html: { class: "dateCol", scope: "col" } do |departure| %>
     <%= departure.pickup_date.strftime("%d/%m/%Y") if departure.pickup_date %>
   <% end %>

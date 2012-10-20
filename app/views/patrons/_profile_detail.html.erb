@@ -5,23 +5,13 @@
         <td class="labelCol2">Mail :</td>
         <td class="dataCol2 lastCol"><%= @patron.email %></td>
         <td class="labelCol2">Website :</td>
-        <td class="dataCol2"><%= @patron.website %></td>
-        <td class="dataCol2" rowspan="3">
-          <%= @patron.address %><br/><%= @patron.district %>&nbsp;<%= @patron.postcode %><br/>
-          <%= @patron.city.name if @patron.city %>&nbsp;<%= @patron.country.name if @patron.country %>
-        </td>
+        <td class="dataCol2"><%= @patron.website %></td> 
       </tr>
       <tr>
         <td class="labelCol2">Telefon :</td>
         <td class="dataCol2"><%= @patron.tel %></td>
-        <td class="labelCol2">Sektör :</td>
-        <td class="dataCol2 lastCol"><%#= @patron.sector %></td>
-      </tr>
-      <tr>
         <td class="labelCol2">Fax :</td>
         <td class="dataCol2"><%= @patron.fax %></td>
-        <td class="labelCol2">Şube :</td>
-        <td class="dataCol2 lastCol"><%#= @patron.branch.name if @patron.branch %></td>
       </tr>
     </table>
   </div>

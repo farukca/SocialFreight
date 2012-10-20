@@ -6,16 +6,17 @@
     </div>
   </div>
   <div class="span10">
-    <div id="profile-detail" class="patron">
+    <div id="profile-detail">
       <div id="profile-title" class="row-fluid">
-        <legend>
-          <i class="icon-company"></i><%= @patron.name %>
+        <div class="span6">
+          <h5><%= @patron.title %></h5>
+        </div>
+        <div class="span6">
           <span class="socialicons"></span>
-          <span class="rightside">
-            <%= link_to "Ayarlar", setup_path(:set_address), :class => 'btn btn-info' %>
-            <%= link_to "Edit", edit_patron_path(@patron), :class => 'btn btn-info' %>
+          <span class=" pull-right">
+            <%= link_to "Güncelle", setup_path(:set_address), :class => 'btn btn-info' %>
           </span>
-        </legend>
+        </div>
       </div>
       <%= render 'profile_detail' %>
     </div>

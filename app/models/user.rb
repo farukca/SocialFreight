@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :posts
   has_many :contacts
+  has_many :cases
   has_many :tasks
   has_many :journals, as: :journaled, dependent: :destroy
   has_many :documents

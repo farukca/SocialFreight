@@ -12,7 +12,7 @@ class CompaniesController < ApplicationController
        @companies = current_patron.companies.where("lower(name) like ?", q).order(:name).limit(10)
     else
        if params[:id]
-         @companies = current_patron.companies.find_by_id(params[:id])
+         @companies = current_patron.companies.find_all_by_id(params[:id])
        else
          @companies = current_patron.companies.latest.limit(10)
        end
@@ -20,7 +20,7 @@ class CompaniesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: {results: @companies.map(&:token_inputs)} }
+      format.json { render json: @companies.map(&:token_inputs) }
     end
   end
 

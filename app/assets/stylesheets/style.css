@@ -359,22 +359,22 @@ p {
     position: relative;
 }
 .home-portfolio-item span {
-    background: rgb(70,75,77); /* Old browsers */
-    background: -moz-linear-gradient(top,  rgba(70,75,77,1) 0%, rgba(48,51,53,1) 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(70,75,77,1)), color-stop(100%,rgba(48,51,53,1))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  rgba(70,75,77,1) 0%,rgba(48,51,53,1) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  rgba(70,75,77,1) 0%,rgba(48,51,53,1) 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  rgba(70,75,77,1) 0%,rgba(48,51,53,1) 100%); /* IE10+ */
-    background: linear-gradient(top,  rgba(70,75,77,1) 0%,rgba(48,51,53,1) 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#464b4d', endColorstr='#303335',GradientType=0 ); /* IE6-9 */
+    *background: rgb(70,75,77); /* Old browsers */
+    *background: -moz-linear-gradient(top,  rgba(70,75,77,1) 0%, rgba(48,51,53,1) 100%); /* FF3.6+ */
+    *background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(70,75,77,1)), color-stop(100%,rgba(48,51,53,1))); /* Chrome,Safari4+ */
+    *background: -webkit-linear-gradient(top,  rgba(70,75,77,1) 0%,rgba(48,51,53,1) 100%); /* Chrome10+,Safari5.1+ */
+    *background: -o-linear-gradient(top,  rgba(70,75,77,1) 0%,rgba(48,51,53,1) 100%); /* Opera 11.10+ */
+    *background: -ms-linear-gradient(top,  rgba(70,75,77,1) 0%,rgba(48,51,53,1) 100%); /* IE10+ */
+    *background: linear-gradient(top,  rgba(70,75,77,1) 0%,rgba(48,51,53,1) 100%); /* W3C */
+    *filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#464b4d', endColorstr='#303335',GradientType=0 ); /* IE6-9 */
     text-align: center;
-    border: 1px solid #1f1f1f;
-    -moz-box-shadow: inset 0 1px 0 rgba(255,255,255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.7);
-    -webkit-box-shadow:inset 0 1px 0 rgba(255,255,255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.7);
-    -o-box-shadow: inset 0 1px 0 rgba(255,255,255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.7);
-    -moz-border-radius: 0 0 5px 5px;
-    -webkit-border-radius: 0 0 5px 5px;
-    -o-border-radius: 0 0 5px 5px;
+    *border: 1px solid #1f1f1f;
+    *-moz-box-shadow: inset 0 1px 0 rgba(255,255,255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.7);
+    *-webkit-box-shadow:inset 0 1px 0 rgba(255,255,255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.7);
+    *-o-box-shadow: inset 0 1px 0 rgba(255,255,255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.7);
+    *-moz-border-radius: 0 0 5px 5px;
+    *-webkit-border-radius: 0 0 5px 5px;
+    *-o-border-radius: 0 0 5px 5px;
     float: left;
     width: 258px;
     padding: 15px 20px;
@@ -383,7 +383,7 @@ p {
 .home-portfolio-item span a {
     color: #969696;
     font-size: 13px;
-    text-shadow: -1px -1px rgba(0, 0, 0, 0.5);
+    *text-shadow: -1px -1px rgba(0, 0, 0, 0.5);
     line-height: 17px;
     font-weight: bold;
     -moz-transition:color 0.3s ease-in;
@@ -391,7 +391,7 @@ p {
     -o-transition:color 0.3s ease-in;
 }
 .home-portfolio-item span a:hover {
-    color: #fff;
+    *color: #fff;
     text-decoration: none;
 }
 .home-portfolio-item img {

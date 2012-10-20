@@ -6,8 +6,10 @@ en:
     vocabulary:
       yes: "Evet"
       no: "Hayır"
+      birthdate: "Doğum Tarihi"
     title:
       last_items: "Son İşlemler"
+      additional_info: "Ek Bilgiler"
       reports: "Raporlar"
       tasks: "Görevler"
       departures: "Yükleme Noktaları"
@@ -28,13 +30,16 @@ en:
     label:
       reference: "Referans"
       branch: "Şube"
-      tel:    "Phone"
-      fax:    "Fax"
-      email:  "EMail"
-      website: "Websitesi"
+      tel:    "Telefon"
+      fax:    "Faks"
+      gsm:    "Cep Telefonu"
+      email:  "E-Mail"
+      website: "Web Sitesi"
       country: "Ülke"
       city:   "Şehir"
+      district: "Semt"
       customer: "Müşteri"
+      company: "Firma"
       agent: "Yurtdışı Acenta"
       service: "Servis"
       load_country: "Yükleme Ülkesi"
@@ -91,6 +96,7 @@ en:
       new_post: "Mesajınız"
       new_contact: "Kontak Bilgisi Ekle"
       new_partner: "İş Ortağı Ekle"
+      new_case: "Olay Bildirimi Ekle"
       new_activity: "Aktivite Oluştur"    
       detailed_search: "Detaylı Ara >>"
       new_loading: "Yeni Yük Bilgisi Ekle"
@@ -197,12 +203,44 @@ en:
       add_package: "Koli Bilgisi Ekle"
     validmsg:
     errormsg:
-
   companies:
+    title:
+      company_management: "Müşteri Yönetimi"
+      company_menu: "Müşteri İşlemleri"
+      last_companies: "Son Eklenen Firmalar"
+      contact_info: "Yetkili Bilgisi"
+      partner_info: "İş Ortağı Bilgisi"
     label:
-      name: "Short Name"
-      type: "Company Type"
-
+      name: "Firma Kısa Adı"
+      parent_company: "Grup Firması"
+      company_type: "Firma Tipi"
+      sector: "Sektör"
+      contact_name: "Yetkili Adı"
+      salutation: "Cinsiyeti"
+      jobtitle: "Ünvan & Departman"
+      department: "Departman"
+      partner: "İş Ortağı"
+      partner_type: "Ortaklık Tipi"
+      case_date: "Olay Tarihi"
+      case_type: "Olay Tipi"
+      case_status: "Olay Statüsü"
+      case_description: "Olay Açıklaması"
+      case_source: "Olayın Kaynağı"
+      case_source_url: "Web adresi"
+      twitter_link: "Twitter Adresi"
+      linkedin_link: "Linkedin Adresi"
+      facebook_link: "Facebook Adresi"
+    placeholder:
+      company: "Firma Seçiniz"
+      partner: "İş Ortağı Seçiniz"
+    hint:
+    link:
+      new_company: "Firma Kaydı Oluştur"
+      new_contact: "Yetkili Kaydı Oluştur"
+      new_case: "Olay Kaydı Oluştur"
+      company_list: "Aktif Firma Listesi"
+      contact_list: "Kontak Listesi"
+      case_list: "Olay Kayıtları Listesi"
   web:
     label:
       company_name: "Firma Adı"

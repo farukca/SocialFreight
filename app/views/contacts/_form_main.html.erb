@@ -1,22 +1,22 @@
 <div class="row-fluid">
   <fieldset>
-    <legend>Yetkili Bilgisi</legend>
+    <legend><%= t("companies.title.contact_info") %></legend>
     <div class="row-fluid">
       <div class="span6">
-        <%= f.input :company_id, as: :hidden, label: "Company", input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-selected" => @contact.company_id ? @contact.company.name : "", "data-placeholder" => "Firma Seçiniz."} %>
-        <%= f.input :name do %>
+        <%= f.input :company_id, as: :hidden, label: t("defaults.label.company"), input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => t("companies.placeholder.company")} %>
+        <%= f.input :name, label: t("companies.label.contact_name") do %>
           <%= f.input_field :name, class: "input-small" %>
           <%= f.input_field :surname, class: "input-small" %>      
         <% end %>
-        <%= f.input :salutation, as: :select, collection: ['Mr', 'Ms', 'Mrs', 'Dr', 'Prof'] %>
-        <%= f.input :jobtitle %>
+        <%= f.input :salutation, as: :select, label: t("companies.label.salutation"), collection: ['Mr', 'Ms', 'Mrs', 'Dr', 'Prof'] %>
+        <%= f.input :jobtitle, label: t("companies.label.jobtitle") %>
       </div>
       <div class="span6">
-        <%= f.input :email %>
-        <%= f.input :tel  %>
+        <%= f.input :email, label: t("defaults.label.email") %>
+        <%= f.input :tel, label: t("defaults.label.tel")  %>
         <%#= f.input :fax  %>
-        <%= f.input :gsm  %>
-        <%= f.input :department %>
+        <%= f.input :gsm, label: t("defaults.label.gsm")  %>
+        <%= f.input :department, label: t("companies.label.department") %>
       </div>
     </div>
   </fieldset>

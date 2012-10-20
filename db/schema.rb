@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121013102650) do
+ActiveRecord::Schema.define(:version => 20121013110915) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                    :null => false
@@ -91,6 +91,20 @@ ActiveRecord::Schema.define(:version => 20121013102650) do
   end
 
   add_index "branches", ["patron_id", "patron_token"], :name => "index_branches_on_patron_id_and_patron_token"
+
+  create_table "cases", :force => true do |t|
+    t.integer  "company_id",                 :null => false
+    t.date     "case_date",                  :null => false
+    t.string   "case_type",   :limit => 40,  :null => false
+    t.string   "case_source", :limit => 40
+    t.string   "source_url",  :limit => 100
+    t.string   "case_status", :limit => 10
+    t.text     "description"
+    t.integer  "user_id",                    :null => false
+    t.integer  "patron_id",                  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
 
   create_table "cities", :force => true do |t|
     t.string  "name",       :limit => 40, :null => false

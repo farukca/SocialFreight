@@ -28,13 +28,10 @@ jQuery ->
   $(".chosen_input").each ->
     el = $(this)
     el.select2
-      placeholder:
-        title: "Kayıt Seçiniz"
+      placeholder: "Kayıt Seçiniz"
       minimumInputLength: 2
       width: "220px"
       minimumInputLength: 3
-      newRecordUrl:  el.data("newrecurl")
-
       ajax:
         url: el.data("url")
         dataType: "json"
@@ -45,21 +42,12 @@ jQuery ->
           apikey: "ju6z9mjyajq2djue3gbvv26t"
 
         results: (data, page) ->
-          results: data.results
+          results: data
+
       initSelection: (element, callback) ->
-        callback
-          id: $(element.val())
-          text: $(element.data("selected"))
-
-  #  initVal = el.data("selected")
-  #  unless initVal is ""
-  #    el.select2 "val",
-  #      id: el.val()
-  #      text: initVal
-
-  #    initSelection: (element, callback) ->
-  #      $.getJSON (el.data("url")) + "?id=" + (element.val()), null, (data) ->
-  #        callback data if $.isFunction(callback)
+        $.getJSON (element.data("url")) + "?id=" + (element.val()), null, (data) ->
+          if $.isFunction(callback)
+            callback data[0] 
 
   $(".token_input").each ->
     el = $(this)

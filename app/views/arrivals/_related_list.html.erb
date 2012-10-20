@@ -23,9 +23,9 @@
   <% table.column :statement, label: t("operations.label.settlement_info"), column_html: { scope: "col" } do |arrival| %>
     <%= "#{arrival.statement} - #{arrival.statement_date}" %>
   <% end %>
-  <% table.column :post_trans, label: t("operations.label.post_trans") do |arrival| %>
-    <%= arrival.post_trans == true ? t("defaults.vocabulary.yes") : t("defaults.vocabulary.no") %>
-  <% end %>
+  <%# table.column :post_trans, label: t("operations.label.post_trans") do |arrival| %>
+    <%#= arrival.post_trans == true ? t("defaults.vocabulary.yes") : t("defaults.vocabulary.no") %>
+  <%# end %>
   <% table.column :delivery_date, label: t("defaults.label.delivery_date"), column_html: { class: "dateCol", scope: "col" } %>
 
 <% end %>
