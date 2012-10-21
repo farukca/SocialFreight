@@ -1,0 +1,14 @@
+<%= table_for objects, table_html: { class: "table table-condensed table-striped table-fixed"}, 
+              header_row_html: { class: "headerRow" },
+              row_html: { class: "dataRow" } do |table| %>
+  <% table.column :action, column_html: { class: "actionCol", scope: "col" } do |currency| %>
+    <%= link_to "Güncelle", edit_currency_path(currency) %> 
+    | 
+    <%= link_to "Sil", currency, method: :delete, data: {confirm: "Are you sure?"} %>              
+  <% end %>
+  <% table.column :code, column_html: { scope: "col" } %>
+  <% table.column :name, column_html: { scope: "col" } %>
+  <% table.column :symbol, column_html: { scope: "col" } %>
+  <% table.column :multiplier, column_html: { scope: "col" } %>
+
+<% end %>

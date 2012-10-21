@@ -1,0 +1,20 @@
+<%= table_for objects, table_html: { class: "table table-condensed table-striped table-fixed"}, 
+              header_row_html: { class: "headerRow" },
+              row_html: { class: "dataRow" } do |table| %>
+  <% table.column :action, column_html: { class: "actionCol", scope: "col" } do |branch| %>
+    <%= link_to "Güncelle", edit_branch_path(branch) %> 
+    | 
+    <%= link_to "İptal Et", branch, method: :delete, data: {confirm: "Are you sure?"} %>              
+  <% end %>
+  <% table.column :name, column_html: { scope: "col" } %>
+  <% table.column :tel, column_html: { scope: "col" } %>
+  <% table.column :fax, column_html: { scope: "col" } %>
+  <% table.column :email, column_html: { scope: "col" } %>
+  <% table.column :city_id, column_html: { scope: "col" } do |branch| %>
+    <%= branch.city.name if branch.city %>
+  <% end %>
+  <% table.column :country_id, column_html: { scope: "col" } do |branch| %>
+    <%= branch.country.name if branch.country %>
+  <% end %>
+
+<% end %>

@@ -1,0 +1,35 @@
+<div id="branches" class="row-fluid">
+
+  <div id="profile-header" class="profile-content row-fluid">
+    <div class="span2">
+      <%= image_tag("branch.png") %>
+    </div>
+    <div class="span9">
+      <h5>Şubeler</h5>
+    </div>
+  </div>
+
+  <div class="row-fluid">
+    <div id="branches_menu" class="span6">
+      <legend><%= t "Şube İşlemleri" %></legend>
+      <table class="table table-condensed">
+        <tr><td><%= link_to "Yeni Şube Oluştur", new_branch_path %></td></tr>
+        <tr><td></td></tr>
+      </table>
+    </div>
+
+    <div id="branches_reports" class="span6">
+        <legend><%= t "Şube Raporları" %></legend>
+        <table class="table table-condensed">
+          <tr><td><%= link_to "Şube Listesi", new_search_path(model: "branch") %></td></tr>
+          <tr><td></td></tr>
+        </table>
+    </div>
+  </div>
+
+  <div id="branches_list" class="row-fluid">
+    <legend>Şube Listesi</legend>
+    <%= render "branches/related_list", objects: @branches %>
+  </div>
+
+</div>

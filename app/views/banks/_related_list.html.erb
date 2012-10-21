@@ -1,0 +1,16 @@
+<%= table_for objects, table_html: { class: "table table-condensed table-striped table-fixed"}, 
+              header_row_html: { class: "headerRow" },
+              row_html: { class: "dataRow" } do |table| %>
+  <% table.column :action, column_html: { class: "actionCol", scope: "col" } do |bank| %>
+    <%= link_to "Güncelle", edit_bank_path(bank) %> 
+    | 
+    <%= link_to "İptal Et", bank, method: :delete, data: {confirm: "Are you sure?"} %>              
+  <% end %>
+  <% table.column :name, column_html: { scope: "col" } %>
+  <% table.column :code, column_html: { scope: "col" } %>
+  <% table.column :service_code, column_html: { scope: "col" } %>
+  <% table.column :service_url, column_html: { scope: "col" } %>
+  <% table.column :response_type, column_html: { scope: "col" } %>
+  <% table.column :country, column_html: { scope: "col" } %>
+  <% table.column :currency, column_html: { scope: "col" } %>
+<% end %>

@@ -1,29 +1,35 @@
-<h1>Listing currencies</h1>
+<div id="currencies" class="row-fluid">
 
-<table>
-  <tr>
-    <th>Code</th>
-    <th>Name</th>
-    <th>Symbol</th>
-    <th>Multiplier</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <div id="profile-header" class="profile-content row-fluid">
+    <div class="span2">
+      <%= image_tag("currency.png") %>
+    </div>
+    <div class="span9">
+      <h5>Döviz Kurları</h5>
+    </div>
+  </div>
 
-<% @currencies.each do |currency| %>
-  <tr>
-    <td><%= currency.code %></td>
-    <td><%= currency.name %></td>
-    <td><%= currency.symbol %></td>
-    <td><%= currency.multiplier %></td>
-    <td><%= link_to 'Show', currency %></td>
-    <td><%= link_to 'Edit', edit_currency_path(currency) %></td>
-    <td><%= link_to 'Destroy', currency, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+  <div class="row-fluid">
+    <div id="currencies_menu" class="span6">
+      <legend><%= t "Döviz İşlemleri" %></legend>
+      <table class="table table-condensed">
+        <tr><td><%= link_to "Yeni Döviz Oluştur", new_currency_path %></td></tr>
+        <tr><td><%= @tcmb.to_s %></td></tr>
+      </table>
+    </div>
 
-<br />
+    <div id="currencies_reports" class="span6">
+        <legend><%= t "Döviz Raporları" %></legend>
+        <table class="table table-condensed">
+          <tr><td><%= link_to "Döviz Listesi", new_search_path(model: "currency") %></td></tr>      
+          <tr><td></td></tr>
+        </table>
+    </div>
+  </div>
 
-<%= link_to 'New Currency', new_currency_path %>
+  <div id="currencies_list" class="row-fluid">
+    <legend>Döviz Listesi</legend>
+    <%= render "currencies/related_list", objects: @currencies %>
+  </div>
+
+</div>

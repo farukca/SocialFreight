@@ -23,7 +23,7 @@ group :assets do
 end
 
 #gem 'client_side_validations'
-gem 'client_side_validations', '3.2.0.beta.3', :git => 'https://github.com/bcardarella/client_side_validations.git'
+gem 'client_side_validations'#, '3.2.0.beta.3', :git => 'https://github.com/bcardarella/client_side_validations.git'
 gem 'simple_form', '>= 2.0'
 gem 'table-for'
 
@@ -45,6 +45,7 @@ gem 'rolify'
 gem 'wicked'
 gem 'queue_classic', '2.0.0rc13'
 gem 'savon'
+gem 'whenever', :require => false
 
 #PDF
 gem 'prawn'

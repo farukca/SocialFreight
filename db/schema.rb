@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121013110915) do
+ActiveRecord::Schema.define(:version => 20121021191541) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                    :null => false
@@ -61,6 +61,18 @@ ActiveRecord::Schema.define(:version => 20121013110915) do
 
   add_index "arrivals", ["city_id", "country_id"], :name => "index_arrivals_on_city_id_and_country_id"
   add_index "arrivals", ["loading_id"], :name => "index_arrivals_on_loading_id"
+
+  create_table "banks", :force => true do |t|
+    t.string   "name",          :limit => 40, :null => false
+    t.string   "code",          :limit => 10
+    t.string   "service_code",  :limit => 10
+    t.string   "service_url"
+    t.string   "response_type", :limit => 10
+    t.string   "country",       :limit => 10
+    t.string   "currency",      :limit => 5
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
 
   create_table "betausers", :force => true do |t|
     t.string   "email"
@@ -297,6 +309,22 @@ ActiveRecord::Schema.define(:version => 20121013110915) do
   end
 
   add_index "countries", ["slug"], :name => "index_countries_on_slug"
+
+  create_table "currates", :force => true do |t|
+    t.integer  "bank_id"
+    t.date     "rate_date"
+    t.string   "cur1"
+    t.string   "cur2"
+    t.decimal  "buying"
+    t.decimal  "selling"
+    t.decimal  "banknote_buying"
+    t.decimal  "banknote_selling"
+    t.decimal  "rate"
+    t.integer  "ctime"
+    t.integer  "bank_refid"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
   create_table "currencies", :id => false, :force => true do |t|
     t.string "code",       :limit => 5,                   :null => false
@@ -1089,6 +1117,7 @@ ActiveRecord::Schema.define(:version => 20121013110915) do
     t.datetime "updated_at",                                                                              :null => false
     t.string   "remember_me_token"
     t.datetime "remember_me_token_expires_at"
+    t.string   "user_status",                     :limit => 1,  :default => "A"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

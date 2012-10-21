@@ -5,21 +5,21 @@
   
   <div class="row-fluid">
     <div id="good" class="profile">
-      <ul class="nav nav-pills">
+      <!--ul class="nav nav-pills">
         <li class="active"><a data-toggle="tab" href="#patron_profile"><i class="icon-home icon-white"></i>Genel Bilgiler</a></li>
         <li><a data-toggle="tab" href="#users"><i class="icon-user icon-white"></i>Kullanıcılar</a></li>
         <li><a data-toggle="tab" href="#branches"><i class="icon-move icon-white"></i>Şubeler</a></li>
-      </ul>
+      </ul-->
       <div id="my-tab-content" class="tab-content">
         <%= render 'tab1', :patron => @patron %>
-        <%= render 'tab2', :patron => @patron %>
-        <%= render 'tab3', :patron => @patron %>
+        <%#= render 'tab2', :patron => @patron %>
+        <%#= render 'tab3', :patron => @patron %>
       </div>
     </div>
   </div>
-  <div id="rightbar">
-    <%= render 'news', :patron => @patron %>
-    <%= render 'numbers', :patron => @patron %>
-    <%= render 'followers', :patron => @patron %>
-  </div> 
+  <!--div id="rightbar">
+    <%#= render 'news', :patron => @patron %>
+    <%#= render 'numbers', :patron => @patron %>
+    <%#= render 'followers', :patron => @patron %>
+  </div-->
 </div>

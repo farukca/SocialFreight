@@ -2,6 +2,11 @@ class BranchesController < ApplicationController
 
   before_filter :require_login
 
+  def index
+    @branches = current_patron.branches
+    render :layout => "admin"
+  end
+
   def new
     @branch = current_patron.branches.build(params[:branch])
   end

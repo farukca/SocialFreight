@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  bankid: 1
+  rate_date: 2012-10-21
+  cur1: MyString
+  cur2: MyString
+  buying: 9.99
+  selling: 9.99
+  banknote_buying: 9.99
+  banknote_selling: 9.99
+  rate: 9.99
+  ctime: 1
+  bank_refid: 1
+
+two:
+  bankid: 1
+  rate_date: 2012-10-21
+  cur1: MyString
+  cur2: MyString
+  buying: 9.99
+  selling: 9.99
+  banknote_buying: 9.99
+  banknote_selling: 9.99
+  rate: 9.99
+  ctime: 1
+  bank_refid: 1

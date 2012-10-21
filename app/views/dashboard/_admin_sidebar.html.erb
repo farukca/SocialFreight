@@ -5,10 +5,12 @@
       <li><%= link_to patron_path(current_patron) do %><i class="icon-home"></i> Firma Bilgileri<% end %></li>
       <li><%= link_to users_path do %><i class="icon-user"></i> Kullanıcılar<% end %></li>
       <li><%= link_to branches_path do %><i class="icon-comment"></i> Şubeler<% end %></li>
+      <li><%= link_to currencies_path do %><i class="icon-bell"></i> Kurlar<% end %></li>
+      <li><%= link_to banks_path do %><i class="icon-gift"></i> Bankalar<% end %></li>
       <!--li><%#= link_to counters_path do %><i class="icon-user"></i> Sayaçlar<%# end %></li-->
       <li class="divider"></li>
-      <li><a href="#"><i class="icon-cog"></i> Settings</a></li>
-      <li><a href="#"><i class="icon-user"></i> Profil</a></li>
+      <li><%= link_to edit_user_path(current_user) do %><i class="icon-cog"></i> Settings<% end %></li>
+      <li><%= link_to person_path(current_user.person) do %><i class="icon-user"></i> Profil<% end %></li>
     </ul>
   </div>
 </div>

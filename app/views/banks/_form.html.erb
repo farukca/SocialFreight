@@ -1,0 +1,31 @@
+<div class="row-fluid">
+  <%= simple_form_for @bank, validate: true, html: { class: "form-horizontal" } do |f| %>
+    <%= f.error_notification %>
+    <%= f.error :base, :error_method => :to_sentence %>
+
+  <div class="pageBlock">
+    <%= render 'shared/form_header', message: "New Company" %>
+    <div class="row-fluid">
+      <fieldset>
+        <legend>Banka Bilgisi</legend>
+        <div class="row-fluid">
+          <div class="span6">
+            <%= f.input :name %>
+            <%= f.input :code %>
+            <%= f.input :currency, as: :select, :collection => Currency.all %>
+            <%= f.input :country, as: :select, :collection => Country.all %>
+          </div>
+          <div class="span6">
+            <%= f.input :service_code %>
+            <%= f.input :service_url %>
+            <%= f.input :response_type %>
+          </div>
+        </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  </div>
+  <% end %>
+</div>

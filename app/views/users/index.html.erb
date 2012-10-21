@@ -1,20 +1,37 @@
-<h1>Listing users</h1>
+<div id="users" class="row-fluid">
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Son İşlem Tarihi</th>
-    <th>Son Login Tarihi</th>
-    <th>Oluşturulma Tarihi</th>
-    <th></th>
-    <th></th>
-  </tr>
+  <div id="profile-header" class="profile-content row-fluid">
+    <div class="span2">
+      <%= image_tag("user.png") %>
+    </div>
+    <div class="span9">
+      <h5>Kullanıcılar</h5>
+    </div>
+  </div>
 
-  <%= render @users %>
+  <div class="row-fluid">
+    <div id="users_menu" class="span6">
+      <legend><%= t "Kullanıcı İşlemleri" %></legend>
+      <table class="table table-condensed">
+        <tr><td><%= link_to "Yeni Kullanıcı Oluştur", new_user_path %></td></tr>
+        <tr><td><%= link_to "Kullanıcı Şifresi Değiştir", new_password_reset_path %></td></tr>
+        <tr><td></td></tr>
+      </table>
+    </div>
 
-</table>
+    <div id="users_reports" class="span6">
+        <legend><%= t "Kullanıcı Raporları" %></legend>
+        <table class="table table-condensed">
+          <tr><td><%= link_to "Kullanıcı Listesi", new_search_path(model: "user") %></td></tr>      
+          <tr><td><%= link_to "Kullanıcı Kayıt Tarihi", new_search_path(model: "log") %></td></tr>
+          <tr><td></td></tr>
+        </table>
+    </div>
+  </div>
 
-<br />
+  <div id="users_list" class="row-fluid">
+    <legend>Kullanıcı Listesi</legend>
+    <%= render "users/related_list", objects: @users %>
+  </div>
 
-<%= link_to 'New user', new_user_path %>
+</div>

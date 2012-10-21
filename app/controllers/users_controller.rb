@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     
   def index
     @users = User.all
+    render :layout => "admin"
   end
 
   def new
@@ -50,6 +51,11 @@ class UsersController < ApplicationController
   def activation
     @user = User.find(params[:id])
     render :layout => 'guest' unless current_user
+  end
+
+  def edit
+    @user = User.find(params[:id])
+    render :layout => "admin"
   end
 
   def update
