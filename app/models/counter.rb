@@ -1,11 +1,12 @@
 class Counter < ActiveRecord::Base
 
-  belongs_to :patron
 
-  attr_accessible :counter_type, :operation, :patron_id, :prefix, :suffix, :period, :count
+  attr_accessible :counter_type, :operation, :prefix, :suffix, :period, :count
 
   validates_presence_of :counter_type
 
+  default_scope { where(patron_id: Patron.current_id) }
+  
   def get_reference
     strRef = ""
     strRef << self.prefix if self.prefix

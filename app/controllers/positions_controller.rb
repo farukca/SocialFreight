@@ -32,7 +32,7 @@ class PositionsController < ApplicationController
       #end
     end
 
-    @position = current_patron.positions.build(params[:position])
+    @position = Position.new(params[:position])
     @position.operation = operation
     
     @transport = @position.transports.build(:trans_method => @position.operation)
@@ -43,21 +43,17 @@ class PositionsController < ApplicationController
     end
   end
 
-  # GET /positions/1/edit
   def edit
     @position = Position.find(params[:id])
   end
 
   def create
-    @position = current_patron.positions.build(params[:position])
-    @position.patron_token = current_patron.token
+    @position = Position.new(params[:position])
     @position.user_id = current_user.id
 
     respond_to do |format|
       if @position.save
-        #format.html { redirect_to @position, notice: 'Position was successfully created.' }
-        #format.html { redirect_to @position, notice: 'Position was successfully created.' }
-        format.html { redirect_to new_position_transnode_path(@position, :fromwhere => 'position'), notice: 'Position was successfully created.' }
+        format.html { redirect_to @position, notice: 'Position was successfully created.' }
         format.json { render json: @position, status: :created, location: @position }
       else
         format.html { render action: "new" }
@@ -68,8 +64,7 @@ class PositionsController < ApplicationController
 
   def update
     @position = Position.find(params[:id])
-
-    respond_to do |format|
+espond_to do |format|
       if @position.update_attributes(params[:position])
         format.html { redirect_to @position, notice: 'Position was successfully updated.' }
         format.json { head :ok }

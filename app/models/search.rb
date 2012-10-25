@@ -2,6 +2,8 @@ class Search < ActiveRecord::Base
 
   attr_accessor :session_loading_ids
 
+  default_scope { where(patron_id: Patron.current_id) }
+  
   def positions
     @positions = find_positions
   end

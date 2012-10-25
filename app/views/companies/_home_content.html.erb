@@ -8,7 +8,7 @@
           <table class="table table-condensed">
             <tr><td><%= link_to t("companies.link.new_company"), new_company_path %></td></tr>
             <tr><td><%= link_to t("companies.link.new_contact"), new_contact_path %></td></tr>
-            <tr><td><%= link_to t("companies.link.new_case"), new_case_path %></td></tr>
+            <tr><td><%= link_to t("companies.link.new_event"), new_event_path %></td></tr>
           </table>
       </div>
     </div>
@@ -26,7 +26,7 @@
         <div id="my-tab-content" class="tab-content">
 
           <div id="company_list" class="tab-pane profile-content active">
-            <%= render partial: "small_list", locals: { objects: current_patron.companies } %>
+            <%= render partial: "small_list", locals: { objects: Company.limit(10).latest } %>
           </div>
 
           <!--div id="activity_list" class="tab-pane profile-content">
@@ -49,7 +49,7 @@
         <table class="table small-tables table-condensed">
           <tr><td><%= link_to t("companies.link.company_list"), companies_path %></td></tr>
           <tr><td><%= link_to t("companies.link.contact_list"), contacts_path %></td></tr>
-          <tr><td><%= link_to t("companies.link.case_list"), cases_path %></td></tr>
+          <tr><td><%= link_to t("companies.link.event_list"), events_path %></td></tr>
           <!--tr><td><%#= link_to "Alacaklı Tedarikçiler Listesi", companies_path %></td></tr>
           <tr><td><%#= link_to "Borçlu Müşteriler Listesi", companies_path %></td></tr-->
         </table>

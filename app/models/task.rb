@@ -1,11 +1,12 @@
 class Task < ActiveRecord::Base
 
-	belongs_to :user
+  belongs_to :user
 
-	attr_accessible :task_text, :due_date
+  attr_accessible :task_text, :due_date
 
-	validates :task_text, :presence => true, :length => { :minimum => 2, :maximum => 1000 }
-    validates :cruser_id, :presence => true
+  validates :task_text, presence: true, length: { minimum: 2, maximum: 1000 }
+  validates :cruser_id, presence: true
 
+  default_scope { where(patron_id: Patron.current_id) }
 
 end

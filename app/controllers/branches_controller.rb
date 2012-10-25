@@ -16,7 +16,7 @@ class BranchesController < ApplicationController
   end
 
   def create
-    @branch = current_patron.branches.build(params[:branch])
+    @branch = Branch.new(params[:branch])
 
     respond_to do |format|
       if @branch.save

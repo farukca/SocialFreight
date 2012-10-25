@@ -3,10 +3,10 @@ class Vehicle < ActiveRecord::Base
   extend FriendlyId
   include GeneratesNick
 
-  belongs_to :patron
-  friendly_id :code, use: :slugged, use: :scoped, scope: :patron
-  
-  belongs_to :country
+  #belongs_to :patron
+  friendly_id :code, use: :slugged, use: :scoped, scope: :patron_id
+
+  default_scope { where(patron_id: Patron.current_id) }
 
   def token_inputs
     { :id => code, :name => code }

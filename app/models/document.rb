@@ -1,7 +1,6 @@
 class Document < ActiveRecord::Base
 
   belongs_to :user
-  belongs_to :patron
   belongs_to :documented, polymorphic: true
 
   mount_uploader :document_file, DocumentUploader
@@ -12,6 +11,7 @@ class Document < ActiveRecord::Base
   validates_presence_of :document_date
   validates_presence_of :document_type
   validates_presence_of :user_id
-  validates_presence_of :patron_id
   
+  default_scope { where(patron_id: Patron.current_id) }
+
 end

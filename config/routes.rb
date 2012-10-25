@@ -1,7 +1,5 @@
 Socialfreight::Application.routes.draw do
 
-  resources :banks
-
   get "logout" => "sessions#destroy", :as => "logout"
   get "login"  => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
@@ -29,7 +27,7 @@ Socialfreight::Application.routes.draw do
   resources :companies
   resources :partners
   resources :contacts
-  resources :cases
+  resources :events
   resources :finunits
   resources :findocs
   resources :invoitems
@@ -72,6 +70,7 @@ Socialfreight::Application.routes.draw do
   resources :countries
   resources :cities
   resources :currencies
+  resources :banks
   resources :feedbacks
   resources :posts
   resources :activities

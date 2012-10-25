@@ -9,12 +9,12 @@ class CompaniesController < ApplicationController
   def index
     if params[:q]
        q = "%#{params[:q]}%"
-       @companies = current_patron.companies.where("lower(name) like ?", q).order(:name).limit(10)
+       @companies = Company.where("lower(name) like ?", q).order(:name).limit(10)
     else
        if params[:id]
-         @companies = current_patron.companies.find_all_by_id(params[:id])
+         @companies = Company.find_all_by_id(params[:id])
        else
-         @companies = current_patron.companies.latest.limit(10)
+         @companies = Company.latest.limit(10)
        end
     end
 
@@ -39,7 +39,7 @@ class CompaniesController < ApplicationController
   end
 
   def new
-    @company = current_patron.companies.build(params[:company])
+    @company = Company.new(params[:company])
     @company.contacts.build(user_id: current_user.id)
     
     respond_to do |format|
@@ -57,8 +57,7 @@ class CompaniesController < ApplicationController
   end
 
   def create
-    @company = current_patron.companies.build(params[:company])
-    @company.patron_token = current_patron.token
+    @company = Company.new(params[:company])
     @company.user_id = current_user.id
     #params[:company][:contacts_attributes][0][:user_id] = current_user.id
     

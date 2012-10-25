@@ -12,6 +12,8 @@ class Contact < ActiveRecord::Base
                   :jobtitle, :department, :fax, :tel2, :des, :birthdate
 
 
+  default_scope { where(patron_id: Patron.current_id) }
+
   def to_s
     "#{salutation}. #{name} #{surname}"
   end

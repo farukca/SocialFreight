@@ -17,9 +17,9 @@ class Branch < ActiveRecord::Base
 
   attr_accessible :name, :tel, :fax, :postcode, :district, :address, :city_id, :country_id, :status, :patron_id
 
-  validates_presence_of :name#, :message => I18n.t('patrons.errors.title.cant_be_blank')
-  validates_presence_of :patron#, :message => I18n.t('patrons.errors.title.cant_be_blank')
-  validates_length_of   :name, :maximum => 100#, :message => I18n.t('tasks.errors.name.too_long')
+  validates :name, presence: { message: I18n.t('defaults.inputerror.cant_be_blank') }, length: { maximum: 100}
+
+  default_scope { where(patron_id: Patron.current_id) }
 
   before_create :set_initials
 

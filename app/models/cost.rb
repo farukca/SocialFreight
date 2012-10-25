@@ -1,7 +1,6 @@
 class Cost < ActiveRecord::Base
 
   belongs_to :owner, class_name: "Person", foreign_key: "owner_id"
-  belongs_to :patron
   belongs_to :costable, polymorphic: true
   belongs_to :country
   belongs_to :city
@@ -20,4 +19,6 @@ class Cost < ActiveRecord::Base
   validates_presence_of :user_id
   validates_presence_of :patron_id
 
+  default_scope { where(patron_id: Patron.current_id) }
+  
 end

@@ -8,56 +8,48 @@
   <%= javascript_include_tag "application", :debug => Rails.env.development? %>
   <%= csrf_meta_tags %>
   <%= yield :head %>
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-31085255-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
 </head>
 <body data-spy="scroll">
-<%= render 'layouts/topbar' %>
+  <%= render 'layouts/topbar' %>
 
-<div class="container-fluid">
-  <%= render 'layouts/navigator' %>
-
-  <div id="wrapper">
-    <div id="messages">
-      <% flash.each do |name, msg| %>
-        <a class="close" data-dismiss="alert" href="#">&times;</a>
-        <%= content_tag :div, msg, :id => "flash_#{name}", :class => "alert alert-#{name}" %>
-      <% end %>
-    </div>
-    <table class="outer" width="100%" id="bodyTable" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td id="sidebarCell" class="sidebarCell">
-          <%= content_for?(:sidebar) ? yield(:sidebar) : render(:partial => 'shared/sidebar')%>
-        </td>
-        <td class="oRight" id="bodyCell" style="vertical-align:top">
+  <div class="container-fluid">
+    <%= render 'layouts/navigator' %>
+    <div id="wrapper" class="row-fluid">
+      <div id="messages" class="row-fluid">
+        <% flash.each do |name, msg| %>
+          <a class="close" data-dismiss="alert" href="#">&times;</a>
+          <%= content_tag :div, msg, :id => "flash_#{name}", :class => "alert alert-#{name}" %>
+        <% end %>
+      </div>
+      <div class="row-fluid">
+        <div id="sidebarCell" class="span2 sidebarCell">
+          <%= render :partial => 'shared/sidebar' %>
+        </div>
+        <div id="bodyCell" class="span10 oRight">
           <%= yield %>
-        </td>
-        <td id="socialCell" class="sidebarCell slidingDiv">
-          <%= render "shared/socialbar" %>
-        </td>
-      </tr>
-    </table>
+        </div>
+      </div>
+    </div>
+
   </div>
-
-</div>
 <%#= link_to (image_tag "feedback-button.png", :alt => "Let us know what you think"), new_feedback_path, :class => "Feedback", :title => "Let us know what you think" %>
-<footer>
-<%= yield :scripts %>
-<script type="text/javascript">
-  (function() {
-    document.getElementById('<%= current_tab %>').classList.add('active');
-  })();
-</script>
-<!--script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-31085255-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script-->
-</footer>
+  <footer>
+    <script type="text/javascript">
+      (function() {jQuery(function() {$("#<%= current_tab.to_s %>").addClass("active");}})();
+    </script>
+    <%= yield :scripts %>
+  </footer>
 </body>
 </html>

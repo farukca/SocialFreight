@@ -15,6 +15,8 @@ class Departure < ActiveRecord::Base
 
   validate :loading_id, :presence => true
 
+  default_scope { where(patron_id: Patron.current_id) }
+  
   def gmaps4rails_address
     "#{self.address}, #{self.district}, #{self.city.name}, #{self.country.name}"
   end

@@ -2,33 +2,21 @@ class Activity < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :patron
-  belongs_to :target, :polymorphic => true
+  belongs_to :target, polymorphic: true
 
-  attr_accessible :target_name, :target, :patron_id, :patron_token, :user_id
+  attr_accessible :target_name, :target, :user_id
 
-  validates_presence_of :user_id, :patron_id, :target_name, :target, :patron_token
+  validates_presence_of :user_id, :patron_id, :target_name, :target
+
+  default_scope { where(patron_id: Patron.current_id) }
 
   scope :latests, order("created_at desc")
 
   after_create :create_comment
 
-  def self.log(user, target, target_name, patron_id, patron_token)
-    patron_id ||= user.patron_id
-    patron_token ||= user.patron.token
-
-    activity = Activity.new(:target => target, :user_id => user.id, :patron_id => patron_id, :patron_token => patron_token, :target_name => target_name)
-
-    #activity.created_at = case action
-    #  when 'create'
-    #    target.try(:created_at)
-    #  when 'edit'
-    #    target.try(:updated_at)
-    #  when 'delete'
-    #    target.try(:deleted_at) || target.try(:updated_at)
-    #  end || target.try(:created_at) || Time.now
-
-    activity.save
-    
+  def self.log(user_id, target, branch_id)
+    activity = Activity.new(target: target, user_id: user_id, target_name: target.to_s, branch_id: branch_id)
+    activity.save!
     activity
   end
 
@@ -42,6 +30,6 @@ class Activity < ActiveRecord::Base
 
   private
   def create_comment
-    Comment.log(user, target, target_name, patron_id, patron_token, 'S')
+    Comment.log(user_id, target, target.to_s, 'S')
   end
 end

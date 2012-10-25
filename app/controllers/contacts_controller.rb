@@ -26,7 +26,7 @@ class ContactsController < ApplicationController
 
   def create
     @contact = current_user.contacts.build(params[:contact])
-    @contact.patron_id    = current_patron.id
+    #@contact.patron_id    = current_patron.id
     @contact.patron_token = current_patron.token
     
     respond_to do |format|

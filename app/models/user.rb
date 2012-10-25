@@ -21,7 +21,6 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :posts
   has_many :contacts
-  has_many :cases
   has_many :tasks
   has_many :journals, as: :journaled, dependent: :destroy
   has_many :documents
@@ -79,11 +78,11 @@ class User < ActiveRecord::Base
     self.password_confirmation = "9516284"
   end
 
-  def create_activity(target, target_name, patron_id, patron_token)
-    #creator_id ||= target.user_id
-    target_name ||= target.to_s
-    Activity.log(self, target, target_name, patron_id, patron_token)
-  end
+  #def create_activity(target, target_name, patron_id, patron_token)
+  #  #creator_id ||= target.user_id
+  #  target_name ||= target.to_s
+  #  Activity.log(self, target, target_name, patron_id, patron_token)
+  #end
 
   def social_posts
     @social_posts = Post.where("user_id IN (?) OR user_id = ? ", self.followees(User), self.id).limit(10).order("created_at desc")

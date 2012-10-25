@@ -2,10 +2,8 @@
   <div class="feedline">
     <a href="#" class="img-load"><%= image_tag user.avatar_url(:small) %></a>
     <%#= link_to user, person_path(user.person) %>
-    <span>
-      <div class="rightside">
-        <%= render 'shared/follow_button', object: user %>
-      </div>
+    <span class="pull-right">
+      <%= render 'shared/follow_button', object: user %>
     </span>
   </div>
 </li>

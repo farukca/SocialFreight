@@ -6,9 +6,9 @@ class Patron < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: :slugged
   serialize  :operations
-  belongs_to :city
-  belongs_to :state
-  belongs_to :country
+  #belongs_to :city
+  #belongs_to :state
+  #belongs_to :country
  
   mount_uploader :logo, LogoUploader
 
@@ -21,22 +21,30 @@ class Patron < ActiveRecord::Base
   has_many :users
   accepts_nested_attributes_for :users, :reject_if => lambda { |a| a[:email].blank? }, :allow_destroy => true  
   
-  has_many :people
-  has_many :companies
+  #has_many :people
+  #has_many :companies
   has_many :positions
   has_many :loadings
-  has_many :activities
-  has_many :journals, as: :journaled, dependent: :destroy
-  has_many :documents
-  has_many :costs
-  has_many :invoitems
-  has_many :payoffs
+  #has_many :activities
+  #has_many :journals, as: :journaled, dependent: :destroy
+  #has_many :documents
+  #has_many :costs
+  #has_many :invoitems
+  #has_many :payoffs
   #has_and_belongs_to_many :operations
   
   attr_accessible :title, :website, :tel, :fax, :postcode, :district, :address, :city_id, :country_id, :status, :saler_id, 
                   :email, :operations, :contact_name, :contact_surname, :time_zone, :language, :logo, :remove_logo,
                   :vehicle_owner, :depot_owner, :patron_type, :iata_code, :fmc_code,
                   :counters_attributes, :users_attributes, :branches_attributes
+
+  def self.current_id=(id)
+    Thread.current[:patron_id] = id
+  end
+
+  def self.current_id
+    Thread.current[:patron_id]
+  end
 
   before_create :set_initials
   after_create  :create_head_office, :create_patron_user #, :create_company
@@ -52,8 +60,9 @@ class Patron < ActiveRecord::Base
   validates_length_of   :title, :maximum => 255#, :message => I18n.t('tasks.errors.name.too_long')
   validates_length_of   :tel, :maximum => 12#, :message => I18n.t('tasks.errors.name.too_long')
 
-  def generate_counter(ctype, operation, direction)
-    counter = self.counters.find_or_initialize_by_operation_and_counter_type(operation, ctype)
+  def self.generate_counter(ctype, operation, direction)
+    patron = Patron.find(Patron.current_id)
+    counter = patron.counters.find_or_initialize_by_operation_and_counter_type(operation, ctype)
     counter.increment(:count, 1)
     counter.save!
     return counter.get_reference
@@ -65,7 +74,8 @@ class Patron < ActiveRecord::Base
     Activity.log(self, target, action, creator_id, action_text, user_name, self.token)
   end
 
-  def self.journal_record(patron, user, branch, team, journal_model, unit, amount)
+  def self.journal_record(patron_id, user, branch, team, journal_model, unit, amount)
+    patron = Patron.find(Patron.current_id)
     Journal.log(patron, journal_model, patron.id, patron.token, unit, amount)
 
     Journal.log(user, journal_model, patron.id, patron.token, unit, amount) if user

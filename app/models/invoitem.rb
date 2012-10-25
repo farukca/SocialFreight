@@ -1,7 +1,6 @@
 class Invoitem < ActiveRecord::Base
 
   belongs_to :user
-  belongs_to :patron
   belongs_to :company
   belongs_to :invoitem_owner, polymorphic: true
 
@@ -19,5 +18,6 @@ class Invoitem < ActiveRecord::Base
   validates_presence_of :credit_debit
   validates_presence_of :price_curr
   validates_presence_of :local_curr
-
+  
+  default_scope { where(patron_id: Patron.current_id) }
 end

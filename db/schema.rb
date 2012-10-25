@@ -11,20 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121021191541) do
+ActiveRecord::Schema.define(:version => 20121024083408) do
 
   create_table "activities", :force => true do |t|
-    t.integer  "user_id",                    :null => false
-    t.string   "target_type",  :limit => 40
+    t.integer  "user_id",                                  :null => false
+    t.string   "target_type", :limit => 40
     t.integer  "target_id"
-    t.string   "target_name",  :limit => 60
-    t.integer  "patron_id",                  :null => false
-    t.string   "patron_token", :limit => 20, :null => false
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.string   "target_name", :limit => 60
+    t.integer  "patron_id",                                :null => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+    t.integer  "branch_id",                 :default => 0
   end
 
-  add_index "activities", ["user_id", "patron_id", "patron_token"], :name => "index_activities_on_user_id_and_patron_id_and_patron_token"
+  add_index "activities", ["branch_id", "patron_id"], :name => "index_activities_on_branch_id_and_patron_id"
+  add_index "activities", ["user_id", "patron_id"], :name => "index_activities_on_user_id_and_patron_id"
 
   create_table "arrivals", :force => true do |t|
     t.integer  "loading_id"
@@ -57,10 +58,13 @@ ActiveRecord::Schema.define(:version => 20121021191541) do
     t.string   "unload_place_code", :limit => 20
     t.integer  "creater_id",                       :default => 0
     t.integer  "updater_id",                       :default => 0
+    t.integer  "arrivals",                                            :null => false
+    t.integer  "patron_id",                                           :null => false
   end
 
   add_index "arrivals", ["city_id", "country_id"], :name => "index_arrivals_on_city_id_and_country_id"
   add_index "arrivals", ["loading_id"], :name => "index_arrivals_on_loading_id"
+  add_index "arrivals", ["patron_id"], :name => "index_arrivals_on_patron_id"
 
   create_table "banks", :force => true do |t|
     t.string   "name",          :limit => 40, :null => false
@@ -81,28 +85,27 @@ ActiveRecord::Schema.define(:version => 20121021191541) do
   end
 
   create_table "branches", :force => true do |t|
-    t.string   "name",         :limit => 40,                  :null => false
-    t.string   "tel",          :limit => 15
-    t.string   "fax",          :limit => 15
-    t.string   "email",        :limit => 40
-    t.string   "postcode",     :limit => 5
-    t.string   "address",      :limit => 80
-    t.string   "district",     :limit => 40
+    t.string   "name",       :limit => 40,                  :null => false
+    t.string   "tel",        :limit => 15
+    t.string   "fax",        :limit => 15
+    t.string   "email",      :limit => 40
+    t.string   "postcode",   :limit => 5
+    t.string   "address",    :limit => 80
+    t.string   "district",   :limit => 40
     t.integer  "city_id"
     t.integer  "state_id"
-    t.string   "country_id",   :limit => 2
-    t.string   "status",       :limit => 1,  :default => "A"
-    t.integer  "patron_id",                                   :null => false
-    t.string   "patron_token", :limit => 20,                  :null => false
+    t.string   "country_id", :limit => 2
+    t.string   "status",     :limit => 1,  :default => "A"
+    t.integer  "patron_id",                                 :null => false
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps"
-    t.string   "slug",         :limit => 40
-    t.datetime "created_at",                                  :null => false
-    t.datetime "updated_at",                                  :null => false
+    t.string   "slug",       :limit => 40
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
   end
 
-  add_index "branches", ["patron_id", "patron_token"], :name => "index_branches_on_patron_id_and_patron_token"
+  add_index "branches", ["patron_id"], :name => "index_branches_on_patron_id"
 
   create_table "cases", :force => true do |t|
     t.integer  "company_id",                 :null => false
@@ -139,13 +142,12 @@ ActiveRecord::Schema.define(:version => 20121021191541) do
     t.integer  "commentable_id"
     t.string   "commenter",        :limit => 1,   :default => "U"
     t.integer  "patron_id",                                        :null => false
-    t.string   "patron_token",     :limit => 20,                   :null => false
     t.datetime "created_at",                                       :null => false
     t.datetime "updated_at",                                       :null => false
   end
 
-  add_index "comments", ["commentable_type", "commentable_id"], :name => "index_comments_on_commentable_type_and_commentable_id"
-  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+  add_index "comments", ["commentable_type", "commentable_id", "patron_id"], :name => "index_on_commentable_patron"
+  add_index "comments", ["user_id", "patron_id"], :name => "index_comments_on_user_id_and_patron_id"
 
   create_table "companies", :force => true do |t|
     t.string   "name",           :limit => 50,                   :null => false
@@ -168,7 +170,6 @@ ActiveRecord::Schema.define(:version => 20121021191541) do
     t.string   "status",         :limit => 1,   :default => "A"
     t.integer  "branch_id"
     t.integer  "patron_id",                                      :null => false
-    t.string   "patron_token",   :limit => 20,                   :null => false
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps"
@@ -188,40 +189,38 @@ ActiveRecord::Schema.define(:version => 20121021191541) do
     t.string   "city",           :limit => 40
     t.string   "state",          :limit => 40
     t.integer  "contacts_count",                :default => 0
-    t.integer  "cases_count",                   :default => 0
+    t.integer  "events_count",                  :default => 0
     t.integer  "partners_count",                :default => 0
   end
 
-  add_index "companies", ["name", "patron_id", "patron_token"], :name => "index_companies_on_name_and_patron_id_and_patron_token", :unique => true
-  add_index "companies", ["patron_id", "patron_token"], :name => "index_companies_on_patron_id_and_patron_token"
-  add_index "companies", ["patron_token", "patron_id"], :name => "index_companies_on_lower_name"
+  add_index "companies", ["patron_id"], :name => "index_companies_on_patron_id"
 
   create_table "contacts", :force => true do |t|
-    t.string   "name",         :limit => 30
-    t.string   "surname",      :limit => 30, :null => false
+    t.string   "name",       :limit => 30
+    t.string   "surname",    :limit => 30, :null => false
     t.integer  "company_id"
-    t.integer  "user_id",                    :null => false
-    t.string   "salutation",   :limit => 5
-    t.string   "email",        :limit => 90
-    t.string   "tel",          :limit => 15
-    t.string   "gsm",          :limit => 15
-    t.string   "jobtitle",     :limit => 40
-    t.string   "department",   :limit => 60
-    t.string   "tel2",         :limit => 20
-    t.string   "fax",          :limit => 20
+    t.integer  "user_id",                  :null => false
+    t.string   "salutation", :limit => 5
+    t.string   "email",      :limit => 90
+    t.string   "tel",        :limit => 15
+    t.string   "gsm",        :limit => 15
+    t.string   "jobtitle",   :limit => 40
+    t.string   "department", :limit => 60
+    t.string   "tel2",       :limit => 20
+    t.string   "fax",        :limit => 20
     t.date     "birthdate"
     t.integer  "patron_id"
-    t.string   "patron_token", :limit => 20
-    t.string   "twitter",      :limit => 50
-    t.string   "facebook",     :limit => 50
-    t.string   "linkedin",     :limit => 50
+    t.string   "twitter",    :limit => 50
+    t.string   "facebook",   :limit => 50
+    t.string   "linkedin",   :limit => 50
     t.string   "des"
-    t.string   "slug",         :limit => 60
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.string   "slug",       :limit => 60
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
   add_index "contacts", ["company_id", "user_id"], :name => "index_contacts_on_company_id_and_user_id"
+  add_index "contacts", ["patron_id"], :name => "index_contacts_on_patron_id"
 
   create_table "containers", :force => true do |t|
     t.integer  "name",                                           :null => false
@@ -234,10 +233,12 @@ ActiveRecord::Schema.define(:version => 20121021191541) do
     t.integer  "loading_id",                                     :null => false
     t.datetime "created_at",                                     :null => false
     t.datetime "updated_at",                                     :null => false
+    t.integer  "patron_id",                                      :null => false
   end
 
   add_index "containers", ["loading_id"], :name => "index_containers_on_loading_id"
   add_index "containers", ["name", "loading_id"], :name => "index_containers_on_name_and_loading_id", :unique => true
+  add_index "containers", ["patron_id"], :name => "index_containers_on_patron_id"
 
   create_table "costs", :force => true do |t|
     t.string   "cost_source",        :limit => 50,                    :null => false
@@ -269,7 +270,7 @@ ActiveRecord::Schema.define(:version => 20121021191541) do
     t.string   "description"
     t.string   "cost_file"
     t.integer  "user_id",                                             :null => false
-    t.integer  "patron_id"
+    t.integer  "patron_id",                                           :null => false
     t.datetime "created_at",                                          :null => false
     t.datetime "updated_at",                                          :null => false
     t.integer  "payoff_id"
@@ -277,6 +278,7 @@ ActiveRecord::Schema.define(:version => 20121021191541) do
 
   add_index "costs", ["costable_type", "costable_id"], :name => "index_costable_costs"
   add_index "costs", ["owner_id"], :name => "index_owners_costs"
+  add_index "costs", ["patron_id"], :name => "index_costs_on_patron_id"
   add_index "costs", ["payoff_id"], :name => "index_payoffs_costs"
   add_index "costs", ["truck", "vehicle"], :name => "index_trucks_costs"
 
@@ -362,10 +364,12 @@ ActiveRecord::Schema.define(:version => 20121021191541) do
     t.string   "load_place_code",  :limit => 20
     t.integer  "creater_id",                      :default => 0
     t.integer  "updater_id",                      :default => 0
+    t.integer  "patron_id",                                          :null => false
   end
 
   add_index "departures", ["city_id", "country_id"], :name => "index_departures_on_city_id_and_country_id"
   add_index "departures", ["loading_id"], :name => "index_departures_on_loading_id"
+  add_index "departures", ["patron_id"], :name => "index_departures_on_patron_id"
 
   create_table "documents", :force => true do |t|
     t.string   "document_type",   :limit => 50,                :null => false
@@ -386,6 +390,20 @@ ActiveRecord::Schema.define(:version => 20121021191541) do
     t.string   "document_file"
     t.datetime "created_at",                                   :null => false
     t.datetime "updated_at",                                   :null => false
+  end
+
+  create_table "events", :force => true do |t|
+    t.integer  "company_id",                  :null => false
+    t.date     "event_date",                  :null => false
+    t.string   "event_type",   :limit => 40,  :null => false
+    t.string   "event_source", :limit => 40
+    t.string   "source_url",   :limit => 100
+    t.string   "event_status", :limit => 10
+    t.text     "description"
+    t.integer  "user_id",                     :null => false
+    t.integer  "patron_id",                   :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
   end
 
   create_table "feedbacks", :force => true do |t|
@@ -512,11 +530,15 @@ ActiveRecord::Schema.define(:version => 20121021191541) do
     t.integer  "user_id",                                             :null => false
     t.boolean  "approved"
     t.integer  "approver_id"
-    t.integer  "patron_id"
+    t.integer  "patron_id",                                           :null => false
     t.text     "description"
     t.datetime "created_at",                                          :null => false
     t.datetime "updated_at",                                          :null => false
   end
+
+  add_index "invoitems", ["company_id", "patron_id"], :name => "index_invoitems_on_company_id_and_patron_id"
+  add_index "invoitems", ["invoice_id", "patron_id"], :name => "index_invoitems_on_invoice_id_and_patron_id"
+  add_index "invoitems", ["invoitem_owner_type", "invoitem_owner_id", "patron_id"], :name => "ixdex_on_invoitem_owner_patron"
 
   create_table "journals", :force => true do |t|
     t.date    "process_date",                                  :null => false
@@ -591,7 +613,6 @@ ActiveRecord::Schema.define(:version => 20121021191541) do
     t.float    "ladameter"
     t.float    "price_wg"
     t.integer  "patron_id",                                     :null => false
-    t.string   "patron_token",  :limit => 20,                   :null => false
     t.string   "commodity",     :limit => 500
     t.string   "notes",         :limit => 500
     t.string   "load_coun",     :limit => 2
@@ -611,11 +632,12 @@ ActiveRecord::Schema.define(:version => 20121021191541) do
     t.date     "waybill_date"
   end
 
+  add_index "loadings", ["branch_id", "patron_id"], :name => "index_loadings_on_branch_id_and_patron_id"
   add_index "loadings", ["company_id", "load_coun", "unload_coun"], :name => "index_loadings_on_company_id_and_load_coun_and_unload_coun"
   add_index "loadings", ["operation", "direction"], :name => "index_loadings_on_operation_and_direction"
-  add_index "loadings", ["patron_id", "patron_token", "branch_id"], :name => "index_loadings_on_patron_id_and_patron_token_and_branch_id"
   add_index "loadings", ["position_id"], :name => "index_loadings_on_position_id"
-  add_index "loadings", ["reference", "patron_id", "patron_token"], :name => "index_loadings_on_reference_and_patron_id_and_patron_token", :unique => true
+  add_index "loadings", ["reference", "patron_id"], :name => "index_loadings_on_reference_and_patron_id"
+  add_index "loadings", ["user_id", "patron_id"], :name => "index_loadings_on_user_id_and_patron_id"
 
   create_table "mentions", :force => true do |t|
     t.string   "mentioner_type"
@@ -630,13 +652,14 @@ ActiveRecord::Schema.define(:version => 20121021191541) do
 
   create_table "nicks", :force => true do |t|
     t.string   "name",           :limit => 30
-    t.integer  "patron_id"
+    t.integer  "patron_id",                    :null => false
     t.integer  "nicknamed_id"
     t.string   "nicknamed_type"
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
   end
 
+  add_index "nicks", ["nicknamed_type", "nicknamed_id", "patron_id"], :name => "index_nicks_on_nicknamed_type_and_nicknamed_id_and_patron_id"
   add_index "nicks", ["patron_id", "name"], :name => "unique_nick_name", :unique => true
 
   create_table "operations", :id => false, :force => true do |t|
@@ -665,9 +688,11 @@ ActiveRecord::Schema.define(:version => 20121021191541) do
     t.integer  "packed_id"
     t.string   "packed_type"
     t.string   "container_no",  :limit => 40
+    t.integer  "patron_id",                                     :null => false
   end
 
   add_index "packages", ["packed_type", "packed_id"], :name => "index_packages_parent"
+  add_index "packages", ["patron_id"], :name => "index_packages_on_patron_id"
 
   create_table "partners", :force => true do |t|
     t.integer  "company_id",                 :null => false
@@ -677,6 +702,7 @@ ActiveRecord::Schema.define(:version => 20121021191541) do
     t.string   "notes"
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
+    t.integer  "patron_id"
   end
 
   add_index "partners", ["company_id", "partner_id", "partner_type"], :name => "index_company_partner_unique", :unique => true
@@ -872,33 +898,32 @@ ActiveRecord::Schema.define(:version => 20121021191541) do
     t.string   "slug",            :limit => 40
     t.string   "notes",           :limit => 500
     t.integer  "patron_id",                                       :null => false
-    t.string   "patron_token",    :limit => 20,                   :null => false
     t.datetime "created_at",                                      :null => false
     t.datetime "updated_at",                                      :null => false
   end
 
+  add_index "positions", ["branch_id", "patron_id"], :name => "index_positions_on_branch_id_and_patron_id"
   add_index "positions", ["operation", "direction"], :name => "index_positions_on_operation_and_direction"
-  add_index "positions", ["patron_id", "patron_token", "branch_id"], :name => "index_positions_on_patron_id_and_patron_token_and_branch_id"
-  add_index "positions", ["reference", "patron_id", "patron_token"], :name => "index_positions_on_reference_and_patron_id_and_patron_token", :unique => true
+  add_index "positions", ["reference", "patron_id"], :name => "index_positions_on_reference_and_patron_id"
+  add_index "positions", ["user_id", "patron_id"], :name => "index_positions_on_user_id_and_patron_id"
 
   create_table "posts", :force => true do |t|
-    t.integer  "user_id",                                        :null => false
-    t.string   "message",      :limit => 300
-    t.string   "target_type",  :limit => 40
+    t.integer  "user_id",                                       :null => false
+    t.string   "message",     :limit => 300
+    t.string   "target_type", :limit => 40
     t.integer  "target_id"
-    t.string   "target_name",  :limit => 40
-    t.string   "post_type",    :limit => 2
-    t.boolean  "is_private",                  :default => false
-    t.boolean  "is_syspost",                  :default => false
-    t.integer  "patron_id",                                      :null => false
-    t.string   "patron_token", :limit => 20,                     :null => false
-    t.datetime "created_at",                                     :null => false
-    t.datetime "updated_at",                                     :null => false
+    t.string   "target_name", :limit => 40
+    t.string   "post_type",   :limit => 2
+    t.boolean  "is_private",                 :default => false
+    t.boolean  "is_syspost",                 :default => false
+    t.integer  "patron_id",                                     :null => false
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
   end
 
-  add_index "posts", ["patron_id", "patron_token"], :name => "index_posts_on_patron_id_and_patron_token"
-  add_index "posts", ["target_type", "target_id"], :name => "index_posts_on_target_type_and_target_id"
-  add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
+  add_index "posts", ["patron_id"], :name => "index_posts_on_patron_id"
+  add_index "posts", ["target_type", "target_id", "patron_id"], :name => "index_posts_on_target_type_and_target_id_and_patron_id"
+  add_index "posts", ["user_id", "patron_id"], :name => "index_posts_on_user_id_and_patron_id"
 
   create_table "queue_classic_jobs", :force => true do |t|
     t.string   "q_name"
@@ -927,12 +952,14 @@ ActiveRecord::Schema.define(:version => 20121021191541) do
     t.integer  "company_id",                                       :null => false
     t.decimal  "rent_price"
     t.string   "price_curr",      :limit => 1
-    t.integer  "patron_id"
+    t.integer  "patron_id",                                        :null => false
     t.integer  "user_id"
     t.string   "notes"
     t.datetime "created_at",                                       :null => false
     t.datetime "updated_at",                                       :null => false
   end
+
+  add_index "rentals", ["vehicle", "patron_id"], :name => "index_rentals_on_vehicle_and_patron_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -968,12 +995,11 @@ ActiveRecord::Schema.define(:version => 20121021191541) do
     t.integer  "city_id"
     t.boolean  "searched",                     :default => true
     t.integer  "patron_id",                                      :null => false
-    t.string   "patron_token",   :limit => 20,                   :null => false
     t.datetime "created_at",                                     :null => false
     t.datetime "updated_at",                                     :null => false
   end
 
-  add_index "searches", ["patron_id", "patron_token"], :name => "index_searches_on_patron_id_and_patron_token"
+  add_index "searches", ["patron_id"], :name => "index_searches_on_patron_id"
 
   create_table "states", :force => true do |t|
     t.string  "name",       :limit => 40, :null => false
@@ -1007,15 +1033,14 @@ ActiveRecord::Schema.define(:version => 20121021191541) do
   add_index "tasks", ["user_id", "status", "patron_id"], :name => "user_tasks"
 
   create_table "teams", :force => true do |t|
-    t.string   "name",         :limit => 40
-    t.integer  "patron_id",                  :null => false
-    t.string   "patron_token", :limit => 20, :null => false
-    t.string   "slug",         :limit => 40
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.string   "name",       :limit => 40
+    t.integer  "patron_id",                :null => false
+    t.string   "slug",       :limit => 40
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
-  add_index "teams", ["patron_id", "patron_token"], :name => "index_teams_on_patron_id_and_patron_token"
+  add_index "teams", ["patron_id"], :name => "index_teams_on_patron_id"
 
   create_table "transnodes", :force => true do |t|
     t.integer  "position_id",                                     :null => false
@@ -1082,7 +1107,12 @@ ActiveRecord::Schema.define(:version => 20121021191541) do
     t.integer  "user_id",                                           :null => false
     t.string   "dep_place_type", :limit => 1
     t.string   "arv_place_type", :limit => 1
+    t.integer  "transports",                                        :null => false
+    t.integer  "patron_id",                                         :null => false
   end
+
+  add_index "transports", ["position_id", "patron_id"], :name => "index_transports_on_position_id_and_patron_id"
+  add_index "transports", ["vessel", "voyage", "patron_id"], :name => "index_transports_on_vessel_and_voyage_and_patron_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                           :limit => 40,                                           :null => false
@@ -1139,7 +1169,7 @@ ActiveRecord::Schema.define(:version => 20121021191541) do
     t.string   "brand",          :limit => 20
     t.string   "model",          :limit => 50
     t.integer  "model_year"
-    t.integer  "patron_id"
+    t.integer  "patron_id",                                      :null => false
     t.string   "owner",          :limit => 50
     t.decimal  "vehicle_price",                 :default => 0.0
     t.string   "price_curr",     :limit => 5

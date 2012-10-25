@@ -1,0 +1,15 @@
+<%= table_for objects, table_html: { class: "table table-condensed table-striped table-fixed"}, 
+              header_row_html: { class: "headerRow" },
+              row_html: { class: "dataRow" } do |table| %>
+  <% table.column :action, column_html: { class: "actionCol", scope: "col" } do |event| %>
+    <%= link_to "Güncelle", edit_event_path(event) %> 
+    | 
+    <%= link_to "Sil", event, method: :delete, data: {confirm: "Are you sure?"} %>              
+  <% end %>
+  <% table.column :event_type, column_html: { scope: "col" } %>
+  <% table.column :event_date, column_html: { scope: "col" } %>
+  <% table.column :event_status, column_html: { scope: "col" } %>
+  <% table.column :event_source, column_html: { scope: "col" } %>
+  <% table.column :source_url, column_html: { scope: "col" } %>
+
+<% end %>

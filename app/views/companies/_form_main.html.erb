@@ -4,7 +4,7 @@
     <div class="row-fluid">
     <div class="span6">
       <%= f.input :name, label: t("companies.label.name") %>
-      <%= f.input :parent_id, as: :hidden, label: t("companies.label.parent_company"), input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-selected" => @company.parent_id ? @company.parent.name : "", "data-placeholder" => "Grup Firması Seçiniz."} %>
+      <%= f.input :parent_id, as: :hidden, label: t("companies.label.parent_company"), input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => "Grup Firması Seçiniz."} %>
       <%= f.input :branch_id, as: :select, collection: current_patron.branches, include_blank: false, selected: current_user.branch_id, label: t("defaults.label.branch") %>
     </div>
     <div class="span6">

@@ -4,8 +4,9 @@ class Loading < ActiveRecord::Base
   acts_as_likeable
   extend FriendlyId
   include GeneratesNick
+  include GeneratesActivity
 
-  belongs_to :patron  
+  belongs_to :patron
   friendly_id :reference, use: :slugged, use: :scoped, scope: :patron
   
   belongs_to :position
@@ -41,15 +42,15 @@ class Loading < ActiveRecord::Base
                   :volume, :ladameter, :price_wg, :commodity, :notes, :load_coun, :unload_coun, :status, :stage, :stage_date,
                   :report_date, :sender_id, :consignee_id, :waybill_no, :waybill_date, :packages_attributes, :containers_attributes
 
-  #validates_presence_of :reference, :except => :create
-  validates_uniqueness_of :reference, :case_sensitive => false
-  validates_presence_of :operation, :direction, :patron_id, :patron_token, :branch_id, :load_coun, :unload_coun, :load_type
+  validates_presence_of :reference, on: :update
+  validates_uniqueness_of :reference, case_sensitive: false, scope: :patron_id
+  validates_presence_of :operation, :direction, :branch_id, :load_coun, :unload_coun, :load_type
   validates_presence_of :company_id
   #validates_associated :company
   validates_presence_of :commodity
   validates_presence_of :user
 
-  scope :patron, ->(token) { where(patron_token: token) }
+  default_scope { where(patron_id: Patron.current_id) }
   scope :active, where(status: "A")
   scope :air, where(operation: "air")
   scope :sea, where(operation: "sea")
@@ -112,16 +113,9 @@ class Loading < ActiveRecord::Base
     reference
   end
 
-  def social_name
-    self.slug
-  end
-
   def setup
     if self.operation == 'inland'
       self.direction = "D"
-
-    else
-
     end
   end
 
@@ -129,16 +123,15 @@ class Loading < ActiveRecord::Base
   def set_initials
     #counter = self.patron.generate_counter("Loading", self.operation, nil)
     #self.reference = self.operation + "." + self.direction + "." + sprintf('%07d', counter)
-    self.reference = self.patron.generate_counter("Loading", self.operation, nil)
-    self.patron_token = current_patron.token if self.patron_token.blank?
+    self.reference = Patron.generate_counter("Loading", self.operation, nil)
     set_slug(self.reference)
   end
   private
   def set_after_jobs
     self.user.follow!(self) if self.user
-    self.user.create_activity(self, reference, patron_id, patron_token)
+    #self.user.create_activity(self, reference, patron_id)
     #patron.set_activity(self, 'create', user.id, 'created', user.full_name)
-    Patron.journal_record(patron, user, branch, nil, self.class.name, 1, 0)
+    #Patron.journal_record(patron_id, user, branch, nil, self.class.name, 1, 0)
     #Nick.log(self, self.slug, patron_id)
   end
   

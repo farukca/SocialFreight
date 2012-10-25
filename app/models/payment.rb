@@ -2,7 +2,6 @@ class Payment < ActiveRecord::Base
 
   belongs_to :staff, class_name: "Person", foreign_key: "staff_id"
 
-  belongs_to :patron
   belongs_to :branch
   belongs_to :payoff
   belongs_to :finunit
@@ -16,7 +15,7 @@ class Payment < ActiveRecord::Base
   validates :payment_date, presence: true
   validates :price_curr, presence: true
   validates :payoff_id, presence: true
-  validates :patron_id, :presence => { :message => I18n.t('defaults.inputerror.firmid_is_blank') }
   validates :branch_id, :presence => { :message => I18n.t('defaults.inputerror.branch_is_blank') }
-
+  
+  default_scope { where(patron_id: Patron.current_id) }
 end

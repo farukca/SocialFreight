@@ -31,23 +31,15 @@ class Position < ActiveRecord::Base
                    :ref_no1, :ref_type1, :ref_no2, :ref_type2, :ref_no3, :ref_type3, :ref_no4, :ref_type4, :notes, :agent_price, 
                    :agent_curr, :branch_id, :waybill_no, :waybill_date, :transports_attributes, :loading_ids
 
-  validates_presence_of :reference, :on => :update
+  validates_uniqueness_of :reference, case_sensitive: false, scope: :patron_id
+  validates_presence_of :reference
   validates_presence_of :operation #, :message => I18n.t('tasks.errors.name.cant_be_blank')
   validates_presence_of :direction #, :message => I18n.t('tasks.errors.name.cant_be_blank')
-  validates_presence_of :patron #, :message => I18n.t('tasks.errors.name.cant_be_blank')
-  validates_presence_of :patron_token #, :message => I18n.t('tasks.errors.name.cant_be_blank')
   validates_presence_of :branch_id #, :message => I18n.t('tasks.errors.name.cant_be_blank')
-  #validates_presence_of :load_place_id
-  #validates_uniqueness_of :reference, :case_sensitive => false #burada patron_id değerine göre unique key olmalı
-  #validates_presence_of :load_date #, :message => I18n.t('tasks.errors.name.cant_be_blank')
-  #validates_presence_of :unload_date #, :message => I18n.t('tasks.errors.name.cant_be_blank')
-
-  #validates_inclusion_of :operation, in: ["air","sea","road","rail","inland"]
-  #validates_inclusion_of :direction, in: ["E","I","T"]
   validates_numericality_of :freight_price
   validates_numericality_of :agent_price
 
-  scope :patron, ->(token) { where(patron_token: token) }
+  default_scope { where(patron_id: Patron.current_id) }
   scope :active, where(status: "A")
   scope :air, where(operation: "air")
   scope :sea, where(operation: "sea")
@@ -103,19 +95,13 @@ class Position < ActiveRecord::Base
     reference
   end
 
-  def social_name
-    self.slug
-  end
   #def normalize_friendly_id(string)
   #  super.upcase.gsub("-", ".")
   #end
 
   private
   def set_initials
-    self.reference = self.patron.generate_counter("Position", self.operation, self.direction)
-    #counter = self.patron.generate_counter("Position", self.operation, self.direction)
-    #self.reference = self.operation + "." + self.direction + "." + sprintf('%07d', counter)
-    #self.patron_token = current_patron.token if self.patron_token.blank?
+    self.reference = Patron.generate_counter("Position", self.operation, self.direction)
     set_slug(self.reference.parameterize) #.gsub(/[.?*!^%&/(_)=]/, '').parameterize
   end
 
@@ -125,10 +111,6 @@ class Position < ActiveRecord::Base
       connect_loadings(self.loading_ids)
     end
     self.user.follow!(self) if self.user
-    self.user.create_activity(self, reference, patron_id, patron_token)
-    #patron.set_activity(self, 'create', user.id, 'created', user.full_name)
-    Patron.journal_record(patron, user, branch, nil, self.class.name, 1, 0)
-    #Nick.log(self, self.slug, patron_id)
   end
 
   private

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :current_patron, :current_operation, :current_tab
+  around_filter :scope_current_patron
 
   def follow_object(object)
     current_user.follow(object)
@@ -11,22 +11,31 @@ class ApplicationController < ActionController::Base
     session[:current_tab] = tab_id
   end
   
-  protected
   def current_tab
     current_tab = "homenavigator"
     current_tab = session[:current_tab] if session[:current_tab]
     current_tab
   end
+  helper_method :current_tab
 
-  protected
+  private
   def current_patron
-    @current_patron ||= Patron.find(session[:patron_id]) if session[:patron_id]
+    #@current_patron ||= Patron.find(session[:patron_id]) if session[:patron_id]
+    @current_patron ||= Patron.find(current_user.patron_id) if current_user
+  end
+  helper_method :current_patron
+
+  def scope_current_patron
+    Patron.current_id = current_patron.id if current_patron
+    yield
+  ensure
+    Patron.current_id = nil
   end
 
-  protected
   def current_operation
     @current_operation = session[:current_operation] if session[:current_operation]
   end
+  helper_method :current_operation
 
   def require_patron
     if !patron_user?
@@ -35,7 +44,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  protected
   def not_authenticated
     redirect_to root_path, :alert => "Please login first."
   end

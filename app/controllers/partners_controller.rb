@@ -23,8 +23,7 @@ class PartnersController < ApplicationController
   end
 
   def create
-    @company = Company.find(params[:partner][:company_id])  	
-    @partner = @company.partners.build(params[:partner])
+    @partner = Partner.new(params[:partner])
     @partner.user_id = current_user.id
     
     respond_to do |format|

@@ -3,25 +3,24 @@ class Post < ActiveRecord::Base
   acts_as_mentioner
 
   belongs_to :user
-  belongs_to :patron
-  belongs_to :target, :polymorphic => true
+  belongs_to :target, polymorphic: true
 
   has_many :comments, as: :commentable, dependent: :destroy
 
-  attr_accessible :message, :post_type, :target_name, :target, :patron_id, :patron_token, :user_id, :is_private, :is_syspost
+  attr_accessible :message, :post_type, :target_name, :target, :user_id, :is_private, :is_syspost
 
-  validates_presence_of :user_id, :patron_id, :patron_token, :message
+  validates_presence_of :user_id, :message
 
+  default_scope { where(patron_id: Patron.current_id) }
   scope :latests, order("created_at desc")
 
-  def self.log(user, target, target_name, patron_id, patron_token, action_text, syspost_flag)
-    patron_id ||= user.patron_id
-    patron_token ||= user.patron.token
+  def self.log(user_id, target, target_name, action_text, syspost_flag)
+
     private_post = true
 
-    post = Post.new(:target => target, :user_id => user.id, :patron_id => patron_id, :patron_token => patron_token, :target_name => target_name, :message => action_text, :is_private => private_post, :is_syspost => syspost_flag)
+    post = Post.new(target: target, user_id: user_id, target_name: target_name, message: action_text, is_private: private_post, is_syspost: syspost_flag)
 
-    post.save
+    post.save!
     
     post
   end

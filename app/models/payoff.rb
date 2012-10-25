@@ -15,9 +15,11 @@ class Payoff < ActiveRecord::Base
                   :name, :notes, :payoff_date, :payoff_type, :return_date, :return_km, :return_place, :staff_id, 
                   :transport_id, :truck, :vehicle, :voyage
 
-  validates :name, :payoff_date, :staff_id, :payoff_type, :user_id, :patron_id, presence: true
+  validates :name, :payoff_date, :staff_id, :payoff_type, :user_id, presence: true
   validates :departure_km, :arrival_km, :return_km, numericality: { only_integer: true }
 
+  default_scope { where(patron_id: Patron.current_id) }
+  
   before_create :set_initials
 
 

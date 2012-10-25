@@ -12,7 +12,7 @@ class ContainersController < ApplicationController
   end
 
   def create
-    @loading   = Loading.find(params[:loading_id])
+    @loading   = Loading.find(params[:container][:loading_id])
     @container = @loading.containers.build(params[:container])
 
     respond_to do |format|

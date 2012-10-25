@@ -1,0 +1,30 @@
+<div id="case_form">
+<%= simple_form_for @event, html: { class: "form-horizontal" }, validate: true do |f| %>
+  <%= f.error_notification %>
+
+  <div class="pageBlock">
+    <%= render 'shared/form_buttonsh', :f => f, :header => "New event" %>
+
+    <div class="tabbable tabs-below">
+
+      <div id="my-tab-content" class="tab-content">
+        <div id="event-main-form" class="tab-pane active">
+          <%= render 'form_main', :f => f %>
+        </div>
+
+        <!--div id="event-detail-form" class="tab-pane form_tab_pane">
+          <%#= render 'form_detail', :f => f %>
+        </div-->
+      </div>
+
+    </div>
+    
+    <!--ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#event-main-form">1-Kişi Bilgileri</a></li>
+      <li><a data-toggle="tab" href="#event-detail-form">2-Detay Bilgileri</a></li>
+    </ul-->
+    
+  </div>
+
+<% end %>
+</div>

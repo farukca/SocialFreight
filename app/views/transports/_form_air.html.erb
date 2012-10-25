@@ -7,7 +7,7 @@
           <%= f.input_field :vessel, :class => "input-small", placeholder: "Uçak Adı" %>
           <%= f.input_field :voyage, :class => "input-small", placeholder: "Uçak Sefer No" %>
         <% end %>
-        <%= f.input :owner_id, as: :hidden, label: "Havayolu", input_html: { class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-selected" => @transport.owner_id ? @transport.owner.name : "", "data-placeholder" => "Havayolu Firmasını Seçiniz"} %>
+        <%= f.input :owner_id, as: :hidden, label: "Havayolu", input_html: { class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => "Havayolu Firmasını Seçiniz"} %>
     </div>
     <div class="span6">
         <%= f.input :supplier_id, as: :hidden, label: "Tedarikçi", input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-placeholder" => "CASS veya Navlun Ödenen Firma" } %>
@@ -24,7 +24,7 @@
          <%= f.input_field :departure_date, as: :string, placeholder: "Çıkış Tarihi", class: "input-date", "data-datepicker" => "datepicker" %>
          <%= f.input_field :departure_hour, placeholder: "Saati", class: "input-hour" %>
       <% end %>
-      <%= f.input :dep_place_id, as: :hidden, label:"Havalimanı", input_html: { class: "chosen_input", "data-url" => "/places.json", "data-newrecurl" => "/places/new", "data-selected" => @transport.dep_place_id ? @transport.dep_place.name : "", "data-placeholder" => "Kalkış Havalimanı"} %>
+      <%= f.input :dep_place_id, as: :hidden, label:"Havalimanı", input_html: { class: "chosen_input", "data-url" => "/places.json", "data-newrecurl" => "/places/new", "data-placeholder" => "Kalkış Havalimanı"} %>
     </div>
     <div class="span6">
       <legend>Varış Bilgisi</legend>
@@ -32,7 +32,7 @@
           <%= f.input_field :arrival_date, as: :string, placeholder: "Varış Tarihi", class: "input-date", "data-datepicker" => "datepicker" %>
           <%= f.input_field :arrival_hour, placeholder: "Saati", class: "input-hour" %>
         <% end %>
-        <%= f.input :arv_place_id, as: :hidden, label:"Havalimanı", input_html: { class: "chosen_input", "data-url" => "/places.json", "data-newrecurl" => "/places/new", "data-selected" => @transport.arv_place_id ? @transport.arv_place.name : "", "data-placeholder" => "Varış Havalimanı"} %>
+        <%= f.input :arv_place_id, as: :hidden, label:"Havalimanı", input_html: { class: "chosen_input", "data-url" => "/places.json", "data-newrecurl" => "/places/new", "data-placeholder" => "Varış Havalimanı"} %>
     </div>
   </div>
   <legend>Aktarma Havaliman Bilgileri</legend>

@@ -5,8 +5,9 @@ class Company < ActiveRecord::Base
   acts_as_likeable
   extend FriendlyId
   include GeneratesNick
+  include GeneratesActivity
   
-  belongs_to :patron
+  #belongs_to :patron
   belongs_to :branch
   belongs_to :city
   belongs_to :state
@@ -14,10 +15,10 @@ class Company < ActiveRecord::Base
   belongs_to :user
   belongs_to :saler, :class_name => User, :inverse_of => :saler
   belongs_to :parent, :class_name => Company, :inverse_of => :parent
-  friendly_id :name, use: :slugged, use: :scoped, scope: :patron
+  friendly_id :name, use: :slugged, use: :scoped, scope: :patron_id
   
   has_many :contacts
-  has_many :cases
+  has_many :events
   has_many :partners
 
   accepts_nested_attributes_for :contacts, :reject_if => lambda { |a| a[:surname].blank? }, :allow_destroy => true
@@ -27,20 +28,21 @@ class Company < ActiveRecord::Base
                   :email, :website, :tel, :gsm, :voip, :fax, :contact, :sector, :twitter_url, :facebook_url, :linkedin_url, 
                   :notes, :description, :saler_id, :parent_id, :contacts_attributes
 
-  #validates :name, :uniqueness => { :scope => :patron, :message => I18n.t('defaults.inputerror.must_be_unique') }
-  validates :name, presence: { message: I18n.t('defaults.inputerror.cant_be_blank') }#, length: { maximum: 50 }
+  validates :name, uniqueness: { scope: :patron_id, message: I18n.t('defaults.inputerror.must_be_unique') }
+  validates :name, presence: { message: I18n.t('defaults.inputerror.cant_be_blank') }
   validates :title, :length => { :maximum => 100 }
   validates :tel, :fax, :gsm, :voip, :length => { :maximum => 15 }
   validates :email, :length => { :maximum => 40 }, :format => { :with => /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i }, :unless => Proc.new { |a| a.email.blank? }
   validates :postcode, :length => { :maximum => 5 }
-  validates :patron, :presence => { :message => I18n.t('defaults.inputerror.firmid_is_blank') }
-  validates :patron_token, :presence => { :message => I18n.t('defaults.inputerror.firmid_is_blank') }
+  #validates :patron, :presence => { :message => I18n.t('defaults.inputerror.firmid_is_blank') }
+  #validates :patron_token, :presence => { :message => I18n.t('defaults.inputerror.firmid_is_blank') }
   validates :branch_id, :presence => { :message => I18n.t('defaults.inputerror.branch_is_blank') }
 
   #before_save   :get_coordinates
   before_create :set_initials
   after_create  :set_after_jobs
 
+  default_scope { where(patron_id: Patron.current_id) }
   scope :latest, order("created_at desc")
 
   def gmaps4rails_address
@@ -78,21 +80,16 @@ class Company < ActiveRecord::Base
     name
   end
 
-  def social_name
-    self.slug
-  end
-
   private
   def set_initials
-    counter = self.patron.generate_counter("Company", nil, nil)
+    counter = Patron.generate_counter("Company", nil, nil)
     self.company_no = counter
   end
   
-  private
-    def set_after_jobs
-      self.user.follow!(self) if self.user
-      self.user.create_activity(self, name, patron_id, patron_token)
-      Patron.journal_record(patron, user, branch, nil, self.class.name, 1, 0)
-    end
+  def set_after_jobs
+    self.user.follow!(self) if self.user
+      #self.user.create_activity(self, name, patron_id, patron_token)
+      #Patron.journal_record(self.patron_id, user, branch, nil, self.class.name, 1, 0)
+  end
 
 end

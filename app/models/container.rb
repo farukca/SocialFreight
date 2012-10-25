@@ -11,6 +11,8 @@ class Container < ActiveRecord::Base
   validates_presence_of :name, :container_type, :loading
   #validates_length_of   :code, :maximum => 2  
   
+  default_scope { where(patron_id: Patron.current_id) }
+
   #def set_initials
   #   self.name = self.code1 + "-" + self.code2 + "-" + self.code3
   #end
