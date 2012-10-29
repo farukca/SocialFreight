@@ -4,12 +4,12 @@ class CostsController < ApplicationController
   respond_to :html, :js, :json
 
   def index
-    @costs = current_patron.costs.all
+    @costs = Cost.all
     respond_with @costs
   end
 
   def show
-    @cost = current_patron.costs.find(params[:id])
+    @cost = Cost.find(params[:id])
     respond_with @cost
   end
 
@@ -23,16 +23,15 @@ class CostsController < ApplicationController
   end
 
   def edit
-    @cost = current_patron.costs.find(params[:id])
+    @cost = Cost.find(params[:id])
     respond_with @cost
   end
 
   def create
     #@costable = find_costable
     #@cost = @costable.costs.build(params[:cost])
-    @cost = current_patron.costs.build(params[:cost])
+    @cost = Cost.new(params[:cost])
     @cost.user_id  = current_user.id
-    @cost.patron_id  = current_patron.id
     @cost.cost_source = @cost.operation if @cost.cost_source.blank?
 
     @cost.save!
@@ -40,7 +39,7 @@ class CostsController < ApplicationController
   end
 
   def update
-    @cost = current_patron.costs.find(params[:id])
+    @cost = Cost.find(params[:id])
 
     respond_to do |format|
       if @cost.update_attributes(params[:cost])

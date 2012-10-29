@@ -52,17 +52,17 @@ class User < ActiveRecord::Base
     roles_list.include? role.to_sym
   end
 
-  def send_password_reset_email
-    generate_token(:password_reset_token)
-    self.password_reset_email_time = Time.zone.now
-    save!
-    UserMailer.password_reset_email(self).deliver
-  end
+  #def send_password_reset_email
+  #  generate_token(:password_reset_token)
+  #  self.password_reset_email_time = Time.zone.now
+  #  save!
+  #  UserMailer.password_reset_email(self).deliver
+  #end
 
   def generate_token(column)
     begin
       self[column] = SecureRandom.urlsafe_base64
-    end while User.exists?(conditions: {column: self[column]})
+    end while User.where(column: self[column]).exists?#(conditions: {column: self[column]})
   end
 
   def to_s

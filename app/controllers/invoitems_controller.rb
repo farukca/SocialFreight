@@ -4,12 +4,12 @@ class InvoitemsController < ApplicationController
   respond_to :html, :js, :json
 
   def index
-    @invoitems = current_patron.invoitems.all
+    @invoitems = Invoitem.all
     respond_with @invoitems
   end
 
   def show
-    @invoitem = current_patron.invoitems.find(params[:id])
+    @invoitem = Invoitem.find(params[:id])
     respond_with @invoitem
   end
 
@@ -23,18 +23,17 @@ class InvoitemsController < ApplicationController
   end
 
   def edit
-    @invoitem = current_patron.invoitems.find(params[:id])
+    @invoitem = Invoitem.find(params[:id])
     respond_with @invoitem
   end
 
   def create
 
-    @invoitem = current_patron.invoitems.build(params[:invoitem])
+    @invoitem = Invoitem.new(params[:invoitem])
     if @invoitem.local_curr.blank?
       @invoitem.local_curr = current_patron.currency
     end
     @invoitem.user_id  = current_user.id
-    @invoitem.patron_id  = current_patron.id
    
     @invoitem.save!
     #respond_with @invoitem, :success => "Document saved successfully"
@@ -42,7 +41,7 @@ class InvoitemsController < ApplicationController
   end
 
   def update
-    @invoitem = current_patron.invoitems.find(params[:id])
+    @invoitem = Invoitem.find(params[:id])
 
     respond_to do |format|
       if @invoitem.update_attributes(params[:invoitem])

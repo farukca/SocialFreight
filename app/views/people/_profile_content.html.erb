@@ -1,0 +1,14 @@
+<div id="#{@person.id}-profile-content" class="row-fluid profile-content">
+  <div class="span7">
+    <div>
+      <div class="page-header">
+        <p class="pull-right"><a href="#">see all</a></p>
+        <h4>Aktiviteler</h4>
+      </div>
+      <%= render 'posts/postlist', posts: current_user.posts.limit(6).latests %>
+    </div>
+  </div>
+  <div class="span5">
+    <%= render "people/connections" %>
+  </div>
+</div>

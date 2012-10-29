@@ -8,7 +8,8 @@
 //= require jquery_ujs
 //= require gmaps4rails/googlemaps.js
 //= require rails.validations
-//= require simpleform_clientsidev
+//= require rails.validations.simple_form
+// require simpleform_clientsidev
 //= require jquery.tokeninput
 //= require jquery.timeago
 //= require jquery.autocomplete

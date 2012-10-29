@@ -1,0 +1,15 @@
+<div class="row-fluid">
+  <fieldset>
+    <legend><%= t("tasks.title.task_info") %></legend>
+    <div class="row-fluid">
+      <div class="span6">
+        <%= f.input :user_id, as: :hidden, label: t("tasks.label.user"), input_html: { class: "chosen_input", "data-url" => "/people.json", "data-placeholder" => t("tasks.placeholder.user") } %>
+        <%= f.input :due_date, as: :string, label: t("tasks.label.due_date"), input_html: {class: "input-small", "data-datepicker" => "datepicker"} %>
+      </div>
+      <div class="span6">
+        <%= f.input :task_text, label: t("tasks.label.task_text") %>
+      </div>
+    </div>
+  </fieldset>
+</div>
+

@@ -262,6 +262,9 @@ fieldset span {
 //    display: block;
 //    padding-left: 200px;
 }
+.profile-header p {
+  margin: 0 0 3px;
+}
 #profile-detail {
     min-height:80px;
 }
@@ -608,24 +611,6 @@ form ul li label {
     overflow:visible;
     margin-top:20px;
     width:100%;
-}
-#profile-picture {
-    float: left;
-    margin-left: 10px;
-    margin-right: 10px;
-    overflow: hidden;
-    width: 120px;
-    //height: 35px;
-}
-#profile-title .title {
-    width: 50%;
-    float: left;
-    font-weight: bold;
-    font-size: 18px;
-    color: #404040;
-}
-#profile-title .buttons {
-    float: right;
 }
 .profile-section {
     padding-bottom:20px;

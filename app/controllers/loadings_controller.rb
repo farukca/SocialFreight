@@ -34,7 +34,7 @@ class LoadingsController < ApplicationController
        @loading.operation = @position.operation
        @loading.direction = @position.direction
     else
-       @loading = current_patron.loadings.build(params[:loading])
+       @loading = Loading.new(params[:loading])
        @loading.operation = params[:operation] if params[:operation]
     end
     @loading.departures.build()
@@ -51,8 +51,7 @@ class LoadingsController < ApplicationController
   end
 
   def create
-    @loading = current_patron.loadings.build(params[:loading])
-    @loading.patron_token = current_patron.token
+    @loading = Loading.new(params[:loading])
     @loading.user_id = current_user.id
 
     respond_to do |format|
@@ -70,7 +69,7 @@ class LoadingsController < ApplicationController
   end
 
   def update
-    @loading = current_patron.loadings.find(params[:id])
+    @loading = Loading.find(params[:id])
 
     respond_to do |format|
       if @loading.update_attributes(params[:loading])
@@ -105,7 +104,7 @@ class LoadingsController < ApplicationController
 
   def addtoplan
     loadid = params[:id]
-    @loading = current_patron.loadings.find(loadid)
+    @loading = Loading.find(loadid)
     if @loading
 
       if @loading.operation != session[:plan_operation]

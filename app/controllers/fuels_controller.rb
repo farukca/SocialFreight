@@ -1,6 +1,6 @@
 class FuelsController < ApplicationController
   def new
-   	@payoff = current_patron.payoffs.find(params[:payoff_id]) if params[:payoff_id]
+   	@payoff = Payoff.find(params[:payoff_id]) if params[:payoff_id]
   	if @payoff
        @fuel = @payoff.fuels.build()
        @fuel.staff_id = @payoff.staff_id
@@ -21,7 +21,6 @@ class FuelsController < ApplicationController
 
   def create
     @fuel = Fuel.new(params[:fuel])
-    @fuel.patron_id = current_patron.id
     @fuel.creater_id = current_user.id
     @fuel.updater_id = current_user.id
 

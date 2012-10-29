@@ -22,9 +22,10 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-#gem 'client_side_validations'
-gem 'client_side_validations'#, '3.2.0.beta.3', :git => 'https://github.com/bcardarella/client_side_validations.git'
-gem 'simple_form', '>= 2.0'
+gem 'simple_form', '~> 2.0'
+gem 'client_side_validations', '~> 3.2.0'
+gem 'client_side_validations-simple_form', '~> 2.0.0'
+
 gem 'table-for'
 
 #gem 'rails3-jquery-autocomplete'

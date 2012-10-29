@@ -1,0 +1,22 @@
+<div id="task_form">
+<%= simple_form_for @task, html: { class: "form-horizontal" }, validate: true do |f| %>
+  <%= f.error_notification %>
+
+  <div class="pageBlock">
+    <%= render 'shared/form_buttonsh', :f => f, :header => "New Task" %>
+
+    <div class="tabbable tabs-below">
+
+      <div id="my-tab-content" class="tab-content">
+        <div id="task-main-form" class="tab-pane active">
+          <%= render 'form_main', :f => f %>
+        </div>
+
+      </div>
+
+    </div>
+    
+  </div>
+
+<% end %>
+</div>

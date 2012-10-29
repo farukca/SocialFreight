@@ -7,8 +7,6 @@ class CommentsController < ApplicationController
     @commentable = find_commentable
     @comment = @commentable.comments.build(params[:comment])
     @comment.user_id  = current_user.id
-    @comment.patron_id  = current_patron.id
-    @comment.patron_token  = current_patron.token
 
     @comment.save!
     respond_with @comment, :success => "Comment added"

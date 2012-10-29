@@ -6,7 +6,7 @@ class PaymentsController < ApplicationController
   end
 
   def new
-   	@payoff = current_patron.payoffs.find(params[:payoff_id]) if params[:payoff_id]
+   	@payoff = Payoff.find(params[:payoff_id]) if params[:payoff_id]
   	if @payoff
        @payment = @payoff.payments.build()
        @payment.staff_id = @payoff.staff_id
@@ -27,7 +27,6 @@ class PaymentsController < ApplicationController
 
   def create
     @payment = Payment.new(params[:payment])
-    @payment.patron_id = current_patron.id
     @payment.creater_id = current_user.id
     @payment.updater_id = current_user.id
 

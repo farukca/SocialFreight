@@ -1,6 +1,7 @@
 <div class="row-fluid">
   <div id="user_tasks">
     <legend>Görevler & Notlar</legend>
+    <%= render "tasks/related_list", objects: current_user.tasks %>    
     <table class="table table-condensed">
       <tr><td>TK253 Nolu sefer kontrol edilecek, Beko'ya bilgi verilecek</td></tr>
       <tr><td>@KRF545654 yük dosyası kapatılmalı %></td></tr>

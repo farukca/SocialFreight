@@ -3,12 +3,6 @@
     <div class="container-fluid">
       <%= link_to "SocialFreight", root_url, :class => "brand" %>
       <div class="nav-collapse">
-        <ul class="nav social">
-          <li><a class="twitter" href="https://twitter.com/socialfreight"></a></li>
-          <li><a class="facebook" href="https://www.socialfreight.com"></a></li>
-          <li><a class="mail" href="https://www.socialfreight.com"></a></li>
-          <li><a class="phone" href="https://www.socialfreight.com"></a></li>
-        </ul>
         <div class="pull-right">
           <ul class="nav pull-right">
             <% if current_user %>
@@ -16,7 +10,8 @@
               <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.to_s %> <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><%= link_to dashboard_path do %><i class="icon-cog"></i>Preferences<% end %></li>
-                  <li><%= link_to person_path(current_user.person) do %><i class="icon-user"></i>Profil<% end %></li>
+                  <li><%= link_to person_path(current_user.person) do%><i class="icon-user"></i>Profil<% end %></li>
+                  <li><%= link_to new_task_path do %><i class="icon-tasks"></i>Yeni Görev<% end %></li>
                   <li class="divider"></li>
                   <li><%= link_to logout_path do %><i class="icon-off"></i>Logout<% end %></li>
                 </ul>

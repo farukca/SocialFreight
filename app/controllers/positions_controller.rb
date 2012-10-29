@@ -64,7 +64,7 @@ class PositionsController < ApplicationController
 
   def update
     @position = Position.find(params[:id])
-espond_to do |format|
+    respond_to do |format|
       if @position.update_attributes(params[:position])
         format.html { redirect_to @position, notice: 'Position was successfully updated.' }
         format.json { head :ok }

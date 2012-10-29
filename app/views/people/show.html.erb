@@ -1,8 +1,8 @@
-<div id="user">
-  <div>
-    <%= render 'profile_header', :person => @person %>
+<div id="#{@person.id}_profile" class="profile">
+  <div class="row-fluid">
+    <%= render 'profile_header' %>
   </div>
-  <div>
-    <%#= render 'profile_content' %>
+  <div class="row-fluid">
+    <%= render 'profile_content' %>
   </div>
 </div>

@@ -1,7 +1,6 @@
 class ContactsController < ApplicationController
 
   before_filter :require_login
-  #before_filter(:only => [:index]) { |c| c.set_tab "companynavigator" }
 
   def index
   end
@@ -27,7 +26,7 @@ class ContactsController < ApplicationController
   def create
     @contact = current_user.contacts.build(params[:contact])
     #@contact.patron_id    = current_patron.id
-    @contact.patron_token = current_patron.token
+    #@contact.patron_token = current_patron.token
     
     respond_to do |format|
       if @contact.save

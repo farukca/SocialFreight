@@ -241,6 +241,20 @@ en:
       company_list: "Aktif Firma Listesi"
       contact_list: "Kontak Listesi"
       event_list: "Olay Kayıtları Listesi"
+  tasks:
+    title:
+      last_tasks: "Son Eklenen Firmalar"
+      task_info: "Yetkili Bilgisi"
+    label:
+      user: "Kullanıcı"
+      due_date: "Tamamlanma Tarihi"
+      task_text: "Görev Açıklaması"
+    placeholder:
+      user: "Görevin Atanacağı Kullanıcıyı Seçiniz"
+    hint:
+    link:
+      new_task: "Görev Oluştur"
+      task_list: "Görev Listesi"
   web:
     label:
       company_name: "Firma Adı"

@@ -151,13 +151,13 @@ Rails.application.config.sorcery.configure do |config|
                                                                                       # email to login?
 
     # -- reset_password --
-    # user.reset_password_token_attribute_name = :password_reset_token                          # reset password code
+    user.reset_password_token_attribute_name = :password_reset_token                          # reset password code
                                                                                                 # attribute name.
 
-    # user.reset_password_token_expires_at_attribute_name = :password_reset_token_expires_at    # expires at attribute
+    user.reset_password_token_expires_at_attribute_name = :password_reset_token_expires_at    # expires at attribute
                                                                                                 # name.
 
-    # user.reset_password_email_sent_at_attribute_name = :password_reset_email_time          # when was email sent,
+    user.reset_password_email_sent_at_attribute_name = :password_reset_email_time          # when was email sent,
                                                                                                 # used for hammering
                                                                                                 # protection.
 
@@ -179,9 +179,9 @@ Rails.application.config.sorcery.configure do |config|
                                                                                                 # sent.
 
     # -- brute_force_protection --
-    # user.failed_logins_count_attribute_name = :failed_logins_count                  # failed logins attribute name.
+    user.failed_logins_count_attribute_name = :failed_logins_count                  # failed logins attribute name.
 
-    # user.lock_expires_at_attribute_name = :lock_expires_at                          # this field indicates whether
+    user.lock_expires_at_attribute_name = :lock_expires_at                          # this field indicates whether
                                                                                       # user is banned and when it will
                                                                                       # be active again.
 

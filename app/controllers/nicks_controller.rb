@@ -4,7 +4,7 @@ class NicksController < ApplicationController
 
   def show
 
-  	nick = Nick.find_by_name_and_patron_id(params[:id], current_patron.id)
+  	nick = Nick.find_by_name(params[:id])
   	redirect_to nick.nicknamed if nick
 
   end

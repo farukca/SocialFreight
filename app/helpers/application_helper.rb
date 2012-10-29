@@ -33,4 +33,11 @@ module ApplicationHelper
   def url_with_protocol(url)
     /^http/.match(url) ? url : "http://#{url}"
   end
+
+  def navigator(navid, navurl, navtext, navicon)
+    content_tag :li, class: ((navid == current_tab) ? "active" : "") do
+      link_to (((content_tag :i, "", class: "#{navicon}") + "#{navtext}")), navurl
+    end
+  end
+
 end

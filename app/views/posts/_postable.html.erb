@@ -2,12 +2,5 @@
   <div class="post-module-in">
     <%= render 'posts/form' %>
   </div>
+  <%= render 'posts/postlist', posts: posts %>
 </div>
-<div id="postlist">
-  <span class="leftside"><h4>Bildirimler</h4></span>
-  <ul>
-    <%#= render current_user.posts.latests.limit(5) %>
-    <%= render current_user.social_posts %>
-  </ul>
-</div>
-

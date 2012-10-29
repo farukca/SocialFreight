@@ -7,12 +7,10 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params[:post])
     @post.user_id  = current_user.id
-    @post.patron_id  = current_patron.id
-    @post.patron_token  = current_patron.token
 
     usernames = extract_mentioned_screen_names(params[:post][:message]) if params[:post][:message]
     usernames.each do |username|
-      @object = Nick.find_by_name_and_patron_id(username, current_patron.id)
+      @object = Nick.find_by_name(username)
       @post.mention!(@object.nicknamed) unless @object.nil?
     end if usernames
 

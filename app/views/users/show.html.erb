@@ -1,9 +1,9 @@
-<div id="user">
-  <div>
-    <%= render 'profile_header' %>
+<div id="#{@user.id}_user_home" class="profile">
+  <div class="row-fluid">
+    <%= render 'users/profile_header' %>
   </div>
-  <div>
-    <%= render 'profile_content' %>
+  <div class="row-fluid">
+    <%= render 'users/profile_content' %>
   </div>
 </div>
 
