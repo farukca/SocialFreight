@@ -404,6 +404,9 @@ fieldset span {
     background:none repeat scroll 0 0 transparent;
     margin-bottom:-6px;
 }
+#login_form {
+    margin-bottom:75px;
+}
 #login_form label, #patron_form label, #new_user label, #new_feedback label {
     color:#fff;
 }
@@ -778,10 +781,6 @@ label abbr {
     white-space: nowrap;
     padding-left: 5px;
 }
-#post-home textarea {
-    height:18px;
-    min-height: 16px;
-}
 #activation_form h4, #activation_form h4 p {
     color: #fff;
     margin-bottom: 10px;
@@ -927,4 +926,10 @@ div.addIcon {
 }
 .listSubRecords h5 {
   margin: 0px;
+}
+#user_small_profile .nav-list {
+  padding: 0;
+}
+#user_small_profile .nav-list > li > a {
+  padding: 0;
 }

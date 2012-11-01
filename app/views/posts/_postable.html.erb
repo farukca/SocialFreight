@@ -1,6 +1,21 @@
 <div id="post-home">
-  <div class="post-module-in">
-    <%= render 'posts/form' %>
+  <div class="tabbable">
+  	<ul class="nav nav-tabs">
+      <li class="active"><a href="#new_post_tab" data-toggle="tab"><i class="icon-comment"></i>Post Message</a></li>
+      <!--li><a href="#new_discussion_tab" data-toggle="tab"><i class="icon-bullhorn"></i>Start Discussion</a></li>
+      <li><a href="#new_question_tab" data-toggle="tab"><i class="icon-question-sign"></i>Ask Question</a></li>
+      <li><a href="#new_file_tab" data-toggle="tab"><i class="icon-book"></i>Share File</a></li-->
+  	</ul>
   </div>
-  <%= render 'posts/postlist', posts: posts %>
+  <div class="tab-content">
+    <div id="new_post_tab" class="tab-pane active">
+      <%= render 'posts/form' %>
+    </div>
+    <!--div id="new_discussion_tab" class="tab-pane">
+    </div>
+    <div id="new_question_tab" class="tab-pane">
+    </div>
+    <div id="new_file_tab" class="tab-pane">
+    </div-->
+  </div>
 </div>

@@ -1,3 +1,15 @@
+<div id="user_small_profile" class="row-fluid">
+  <div class="span7">
+    <%= image_tag current_user.avatar_url(:small), class: "img-circle" %>
+  </div>
+  <div class="span5">
+    <ul class="nav nav-list">
+      <li><a href="#"><i class="icon-globe"></i><span class="badge">4</span></a></li>
+      <li><a href="#"><i class="icon-comment"></i><span class="badge">4</span></a></li>
+      <li><a href="#"><i class="icon-tasks"></i><span class="badge">77</span></a></li>
+    </ul>
+  </div>
+</div>
 <div id="createBtn" class="row-fluid sidebarMenu">
   <div class="btn-toolbar">
     <div class="btn-group">

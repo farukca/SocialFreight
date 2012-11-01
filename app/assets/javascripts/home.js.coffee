@@ -62,4 +62,13 @@ jQuery ->
     $(target).load(url)
     $("#new_company").validate()
 
+  $("#post_message").atWho "@",
+    tpl: "<li id='${id}' data-value='${name}'>${name} <small>${name}</small></li>"
+    callback: (query, callback) ->
+      url = "/nicks.json"
+      param = q: query
+      $.ajax url, param, (data) ->
+        names = $.parseJSON(data)
+        callback names
+
   $(".simple_form").find("input[type=text],textarea,select").filter(":visible:first").focus()

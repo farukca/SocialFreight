@@ -1,11 +1,7 @@
 <div class="row-fluid">
-  <%= form_for Post.new, remote: true, html: { class: "form-horizontal" } do |f| %>
-    <div class="row-fluid">
-      <%= label_tag :message, "Mesajınız :", class: "control-label" %>
-      <div class="input-append">
-        <%= f.text_field :message, :class => "input-xlarge" %>
-        <%= f.submit("Paylaş", :class => 'btn btn-info') %>
-      </div>
-    </div>
+  <%= form_for Post.new, remote: true do |f| %>
+    <%= f.text_area :message, class: "span12", rows: "2", placeholder: "Mesajınız" %>
+    <!--h6 class="pull-right">Type your message</h6-->
+    <%= f.submit("Mesajı Gönder", class: 'btn btn-info pull-right') %>
   <% end %>
 </div>

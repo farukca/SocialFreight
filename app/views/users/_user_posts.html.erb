@@ -1,7 +1,9 @@
-<div id="personalfeeds" class="feeds">
-  <legend><%= current_patron.name %>&nbsp;Güncel Bildirimler</legend>
-  <div id="new_post_div" class="feeds">
-    <%= render 'posts/postable', posts: current_user.social_posts %>
+<div id="personalfeeds">
+  <div id="post-selection">
+    <%= render 'posts/postable' %>
   </div>
+  <div id="feeder-posts">
+    <%= render 'posts/postlist', posts: current_user.social_posts %>
+   </div>
 </div>
 

@@ -13,6 +13,10 @@ class Nick < ActiveRecord::Base
     nick
   end
 
+  def token_inputs
+    { name: name }
+  end
+
   #private
   #def nick_exists(nickname, patron_id)
     
