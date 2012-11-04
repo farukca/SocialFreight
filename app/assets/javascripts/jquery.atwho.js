@@ -476,7 +476,7 @@
       results = [];
       for (_i = 0, _len = items.length; _i < _len; _i++) {
         item = items[_i];
-        text = item[data_value];
+        text = item["name"];
         if (text.toLowerCase().indexOf(query) === -1) {
           continue;
         }

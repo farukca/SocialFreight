@@ -12,6 +12,6 @@
  *= require token-input
  * require chosen
  *= require select2
- *= require jquery.atwho
+ * require jquery.atwho
  * require_tree . 
 */

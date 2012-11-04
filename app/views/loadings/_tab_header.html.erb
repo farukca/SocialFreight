@@ -1,23 +1,17 @@
-<!--div id="good_header" class="todoListHeader">
-  Referans No: <%= loading.reference.upcase %>
-  <%= link_to "(PDF)", loading_path(loading, format: "pdf") %>
-  <span id="positionref" class="rightside">
-    <%= link_to loading.position_name, position_path(loading.position) unless loading.position_id.nil? %>
-  </span>
-</div-->
-<div id="good_branch">
+<div id="loading_headline">
   <dl class="yatay-info" id="headline">
-    <dd><%= loading.operation.humanize %></dd>
-    <dd><%= Position.direction_types[loading.direction] %></dd>
-    <dd><%= loading.branch.name %></dd>
+    <dd><strong><%= loading_name %></strong></dd>
+    <dd><%= operation_name(loading.operation) %></dd>
+    <dd><%= direction_name(loading.direction) %></dd>
+    <dd><%= branch_name(loading.branch) %></dd>
     <dd><%= Position.payment_types[loading.paid_at] %></dd>
-    <dd><%= loading.incoterm %></dd>
+    <dd><%= incoterm_name(loading.incoterm) %></dd>
     <dd><%= Loading.load_types[loading.load_type] %></dd>
     <dd>
       <% if loading.position_id.nil? %>
         <%= link_to t("operations.label.reservation"), transplan_path(:select_loads, :loading_id => loading.id), class: 'btn btn-info btn-mini', title: "Taşımayı Planlamak için Tıklayınız" %>
       <% else %>
-        <%= link_to loading.position.reference, position_path(loading.position) %>
+        <%= link_to position_name(loading.position), position_path(loading.position) %>
       <% end %>
     </dd>
   </dl>

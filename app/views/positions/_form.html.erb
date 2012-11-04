@@ -1,12 +1,13 @@
 <div id="opform">
 <%= simple_form_for @position, :html => {:class => 'form-horizontal'}, :validate => true do |f| %>
   <%= f.error_notification %>
+  <div class="row-fluid">
+    <%= f.error :base %>
+  </div>
   <fieldset>
 
   <div class="pageBlock">
-    <div class="row-fluid">
-      <%= f.error :base %>
-    </div>
+
     <%= render 'shared/form_header', message: "Yeni Taşıma Projesi" %>
  
     <%= f.hidden_field :operation %>

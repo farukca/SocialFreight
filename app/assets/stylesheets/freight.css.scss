@@ -12,13 +12,6 @@ form {
     display: table;
     padding: 0;
 }
-.outer td .sidebarCell {
-    vertical-align:top;
-}
-.outer td.oRight {
-    //padding:0 10px 20px;
-    background-color:transparent;
-}
 #sidebarCell, #sidebarDiv .sidebarModule, #sidebarDiv .nestedModule {
     background-color:transparent;
     border:0 none;
@@ -29,9 +22,19 @@ form {
     vertical-align: top;
     width:200px;
 }
+#sidebarCell hr {
+  margin: 0;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+#sidebarCell .btn-group {
+  display: inline;
+}
+#sidebarCell .btn-toolbar {
+  margin: 0;
+}
 .sidebarMenu {
-    margin:0 0 10px;
-    background:none repeat scroll 0 0 transparent;
+  background:none repeat scroll 0 0 transparent;
 }
 .sidebarMenuHeader {
     color:#FFFFFF;

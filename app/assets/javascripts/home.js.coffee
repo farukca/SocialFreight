@@ -49,6 +49,28 @@ jQuery ->
           if $.isFunction(callback)
             callback data[0] 
 
+  $("#post_related_user_ids").select2
+    placeholder: "İlgili Kullanıcıları Seçiniz"
+    minimumInputLength: 2
+    width: "100%"
+    multiple: true
+    ajax:
+      url: "/users.json"
+      dataType: "json"
+      data: (term, page) ->
+        q: term
+        page_limit: 10
+        page: page
+        apikey: "ju6z9mjyajq2djue3gbvv26t"
+
+      results: (data, page) ->
+        results: data
+
+    initSelection: (element, callback) ->
+      $.getJSON (element.data("url")) + "?id=" + (element.val()), null, (data) ->
+        if $.isFunction(callback)
+          callback data[0] 
+
   $(".token_input").each ->
     el = $(this)
     el.tokenInput el.data("url"),
@@ -62,13 +84,24 @@ jQuery ->
     $(target).load(url)
     $("#new_company").validate()
 
-  $("#post_message").atWho "@",
-    tpl: "<li id='${id}' data-value='${name}'>${name} <small>${name}</small></li>"
-    callback: (query, callback) ->
-      url = "/nicks.json"
-      param = q: query
-      $.ajax url, param, (data) ->
-        names = $.parseJSON(data)
-        callback names
+  #$("#post_message").mentionsInput onDataRequest: (mode, query, callback) ->
+  #  $.getJSON "/nicks.json", (responseData) ->
+  #    responseData = _.filter(responseData, (item) ->
+  #      item.name.toLowerCase().indexOf(query.toLowerCase()) > -1
+  #    )
+  #    callback.call this, responseData
+
+  #$("#post_message").atWho "@",
+  #  tpl: "" 
+  #  callback: (query, callback) ->
+  #    $.ajax
+  #      url: "/nicks.json"
+  #      dataType: "json"
+  #      data: (term, page) ->
+  #        q: query
+  #        page: page
+  #      success: (data) ->
+  #        callback data
+
 
   $(".simple_form").find("input[type=text],textarea,select").filter(":visible:first").focus()

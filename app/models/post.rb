@@ -8,6 +8,7 @@ class Post < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
 
   attr_accessible :message, :post_type, :target_name, :target, :user_id, :is_private, :is_syspost
+  attr_accessor :related_user_ids
 
   validates_presence_of :user_id, :message
 
@@ -23,6 +24,20 @@ class Post < ActiveRecord::Base
     post.save!
     
     post
+  end
+
+private
+  def set_after_jobs
+    if self.related_user_ids.length > 0
+      connect_users(self.related_user_ids)
+    end
+  end
+
+  def connect_users(userids)
+    userids.each do |userid|
+      @user = User.find(userid)
+      self.mention!(@user) if @user
+    end
   end
 
 end

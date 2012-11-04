@@ -1,7 +1,13 @@
 <div class="row-fluid">
   <%= form_for Post.new, remote: true do |f| %>
-    <%= f.text_area :message, class: "span12", rows: "2", placeholder: "Mesajınız" %>
-    <!--h6 class="pull-right">Type your message</h6-->
+    <fieldset>
+      <%= f.text_area :message, class: "span12", rows: "2", placeholder: "Mesajınız" %>
+      <!--h6 class="pull-right">Type your message</h6-->
+      <%= f.text_field :related_user_ids, as: :hidden, label: t("companies.label.parent_company"), "data-url" => "/companies.json", "data-newrecurl" => "/companies/new" %>
+    </fieldset>
     <%= f.submit("Mesajı Gönder", class: 'btn btn-info pull-right') %>
   <% end %>
 </div>
+<!--div id="at-view" class="at-view">
+  <ul id="at-view-ul"></ul>
+</div-->

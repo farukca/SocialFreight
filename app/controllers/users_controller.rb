@@ -5,8 +5,16 @@ class UsersController < ApplicationController
   before_filter(:only => [:show]) { |c| c.set_tab "homenavigator" }
     
   def index
-    @users = User.all
-    render :layout => "admin"
+    if params[:q]
+       q = "%#{params[:q]}%"
+       @users = current_patron.users.where("lower(name) like ?", q).order(:name).limit(10)
+    else
+      @users = current_patron.users.all
+    end
+    respond_to do |format|
+      format.html { render :layout => "admin" } # index.html.erb
+      format.json { render json: @users.map(&:token_inputs) }
+    end
   end
 
   def new

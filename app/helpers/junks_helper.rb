@@ -1,0 +1,2 @@
+module JunksHelper
+end

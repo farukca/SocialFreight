@@ -14,7 +14,7 @@ class Nick < ActiveRecord::Base
   end
 
   def token_inputs
-    { name: name }
+    { id: id, name: name }
   end
 
   #private

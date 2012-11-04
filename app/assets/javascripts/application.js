@@ -19,8 +19,9 @@
 // require chosen.jquery-0.9.5
 // require chosen.ajaxaddition.jquery
 //= require select2
-//= require jquery.caret
-//= require jquery.atwho
+// require jquery.mentionsInput
+// require jquery.caret
+// require jquery.atwho
 //= require patron
 //= require loading
 //= require search

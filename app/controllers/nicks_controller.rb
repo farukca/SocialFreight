@@ -4,7 +4,7 @@ class NicksController < ApplicationController
 
   def index
     
-    @nicks = Nick.all
+    @nicks = Nick.where(nicknamed_type: "Position")
 
     respond_to do |format|
       format.html # index.html.erb

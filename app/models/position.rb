@@ -32,7 +32,7 @@ class Position < ActiveRecord::Base
                    :agent_curr, :branch_id, :waybill_no, :waybill_date, :transports_attributes, :loading_ids
 
   validates_uniqueness_of :reference, case_sensitive: false, scope: :patron_id
-  validates_presence_of :reference
+  validates_presence_of :reference, on: :update
   validates_presence_of :operation #, :message => I18n.t('tasks.errors.name.cant_be_blank')
   validates_presence_of :direction #, :message => I18n.t('tasks.errors.name.cant_be_blank')
   validates_presence_of :branch_id #, :message => I18n.t('tasks.errors.name.cant_be_blank')
@@ -99,21 +99,19 @@ class Position < ActiveRecord::Base
   #  super.upcase.gsub("-", ".")
   #end
 
-  private
+private
   def set_initials
     self.reference = Patron.generate_counter("Position", self.operation, self.direction)
     set_slug(self.reference.parameterize) #.gsub(/[.?*!^%&/(_)=]/, '').parameterize
   end
 
-  private
   def set_after_jobs
-    if self.loading_ids.length > 0
+    if self.loading_ids && self.loading_ids.length > 0
       connect_loadings(self.loading_ids)
     end
     self.user.follow!(self) if self.user
   end
 
-  private
   def connect_loadings(loadids)
     loadids.each do |loadid|
       @loading = Loading.find(loadid)

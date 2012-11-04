@@ -84,6 +84,7 @@ class LoadingsController < ApplicationController
 
   def destroy
     @loading = Loading.find(params[:id])
+    @junk = Junk.send_to_junk(current_user.id, @loading, @loading.reference, @loading.company_name)
     @loading.destroy
 
     respond_to do |format|

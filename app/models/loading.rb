@@ -42,8 +42,8 @@ class Loading < ActiveRecord::Base
                   :volume, :ladameter, :price_wg, :commodity, :notes, :load_coun, :unload_coun, :status, :stage, :stage_date,
                   :report_date, :sender_id, :consignee_id, :waybill_no, :waybill_date, :packages_attributes, :containers_attributes
 
-  validates_presence_of :reference, on: :update
   validates_uniqueness_of :reference, case_sensitive: false, scope: :patron_id
+  validates_presence_of :reference, on: :update
   validates_presence_of :operation, :direction, :branch_id, :load_coun, :unload_coun, :load_type
   validates_presence_of :company_id
   #validates_associated :company

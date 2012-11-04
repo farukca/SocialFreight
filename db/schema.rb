@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121024083408) do
+ActiveRecord::Schema.define(:version => 20121104143430) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                                  :null => false
@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(:version => 20121024083408) do
     t.string   "unload_place_code", :limit => 20
     t.integer  "creater_id",                       :default => 0
     t.integer  "updater_id",                       :default => 0
-    t.integer  "arrivals",                                            :null => false
     t.integer  "patron_id",                                           :null => false
   end
 
@@ -552,6 +551,20 @@ ActiveRecord::Schema.define(:version => 20121024083408) do
   end
 
   add_index "journals", ["patron_id", "journaled_type", "journaled_id"], :name => "index_journals_on_patron_id_and_journaled_type_and_journaled_id"
+
+  create_table "junks", :force => true do |t|
+    t.string   "name",        :limit => 120, :null => false
+    t.string   "junked_type", :limit => 100, :null => false
+    t.integer  "junked_id",                  :null => false
+    t.integer  "user_id",                    :null => false
+    t.integer  "patron_id",                  :null => false
+    t.text     "desc"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  add_index "junks", ["junked_type", "junked_id"], :name => "index_junks_on_junked_type_and_junked_id"
+  add_index "junks", ["user_id", "patron_id"], :name => "index_junks_on_user_id_and_patron_id"
 
   create_table "likes", :force => true do |t|
     t.string   "liker_type"

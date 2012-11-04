@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   has_many :tasks
   has_many :journals, as: :journaled, dependent: :destroy
   has_many :documents
+  has_many :junks
 
   attr_accessible :email, :password, :password_confirmation, :name, :surname, :patron_id, :avatar, :remove_avatar, 
                    :region, :time_zone, :user_type, :language, :locale, :mail_encoding, :role, :branch_id
@@ -58,6 +59,10 @@ class User < ActiveRecord::Base
   #  save!
   #  UserMailer.password_reset_email(self).deliver
   #end
+
+  def token_inputs
+    { id: email, text: to_s }
+  end
 
   def generate_token(column)
     begin

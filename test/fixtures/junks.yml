@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  junked: 
+  user_id: 1
+  patron_id: 1
+  desc: MyText
+
+two:
+  name: MyString
+  junked: 
+  user_id: 1
+  patron_id: 1
+  desc: MyText

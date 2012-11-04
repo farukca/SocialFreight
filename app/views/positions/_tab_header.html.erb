@@ -1,10 +1,12 @@
-
-<div id="position_branch">
+<div id="position_headline">
   <dl class="yatay-info" id="headline">
-    <dd><%= position.branch.name %></dd>
-    <dd><%= Position.direction_types[@position.direction] %></dd>
-    <dd><%= Position.payment_types[position.paid_at] %></dd>
+    <dd><strong><%= position.reference.upcase %></strong></dd>
+  	<dd><%= operation_name(position.operation) %></dd>
+    <dd><%= direction_name(position.direction) %></dd>
+    <dd><%= branch_name(position.branch) %></dd>
+    <!--dd><%#= Position.payment_types[position.paid_at] %></dd-->
     <dd><%= I18n.t("listitems.loadtype.#{position.operation}.#{Loading.load_types[position.load_type]}") if position.load_type %></dd>
-    <dd>&nbsp;</dd>
+    <dd class="pull-right">Kayıt Sahibi:<%= user_name(position.user) %></dd>
+    <dd class="pull-right">Kayıt Zamanı:<%= created_time(position.created_at) %></dd>
   </dl>
 </div>

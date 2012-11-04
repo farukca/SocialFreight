@@ -1,25 +1,32 @@
 <div id="user_small_profile" class="row-fluid">
   <div class="span7">
-    <%= image_tag current_user.avatar_url(:small), class: "img-circle" %>
+    <%= image_tag current_user.avatar_url(:small), class: "img-rounded" %>
   </div>
   <div class="span5">
     <ul class="nav nav-list">
-      <li><a href="#"><i class="icon-globe"></i><span class="badge">4</span></a></li>
-      <li><a href="#"><i class="icon-comment"></i><span class="badge">4</span></a></li>
-      <li><a href="#"><i class="icon-tasks"></i><span class="badge">77</span></a></li>
+      <li><a href="#"><i class="icon-globe"></i><span class="badge">0</span></a></li>
+      <li><a href="#"><i class="icon-comment"></i><span class="badge">0</span></a></li>
+      <li><a href="#"><i class="icon-tasks"></i><span class="badge">0</span></a></li>
     </ul>
   </div>
 </div>
+<hr/>
 <div id="createBtn" class="row-fluid sidebarMenu">
   <div class="btn-toolbar">
     <div class="btn-group">
-      <a class="btn btn-success dropdown-toggle" href="#" data-toggle="dropdown"><i class="icon-plus-sign icon-white"></i>Yeni Kayıt Oluştur<i class="icon-chevron-down icon-white"></i></a>
+      <a class="btn btn-success btn-block dropdown-toggle" href="#" data-toggle="dropdown"><i class="icon-plus-sign icon-white"></i>Yeni Kayıt Oluştur<i class="icon-chevron-down icon-white"></i></a>
       <ul class="dropdown-menu">
         <li>
           <%= link_to reservation_path(:load_info, :operation => current_operation) do %>
             <i class="icon-loading"></i>Yük Reservasyonu
           <% end%>
         </li>
+        <li>
+          <%= link_to new_position_path(:operation => current_operation) do %>
+            <i class="icon-loading"></i>Taşıma Projesi
+          <% end%>
+        </li>
+        <li class="divider"/>
         <li>
           <%= link_to new_company_path do %>
             <i class="icon-company"></i> Müşteri
@@ -43,19 +50,24 @@
     </div>
   </div>
 </div>
+<hr/>
 <%= render 'shared/recent_list' %>
-
+<hr/>
 <div class="row-fluid">
   <div class="btn-toolbar">
-    <div class="btn-group">
-      <a class="btn btn-success dropdown-toggle" href="#" data-toggle="dropdown"><i class="icon-plus-sign icon-white"></i>Hızlı Kayıt Oluştur<i class="icon-chevron-down icon-white"></i></a>
+    <div class="btn-group dropup">
+      <a class="btn btn-success btn-block dropdown-toggle" href="#" data-toggle="dropdown"><i class="icon-plus-sign icon-white"></i>Hızlı Kayıt Oluştur<i class="icon-chevron-up icon-white"></i></a>
       <ul class="dropdown-menu">
-        <li><%= link_to new_company_path do %><i class="icon-glass"></i>Hızlı Firma Oluştur<% end %></li>
+        <li><%= link_to new_company_path(nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" do %><i class="icon-glass"></i>Hızlı Firma Oluştur<% end %></li>
         <li><%= link_to new_user_path    do %><i class="icon-user"></i>Hızlı Yetkili Oluştur<% end %></li>
         <li><%= link_to places_path    do %><i class="icon-screenshot"></i>Hızlı Havalimanı Girişi<% end %></li>
-        <li><%= link_to "Modal Firma", new_company_path(:nolayout => 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" %></li>        
+        <li class="divider"></li>
       </ul>
     </div>
   </div>
   <div id="newAgileRecord" class="modal fade"></div>
+</div>
+<hr/>
+<div class="row-fluid">
+  <%= link_to junks_path, class: "btn btn-info btn-block" do %><i class="icon-white icon-trash"></i>Trash<% end %>
 </div>

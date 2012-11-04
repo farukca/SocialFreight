@@ -40,4 +40,7 @@ module ApplicationHelper
     end
   end
 
+  def created_time(ctime)
+    ctime.strftime("%d/%m/%Y %H:%M")
+  end
 end

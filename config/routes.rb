@@ -76,6 +76,7 @@ Socialfreight::Application.routes.draw do
   resources :activities
   resources :tasks
   resources :nicks
+  resources :junks
 
   resources :setup
   resources :reservation
