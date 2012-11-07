@@ -11,6 +11,10 @@
       <li class="divider"></li>
       <li><%= link_to edit_user_path(current_user) do %><i class="icon-cog"></i> Settings<% end %></li>
       <li><%= link_to person_path(current_user.person) do %><i class="icon-user"></i> Profil<% end %></li>
+      <li class="divider"></li>
+      <li><%= link_to betausers_path do %><i class="icon-user"></i> Beta Talepleri<% end %></li>
+      <li><%= link_to feedbacks_path do %><i class="icon-cog"></i> Bildirimler <% end %></li>
+      <li><%= link_to patrons_path do %><i class="icon-user"></i> Patronlar<% end %></li>
     </ul>
   </div>
 </div>

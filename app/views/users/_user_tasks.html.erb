@@ -1,14 +1,10 @@
 <div class="row-fluid">
-  <div id="user_tasks">
-    <legend>Görevler & Notlar</legend>
-    <%= render "tasks/related_list", objects: current_user.tasks %>    
-    <table class="table table-condensed">
-      <tr><td>TK253 Nolu sefer kontrol edilecek, Beko'ya bilgi verilecek</td></tr>
-      <tr><td>@KRF545654 yük dosyası kapatılmalı %></td></tr>
-      <tr><td>@KRF854126 yük taşıması tamamlanınca faturası kesilecek</td></tr>
-      <tr><td>CASS yeni stok talebi yapılacak</td></tr>
-      <tr><td>Haftalık genel taşıma raporu düzenlenecek</td></tr>
-      <%#= render partial: "tasks/simple_list", locals: { objects: @user.tasks.order("created_at desc") } %>
-    </table>
+  <div id="user_tasks" class="division">
+    <div class="page-header">
+      <h5>Görev Listesi<small>Notlar</small></h5>
+    </div>
+    <ul class="media-list">
+      <%= render current_user.tasks %>
+    <ul>
   </div>
 </div>

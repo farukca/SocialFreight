@@ -5,7 +5,8 @@ class Position < ActiveRecord::Base
   acts_as_mentionable
   extend FriendlyId
   include GeneratesNick
-
+  include GeneratesActivity
+  
   belongs_to :patron  
   friendly_id :reference, use: :slugged, use: :scoped, scope: :patron
   

@@ -259,12 +259,6 @@ form {
     position:absolute;
     top:6px;
 }
-fieldset span {
-    padding-left:10px;
-    text-align:left;
-//    display: block;
-//    padding-left: 200px;
-}
 .profile-header p {
   margin: 0 0 3px;
 }
@@ -935,4 +929,7 @@ div.addIcon {
 }
 #user_small_profile .nav-list > li > a {
   padding: 0;
+}
+.division {
+  height: 300px;
 }

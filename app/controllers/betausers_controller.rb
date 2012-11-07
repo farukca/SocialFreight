@@ -1,5 +1,10 @@
 class BetausersController < ApplicationController
 
+  def index
+    @betausers = Betauser.all
+    render :layout => "admin"
+  end
+
   def create
     @betauser = Betauser.new(params[:betauser])
 

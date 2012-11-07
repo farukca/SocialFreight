@@ -4,4 +4,8 @@ module UsersHelper
   	user.to_s
   end
 
+  def user_small_avatar(user = @user)
+    user.avatar_url(:small)
+  end
+
 end

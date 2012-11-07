@@ -90,7 +90,7 @@ class User < ActiveRecord::Base
   #end
 
   def social_posts
-    @social_posts = Post.where("user_id IN (?) OR user_id = ? ", self.followees(User), self.id).limit(10).order("created_at desc")
+    @social_posts = Post.where("user_id IN (?) OR user_id = ? ", self.followees(User), self.id).limit(6).order("created_at desc")
   end
 
   private

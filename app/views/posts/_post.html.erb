@@ -1,14 +1,13 @@
-<li>
-  <div class="feedline">
-    <a href="#" class="img-load"><%= image_tag post.user.avatar_url(:small), class: "img-circle" %></a>
-    <%= link_to polymorphic_url(post.target), :title => "#{post.target_type}: #{post.target_name}" do %>
-      <i class="icon-<%= post.target_type.downcase %>"></i>
-      <span class="mruText"><%= post.target_name %></span>
-    <% end if post.target_id %>
-    <span><%= post.user %>&nbsp;<%= sanitize(auto_link(post.message)) %></span>
-    <p class="rightside">
-      <abbr class="timeago" title="<%= post.created_at.round(0).iso8601(10) %>"></abbr>
-      <%#= link_to "#{post.created_at.strftime("%d/%m/%Y %I:%M%p")}", "#" %>
+<li class="media">
+  <%= link_to (image_tag user_small_avatar(post.user), class: "media-object img-circle"), user_path(post.user), class: "pull-left" %>
+  <div class="media-body">
+    <h6 class="media-heading">
+      <%= user_name(post.user) %>
+      <span class="pull-right timeago" title="<%= post.created_at.round(0).iso8601(10) %>"></span>
+    </h6>
+    <p>
+      <%= sanitize(auto_link(post.message)) %>
+      <%= link_to post.target_name, polymorphic_url(post.target), title: "#{post.target_type}: #{post.target_name}" if post.target_id %>
     </p>
   </div>
 </li>

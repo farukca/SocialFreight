@@ -4,7 +4,7 @@ class FeedbacksController < ApplicationController
     @feedbacks = Feedback.all
 
     respond_to do |format|
-      format.html
+      format.html { render :layout => "admin" }
       format.json { render json: @feedbacks }
     end
   end

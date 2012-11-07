@@ -2,6 +2,6 @@
   <td><%= feedback.name %></td>
   <td><%= feedback.email %></td>
   <td><%= feedback.msg %></td>
-  <td><%= link_to "Edit", edit_feedback_path(feedback) %></td>
-  <td></td>
+  <td><%= patron_name(feedback.patron) %></td>
+  <td><%= mail_to "Cevapla", feedback.email %></td>
 </tr>

@@ -1,6 +1,12 @@
-<li>
-  <div class="feedline">
-    <a href="#" class="img-load"><%= image_tag task.user.avatar_url(:small) %></a> 
-    <span><%= task.task_text %></span>
+<li class="media">
+  <%#= link_to (image_tag user_small_avatar(task.cruser), class: "media-object img-circle"), user_path(task.cruser), class: "pull-left" %>
+  <div class="media-body">
+    <h6 class="media-heading">
+      <%= user_name(task.user) %>
+      <span class="pull-right timeago" title="<%= task.created_at.round(0).iso8601(10) %>"></span>
+    </h6>
+    <p>
+      <%= sanitize(auto_link(task.task_text)) %>
+    </p>
   </div>
 </li>

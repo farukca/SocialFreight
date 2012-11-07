@@ -1,25 +1,36 @@
-<h1>Listing operations</h1>
+<div class="row-fluid">
+  <div class="span12">
+    <div class="page-header">
+      <h4>Lütfen İşlem Yapmak istediğiniz Operasyonu Seçiniz</h4>
+    </div>
 
-<table>
-  <tr>
-    <th>Code</th>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @operations.each do |operation| %>
-  <tr>
-    <td><%= operation.code %></td>
-    <td><%= operation.name %></td>
-    <td><%= link_to 'Show', operation %></td>
-    <td><%= link_to 'Edit', edit_operation_path(operation) %></td>
-    <td><%= link_to 'Destroy', operation, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Operation', new_operation_path %>
+    <div class="row-fluid">
+      <ul class="thumbnails">
+        <li class="span3">
+          <div class="thumbnail">
+            <%= link_to (image_tag "air.png", class: "img-rounded"), select_operation_path("air") %>
+            <p>Air Operation</p>
+          </div>
+        </li>
+        <li class="span3">
+          <div class="thumbnail">
+            <%= link_to (image_tag "sea.png", class: "img-rounded"), select_operation_path("sea") %>
+            <p>Sea Operation</p>
+          </div>
+        </li>
+        <li class="span3">
+          <div class="thumbnail">
+            <%= link_to (image_tag "road.png", class: "img-rounded"), select_operation_path("road") %>
+            <p>Road Operation</p>
+          </div>
+        </li>
+        <li class="span3">
+          <div class="thumbnail">
+            <%= link_to (image_tag "rail.png", class: "img-rounded"), select_operation_path("rail") %>
+            <p>Rail Operation</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

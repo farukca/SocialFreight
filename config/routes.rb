@@ -20,7 +20,7 @@ Socialfreight::Application.routes.draw do
   resources :patrons
   resources :operations do
     member do
-      get :home
+      get :home, :select
     end
   end
   resources :places

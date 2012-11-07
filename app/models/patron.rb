@@ -6,9 +6,6 @@ class Patron < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: :slugged
   serialize  :operations
-  #belongs_to :city
-  #belongs_to :state
-  #belongs_to :country
  
   mount_uploader :logo, LogoUploader
 

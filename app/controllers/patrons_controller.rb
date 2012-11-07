@@ -8,7 +8,7 @@ class PatronsController < ApplicationController
     @patrons = Patron.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render :layout => "admin" }
       format.json { render json: @patrons }
     end
   end

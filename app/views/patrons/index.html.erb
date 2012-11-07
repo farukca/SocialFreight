@@ -1,33 +1,20 @@
-<h1>Listing Patrons</h1>
+<div class="row-fluid">
+<h4>Patron List</h4>
 
-<table>
+<table class="table table-condensed">
   <tr>
     <th>Name</th>
-    <th>Şehir</th>
-    <th>Ülke</th>
     <th>Tel</th>
     <th>Mail</th>
     <th>Fax</th>
+    <th>Ülke</th>
+    <th>Şehir</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
-<% @patrons.each do |patron| %>
-  <tr>
-    <td><%= patron.title %></td>
-    <td><%= patron.city.name if patron.city %></td>
-    <td><%= patron.country.name if patron.country %></td>
-    <td><%= patron.tel %></td>
-    <td><%= patron.email %></td>
-    <td><%= patron.fax %></td>
-    <td><%= link_to 'Show', patron %></td>
-    <td><%= link_to 'Edit', edit_patron_path(patron) %></td>
-    <td><%= link_to 'Destroy', patron, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+  <%= render @patrons %>
+
 </table>
-
-<br />
-
-<%= link_to 'New patron', new_patron_path %>
+</div>

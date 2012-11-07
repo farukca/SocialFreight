@@ -12,14 +12,16 @@ ul, ol {
   text-align: center;
 }
 legend {
-  font-size: 1em;
-  font-weight:bold;
+  font-size: 1.3em;
+  font-weight:normal;
   line-height: 20px;
-  background-image: url("/assets/legend.png");
-  background-color: #8A9EBE;
-  border-top: 1px solid #FFFFFF;
+  *background-image: url("/assets/legend.png");
+  *background-color: #8A9EBE;
+  border-bottom: 1px solid #EEEEEE;
   border-width: 1px 0 0;
   color: #000000;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 legend.first {
     border-top: medium none;
@@ -105,7 +107,7 @@ input[type="file"] {
   line-height: 25px;
 }
 .form-horizontal .control-group {
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 .table-condensed th, .table-condensed td {
   padding: 3px 5px;
@@ -135,4 +137,8 @@ textarea::-webkit-input-placeholder {
   color: #468847;
   background-color: #dff0d8;
   border-color: #d6e9c6;
+}
+.page-header {
+  padding-bottom: 0px;
+  margin: 10px 0 10px;
 }

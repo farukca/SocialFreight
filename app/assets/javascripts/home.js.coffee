@@ -6,7 +6,7 @@ jQuery ->
   $("a[rel=popover]").popover(offset: 10, delay:{show:1000, hide:500})
   $(".alert-message").alert()
   $(".collapse").collapse('show')
-  $("abbr.timeago").timeago()
+  $("span.timeago").timeago()
   $(".slidingDiv").hide()
   $(".togglebutton").show()
   $(".togglebutton").click ->
@@ -50,7 +50,7 @@ jQuery ->
             callback data[0] 
 
   $("#post_related_user_ids").select2
-    placeholder: "İlgili Kullanıcıları Seçiniz"
+    placeholder: "Mail ile bilgilendirilecek kullanıcıları seçiniz"
     minimumInputLength: 2
     width: "100%"
     multiple: true

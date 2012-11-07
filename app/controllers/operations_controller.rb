@@ -1,10 +1,10 @@
 class OperationsController < ApplicationController
 
   before_filter :require_login 
-  before_filter(:only => [:home]) { |c| c.set_tab "opernavigator" }
+  before_filter(:only => [:home, :select]) { |c| c.set_tab "opernavigator" }
     
   def index
-    @operations = Operation.all
+    @operations = Operation.find(["air","sea","road","rail"])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -19,6 +19,12 @@ class OperationsController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @operation }
     end
+  end
+
+  def select
+    @operation = Operation.find(params[:id])
+    session[:current_operation] = @operation.code
+    redirect_to session[:return_to_operation]
   end
 
   def home
