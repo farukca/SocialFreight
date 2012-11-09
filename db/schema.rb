@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121104143430) do
+ActiveRecord::Schema.define(:version => 20121108163417) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                                  :null => false
@@ -1120,8 +1120,11 @@ ActiveRecord::Schema.define(:version => 20121104143430) do
     t.integer  "user_id",                                           :null => false
     t.string   "dep_place_type", :limit => 1
     t.string   "arv_place_type", :limit => 1
-    t.integer  "transports",                                        :null => false
     t.integer  "patron_id",                                         :null => false
+    t.string   "dep_place",      :limit => 60
+    t.string   "arv_place",      :limit => 60
+    t.string   "dep_city",       :limit => 100
+    t.string   "arv_city",       :limit => 100
   end
 
   add_index "transports", ["position_id", "patron_id"], :name => "index_transports_on_position_id_and_patron_id"

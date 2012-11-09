@@ -90,6 +90,18 @@ jQuery ->
   #      item.name.toLowerCase().indexOf(query.toLowerCase()) > -1
   #    )
   #    callback.call this, responseData
+  formBlurTime = 0
+  $("#post_message").focus ->
+    $("form#new_post").removeClass "condensed-form"
+    $("form#new_post").addClass "open-form"
+  $("form#new_post").blur(->
+    formBlurTime = setTimeout(->
+      $("form#new_post").removeClass "open-form"
+      $("form#new_post").addClass "condensed-form"
+      $("form#new_post").trigger "blur"
+    , 100)
+    ).focus ->
+      clearTimeout formBlurTime
 
   #$("#post_message").atWho "@",
   #  tpl: "" 

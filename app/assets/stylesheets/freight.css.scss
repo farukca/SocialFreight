@@ -29,6 +29,7 @@ form {
 }
 #sidebarCell .btn-group {
   display: inline;
+  font-size: inherit;
 }
 #sidebarCell .btn-toolbar {
   margin: 0;
@@ -932,4 +933,7 @@ div.addIcon {
 }
 .division {
   height: 300px;
+}
+.condensed-form .condensed-fields {
+  display: none
 }

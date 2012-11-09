@@ -9,5 +9,6 @@ class Task < ActiveRecord::Base
   validates :cruser_id, presence: true
 
   default_scope { where(patron_id: Patron.current_id) }
+  scope :active, where(status: "A")
 
 end

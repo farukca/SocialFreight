@@ -11,11 +11,11 @@
   <% end %>
   <% table.column :departure_date, label: t("operations.label.departure_date"), column_html: { scope: "col" } %>
   <% table.column :dep_place, label: t("operations.label.departure_place"), column_html: { scope: "col" } do |transport| %>
-    <%= transport.dep_place.name if transport.dep_place %>
+    <%= "#{transport.dep_place} #{transport.dep_city} #{transport.dep_country_id}" %>
   <% end %>
   <% table.column :arrival_date, label: t("operations.label.arrival_date"), column_html: { scope: "col" } %> 
   <% table.column :arv_place, label: t("operations.label.arrival_place"), column_html: { scope: "col" } do |transport| %>
-    <%= transport.arv_place.name if transport.arv_place %>
+    <%= "#{transport.arv_place} #{transport.arv_city} #{transport.arv_country_id}" %>
   <% end %>
   <% table.column :vessel, label: t("operations.label.vessel"), column_html: { scope: "col" } do |transport| %>
     <%= "#{transport.vessel} #{transport.truck}" %>

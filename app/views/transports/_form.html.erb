@@ -1,27 +1,31 @@
 <div id="opform">
-<%= simple_form_for @transport, html: { class: 'form-horizontal' }, validate: true do |f| %>
-  <%= f.error_notification %>
-  <%= f.error :base, :error_method => :to_sentence %>
-  <fieldset>
+  <%= simple_form_for @transport, html: { class: 'form-horizontal' }, validate: true do |f| %>
+    <%= f.error_notification %>
+    <%= f.error :base, error_method: :to_sentence %>
 
     <div class="pageBlock">
       <%#= render 'shared/form_buttonsh', :f => f %>
    
-      <!--div class="tabbable tabs-below"-->
       <div class="page-header">
-        <h3>Multimodal Taşıma Bilgisi</h3>
+        <h4>Multimodal Taşıma Bilgisi</h4>
       </div>
       <div id="transport-main-form" class="tab-pane active">
-        <%= render "form_#{@transport.trans_method}", :f => f %>
+        <%= render "form_#{@transport.trans_method}", f: f %>
       </div>
 
-      <%= f.input :position_id, :as => :hidden %>
+      <div style="display:none">
+        <%= f.input :trans_method, as: :hidden %>
+        <%= f.input :dep_place_type, as: :hidden %>
+        <%= f.input :arv_place_type, as: :hidden %>
+        <%= f.input :position_id, as: :hidden %>
+        <%= f.input :position_id, :as => :hidden %>
+      </div>
+
       <div class="form-actions">
-        <%= f.button :submit, "Multimodal Taşıma Bilgisini Kaydet", :class => 'btn btn-info', :accesskey => "s" %>
+        <%= f.button :submit, "Multimodal Taşıma Bilgisini Kaydet", class: 'btn btn-info', :accesskey => "s" %>
         <button type="button" class="btn">Vazgeç</button>
       </div>
     </div>
 
-  </fieldset>
-<% end %>
+  <% end %>
 </div>

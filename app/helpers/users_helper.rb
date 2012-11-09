@@ -8,4 +8,16 @@ module UsersHelper
     user.avatar_url(:small)
   end
 
+  def users_active_tasks_count(user = @user)
+    user.tasks.active.count
+  end
+
+  def users_unread_notifications_count(user = @user)
+    user.mentioners(Post).count
+  end
+
+  def users_unread_messages_count(user = @user)
+  	0
+  end
+
 end

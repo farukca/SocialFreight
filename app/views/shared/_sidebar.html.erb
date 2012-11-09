@@ -4,9 +4,15 @@
   </div>
   <div class="span5">
     <ul class="nav nav-list">
-      <li><a href="#"><i class="icon-globe"></i><span class="badge">0</span></a></li>
-      <li><a href="#"><i class="icon-comment"></i><span class="badge">0</span></a></li>
-      <li><a href="#"><i class="icon-tasks"></i><span class="badge">0</span></a></li>
+      <li>
+        <%= render partial: "shared/counter_dropdown", locals: { number: users_active_tasks_count(current_user), object: "tasks" } %>
+      </li>
+      <li>
+        <%= render partial: "shared/counter_dropdown", locals: { number: users_unread_messages_count(current_user), object: "envelope" } %>
+      </li>
+      <li>
+        <%= render partial: "shared/counter_dropdown", locals: { number: users_unread_notifications_count(current_user), object: "comment" } %>
+      </li>
     </ul>
   </div>
 </div>
