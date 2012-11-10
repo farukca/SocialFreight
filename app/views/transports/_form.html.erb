@@ -7,7 +7,7 @@
       <%#= render 'shared/form_buttonsh', :f => f %>
    
       <div class="page-header">
-        <h4>Multimodal Taşıma Bilgisi</h4>
+        <h4>Multimodal Taşıma Bilgisi<small class="pull-right">Bu projede taşınacak yükler için bu uçağın hareket bilgisini girelim</small></h4>
       </div>
       <div id="transport-main-form" class="tab-pane active">
         <%= render "form_#{@transport.trans_method}", f: f %>

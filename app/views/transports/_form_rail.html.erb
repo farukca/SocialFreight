@@ -3,15 +3,20 @@
     <div class="span6">
       <fieldset>
         <legend>Tren Bilgisi</legend>
-        <%= f.input :vessel, :label => "Tren Adı & Sefer No" do %>
-          <%= f.input_field :vessel, class: "input-small", placeholder: "Tren Adı" %>
+        <%= f.input :vessel, :label => "Vagon No & Sefer No" do %>
+          <%= f.input_field :vessel, class: "input-small", placeholder: "Tren Vagon No" %>
           <%= f.input_field :voyage, class: "input-small", placeholder: "Tren Sefer No" %>
         <% end %>
         <%= f.input :owner_id, as: :hidden, label: "Tren İşletmecisi", input_html: { class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => "Tren İşleten Firmayı Seçiniz"} %>
         <%= f.input :supplier_id, as: :hidden, label: "Hat Acentası", input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-placeholder" => "Tedarikçi Hat Acentası" } %>
+        <hr>
         <%= f.input :freight_price, label: "Navlun Fiyatı" do %>
           <%= f.input_field :freight_price, :class => "input-small" %>
           <%= f.input_field :freight_curr, :as => :select, :collection => Currency.all, :include_blank => false, :class => "input-small" %>
+        <% end %>
+        <%= f.input :waybill_no, label: "CIM Belge No" do %>
+          <%= f.input_field :waybill_no, class: "input-small", placeholder: "CIM Belge No" %>
+          <%= f.input_field :waybill_date, as: :string, class: "input-small", "data-datepicker" => "datepicker", placeholder: "CIM Belge Tarihi" %>
         <% end %>
       </fieldset>
     </div>
@@ -23,16 +28,25 @@
            <%= f.input_field :departure_hour, placeholder: "Saati", class: "input-hour" %>
         <% end %>
         <%= f.input :dep_place, label:"Çıkış İstasyonu", placeholder: "Kalkış İstasyonu" %>
+        <%= f.input :dep_country_id, label: "Çıkış Ülke & Şehir" do %>
+          <%=f.input_field :dep_country_id, as: :select, collection: Country.all, include_blank: true, class: "input-small country_select", placeholder: "Çıkış Ülkesi" %>
+          <%= f.input_field :dep_city, class: "input-small", placeholder: "Çıkış Şehri" %>
+        <% end %>
         <hr>
         <%= f.input :arrival_date, label: "Varış Tarihi & Saati" do %>
           <%= f.input_field :arrival_date, as: :string, placeholder: "Varış Tarihi", class: "input-date", "data-datepicker" => "datepicker" %>
           <%= f.input_field :arrival_hour, placeholder: "Saati", class: "input-hour" %>
         <% end %>
         <%= f.input :arv_place, label:"Varış İstasyonu", placeholder: "Varış İstasyonu" %>
+        <%= f.input :arv_country_id, label: "Varış Ülke & Şehir" do %>
+          <%= f.input_field :arv_country_id, as: :select, collection: Country.all, include_blank: true, class: "input-small country_select", placeholder: "Varış Ülkesi" %>
+          <%= f.input_field :arv_city, class: "input-small", placeholder: "Varış Şehri" %>
+        <% end %>
+        <%= link_to "Aktarma istasyonu bilgilerini girmek için tıklayınız >>", "#", class: "togglebutton pull-right", "data-href" => "#transnode_info" %>
       </fieldset>
     </div>
   </div>
-  <div class="row-fluid">
+  <div id="transnode_info" class="row-fluid slidingDiv">
     <legend>Aktarma İstasyon Bilgileri</legend>
   </div>
 </div>

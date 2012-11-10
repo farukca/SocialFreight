@@ -2,6 +2,15 @@ class TransportsController < ApplicationController
   
   before_filter :require_login
 
+  def show
+    @transport = Transport.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @transport }
+    end
+  end
+
   def new
     @position   = Position.find(params[:position_id]) #if params[:position_id] #her daim pozisyon olmalı
     @transport  = @position.transports.build(params[:transport])

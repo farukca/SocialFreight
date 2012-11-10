@@ -4,7 +4,7 @@
   <div class="row-fluid">
   <div class="span6">
     <%#= f.input :company_id, :input_html => {:class => "chosen_input", "data-url" => "/companies.json"}, :label => "Customer" %>
-    <%= f.input :company_id, as: :hidden, label: t("defaults.label.customer"), input_html: { class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-selected" => @loading.company_id ? @loading.company.name : "", "data-placeholder" => t("operations.placeholder.customer") } %>
+    <%= f.input :company_id, as: :hidden, label: t("defaults.label.customer"), input_html: { class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => t("operations.placeholder.customer") } %>
     <!--legend>Operasyon Bilgileri</legend-->
     <%= f.input :direction, as: :select, label: t("defaults.label.service"), collection: Position.direction_types.map{|r| [r[1], r[0] ]}, include_blank: true %>
     <%= f.input :load_coun, as: :select, label: t("defaults.label.load_country"), collection: Country.all, include_blank: true %>
@@ -14,7 +14,7 @@
   <div class="span6">
     <%= f.input :load_type, as: :select, label: t("defaults.label.load_type"), collection: Loading.load_types.map { |r| [r[1], r[0] ] }, include_blank: false %>
     <%= f.input :branch_id, as: :select, label: t("defaults.label.branch"), collection: current_patron.branches, include_blank: false, :selected => current_user.branch_id %>
-    <%= f.input :agent_id, as: :hidden, label: t("defaults.label.agent"), input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-selected" => @loading.agent_id ? @loading.agent.name : "", "data-placeholder" => t("operations.placeholder.agent") } %>
+    <%= f.input :agent_id, as: :hidden, label: t("defaults.label.agent"), input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => t("operations.placeholder.agent") } %>
     <%= f.input :commodity, as: :text, label: t("defaults.label.commodity"), input_html: {rows: 3} %>
   </div>
   </div>
@@ -27,16 +27,14 @@
       <%= f.input_field :freight_price, class: "input-small" %>
       <%= f.input_field :freight_curr, as: :select, collection: Currency.all, include_blank: false, class: "input-small" %>
     <% end %>
-    <%#= f.input :bank_flag, label: "Akreditif" %>
-    <%#= f.input :waybill_no, :input_html => { :class => "input-medium" } %>
   </div>
   <div class="span6">
     <%= f.input :brut_wg, label: t("defaults.label.brut_weight") do %>
       <%= f.input_field :brut_wg, class: "input-small" %>&nbsp;KG
       <%#= f.input_field :wg_type, as: :select, collection: Loading.weight_types.map { |r| [r[1], r[0] ] }, class: "small" %>
     <% end %>
-    <%= f.input :sender_id, as: :hidden, label: t("defaults.label.sender"), input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-selected" => @loading.sender_id ? @loading.sender.name : "", "data-placeholder" => t("operations.placeholder.sender") } %>
-    <%= f.input :consignee_id, as: :hidden, label: t("defaults.label.consignee"), input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-selected" => @loading.consignee_id ? @loading.consignee.name : "", "data-placeholder" => t("operations.placeholder.consignee") } %>
+    <%= f.input :sender_id, as: :hidden, label: t("defaults.label.sender"), input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => t("operations.placeholder.sender") } %>
+    <%= f.input :consignee_id, as: :hidden, label: t("defaults.label.consignee"), input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => t("operations.placeholder.consignee") } %>
     <%#= f.input :stage do %>
       <%#= f.input_field :stage, class: "input-medium", as: :select, :collection => Loading.stages.map { |r| [r[1], r[0] ] }, include_blank: false %>
       <%#= f.input_field :stage_date, as: "string", class: "input-small", "data-datepicker" => "datepicker" %>
