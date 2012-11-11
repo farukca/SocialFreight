@@ -4,7 +4,7 @@ class Activity < ActiveRecord::Base
   belongs_to :patron
   belongs_to :target, polymorphic: true
 
-  attr_accessible :target_name, :target, :user_id
+  attr_accessible :target_name, :target, :user_id, :branch_id
 
   validates_presence_of :user_id, :patron_id, :target_name, :target
 

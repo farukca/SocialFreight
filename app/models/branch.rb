@@ -21,7 +21,7 @@ class Branch < ActiveRecord::Base
 
   default_scope { where(patron_id: Patron.current_id) }
 
-  before_create :set_initials
+  #before_create :set_initials
 
   def gmaps4rails_address
     "#{self.address}, #{self.district}, #{self.city.name if self.city}, #{self.country.name if self.country}" 
@@ -31,9 +31,4 @@ class Branch < ActiveRecord::Base
     self.address.blank? #|| (!self.location.blank?)
   end
   
-  private
-  def set_initials
-    self.patron_token = self.patron.token if self.patron_token.blank?
-  end
-
 end

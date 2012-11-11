@@ -27,7 +27,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @person = @user.person if @user.person
   end
 
   def create
@@ -75,10 +74,10 @@ class UsersController < ApplicationController
         if login_user
           session[:patron_id] = login_user.patron_id if login_user.patron_id
           #redirect_back_or_to root_url, notice: 'Welcome to SocialFreight.'
-           if @user.has_role? :patron_admin
+           if @user.has_role? :admin
              redirect_to setup_path(:set_address)
            else
-             redirect_to edit_person_path(login_user.person), notice: 'Welcome to SocialFreight.'
+             redirect_to new_person_path, notice: 'Welcome to SocialFreight.'
            end
         else
           render :new, :notice => "Email or password is invalid"

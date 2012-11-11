@@ -1,25 +1,31 @@
-<div id="activation_form">
+<div id="activation_form" class="container">
   <div class="row">
     <h4>Tebrikler, Hesabınızı Etkinleştirdiniz.</h4>
   </div>
   
   <div class="row">
-    <h4>Giriş yapmak için kullanacağınız mail adresiniz;&nbsp;<%= @user.email %></h4>
-    <h4>Lütfen Şifrenizi Belirleyiniz;</h4>
+    <h5>Giriş yapmak için kullanacağınız mail adresiniz;&nbsp;<%= @user.email %></h5>
+    <h5>Lütfen Şifrenizi Belirleyiniz;</h5>
   </div>
 
-<%= simple_form_for @user, :validate => true  do |f| %>
-  <%= f.error_notification %>
-  
   <div class="row">
-    <div class="span6">
-      <fieldset>
-        <%= f.input :password, :label => "Şifreniz", :hint => "En az 8 karakter uzunluğunda olmalı" %>
-        <%= f.input :password_confirmation, :label => "Şifreyi Tekrar Giriniz" %>
-        <%= f.button :submit, "Kaydet", :class => 'btn btn-success' %>
-      </fieldset>
-    </div>
+    <%= simple_form_for @user, validate: true, html: { class: "form-horizontal" }  do |f| %>
+      <%= f.error_notification %>
+      
+      <div class="row">
+        <div class="span6">
+          <fieldset>
+            <%= f.input :password, label: "Şifreniz", hint: "En az 8 karakter uzunluğunda olmalı" %>
+            <%= f.input :password_confirmation, label: "Şifreyi Tekrar Giriniz" %>
+            <div class="control-groups">
+              <div class="controls">
+                <%= f.button :submit, "Şifreyi Değiştir", class: 'btn btn-success' %>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      
+    <% end %>
   </div>
-  
-<% end %>
 </div>

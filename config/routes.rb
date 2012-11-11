@@ -1,5 +1,11 @@
 Socialfreight::Application.routes.draw do
 
+  get "listheaders/index"
+
+  get "listheaders/new"
+
+  get "listheaders/edit"
+
   get "logout" => "sessions#destroy", :as => "logout"
   get "login"  => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
@@ -60,7 +66,11 @@ Socialfreight::Application.routes.draw do
   resources :payoffs
   resources :payments
   resources :fuels
-  
+
+  resources :listheaders do
+    resources :listitems
+  end
+
   resources :searches do
     member do
       get :planning

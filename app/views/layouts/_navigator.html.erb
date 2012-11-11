@@ -2,6 +2,7 @@
   <div id="main-navigation" class="row profile navbar-inner" style="margin-top:50px;margin-left:5px;">
     <ul class="nav">
       <%= navigator("homenavigator", root_url, "Ana Sayfa", "icon-home") %>
+      <%= navigator("companynavigator", crm_path, "Müşteriler", "icon-star-empty") %>
       <li id="opernavigator" <% if (current_tab == "opernavigator") %>class="dropdown active"<% else %>class="dropdown"<%  end %>>
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
           <i class="icon-cog"></i>
@@ -24,9 +25,8 @@
           <!--li class="<%#= selected_navigation(operation.to_s) %>"><%#= link_to operation.to_s.humanize, home_operation_path(operation) %></li-->
         <%# end %>
       <%# end %>
-      <%= navigator("fleetnavigator", fleetman_path, "Filo Yönetimi", "icon-gift") %>
-      <%= navigator("companynavigator", crm_path, "Müşteriler", "icon-gift") %>
-      <%= navigator("financenavigator", finance_path, "Finans", "icon-gift") %>
+      <%= navigator("fleetnavigator", fleetman_path, "Filo Yönetimi", "icon-road") %>
+      <%= navigator("financenavigator", finance_path, "Finans", "icon-signal") %>
       <!--li id="glnavigator"><%#= link_to "#" do %><i class="icon-list-all"></i>Muhasebe<%# end %></li>
       <li id="iknavigator"><%#= link_to "#" do %><i class="icon-user"></i>İK<%# end %></li-->
       <!--li id="othersnavigator"><%#= link_to "#" do %><i class="icon-resize-full"></i>Diğer İşlemler<%# end %></li-->

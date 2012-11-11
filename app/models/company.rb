@@ -82,8 +82,10 @@ class Company < ActiveRecord::Base
 
   private
   def set_initials
-    counter = Patron.generate_counter("Company", nil, nil)
-    self.company_no = counter
+    if self && (self.company_no == 0)
+      counter = Patron.generate_counter("Company", nil, nil)
+      self.company_no = counter
+    end
   end
   
   def set_after_jobs

@@ -17,7 +17,14 @@ class PeopleController < ApplicationController
   end
 
   def new
-    @person = current_patron.people.build()
+    @person = Person.new
+    @person.name = current_user.name
+    @person.surname = current_user.surname
+    
+    respond_to do |format|
+      format.html
+      format.json { render json: @person }
+    end
   end
 
   def edit
@@ -26,6 +33,22 @@ class PeopleController < ApplicationController
 
   def show
     @person = Person.find(params[:id])
+  end
+
+  def create
+    @person = Person.new(params[:person])
+    @person.user_id = current_user.id
+    @person.patron_id = current_patron.id
+
+    respond_to do |format|
+      if @person.save
+        format.html { redirect_to @person, notice: 'person was successfully created.' }
+        format.json { render json: @person, status: :created, location: @person }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @person.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def update

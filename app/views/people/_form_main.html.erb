@@ -1,29 +1,31 @@
 <div class="row-fluid">
   <fieldset>
-    <legend>Profil Bilgisi</legend>
-    <div class="span6">
-      <%= f.input :name, :label => "Name & Surname" do %>
-        <%= f.input_field :name, :class => "input-small" %>
-        <%= f.input_field :surname, :class => "input-small" %>
-      <% end %>
-      <%= f.input :jobtitle %>
-      <%= f.input :department %>
-      <%= f.input :manager_id, :as => :select, :collection => [[@person.manager_id ? @person.manager.to_s : "", @person.manager_id]], :input_html => {:class => "chosen_input", "data-url" => "/people.json"} %>
-      <%= f.input :branch_id do %>
-        <%= f.input_field :branch_id, :as => :select, :collection => current_patron.branches, :include_blank => false, :class => "medium" %>
-      <% end %>
-      <%= f.input :busitel, :label => "Business Tel" do %>
-        <%= f.input_field :busitel, :class => "input-small" %>
-        <%= f.input_field :exttel, :class => "input-mini" %>
-      <% end %>
-    </div>
-    <div class="span6">
-      <%= f.input :salutation, :as => :select, :collection => ['Mr', 'Ms', 'Mrs', 'Dr', 'Prof'] %>
-      <%= f.input :socialname %>
-      <%= f.input :gsm %>
-      <%= f.input :fax %>
-      <%= f.input :start_date, :as => :string, :input_html => {:class => "input-small", "data-datepicker" => "datepicker"} %>
-      <%= f.input :status %>
+    <legend>Firmadaki Pozisyon Bilgileriniz<small class="pull-right">?</small></legend>
+    <div class="row-fluid">
+      <div class="span6">
+        <%= f.input :name, :label => "Name & Surname" do %>
+          <%= f.input_field :name, :class => "input-small" %>
+          <%= f.input_field :surname, :class => "input-small" %>
+        <% end %>
+        <%= f.input :jobtitle %>
+        <%= f.input :department %>
+        <%= f.input :manager_id, :as => :select, :collection => [[@person.manager_id ? @person.manager.to_s : "", @person.manager_id]], :input_html => {:class => "chosen_input", "data-url" => "/people.json"} %>
+        <%#= f.input :branch_id do %>
+          <%#= f.input_field :branch_id, :as => :select, :collection => current_patron.branches, :include_blank => false, :class => "medium" %>
+        <%# end %>
+        <%= f.input :busitel, :label => "Business Tel" do %>
+          <%= f.input_field :busitel, :class => "input-small" %>
+          <%= f.input_field :exttel, :class => "input-mini" %>
+        <% end %>
+      </div>
+      <div class="span6">
+        <%= f.input :salutation, :as => :select, :collection => ['Mr', 'Ms', 'Mrs', 'Dr', 'Prof'] %>
+        <%= f.input :socialname %>
+        <%= f.input :gsm %>
+        <%= f.input :fax %>
+        <%= f.input :start_date, :as => :string, :input_html => {:class => "input-small", "data-datepicker" => "datepicker"} %>
+        <%#= f.input :status %>
+      </div>
     </div>
   </fieldset>
 </div>

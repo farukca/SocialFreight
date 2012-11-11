@@ -30,9 +30,9 @@ class Patron < ActiveRecord::Base
   #has_many :payoffs
   #has_and_belongs_to_many :operations
   
-  attr_accessible :title, :website, :tel, :fax, :postcode, :district, :address, :city_id, :country_id, :status, :saler_id, 
+  attr_accessible :name, :website, :tel, :fax, :postcode, :district, :address, :city_id, :country_id, :status, :saler_id, 
                   :email, :operations, :contact_name, :contact_surname, :time_zone, :language, :logo, :remove_logo,
-                  :vehicle_owner, :depot_owner, :patron_type, :iata_code, :fmc_code,
+                  :vehicle_owner, :depot_owner, :patron_type, :iata_code, :fmc_code, :locale, :mail_encoding, 
                   :counters_attributes, :users_attributes, :branches_attributes
 
   def self.current_id=(id)
@@ -44,9 +44,9 @@ class Patron < ActiveRecord::Base
   end
 
   before_create :set_initials
-  after_create  :create_head_office, :create_patron_user #, :create_company
+  after_create  :create_head_office, :create_patron_user, :create_company #, :create_admin_user
 
-  validates_presence_of :title#, :message => I18n.t('patrons.errors.title.cant_be_blank')
+  validates_presence_of :name#, :message => I18n.t('patrons.errors.title.cant_be_blank')
   validates_presence_of :email#, :message => I18n.t('patrons.errors.title.cant_be_blank')
   validates_presence_of :contact_name#, :message => I18n.t('patrons.errors.title.cant_be_blank')
   validates_presence_of :contact_surname#, :message => I18n.t('patrons.errors.title.cant_be_blank')
@@ -54,8 +54,8 @@ class Patron < ActiveRecord::Base
   validates_presence_of :country_id
   validates_uniqueness_of :email, :case_sensitive => false
 
-  validates_length_of   :title, :maximum => 255#, :message => I18n.t('tasks.errors.name.too_long')
-  validates_length_of   :tel, :maximum => 12#, :message => I18n.t('tasks.errors.name.too_long')
+  validates_length_of   :title, maximum: 255#, :message => I18n.t('tasks.errors.name.too_long')
+  validates_length_of   :tel, maximum: 20#, :message => I18n.t('tasks.errors.name.too_long')
 
   def self.generate_counter(ctype, operation, direction)
     patron = Patron.find(Patron.current_id)
@@ -71,15 +71,15 @@ class Patron < ActiveRecord::Base
     Activity.log(self, target, action, creator_id, action_text, user_name, self.token)
   end
 
-  def self.journal_record(patron_id, user, branch, team, journal_model, unit, amount)
-    patron = Patron.find(Patron.current_id)
-    Journal.log(patron, journal_model, patron.id, patron.token, unit, amount)
+  #def self.journal_record(patron_id, user, branch, team, journal_model, unit, amount)
+  #  patron = Patron.find(Patron.current_id)
+  #  Journal.log(patron, journal_model, patron.id, patron.token, unit, amount)
 
-    Journal.log(user, journal_model, patron.id, patron.token, unit, amount) if user
-    Journal.log(branch, journal_model, patron.id, patron.token, unit, amount) if branch
-    Journal.log(team, journal_model, patron.id, patron.token, unit, amount) if team
+  #  Journal.log(user, journal_model, patron.id, patron.token, unit, amount) if user
+  #  Journal.log(branch, journal_model, patron.id, patron.token, unit, amount) if branch
+  #  Journal.log(team, journal_model, patron.id, patron.token, unit, amount) if team
 
-  end
+  #end
 
   class << self
     def statuses()
@@ -104,40 +104,77 @@ class Patron < ActiveRecord::Base
 
   private
   def set_initials
-    self.name = self.title
-    self.token = SecureRandom.urlsafe_base64[0,20]
-    if self.country_id.present?
-      self.locale = self.country.locale
-      self.language = self.country.language
-      self.time_zone = self.country.time_zone
-      self.mail_encoding = self.country.mail_encoding
-    end
+    self.title = self.name
+    self.token = SecureRandom.urlsafe_base64[0,40]
   end
 
   private
-  def create_patron_user
-    user = self.users.build()
-    user.name = self.contact_name
-    user.surname = self.contact_surname
-    user.email = self.email
-    user.patron_id = self.id
-    user.patron_key = self.token
-    user.branch_id  = self.branches.first.id
-    user.password = '9876543210'
-    user.password_confirmation = '9876543210'
-    user.save!
-    user.add_role :patron_admin
-  end
-
   def create_head_office
-    branch = self.branches.build()  
-    branch.name = 'Head Office'
-    branch.patron_token = self.token
+    Patron.current_id = self.id
+    branch = self.branches.new
+    branch.name = "Head Office"
+    branch.tel = self.tel
+    branch.fax = self.fax
+    branch.country_id = self.country_id
+    branch.patron_id = self.id
     branch.save!
   end
 
-  def create_counters
-    
+  #def create_admin_user
+  #  branch = Branch.where(patron_id: self.id).first
+  #  user = self.users.new
+  #  user.name = "SocialFreight"
+  #  user.surname = "Admin"
+  #  user.email = "faruk@socialfreight.com"
+  #  user.language = self.language
+  #  user.locale   = self.locale
+  #  user.mail_encoding = self.mail_encoding
+  #  user.time_zone = self.time_zone
+  #  user.branch_id  = branch.id
+  #  user.password = SecureRandom.urlsafe_base64[0,10]
+  #  user.password_confirmation = user.password
+  #  user.save!
+  #  user.add_role :super
+  #end
+
+  def create_patron_user
+    branch = Branch.where(patron_id: self.id).first
+    user = self.users.new
+    user.name = self.contact_name
+    user.surname = self.contact_surname
+    user.email = self.email
+    user.language = self.language
+    user.locale   = self.locale
+    user.mail_encoding = self.mail_encoding
+    user.time_zone = self.time_zone
+    user.branch_id  = branch.id
+    user.password = SecureRandom.urlsafe_base64[0,10]
+    user.password_confirmation = user.password
+    user.save!
+    user.add_role :admin
   end
+
+  def create_company
+    #counter = Counter.new
+    #counter.counter_type = "Company"
+    #counter.count = 1
+    #counter.patron_id = self.id
+    #counter.save!
+    branch = Branch.where(patron_id: self.id).first
+    user   = User.where(patron_id: self.id).last
+    company = Company.new
+    company.name = self.name
+    company.tel = self.tel
+    company.fax = self.fax
+    company.country_id = self.country_id
+    company.patron_id = self.id
+    company.branch_id  = branch.id
+    company.user_id = user.id
+    #company.company_no = 1
+    company.save!
+  end
+
+  #def create_counters
+  #end
 
 end

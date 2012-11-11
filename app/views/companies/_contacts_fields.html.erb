@@ -2,23 +2,21 @@
   <fieldset>
     <legend><%= t("companies.label.contact_info") %></legend>
     <div class="row-fluid">
-    <div class="span6">
-      <%= f.input :name, label: t("companies.label.contact_name") do %>
-        <%= f.input_field :salutation, as: :select, collection: ['Mr', 'Ms', 'Mrs', 'Dr'], class: "input-mini", include_blank: false %>
-        <%= f.input_field :name, class: "input-small", placeholder: "Name" %>
-        <%= f.input_field :surname, class: "input-small", placeholder: "Surname" %>
-      <% end %>
-      <%= f.input :jobtitle, label: t("companies.label.jobtitle") do %>
-        <%= f.input_field :jobtitle, class: "input-small", placeholder: "Title" %>
-        <%= f.input_field :department, class: "input-small", placeholder: "Department" %>
-      <% end %>
+      <div class="span6">
+        <%= f.input :name, label: t("companies.label.contact_name") do %>
+          <%#= f.input_field :salutation, as: :select, collection: ['Mr', 'Ms', 'Mrs', 'Dr'], class: "input-mini", include_blank: false %>
+          <%= f.input_field :name, class: "input-small", placeholder: "Yetkili Adı" %>
+          <%= f.input_field :surname, class: "input-small", placeholder: "Yetkili Soyadı" %>
+        <% end %>
+        <%= f.input :jobtitle, label: t("companies.label.jobtitle") do %>
+          <%= f.input_field :jobtitle, class: "input-small", placeholder: "Yetkili Ünvanı" %>
+          <%= f.input_field :department, class: "input-small", placeholder: "Çalıştığı Departman" %>
+        <% end %>
+      </div>
+      <div class="span6">
+        <%= f.input :email, label: t("defaults.label.email"), placeholder: "Yetkili E-posta adresi" %>
+        <%= f.input :tel, label: t("defaults.label.tel"), placeholder: "Yetkili Telefonu" %>
+      </div>
     </div>
-    <div class="span6">
-      <%= f.input :email, label: t("defaults.label.email") %>
-      <%= f.input :tel, label: t("defaults.label.tel") %>
-    </div>
-    </div>
-    <%= f.input :user_id, as: :hidden %>
   </fieldset>
 </div>
-

@@ -10,7 +10,7 @@ class Country < ActiveRecord::Base
   has_many :cities, :foreign_key => "country_id"
   has_many :states, :foreign_key => "country_id"
   
-  attr_accessible :name, :code, :telcode
+  attr_accessible :name, :code, :telcode, :locale, :language, :time_zone, :mail_encoding
   
   validates_presence_of :name, :code
   validates_uniqueness_of :name, :case_sensitive => false

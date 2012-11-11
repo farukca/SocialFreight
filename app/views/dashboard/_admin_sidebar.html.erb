@@ -2,19 +2,32 @@
   <div class="well">
     <ul class="nav nav-list">
       <li class="nav-header">Admin Menu</li>
-      <li><%= link_to patron_path(current_patron) do %><i class="icon-home"></i> Firma Bilgileri<% end %></li>
-      <li><%= link_to users_path do %><i class="icon-user"></i> Kullanıcılar<% end %></li>
-      <li><%= link_to branches_path do %><i class="icon-comment"></i> Şubeler<% end %></li>
-      <li><%= link_to currencies_path do %><i class="icon-bell"></i> Kurlar<% end %></li>
-      <li><%= link_to banks_path do %><i class="icon-gift"></i> Bankalar<% end %></li>
-      <!--li><%#= link_to counters_path do %><i class="icon-user"></i> Sayaçlar<%# end %></li-->
-      <li class="divider"></li>
+      <% if current_user.has_role? :admin %>
+        <li><%= link_to patron_path(current_patron) do %><i class="icon-home"></i> Firma Bilgileri<% end %></li>
+        <li><%= link_to users_path do %><i class="icon-user"></i> Kullanıcılar<% end %></li>
+        <li><%= link_to branches_path do %><i class="icon-comment"></i> Şubeler<% end %></li>
+        <li><%= link_to listheaders_path do %><i class="icon-list"></i> Param List<% end %></li>
+        <!--li><%#= link_to counters_path do %><i class="icon-user"></i> Sayaçlar<%# end %></li-->
+        <li class="divider"></li>
+      <% end %>
       <li><%= link_to edit_user_path(current_user) do %><i class="icon-cog"></i> Settings<% end %></li>
-      <li><%= link_to person_path(current_user.person) do %><i class="icon-user"></i> Profil<% end %></li>
+      <li>
+        <% if current_user.person %>
+          <%= link_to person_path(current_user.person) do %><i class="icon-user"></i> Profil<% end %>
+        <% else %>
+          <%= link_to new_person_path do %><i class="icon-user"></i> Profil<% end %>
+        <% end %>
+      </li>
       <li class="divider"></li>
-      <li><%= link_to betausers_path do %><i class="icon-user"></i> Beta Talepleri<% end %></li>
-      <li><%= link_to feedbacks_path do %><i class="icon-cog"></i> Bildirimler <% end %></li>
-      <li><%= link_to patrons_path do %><i class="icon-user"></i> Patronlar<% end %></li>
+      <% if current_user.has_role? :super %>
+        <li><%= link_to betausers_path do %><i class="icon-user"></i> Beta Talepleri<% end %></li>
+        <li><%= link_to feedbacks_path do %><i class="icon-cog"></i> Bildirimler <% end %></li>
+        <li><%= link_to patrons_path do %><i class="icon-user"></i> Patronlar<% end %></li>
+        <li class="divider"></li>
+        <li><%= link_to countries_path do %><i class="icon-globe"></i> Ülkeler<% end %></li>
+        <li><%= link_to banks_path do %><i class="icon-gift"></i> Bankalar<% end %></li>
+        <li><%= link_to currencies_path do %><i class="icon-bell"></i> Kurlar<% end %></li>
+      <% end %>
     </ul>
   </div>
 </div>

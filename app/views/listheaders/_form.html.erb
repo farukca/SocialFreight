@@ -1,0 +1,38 @@
+<div id="listheader_form" class="row-fluid">
+<%= simple_form_for @listheader, validate: true, html: { class: "form-horizontal" } do |f| %>
+  <%= f.error_notification %>
+  <%= f.error :base, error_method: :to_sentence %>
+
+    <div class="pageBlock">
+   
+      <div class="page-header">
+        <h4>Parametre Bilgisi<small class="pull-right"></small></h4>
+      </div>
+      <div id="listheader-main-form" class="row-fluid">
+        <div class="span6">
+          <fieldset>
+            <%= f.input :code  %>
+            <%= f.input :name %>
+          </fieldset>
+        </div>
+        <div class="span6">
+          <fieldset>
+            <%= f.input :i18n_code %>
+            <%= f.input :description %>
+          </fieldset>
+        </div>
+      </div>
+      <legend>Liste Elemanları</legend>
+      <div id="listitems-form" class="row-fluid">
+        <%= f.fields_for :listitems do |builder| %>
+          <%= render 'listitems_fields', :f => builder %>
+        <% end %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Listeyi Kaydet", class: 'btn btn-info', :accesskey => "s" %>
+        <button type="button" class="btn">Vazgeç</button>
+      </div>
+    </div>
+<% end %>
+</div>

@@ -38,11 +38,11 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email, :case_sensitive => false
   validates_presence_of :branch_id
 
-  before_create :set_initials
-  after_create  :create_person, :send_activation_mail
+  after_create  :send_activation_mail
 
   def send_activation_mail
-    UserMailer.activation_needed_email(self).deliver
+    #UserMailer.activation_needed_email(self).deliver
+    QC.enqueue "UserMailer.activation_needed_email.deliver", self.id
   end
 
   def roles_list
@@ -93,23 +93,4 @@ class User < ActiveRecord::Base
     @social_posts = Post.where("user_id IN (?) OR user_id = ? ", self.followees(User), self.id).limit(6).order("created_at desc")
   end
 
-  private
-  def set_initials
-    if self.patron_key.blank? && self.patron
-      self.patron_key = self.patron.token
-    end
-  end
-
-  private
-  def create_person
-    if self.patron.present?
-      person = self.build_person()
-      person.name = self.name
-      person.surname = self.surname
-      person.email = self.email
-      person.patron_id = self.patron_id
-      person.patron_token = self.patron_key
-      person.save!
-    end
-  end
 end

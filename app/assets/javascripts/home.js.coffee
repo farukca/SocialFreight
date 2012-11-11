@@ -15,6 +15,8 @@ jQuery ->
      $($(this).data('newtab')).click()
   $(".chosen_select").each ->
     $(this).chosen()
+  $(".country_select").each ->
+    $(this).select2()
   #$(".chosen_input").each ->
   #  el = $(this)
   #  el.ajaxChosen

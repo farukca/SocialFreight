@@ -1,7 +1,8 @@
 class CountriesController < ApplicationController
 
   before_filter :require_login
-  caches_action :index
+  #caches_action :index
+  layout "admin"
 
   def new
     @country = Country.new
@@ -40,10 +41,24 @@ class CountriesController < ApplicationController
 
     respond_to do |format|
       if @country.save
-        format.html { redirect_to @country, notice: 'Country was successfully created.' }
+        format.html { redirect_to countries_path, notice: 'Country was successfully created.' }
         format.json { render json: @country, status: :created, location: @country }
       else
         format.html { render action: "new" }
+        format.json { render json: @country.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update
+    @country = Country.find(params[:id])
+
+    respond_to do |format|
+      if @country.update_attributes(params[:country])
+        format.html { redirect_to countries_path, notice: 'Country was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
         format.json { render json: @country.errors, status: :unprocessable_entity }
       end
     end
