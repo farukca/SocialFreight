@@ -8,30 +8,36 @@
       <div class="page-header">
         <h4>Parametre Bilgisi<small class="pull-right"></small></h4>
       </div>
+      
       <div id="listheader-main-form" class="row-fluid">
-        <div class="span6">
-          <fieldset>
-            <%= f.input :code  %>
-            <%= f.input :name %>
-          </fieldset>
+        <div class="span5">
+          <legend>Liste Başlık Bilgileri</legend>
+          <div class="row-fluid">
+            <fieldset>
+              <%= f.input :code  %>
+              <%= f.input :name %>
+              <%= f.input :i18n_code %>
+              <%= f.input :description %>
+            </fieldset>
+          </div>
         </div>
-        <div class="span6">
-          <fieldset>
-            <%= f.input :i18n_code %>
-            <%= f.input :description %>
-          </fieldset>
+        <div class="span7">
+          <legend>Liste Elemanları</legend>
+          <div class="row-fluid">
+            <div id="listitems-form" class="row-fluid">
+              <%= f.fields_for :listitems do |subf| %>
+                <%= render 'listitem_fields', :f => subf %>
+              <% end %>
+              <%= link_to_add_fields "Yeni Satır Ekle", f, :listitems %>
+            </div>
+          </div>
         </div>
       </div>
-      <legend>Liste Elemanları</legend>
-      <div id="listitems-form" class="row-fluid">
-        <%= f.fields_for :listitems do |builder| %>
-          <%= render 'listitems_fields', :f => builder %>
-        <% end %>
-      </div>
-
-      <div class="form-actions">
-        <%= f.button :submit, "Listeyi Kaydet", class: 'btn btn-info', :accesskey => "s" %>
-        <button type="button" class="btn">Vazgeç</button>
+      <div class="row-fluid">
+        <div class="form-actions">
+          <%= f.button :submit, "Listeyi Kaydet", class: 'btn btn-info', :accesskey => "s" %>
+          <button type="button" class="btn">Vazgeç</button>
+        </div>
       </div>
     </div>
 <% end %>
