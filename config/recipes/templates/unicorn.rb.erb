@@ -1,12 +1,13 @@
-root = "/home/freighter/apps/SocialFreight/current"
-working_directory root
-pid "#{root}/tmp/pids/unicorn.pid"
-stderr_path "#{root}/log/unicorn.log"
-stdout_path "#{root}/log/unicorn.log"
+working_directory "<%= current_path %>"
+pid "<%= unicorn_pid %>"
+stderr_path "<%= unicorn_log %>"
+stdout_path "<%= unicorn_log %>"
 
-listen "/tmp/unicorn.SocialFreight.sock"
-worker_processes 2
+listen "/tmp/unicorn.<%= application %>.sock"
+worker_processes <%= unicorn_workers %>
 timeout 30
+
+preload_app true
 
 before_fork do |server, worker|
   # Disconnect since the database connection will not carry over

@@ -1,0 +1,18 @@
+<div id="calendar">
+  <h3 id="month">
+    <%= link_to "<", date: @date.prev_month %>
+    <%= @date.strftime("%B %Y") %>
+    <%= link_to ">", date: @date.next_month %>
+    <small class="pull-right"></small>
+  </h3>
+  <%= calendar @date do |date| %>
+    <%= date.day %>
+    <% if @tasks_by_date[date] %>
+      <ul>
+        <% @tasks_by_date[date].each do |task| %>
+          <li><%= link_to task.task_text, "#" %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  <% end %>
+</div>

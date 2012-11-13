@@ -1,11 +1,20 @@
 upstream unicorn {
-  server unix:/tmp/unicorn.SocialFreight.sock fail_timeout=0;
+  server unix:/tmp/unicorn.<%= application %>.sock fail_timeout=0;
 }
 
 server {
   listen 80 default deferred;
   server_name socialfreight.com;
-  root /home/freighter/apps/SocialFreight/current/public;
+  root <%= current_path %>/public;
+
+  if (-f $document_root/system/maintenance.html) {
+    return 503;
+  }
+  error_page 503 @maintenance;
+  location @maintenance {
+    rewrite  ^(.*)$  /system/maintenance.html last;
+    break;
+  }
 
   location ^~ /assets/ {
     gzip_static on;
@@ -24,4 +33,13 @@ server {
   error_page 500 502 503 504 /500.html;
   client_max_body_size 4G;
   keepalive_timeout 10;
+
+  if (-f $document_root/system/maintenance.html) {
+    return 503;
+  }
+  error_page 503 @maintenance;
+  location @maintenance {
+    rewrite  ^(.*)$  /system/maintenance.html last;
+    break;
+  }
 }

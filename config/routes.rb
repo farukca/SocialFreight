@@ -1,11 +1,5 @@
 Socialfreight::Application.routes.draw do
 
-  get "listheaders/index"
-
-  get "listheaders/new"
-
-  get "listheaders/edit"
-
   get "logout" => "sessions#destroy", :as => "logout"
   get "login"  => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
@@ -13,6 +7,7 @@ Socialfreight::Application.routes.draw do
   #get "today" => "home#today", :as => "today"
   #get "today" => "home#egitim", :as => "egitim"
   get "dashboard" => "dashboard#index", :as => "dashboard"
+  get "calendar"  => "dashboard#calendar", :as => "calendar"
 
   resources :users do
     member do
