@@ -1,7 +1,7 @@
 require "bundler/capistrano"
 require "whenever/capistrano"
 
-set :application, "socialfreight"
+set :application, "SocialFreight"
 
 load "config/recipes/base"
 load "config/recipes/nginx"
@@ -12,7 +12,7 @@ load "config/recipes/rbenv"
 load "config/recipes/check"
 load "config/recipes/assets"
 
-server "213.128.89.119", :web, :app, :db, primary: true
+server " 176.53.65.126", :web, :app, :db, primary: true
 
 set :user, "freighter"
 set :deploy_to, "/home/#{user}/apps/#{application}"
