@@ -1,26 +1,34 @@
-<div id="company_form" class="main-model-form">
+<div id="modal_company_form" class="modal">
 <%= simple_form_for @company, html: { class: 'form-horizontal' }, remote: true, validate: true do |f| %>
   <%= f.error_notification %>
   <%= f.error :base, :error_method => :to_sentence %>
 
   <div class="pageBlock">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <%= render 'shared/form_header', message: "Hızlı Firma Oluştur" %>
-    <fieldset>
-      <legend>Firma Bilgisi</legend>
-      <div class="row-fluid">
-          <%= f.input :name %>
-          <%= f.input :company_type do %>
-            <%= f.select :company_type, Company.company_types.map { |r| [r[1], r[0] ] }, :include_blank => false %>
-          <% end %>
-          <%= f.input :tel  %>
-          <%= f.input :email %>
-          <%= f.input :branch_id, :as => :select, :collection => current_patron.branches, :include_blank => false, :selected => current_user.branch_id %>
-          <div class="input-controls">
-            <%= f.submit "Kaydet", class: "btn btn-success" %>
-          </div>
-      </div>
-    </fieldset>
+
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+      <h4>Hızlı Firma Oluştur</h4>
+    </div>
+    <div class="modal-body">
+      <fieldset>
+        <legend>Firma Bilgisi</legend>
+        <div class="row-fluid">
+            <%= f.input :name %>
+            <%= f.input :company_type do %>
+              <%= f.select :company_type, Company.company_types.map { |r| [r[1], r[0] ] }, :include_blank => false %>
+            <% end %>
+            <%= f.input :tel  %>
+            <%= f.input :email %>
+            <%= f.input :branch_id, :as => :select, :collection => current_patron.branches, :include_blank => false, :selected => current_user.branch_id %>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="modal-footer">
+      <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">Kapat</a>
+      <%= f.submit "Firma Bilgisini Kaydet", class: "btn btn-success" %>
+    </div>
+
   </div>
 
 <% end %>

@@ -109,11 +109,11 @@ class LoadingsController < ApplicationController
     if @loading
 
       if @loading.operation != session[:plan_operation]
-        @loading.errors.add_to_base('Operations different')
+        @loading.errors[:base] << "Operations different"
       end
 
       if @loading.direction != session[:plan_direction]
-        @loading.errors.add_to_base('Import Export selection must be different')
+        @loading.errors[:base] << "Import Export selection must be different"
       end
 
       session[:wicked_loading_ids] << @loading.id

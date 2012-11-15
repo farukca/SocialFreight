@@ -1,5 +1,5 @@
 <li class="media">
-  <%#= link_to (image_tag user_small_avatar(task.cruser), class: "media-object img-circle"), user_path(task.cruser), class: "pull-left" %>
+  <%= link_to (image_tag user_small_avatar(task.cruser), class: "media-object img-circle"), user_path(task.cruser), class: "pull-left" %>
   <div class="media-body">
     <h6 class="media-heading">
       <%= user_name(task.user) %>

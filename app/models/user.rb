@@ -61,7 +61,7 @@ class User < ActiveRecord::Base
   #end
 
   def token_inputs
-    { id: email, text: to_s }
+    { id: id, text: to_s }
   end
 
   def generate_token(column)
