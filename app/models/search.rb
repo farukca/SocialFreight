@@ -1,12 +1,8 @@
 class Search < ActiveRecord::Base
 
-  attr_accessor :session_loading_ids, :listpage
+  attr_accessor :session_loading_ids
 
   default_scope { where(patron_id: Patron.current_id) }
-  
-  def listpage=(listpage)
-    listpage = listpage
-  end
 
   def positions
     @positions = find_positions
@@ -34,7 +30,7 @@ class Search < ActiveRecord::Base
     loadings = Loading.active
     loadings = loadings.where(operation: self.operation) if self.operation.present?
     loadings = loadings.where(direction: self.direction) if self.direction.present?
-    loadings.page(listpage).per(10)
+    loadings
   end
 
   private

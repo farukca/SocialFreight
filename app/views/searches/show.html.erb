@@ -1,11 +1,11 @@
 <% case @search.model %>
   <% when "positions" %>
     <%= render 'searches/position_form' %>
-    <%= render 'positions/positions', :positions => @search.positions %>
+    <%= render 'positions/positions', :positions => @positions %>
   <% when "loadings" %>
     <%= render 'searches/loading_form' %>
-    <%= render 'loadings/loadings', :loadings => @search.loadings %>
+    <%= render 'loadings/loadings', :loadings => @loadings %>
   <% when "reservations" %>
     <%= render 'searches/reservation_form' %>
-    <%= render 'reservations', :reservations => @search.reservations %>
+    <%= render 'reservations', :reservations => @reservations %>
 <% end %>

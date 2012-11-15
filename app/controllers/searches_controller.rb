@@ -19,7 +19,15 @@ class SearchesController < ApplicationController
 
   def show
     @search = Search.find(params[:id])
-    @search.listpage = params[:page]
+    
+    case @search.model 
+      when "positions" 
+        @positions = @search.positions.page(params[:page]).per(10)
+      when "loadings"
+        @loadings = @search.loadings.page(params[:page]).per(10)
+      when "reservations"
+        @reservations = @search.reservations.page(params[:page]).per(10)
+    end 
   end
 
   def planning
