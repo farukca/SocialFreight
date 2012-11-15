@@ -1,7 +1,7 @@
 require "bundler/capistrano"
 require "whenever/capistrano"
 
-set :application, "SocialFreight"
+set :application, "socialfreight"
 
 load "config/recipes/base"
 load "config/recipes/nginx"
