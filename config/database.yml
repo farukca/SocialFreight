@@ -31,8 +31,8 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: socialfreight_production
+  database: sf_prod
   pool: 5
   host: localhost
   username: postgres
-  password: 12345
+  password: farukca6
