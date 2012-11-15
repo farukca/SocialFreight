@@ -3,5 +3,5 @@ production:
   encoding: unicode
   database: sf_prod
   pool: 5
-  username: postgres
+  username: socialfreight
   password: farukca6
