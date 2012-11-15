@@ -6,3 +6,5 @@ tmp/
 public/assets
 public/uploads
 uploads/
+config/database.yml
+config/database.example.yml
