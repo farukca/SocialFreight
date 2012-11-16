@@ -8,3 +8,5 @@ config/database.example.yml
 public/assets
 public/uploads
 uploads/
+config/database.yml
+config/database.example.yml
