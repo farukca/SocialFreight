@@ -34,5 +34,5 @@ production:
   database: socialfreight_production
   pool: 5
   host: localhost
-  username: socialfreight
-  password: farukca6
+  username: postgres
+  password: 12345
