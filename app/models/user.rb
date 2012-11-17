@@ -41,7 +41,8 @@ class User < ActiveRecord::Base
   after_create  :send_activation_mail
 
   def send_activation_mail
-    UserMailer.activation_needed_email(self).deliver
+    #UserMailer.activation_needed_email(self).deliver
+    Resque.enqueue(UserActivationMailer, self.id)
     #QC.enqueue "UserMailer.activation_needed_email.deliver", self.id
   end
 

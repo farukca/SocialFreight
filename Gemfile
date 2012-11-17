@@ -44,7 +44,7 @@ gem 'sorcery'
 gem 'cancan'
 gem 'rolify'
 gem 'wicked'
-#gem 'queue_classic', '2.0.0rc13'
+gem 'resque', :require => "resque/server"
 gem 'savon'
 gem 'whenever', :require => false
 

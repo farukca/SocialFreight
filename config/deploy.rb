@@ -9,10 +9,12 @@ load "config/recipes/unicorn"
 load "config/recipes/postgresql"
 load "config/recipes/nodejs"
 load "config/recipes/rbenv"
+load "config/recipes/redis"
+load "config/recipes/resque"
 load "config/recipes/check"
 load "config/recipes/assets"
 
-server "176.53.65.126", :web, :app, :db, primary: true
+server "213.128.89.119", :web, :app, :db, primary: true
 
 set :user, "freighter"
 set :deploy_to, "/home/#{user}/apps/#{application}"
