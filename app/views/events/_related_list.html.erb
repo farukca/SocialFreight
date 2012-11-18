@@ -2,14 +2,14 @@
               header_row_html: { class: "headerRow" },
               row_html: { class: "dataRow" } do |table| %>
   <% table.column :action, column_html: { class: "actionCol", scope: "col" } do |event| %>
-    <%= link_to "Güncelle", edit_event_path(event) %> 
+    <%= link_to t("defaults.link.edit"), edit_event_path(event) %> 
     | 
-    <%= link_to "Sil", event, method: :delete, data: {confirm: "Are you sure?"} %>              
+    <%= link_to t("defaults.link.destroy"), event, method: :delete, data: {confirm: t("defaults.messages.destroy_confirm")} %>              
   <% end %>
-  <% table.column :event_type, column_html: { scope: "col" } %>
-  <% table.column :event_date, column_html: { scope: "col" } %>
-  <% table.column :event_status, column_html: { scope: "col" } %>
-  <% table.column :event_source, column_html: { scope: "col" } %>
-  <% table.column :source_url, column_html: { scope: "col" } %>
+  <% table.column :event_type, label: t("companies.label.event_type"), column_html: { scope: "col" } %>
+  <% table.column :event_date, label: t("companies.label.event_date"), column_html: { scope: "col" } %>
+  <% table.column :event_status, label: t("companies.label.event_status"), column_html: { scope: "col" } %>
+  <% table.column :event_source, label: t("companies.label.event_source"), column_html: { scope: "col" } %>
+  <% table.column :source_url, label: t("companies.label.event_source_url"), column_html: { scope: "col" } %>
 
 <% end %>

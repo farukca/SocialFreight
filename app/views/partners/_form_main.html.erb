@@ -1,6 +1,8 @@
 <div class="row-fluid">
   <fieldset>
-    <legend><%= t("companies.title.partner_info") %></legend>
+    <div class="page-header">
+      <%= t("companies.title.partner_info") %>
+    </div>
     <div class="row-fluid">
       <div class="span6">
         <%= f.input :company_id, as: :hidden, label: t("defaults.label.company"), input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-selected" => @partner.company_id ? @partner.company.name : "", "data-placeholder" => t("companies.placeholder.company")} %>
@@ -10,6 +12,10 @@
         <%= f.input :partner_type, as: :select, label: t("companies.label.partner_type"), collection: ['Müşterisi', 'Tedarikçisi', 'Ortağı', 'Yatırımcısı', 'Diğer'] %>
         <%= f.input :notes, label: t("defaults.label.notes")  %>
       </div>
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit, t("defaults.action.save"), class: 'btn btn-primary' %>
+      <a href="#" class="btn"><%= t("defaults.link.cancel") %></a>
     </div>
   </fieldset>
 </div>

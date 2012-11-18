@@ -5,17 +5,17 @@
       <div class="span6">
         <%= f.input :name, label: t("companies.label.contact_name") do %>
           <%#= f.input_field :salutation, as: :select, collection: ['Mr', 'Ms', 'Mrs', 'Dr'], class: "input-mini", include_blank: false %>
-          <%= f.input_field :name, class: "input-small", placeholder: "Yetkili Adı" %>
-          <%= f.input_field :surname, class: "input-small", placeholder: "Yetkili Soyadı" %>
+          <%= f.input_field :name, class: "input-small", placeholder: t("contacts.placeholder.name") %>
+          <%= f.input_field :surname, class: "input-small", placeholder: t("contacts.placeholder.surname") %>
         <% end %>
         <%= f.input :jobtitle, label: t("companies.label.jobtitle") do %>
-          <%= f.input_field :jobtitle, class: "input-small", placeholder: "Yetkili Ünvanı" %>
-          <%= f.input_field :department, class: "input-small", placeholder: "Çalıştığı Departman" %>
+          <%= f.input_field :jobtitle, class: "input-small", placeholder: t("contacts.placeholder.jobtitle") %>
+          <%= f.input_field :department, class: "input-small", placeholder: t("contacts.placeholder.department") %>
         <% end %>
       </div>
       <div class="span6">
-        <%= f.input :email, label: t("defaults.label.email"), placeholder: "Yetkili E-posta adresi" %>
-        <%= f.input :tel, label: t("defaults.label.tel"), placeholder: "Yetkili Telefonu" %>
+        <%= f.input :email, label: t("defaults.label.email"), placeholder: t("contacts.placeholder.email") %>
+        <%= f.input :tel, label: t("defaults.label.tel"), placeholder: t("contacts.placeholder.phone") %>
       </div>
     </div>
   </fieldset>

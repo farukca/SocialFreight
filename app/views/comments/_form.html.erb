@@ -3,10 +3,10 @@
     <div class="row-fluid">
     <%#= f.error_notification %>
     <%#= f.input :comment_text, :as => :text, :input_html => {:rows => "1", :style => "width:95%"}, :label => "Yorum Ekle" %>
-      <%= label_tag 'comment_text', "Yorum Ekle", class: "control-label" %>
+      <%= label_tag 'comment_text', t("defaults.link.new_comment"), class: "control-label" %>
       <div class="input-append">
-        <%= f.text_field :comment_text, :class => "input-xlarge" %>
-        <%= f.submit("Paylaş", :class => 'btn btn-info') %>
+        <%= f.text_field :comment_text, class: "input-xlarge" %>
+        <%= f.submit(t("defaults.action.share"), class: 'btn btn-info') %>
       </div>
     </div>
   <% end %>

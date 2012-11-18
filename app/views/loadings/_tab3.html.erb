@@ -1,7 +1,0 @@
-<div id="documents" class="tab-pane">
-  <table class="table table-bordered table-condensed">
-    <%= render "documents/list_header" %>
-    <%= render partial: "documents/list_item", collection: @loading.documents, as: :document %>
-  </table>
-  <%= link_to "Yeni Dosya Ekle", new_document_path(loading_id: @loading.slug), class: "btn btn-info" %>
-</div>

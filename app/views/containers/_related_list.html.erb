@@ -2,15 +2,15 @@
               header_row_html: { class: "headerRow" },
               row_html: { class: "dataRow" } do |table| %>
   <% table.column :action, column_html: { class: "actionCol", scope: "col" } do |container| %>
-    <%= link_to "Güncelle", edit_container_path(container) %> 
+    <%= link_to t("defaults.link.edit"), edit_container_path(container) %> 
     | 
-    <%= link_to "Sil", container, method: :delete, data: {confirm: "Are you sure?"} %>              
+    <%= link_to t("defaults.link.destroy"), container, method: :delete, data: {confirm: t("defaults.messages.destroy_confirm")} %>              
   <% end %>
-  <% table.column :container_type, column_html: { scope: "col" } %>
-  <% table.column :name, column_html: { scope: "col" } %>
-  <% table.column :sealno, column_html: { scope: "col" } %>
-  <% table.column :free_day, column_html: { scope: "col" } %>
-  <% table.column :demurrage, column_html: { scope: "col" } do |container| %>
+  <% table.column :container_type, label: t("containers.label.container_type"), column_html: { scope: "col" } %>
+  <% table.column :name, label: t("containers.label.name"), column_html: { scope: "col" } %>
+  <% table.column :sealno, label: t("containers.label.sealno"), column_html: { scope: "col" } %>
+  <% table.column :free_day, label: t("containers.label.free_day"), column_html: { scope: "col" } %>
+  <% table.column :demurrage, label: t("containers.label.demurrage"), column_html: { scope: "col" } do |container| %>
     <%= "#{container.demurrage} #{container.demurrage_curr}" %>
   <% end %>
 

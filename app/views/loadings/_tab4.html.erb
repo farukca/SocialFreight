@@ -1,7 +1,0 @@
-<div id="costs" class="tab-pane">
-  <table class="table table-bordered table-condensed">
-    <%= render "costs/list_header" %>
-    <%= render partial: "costs/list_item", collection: @loading.costs, as: :cost %>
-  </table>
-  <%= link_to "Yeni Masraf Ekle", new_cost_path(loading_id: @loading.slug), class: "btn btn-info" %>
-</div>

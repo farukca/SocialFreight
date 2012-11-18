@@ -1,21 +1,21 @@
 <div id="arrival_<%= arrival.id %>" class="tab-pane active">
   <div class="pageBody">
     <div class="profile-content">
-    <legend>Boşaltma Bilgisi <%= link_to edit_arrival_path(arrival) do %><i class="icon-edit"></i><% end %></legend>
+    <legend><%= t("operations.title.arrival_info") %> <%= link_to edit_arrival_path(arrival) do %><i class="icon-edit"></i><% end %></legend>
     <table class="detailList" style="width:100%;text-align:center" border="0" cellpatding="0" cellspacing="0">
       <tr>
-        <th>Boşaltma Tarihi</th>
-        <th>Özet Beyan</th>
-        <th>Gümrük</th>
-        <th>Gümrükçü</th>
-        <th>Alıcı</th>
-        <th>Yükleyici</th>
-        <th>Notify</th>
+        <th><%= t("defaults.label.unload_date") %></th>
+        <th><%= t("operations.label.settlement_info") %></th>
+        <th><%= t("operations.label.custom_office") %></th>
+        <th><%= t("operations.label.customofficer") %></th>
+        <th><%= t("defaults.label.consignee") %></th>
+        <th><%= t("operations.label.loader_firm") %></th>
+        <th><%= t("operations.label.notify_firm") %></th>
       </tr>
       <tr>
         <td><%= arrival.unload_date.strftime("%d/%m/%Y %I:%M") if arrival.unload_date %></td>
         <td><%= "#{arrival.statement} - #{arrival.statement_date}" %></td>
-        <td>Ambarlı Gümrük</td>
+        <td></td>
         <td><%= arrival.customofficer.name if arrival.customofficer %></td>
         <td><%= arrival.consignee.name if arrival.consignee %></td>
         <td><%= arrival.deliver.name if arrival.deliver %></td>

@@ -6,7 +6,7 @@
   <div class="pageBlock">
       
     <div class="page-header">
-      <h4>Firma Bilgisi<small class="pull-right">Firma ile ilgili bütün bilgilerin tamamlanması, sonrasında işlerinizi azaltacaktır. Zorunlu olmayan verileri daha sonrada tamamlayabilirsiniz.</small></h4>
+      <h4><%= t("companies.title.company_info") %><small class="pull-right">Firma ile ilgili bütün bilgilerin tamamlanması, sonrasında işlerinizi azaltacaktır. Zorunlu olmayan verileri daha sonrada tamamlayabilirsiniz.</small></h4>
     </div>
 
     <div id="company-main-form" class="row-fluid">
@@ -19,8 +19,8 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Firma Bilgisini Kaydet", class: 'btn btn-info', :accesskey => "s" %>
-      <button type="button" class="btn">Vazgeç</button>
+      <%= f.button :submit, t("companies.action.save"), class: 'btn btn-info', :accesskey => "s" %>
+      <button type="button" class="btn"><%= t("defaults.link.cancel") %></button>
     </div>
 
   </div>

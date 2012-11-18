@@ -6,8 +6,8 @@ class Branch < ActiveRecord::Base
   belongs_to :patron
   friendly_id :name, use: :slugged, use: :scoped, scope: :patron
   
-  belongs_to :city
-  belongs_to :state
+  #belongs_to :city
+  #belongs_to :state
   belongs_to :country
 
   has_many :users
@@ -15,7 +15,7 @@ class Branch < ActiveRecord::Base
   has_many :loadings
   has_many :journals, as: :journaled, dependent: :destroy
 
-  attr_accessible :name, :tel, :fax, :postcode, :district, :address, :city_id, :country_id, :status, :patron_id
+  attr_accessible :name, :tel, :fax, :postcode, :district, :address, :city, :country_id, :status, :patron_id
 
   validates :name, presence: { message: I18n.t('defaults.inputerror.cant_be_blank') }, length: { maximum: 100}
 

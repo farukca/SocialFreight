@@ -2,13 +2,13 @@
               header_row_html: { class: "headerRow" },
               row_html: { class: "dataRow" } do |table| %>
   <% table.column :action, column_html: { class: "actionCol", scope: "col" } do |document| %>
-    <%= link_to "Güncelle", edit_document_path(document) %> 
+    <%= link_to t("defaults.link.edit"), edit_document_path(document) %> 
     | 
-    <%= link_to "Sil", document, method: :delete, data: {confirm: "Are you sure?"} %>
+    <%= link_to t("defaults.link.destroy"), document, method: :delete, data: {confirm: t("defaults.messages.destroy_confirm") } %>
   <% end %>
-  <% table.column :document_type, column_html: { class: "dateCol", scope: "col" } %>
-  <% table.column :document_date, column_html: { class: "dateCol", scope: "col" } %>
-  <% table.column :document_no, column_html: { class: "dateCol", scope: "col" } %>
-  <% table.column :status, column_html: { scope: "col" } %>
+  <% table.column :document_type, label: t("documents.label.document_type"), column_html: { scope: "col" } %>
+  <% table.column :document_date, label: t("documents.label.document_date"), column_html: { scope: "col" } %>
+  <% table.column :document_no, label: t("documents.label.document_no"), column_html: { scope: "col" } %>
+  <% table.column :document_no, label: t("documents.label.description"), column_html: { scope: "col" } %>
   <% table.column :document_file, column_html: { scope: "col" } %>
 <% end %>

@@ -2,7 +2,7 @@
 
   <div class="row-fluid">
     <legend>
-      <%= link_to edit_contact_path(contact), :title => "Bilgileri Güncelleyebilirsiniz" do %><i class="icon-edit"></i><% end %>
+      <%= link_to edit_contact_path(contact) do %><i class="icon-edit"></i><% end %>
       <%= contact.to_s %>&nbsp;<span class="subtitle"><%= contact.jobtitle %>&nbsp;<%= contact.department %></span>
     </legend>
     <dl class="yatay-info" id="headline">

@@ -4,7 +4,7 @@
   <% table.column :action, column_html: { class: "actionCol", scope: "col" } do |contact| %>
     <%= link_to t("defaults.link.edit"), edit_contact_path(contact) %> 
     | 
-    <%= link_to t("defaults.link.destroy"), contact, method: :delete, data: {confirm: "Are you sure?"} %>              
+    <%= link_to t("defaults.link.destroy"), contact, method: :delete, data: {confirm: t("defaults.messages.destroy_confirm") } %>
   <% end %>
   <% table.column :name, label: t("companies.label.contact_name"), column_html: { scope: "col" } do |contact| %>
     <%= contact.to_s %>

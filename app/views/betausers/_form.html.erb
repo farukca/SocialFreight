@@ -3,9 +3,9 @@
   <%#= f.error_notification %>
 
   <fieldset>
-      <%= f.label :email, "SocialFreight'ın ilk kullanıcılarından olmak ister misiniz?", :style => "color: #686868;font-weight:bold;font-size: 18px;line-height: 27px;margin-right:15px;" %>
-      <%= f.text_field :email, :placeholder => "Mail Adresiniz", :label => false %>
-      <%= f.submit "Sizi Bilgilendirelim", :class => 'btn btn-primary' %>
+      <%= f.label :email, t("content.home.betauser_message"), style: "color: #686868;font-weight:bold;font-size: 18px;line-height: 27px;margin-right:15px;" %>
+      <%= f.text_field :email, placeholder: t("content.home.betauser_placeholder"), label: false %>
+      <%= f.submit t("content.home.betauser_submit"), class: 'btn btn-primary' %>
   </fieldset>
 
 <% end %>

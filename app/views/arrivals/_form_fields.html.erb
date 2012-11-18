@@ -7,10 +7,10 @@
       <%#= f.input :unload_place_id, as: :hidden, label: "Boşaltma Yeri", input_html: {:class => "chosen_input", "data-url" => "/places.json", "data-newrecurl" => "/places/new", "data-selected" => @arrival.unload_place_id ? @arrival.unload_place.name : "", "data-placeholder" => "Boşaltma Yerini Seçiniz."} %>
       <%#= f.input :unload_place_id, :as => :select, :input_html => {:class => "chosen_input", "data-url" => "/places.json"} %>
       <%= f.input :country_id, label: t("operations.label.unload_country_city") do %>
-        <%#= f.grouped_collection_select :city_id, Country.order(:name), :cities, :name, :id, :name, {:include_blank => true}, {class: "input-small"} %>
+        <%#= f.grouped_collection_select :city_id, Country.order(:name), :cities, :name, :id, :name, {include_blank: true}, {class: "input-small"} %>
         <%#= f.input_field :city_id, as: :select, :collection => City.where(country_id: @arrival.country_id), include_blank: true, class: "input-small" %>
         <%= f.input_field :unload_city, class: "input-small", placeholder: t("operations.placeholder.unload_city") %>
-        <%= f.input_field :country_id, as: :select, :collection => Country.all, :include_blank => false, class: "input-small" %>
+        <%= f.input_field :country_id, as: :select, :collection => Country.all, include_blank: false, class: "input-small" %>
       <% end %>
       <%= f.input :unload_date, as: :string, label: t("defaults.label.unload_date"), input_html: {class: "input-small", "data-datepicker" => "datepicker"} %>
       <%= f.input :notes, as: :text, label: t("defaults.label.unload_note"), input_html: {rows: 2} %>
@@ -39,7 +39,7 @@
             <%= f.input_field :district, class: "input-small", placeholder: t("defaults.placeholder.district") %>
             <%= f.input_field :postcode, class: "input-small", placeholder: t("defaults.placeholder.postcode") %>
           <% end %>
-          <%#= f.input :unload_point, as: :select, :collection => Loading.point_types.map { |r| [r[1], r[0] ] }, :include_blank => false %>
+          <%#= f.input :unload_point, as: :select, :collection => Loading.point_types.map { |r| [r[1], r[0] ] }, include_blank: false %>
           <%#= f.input :post_trans, label: t("operations.label.post_trans") %>
         </div>
         <div class="span6">

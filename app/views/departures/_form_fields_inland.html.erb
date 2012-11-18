@@ -1,15 +1,14 @@
-<legend>Yükleme Yeri Bilgileri</legend>
+<legend><%= t("operations.title.departure_info") %></legend>
 <div class="row-fluid">
   <div class="span6">
-    <%#= f.input :load_place_id, :as => :select, :input_html => {:class => "chosen_input", "data-url" => "/places.json" } %>
-    <%= f.input :load_place_id, as: :hidden, label: "Yükleme Yeri", input_html: {:class => "chosen_input", "data-url" => "/places.json", "data-newrecurl" => "/places/new", "data-selected" => @departure.load_place_id ? @departure.load_place.name : "", "data-placeholder" => "Yükleme Yerini Seçiniz."} %>
-    <%= f.input :country_id do %>
-      <%= f.input_field :country_id, :as => :select, :collection => Country.all, :include_blank => true, :class => "input-small" %>
-      <%= f.grouped_collection_select :city_id, Country.order(:name), :cities, :name, :id, :name, {:include_blank => true}, {:class => "input-small"} %>
-    <% end %>
+    <%= f.input :load_place, label: t("defaults.label.load_place"), placeholder: t("operations.placeholder.load_place") %>
+      <%= f.input :country_id, label: t("operations.label.load_country_city") do %>
+        <%= f.input_field :load_city, class: "input-small", placeholder: t("operations.placeholder.load_city") %>
+        <%= f.input_field :country_id, as: :select, :collection => Country.all, include_blank: true, class: "input-small" %>
+      <% end %>
   </div>
   <div class="span6">
-    <%= f.input :load_date, as: :string, input_html: { class: "input-small", "data-datepicker" => "datepicker" } %>
-    <%= f.input :notes, as: :text, input_html: {rows: 2} %>
+      <%= f.input :load_date, as: :string, label: t("defaults.label.load_date"), input_html: { class: "input-small", "data-datepicker" => "datepicker" } %>
+      <%= f.input :notes, as: :text, label: t("defaults.label.load_note"), input_html: {rows: 2} %>
   </div>
 </div>

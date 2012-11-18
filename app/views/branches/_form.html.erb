@@ -3,29 +3,29 @@
   <%= f.error_notification %>
 
   <div class="pageBlock">
-    <%= render 'shared/form_buttonsh', :f => f, :header => "New User" %>
 
     <!--div class="tabbable tabs-below"-->
     <fieldset>
       <div id="my-tab-content" class="tab-content">
         <div id="user-main-form" class="tab-pane active">
-          <legend>New Branch</legend>
+          <legend><%= t("branches.title.branch_info") %></legend>
           <div class="row-fluid">
               <div class="span6">
-                <%= f.input :name, label: "Şube Adı" %>
-                <%= f.input :tel  %>
-                <%= f.input :email %>
+                <%= f.input :name, label: t("branches.label.name") %>
+                <%= f.input :tel, label: t("branches.label.tel") %>
+                <%= f.input :fax, label: t("branches.label.fax") %>
               </div>
               <div class="span6">
-                <%= f.input :country_id do %>
-                  <%= f.input_field :country_id, as: :select, collection: Country.all, include_blank: false, class: "input-small" %>
-                  <%= f.grouped_collection_select :city_id, Country.order(:name), :cities, :name, :id, :name, {:include_blank => true}, {:class => "input-small"} %>
+                <%= f.input :country_id, label: t("defaults.label.city") do %>
+                  <%= f.input_field :city, class: "input-small", placeholder: t("branches.placeholder.city") %>
+                  <%= f.input_field :country_id, as: :select, collection: Country.all, include_blank: false, class: "input-small", placeholder: t("branches.placeholder.city") %>
+                  <%#= f.grouped_collection_select :city_id, Country.order(:name), :cities, :name, :id, :name, {:include_blank => true}, {:class => "input-small"} %>
                 <% end %>
-                <%= f.input :district, label: "Semt & Posta kodu" do %>
-                  <%= f.input_field :district, class: "input-small", placeholder: "Semt Adı" %>
-                  <%= f.input_field :postcode, class: "input-small", placeholder: "Posta kodu" %>
+                <%= f.input :district, label: t("defaults.label.district") do %>
+                  <%= f.input_field :district, class: "input-small", placeholder: t("branches.placeholder.district") %>
+                  <%= f.input_field :postcode, class: "input-small", placeholder: t("branches.placeholder.postcode") %>
                 <% end %>
-                <%= f.input :address, placeholder: "Adresi" %>
+                <%= f.input :address, placeholder: t("defaults.label.address") %>
               </div>
           </div>
         </div>

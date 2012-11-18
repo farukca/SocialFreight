@@ -1,7 +1,0 @@
-<div id="invoices" class="tab-pane">
-  <table class="table table-bordered table-condensed">
-    <%#= render "invoitems/list_header" %>
-    <%#= render partial: "invoitems/list_item", collection: @loading.invoitems, as: :invoitem %>
-  </table>
-  <%= link_to "Yeni Fatura Kalemi Ekle", new_invoitem_path(loading_id: @loading.slug), class: "btn btn-info" %>
-</div>

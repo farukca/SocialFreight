@@ -7,6 +7,6 @@
   <td><%= branch.postcode %></td>
   <td><%= branch.city.name if branch.city %></td>
   <td><%= branch.country.name if branch.country %></td>
-  <td><%= link_to 'Edit', edit_branch_path(branch) %></td>
-  <td><%= link_to 'Destroy', branch, :confirm => 'Are you sure?', :method => :delete %></td>
+  <td><%= link_to t("defaults.link.edit"), edit_branch_path(branch) %></td>
+  <td><%= link_to t("defaults.link.destroy"), branch, confirm: t("defaults.messages.destroy_confirm"), method: :delete %></td>
 </tr>

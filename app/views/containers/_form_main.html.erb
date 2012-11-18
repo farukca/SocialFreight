@@ -3,26 +3,26 @@
   <div class="span6">
     <fieldset>
       <% if @loading && (@loading.operation == "air") %>
-        <%= f.input :container_type, as: :select, collection: Container.air_container_types.map { |r| [r[1], r[0] ] }, include_blank: false %>
+        <%= f.input :container_type, as: :select, collection: Container.air_container_types.map { |r| [r[1], r[0] ] }, include_blank: false, label: t("containers.label.container_type") %>
       <% else %>
-        <%= f.input :container_type, as: :select, collection: Container.container_types.map { |r| [r[1], r[0] ] }, include_blank: false %>
+        <%= f.input :container_type, as: :select, collection: Container.container_types.map { |r| [r[1], r[0] ] }, include_blank: false, label: t("containers.label.container_type") %>
       <% end %>
-      <%= f.input :name, label: "Container No" %>
-      <%= f.input :sealno, label: "Seal No" %>
+      <%= f.input :name, label: t("containers.label.name") %>
+      <%= f.input :sealno, label: t("containers.label.sealno") %>
       <%= f.input :loading_id, as: :hidden %>
     </fieldset>
   </div>
   <div class="span6">
     <fieldset>
-      <%= f.input :free_day %>
-      <%= f.input :demurrage, label: "Daily Demurrage" do %>
+      <%= f.input :free_day, label: t("containers.label.free_day"), input_html: { class: "input-small" } %>
+      <%= f.input :demurrage, label: t("containers.label.demurrage") do %>
         <%= f.input_field :demurrage, class: "input-small" %>
         <%= f.input_field :demurrage_curr, as: :select, collection: Currency.all, include_blank: false, class: "input-small" %>
       <% end %>
-      <%= f.input :notes, as: :text, input_html: { :rows => "2"}, label: "Notes" %>
+      <%= f.input :notes, as: :text, input_html: { rows: "2" }, label: t("defaults.label.notes") %>
     </fieldset>
     <div class="controls">
-      <%= f.button :submit, "Kaydet >> Yük Bilgisine Git", :class => 'btn btn-info' %>
+      <%= f.button :submit, t("containers.action.save"), :class => 'btn btn-info' %>
     </div>
   </div>
 </div>

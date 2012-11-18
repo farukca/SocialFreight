@@ -2,28 +2,21 @@
 
 <%= simple_form_for @package, validate: true, html: {class: 'form-horizontal'} do |f| %>
   <%= f.error_notification %>
-
-  <fieldset>
+  <%= f.error :base %>
 
   <div class="pageBlock">
-    <%= render 'shared/form_buttonsh', :f => f %>
- 
-    <!--div class="tabbable tabs-below"-->
+
     <div>
 
       <div id="my-tab-content" class="tab-content">
-        <legend>Koli Bilgileri</legend>
         <div id="package-main-form" class="tab-pane active">
           <%= render 'packages/form_main', :f => f %>
         </div>
       </div>
 
     </div>
-    <%= f.error :base %>
+    
   </div>
-
-  </fieldset>
-  
 
 <% end %>
 </div>

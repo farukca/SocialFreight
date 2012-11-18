@@ -77,12 +77,16 @@ en:
       address:  "Adres"
     action:
       save: "Kaydet"
+      share: "Paylaş"
+      close: "Kapat"
     hint:
     link:
       new: "Yeni"
       edit: "Güncelle"
       destroy: "Sil"
+      cancel: "Vazgeç"
       action: "İşlem"
+      restore: "Geri Yükle"
       new_report: "Yeni Rapor Oluştur"
       new_task: "Yeni Görev Ekle"
       new_departure: "Yükleme Noktası Ekle"
@@ -92,12 +96,13 @@ en:
       new_document: "Doküman Ekle"
       new_invoitem: "Fatura Kalem Bilgisi Ekle"
       new_cost: "Masraf Bilgisi Ekle"
-      new_comment: "Yorumla"
+      new_comment: "Yorum Ekle"
       new_post: "Mesajınız"
       new_contact: "Kontak Bilgisi Ekle"
       new_partner: "İş Ortağı Ekle"
       new_event: "Olay Bildirimi Ekle"
-      new_activity: "Aktivite Oluştur"    
+      new_activity: "Aktivite Oluştur"
+      new_branch: "Şube Oluştur"
       detailed_search: "Detaylı Ara >>"
       new_loading: "Yeni Yük Bilgisi Ekle"
       edit_loading: "Bu Yük Bilgisini Güncelle"
@@ -134,8 +139,10 @@ en:
       reservation: "Rezervasyon"
       loader_firm: "Gerçek Yükleyici"
       delivery_firm: "Teslimat Firması"
+      notify_firm: "Notify"
       customofficer: "Gümrükçü"
       settlement_info: "Gümrük Beyan"
+      custom_office: "Gümrük Ofisi"
       load_country_city: "Yükleme Ülkesi-Şehir"
       load_district: "Yükleme İlçesi"
       load_address: "Yükleme Adresi"
@@ -203,15 +210,51 @@ en:
       add_package: "Koli Bilgisi Ekle"
     validmsg:
     errormsg:
+  containers:
+    title:
+      container_info: "Konteyner Bilgisi"
+    label:
+      container_type: "Konteyner Tipi"
+      name: "Konteyner No"
+      sealno: "Seal No"
+      free_day: "Serbest Gün Sayısı"
+      demurrage: "Günlük Demuraj Fiyatı"
+    placeholder:
+    hint:
+    link:
+    action:
+      save: "Konteyner Bilgisini Kaydet"
+  packages:
+    title:
+      package_info: "Koli Bilgisi"
+    label:
+      total: "Koli Adedi"
+      dimension: "Boyutları"
+      weights: "Brüt-Net Ağırlık"
+      volume_lada: "Volume-Ladameter"
+      description: "Koli Detayı"
+      imo: "Hazardous IMO No"
+      gtip: "G.Tip No"
+      po: "PO No"
+      container_no: "Koli Konteyner No"
+      loading_notes: "Koli Yükleme Notu"
+    placeholder:
+      container_no: "Kolinin Yüklendiği Konteyner No"
+    hint:
+    link:
+    action:
+      save: "Koli Bilgisini Kaydet"
   companies:
     title:
       company_management: "Müşteri Yönetimi"
       company_menu: "Müşteri İşlemleri"
       last_companies: "Son Eklenen Firmalar"
+      company_info: "Firma Bilgisi"
       contact_info: "Yetkili Bilgisi"
       partner_info: "İş Ortağı Bilgisi"
+      quick_company: "Hızlı Firma Oluştur"
     label:
-      name: "Firma Kısa Adı"
+      name: "Firma Adı"
       parent_company: "Grup Firması"
       company_type: "Firma Tipi"
       sector: "Sektör"
@@ -233,6 +276,11 @@ en:
     placeholder:
       company: "Firma Seçiniz"
       partner: "İş Ortağı Seçiniz"
+      name: "Firma Kısa Adı"
+      sector: "Firmanın hizmet verdiği sektör"
+      group_firm: "Grup veya Holding Firması"
+      district: "Bulunduğu İlçe"
+      postcode: "Posta kodu"
     hint:
     link:
       new_company: "Firma Kaydı Oluştur"
@@ -241,6 +289,41 @@ en:
       company_list: "Aktif Firma Listesi"
       contact_list: "Kontak Listesi"
       event_list: "Olay Kayıtları Listesi"
+    action:
+      save: "Firma Bilgisini Kaydet"
+  contacts:
+    title:
+    label:
+    placeholder:
+      name: "Yetkili Adı"
+      surname: "Yetkili Soyadı"
+      jobtitle: "Şirketteki Pozisyonu"
+      department: "Çalıştığı Birim"
+      email: "Mail Adresi"
+      phone: "Telefon Numarası"
+    hint:
+    link:
+  branches:
+    title:
+      branches: "Şubeler"
+      branch_info: "Şube Bilgisi"
+      branch_reports: "Şube Raporları"
+      branch_process: "Şube İşlemleri"
+    label:
+      name: "Şube Adı"
+      tel: "Telefon No"
+      fax: "Faks No"
+    placeholder:
+      city: "Bulunduğu Şehir"
+      country: "Bulunduğu Ülke"
+      district: "Bulunduğu Semt"
+      postcode: "Posta kodu"
+    hint:
+    link:
+      new_branch: "Yeni Şube Oluştur"
+      branch_list: "Şube Listesi"
+    action:
+      save: "Firma Bilgisini Kaydet"
   tasks:
     title:
       last_tasks: "Son Eklenen Firmalar"
@@ -255,6 +338,33 @@ en:
     link:
       new_task: "Görev Oluştur"
       task_list: "Görev Listesi"
+  documents:
+    title:
+    label:
+      document_type: "Belge Tipi"
+      document_date: "Belge Tarihi"
+      document_no: "Belge No"
+      upload_document: "Döküman Ekle"
+      operation: "Operasyon Tipi"
+      owner_reference: "İlgili Operasyon"
+      description: "Belge Açıklaması"
+    placeholder:
+    hint:
+    link:
+    action:
+      save: "Belge Bilgilerini Kaydet"
+  junks:
+    title:
+      junks: "Silinmiş Kayıtlar"
+    label:
+      junk_time: "Silinme Zamanı"
+      junk_reference: "Kayıt Referans No"
+      junk_user: "Silen Kullanıcı"
+      junk_description: "Açıklama"
+    placeholder:
+    hint:
+    link:
+    action:
   web:
     label:
       company_name: "Firma Adı"
@@ -338,6 +448,20 @@ en:
     air:
       label:
         transporter:   "Airway"
+  dashboard:
+    link:
+      patron_info: "Firma Bilgileri"
+      user_actions: "Kullanıcılar"
+      branch_actions: "Şube İşlemleri"
+      params_actions: "Parametre İşlemleri"
+      betauser_actions: "Beta Talepleri"
+      feedback_actions: "Bildirim İşlemleri"
+      patron_actions: "Patronlar"
+      country_actions: "Ülkeler"
+      bank_actions: "Bankalar"
+      currency_actions: "Dövizler"
+      user_preferences: "Ayarlarım"
+      user_profil: "Profil Bilgilerim"
   listitems:
     loadtype:
       sea:
@@ -352,3 +476,16 @@ en:
       rail:
         Full: "Complete"
         Partial: "Partial"
+  content:
+    home:
+      betauser_message: "SocialFreight'ın ilk kullanıcılarından olmak ister misiniz?"
+      betauser_placeholder: "Mail Adresinizi verin"
+      betauser_submit: "Sizi Bilgilendirelim"
+
+#  new_model_name:
+#    title:
+#    label:
+#    placeholder:
+#    hint:
+#    link:
+#    action:

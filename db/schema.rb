@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121111183749) do
+ActiveRecord::Schema.define(:version => 20121118134232) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                                  :null => false
@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(:version => 20121111183749) do
   end
 
   create_table "branches", :force => true do |t|
-    t.string   "name",       :limit => 40,                  :null => false
+    t.string   "name",       :limit => 40,                   :null => false
     t.string   "tel",        :limit => 15
     t.string   "fax",        :limit => 15
     t.string   "email",      :limit => 40
@@ -94,14 +94,15 @@ ActiveRecord::Schema.define(:version => 20121111183749) do
     t.integer  "city_id"
     t.integer  "state_id"
     t.string   "country_id", :limit => 2
-    t.string   "status",     :limit => 1,  :default => "A"
-    t.integer  "patron_id",                                 :null => false
+    t.string   "status",     :limit => 1,   :default => "A"
+    t.integer  "patron_id",                                  :null => false
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps"
     t.string   "slug",       :limit => 40
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+    t.string   "city",       :limit => 100
   end
 
   add_index "branches", ["patron_id"], :name => "index_branches_on_patron_id"

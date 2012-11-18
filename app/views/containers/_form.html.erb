@@ -1,23 +1,21 @@
 <div id="container_form">
 <%= simple_form_for @container, html: { class: 'form-horizontal' }, :validate => true do |f| %>
   <%= f.error_notification %>
+  <%= f.error :base %>
   <fieldset>
 
   <div class="pageBlock">
-    <%= render 'shared/form_buttonsh', :f => f %>
- 
-    <!--div class="tabbable tabs-below"-->
     <div>
 
       <div id="my-tab-content" class="tab-content">
-        <legend>Container Bilgileri</legend>
+        <legend><%= t("containers.title.container_info") %></legend>
         <div id="container-main-form" class="tab-pane active">
           <%= render 'form_main', :f => f %>
         </div>
       </div>
 
     </div>
-    <%= f.error :base %>
+
   </div>
 
   </fieldset>
