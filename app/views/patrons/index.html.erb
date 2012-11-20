@@ -1,20 +1,24 @@
 <div class="row-fluid">
-<h4>Patron List</h4>
+  <div class="page-header">
+    <h4><%= t("patrons.title.patron_list") %></h4>
+  </div>
 
-<table class="table table-condensed">
-  <tr>
-    <th>Name</th>
-    <th>Tel</th>
-    <th>Mail</th>
-    <th>Fax</th>
-    <th>Ülke</th>
-    <th>Şehir</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <div class="row-fluid">
+    <table class="table table-condensed">
+      <tr>
+        <th><%= t("patrons.label.name") %></th>
+        <th><%= t("defaults.label.tel") %></th>
+        <th><%= t("defaults.label.email") %></th>
+        <th><%= t("defaults.label.fax") %></th>
+        <th><%= t("defaults.label.country") %></th>
+        <th><%= t("defaults.label.city") %></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
 
-  <%= render @patrons %>
+      <%= render @patrons %>
 
-</table>
+    </table>
+  </div>
 </div>

@@ -7,19 +7,18 @@
       <div class="row-fluid">
         <div class="span6">
           <%#= f.input :company_id, :input_html => {:class => "chosen_input", "data-url" => "/companies.json"}, :label => "Customer" %>
-          <%= f.input :company_id, label: "Müşteri", input_html: {:class => "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-selected" => @loading.company_id ? @loading.company.name : "", "data-placeholder" => "Müşteri Seçiniz."} %>
-          <%= f.input :branch_id, as: :select, collection: current_patron.branches, include_blank: false, selected: current_user.branch_id %>
-          <%= f.input :freight_price do %>
+          <%= f.input :company_id, as: :hidden, label: t("defaults.label.customer"), input_html: { class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => t("operations.placeholder.customer") } %>
+          <%= f.input :branch_id, as: :select, collection: current_patron.branches, include_blank: false, selected: current_user.branch_id, label: t("defaults.label.branch") %>
+          <%= f.input :freight_price, label: t("defaults.label.freight_price") do %>
             <%= f.input_field :freight_price, class: "input-small" %>
             <%= f.input_field :freight_curr, as: :select, collection: Currency.all, include_blank: false, class: "input-small" %>
         <% end %>
         </div>
         <div class="span6">
-          <%= f.input :brut_wg, label: "Brüt Ağırlık" do %>
+          <%= f.input :brut_wg, label: t("defaults.label.brut_weight") do %>
             <%= f.input_field :brut_wg, :class => "input-small" %>&nbsp;KG
-            <%#= f.input_field :wg_type, :as => :select, :collection => Loading.weight_types.map { |r| [r[1], r[0] ] }, :class => "small" %>
           <% end %>
-          <%= f.input :commodity, as: :text, input_html: {:rows => 1}, label: "Yük İçeriği" %>
+          <%= f.input :commodity, as: :text, input_html: {:rows => 1}, label: t("defaults.label.commodity") %>
         </div>
       </div>
 

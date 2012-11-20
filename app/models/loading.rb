@@ -9,7 +9,7 @@ class Loading < ActiveRecord::Base
   belongs_to :patron
   friendly_id :reference, use: :slugged, use: :scoped, scope: :patron
   
-  belongs_to :position
+  belongs_to :position, counter_cache: true, touch: true
   belongs_to :branch
   belongs_to :company
   belongs_to :agent, :class_name => "Company", :foreign_key => "agent_id"

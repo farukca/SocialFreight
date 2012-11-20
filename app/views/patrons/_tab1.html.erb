@@ -2,33 +2,33 @@
   <div class="pageBody">
     <table style="width:100%" border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td colspan="6"><legend>Firma Bilgileri</legend></td>
+        <td colspan="6"><legend><%= t("patrons.title.patron_info") %></legend></td>
       </tr>
       <tr>
-        <td class="labelCol2">Fatura Ünvanı :</td>
+        <td class="labelCol2"><%= t("patrons.label.invoice_title") %> :</td>
         <td class="dataCol2"><%= @patron.title %></td>
-        <td class="labelCol2">Zaman Dilimi :</td>
+        <td class="labelCol2"><%= t("patrons.label.time_zone") %> :</td>
         <td class="dataCol2"><%= @patron.time_zone %></td>
-        <td class="labelCol2">Dil :</td>
+        <td class="labelCol2"><%= t("patrons.label.language") %> :</td>
         <td class="dataCol2 lastCol"><%= @patron.language %></td>
       </tr>
       <tr>
-        <td class="labelCol2">Döviz :</td>
+        <td class="labelCol2"><%= t("patrons.label.currency") %> :</td>
         <td class="dataCol2"><%= @patron.currency %></td>
-        <td class="labelCol2">Locale :</td>
+        <td class="labelCol2"><%= t("patrons.label.locale") %> :</td>
         <td class="dataCol2"><%= @patron.locale %></td>
-        <td class="labelCol2">Mail Encoding :</td>
+        <td class="labelCol2"><%= t("patrons.label.mail_encoding") %> :</td>
         <td class="dataCol2 lastCol"><%= @patron.mail_encoding %></td>
       </tr>
       <tr>
-        <td colspan="6"><legend>Adres Bilgileri</legend></td>
+        <td colspan="6"><legend><%= t("patrons.title.address_info") %></legend></td>
       </tr>
       <tr>
-        <td class="labelCol2">Adres :</td>
+        <td class="labelCol2"><%= t("defaults.label.address") %> :</td>
         <td class="dataCol2"><%= @patron.address %></td>
         <td class="labelCol2">Şehir/Ülke :</td>
-        <td class="dataCol2"></td>
-        <td class="labelCol2">PostaKodu :</td>
+        <td class="dataCol2"><%= @patron.country_id %></td>
+        <td class="labelCol2"><%= t("defaults.label.postcode") %> :</td>
         <td class="dataCol2 lastCol"><%= @patron.postcode %></td>
       </tr>
     </table>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121118134232) do
+ActiveRecord::Schema.define(:version => 20121120211554) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                                  :null => false
@@ -598,53 +598,58 @@ ActiveRecord::Schema.define(:version => 20121118134232) do
   end
 
   create_table "loadings", :force => true do |t|
-    t.string   "reference",     :limit => 30,                   :null => false
+    t.string   "reference",        :limit => 30,                   :null => false
     t.integer  "position_id"
-    t.string   "operation",     :limit => 20,                   :null => false
-    t.string   "direction",     :limit => 1,                    :null => false
-    t.string   "incoterm",      :limit => 20
-    t.string   "paid_at",       :limit => 20
-    t.string   "channel",       :limit => 30
-    t.string   "load_type",     :limit => 1
-    t.integer  "branch_id",                                     :null => false
-    t.integer  "company_id",                                    :null => false
+    t.string   "operation",        :limit => 20,                   :null => false
+    t.string   "direction",        :limit => 1,                    :null => false
+    t.string   "incoterm",         :limit => 20
+    t.string   "paid_at",          :limit => 20
+    t.string   "channel",          :limit => 30
+    t.string   "load_type",        :limit => 1
+    t.integer  "branch_id",                                        :null => false
+    t.integer  "company_id",                                       :null => false
     t.integer  "agent_id"
-    t.integer  "user_id",                                       :null => false
+    t.integer  "user_id",                                          :null => false
     t.integer  "saler_id"
-    t.decimal  "freight_price",                :default => 0.0
-    t.string   "freight_curr",  :limit => 5
-    t.decimal  "agent_price",                  :default => 0.0
+    t.decimal  "freight_price",                   :default => 0.0
+    t.string   "freight_curr",     :limit => 5
+    t.decimal  "agent_price",                     :default => 0.0
     t.string   "agent_curr"
     t.float    "agent_share"
-    t.decimal  "product_price",                :default => 0.0
+    t.decimal  "product_price",                   :default => 0.0
     t.string   "product_curr"
-    t.string   "slug",          :limit => 40
+    t.string   "slug",             :limit => 40
     t.boolean  "bank_flag"
-    t.string   "producer",      :limit => 60
-    t.string   "marks_nos",     :limit => 50
-    t.string   "hts_no",        :limit => 20
+    t.string   "producer",         :limit => 60
+    t.string   "marks_nos",        :limit => 50
+    t.string   "hts_no",           :limit => 20
     t.float    "brut_wg"
     t.float    "volume"
     t.float    "ladameter"
     t.float    "price_wg"
-    t.integer  "patron_id",                                     :null => false
-    t.string   "commodity",     :limit => 500
-    t.string   "notes",         :limit => 500
-    t.string   "load_coun",     :limit => 2
-    t.string   "unload_coun",   :limit => 2
-    t.string   "status",        :limit => 1,   :default => "A"
-    t.string   "stage",         :limit => 4
+    t.integer  "patron_id",                                        :null => false
+    t.string   "commodity",        :limit => 500
+    t.string   "notes",            :limit => 500
+    t.string   "load_coun",        :limit => 2
+    t.string   "unload_coun",      :limit => 2
+    t.string   "status",           :limit => 1,   :default => "A"
+    t.string   "stage",            :limit => 4
     t.datetime "stage_date"
-    t.datetime "created_at",                                    :null => false
-    t.datetime "updated_at",                                    :null => false
+    t.datetime "created_at",                                       :null => false
+    t.datetime "updated_at",                                       :null => false
     t.integer  "sender_id"
     t.integer  "consignee_id"
     t.integer  "creater_id"
     t.integer  "updater_id"
-    t.string   "bank",          :limit => 100
-    t.string   "category",      :limit => 60
-    t.string   "waybill_no",    :limit => 60
+    t.string   "bank",             :limit => 100
+    t.string   "category",         :limit => 60
+    t.string   "waybill_no",       :limit => 60
     t.date     "waybill_date"
+    t.integer  "departures_count",                :default => 0
+    t.integer  "arrivals_count",                  :default => 0
+    t.integer  "containers_count",                :default => 0
+    t.integer  "packages_count",                  :default => 0
+    t.integer  "documents_count",                 :default => 0
   end
 
   add_index "loadings", ["branch_id", "patron_id"], :name => "index_loadings_on_branch_id_and_patron_id"
@@ -879,42 +884,45 @@ ActiveRecord::Schema.define(:version => 20121118134232) do
   add_index "places", ["city_id", "country_id"], :name => "index_places_on_city_id_and_country_id"
 
   create_table "positions", :force => true do |t|
-    t.string   "reference",       :limit => 30,                   :null => false
-    t.string   "operation",       :limit => 20,                   :null => false
-    t.string   "direction",       :limit => 1,                    :null => false
-    t.string   "incoterm",        :limit => 20
-    t.string   "paid_at",         :limit => 20
-    t.string   "load_type",       :limit => 1
-    t.integer  "branch_id",                                       :null => false
+    t.string   "reference",        :limit => 30,                   :null => false
+    t.string   "operation",        :limit => 20,                   :null => false
+    t.string   "direction",        :limit => 1,                    :null => false
+    t.string   "incoterm",         :limit => 20
+    t.string   "paid_at",          :limit => 20
+    t.string   "load_type",        :limit => 1
+    t.integer  "branch_id",                                        :null => false
     t.integer  "agent_id"
-    t.integer  "user_id",                                         :null => false
+    t.integer  "user_id",                                          :null => false
     t.integer  "load_place_id"
     t.datetime "load_date"
     t.integer  "unload_place_id"
     t.datetime "unload_date"
-    t.decimal  "freight_price",                  :default => 0.0
-    t.string   "freight_curr",    :limit => 5
-    t.decimal  "agent_price",                    :default => 0.0
-    t.string   "agent_curr",      :limit => 3
-    t.string   "waybill_no",      :limit => 30
+    t.decimal  "freight_price",                   :default => 0.0
+    t.string   "freight_curr",     :limit => 5
+    t.decimal  "agent_price",                     :default => 0.0
+    t.string   "agent_curr",       :limit => 3
+    t.string   "waybill_no",       :limit => 30
     t.date     "waybill_date"
-    t.string   "status",          :limit => 4,   :default => "A"
+    t.string   "status",           :limit => 4,   :default => "A"
     t.date     "report_date"
-    t.string   "stage",           :limit => 4
+    t.string   "stage",            :limit => 4
     t.datetime "stage_date"
-    t.string   "ref_no1",         :limit => 20
-    t.string   "ref_type1",       :limit => 2
-    t.string   "ref_no2",         :limit => 20
-    t.string   "ref_type2",       :limit => 2
-    t.string   "ref_no3",         :limit => 20
-    t.string   "ref_type3",       :limit => 2
-    t.string   "ref_no4",         :limit => 20
-    t.string   "ref_type4",       :limit => 2
-    t.string   "slug",            :limit => 40
-    t.string   "notes",           :limit => 500
-    t.integer  "patron_id",                                       :null => false
-    t.datetime "created_at",                                      :null => false
-    t.datetime "updated_at",                                      :null => false
+    t.string   "ref_no1",          :limit => 20
+    t.string   "ref_type1",        :limit => 2
+    t.string   "ref_no2",          :limit => 20
+    t.string   "ref_type2",        :limit => 2
+    t.string   "ref_no3",          :limit => 20
+    t.string   "ref_type3",        :limit => 2
+    t.string   "ref_no4",          :limit => 20
+    t.string   "ref_type4",        :limit => 2
+    t.string   "slug",             :limit => 40
+    t.string   "notes",            :limit => 500
+    t.integer  "patron_id",                                        :null => false
+    t.datetime "created_at",                                       :null => false
+    t.datetime "updated_at",                                       :null => false
+    t.integer  "loadings_count",                  :default => 0
+    t.integer  "transports_count",                :default => 0
+    t.integer  "documents_count",                 :default => 0
   end
 
   add_index "positions", ["branch_id", "patron_id"], :name => "index_positions_on_branch_id_and_patron_id"

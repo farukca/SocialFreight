@@ -1,11 +1,11 @@
 <div class="profile-content">
 
         <div class="row-fluid" style="padding-bottom:10px;text-align:center;">
-          <%= link_to "Yükler(1)", "##{@position.id}_loadingList" %> |
-          <%= link_to "Taşımalar(1)", "##{@position.id}_transportList" %> |
-          <%= link_to "Dosyalar(2)", "##{@position.id}_documentList" %> |
-          <%= link_to "Fatura Kalemleri(2)", "##{@position.id}_invoitemList" %> |
-          <%= link_to "Masraflar(1)", "##{@position.id}_costList" %> |
+          <%= link_to "Yükler(#{@position.loadings_count})", "##{@position.id}_loadingList" %> |
+          <%= link_to "Multimodal Taşımalar(#{@position.transports_count})", "##{@position.id}_transportList" %> |
+          <%= link_to "Dosyalar(#{@position.documents_count})", "##{@position.id}_documentList" %> |
+          <%#= link_to "Fatura Kalemleri(2)", "##{@position.id}_invoitemList" %> |
+          <%#= link_to "Masraflar(1)", "##{@position.id}_costList" %> |
         </div>
         <div class="row-fluid profile-section">
           <%= render "shared/related_list", list_model: "loading", parent: @position, objects: @position.loadings %>
@@ -19,13 +19,13 @@
           <%= render "shared/related_list", list_model: "document", parent: @position, objects: @position.documents %>
         </div>
 
-        <div class="row-fluid profile-section">
-          <%= render "shared/related_list", list_model: "invoitem", parent: @position, objects: @position.invoitems %>
-        </div>
+        <!--div class="row-fluid profile-section">
+          <%#= render "shared/related_list", list_model: "invoitem", parent: @position, objects: @position.invoitems %>
+        </div-->
 
-        <div class="row-fluid profile-section">
-          <%= render "shared/related_list", list_model: "cost", parent: @position, objects: @position.costs %>
-        </div>
+        <!--div class="row-fluid profile-section">
+          <%#= render "shared/related_list", list_model: "cost", parent: @position, objects: @position.costs %>
+        </div-->
 
         <div class="row-fluid profile-section">
           <div id="position_comments" class="feeds">

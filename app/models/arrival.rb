@@ -2,7 +2,7 @@ class Arrival < ActiveRecord::Base
 
   acts_as_gmappable :process_geocoding => false, :validation => false
 
-  belongs_to :loading, touch: true
+  belongs_to :loading, counter_cache: true, touch: true
   belongs_to :country
   belongs_to :city
   belongs_to :consignee, :class_name => "Company", :foreign_key => "consignee_id"

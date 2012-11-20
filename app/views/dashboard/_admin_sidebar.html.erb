@@ -19,7 +19,7 @@
         <% end %>
       </li>
       <li class="divider"></li>
-      <% if current_user.has_role? :super %>
+      <% if current_user.has_role? :admin %>
         <li><%= link_to betausers_path do %><i class="icon-user"></i><%= t("dashboard.link.betauser_actions") %><% end %></li>
         <li><%= link_to feedbacks_path do %><i class="icon-cog"></i><%= t("dashboard.link.feedback_actions") %><% end %></li>
         <li><%= link_to patrons_path do %><i class="icon-user"></i><%= t("dashboard.link.patron_actions") %><% end %></li>

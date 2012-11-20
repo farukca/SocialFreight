@@ -7,6 +7,7 @@ en:
       yes: "Evet"
       no: "Hayır"
       birthdate: "Doğum Tarihi"
+      sumof: "Toplam"
     title:
       last_items: "Son İşlemler"
       additional_info: "Ek Bilgiler"
@@ -69,6 +70,7 @@ en:
       sender: "Gönderici"
       consignee: "Alıcı"
       notes: "Notlar"
+      picture_file: "Resim dosyası"
       create_info: "Kayıt Bilgisi"
       update_info: "Son Güncelleme Bilgisi"
     placeholder:
@@ -79,6 +81,7 @@ en:
       save: "Kaydet"
       share: "Paylaş"
       close: "Kapat"
+      change: "Değiştir"
     hint:
     link:
       new: "Yeni"
@@ -117,6 +120,7 @@ en:
       must_be_unique:  "This has been used, please choose another value"
     messages:
       destroy_confirm: "Kaydı Silmek İstediğinizden emin misiniz ?"
+      change_picture: "Resmi Değiştirmek için Tıklayınız"
   operations:
     title:
       airoperation: "Hava Operasyon"
@@ -129,6 +133,7 @@ en:
       planned_transports: "Planlanmış Taşımalar"
       process_list: "Operasyon Menü"
       new_loading: "Yeni Yük Oluşturma"
+      loading_info: "Yük Bilgisi"
       loading_detail: "Yük Detayları"
       package_info: "Koli Bilgileri"
       departure_info: "Yükleme Bilgisi"
@@ -203,11 +208,13 @@ en:
       new_rail_transport: "Tren Taşıma Bilgisi Ekle"
       new_inland_transport: "Dahili(Ön/Son) Taşıma Bilgisi Ekle"
       list_reservation: "Reservasyon Bağla"
+      loading_detail: "Yük Detay Bilgilerini Girmek istiyorum"
     button:
       skip_this_step: "Bu Adımı Atla >>"
       save_loading_continue_to_departure: "Kaydet & Yükleme Bilgilerine Devam Et >>"
       save_departure_continue_to_arrival: "Kaydet & Boşaltma Bilgilerine Devam Et >>"
       add_package: "Koli Bilgisi Ekle"
+      save_loading: "Yük Bilgisini Kaydet"
     validmsg:
     errormsg:
   containers:
@@ -364,6 +371,27 @@ en:
     placeholder:
     hint:
     link:
+    action:
+  patrons:
+    title:
+      patron_info: "Firma Bilgisi"
+      patron_list: "Firma Listesi"
+      address_info: "Adres Bilgileri"
+    label:
+      name: "Firma Adı"
+      invoice_title: "Fatura Ünvanı"
+      time_zone: "Zaman Dilimi"
+      language: "Dil Seçimi"
+      currency: "Döviz Seçimi"
+      locale: "Yerel Ayarlar Seçimi"
+      mail_encoding: "Mail Encoding"
+    placeholder:
+      country: "Bulunduğunuz Ülke"
+    hint:
+    link:
+      user_list: "Kullanıcı Listesi"
+      edit_patron: "Firma Bilgilerini Güncelle"
+      destroy_logo: "Logoyu Sil"
     action:
   web:
     label:

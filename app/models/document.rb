@@ -1,7 +1,7 @@
 class Document < ActiveRecord::Base
 
   belongs_to :user
-  belongs_to :documented, polymorphic: true
+  belongs_to :documented, polymorphic: true, counter_cache: true, touch: true
 
   mount_uploader :document_file, DocumentUploader
 

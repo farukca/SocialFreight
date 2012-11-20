@@ -1,6 +1,6 @@
 class Container < ActiveRecord::Base
 
-  belongs_to :loading
+  belongs_to :loading, counter_cache: true, touch: true
 
   has_many :packages, as: :packed, dependent: :destroy
   accepts_nested_attributes_for :packages

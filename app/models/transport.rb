@@ -1,6 +1,6 @@
 class Transport < ActiveRecord::Base
 
-  belongs_to :position
+  belongs_to :position, counter_cache: true, touch: true
   belongs_to :supplier, class_name: "Company", foreign_key: "supplier_id"
   belongs_to :owner, class_name: "Company", foreign_key: "owner_id"
   belongs_to :driver, class_name: "Person", foreign_key: "driver_id"

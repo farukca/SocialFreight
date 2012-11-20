@@ -3,41 +3,53 @@
   <%= f.error_notification %>
 
   <div class="pageBlock">
-    <%= render 'shared/form_buttonsh', :f => f %>
+    
+    <div class="page-header">
+      <h4><%= t("operations.title.loading_info") %></h4>
+    </div>
 
-    <div class="tabbable tabs-below">
+    <div class="row-fluid">
 
       <div id="my-tab-content" class="tab-content">
         <div id="loading-main-form" class="tab-pane active form_tab_pane">
           <%= render 'form_main', :f => f %>
         </div>
-        <% unless params[:action] == "edit" %>
-        <div id="loading-load-form" class="tab-pane form_tab_pane">
-          <%= f.fields_for :departures do |builder| %>
-            <%= render 'departures/form_fields', :f => builder %>
-          <% end %>
+        <%# unless params[:action] == "edit" %>
+        <!--div id="loading-load-form" class="tab-pane form_tab_pane">
+          <%#= f.fields_for :departures do |builder| %>
+            <%#= render 'departures/form_fields', :f => builder %>
+          <%# end %>
         </div>
         <div id="loading-unload-form" class="tab-pane form_tab_pane">
-          <%= f.fields_for :arrivals do |builder| %>
-            <%= render 'arrivals/form_fields', :f => builder %>
-          <% end %>
+          <%#= f.fields_for :arrivals do |builder| %>
+            <%#= render 'arrivals/form_fields', :f => builder %>
+          <%# end %>
+        </div-->
+        <%# end %>
+        <div class="row-fluid">
+          <span class="pull-left">
+            <%= link_to "#{t("operations.link.loading_detail")} >>", "#", :class => 'togglebutton', "data-href" => "#loading-detail-form" %>
+          </span>
         </div>
-        <% end %>
-        <div id="loading-detail-form" class="tab-pane form_tab_pane">
+
+        <div id="loading-detail-form" class="slidingDiv">
           <%= render 'form_detail', :f => f %>
         </div>
       </div>
 
-      <ul class="nav nav-tabs">
+      <!--ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#loading-main-form">1-Genel Yük Bilgileri</a></li>
-        <% unless params[:action] == "edit" %>
+        <%# unless params[:action] == "edit" %>
         <li><a data-toggle="tab" href="#loading-load-form">2-Yükleme Bilgileri</a></li>
         <li><a data-toggle="tab" href="#loading-unload-form">3-Boşaltma Bilgileri</a></li>
-        <% end %>
+        <%# end %>
         <li><a data-toggle="tab" href="#loading-detail-form">4-Diğer Bilgiler</a></li>
-      </ul>
+      </ul-->
 
-      <%= render 'shared/form_buttonsb', :f => f %>
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit, t("operations.button.save_loading"), :class => 'btn btn-info' %>
+      <a href="#" class="btn"><%= t("defaults.action.cancel") %></a>
     </div>
 
 <% end %>

@@ -5,8 +5,10 @@
       <%= f.error_notification %>
 
       <div class="pageBlock">
-        <%= render 'shared/form_header', message: t("operations.title.new_loading") %>
-
+        <div class="page-header">
+          <h4>t("operations.title.new_loading")</h4>
+        </div>
+        
         <% if @loading.operation == 'inland' %>
           <%= render 'loadings/form_inland', :f => f %>
         <% else %>

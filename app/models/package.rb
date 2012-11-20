@@ -1,8 +1,6 @@
 class Package < ActiveRecord::Base
 
-  #belongs_to :loading
-  #belongs_to :container
-  belongs_to :packed, polymorphic: true
+  belongs_to :packed, polymorphic: true, counter_cache: true, touch: true
  
   validates_presence_of :total, :pack_type#, :packed_type, :packed_id
   

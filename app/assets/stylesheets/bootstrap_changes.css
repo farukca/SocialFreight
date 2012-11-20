@@ -12,7 +12,7 @@ ul, ol {
   text-align: center;
 }
 legend {
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-weight:normal;
   line-height: 20px;
   *background-image: url("/assets/legend.png");
@@ -20,7 +20,7 @@ legend {
   border-bottom: 1px solid #EEEEEE;
   border-width: 1px 0 0;
   color: #000000;
-  padding-top: 10px;
+  padding-top: 0px;
   padding-bottom: 10px;
   margin: 0;
 }
