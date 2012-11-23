@@ -13,13 +13,13 @@
       <li><%= link_to edit_user_path(current_user) do %><i class="icon-cog"></i><%= t("dashboard.link.user_preferences") %><% end %></li>
       <li>
         <% if current_user.person %>
-          <%= link_to person_path(current_user.person) do %><i class="icon-user"></i><%= t("dashboard.link.user_profile") %><% end %>
+          <%= link_to person_path(current_user.person) do %><i class="icon-user"></i><%= t("dashboard.link.edit_profile") %><% end %>
         <% else %>
           <%= link_to new_person_path do %><i class="icon-user"></i><%= t("dashboard.link.user_profile") %><% end %>
         <% end %>
       </li>
       <li class="divider"></li>
-      <% if current_user.has_role? :admin %>
+      <% if current_user.has_role? :super %>
         <li><%= link_to betausers_path do %><i class="icon-user"></i><%= t("dashboard.link.betauser_actions") %><% end %></li>
         <li><%= link_to feedbacks_path do %><i class="icon-cog"></i><%= t("dashboard.link.feedback_actions") %><% end %></li>
         <li><%= link_to patrons_path do %><i class="icon-user"></i><%= t("dashboard.link.patron_actions") %><% end %></li>

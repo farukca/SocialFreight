@@ -1,6 +1,7 @@
 class ListheadersController < ApplicationController
   
   before_filter :require_login
+  layout "admin"
 
   def index
   	@listheaders = Listheader.all

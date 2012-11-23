@@ -5,6 +5,13 @@ namespace :resque do
   #  run "#{sudo} nohup bundle exec rake environment resque:work RAILS_ENV=production QUEUE=* VERBOSE=1 PIDFILE=tmp/pids/resque_worker_QUEUE.pid >> #{current_path}/log/resque_worker_QUEUE.log 2>&1"
 	#end
 
+  task :start, roles: :web do
+    desc "starting resque for #{application}"
+    run "cd #{current_path}"
+    run "RAILS_ENV=production QUEUE=* nohup rake resque:work"
+    exit
+  end
+
   task :stop, roles: :web do
     desc "stoping resque for #{application}"
     run "#{sudo} kill -9 $(cat tmp/pids/resque_worker_QUEUE.pid)"

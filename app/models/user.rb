@@ -46,13 +46,13 @@ class User < ActiveRecord::Base
     #QC.enqueue "UserMailer.activation_needed_email.deliver", self.id
   end
 
-  def roles_list
-    [:admin, :operator, :financer, :ledger, :saler, :planner, :manager]
-  end
+  #def roles_list
+  #  [:admin, :operator, :financer, :ledger, :saler, :planner, :manager]
+  #end
 
-  def has_role? role
-    roles_list.include? role.to_sym
-  end
+  #def has_role? role
+  #  roles_list.include? role.to_sym
+  #end
 
   #def send_password_reset_email
   #  generate_token(:password_reset_token)
@@ -91,7 +91,8 @@ class User < ActiveRecord::Base
   #end
 
   def social_posts
-    @social_posts = Post.where("user_id IN (?) OR user_id = ? ", self.followees(User), self.id).limit(6).order("created_at desc")
+    #@social_posts = Post.where("user_id IN (?) OR user_id = ? ", self.followees(User), self.id).limit(6).order("created_at desc")
+    @social_posts = Post.limit(6).order("created_at desc")
   end
 
 end

@@ -22,7 +22,11 @@ class UsersController < ApplicationController
     if current_user
       @user = current_patron.users.build()
     end
-    render :layout => 'guest' unless current_user
+    if current_user
+      render layout: "admin"
+    else
+      render layout: "guest"
+    end
   end
 
   def show
@@ -36,7 +40,8 @@ class UsersController < ApplicationController
       @user.generate_temp_password
     end
     if @user.save
-      redirect_to root_url, :notice => "Activation mail has been sent to your mail!"
+      @user.add_role :operator
+      redirect_to root_url, :notice => "Activation mail has been sent to mail adress!"
     else
       render :new
     end

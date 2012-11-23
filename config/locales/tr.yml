@@ -217,6 +217,78 @@ en:
       save_loading: "Yük Bilgisini Kaydet"
     validmsg:
     errormsg:
+  transports:
+    title:
+      transport_info: "Multimodal Taşıma Bilgisi"
+      air_transport: "Uçak ve Havayolu Bilgisi"
+      air_departure: "Uçak Hareket Bilgisi"
+      air_transnode: "Aktarma Havaliman Bilgileri"
+      sea_transport: "Gemi ve Armatör Bilgisi"
+      sea_departure: "Gemi Hareket Bilgisi"
+      sea_transnode: "Aktarma Liman Bilgileri"
+      rail_transport: "Tren ve İşleten Firma Bilgisi"
+      rail_departure: "Tren Sefer Bilgisi"
+      rail_transnode: "Aktarma İstasyon Bilgileri"
+      road_transport: "Dorse/Çekici ve Nakliyeci Firma Bilgisi"
+      road_departure: "Dorse Sefer Bilgisi"
+      road_transnode: "Güzergah Bilgileri"
+    label:
+      air_vessel: "Uçak Adı & Sefer No"
+      sea_vessel: "Gemi Adı & Sefer No"
+      rail_vessel: "Tren Adı & Sefer No"
+      road_vessel: "Dorse & Çekici"
+      airline: "Havayolu Firması"
+      armator: "Armatör Firma"
+      traincompany: "Tren Firması"
+      air_supplier: "Havayolu Acentası"
+      sea_liner: "Hat Acentası"
+      voyage: "Sefer No"
+      driver: "Sürücü Adı&Soyadı"
+      transporter: "Nakliyeci Firma"
+      tircarnet_info: "Tır Karnesi Bilgileri"
+      tircarnet_no: "Tır Karne No"
+      tircarnet_date: "Tır Karne Tarihi"
+      waybill_info: "Konşimento Bilgileri"
+      waybill_no: "Konşimento No"
+      waybill_date: "Konşimento Tarihi"
+      departure_datehour: "Çıkış Tarihi & Saati"
+      departure_citycountry: "Çıkış Ülkesi % Şehri"
+      departure_airport: "Çıkış Havalimanı"
+      departure_seaport: "Çıkış Limanı"
+      departure_station: "Çıkış İstasyonu"
+      arrival_datehour: "Varış Tarihi & Saati"
+      arrival_citycountry: "Varış Ülkesi % Şehri"
+      arrival_airport: "Varış Havalimanı"
+      arrival_seaport: "Varış Limanı"
+      arrival_station: "Varış İstasyonu"
+    placeholder:
+      air_plane: "Uçak Adı"
+      air_voyage: "Sefer Kodu"
+      airline: "Havayolu Firmasını Seçiniz"
+      air_supplier: "Navlun Ödenecek Firma, CASS"
+      shipname: "Gemi Adı"
+      sea_voyage: "Sefer Kodu"
+      armator: "Armatör Firmasını Seçiniz"
+      sea_liner: "Hat Acentası Firmayı Seçiniz"
+      truck: "Çekici Plakası"
+      vehicle: "Dorse Plakası"
+      driver: "Sürücü Seçiniz"
+      transporter: "Nakliyeci Firmayı Seçiniz"
+      transport_hour: "Saati"
+      departure_country: "Çıkış Ülkesi"
+      departure_city: "Çıkış Şehri"
+      arrival_country: "Varış Ülkesi"
+      arrival_city: "Varış Şehri"
+    hint:
+    link:
+      show_air_transnodes: "Aktarma Havalimanı bilgilerini girmek için tıklayınız >>"
+      show_sea_transnodes: "Aktarma Limanı bilgilerini girmek için tıklayınız >>"
+    action:
+    message:
+      air_transport: "Taşımanın yapılacağı uçağa dair bilgileri girelim"
+      sea_transport: "Taşımanın yapılacağı gemiye ait bilgileri girelim"
+      rail_transport: "Taşımanın yapılacağı trene ait bilgileri girelim"
+      road_transport: "Taşımanın yapılacağı dorse ve çekici bilgilerini girelim"
   containers:
     title:
       container_info: "Konteyner Bilgisi"
@@ -489,7 +561,7 @@ en:
       bank_actions: "Bankalar"
       currency_actions: "Dövizler"
       user_preferences: "Ayarlarım"
-      user_profil: "Profil Bilgilerim"
+      edit_profile: "Profil Bilgisini Güncelle"
   listitems:
     loadtype:
       sea:

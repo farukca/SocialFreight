@@ -3,12 +3,12 @@
   <%= f.error_notification %>
 
   <div class="pageBlock">
-    <%= render 'shared/form_buttonsh', :f => f, :header => "New User" %>
-
-    <!--div class="tabbable tabs-below"-->
 
       <div id="my-tab-content" class="tab-content">
         <div id="user-main-form" class="tab-pane active">
+          <div class="page-header">
+            <h4>Yeni Kullanıcı Tanımlama</h4>
+          </div>
           <div class="row-fluid">
             <fieldset>
               <legend>Kullanıcı Bilgisi</legend>
@@ -17,23 +17,35 @@
                   <%= f.input :name %>
                   <%= f.input :surname %>
                   <%= f.input :email %>
-                  <%= f.input :branch_id, :as => :select, :collection => current_patron.branches, :include_blank => false, :selected => current_user.branch_id %>                
-                  <%= f.input :role %>
-                  <%= f.input :user_type %>
+                  <%= f.input :branch_id, as: :select, collection: current_patron.branches, include_blank: false, selected: current_user.branch_id %>                
+                  <%= f.input :role, as: :select, collection: Role.all, include_blank: false, selected: "operator" %>
                 </div>
                 <div class="span6">
-                  <%= f.input :region %>
-                  <%= f.input :time_zone %>
-                  <%= f.input :locale %>
-                  <%= f.input :language %>
-                  <%= f.input :mail_encoding %>
+                  <%#= f.input :region %>
+                  <%= f.input :user_type do %>
+                    <%= f.select :user_type, Listitem.usertypes.map { |t| [t.name, t.code] }, include_blank: false, selected: "operator" %>
+                  <% end %>
+                  <%= f.input :time_zone, selected: current_user.time_zone %>
+                  <%= f.input :locale do %>
+                    <%= f.select :locale, Listitem.locales.map { |t| [t.name, t.code] }, include_blank: false, selected: current_user.locale %>
+                  <% end %>
+                  <%= f.input :language do %>
+                    <%= f.select :language, Listitem.languages.map { |t| [t.name, t.code] }, include_blank: false, selected: current_user.language %>
+                  <% end %>
+                  <%= f.input :mail_encoding do %>
+                    <%= f.select :mail_encoding, Listitem.mail_encodings.map { |t| [t.name, t.code] }, include_blank: false, selected: current_user.mail_encoding %>
+                  <% end %>
                 </div>
               </div>
             </fieldset>
           </div>
+          <div class="form-actions">
+            <%= f.button :submit, "Kullanıcı Bilgisini Kaydet", class: "btn btn-info" %>
+            <a href="#" class="btn">Vazgeç</a>
+          </div>
         </div>
       </div>
-    <!--/div-->
+
   </div>
 <% end %>
 </div>
