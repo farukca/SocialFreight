@@ -2,12 +2,14 @@
 
   <div class="pageBlock">
     
-    <%= render 'breadcrumb', step: 2 %>
-    <%= render 'shared/form_header', message: "Planlama Pozisyon Seçimi" %>
+    <%#= render 'breadcrumb', step: 2 %>
+    <div class="page-header">
+      <h4>Yük Taşıma Planlama-Proje Seçimi</h4>
+    </div>
     
     <div id="selected-loads" class="row-fluid">
       <% unless @loading.nil? %>
-        <%= render 'loadings/loadings', loadings: @loading, locals: { @showsums => true } %>
+        <%= render @loading  %>
       <% end %>
     </div>
 
@@ -16,17 +18,18 @@
         <%= f.error_notification %>
         <%= f.error :base %>
         
-        <div class="controls rightside">
-          <%#= link_to "Bu Adımı Atla >>", next_wizard_path, :class => 'btn btn-danger' %>
-          <%= link_to "Başka Yükler Eklemek İstiyorum", "#", :class => 'togglebutton btn btn-info', "data-placement" => "below",  "rel" => 'twipsy', "title" => "Detaylı Ara", "data-href" => "#reservation-search-form" %>
-          <%= f.button :submit, "Yük Seçimini Tamamladım & Devam Et >>", :class => 'btn btn-info' %>
-          <%#= link_to "Yük Seçimini Tamamladım & Devam Et >>", next_wizard_path, :class => 'btn btn-info' %>
+        <div class="form-actions">
+          <%#= link_to "Bu Adımı Atla >>", next_wizard_path, class: 'btn btn-danger' %>
+          <%= link_to "Birlikte Taşınacak LCL Yük Seçebilirsiniz", "#", id: "list_reservations", class: 'btn btn-info' %>
+          <%= link_to "Bu yükü tanımlı bir projeye bağlayabilirsiniz", "#", id: "list_positions", class: 'btn btn-info' %>
+          <%= f.button :submit, "Bu yük(ler) için yeni proje kaydı oluşturabilirsiniz", class: 'btn btn-info' %>
+          <%#= link_to "Yük Seçimini Tamamladım & Devam Et >>", next_wizard_path, class: 'btn btn-info' %>
         </div>
       <% end %>
     </div>
   </div>
-  <div id="reservation-search-form" class="row-fluid slidingDiv">
-  	<%= render 'searches/reservation_form' %>
+  <div id="loading-project-planning" class="row-fluid">
+  	<%#= render 'searches/reservation_form' %>
     <div id="reservations" class="row-fluid">
       <table class="table" id="reservations-table">
       

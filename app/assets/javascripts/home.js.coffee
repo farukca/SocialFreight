@@ -119,3 +119,11 @@ jQuery ->
 
 
   $(".simple_form").find("input[type=text],textarea,select").filter(":visible:first").focus()
+
+  $("#list_positions").click ->
+    $.ajax
+      url: "/positions/",
+      type: "GET",
+      dataType: "JSON",
+      success: (data) ->
+        $("#loading-project-planning").html JST["templates/positions/positions"](positions : data)

@@ -20,6 +20,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
+  gem 'eco'
 end
 
 gem 'simple_form', '~> 2.0'
@@ -35,7 +36,7 @@ gem 'socialization'
 gem 'twitter-text'
 
 #File uploading
-#gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+#gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'cloudinary'
@@ -44,9 +45,9 @@ gem 'sorcery'
 gem 'cancan'
 gem 'rolify'
 gem 'wicked'
-gem 'resque', :require => "resque/server"
+gem 'resque', require: "resque/server"
 gem 'savon'
-gem 'whenever', :require => false
+gem 'whenever', require: false
 
 #PDF
 gem 'prawn'
@@ -67,6 +68,8 @@ gem 'select2-rails'
 # Deploy with Capistrano
  gem 'capistrano'
 
+gem 'blogger', path: "../blogger"
+
 gem 'bullet', group: :development
 #gem 'rspec-rails', group: [:test, :development]
 gem 'ruby-debug19', group: [:development]
@@ -75,9 +78,9 @@ group :test do
   #gem 'mongoid-rspec'
   #gem 'guard-rspec'
   gem 'minitest'
-  gem 'turn', :require => false
+  gem 'turn', require: false
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'fakeweb'
-  gem 'simplecov', :require => false
+  gem 'simplecov', require: false
 end

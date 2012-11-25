@@ -1,12 +1,10 @@
-<tr>
-  <td><%= link_to position.reference, position %></td>
-  <td><%= position.direction %></td>
-  <td><%= position.waybill_no %></td>
-  <td><%= position.load_place.name if position.load_place %></td>
-  <td><%= position.load_date.strftime("%d/%m/%Y") if position.load_date %></td>
-  <td><%= position.unload_place.name if position.unload_place %></td>
-  <td><%= position.unload_date.strftime("%d/%m/%Y") if position.unload_date %></td>
-  <td><%= position.branch.name if position.branch %></td>
-  <td><%= position.load_type %></td>
-  <td><%= position.agent.name if position.agent %></td>
-</tr>
+<div class="row-fluid">
+  <div class="span1">
+    <%= image_tag("/assets/position.png") %>
+  </div>
+  <div class="span9">
+    <div class="row-fluid">
+      <%= render 'positions/tab_header', position: position %>
+    </div>
+  </div>
+</div>

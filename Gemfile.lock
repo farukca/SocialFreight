@@ -1,3 +1,9 @@
+PATH
+  remote: ../blogger
+  specs:
+    blogger (0.0.1)
+      rails (~> 3.2.6)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -74,6 +80,11 @@ GEM
       execjs
     coffee-script-source (1.2.0)
     columnize (0.3.6)
+    eco (1.0.0)
+      coffee-script
+      eco-source
+      execjs
+    eco-source (1.1.0.rc.1)
     erubis (2.7.0)
     exception_notification (2.6.1)
       actionmailer (>= 3.0.4)
@@ -278,6 +289,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  blogger!
   bullet
   cancan
   capistrano
@@ -287,6 +299,7 @@ DEPENDENCIES
   client_side_validations-simple_form (~> 2.0.0)
   cloudinary
   coffee-rails (~> 3.2.1)
+  eco
   exception_notification
   execjs
   factory_girl_rails
