@@ -1,7 +1,7 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
-en:
+tr:
   defaults:
     vocabulary:
       yes: "Evet"
@@ -114,7 +114,7 @@ en:
     errormsg:
       no_record_found: "Kayıt Bulunamadı"
     inputerror:
-      cant_be_blank:   "This field can not be blank"
+      cant_be_blank:   "Bu alana bilgi girmek zorunludur, boş bırakmayınız"
       firmid_is_blank: "Firm info is missing, login again please"
       branch_is_blank: "Branch info  can not be blank"
       must_be_unique:  "This has been used, please choose another value"
@@ -231,11 +231,11 @@ en:
       rail_transnode: "Aktarma İstasyon Bilgileri"
       road_transport: "Dorse/Çekici ve Nakliyeci Firma Bilgisi"
       road_departure: "Dorse Sefer Bilgisi"
-      road_transnode: "Güzergah Bilgileri"
+      road_transnode: "Aktarma Noktaları (Güzergah Bilgisi)"
     label:
       air_vessel: "Uçak Adı & Sefer No"
       sea_vessel: "Gemi Adı & Sefer No"
-      rail_vessel: "Tren Adı & Sefer No"
+      rail_vessel: "Tren Adı & Vagon No"
       road_vessel: "Dorse & Çekici"
       airline: "Havayolu Firması"
       armator: "Armatör Firma"
@@ -243,7 +243,7 @@ en:
       air_supplier: "Havayolu Acentası"
       sea_liner: "Hat Acentası"
       voyage: "Sefer No"
-      driver: "Sürücü Adı&Soyadı"
+      driver: "Sürücü Adı & Soyadı"
       transporter: "Nakliyeci Firma"
       tircarnet_info: "Tır Karnesi Bilgileri"
       tircarnet_no: "Tır Karne No"
@@ -251,16 +251,19 @@ en:
       waybill_info: "Konşimento Bilgileri"
       waybill_no: "Konşimento No"
       waybill_date: "Konşimento Tarihi"
+      cim_info: "CIM Bilgileri"
       departure_datehour: "Çıkış Tarihi & Saati"
       departure_citycountry: "Çıkış Ülkesi % Şehri"
       departure_airport: "Çıkış Havalimanı"
       departure_seaport: "Çıkış Limanı"
       departure_station: "Çıkış İstasyonu"
+      departure_place: "Çıkış Yeri"
       arrival_datehour: "Varış Tarihi & Saati"
       arrival_citycountry: "Varış Ülkesi % Şehri"
       arrival_airport: "Varış Havalimanı"
       arrival_seaport: "Varış Limanı"
       arrival_station: "Varış İstasyonu"
+      arrival_place: "Varış Yeri"
     placeholder:
       air_plane: "Uçak Adı"
       air_voyage: "Sefer Kodu"
@@ -273,6 +276,11 @@ en:
       truck: "Çekici Plakası"
       vehicle: "Dorse Plakası"
       driver: "Sürücü Seçiniz"
+      train: "Tren Adı"
+      vagon: "Vagon Numarası"
+      cim_no: "CIM Belge No"
+      cim_date: "CIM Belge Tarihi"
+      traincompany: "Tedarikçi Firmayı Seçiniz"
       transporter: "Nakliyeci Firmayı Seçiniz"
       transport_hour: "Saati"
       departure_country: "Çıkış Ülkesi"
@@ -283,7 +291,10 @@ en:
     link:
       show_air_transnodes: "Aktarma Havalimanı bilgilerini girmek için tıklayınız >>"
       show_sea_transnodes: "Aktarma Limanı bilgilerini girmek için tıklayınız >>"
+      show_rail_transnodes: "Aktarma İstasyon bilgilerini girmek için tıklayınız >>"
+      show_road_transnodes: "Aktarma Noktalarını (güzergah) girmek için tıklayınız >>"
     action:
+      save: "Multimodal Taşıma Bilgisini Kaydet"
     message:
       air_transport: "Taşımanın yapılacağı uçağa dair bilgileri girelim"
       sea_transport: "Taşımanın yapılacağı gemiye ait bilgileri girelim"
@@ -337,7 +348,7 @@ en:
       parent_company: "Grup Firması"
       company_type: "Firma Tipi"
       sector: "Sektör"
-      contact_name: "Yetkili Adı"
+      contact_name: "Yetkili Adı & Soyadı"
       salutation: "Cinsiyeti"
       jobtitle: "Ünvan & Departman"
       department: "Departman"
@@ -360,6 +371,7 @@ en:
       group_firm: "Grup veya Holding Firması"
       district: "Bulunduğu İlçe"
       postcode: "Posta kodu"
+      address: "Firma Açık Adresi"
     hint:
     link:
       new_company: "Firma Kaydı Oluştur"
@@ -376,12 +388,14 @@ en:
     placeholder:
       name: "Yetkili Adı"
       surname: "Yetkili Soyadı"
-      jobtitle: "Şirketteki Pozisyonu"
+      jobtitle: "Pozisyon Ünvanı"
       department: "Çalıştığı Birim"
       email: "Mail Adresi"
       phone: "Telefon Numarası"
     hint:
     link:
+    action:
+      save: "Yetkili Bilgisini Kaydet"
   branches:
     title:
       branches: "Şubeler"
@@ -465,6 +479,16 @@ en:
       edit_patron: "Firma Bilgilerini Güncelle"
       destroy_logo: "Logoyu Sil"
     action:
+  users:
+    title:
+    label:
+    placeholder:
+    hint:
+    link:
+    action:
+      change_password: "Şifreyi Değiştir"
+    messages:
+      activation_greeting: "Hoşgeldiniz, hesabınızı aktif yapmak için aşağıdaki bilgileri tamamlayınız"
   web:
     label:
       company_name: "Firma Adı"
@@ -491,63 +515,6 @@ en:
       surname: "Soyadınız"
       email: "E-Posta adresiniz"
       phone: "Size ulaşabileceğimiz telefon no"
-  position:
-    air:
-      label:
-        transporter:   "Airline"
-        agent:         "Foreign Agent"
-        supplier:      "CASS Supplier"
-        vesselvoyage:  "Plane & Flight"
-        vessel2voyage: "Second Plane & Flight"
-        load_place:    "Departure Airport"
-        unload_place:  "Arrival Airport"
-        masterno:      "MAWB No"
-        masterdate:    "MAWB Date"
-        agentref:      "Agent Reference"
-        linerref:      "Airline Reference"
-    sea:
-      label:
-        transporter:   "Shipowner"
-        agent:         "Foreign Agent"
-        supplier:      "Line Agent"
-        vesselvoyage:  "Ship & Voyage"
-        vessel2voyage: "Sec. Ship & Voyage"
-        load_place:    "Departure Seaport"
-        unload_place:  "Arrival Seaport"
-        masterno:      "MBL No"
-        masterdate:    "MBL Date"
-        agentref:      "Agent Reference"
-        linerref:      "Liner Reference"
-    road:
-      label:
-        transporter:   "Vehicle Owner"
-        agent:         "Foreign Agent"
-        supplier:      "Transporter"
-        vesselvoyage:  "Trailer & Voyage"
-        vessel2voyage: "Truck & Driver"
-        load_place:    "Loading Custom"
-        unload_place:  "Unloading Custom"
-        masterno:      "CMR No"
-        masterdate:    "CMR Date"
-        agentref:      "Agent Reference"
-        linerref:      "Transporter Reference"
-    rail:
-      label:
-        transporter:   "Train Operator"
-        agent:         "Foreign Agent"
-        supplier:      "Rail Agency"
-        vesselvoyage:  "Wagon & Voyage"
-        vessel2voyage: "Second Wagon & Voyage"
-        load_place:    "Departure Station"
-        unload_place:  "Arrival Station"
-        masterno:      "TNR No"
-        masterdate:    "TNR Date"
-        agentref:      "Agent Reference"
-        linerref:      "Rail Agency Reference"
-  loading:
-    air:
-      label:
-        transporter:   "Airway"
   dashboard:
     link:
       patron_info: "Firma Bilgileri"

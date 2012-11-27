@@ -39,8 +39,10 @@ class Company < ActiveRecord::Base
   validates :branch_id, :presence => { :message => I18n.t('defaults.inputerror.branch_is_blank') }
 
   #before_save   :get_coordinates
-  before_create :set_initials
+  before_create :set_initials, :set_contact_user
+
   after_create  :set_after_jobs
+
 
   default_scope { where(patron_id: Patron.current_id) }
   scope :latest, order("created_at desc")
@@ -92,6 +94,12 @@ class Company < ActiveRecord::Base
     self.user.follow!(self) if self.user
       #self.user.create_activity(self, name, patron_id, patron_token)
       #Patron.journal_record(self.patron_id, user, branch, nil, self.class.name, 1, 0)
+  end
+
+  def set_contact_user
+    self.contacts.each do |contact|
+      contact.user_id = self.user_id
+    end
   end
 
 end

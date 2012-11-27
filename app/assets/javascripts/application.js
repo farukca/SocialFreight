@@ -10,9 +10,9 @@
 //= require rails.validations
 //= require rails.validations.simple_form
 // require simpleform_clientsidev
-//= require jquery.tokeninput
+// require jquery.tokeninput
 //= require jquery.timeago
-//= require jquery.autocomplete
+// require jquery.autocomplete
 //= require bootstrap
 //= require bootstrap-datepicker
 //= require highcharts

@@ -13,9 +13,9 @@
           <%= f.input_field :vessel, class: "input-small", placeholder: t("transports.placeholder.vehicle") %>
           <%= f.input_field :truck, class: "input-small", placeholder: t("transports.placeholder.truck") %>
         <% end %>
-        <%= f.input :voyage, placeholder: t("transports.label.voyage") %>
-        <%#= f.input :driver_name, "data-placeholder" => "Sürücü" %>
-        <%= f.input :driver_id, as: :hidden, label: t("transports.label.driver"), input_html: {class: "chosen_input", "data-url" => "/people.json", "data-newrecurl" => "/people/new", "data-placeholder" => t("transports.placeholder.driver") } %>
+        <%= f.input :voyage, label: t("transports.label.voyage") %>
+        <%= f.input :driver_name, label: t("transports.label.driver") %>
+        <%#= f.input :driver_id, as: :hidden, label: t("transports.label.driver"), input_html: {class: "chosen_input", "data-url" => "/people.json", "data-newrecurl" => "/people/new", "data-placeholder" => t("transports.placeholder.driver") } %>
         <hr>
         <%#= f.input :owner_id, as: :hidden, label: "Araç Sahibi Firma", input_html: { class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => "Araç Sahibi Firmayı Seçiniz"} %>
         <%= f.input :supplier_id, as: :hidden, label: t("transports.label.transporter"), input_html: { class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => t("transports.placeholder.transporter") } %>
@@ -31,37 +31,37 @@
     </div>
     <div class="span6">
       <fieldset>
-        <legend>Araç Hareket Bilgisi</legend>
-        <%= f.input :departure_date do %>
-          <%= f.input_field :departure_date, as: :string, placeholder: "Çıkış Tarihi", class: "input-date", "data-datepicker" => "datepicker" %>
-          <%= f.input_field :departure_hour, placeholder: "Saati", class: "input-hour" %>
+        <legend><%= t("transports.title.road_departure") %></legend>
+        <%= f.input :departure_date, label: t("transports.label.departure_datehour") do %>
+          <%= f.input_field :departure_date, as: :string, placeholder: t("operations.label.departure_date"), class: "input-date", "data-datepicker" => "datepicker" %>
+          <%= f.input_field :departure_hour, placeholder: t("transports.placeholder.transport_hour"), class: "input-hour" %>
         <% end %>
-        <%= f.input :dep_place, label:"Çıkış Yeri" do %>
+        <%= f.input :dep_place, label: t("transports.label.departure_place") do %>
           <%= f.input_field :dep_place_type, as: :select, collection: Loading.point_types.map { |r| [r[1], r[0] ] }, include_blank: true, class: "input-small" %>
           <%= f.input_field :dep_place, class: "input-small" %>
         <% end %>
-        <%= f.input :dep_country_id, label: "Çıkış Ülke & Şehir" do %>
-          <%=f.input_field :dep_country_id, as: :select, collection: Country.all, include_blank: true, class: "input-small country_select", placeholder: "Çıkış Ülkesi" %>
-          <%= f.input_field :dep_city, class: "input-small", placeholder: "Çıkış Şehri" %>
+        <%= f.input :dep_country_id, label: t("transports.label.departure_citycountry") do %>
+          <%=f.input_field :dep_country_id, as: :select, collection: Country.all, include_blank: true, class: "input-small country_select", placeholder: t("transports.placeholder.departure_country") %>
+          <%= f.input_field :dep_city, class: "input-small", placeholder: t("transports.placeholder.departure_city") %>
         <% end %>
         <hr>
-        <%= f.input :arrival_date do %>
-          <%= f.input_field :arrival_date, as: :string, placeholder: "Varış Tarihi", class: "input-date", "data-datepicker" => "datepicker" %>
-          <%= f.input_field :arrival_hour, placeholder: "Saati", class: "input-hour" %>
+        <%= f.input :arrival_date, label: t("transports.label.arrival_datehour") do %>
+          <%= f.input_field :arrival_date, as: :string, placeholder: t("operations.label.arrival_date"), class: "input-date", "data-datepicker" => "datepicker" %>
+          <%= f.input_field :arrival_hour, placeholder: t("transports.placeholder.transport_hour"), class: "input-hour" %>
         <% end %>
-        <%= f.input :arv_place, label:"Varış Yeri" do %>
+        <%= f.input :arv_place, label: t("transports.label.arrival_place") do %>
           <%= f.input_field :arv_place_type, as: :select, collection: Loading.point_types.map { |r| [r[1], r[0] ] }, include_blank: true, class: "input-small" %>
           <%= f.input_field :arv_place, class: "input-small" %>
         <% end %>
-        <%= f.input :arv_country_id, label: "Varış Ülke & Şehir" do %>
-          <%= f.input_field :arv_country_id, as: :select, collection: Country.all, include_blank: true, class: "input-small country_select", placeholder: "Varış Ülkesi" %>
-          <%= f.input_field :arv_city, class: "input-small", placeholder: "Varış Şehri" %>
+        <%= f.input :arv_country_id, label: t("transports.label.arrival_citycountry") do %>
+          <%= f.input_field :arv_country_id, as: :select, collection: Country.all, include_blank: true, class: "input-small country_select", placeholder: t("transports.placeholder.arrival_country") %>
+          <%= f.input_field :arv_city, class: "input-small", placeholder: t("transports.placeholder.arrival_city") %>
         <% end %>
-        <%= link_to "Aktarma bilgilerini girmek için tıklayınız >>", "#", class: "togglebutton pull-right", "data-href" => "#transnode_info" %>
+        <%= link_to t("transports.link.show_road_transnodes"), "#", class: "togglebutton pull-right", "data-href" => "#transnode_info" %>
       </fieldset>
     </div>
   </div>
   <div id="transnode_info" class="row-fluid slidingDiv">
-    <legend>Güzergah Bilgisi</legend>
+    <legend><%= t("transports.title.road_transnode") %></legend>
   </div>
 </div>

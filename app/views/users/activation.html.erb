@@ -17,13 +17,14 @@
           <fieldset>
             <%= f.input :password, label: "Şifreniz", hint: "En az 8 karakter uzunluğunda olmalı" %>
             <%= f.input :password_confirmation, label: "Şifreyi Tekrar Giriniz" %>
-            <div class="control-groups">
-              <div class="controls">
-                <%= f.button :submit, "Şifreyi Değiştir", class: 'btn btn-success' %>
-              </div>
-            </div>
           </fieldset>
+        
+          <div class="form-actions">
+            <%= f.button :submit, t("users.action.change_password"), class: 'btn btn-success' %>
+          </div>
+
         </div>
+
       </div>
       
     <% end %>

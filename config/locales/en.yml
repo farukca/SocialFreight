@@ -4,47 +4,53 @@
 en:
   defaults:
     vocabulary:
-      yes: "Evet"
-      no: "Hayır"
+      yes: "Yes"
+      no: "No"
+      birthdate: "Birth Date"
+      sumof: "Total"
     title:
-      last_items: "Son İşlemler"
-      reports: "Raporlar"
-      tasks: "Görevler"
-      departures: "Yükleme Noktaları"
-      arrivals: "Boşaltma Noktaları"
-      containers: "Konteyner Bilgileri"
-      packages: "Koli Bilgileri"
-      documents: "Doküman Bilgileri"
-      invoitems: "Fatura Kalem Bilgileri"
-      costs: "Masraf Bilgileri"
-      comments: "Yorumlar"
-      posts: "Bildirimler"
-      contacts: "Kontak Bilgileri"
-      partners: "İş Ortakları"
-      activities: "Aktiviteler"
-      loadings: "Yükler"
-      positions: "Pozisyonlar"
-      transports: "Multimodal Taşımalar"
+      last_items: "Last Items"
+      additional_info: "Additional Information"
+      reports: "Reports"
+      tasks: "Tasks"
+      departures: "Loading Points"
+      arrivals: "Unloading Points"
+      containers: "Container Information"
+      packages: "Package Information"
+      documents: "Documents"
+      invoitems: "Invoice Lines"
+      costs: "Costs"
+      comments: "Comments"
+      posts: "Posts"
+      contacts: "Contacts"
+      partners: "Partners"
+      activities: "Activities"
+      loadings: "Goods (Cargos)"
+      positions: "Projects"
+      transports: "Multimodal Tranports"
     label:
-      reference: "Referans"
-      branch: "Şube"
+      reference: "Reference"
+      branch: "Branch"
       tel:    "Phone"
       fax:    "Fax"
-      email:  "EMail"
-      website: "Websitesi"
-      country: "Ülke"
-      city:   "Şehir"
-      customer: "Müşteri"
-      agent: "Yurtdışı Acenta"
-      service: "Servis"
-      load_country: "Yükleme Ülkesi"
-      load_city: "Yükleme Şehri"
-      load_place: "Yükleme Yeri"
-      load_airport: "Yükleme Havalimanı"
-      load_seaport: "Yükleme Limanı"
-      load_station: "Yükleme İstasyonu"
-      load_date: "Yükleme Tarihi"
-      load_note: "Yükleme Notu"
+      gsm:    "Mobile Phone"
+      email:  "E-Mail"
+      website: "Website"
+      country: "Country"
+      city:   "City"
+      district: "District"
+      customer: "Customer"
+      company: "Company"
+      agent: "Foreign Agent"
+      service: "Service"
+      load_country: "Loading Country"
+      load_city: "Loading City"
+      load_place: "Loading Place"
+      load_airport: "Loading Airport"
+      load_seaport: "Loading Seaport"
+      load_station: "Loading Station"
+      load_date: "Load Date"
+      load_note: "Load Notes"
       pickup_date: "Teslim Alma Tarihi"
       unload_country: "Boşaltma Ülkesi"
       unload_city: "Boşaltma Şehri"
@@ -64,18 +70,26 @@ en:
       sender: "Gönderici"
       consignee: "Alıcı"
       notes: "Notlar"
+      picture_file: "Resim dosyası"
       create_info: "Kayıt Bilgisi"
       update_info: "Son Güncelleme Bilgisi"
     placeholder:
       district: "İlçe/Semt"
       postcode: "Posta Kodu"
       address:  "Adres"
+    action:
+      save: "Save"
+      share: "Share"
+      close: "Close"
+      change: "Change"
     hint:
     link:
-      new: "Yeni"
-      edit: "Güncelle"
-      destroy: "Sil"
-      action: "İşlem"
+      new: "New"
+      edit: "Edit"
+      destroy: "Destroy"
+      cancel: "Cancel"
+      action: "Action"
+      restore: "Restore"
       new_report: "Yeni Rapor Oluştur"
       new_task: "Yeni Görev Ekle"
       new_departure: "Yükleme Noktası Ekle"
@@ -85,11 +99,13 @@ en:
       new_document: "Doküman Ekle"
       new_invoitem: "Fatura Kalem Bilgisi Ekle"
       new_cost: "Masraf Bilgisi Ekle"
-      new_comment: "Yorumla"
+      new_comment: "Yorum Ekle"
       new_post: "Mesajınız"
       new_contact: "Kontak Bilgisi Ekle"
       new_partner: "İş Ortağı Ekle"
-      new_activity: "Aktivite Oluştur"    
+      new_event: "Olay Bildirimi Ekle"
+      new_activity: "Aktivite Oluştur"
+      new_branch: "Şube Oluştur"
       detailed_search: "Detaylı Ara >>"
       new_loading: "Yeni Yük Bilgisi Ekle"
       edit_loading: "Bu Yük Bilgisini Güncelle"
@@ -98,12 +114,13 @@ en:
     errormsg:
       no_record_found: "Kayıt Bulunamadı"
     inputerror:
-      cant_be_blank:   "This field can not be blank"
+      cant_be_blank:   "Bu alana bilgi girmek zorunludur, boş bırakmayınız"
       firmid_is_blank: "Firm info is missing, login again please"
       branch_is_blank: "Branch info  can not be blank"
       must_be_unique:  "This has been used, please choose another value"
     messages:
       destroy_confirm: "Kaydı Silmek İstediğinizden emin misiniz ?"
+      change_picture: "Resmi Değiştirmek için Tıklayınız"
   operations:
     title:
       airoperation: "Hava Operasyon"
@@ -116,6 +133,7 @@ en:
       planned_transports: "Planlanmış Taşımalar"
       process_list: "Operasyon Menü"
       new_loading: "Yeni Yük Oluşturma"
+      loading_info: "Yük Bilgisi"
       loading_detail: "Yük Detayları"
       package_info: "Koli Bilgileri"
       departure_info: "Yükleme Bilgisi"
@@ -123,10 +141,13 @@ en:
       pre_trans_info: "Ön Taşıma Bilgisi"
       loading_profile: "Yük Profili"
     label:
+      reservation: "Rezervasyon"
       loader_firm: "Gerçek Yükleyici"
       delivery_firm: "Teslimat Firması"
+      notify_firm: "Notify"
       customofficer: "Gümrükçü"
       settlement_info: "Gümrük Beyan"
+      custom_office: "Gümrük Ofisi"
       load_country_city: "Yükleme Ülkesi-Şehir"
       load_district: "Yükleme İlçesi"
       load_address: "Yükleme Adresi"
@@ -187,19 +208,277 @@ en:
       new_rail_transport: "Tren Taşıma Bilgisi Ekle"
       new_inland_transport: "Dahili(Ön/Son) Taşıma Bilgisi Ekle"
       list_reservation: "Reservasyon Bağla"
+      loading_detail: "Yük Detay Bilgilerini Girmek istiyorum"
     button:
       skip_this_step: "Bu Adımı Atla >>"
       save_loading_continue_to_departure: "Kaydet & Yükleme Bilgilerine Devam Et >>"
       save_departure_continue_to_arrival: "Kaydet & Boşaltma Bilgilerine Devam Et >>"
       add_package: "Koli Bilgisi Ekle"
+      save_loading: "Yük Bilgisini Kaydet"
     validmsg:
     errormsg:
-
-  companies:
+  transports:
+    title:
+      transport_info: "Multimodal Taşıma Bilgisi"
+      air_transport: "Uçak ve Havayolu Bilgisi"
+      air_departure: "Uçak Hareket Bilgisi"
+      air_transnode: "Aktarma Havaliman Bilgileri"
+      sea_transport: "Gemi ve Armatör Bilgisi"
+      sea_departure: "Gemi Hareket Bilgisi"
+      sea_transnode: "Aktarma Liman Bilgileri"
+      rail_transport: "Tren ve İşleten Firma Bilgisi"
+      rail_departure: "Tren Sefer Bilgisi"
+      rail_transnode: "Aktarma İstasyon Bilgileri"
+      road_transport: "Dorse/Çekici ve Nakliyeci Firma Bilgisi"
+      road_departure: "Dorse Sefer Bilgisi"
+      road_transnode: "Aktarma Noktaları (Güzergah Bilgisi)"
     label:
-      name: "Short Name"
-      type: "Company Type"
-
+      air_vessel: "Uçak Adı & Sefer No"
+      sea_vessel: "Gemi Adı & Sefer No"
+      rail_vessel: "Tren Adı & Vagon No"
+      road_vessel: "Dorse & Çekici"
+      airline: "Havayolu Firması"
+      armator: "Armatör Firma"
+      traincompany: "Tren Firması"
+      air_supplier: "Havayolu Acentası"
+      sea_liner: "Hat Acentası"
+      voyage: "Sefer No"
+      driver: "Sürücü Adı & Soyadı"
+      transporter: "Nakliyeci Firma"
+      tircarnet_info: "Tır Karnesi Bilgileri"
+      tircarnet_no: "Tır Karne No"
+      tircarnet_date: "Tır Karne Tarihi"
+      waybill_info: "Konşimento Bilgileri"
+      waybill_no: "Konşimento No"
+      waybill_date: "Konşimento Tarihi"
+      cim_info: "CIM Bilgileri"
+      departure_datehour: "Çıkış Tarihi & Saati"
+      departure_citycountry: "Çıkış Ülkesi % Şehri"
+      departure_airport: "Çıkış Havalimanı"
+      departure_seaport: "Çıkış Limanı"
+      departure_station: "Çıkış İstasyonu"
+      departure_place: "Çıkış Yeri"
+      arrival_datehour: "Varış Tarihi & Saati"
+      arrival_citycountry: "Varış Ülkesi % Şehri"
+      arrival_airport: "Varış Havalimanı"
+      arrival_seaport: "Varış Limanı"
+      arrival_station: "Varış İstasyonu"
+      arrival_place: "Varış Yeri"
+    placeholder:
+      air_plane: "Uçak Adı"
+      air_voyage: "Sefer Kodu"
+      airline: "Havayolu Firmasını Seçiniz"
+      air_supplier: "Navlun Ödenecek Firma, CASS"
+      shipname: "Gemi Adı"
+      sea_voyage: "Sefer Kodu"
+      armator: "Armatör Firmasını Seçiniz"
+      sea_liner: "Hat Acentası Firmayı Seçiniz"
+      truck: "Çekici Plakası"
+      vehicle: "Dorse Plakası"
+      driver: "Sürücü Seçiniz"
+      train: "Tren Adı"
+      vagon: "Vagon Numarası"
+      cim_no: "CIM Belge No"
+      cim_date: "CIM Belge Tarihi"
+      traincompany: "Tedarikçi Firmayı Seçiniz"
+      transporter: "Nakliyeci Firmayı Seçiniz"
+      transport_hour: "Saati"
+      departure_country: "Çıkış Ülkesi"
+      departure_city: "Çıkış Şehri"
+      arrival_country: "Varış Ülkesi"
+      arrival_city: "Varış Şehri"
+    hint:
+    link:
+      show_air_transnodes: "Aktarma Havalimanı bilgilerini girmek için tıklayınız >>"
+      show_sea_transnodes: "Aktarma Limanı bilgilerini girmek için tıklayınız >>"
+      show_rail_transnodes: "Aktarma İstasyon bilgilerini girmek için tıklayınız >>"
+      show_road_transnodes: "Aktarma Noktalarını (güzergah) girmek için tıklayınız >>"
+    action:
+      save: "Multimodal Taşıma Bilgisini Kaydet"
+    message:
+      air_transport: "Taşımanın yapılacağı uçağa dair bilgileri girelim"
+      sea_transport: "Taşımanın yapılacağı gemiye ait bilgileri girelim"
+      rail_transport: "Taşımanın yapılacağı trene ait bilgileri girelim"
+      road_transport: "Taşımanın yapılacağı dorse ve çekici bilgilerini girelim"
+  containers:
+    title:
+      container_info: "Konteyner Bilgisi"
+    label:
+      container_type: "Konteyner Tipi"
+      name: "Konteyner No"
+      sealno: "Seal No"
+      free_day: "Serbest Gün Sayısı"
+      demurrage: "Günlük Demuraj Fiyatı"
+    placeholder:
+    hint:
+    link:
+    action:
+      save: "Konteyner Bilgisini Kaydet"
+  packages:
+    title:
+      package_info: "Koli Bilgisi"
+    label:
+      total: "Koli Adedi"
+      dimension: "Boyutları"
+      weights: "Brüt-Net Ağırlık"
+      volume_lada: "Volume-Ladameter"
+      description: "Koli Detayı"
+      imo: "Hazardous IMO No"
+      gtip: "G.Tip No"
+      po: "PO No"
+      container_no: "Koli Konteyner No"
+      loading_notes: "Koli Yükleme Notu"
+    placeholder:
+      container_no: "Kolinin Yüklendiği Konteyner No"
+    hint:
+    link:
+    action:
+      save: "Koli Bilgisini Kaydet"
+  companies:
+    title:
+      company_management: "Companies"
+      company_menu: "Company Menu"
+      last_companies: "Last added Companies"
+      company_info: "Company Information"
+      contact_info: "Contact Information"
+      partner_info: "Partner Information"
+      quick_company: "Quick Company Creation"
+    label:
+      name: "Company Name"
+      parent_company: "Group Company"
+      company_type: "Company Type"
+      sector: "Sector Information"
+      contact_name: "Contact Name&Surname"
+      salutation: "Salutation"
+      jobtitle: "Job Title"
+      department: "Department"
+      partner: "Partner"
+      partner_type: "Partnership Type"
+      event_date: "Event Date"
+      event_type: "Event Type"
+      event_status: "Event Status"
+      event_description: "Event Description"
+      event_source: "Event Source"
+      event_source_url: "Web url address"
+      twitter_link: "Twitter Adresi"
+      linkedin_link: "Linkedin Adresi"
+      facebook_link: "Facebook Adresi"
+    placeholder:
+      company: "Firma Seçiniz"
+      partner: "İş Ortağı Seçiniz"
+      name: "Firma Kısa Adı"
+      sector: "Firmanın hizmet verdiği sektör"
+      group_firm: "Grup veya Holding Firması"
+      district: "Bulunduğu İlçe"
+      postcode: "Posta kodu"
+      address: "Firma Açık Adresi"
+    hint:
+    link:
+      new_company: "Firma Kaydı Oluştur"
+      new_contact: "Yetkili Kaydı Oluştur"
+      new_event: "Olay Kaydı Oluştur"
+      company_list: "Aktif Firma Listesi"
+      contact_list: "Kontak Listesi"
+      event_list: "Olay Kayıtları Listesi"
+    action:
+      save: "Firma Bilgisini Kaydet"
+  contacts:
+    title:
+    label:
+    placeholder:
+      name: "Yetkili Adı"
+      surname: "Yetkili Soyadı"
+      jobtitle: "Pozisyon Ünvanı"
+      department: "Çalıştığı Birim"
+      email: "Mail Adresi"
+      phone: "Telefon Numarası"
+    hint:
+    link:
+    action:
+      save: "Save Contact Information"
+  branches:
+    title:
+      branches: "Şubeler"
+      branch_info: "Şube Bilgisi"
+      branch_reports: "Şube Raporları"
+      branch_process: "Şube İşlemleri"
+    label:
+      name: "Şube Adı"
+      tel: "Telefon No"
+      fax: "Faks No"
+    placeholder:
+      city: "Bulunduğu Şehir"
+      country: "Bulunduğu Ülke"
+      district: "Bulunduğu Semt"
+      postcode: "Posta kodu"
+    hint:
+    link:
+      new_branch: "Yeni Şube Oluştur"
+      branch_list: "Şube Listesi"
+    action:
+      save: "Firma Bilgisini Kaydet"
+  tasks:
+    title:
+      last_tasks: "Son Eklenen Firmalar"
+      task_info: "Yetkili Bilgisi"
+    label:
+      user: "Kullanıcı"
+      due_date: "Tamamlanma Tarihi"
+      task_text: "Görev Açıklaması"
+    placeholder:
+      user: "Görevin Atanacağı Kullanıcıyı Seçiniz"
+    hint:
+    link:
+      new_task: "Görev Oluştur"
+      task_list: "Görev Listesi"
+  documents:
+    title:
+    label:
+      document_type: "Belge Tipi"
+      document_date: "Belge Tarihi"
+      document_no: "Belge No"
+      upload_document: "Döküman Ekle"
+      operation: "Operasyon Tipi"
+      owner_reference: "İlgili Operasyon"
+      description: "Belge Açıklaması"
+    placeholder:
+    hint:
+    link:
+    action:
+      save: "Belge Bilgilerini Kaydet"
+  junks:
+    title:
+      junks: "Silinmiş Kayıtlar"
+    label:
+      junk_time: "Silinme Zamanı"
+      junk_reference: "Kayıt Referans No"
+      junk_user: "Silen Kullanıcı"
+      junk_description: "Açıklama"
+    placeholder:
+    hint:
+    link:
+    action:
+  patrons:
+    title:
+      patron_info: "Firma Bilgisi"
+      patron_list: "Firma Listesi"
+      address_info: "Adres Bilgileri"
+    label:
+      name: "Firma Adı"
+      invoice_title: "Fatura Ünvanı"
+      time_zone: "Zaman Dilimi"
+      language: "Dil Seçimi"
+      currency: "Döviz Seçimi"
+      locale: "Yerel Ayarlar Seçimi"
+      mail_encoding: "Mail Encoding"
+    placeholder:
+      country: "Bulunduğunuz Ülke"
+    hint:
+    link:
+      user_list: "Kullanıcı Listesi"
+      edit_patron: "Firma Bilgilerini Güncelle"
+      destroy_logo: "Logoyu Sil"
+    action:
   web:
     label:
       company_name: "Firma Adı"
@@ -208,11 +487,11 @@ en:
       phone: "Telefon"
       country: "Ülke"
       employee_number: "Çalışan Sayısı"
-      email: "E-Mail"
-      password: "Password"
-      remember_me: "Remember My Username"
-      login: "Login"
-      signup: "Sign Up"
+      email: "E-Posta"
+      password: "Şifre"
+      remember_me: "Kullanıcı Adımı Hatırla, Beni Yorma"
+      login: "Giriş Yap"
+      signup: "Üye Ol"
       forgot_password: "Yine Şifremi Unuttum"
       signup_for_free: "Ücretsiz bireysel hesabını açabilirsiniz"
       no_account_yet: "Henüz üye olmadıysanız,"
@@ -226,63 +505,20 @@ en:
       surname: "Soyadınız"
       email: "E-Posta adresiniz"
       phone: "Size ulaşabileceğimiz telefon no"
-  position:
-    air:
-      label:
-        transporter:   "Airline"
-        agent:         "Foreign Agent"
-        supplier:      "CASS Supplier"
-        vesselvoyage:  "Plane & Flight"
-        vessel2voyage: "Second Plane & Flight"
-        load_place:    "Departure Airport"
-        unload_place:  "Arrival Airport"
-        masterno:      "MAWB No"
-        masterdate:    "MAWB Date"
-        agentref:      "Agent Reference"
-        linerref:      "Airline Reference"
-    sea:
-      label:
-        transporter:   "Shipowner"
-        agent:         "Foreign Agent"
-        supplier:      "Line Agent"
-        vesselvoyage:  "Ship & Voyage"
-        vessel2voyage: "Sec. Ship & Voyage"
-        load_place:    "Departure Seaport"
-        unload_place:  "Arrival Seaport"
-        masterno:      "MBL No"
-        masterdate:    "MBL Date"
-        agentref:      "Agent Reference"
-        linerref:      "Liner Reference"
-    road:
-      label:
-        transporter:   "Vehicle Owner"
-        agent:         "Foreign Agent"
-        supplier:      "Transporter"
-        vesselvoyage:  "Trailer & Voyage"
-        vessel2voyage: "Truck & Driver"
-        load_place:    "Loading Custom"
-        unload_place:  "Unloading Custom"
-        masterno:      "CMR No"
-        masterdate:    "CMR Date"
-        agentref:      "Agent Reference"
-        linerref:      "Transporter Reference"
-    rail:
-      label:
-        transporter:   "Train Operator"
-        agent:         "Foreign Agent"
-        supplier:      "Rail Agency"
-        vesselvoyage:  "Wagon & Voyage"
-        vessel2voyage: "Second Wagon & Voyage"
-        load_place:    "Departure Station"
-        unload_place:  "Arrival Station"
-        masterno:      "TNR No"
-        masterdate:    "TNR Date"
-        agentref:      "Agent Reference"
-        linerref:      "Rail Agency Reference"
-  loading:
-    air:
-      label:
-        transporter:   "Airway"
+  dashboard:
+    link:
+      patron_info: "Firma Bilgileri"
+      user_actions: "Kullanıcılar"
+      branch_actions: "Şube İşlemleri"
+      params_actions: "Parametre İşlemleri"
+      betauser_actions: "Beta Talepleri"
+      feedback_actions: "Bildirim İşlemleri"
+      patron_actions: "Patronlar"
+      country_actions: "Ülkeler"
+      bank_actions: "Bankalar"
+      currency_actions: "Dövizler"
+      user_preferences: "Ayarlarım"
+      edit_profile: "Profil Bilgisini Güncelle"
   listitems:
     loadtype:
       sea:
@@ -297,3 +533,16 @@ en:
       rail:
         Full: "Complete"
         Partial: "Partial"
+  content:
+    home:
+      betauser_message: "SocialFreight'ın ilk kullanıcılarından olmak ister misiniz?"
+      betauser_placeholder: "Mail Adresinizi verin"
+      betauser_submit: "Sizi Bilgilendirelim"
+
+#  new_model_name:
+#    title:
+#    label:
+#    placeholder:
+#    hint:
+#    link:
+#    action:

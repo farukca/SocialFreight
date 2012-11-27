@@ -8,6 +8,7 @@
 //= require jquery_ujs
 //= require jquery.cycle.all
 //= require rails.validations
+//= require rails.validations.simple_form
 //= require bootstrap
 //= require facebox
 //= require twitter

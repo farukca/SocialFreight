@@ -30,13 +30,16 @@ class User < ActiveRecord::Base
                    :region, :time_zone, :user_type, :language, :locale, :mail_encoding, :role, :branch_id
   #attr_protected  :password
 
-  validates_confirmation_of :password
-  validates_presence_of :password, :on => :create
-  validates_presence_of :email
-  validates_presence_of :name
-  validates_presence_of :surname
-  validates_uniqueness_of :email, :case_sensitive => false
-  validates_presence_of :branch_id
+  validates :password, presence: true, confirmation: true, length: { minimum: 8, maximum: 20}, on: :create
+  #validates_confirmation_of :password
+  #validates_presence_of :password, on: :create
+  #validates_length_of :password, minimum: 8 
+  validates :email, presence: true, uniqueness: {case_sensitive: false}, length: { minimum: 7, maximum: 40}
+  validates :name, presence: true, on: :update
+  validates :surname, presence: true, on: :update
+  #validates_uniqueness_of :email, :case_sensitive => false
+  validates :branch_id, presence: true
+  validates_inclusion_of :time_zone, in: ActiveSupport::TimeZone.zones_map(&:name)
 
   after_create  :send_activation_mail
 

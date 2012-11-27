@@ -4,10 +4,14 @@
     <%= f.error :base, error_method: :to_sentence %>
 
     <div class="pageBlock">
-      <%#= render 'shared/form_buttonsh', :f => f %>
    
       <div id="transport-main-form" class="tab-pane active">
         <%= render "form_#{@transport.trans_method}", f: f %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, t("transports.action.save"), class: 'btn btn-info', accesskey: "s" %>
+        <button type="button" class="btn"><%= t("defaults.link.cancel") %></button>
       </div>
 
       <div style="display:none">
@@ -15,12 +19,7 @@
         <%= f.input :dep_place_type, as: :hidden %>
         <%= f.input :arv_place_type, as: :hidden %>
         <%= f.input :position_id, as: :hidden %>
-        <%= f.input :position_id, :as => :hidden %>
-      </div>
-
-      <div class="form-actions">
-        <%= f.button :submit, "Multimodal Taşıma Bilgisini Kaydet", class: 'btn btn-info', :accesskey => "s" %>
-        <button type="button" class="btn">Vazgeç</button>
+        <%= f.input :position_id, as: :hidden %>
       </div>
     </div>
 

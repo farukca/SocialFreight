@@ -107,7 +107,8 @@ Socialfreight::Application.routes.draw do
   root :to => 'home#index'
 
   mount Resque::Server, at: "/resque"
-  mount Blogger::Engine, at: "/blog"
+  #mount Blogger::Engine, at: "/blog"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

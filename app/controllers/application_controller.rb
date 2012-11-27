@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   around_filter :scope_current_patron
+  around_filter :user_time_zone, if: :current_user
+  before_filter :set_locale
 
   def follow_object(object)
     current_user.follow(object)
@@ -65,24 +67,18 @@ class ApplicationController < ActionController::Base
     if logged_in?
       locale = current_user.language
     end
-    if not locale.present?
+    unless locale.present?
       locale = cookies[:socialfreight_locale]
     end
-    if not locale.present?
+    unless locale.present?
       locale = Timeout::timeout(5) { Net::HTTP.get_response(URI.parse('http://api.hostip.info/country.php?ip=' + request.remote_ip )).body } rescue I18n.default_locale
       cookies[:socialfreight_locale] = locale
     end
     I18n.locale = (locale.present? && I18n.available_locales.include?(locale.to_sym)) ? locale : I18n.default_locale
   end
   
-  def set_time_zone
-    if logged_in?
-      Time.use_zone(current_user.time_zone) do
-        yield
-      end
-    else
-      yield
-    end
+  def user_time_zone(&block)
+    Time.use_zone(current_user.time_zone, &block)
   end
     
 end

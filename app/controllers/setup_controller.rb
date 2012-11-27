@@ -3,7 +3,7 @@ class SetupController < ApplicationController
 
   before_filter :require_login
   layout "admin"
-  steps :set_address, :set_codes#, :set_params, :set_branches, :set_users
+  steps :start_wizard, :set_address, :set_codes#, :set_params, :set_branches, :set_users
   
   def show
     @patron = current_patron
