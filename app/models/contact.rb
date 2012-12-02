@@ -6,7 +6,7 @@ class Contact < ActiveRecord::Base
   belongs_to :company, counter_cache: true
   belongs_to :user
 
-  friendly_id :to_s, use: :slugged, use: :scoped, scope: :company
+  friendly_id :to_s, use: :slugged, use: :scoped, scope: :patron
 
   attr_accessible :name, :surname, :salutation, :company_id, :user_id, :email, :tel, :gsm, :twitter, :facebook, :linkedin, 
                   :jobtitle, :department, :fax, :tel2, :des, :birthdate

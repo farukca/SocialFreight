@@ -2,8 +2,8 @@ class SetupController < ApplicationController
   include Wicked::Wizard
 
   before_filter :require_login
-  layout "admin"
-  steps :start_wizard, :set_address, :set_codes#, :set_params, :set_branches, :set_users
+  #layout "admin"
+  steps :start_wizard, :set_address, :set_branches, :set_users#, :set_codes, :set_params, 
   
   def show
     @patron = current_patron

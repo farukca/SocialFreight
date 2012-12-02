@@ -629,8 +629,8 @@ p {
 .sidebar .blog-widget h3 {
     margin-bottom: 0;
 }
-.widget h4 {
-    border-bottom: 1px solid #6f6f6f;
+.widget h4, h5 {
+*   border-bottom: 1px solid #6f6f6f;
     margin-bottom: 15px;
     padding-bottom: 7px;
     color: #fff;

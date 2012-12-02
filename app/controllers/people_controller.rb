@@ -33,10 +33,13 @@ class PeopleController < ApplicationController
 
   def show
     @person = Person.find(params[:id])
+    @user = current_user
   end
 
   def create
     @person = Person.new(params[:person])
+    @person.name = current_user.name
+    @person.surname = current_user.surname
     @person.user_id = current_user.id
     @person.patron_id = current_patron.id
 
@@ -56,7 +59,7 @@ class PeopleController < ApplicationController
 
     respond_to do |format|
       if @person.update_attributes(params[:person])
-        format.html { redirect_to root_url, notice: 'Profile updated successfully.' }
+        format.html { redirect_to @person, notice: 'Profile updated successfully.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

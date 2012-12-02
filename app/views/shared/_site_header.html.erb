@@ -8,8 +8,11 @@
       <div class="span8">
         <div class="row">
           <div class="customer_intro">
-            <%= link_to login_path, class: "btn btn-success" do %>
+            <%= link_to login_path, class: "btn btn-info" do %>
               <i class="icon-off icon-white"></i><%= t("web.label.login") %>
+            <% end %>
+            <%= link_to try_path, class: "btn btn-success" do %>
+              <i class="icon-forward icon-white"></i><%= t("web.label.free_trial") %>
             <% end %>
           </div>
         </div>

@@ -7,6 +7,15 @@ server {
   server_name socialfreight.com;
   root <%= current_path %>/public;
 
+  if (-f $document_root/system/maintenance.html) {
+    return 503;
+  }
+  error_page 503 @maintenance;
+  location @maintenance {
+    rewrite  ^(.*)$  /system/maintenance.html last;
+    break;
+  }
+
   location ^~ /assets/ {
     gzip_static on;
     expires max;

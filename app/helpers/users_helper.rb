@@ -4,6 +4,10 @@ module UsersHelper
   	user.to_s
   end
 
+  def first_name(user = @user)
+    user.name
+  end
+
   def user_small_avatar(user = @user)
     user.avatar_url(:small)
   end

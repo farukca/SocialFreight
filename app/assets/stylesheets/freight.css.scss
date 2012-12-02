@@ -431,11 +431,14 @@ form ul li label {
     float:none;
 }
 .widget {
-    border:1px solid #D6D6D6;
-    box-shadow:2px 2px 3px rgba(0, 0, 0, 0.08);
+    *border:1px solid #D6D6D6;
+    *box-shadow:2px 2px 3px rgba(0, 0, 0, 0.08);
     padding:2px;
     overflow:hidden;
-    margin-top:5px;
+    margin-top:20px;
+}
+.widget .form-actions {
+    background-color: inherit;
 }
 .links img {
     opacity:0.8;

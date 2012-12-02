@@ -3,12 +3,20 @@
   </div>
   <div class="span10">
   	<div class="row-fluid">
-  		<h5>Merhaba, </h5>
-  		<p>Şimdi </p>
+  		<h5><%= "#{t("defaults.vocabulary.hello")} #{user_name(current_user)}; socialfreight uygulamasına hoş geldiniz." %></h5>
+  		<p>
+        Firmanıza ait bilgileri tamamlamak için kısa süreli bir tura çıkalım. Tabii ki bu işlemi daha sonrada yapabilirsiniz.
+      </p>
   	</div>
     <div class="form-actions">
-      <%= link_to "Firma Bilgilerine Devam Et", next_wizard_path, class: 'btn btn-danger' %>
+      <%= link_to "Firma Bilgilerini Güncelleyeceğim", next_wizard_path, class: 'btn btn-danger' %>
+      <%= link_to "Daha sonra tamamlarım, profil bilgilerime gidelim", new_person_path, class: "btn pull-right" %>
     </div>
+
+    <div class="alert alert-info">
+      <p>Herhangi bir öneri veya şikayetiniz olursa, sağ alt kısımda yer alan butonu kullanarak bize iletebilirsiniz.
+    </div>
+
   </div>
 
 </div>

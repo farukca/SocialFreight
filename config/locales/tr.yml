@@ -8,6 +8,7 @@ tr:
       no: "Hayır"
       birthdate: "Doğum Tarihi"
       sumof: "Toplam"
+      hello: "Merhaba"
     title:
       last_items: "Son İşlemler"
       additional_info: "Ek Bilgiler"
@@ -464,15 +465,21 @@ tr:
       patron_list: "Firma Listesi"
       address_info: "Adres Bilgileri"
     label:
-      name: "Firma Adı"
-      invoice_title: "Fatura Ünvanı"
+      name: "Firma Kısa Adı"
+      title: "Firma Ünvanı"
+      district: "İlçe & Postakodu"
+      website: "Web siteniz"
       time_zone: "Zaman Dilimi"
       language: "Dil Seçimi"
       currency: "Döviz Seçimi"
       locale: "Yerel Ayarlar Seçimi"
       mail_encoding: "Mail Encoding"
     placeholder:
+      title: "Firmanızın uzun adı, ticari sicil ünvanı"
       country: "Bulunduğunuz Ülke"
+      district: "İlçe"
+      postcode: "Posta kodu"
+      city: "Bulunduğunuz Şehir"
     hint:
     link:
       user_list: "Kullanıcı Listesi"
@@ -490,6 +497,9 @@ tr:
     messages:
       activation_greeting: "Hoşgeldiniz, hesabınızı aktif yapmak için aşağıdaki bilgileri tamamlayınız"
   web:
+    title:
+      fill_form_for_free_trial: "Ücretsiz 30 günlük kullanım için kaydolun"
+      fill_all_fields_in_form: "Sizi daha iyi tanımamız için Lütfen formu eksiksiz doldurunuz."
     label:
       company_name: "Firma Adı"
       name: "Adınız"
@@ -500,6 +510,7 @@ tr:
       email: "E-Posta"
       password: "Şifre"
       remember_me: "Kullanıcı Adımı Hatırla, Beni Yorma"
+      free_trial: "Ücretsiz Deneyebilirsiniz"
       login: "Giriş Yap"
       signup: "Üye Ol"
       forgot_password: "Yine Şifremi Unuttum"
@@ -507,8 +518,7 @@ tr:
       no_account_yet: "Henüz üye olmadıysanız,"
       are_you_freighter: "Lojistik hizmet sağlayıcı mısınız ?"
       try_socialfreight: "Buyurun, sizi şöyle alalım"
-      already_member: "SocialFreight üyesi iseniz;"
-
+      already_member: "SocialFreight üyesi iseniz; buradan giriş yapabilirsiniz"
     placeholder:
       company_name: "Çalıştığınız Firmanın Adı"
       name: "Adınız"

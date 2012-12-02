@@ -1,0 +1,47 @@
+<div id="patron-form">
+  <%= simple_form_for @patron, url: wizard_path, method: :put, html: { class: 'form-horizontal'}, validate: true do |f| %>
+    <%= f.error_notification %>
+    <%= f.error :base %>
+
+    <div class="pageBlock">
+
+      <div class="row-fluid">
+        <div class="page-header"><h5><%= t("patrons.title.patron_info") %></h5></div>
+        <div class="row-fluid">
+          <div class="span6">
+            <%= f.input :name, label: t("patrons.label.name") %>
+            <%= f.input :title, label: t("patrons.label.title") %>
+            <%= f.input :tel, as: :tel %>
+            <%= f.input :fax, as: :tel %>
+            <%= f.input :website, as: :url %>
+          </div>
+          <div class="span6">
+            <%= f.input :logo, as: :file, label: t("patrons.label.logo") %>
+            <%= f.input :country_id, as: :select, collection: Country.all, include_blank: false, label: t("defaults.label.country"), placeholder: t("patrons.placeholder.country") %>
+            <%= f.input :city, label: t("defaults.label.city"), placeholder: t("patrons.placeholder.city") %>
+            <%= f.input :district, label: t("patrons.label.district") do %>
+              <%= f.input_field :district, class: "input-small", placeholder: t("patrons.placeholder.district") %>
+              <%= f.input_field :postcode, class: "input-small", placeholder: t("patrons.placeholder.postcode") %>
+            <% end %>
+            <%= f.input :address, as: :text, input_html: { rows: 2 }, label: t("patrons.label.address") %>
+          </div>
+        </div>
+        <div class="page-header"><h5>Genel Ayarlar</h5></div>
+        <div class="row-fluid">
+          <div class="span6">
+            <%= f.input :time_zone, as: :time_zone %>
+            <%= f.input :locale, as: :select, collection: Listitem.locales.map { |t| [t.name, t.code] }  %>
+          </div>
+          <div class="span6">
+            <%= f.input :language, as: :select, collection: Listitem.languages.map { |t| [t.name, t.code] } %>
+            <%= f.input :currency, as: :select, collection: Currency.all, include_blank: false %>
+          </div>
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit, "Kaydet & Sonraki Sayfaya Devam Et", class: 'btn btn-info' %>
+          <%= link_to "Bu Adımı Atla >>", next_wizard_path, class: 'btn pull-right' %>    
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

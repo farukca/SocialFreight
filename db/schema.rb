@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121124193614) do
+ActiveRecord::Schema.define(:version => 20121201124002) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                                  :null => false
@@ -774,6 +774,8 @@ ActiveRecord::Schema.define(:version => 20121124193614) do
     t.string   "fmc_code",        :limit => 30
     t.string   "locale",          :limit => 20
     t.string   "mail_encoding",   :limit => 20
+    t.string   "city",            :limit => 100
+    t.string   "state",           :limit => 100
   end
 
   add_index "patrons", ["slug"], :name => "index_patrons_on_slug", :unique => true
@@ -830,49 +832,47 @@ ActiveRecord::Schema.define(:version => 20121124193614) do
   end
 
   create_table "people", :force => true do |t|
-    t.string   "name",         :limit => 30,                   :null => false
-    t.string   "surname",      :limit => 30,                   :null => false
-    t.integer  "user_id",                                      :null => false
-    t.string   "socialname",   :limit => 30
-    t.string   "salutation",   :limit => 20
-    t.string   "gender",       :limit => 1
-    t.string   "email",        :limit => 40,                   :null => false
-    t.string   "jobtitle",     :limit => 40
-    t.string   "department",   :limit => 40
-    t.string   "hometel",      :limit => 15
-    t.string   "busitel",      :limit => 15
-    t.string   "exttel",       :limit => 15
-    t.string   "fax",          :limit => 15
-    t.string   "gsm",          :limit => 15
-    t.string   "voip",         :limit => 15
-    t.string   "website",      :limit => 30
-    t.string   "postcode",     :limit => 5
-    t.string   "address",      :limit => 80
-    t.string   "district",     :limit => 40
+    t.string   "name",       :limit => 30,                   :null => false
+    t.string   "surname",    :limit => 30,                   :null => false
+    t.integer  "user_id",                                    :null => false
+    t.string   "socialname", :limit => 30
+    t.string   "salutation", :limit => 20
+    t.string   "gender",     :limit => 1
+    t.string   "jobtitle",   :limit => 40
+    t.string   "department", :limit => 40
+    t.string   "hometel",    :limit => 15
+    t.string   "busitel",    :limit => 15
+    t.string   "exttel",     :limit => 15
+    t.string   "fax",        :limit => 15
+    t.string   "gsm",        :limit => 15
+    t.string   "voip",       :limit => 15
+    t.string   "website",    :limit => 30
+    t.string   "postcode",   :limit => 5
+    t.string   "address",    :limit => 80
+    t.string   "district",   :limit => 40
     t.integer  "city_id"
     t.integer  "state_id"
-    t.string   "country_id",   :limit => 2
-    t.string   "status",       :limit => 1,   :default => "A"
+    t.string   "country_id", :limit => 2
+    t.string   "status",     :limit => 1,   :default => "A"
     t.integer  "branch_id"
-    t.integer  "patron_id",                                    :null => false
-    t.string   "patron_token", :limit => 20,                   :null => false
-    t.string   "twitter",      :limit => 30
-    t.string   "facebook",     :limit => 50
-    t.string   "linkedin",     :limit => 50
+    t.integer  "patron_id",                                  :null => false
+    t.string   "twitter",    :limit => 30
+    t.string   "facebook",   :limit => 50
+    t.string   "linkedin",   :limit => 50
     t.integer  "manager_id"
     t.integer  "person_no"
     t.date     "start_date"
-    t.string   "citizen_no",   :limit => 20
+    t.string   "citizen_no", :limit => 20
     t.date     "birth_date"
-    t.string   "nation",       :limit => 2
-    t.string   "avatar",       :limit => 100
-    t.string   "slug",         :limit => 60
-    t.datetime "created_at",                                   :null => false
-    t.datetime "updated_at",                                   :null => false
+    t.string   "nation",     :limit => 2
+    t.string   "avatar",     :limit => 100
+    t.string   "slug",       :limit => 60
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+    t.string   "city",       :limit => 60
+    t.string   "state",      :limit => 60
   end
 
-  add_index "people", ["patron_id", "patron_token"], :name => "index_people_on_patron_id_and_patron_token"
-  add_index "people", ["user_id", "patron_id", "patron_token"], :name => "index_people_on_user_id_and_patron_id_and_patron_token", :unique => true
   add_index "people", ["user_id"], :name => "index_people_on_user_id"
 
   create_table "places", :force => true do |t|
@@ -1186,6 +1186,7 @@ ActiveRecord::Schema.define(:version => 20121124193614) do
     t.string   "remember_me_token"
     t.datetime "remember_me_token_expires_at"
     t.string   "user_status",                     :limit => 1,  :default => "A"
+    t.boolean  "firstuser",                                     :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

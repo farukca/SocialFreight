@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   validates :surname, presence: true, on: :update
   #validates_uniqueness_of :email, :case_sensitive => false
   validates :branch_id, presence: true
-  validates_inclusion_of :time_zone, in: ActiveSupport::TimeZone.zones_map(&:name)
+  #validates_inclusion_of :time_zone, in: ActiveSupport::TimeZone.zones_map(&:name)
 
   after_create  :send_activation_mail
 

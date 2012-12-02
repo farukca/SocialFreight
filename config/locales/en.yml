@@ -8,6 +8,7 @@ en:
       no: "No"
       birthdate: "Birth Date"
       sumof: "Total"
+      hello: "Merhaba"
     title:
       last_items: "Last Items"
       additional_info: "Additional Information"
@@ -479,32 +480,40 @@ en:
       edit_patron: "Firma Bilgilerini Güncelle"
       destroy_logo: "Logoyu Sil"
     action:
-  web:
+  users:
+    title:
     label:
-      company_name: "Firma Adı"
-      name: "Adınız"
-      surname: "Soyadınız"
-      phone: "Telefon"
-      country: "Ülke"
-      employee_number: "Çalışan Sayısı"
-      email: "E-Posta"
-      password: "Şifre"
-      remember_me: "Kullanıcı Adımı Hatırla, Beni Yorma"
-      login: "Giriş Yap"
-      signup: "Üye Ol"
-      forgot_password: "Yine Şifremi Unuttum"
-      signup_for_free: "Ücretsiz bireysel hesabını açabilirsiniz"
-      no_account_yet: "Henüz üye olmadıysanız,"
-      are_you_freighter: "Lojistik hizmet sağlayıcı mısınız ?"
-      try_socialfreight: "Buyurun, sizi şöyle alalım"
-      already_member: "SocialFreight üyesi iseniz;"
-
     placeholder:
-      company_name: "Çalıştığınız Firmanın Adı"
-      name: "Adınız"
-      surname: "Soyadınız"
-      email: "E-Posta adresiniz"
-      phone: "Size ulaşabileceğimiz telefon no"
+    hint:
+    link:
+    action:
+      change_password: "Change Password"
+    messages:
+      activation_greeting: "Welcome, please set your password for activation your account"
+  web:
+    title:
+      fill_form_for_free_trial: "Sign up for a free 30-day trial"
+      fill_all_fields_in_form: "Get to know you better, Please fill in all fields"
+    label:
+      company_name: "Company Name"
+      name: "Name"
+      surname: "Surname"
+      phone: "Phone"
+      country: "Country"
+      employee_number: "Worker number"
+      email: "E-Mail"
+      password: "password"
+      remember_me: "Remember Username"
+      free_trial: "Free Trial"
+      login: "Login"
+      signup: "Sign up"
+      forgot_password: "Forget Password"
+      signup_for_free: "Sign up for a free 30-day trial"
+      no_account_yet: "Don't have account yet,"
+      are_you_freighter: "Are you a logistics service provider ?"
+      try_socialfreight: "Sign up for a free 30-day trial"
+      already_member: "If you have SocialFreight account; you can login here"
+    placeholder:
   dashboard:
     link:
       patron_info: "Firma Bilgileri"

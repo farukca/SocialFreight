@@ -1,14 +1,17 @@
 <div class="container">
   <div class="row">
     <div class="span6 columns">
-      <div id="login_image"></div>
-      <%= render 'form' %>
-      <div id="signupnote">
-        <p><%= t("web.label.already_member") %>&nbsp;<%= link_to t("web.label.login"), login_path%></p>
-        <p><%= t("web.label.no_account_yet") %>&nbsp;<%= link_to t("web.label.signup_for_free"), signup_path%></p>
+      <div class="widget">
+        <div class="page-header">
+          <h4><%= t("web.title.fill_form_for_free_trial") %></h4>
+        </div>
+        <%= render 'form' %>
+        <div id="signupnote">
+          <p><%= link_to t("web.label.already_member"), login_path%></p>
+          <p><%#= t("web.label.no_account_yet") %>&nbsp;<%#= link_to t("web.label.signup_for_free"), signup_path%></p>
+        </div>
       </div>
     </div>
-
     <div class="span6 columns">
       <div id="login_roadmap">
         <%= image_tag "cloudapp.jpg" %>

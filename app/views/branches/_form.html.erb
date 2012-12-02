@@ -8,7 +8,9 @@
     <fieldset>
       <div id="my-tab-content" class="tab-content">
         <div id="user-main-form" class="tab-pane active">
-          <legend><%= t("branches.title.branch_info") %></legend>
+          <div class="page-header">
+            <h4><%= t("branches.title.branch_info") %></h4>
+          </div>
           <div class="row-fluid">
               <div class="span6">
                 <%= f.input :name, label: t("branches.label.name") %>
@@ -25,8 +27,12 @@
                   <%= f.input_field :district, class: "input-small", placeholder: t("branches.placeholder.district") %>
                   <%= f.input_field :postcode, class: "input-small", placeholder: t("branches.placeholder.postcode") %>
                 <% end %>
-                <%= f.input :address, placeholder: t("defaults.label.address") %>
+                <%= f.input :address, as: :text %>
               </div>
+          </div>
+          <div class="form-actions">
+            <%= f.button :submit, "Şube Bilgisini Kaydet", class: 'btn btn-info' %>
+            <%= link_to t("defaults.link.cancel"), "#", class: 'btn' %>
           </div>
         </div>
       </div>

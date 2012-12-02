@@ -1,18 +1,1 @@
-<div id="edit_patron_form" class="span16 columns">
-<%= simple_form_for @patron, validate: true, html: { class: "form-horizontal" } do |f| %>
-  <%= f.error_notification %>
-
-  <fieldset>
-    <div class="row-fluid">
-      <div class="span6 columns">
-        <%= f.input :title, :label => "Company" %>
-        <%= f.input :contact_name %>
-        <%= f.input :contact_surname %>
-        <%= f.input :tel  %>
-        <%= f.button :submit, :class => 'btn primary' %>
-      </div>
-    </div>
-  </fieldset>
-
-<% end %>
-</div>
+<%= render "patrons/form_edit" %>

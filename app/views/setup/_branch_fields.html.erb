@@ -1,7 +1,6 @@
-<%= f.input :name do %>
-  <%= f.input_field :name, :class => "disabled" %>
-  <%= f.input_field :country, :as => :select, :collection => Country.all, :include_blank => false %>
+<%= f.input :name, label: t("branches.title.branch_info") do %>
+  <%= f.input_field :name %>
+  <%= f.input_field :country, as: :select, collection: Country.all, include_blank: false %>
   <%#= f.input :state_id %>
-  <%= f.input_field :city_id, :as => :select, :collection => City.all, :include_blank => false %>
+  <%= f.input_field :city, include_blank: false %>
 <% end %>
-<%= f.input :patron_token, :as => :hidden %>

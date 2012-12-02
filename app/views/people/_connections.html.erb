@@ -2,17 +2,12 @@
   <div class="span12">
     <div class="page-header">
       <p class="pull-right"><a href="#">see all</a></p>
-      <h4>Honors <small>(10)</small></h4>
+      <h4>Ekip <!--small>(10)</small--></h4>
     </div>
   	<div>
-      <%= link_to (image_tag current_user.avatar_url(:small), class: "img-circle"), person_path(1) %></a>
-      <a href="#"><img src="http://placehold.it/60x60" class="img-circle"></a>
-      <a href="#"><img src="http://placehold.it/60x60" class="img-circle"></a>
-      <a href="#"><img src="http://placehold.it/60x60" class="img-circle"></a>
-      <a href="#"><img src="http://placehold.it/60x60" class="img-circle"></a>
-      <a href="#"><img src="http://placehold.it/60x60" class="img-circle"></a>
-      <a href="#"><img src="http://placehold.it/60x60" class="img-circle"></a>
-      <a href="#"><img src="http://placehold.it/60x60" class="img-circle"></a>
+      <% current_patron.users.each do |user| %>
+        <%= link_to (image_tag user.avatar_url(:small), class: "img-circle"), user_path(user), title: user_name(user) %></a>
+      <% end %>
   	</div>
   </div>
 </div>

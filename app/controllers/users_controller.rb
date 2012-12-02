@@ -62,7 +62,7 @@ class UsersController < ApplicationController
 
   def activation
     @user = User.find(params[:id])
-    render :layout => 'guest' unless current_user
+    render :layout => 'guest'# unless current_user
   end
 
   def edit
@@ -79,7 +79,7 @@ class UsersController < ApplicationController
         if login_user
           session[:patron_id] = login_user.patron_id if login_user.patron_id
           #redirect_back_or_to root_url, notice: 'Welcome to SocialFreight.'
-           if @user.has_role? :admin
+           if @user.firstuser
              redirect_to setup_path(:start_wizard)
            else
              redirect_to new_person_path, notice: 'Welcome to SocialFreight.'

@@ -1,50 +1,42 @@
 <div id="setup_address">
-  <legend class="alert alert-success">Hoşgeldiniz, şimdi birkaç adımda sizi tanımaya çalışacağız, sabrınız için şimdiden teşekkürler :)</legend>
+  
   <div class="row-fluid">
     <ul class="breadcrumb">
-      <li><a href="#">Adress Bilgileri</a><span class="divider">>></span></li>
-      <li><a href="#">Lojistik Profil</a><span class="divider">>></span></li>
-      <li><a href="#">Referans Numaraları</a><span class="divider">>></span></li>
-      <li class="active">Şube Bilgileri</li>
+      <li><a href="#">Firma Bilgileri</a><span class="divider">>></span></li>
+      <li class="active">Şube Bilgileri<span class="divider">>></span></li>
       <li><a href="#">Kullanıcı Bilgileri</a></li>
     </ul>
   </div>
 
   <div id="opform">
-  <%= simple_form_for @patron, :url => wizard_path, :method => :put, :validate => true do |f| %>
-  <%= f.error_notification %>
-  <fieldset>
+  <%= simple_form_for @patron, url: wizard_path, method: :put, validate: true, html: { class: "form-horizontal" } do |f| %>
+    <%= f.error_notification %>
+    <%= f.error :base %>
+    <div class="pageBlock">
 
-  <div class="pageBlock">
- 
-    <!--div class="tabbable tabs-below"-->
-    <div>
+      <div class="row-fluid">
 
-      <div id="my-tab-content" class="tab-content">
-        <div id="position-main-form" class="tab-pane active">
-          <legend>Şube Bilgileri</legend>
-          <div class="row-fluid">
-            <div class="span12">
-              <fieldset>
-                <%= f.simple_fields_for :branches do |cf| %>
-                  <%= render 'branch_fields', :f => cf %>
-                <% end %>
-                <%= link_to_add_fields "Yeni Şube Ekle", f, :branches %>
-              </fieldset>
-              <div class="controls">
-                <%= link_to "Bu Adımı Atla >>", next_wizard_path, :class => 'btn btn-danger' %>
-                <%= f.button :submit, "İleri >> Kullanıcı Tanımları", :class => 'btn btn-info' %>
-              </div>
+        <div class="page-header">
+          <h4>Şube Bilgileri</h4>
+        </div>
+        <div class="row-fluid">
+          <fieldset>
+             <%= f.simple_fields_for :branches do |cf| %>
+              <%= render 'branch_fields', :f => cf %>
+            <% end %>
+            <div class="form-actions">
+              <%= link_to_add_fields "Yeni Şube Ekle", f, :branches %>
             </div>
+          </fieldset>
+          <div class="controls">
+            <%= link_to "Bu Adımı Atla >>", next_wizard_path, :class => 'btn btn-danger' %>
+            <%= f.button :submit, "Şube Bilgilerini Kaydet", :class => 'btn btn-info' %>
           </div>
         </div>
+
       </div>
-
     </div>
-    <%= f.error :base %>
-  </div>
 
-  </fieldset>
   <% end %>
   </div>
 </div>

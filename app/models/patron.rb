@@ -46,16 +46,13 @@ class Patron < ActiveRecord::Base
   before_create :set_initials
   after_create  :create_head_office, :create_patron_user, :create_company #, :create_admin_user
 
-  validates_presence_of :name#, :message => I18n.t('patrons.errors.title.cant_be_blank')
-  validates_presence_of :email#, :message => I18n.t('patrons.errors.title.cant_be_blank')
-  validates_presence_of :contact_name#, :message => I18n.t('patrons.errors.title.cant_be_blank')
-  validates_presence_of :contact_surname#, :message => I18n.t('patrons.errors.title.cant_be_blank')
-  validates_presence_of :tel#,   :message => I18n.t('patrons.errors.title.cant_be_blank')
-  validates_presence_of :country_id
-  validates_uniqueness_of :email, :case_sensitive => false
-
-  validates_length_of   :title, maximum: 255#, :message => I18n.t('tasks.errors.name.too_long')
-  validates_length_of   :tel, maximum: 20#, :message => I18n.t('tasks.errors.name.too_long')
+  validates :name, presence: true, length: { in: 2..40 }
+  validates :email, presence: true, uniqueness: { case_sensitive: false }, length: { in: 7..60 }, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, on: :create }
+  validates :contact_name, presence: true, length: { in: 2..40 }
+  validates :contact_surname, presence: true, length: { in: 2..40 }
+  validates :tel, presence: true, length: { in: 2..20 }
+  validates :country_id, presence: true
+  validates :title, length: { maximum: 60 }
 
   def self.generate_counter(ctype, operation, direction)
     patron = Patron.find(Patron.current_id)
@@ -150,6 +147,7 @@ class Patron < ActiveRecord::Base
     user.branch_id  = branch.id
     user.password = SecureRandom.urlsafe_base64[0,10]
     user.password_confirmation = user.password
+    user.firstuser = true
     user.save!
     user.add_role :admin
   end
