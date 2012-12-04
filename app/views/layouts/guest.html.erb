@@ -29,7 +29,8 @@
 </div>
 <%#= render 'shared/site_news' %>
 <%= render 'shared/site_footer' %>
-<%= link_to (image_tag "feedback-button.png", alt: "Let us know what you think"), new_feedback_path, class: "Feedback", title: "Let us know what you think" %>
+<%= link_to "Feedback", new_feedback_path(nolayout: 1), "data-toggle" => "modal", "data-target" => "#default_modal_popup", class: "btn Feedback", title: "Let us know what you think" %>
+<div id="default_modal_popup" class="modal fade"></div>
 </body>
 <script type="text/javascript">
 
@@ -45,4 +46,3 @@
 
 </script>
 </html>
-

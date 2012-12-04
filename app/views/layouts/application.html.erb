@@ -8,18 +8,6 @@
   <%= javascript_include_tag "application", :debug => Rails.env.development? %>
   <%= csrf_meta_tags %>
   <%= yield :head %>
-  <script type="text/javascript">
-
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-31085255-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
 </head>
 <body>
   <%= render 'layouts/topbar' %>
@@ -44,12 +32,24 @@
     </div>
 
     <div id="footer" class="row-fluid">
+      <%= link_to "Feedback", new_feedback_path(nolayout: 1), "data-toggle" => "modal", "data-target" => "#default_modal_popup", class: "btn Feedback", title: "Let us know what you think" %>
+      <div id="default_modal_popup" class="modal fade"></div>
       <%= yield :scripts %>
     </div>
 
-    <%#= link_to (image_tag "feedback-button.png", :alt => "Let us know what you think"), new_feedback_path, :class => "Feedback", :title => "Let us know what you think" %>
-    <%#= link_to "Önerim/Şikayetim Var", new_feedback_path, class: "btn btn-info Feedback", title: "Let us know what you think" %>
-
   </div>
+
 </body>
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-31085255-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
 </html>

@@ -16,6 +16,15 @@ class FeedbacksController < ApplicationController
       @feedback.email = current_user.email
       @feedback.name  = current_user
     end
+
+    respond_to do |format|
+      if params[:nolayout]
+        format.html { render partial: 'modal_form', locals: { feedback: @feedback } }
+      else
+        format.html # new.html.erb
+      end
+      format.json { render json: @feedback }
+    end
   end
 
   def show
@@ -32,7 +41,9 @@ class FeedbacksController < ApplicationController
 
     respond_to do |format|
       if @feedback.save
-        format.html { redirect_to @feedback, notice: 'Feedback successfully created.' }
+        flash[:notice] = "Feedback successfully created."
+        format.html { redirect_to @feedback }
+        format.js
         format.json { render json: @feedback, status: :created, location: @feedback }
       else
         format.html { render action: "new" }

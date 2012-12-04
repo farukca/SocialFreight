@@ -80,11 +80,6 @@ jQuery ->
       tokenLimit: 1
       prePopulate: el.data("pre")
       preventDuplicates: true
-  $("a[data-toggle=modal]").live 'click', ->
-    target = $(this).attr('data-target')
-    url = $(this).attr('href')
-    $(target).load(url)
-    $("#new_company").validate()
 
   #$("#post_message").mentionsInput onDataRequest: (mode, query, callback) ->
   #  $.getJSON "/nicks.json", (responseData) ->

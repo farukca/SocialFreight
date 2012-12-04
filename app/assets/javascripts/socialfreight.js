@@ -10,10 +10,10 @@
 //= require rails.validations
 //= require rails.validations.simple_form
 //= require bootstrap
-//= require facebox
+//= require modal_popup
 //= require twitter
 //= require superfish
 //= require script
+
 // require_tree .
 // require bootstrap-datepicker
-

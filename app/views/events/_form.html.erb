@@ -10,7 +10,10 @@
         <div id="event-main-form" class="tab-pane active">
           <%= render 'form_main', :f => f %>
         </div>
-
+        <div class="form-actions">
+          <%= f.button :submit, t("defaults.action.save"), class: 'btn btn-primary' %>
+          <a href="#" class="btn"><%= t("defaults.link.cancel") %></a>
+        </div>
         <!--div id="event-detail-form" class="tab-pane form_tab_pane">
           <%#= render 'form_detail', :f => f %>
         </div-->

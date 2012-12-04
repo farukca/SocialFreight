@@ -9,26 +9,28 @@
 //= require gmaps4rails/googlemaps.js
 //= require rails.validations
 //= require rails.validations.simple_form
-// require simpleform_clientsidev
-// require jquery.tokeninput
 //= require jquery.timeago
-// require jquery.autocomplete
 //= require bootstrap
 //= require bootstrap-datepicker
 //= require highcharts
-// require chosen.jquery-0.9.5
-// require chosen.ajaxaddition.jquery
 //= require select2
-// require jquery.mentionsInput
-// require jquery.caret
-// require jquery.atwho
 //= require patron
 //= require loading
 //= require search
 //= require home
+//= require modal_popup
 //= require reservation
 //= require transplan
 //= require transports
 //= require operation_wizard
 //= require templates/positions/positions.jst.eco
 // require_tree.
+
+// require simpleform_clientsidev
+// require jquery.tokeninput
+// require jquery.autocomplete
+// require chosen.jquery-0.9.5
+// require chosen.ajaxaddition.jquery
+// require jquery.mentionsInput
+// require jquery.caret
+// require jquery.atwho

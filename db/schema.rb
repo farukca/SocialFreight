@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121201124002) do
+ActiveRecord::Schema.define(:version => 20121202115715) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                                  :null => false
@@ -935,6 +935,7 @@ ActiveRecord::Schema.define(:version => 20121201124002) do
     t.integer  "loadings_count",                  :default => 0
     t.integer  "transports_count",                :default => 0
     t.integer  "documents_count",                 :default => 0
+    t.string   "description"
   end
 
   add_index "positions", ["branch_id", "patron_id"], :name => "index_positions_on_branch_id_and_patron_id"

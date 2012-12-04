@@ -30,15 +30,15 @@ class Position < ActiveRecord::Base
   attr_accessible :operation, :direction, :incoterm, :paid_at, :load_type, :agent_id, :user_id, :load_place_id, :load_date, 
                    :unload_place_id, :unload_date, :freight_price, :freight_curr, :status, :report_date, :stage, :stage_date, 
                    :ref_no1, :ref_type1, :ref_no2, :ref_type2, :ref_no3, :ref_type3, :ref_no4, :ref_type4, :notes, :agent_price, 
-                   :agent_curr, :branch_id, :waybill_no, :waybill_date, :transports_attributes, :loading_ids
+                   :agent_curr, :branch_id, :waybill_no, :waybill_date, :description, :transports_attributes, :loading_ids
 
   validates_uniqueness_of :reference, case_sensitive: false, scope: :patron_id
   validates_presence_of :reference, on: :update
-  validates_presence_of :operation #, :message => I18n.t('tasks.errors.name.cant_be_blank')
-  validates_presence_of :direction #, :message => I18n.t('tasks.errors.name.cant_be_blank')
-  validates_presence_of :branch_id #, :message => I18n.t('tasks.errors.name.cant_be_blank')
-  validates_numericality_of :freight_price
-  validates_numericality_of :agent_price
+  validates :operation, presence: { message: I18n.t('defaults.inputerror.cant_be_blank') }
+  validates :direction, presence: { message: I18n.t('defaults.inputerror.cant_be_blank') }, inclusion: { in: %w(E I T D) }
+  validates :branch_id, presence: { message: I18n.t('defaults.inputerror.cant_be_blank') }
+  validates :description, presence: { message: I18n.t('defaults.inputerror.cant_be_blank') }, length: { maximum: 255 }
+  validates :notes, length: { maximum: 500 }
 
   default_scope { where(patron_id: Patron.current_id) }
   scope :active, where(status: "A")
@@ -49,6 +49,8 @@ class Position < ActiveRecord::Base
   scope :inland, where(operation: "inland")
   scope :export, where(direction: "E")
   scope :import, where(direction: "I")
+  scope :transit, where(direction: "T")
+  scope :domestic, where(direction: "D")
 
   #scope :washed_up, where(:age.gt => 30)
   scope :newones, order("created_at desc")
@@ -61,7 +63,8 @@ class Position < ActiveRecord::Base
       direction_types = {
         'E' => 'Export',
         'I' => 'Import',
-        'T' => 'Transit'
+        'T' => 'Transit',
+        'D' => 'Domestic'
       }
     end
   end

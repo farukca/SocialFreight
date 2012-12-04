@@ -5,6 +5,9 @@ label {
 input, textarea, select, .uneditable-input {
   padding: 3px;
 }
+textarea {
+  height: inherit;
+}
 ul, ol {
   margin:0;
 }
@@ -77,12 +80,10 @@ margin-left: 0px;
   padding: 0px;
   margin: 0px;
 }
-*Faruk Celik bootstrap 2.1 changes
 .row-fluid [class*="span"] {
   min-height: 20px;
   margin-left: 0;
 }
-textarea,
 input[type="text"],
 input[type="password"],
 input[type="datetime"],
@@ -102,8 +103,7 @@ input[type="color"],
   font-size: 13px;
   line-height: 16px;
 }
-select,
-input[type="file"] {
+select, input[type="file"] {
   height: 25px;
   line-height: 25px;
 }
