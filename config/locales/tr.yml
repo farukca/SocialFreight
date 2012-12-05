@@ -83,6 +83,7 @@ tr:
       share: "Paylaş"
       close: "Kapat"
       change: "Değiştir"
+      send: "Gönder"
     hint:
     link:
       new: "Yeni"
@@ -496,6 +497,23 @@ tr:
       change_password: "Şifreyi Değiştir"
     messages:
       activation_greeting: "Hoşgeldiniz, hesabınızı aktif yapmak için aşağıdaki bilgileri tamamlayınız"
+  feedbacks:
+    title:
+      quick_feedback: "Sesinizi duymak ne güzel!"
+      contact_us: "Bütün sorularınızı, şikayet ve önerilerinizi dinliyoruz, en kısa sürede sizlere dönüş yapacağımızdan kuşkunuz olmasın."
+    label:
+      name: "Sizi Tanıyalım"
+      email: "Mail Adresiniz"
+      msg: "Mesajınız"
+    placeholder:
+      name: "Adınız ve Soyadınız"
+      email: "Size ulaşabileceğimiz mail adresiniz"
+      msg: "Bütün sorularınızı, öneri ve şikayetlerinizi yazabilirsiniz"
+    hint:
+      new_feedback: "Aklınızdan geçeni yazabilirsiniz"
+    link:
+      new_feedback: "Sizi Dinliyoruz"
+    action:
   web:
     title:
       fill_form_for_free_trial: "Ücretsiz 30 günlük kullanım için kaydolun"

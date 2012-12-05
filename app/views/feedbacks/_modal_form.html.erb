@@ -6,23 +6,23 @@
 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
-        <h4><%= t("companies.title.quick_company") %></h4>
+        <h4><%= t("feedbacks.title.quick_feedback") %></h4>
       </div>
 
       <div class="modal-body">
         <fieldset>
-          <legend>Bize Yazın</legend>
+          <legend><%= t("feedbacks.title.contact_us") %></legend>
           <div class="row">
-            <%= f.input :name, placeholder: "Adınız" %>
-            <%= f.input :email, placeholder: "Mail Adresiniz" %>
-            <%= f.input :msg, as: :text, placeholder: "Mesajınız" %>
+            <%= f.input :name, label: t("feedbacks.label.name"), placeholder: t("feedbacks.placeholder.name") %>
+            <%= f.input :email, label: t("feedbacks.label.email"), placeholder: t("feedbacks.placeholder.email") %>
+            <%= f.input :msg, as: :text, label: t("feedbacks.label.msg"), placeholder: t("feedbacks.placeholder.msg") %>
           </div>
         </fieldset>
       </div>
 
       <div class="modal-footer">
         <a href="#" class="btn" data-dismiss="modal" aria-hidden="true"><%= t("defaults.action.close") %></a>
-        <%= f.submit "Gönder", class: 'btn btn-success' %>
+        <%= f.submit t("defaults.action.send"), class: 'btn btn-success' %>
       </div>
 
     </div>

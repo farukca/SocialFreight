@@ -4,8 +4,8 @@
   <title>Socialfreight</title>
   <meta charset='utf-8'>
   <meta name="google-site-verification" content="YBxTWCsF7NumqEi-_IkfMvp4F61RxGpQ19ElYC27UEE" />
-  <%= stylesheet_link_tag    "application", :debug => Rails.env.development? %>
-  <%= javascript_include_tag "application", :debug => Rails.env.development? %>
+  <%= stylesheet_link_tag    "application", debug: Rails.env.development? %>
+  <%= javascript_include_tag "application", debug: Rails.env.development? %>
   <%= csrf_meta_tags %>
   <%= yield :head %>
 </head>
@@ -18,7 +18,7 @@
       <div id="messages" class="row-fluid">
         <% flash.each do |name, msg| %>
           <a class="close" data-dismiss="alert" href="#">&times;</a>
-          <%= content_tag :div, msg, :id => "flash_#{name}", :class => "alert alert-#{name}" %>
+          <%= content_tag :div, msg, :id => "flash_#{name}", class: "alert alert-#{name}" %>
         <% end %>
       </div>
       <div class="row-fluid">
@@ -32,7 +32,7 @@
     </div>
 
     <div id="footer" class="row-fluid">
-      <%= link_to "Feedback", new_feedback_path(nolayout: 1), "data-toggle" => "modal", "data-target" => "#default_modal_popup", class: "btn Feedback", title: "Let us know what you think" %>
+      <%= link_to t("feedbacks.link.new_feedback"), new_feedback_path(nolayout: 1), "data-toggle" => "modal", "data-target" => "#default_modal_popup", class: "btn Feedback", title: t("feedbacks.hint.new_feedback") %>
       <div id="default_modal_popup" class="modal fade"></div>
       <%= yield :scripts %>
     </div>

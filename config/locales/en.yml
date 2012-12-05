@@ -83,6 +83,7 @@ en:
       share: "Share"
       close: "Close"
       change: "Change"
+      send: "Send"
     hint:
     link:
       new: "New"
@@ -490,6 +491,23 @@ en:
       change_password: "Change Password"
     messages:
       activation_greeting: "Welcome, please set your password for activation your account"
+  feedbacks:
+    title:
+      quick_feedback: "Great to hear from you!"
+      contact_us: "We'l love to hear your feedbacks. We will get back to you for your questions."
+    label:
+      name: "Name"
+      email: "@Mail"
+      msg: "Message"
+    placeholder:
+      name: "First and last name"
+      email: "don't hesitate, we never spam you"
+      msg: "Let's know all your questions, feedbacks and problems"
+    hint:
+      new_feedback: "Let us know what you think"
+    link:
+      new_feedback: "Feedback"
+    action:
   web:
     title:
       fill_form_for_free_trial: "Sign up for a free 30-day trial"

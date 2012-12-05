@@ -16,6 +16,8 @@ class SessionsController < ApplicationController
         cookies.delete :socialfreight_mail
         cookies.delete :socialfreight_rememberme
       end
+      cookies[:socialfreight_locale] = current_user.locale
+      
       redirect_back_or_to root_url
     else
       flash.now.alert = "Email or password is invalid"

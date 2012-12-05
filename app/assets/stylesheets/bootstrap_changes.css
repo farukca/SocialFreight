@@ -80,10 +80,6 @@ margin-left: 0px;
   padding: 0px;
   margin: 0px;
 }
-.row-fluid [class*="span"] {
-  min-height: 20px;
-  margin-left: 0;
-}
 input[type="text"],
 input[type="password"],
 input[type="datetime"],
