@@ -8,15 +8,13 @@
       <dd><%= Position.payment_types[loading.paid_at] %></dd>
       <dd><%= incoterm_name(loading.incoterm) %></dd>
       <dd><%= Loading.load_types[loading.load_type] %></dd>
-    </dl>
-    <div class="span2">
-      <div class="pull-right">
+      <dd class="pull-right">
         <% if loading.position_id.nil? %>
-          <%= link_to t("operations.label.reservation"), transplan_path(:select_loads, :loading_id => loading.id), class: 'btn btn-info btn-mini', title: "Taşımayı Planlamak için Tıklayınız" %>
+          <%= link_to t("operations.label.reservation"), transplan_path(:select_loads, :loading_id => loading.id), class: 'btn btn-info btn-mini', title: t("positions.message.plan_position") %>
         <% else %>
           <%= link_to position_name(loading.position), position_path(loading.position) %>
         <% end %>
-      </div>
-    </div>
+      </dd>
+    </dl>
   </div>
 </div>

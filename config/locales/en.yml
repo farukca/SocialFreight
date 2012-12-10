@@ -508,6 +508,23 @@ en:
     link:
       new_feedback: "Feedback"
     action:
+  counters:
+    title:
+      counter_info: "Operation Reference Numbers Definition"
+    label:
+      air_loading_reference: "Air Transportation Cargo Reference Format"
+      sea_loading_reference: "Sea Transportation Cargo Reference Format"
+      road_loading_reference: "Road Transportation Cargo Reference Format"
+      rail_loading_reference: "Rail Transportation Cargo Reference Format"
+      air_position_reference: "Air Transportation Project Reference Format"
+      sea_position_reference: "Sea Transportation Project Reference Format"
+      road_position_reference: "Road Transportation Project Reference Format"
+      rail_position_reference: "Rail Transportation Project Reference Format"
+    placeholder:
+    hint:
+    link:
+    action:
+      save: "Save Reference Format"
   web:
     title:
       fill_form_for_free_trial: "Sign up for a free 30-day trial"
@@ -573,3 +590,30 @@ en:
 #    hint:
 #    link:
 #    action:
+  activerecord:
+    errors:
+      template:
+        body: There were problems with the following fields
+        header:
+          one: 1 error prohibited this {{model}} from being saved
+          other: "{{count}} errors prohibited this {{model}} from being saved"  
+      messages:
+        inclusion: "is not included in the list"
+        exclusion: "is reserved"
+        invalid: "is invalid"
+        confirmation: "doesn't match confirmation"
+        accepted: "must be accepted"
+        empty: "can't be empty"
+        blank: "can't be blank"
+        too_long: "is too long (maximum is {{count}} characters)"
+        too_short: "is too short (minimum is {{count}} characters)"
+        wrong_length: "is the wrong length (should be {{count}} characters)"
+        taken: "has already been taken"
+        not_a_number: "is not a number"
+        greater_than: "must be greater than {{count}}"
+        greater_than_or_equal_to: "must be greater than or equal to {{count}}"
+        equal_to: "must be equal to {{count}}"
+        less_than: "must be less than {{count}}"
+        less_than_or_equal_to: "must be less than or equal to {{count}}"
+        odd: "must be odd"
+        even: "must be even"

@@ -6,7 +6,7 @@
       <%= f.input :category, as: :select, label: t("operations.label.category") %>
       <%#= f.input :bank_flag, label: t("operations.label.bank_flag") %>
       <%= f.input :bank, label: t("operations.label.bank") %>
-      <%= f.input :notes, as: :text, label: t("operations.label.loading_notes") %>
+      <%= f.input :notes, as: :text, input_html: { rows: 1 }, label: t("operations.label.loading_notes") %>
     </div>
     <div class="span6">
       <%= f.input :producer, label: t("operations.label.producer") %>

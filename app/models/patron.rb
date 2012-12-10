@@ -57,6 +57,9 @@ class Patron < ActiveRecord::Base
   def self.generate_counter(ctype, operation, direction)
     patron = Patron.find(Patron.current_id)
     counter = patron.counters.find_or_initialize_by_operation_and_counter_type(operation, ctype)
+    if operation.present? && (counter.count == 0)
+      
+    end
     counter.increment(:count, 1)
     counter.save!
     return counter.get_reference

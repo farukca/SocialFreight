@@ -122,3 +122,10 @@ jQuery ->
       dataType: "JSON",
       success: (data) ->
         $("#loading-project-planning").html JST["templates/positions/positions"](positions : data)
+  $("#list_reservations").click ->
+    $.ajax
+      url: "/loadings",
+      type: "GET",
+      dataType: "JSON",
+      success: (data) ->
+        $("#project-reservation-list").html JST["templates/loadings/reservations"](loadings : data)

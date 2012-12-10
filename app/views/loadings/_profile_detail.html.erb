@@ -7,15 +7,14 @@
       <tr>
         <td class="labelCol2"><%= t("defaults.label.customer") %> :</td>
         <td class="dataCol2"><%= company_name(loading.company) if loading.company %></td>
-        <td class="labelCol2"><%= t("defaults.label.commodity")%> :</td>
-        <td class="dataCol2"><%= loading.commodity %></td>
-        <td class="dataCol2 lastCol"><%= t("defaults.label.create_info")%>:<%= loading.creater.to_s if loading.creater %></td>
-      </tr>
-      <tr>
         <td class="labelCol2"><%= t("defaults.label.freight_price") %> :</td>
         <td class="dataCol2"><%= loading.freight_price %>&nbsp;<%= loading.freight_curr %></td>
-        <td class="labelCol2"><%= t("defaults.label.brut_weight") %>:</td>
-        <td class="dataCol2"><%= loading.brut_wg %></td>
+        <td class="dataCol2 lastCol"><%= t("defaults.label.brut_weight") %>:<%= loading.brut_wg %></td>
+      </tr>
+      <tr>
+        <td class="labelCol2"><%= t("defaults.label.commodity")%> :</td>
+        <td class="dataCol2" colspan="3"><%= loading.commodity %></td>
+        <!--td class="dataCol2 lastCol"><%#= t("defaults.label.create_info")%>:<%#= loading.creater.to_s if loading.creater %></td-->
         <td class="dataCol2 lastCol"><%= loading.created_at.strftime("%d/%m/%Y %H:%M") %></td>
       </tr>
     </table>

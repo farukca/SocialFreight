@@ -24,6 +24,7 @@
 //= require transports
 //= require operation_wizard
 //= require templates/positions/positions.jst.eco
+//= require templates/loadings/reservations.jst.eco
 // require_tree.
 
 // require simpleform_clientsidev

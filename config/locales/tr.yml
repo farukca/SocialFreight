@@ -219,6 +219,24 @@ tr:
       save_loading: "Yük Bilgisini Kaydet"
     validmsg:
     errormsg:
+  positions:
+    title:
+      new_position: "Yeni Taşıma Projesi"
+      position_info: "Proje Bilgileri"
+    label:
+      direction: "Servis Tipi"
+      description: "Proje Adı"
+      branch: "Sorumlu Şube"
+      notes: "Proje ile ilgili notlar"
+    placeholder:
+      description: "Kolayca hatırlayabileceğiniz bir isim verin"
+    hint:
+    link:
+    action:
+      create: "Yeni Taşıma Projesini Başlat"
+    message:
+      next_step: "Projede taşınacak yükleri ve araç bilgilerini bir sonraki adımda gireceksiniz"
+      plan_position: "Taşımayı Planlamak için Tıklayınız"
   transports:
     title:
       transport_info: "Multimodal Taşıma Bilgisi"
@@ -514,6 +532,23 @@ tr:
     link:
       new_feedback: "Sizi Dinliyoruz"
     action:
+  counters:
+    title:
+      counter_info: "Operasyonel Sayaç Tanımları"
+    label:
+      air_Loading_reference: "Yük Referans Formatı (Hava Operasyon)"
+      sea_Loading_reference: "Yük Referans Formatı (Deniz Operasyon)"
+      road_Loading_reference: "Yük Referans Formatı (Kara Operasyon)"
+      rail_Loading_reference: "Yük Referans Formatı (Tren Operasyon)"
+      air_Position_reference: "Proje Referans Formatı (Hava Operasyon)"
+      sea_Position_reference: "Proje Referans Formatı (Deniz Operasyon)"
+      road_Position_reference: "Proje Referans Formatı (Kara Operasyon)"
+      rail_Position_reference: "Proje Referans Formatı (Tren Operasyon)"
+    placeholder:
+    hint:
+    link:
+    action:
+      save: "Sayaç Bilgilerini Kaydet"
   web:
     title:
       fill_form_for_free_trial: "Ücretsiz 30 günlük kullanım için kaydolun"
@@ -584,3 +619,30 @@ tr:
 #    hint:
 #    link:
 #    action:
+  activerecord:
+    errors:
+      template:
+        body: There were problems with the following fields
+        header:
+          one: 1 error prohibited this {{model}} from being saved
+          other: "{{count}} errors prohibited this {{model}} from being saved"  
+      messages:
+        inclusion: "alabileceği değerler içinde bu bilgi yok"
+        exclusion: "bu değeri alamaz, farklı bir değer giriniz"
+        invalid: "değer geçerli değil"
+        confirmation: "bir önceki değer ile uyumlu değil"
+        accepted: "bu alanı okundu olarak işaretlemelisiniz"
+        empty: "bu alanı boş geçemezsiniz, değer girmelisiniz"
+        blank: "bu alanı boş geçemezsiniz, değer girmelisiniz"
+        too_long: "maksimum {{count}} karakter olabilir, daha fazla değil)"
+        too_short: "minimum {{count}} karakter girmelisiniz)"
+        wrong_length: "sadece {{count}} karakter girmelisiniz, ne daha fazla, ne daha az)"
+        taken: "bu bilgi zaten sistemde mevcut"
+        not_a_number: "sadece rakam girebilirsiniz"
+        greater_than: "{{count}} değerinden büyük olmalı"
+        greater_than_or_equal_to: "{{count}} değerinden büyük veya eşit olmalı"
+        equal_to: "{{count}} değerine eşit olmalı"
+        less_than: "{{count}} değerinden küçük olmalı"
+        less_than_or_equal_to: "{{count}} değerinden küçük veya eşit olmalı"
+        odd: "çift sayıları kullanamazsınız, tek sayı olmalı"
+        even: "tek sayıları kullanamazsınız, çift sayı olmalı"

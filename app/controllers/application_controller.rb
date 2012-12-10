@@ -68,6 +68,9 @@ class ApplicationController < ActionController::Base
       locale = current_user.language
     end
     unless locale.present?
+      locale = ((lang = request.env['HTTP_ACCEPT_LANGUAGE']) && lang[/^[a-z]{2}/])
+    end
+    unless locale.present?
       locale = cookies[:socialfreight_locale]
     end
     unless locale.present?

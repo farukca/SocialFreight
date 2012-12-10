@@ -10,6 +10,12 @@
       </div>
     </div>
 
+   <div class="row-fluid">
+    <div class="alert alert-error">
+      Proje ve reservasyon sayaçları tanımlı değil,<%= link_to setup_path(:set_params, operation: @operation.code) do %> lütfen tanımlayınız<i class="icon-forward"></i><% end %>
+    </div>
+   </div>
+
     <div class="row-fluid">
       <legend><%= t "defaults.title.last_items" %></legend>
       <div id="last_operations" class="profile tabbable">

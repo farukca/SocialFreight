@@ -12,12 +12,16 @@ class SetupController < ApplicationController
     when :set_params
       #counter_size = @patron.counters.size
       #if counter_size == 0
-      ["air","sea","road","rail"].each { |o|
-        counter = @patron.counters.find_or_initialize_by_operation_and_counter_type(o,"Loading")
-        counter = @patron.counters.find_or_initialize_by_operation_and_counter_type(o,"Position")
-      }
-    when :set_branches
-
+      @operation = params[:operation]
+      if params[:operation].present?
+        counter = @patron.counters.find_or_initialize_by_operation_and_counter_type(params[:operation],"Loading")
+        counter = @patron.counters.find_or_initialize_by_operation_and_counter_type(params[:operation],"Position")
+      else      
+        ["air","sea","road","rail"].each { |o|
+          counter = @patron.counters.find_or_initialize_by_operation_and_counter_type(o,"Loading")
+          counter = @patron.counters.find_or_initialize_by_operation_and_counter_type(o,"Position")
+        }
+      end
     end
     render_wizard
       

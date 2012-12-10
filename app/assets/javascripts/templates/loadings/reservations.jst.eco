@@ -1,0 +1,20 @@
+<% if @loadings.length: %>
+  <table class="table">
+    <tr>
+      <th>Reservasyon Referans</th>
+      <th>Operasyon</th>
+      <th>Şube</th>
+      <th></th>
+    </tr>
+  <% for loading in @loadings: %>
+    <tr>
+      <td><%= loading.reference %></td>
+      <td><%= "#{loading.operation}#{loading.direction}" %></td>
+      <td><%= loading.position_name %></td>
+      <th><a href="#" class="btn">Bu Projeye Yükleri Ekle</a></th>
+    </tr>
+  <% end %>
+  </table>
+<% else: %>
+  No loadings
+<% end %>

@@ -3,7 +3,9 @@ class Counter < ActiveRecord::Base
 
   attr_accessible :counter_type, :operation, :prefix, :suffix, :period, :count
 
-  validates_presence_of :counter_type
+  validates :counter_type, presence: true
+  validates :count, numericality: { only_integer: true }
+  validates :prefix, presence: true, :if => Proc.new { |a| a.operation.present? }
 
   default_scope { where(patron_id: Patron.current_id) }
   
