@@ -2,12 +2,12 @@
 
   <div class="widget" style="margin-bottom:130px;">  
     <div class="row">
-      <h4>Tebrikler, Hesabınızı Etkinleştirdiniz.</h4>
+      <h4><%= t("web.label.activated_your_account") %></h4>
     </div>
     
     <div class="row">
-      <h5>Giriş yapmak için kullanacağınız mail adresiniz;&nbsp;<%= @user.email %></h5>
-      <h5>Lütfen Şifrenizi Belirleyiniz;</h5>
+      <h5><%= t("web.label.email_to_login") %>;&nbsp;<%= @user.email %></h5>
+      <h5><%= t("web.label.set_your_password") %>;</h5>
     </div>
 
     <div class="row">
@@ -17,8 +17,8 @@
         <div class="row">
           <div class="span6">
             <fieldset>
-              <%= f.input :password, label: "Şifreniz" %>
-              <%= f.input :password_confirmation, label: "Şifreyi Tekrar Giriniz" %>
+              <%= f.input :password, label: t("web.label.password") %>
+              <%= f.input :password_confirmation, label: t("web.label.comfirm_password") %>
             </fieldset>
           
             <div class="form-actions">

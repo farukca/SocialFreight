@@ -135,7 +135,8 @@ en:
       planned_transports: "Planlanmış Taşımalar"
       process_list: "Operasyon Menü"
       new_loading: "Yeni Yük Oluşturma"
-      loading_info: "Yük Bilgisi"
+      loading_info: "Cargo Informations"
+      talk_about_loading: "Let's talk about cargo"
       loading_detail: "Yük Detayları"
       package_info: "Koli Bilgileri"
       departure_info: "Yükleme Bilgisi"
@@ -538,6 +539,7 @@ en:
       employee_number: "Worker number"
       email: "E-Mail"
       password: "password"
+      comfirm_password: "Confirm your password"
       remember_me: "Remember Username"
       free_trial: "Free Trial"
       login: "Login"
@@ -548,6 +550,14 @@ en:
       are_you_freighter: "Are you a logistics service provider ?"
       try_socialfreight: "Sign up for a free 30-day trial"
       already_member: "If you have SocialFreight account; you can login here"
+      check_your_mailbox: "Check Your Mail"
+      login_to_socialfreight: "Login to SocialFreight"
+      run_socialfreight: "Run & Test SocialFreight"
+      check_your_mailbox_msg: "We have sent you a mail, please check your mailbox."
+      thanks_for_choosing: "By the way, thanks for choosing SocialFreight. We will happy to hear your feedbacks and comments."
+      activated_your_account: "Congratulations, you have activated your account."
+      email_to_login: "You will use this email to login to SocialFreight"
+      set_your_password: "You must set a password"
     placeholder:
   dashboard:
     link:

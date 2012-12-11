@@ -1,17 +1,19 @@
-<%= simple_form_for @currency, :validate => true do |f| %>
+<%= simple_form_for @currency, html: { class: "form-horizontal" }, validate: true do |f| %>
   <%= f.error_notification %>
 
   <fieldset>
-    <div class="row">
+    <div class="row-fluid">
       <div class="page-header span16 columns">
-        <h4>New Currency</h4>
+        <h4>Currency Information</h4>
       </div>
-      <div class="span8 columns">
+      <div class="row-fluid">
         <%= f.input :code %>
         <%= f.input :name %>
         <%= f.input :symbol %>
         <%= f.input :multiplier %>
-        <%= f.button :submit, :class => "btn primary" %>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, :class => "btn btn-success" %>
       </div>
     </div>
   </fieldset>
