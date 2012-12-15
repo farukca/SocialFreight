@@ -103,6 +103,10 @@ class Position < ActiveRecord::Base
   #  super.upcase.gsub("-", ".")
   #end
 
+  def reservations
+    @reservations = find_reservations
+  end
+
 private
   def set_initials
     self.reference = Patron.generate_counter("Position", self.operation, self.direction)
@@ -114,6 +118,14 @@ private
       connect_loadings(self.loading_ids)
     end
     self.user.follow!(self) if self.user
+  end
+
+  def find_reservations
+    reservations = Loading.active.reservation
+    reservations = reservations.where(operation: self.operation)
+    reservations = reservations.where(direction: self.direction)
+    #reservations = reservations.where('id not in (?)', self.session_loading_ids) if self.session_loading_ids.present?
+    reservations
   end
 
   def connect_loadings(loadids)

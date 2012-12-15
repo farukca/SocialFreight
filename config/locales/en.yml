@@ -199,11 +199,11 @@ en:
       unload_city: "Boşaltma Şehri"
     hint:
     link:
-      new_loading: "Yük Reservasyonu Oluştur"
-      new_planning: "Reservasyon & Uçak Planlama"
-      loading_list: "Yük Listesi"
-      position_list: "Sefer(Taşıma) Listesi"
-      transport_list: "Taşıma Listesi"
+      new_loading: "New Cargo Reservation"
+      new_planning: "New Project"
+      loading_list: "Cargo List"
+      position_list: "Project List"
+      transport_list: "Transportation List"
       cass_report: "CASS Raporu"
       new_sea_transport: "Gemi/RORO Sefer Bilgisi Ekle"
       new_air_transport: "Uçak Sefer Bilgisi Ekle"

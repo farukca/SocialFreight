@@ -35,7 +35,7 @@ class Search < ActiveRecord::Base
 
   private
   def find_reservations
-    reservations = Loading.active.reservations
+    reservations = Loading.active.reservation
     reservations = reservations.where(operation: self.operation) if self.operation.present?
     reservations = reservations.where(direction: self.direction) if self.direction.present?
     reservations = reservations.where('id not in (?)', self.session_loading_ids) if self.session_loading_ids.present?

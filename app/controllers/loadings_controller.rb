@@ -25,6 +25,21 @@ class LoadingsController < ApplicationController
     end
   end
 
+  def plan
+    @loading = Loading.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.json {
+        if params[:listpositions]
+          render json: @loading.positions
+        else
+          render json: @loading
+        end
+      }
+    end
+  end
+
   def new
 
     @position = Position.find(params[:position_id]) if params[:position_id]

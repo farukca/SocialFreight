@@ -1,17 +1,17 @@
 <% if @positions.length: %>
-  <table class="table">
+  <table class="table table-condensed table-bordered table-hover">
     <tr>
-      <th>Proje Referans</th>
-      <th>Operasyon</th>
-      <th>Proje Adı</th>
-      <th></th>
+      <th class="span2">Proje Referans</th>
+      <th class="span2">Operasyon</th>
+      <th class="span5">Proje Adı</th>
+      <th class="span3"></th>
     </tr>
   <% for position in @positions: %>
     <tr>
       <td><%= position.reference %></td>
       <td><%= "#{position.operation}#{position.direction}" %></td>
       <td><%= position.description %></td>
-      <th><a href="#" class="btn">Bu Projeye Yükleri Ekle</a></th>
+      <td><a href="#" data-refid="<%= position.slug %>" data-refname="<%= position.reference %>" class="btn btn-success connect-loading-position">Bu Projeye Yükleri Ekle</a></td>
     </tr>
   <% end %>
   </table>

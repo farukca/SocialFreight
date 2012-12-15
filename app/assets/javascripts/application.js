@@ -22,9 +22,10 @@
 //= require reservation
 //= require transplan
 //= require transports
+//= require searches
 //= require operation_wizard
-//= require templates/positions/positions.jst.eco
-//= require templates/loadings/reservations.jst.eco
+// require templates/positions/positions.jst.eco
+// require templates/loadings/reservations.jst.eco
 // require_tree.
 
 // require simpleform_clientsidev

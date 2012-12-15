@@ -13,10 +13,24 @@ class PositionsController < ApplicationController
 
   def show
     @position  = Position.find(params[:id])
-    @transnode = Transnode.new
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @position }
+    end
+  end
+
+  def plan
+    @position  = Position.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json {
+        if params[:listreservations]
+          render json: @position.reservations
+        else
+          render json: @position
+        end
+      }
     end
   end
 

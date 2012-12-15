@@ -5,6 +5,7 @@
   <%= f.error :base, error_method: :to_sentence %>
 
   <fieldset>
+    <%= f.input :username, as: :hidden %>
     <%= f.input :name, label: t("web.label.company_name") %>
     <%= f.input :contact_name, label: t("web.label.name") %>
     <%= f.input :contact_surname, label: t("web.label.surname") %>

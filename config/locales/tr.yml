@@ -202,7 +202,7 @@ tr:
       new_loading: "Yük Reservasyonu Oluştur"
       new_planning: "Reservasyon & Uçak Planlama"
       loading_list: "Yük Listesi"
-      position_list: "Sefer(Taşıma) Listesi"
+      position_list: "Proje Listesi"
       transport_list: "Taşıma Listesi"
       cass_report: "CASS Raporu"
       new_sea_transport: "Gemi/RORO Sefer Bilgisi Ekle"

@@ -39,6 +39,7 @@ Socialfreight::Application.routes.draw do
     resources :comments
     member do
       get :addload
+      get :plan
     end
   end
   resources :transports
@@ -46,6 +47,7 @@ Socialfreight::Application.routes.draw do
     resources :comments
     member do
       get :addtoplan
+      get :plan
     end
   end
   resources :departures

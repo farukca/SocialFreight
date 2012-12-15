@@ -2,6 +2,10 @@ module ApplicationHelper
   
   include Twitter::Autolink
   
+  def javascript(*files)
+    content_for(:head) { javascript_include_tag(*files) }
+  end
+
   def link_to_remove_fields(name, f)
     f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)")
   end

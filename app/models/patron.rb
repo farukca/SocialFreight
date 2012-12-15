@@ -1,7 +1,6 @@
 class Patron < ActiveRecord::Base
 
-  #STATUS_NAMES = [:active, :inactive, :cancelled, :potential]
-  #STATUSES = STATUS_NAMES.each_with_index.each_with_object({}) {|(name, code), all| all[name] = code }
+  include CustomValidators::Validators
   
   extend FriendlyId
   friendly_id :title, use: :slugged
@@ -17,19 +16,9 @@ class Patron < ActiveRecord::Base
   
   has_many :users
   accepts_nested_attributes_for :users, :reject_if => lambda { |a| a[:email].blank? }, :allow_destroy => true  
-  
-  #has_many :people
-  #has_many :companies
-  has_many :positions
-  has_many :loadings
-  #has_many :activities
-  #has_many :journals, as: :journaled, dependent: :destroy
-  #has_many :documents
-  #has_many :costs
-  #has_many :invoitems
-  #has_many :payoffs
-  #has_and_belongs_to_many :operations
-  
+
+  attr_accessor :username
+
   attr_accessible :name, :website, :tel, :fax, :postcode, :district, :address, :city_id, :country_id, :status, :saler_id, 
                   :email, :operations, :contact_name, :contact_surname, :time_zone, :language, :logo, :remove_logo,
                   :vehicle_owner, :depot_owner, :patron_type, :iata_code, :fmc_code, :locale, :mail_encoding, 
@@ -53,6 +42,7 @@ class Patron < ActiveRecord::Base
   validates :tel, presence: true, length: { in: 2..20 }
   validates :country_id, presence: true
   validates :title, length: { maximum: 60 }
+  validates :username, absence: true
 
   def self.generate_counter(ctype, operation, direction)
     patron = Patron.find(Patron.current_id)

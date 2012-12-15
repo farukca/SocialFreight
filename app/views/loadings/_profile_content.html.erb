@@ -3,6 +3,13 @@
   <!--table class="outer" width="100%" id="contentTable" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <td class="oRight" id="bodyCell"-->
+        <% unless @loading.position %>
+        <div class="row-fluid profile-section">
+          <div class="pull-right">
+            <%= link_to "Reservasyonun hangi proje kapsamında taşınacağını belirtmemişsiniz, lütfen planlayınız >>", plan_loading_path(@loading), class: "btn btn-success" %>
+          </div>
+        </div>
+        <% end %>
 
         <div class="row-fluid" style="text-align:center;">
           <%= link_to "Yükleme Noktası(#{@loading.departures_count})", "##{@loading.id}_departureList" %> |

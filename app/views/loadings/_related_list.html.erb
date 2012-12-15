@@ -1,10 +1,10 @@
-<%= table_for objects, table_html: { class: "table table-condensed table-striped table-fixed"}, 
+<%= table_for objects, table_html: { id: "loading_report_results", class: "table table-condensed table-striped table-fixed"}, 
               header_row_html: { class: "headerRow" },
               row_html: { class: "dataRow" } do |table| %>
   <% table.column :action, label: t("defaults.link.action"), column_html: { class: "actionCol", scope: "col" } do |loading| %>
     <%= link_to t("defaults.link.edit"), edit_loading_path(loading) %> 
     | 
-    <%= link_to t("defaults.link.destroy"), loading, method: :delete, data: {confirm: t("defaults.messages.destroy_confirm")} %>
+    <%#= link_to t("defaults.link.destroy"), loading, method: :delete, data: {confirm: t("defaults.messages.destroy_confirm")} %>
   <% end %>
   <% table.column :reference, label: t("defaults.label.reference"), column_html: { scope: "col" } do |loading| %>
     <%= link_to loading.reference, loading_path(loading) %>

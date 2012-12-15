@@ -68,8 +68,8 @@ gem 'select2-rails'
 # Deploy with Capistrano
  gem 'capistrano'
 
-gem 'blogger', git: "git@github.com:farukca/blogger.git"
-#gem 'blogger', path: "../blogger"
+#gem 'blogger', git: "git@github.com:farukca/blogger.git"
+gem 'blogger', path: "../blogger"
 
 gem 'bullet', group: :development
 #gem 'rspec-rails', group: [:test, :development]

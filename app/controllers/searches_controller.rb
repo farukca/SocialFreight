@@ -6,6 +6,8 @@ class SearchesController < ApplicationController
     @search = Search.new
     @search.operation = params[:operation] if params[:operation]
     @search.model     = params[:model] if params[:model]
+    @search.docdate1  = 1.month.ago
+    @search.docdate2  = Date.today
   end
 
   def create
@@ -13,14 +15,21 @@ class SearchesController < ApplicationController
     @search.user_id = current_user.id
     @search.session_loading_ids = session[:loading_ids] if session[:loading_ids]
 
-    @search.save!
-    redirect_to @search
+    respond_to do |format|
+      if @search.save
+        format.html { redirect_to @search }
+        format.json { render json: @search, status: :created, location: @search }
+      else
+        format.html { render nothing: true }
+        format.json { render json: @search.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def show
     @search = Search.find(params[:id])
     
-    case @search.model 
+    case @search.model
       when "positions" 
         @positions = @search.positions.page(params[:page]).per(10)
       when "loadings"

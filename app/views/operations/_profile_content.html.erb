@@ -66,9 +66,10 @@
       <div id="operation_tasks">
         <legend><%= t "defaults.title.reports" %></legend>
         <table class="table table-condensed">
-          <tr><td><%= link_to t("operations.link.loading_list"), new_search_path(operation: @operation.code, model: "loading") %></td></tr>      
-          <tr><td><%= link_to t("operations.link.cass_report"), positions_path(operation: @operation.code, model: "invoice") %></td></tr>
-          <tr><td><%= link_to "Uçuş Bilgileri Sorgulama", positions_path(operation: @operation.code, model: "transport") %></td></tr>
+          <tr><td><%= link_to t("operations.link.position_list"), new_search_path(operation: @operation.code, model: "positions") %></td></tr>
+          <tr><td><%= link_to t("operations.link.loading_list"), new_search_path(operation: @operation.code, model: "loadings") %></td></tr>      
+          <tr><td><%#= link_to t("operations.link.cass_report"), positions_path(operation: @operation.code, model: "invoice") %></td></tr>
+          <tr><td><%#= link_to "Uçuş Bilgileri Sorgulama", positions_path(operation: @operation.code, model: "transport") %></td></tr>
         </table>
 
         <legend><%= t "defaults.title.tasks" %></legend>

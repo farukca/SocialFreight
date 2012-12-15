@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   #validates_confirmation_of :password
   #validates_presence_of :password, on: :create
   #validates_length_of :password, minimum: 8 
-  validates :email, presence: true, uniqueness: {case_sensitive: false}, length: { minimum: 7, maximum: 40}
+  validates :email, presence: true, uniqueness: { case_sensitive: false }, length: { in: 7..60 }, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, on: :create }
   validates :name, presence: true, on: :update
   validates :surname, presence: true, on: :update
   #validates_uniqueness_of :email, :case_sensitive => false

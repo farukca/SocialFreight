@@ -1,11 +1,21 @@
 <% case @search.model %>
   <% when "positions" %>
-    <%= render 'searches/position_form' %>
-    <%= render 'positions/positions', :positions => @positions %>
+    <%= render 'searches/positions_form' %>
+    <%= render 'positions/related_list', :objects => @positions %>
   <% when "loadings" %>
-    <%= render 'searches/loading_form' %>
-    <%= render 'loadings/loadings', :loadings => @loadings %>
+    <%= render 'searches/loadings_form' %>
+    <div class="page-header">
+    	<h4>Yük Listesi
+	    	<small class="pull-right">
+	    		<a href="#" class="saveascsv" data-table="loading_report_results">Excele Aktar</a>
+	    	</small>
+      </h4>
+    </div>
+    <div class="row-fluid">
+      <%= render 'loadings/related_list', :objects => @loadings %>
+    </div>
   <% when "reservations" %>
     <%= render 'searches/reservation_form' %>
     <%= render 'reservations', :reservations => @reservations %>
 <% end %>
+<% javascript "table2CSV" %>

@@ -39,7 +39,7 @@ class Operation < ActiveRecord::Base
 
   private
   def find_reservations
-    reservations = Loading.active.where(operation: self.code).reservations.limit(10).newones
+    reservations = Loading.active.where(operation: self.code).reservation.limit(10).newones
     reservations
   end
 

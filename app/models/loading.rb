@@ -59,7 +59,7 @@ class Loading < ActiveRecord::Base
   scope :export, where(direction: "E")
   scope :import, where(direction: "I")
   scope :newones, order("created_at desc")
-  scope :reservations, where("position_id IS NULL")
+  scope :reservation, where("position_id IS NULL")
   scope :plannedloads, where("position_id IS NOT NULL")
 
   before_create :set_initials
@@ -100,7 +100,6 @@ class Loading < ActiveRecord::Base
     end
   end
 
-  public
   def position_name
     if self.position_id.nil?
       "RESERVATION"
@@ -119,14 +118,18 @@ class Loading < ActiveRecord::Base
     end
   end
 
-  private
+  def positions
+    @positions = find_positions
+  end
+
+private
   def set_initials
     #counter = self.patron.generate_counter("Loading", self.operation, nil)
     #self.reference = self.operation + "." + self.direction + "." + sprintf('%07d', counter)
     self.reference = Patron.generate_counter("Loading", self.operation, nil)
     set_slug(self.reference)
   end
-  private
+
   def set_after_jobs
     self.user.follow!(self) if self.user
     #self.user.create_activity(self, reference, patron_id)
@@ -134,5 +137,13 @@ class Loading < ActiveRecord::Base
     #Patron.journal_record(patron_id, user, branch, nil, self.class.name, 1, 0)
     #Nick.log(self, self.slug, patron_id)
   end
-  
+
+  def find_positions
+    positions = Position.active
+    positions = positions.where(operation: self.operation)
+    positions = positions.where(direction: self.direction)
+    #positions = positions.where(branch_id: self.branch_id) if self.branch_id.present?
+    positions
+  end
+
 end
