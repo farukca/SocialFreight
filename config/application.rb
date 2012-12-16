@@ -42,6 +42,8 @@ module Socialfreight
     # Enable the asset pipeline
     config.assets.enabled = true
 
+    config.assets.precompile += ['report_manifest.js', 'eco_manifest.js']
+
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
     # assets:precompile connects to db; http://stackoverflow.com/questions/8997226/rake-assetsprecompile-attempting-to-connect-to-database
