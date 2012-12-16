@@ -1,4 +1,4 @@
-<%= table_for objects, table_html: { class: "table table-condensed table-striped table-fixed"}, 
+<%= table_for objects, table_html: { id: "company_report_results", class: "table table-condensed table-striped table-fixed"}, 
               header_row_html: { class: "headerRow" },
               row_html: { class: "dataRow" } do |table| %>
   <% table.column :name, label: t("companies.label.name"), column_html: { scope: "col" } do |company| %>
