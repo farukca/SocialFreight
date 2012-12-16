@@ -16,6 +16,14 @@ class Search < ActiveRecord::Base
     @reservations = find_reservations
   end
 
+  def companies
+    @companies = find_companies
+  end
+
+  def contacts
+    @contacts = find_contacts
+  end
+
   private
   def find_positions
     positions = Position.active
@@ -25,15 +33,14 @@ class Search < ActiveRecord::Base
     positions
   end
 
-  private
   def find_loadings
     loadings = Loading.active
+    loadings = loadings.where(company_id: self.company_id) if self.company_id.present?
     loadings = loadings.where(operation: self.operation) if self.operation.present?
     loadings = loadings.where(direction: self.direction) if self.direction.present?
     loadings
   end
 
-  private
   def find_reservations
     reservations = Loading.active.reservation
     reservations = reservations.where(operation: self.operation) if self.operation.present?
@@ -41,14 +48,20 @@ class Search < ActiveRecord::Base
     reservations = reservations.where('id not in (?)', self.session_loading_ids) if self.session_loading_ids.present?
     reservations
   end
-  
-  class << self
-    def operation_models()
-      master_types = {
-        'loadings'     => 'Loadings',
-        'reservations' => 'Reservations',
-        'positions'    => 'Positions'
-      }
-    end
+
+  def find_companies
+    companies = Company.latest
+    companies = companies.where("lower(name) like ?", "%#{self.reference}%") if self.reference.present?
+    companies = companies.where(created_at: self.docdate1..self.docdate2) if self.docdate1.present?
+    companies = companies.where(branch_id: self.branch_id) if self.branch_id.present?
+    companies = companies.where(country_id: self.country_id) if self.country_id.present?
+    companies
+  end
+
+  def find_contacts
+    contacts  = Contact.latest
+    contacts  = contacts.where(company_id: self.company_id) if self.company_id.present?
+    contacts  = contacts.where("lower(name) like ?", "%#{self.reference}%") if self.reference.present?
+    contacts
   end
 end

@@ -1,7 +1,7 @@
 <%= table_for objects, table_html: { id: "loading_report_results", class: "table table-condensed table-striped table-fixed"}, 
               header_row_html: { class: "headerRow" },
               row_html: { class: "dataRow" } do |table| %>
-  <% table.column :action, label: t("defaults.link.action"), column_html: { class: "actionCol", scope: "col" } do |loading| %>
+  <% table.column :action, label: t("defaults.link.action"), column_html: { class: "span1 actionCol", scope: "col" } do |loading| %>
     <%= link_to t("defaults.link.edit"), edit_loading_path(loading) %> 
     | 
     <%#= link_to t("defaults.link.destroy"), loading, method: :delete, data: {confirm: t("defaults.messages.destroy_confirm")} %>

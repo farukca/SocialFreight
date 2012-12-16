@@ -31,6 +31,7 @@ en:
       transports: "Multimodal Tranports"
     label:
       reference: "Reference"
+      operation: "Operation"
       branch: "Branch"
       tel:    "Phone"
       fax:    "Fax"
@@ -627,3 +628,10 @@ en:
         less_than_or_equal_to: "must be less than or equal to {{count}}"
         odd: "must be odd"
         even: "must be even"
+  views:
+    pagination:
+      first: "&laquo; First"
+      last: "Last &raquo;"
+      previous: "&lsaquo; Prev"
+      next: "Next &rsaquo;"
+      truncate: "..."

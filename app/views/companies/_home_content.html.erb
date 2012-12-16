@@ -46,20 +46,18 @@
       <div id="crm_tasks">
         <legend><%= t("defaults.title.reports") %></legend>
         <table class="table small-tables table-condensed">
-          <tr><td><%= link_to t("companies.link.company_list"), companies_path %></td></tr>
-          <tr><td><%= link_to t("companies.link.contact_list"), contacts_path %></td></tr>
-          <tr><td><%= link_to t("companies.link.event_list"), events_path %></td></tr>
+          <tr><td><%= link_to t("companies.link.company_list"), new_search_path(model: "companies") %></td></tr>
+          <tr><td><%= link_to t("companies.link.contact_list"), new_search_path(model: "contacts") %></td></tr>
+          <tr><td><%#= link_to t("companies.link.event_list"), new_search_path(model: "companies") %></td></tr>
           <!--tr><td><%#= link_to "Alacaklı Tedarikçiler Listesi", companies_path %></td></tr>
           <tr><td><%#= link_to "Borçlu Müşteriler Listesi", companies_path %></td></tr-->
         </table>
 
         <legend><%= t("defaults.title.tasks") %></legend>
         <table class="table small-tables table-condensed">
-          <tr><td>TK253 Nolu sefer kontrol edilecek, Beko'ya bilgi verilecek</td></tr>
+          <!--tr><td>TK253 Nolu sefer kontrol edilecek, Beko'ya bilgi verilecek</td></tr>
           <tr><td>@KRF545654 yük dosyası kapatılmalı %></td></tr>
-          <tr><td>@KRF854126 yük taşıması tamamlanınca faturası kesilecek</td></tr>
-          <tr><td>CASS yeni stok talebi yapılacak</td></tr>
-          <tr><td>Haftalık genel taşıma raporu düzenlenecek</td></tr>
+          <tr><td>@KRF854126 yük taşıması tamamlanınca faturası kesilecek</td></tr-->
         </table>
       </div>
     </div>

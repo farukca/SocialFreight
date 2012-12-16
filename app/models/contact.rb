@@ -13,6 +13,7 @@ class Contact < ActiveRecord::Base
 
 
   default_scope { where(patron_id: Patron.current_id) }
+  scope :latest, order("created_at desc")
 
   def to_s
     "#{salutation}. #{name} #{surname}"

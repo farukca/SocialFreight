@@ -142,3 +142,15 @@ textarea::-webkit-input-placeholder {
 hr {
   margin: 10px 0;
 }
+.pagination {
+  margin: 0;
+}
+.pagination > span {
+  float: left;
+  padding: 4px 12px;
+  line-height: 20px;
+  text-decoration: none;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-left-width: 0;
+}

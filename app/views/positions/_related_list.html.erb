@@ -1,10 +1,10 @@
-<%= table_for objects, table_html: { class: "table table-condensed table-striped table-fixed"}, 
+<%= table_for objects, table_html: { id: "position_report_results", class: "table table-condensed table-striped table-fixed"}, 
               header_row_html: { class: "headerRow" },
               row_html: { class: "dataRow" } do |table| %>
   <% table.column :reference, label: t("defaults.label.reference"), column_html: { scope: "col" } do |loading| %>
     <%= link_to loading.reference, loading_path(loading) %>
   <% end %>  
-  <% table.column :operation, label: t("defaults.label.load_type"), column_html: { scope: "col" } %>
-  <% table.column :direction, label: t("defaults.label.incoterm"), column_html: { scope: "col" } %>
-  <% table.column :description, label: t("defaults.label.description"), column_html: { scope: "col" } %>
+  <% table.column :operation, label: t("defaults.label.operation"), column_html: { scope: "col" } %>
+  <% table.column :direction, label: t("positions.label.direction"), column_html: { scope: "col" } %>
+  <% table.column :description, label: t("positions.label.description"), column_html: { scope: "col" } %>
 <% end %>

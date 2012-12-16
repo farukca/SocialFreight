@@ -31,6 +31,7 @@ tr:
       transports: "Multimodal Taşımalar"
     label:
       reference: "Referans"
+      operation: "Operasyon"
       branch: "Şube"
       tel:    "Telefon"
       fax:    "Faks"
@@ -399,7 +400,7 @@ tr:
       new_contact: "Yetkili Kaydı Oluştur"
       new_event: "Olay Kaydı Oluştur"
       company_list: "Aktif Firma Listesi"
-      contact_list: "Kontak Listesi"
+      contact_list: "Kişi Listesi"
       event_list: "Olay Kayıtları Listesi"
     action:
       save: "Firma Bilgisini Kaydet"
@@ -656,3 +657,10 @@ tr:
         less_than_or_equal_to: "{{count}} değerinden küçük veya eşit olmalı"
         odd: "çift sayıları kullanamazsınız, tek sayı olmalı"
         even: "tek sayıları kullanamazsınız, çift sayı olmalı"
+  views:
+    pagination:
+      first: "&laquo; İlk Sayfa"
+      last: "Son Sayfa &raquo;"
+      previous: "&lsaquo; Önceki Sayfa"
+      next: "Sonraki Sayfa &rsaquo;"
+      truncate: "..."
