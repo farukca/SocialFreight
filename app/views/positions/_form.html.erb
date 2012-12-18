@@ -9,7 +9,7 @@
   <div class="pageBlock">
 
     <div class="page-header">
-      <h4><%= t("positions.title.new_position") %></h4>
+      <h4><%= t("positions.title.new_position") %><small> <%= t("operations.title.#{@position.operation}operation") %></small></h4>
     </div>
     <%#= render 'shared/form_header', message: "Yeni Taşıma Projesi" %>
  
@@ -18,8 +18,8 @@
 
     <div class="row-fluid">
       <div class="span6">
+        <%= f.input :description, input_html: { class: "span12" }, label: t("positions.label.description"), placeholder: t("positions.placeholder.description") %>
         <%= f.input :direction, as: :select, collection: Position.direction_types.map { |r| [r[1], r[0] ] }, label: t("positions.label.direction") %>
-        <%= f.input :description, as: :text, input_html: { rows: "2" }, label: t("positions.label.description"), placeholder: t("positions.placeholder.description") %>
       </div>
       <div class="span6">
         <%= f.input :branch_id, as: :select, collection: current_patron.branches,selected: current_user.branch_id, label: t("positions.label.branch") %>
