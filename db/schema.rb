@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121202115715) do
+ActiveRecord::Schema.define(:version => 20121220144348) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                                  :null => false
@@ -79,8 +79,13 @@ ActiveRecord::Schema.define(:version => 20121202115715) do
 
   create_table "betausers", :force => true do |t|
     t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.string   "name",       :limit => 100
+    t.string   "company",    :limit => 100
+    t.string   "phone",      :limit => 30
+    t.string   "country",    :limit => 20
+    t.string   "ipaddr",     :limit => 20
   end
 
   create_table "blogger_articles", :force => true do |t|

@@ -322,7 +322,7 @@ p {
     -o-border-radius: 5px 5px 0 0;
 }
 .callout {
-    padding: 20px 25px 15px;
+    padding: 10px 25px 15px;
     background: rgb(255,255,255); /* Old browsers */
     background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(242,242,242,1) 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(242,242,242,1))); /* Chrome,Safari4+ */
@@ -339,7 +339,7 @@ p {
     -o-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
     width: 890px;
     margin-bottom: 20px;
-    margin-top: 20px;
+    *margin-top: 20px;
 }
 .callout{	/* IE7 */
           *margin-top: 130px;

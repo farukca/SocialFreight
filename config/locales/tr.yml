@@ -41,6 +41,8 @@ tr:
       country: "Ülke"
       city:   "Şehir"
       district: "Semt"
+      seeall: "Tümünü Listele"
+      help_links: "Yardımcı Linkler"
       customer: "Müşteri"
       company: "Firma"
       agent: "Yurtdışı Acenta"
@@ -75,6 +77,7 @@ tr:
       picture_file: "Resim dosyası"
       create_info: "Kayıt Bilgisi"
       update_info: "Son Güncelleme Bilgisi"
+      quick_links: "Hızlı Kayıt Oluştur"
     placeholder:
       district: "İlçe/Semt"
       postcode: "Posta Kodu"
@@ -93,6 +96,12 @@ tr:
       cancel: "Vazgeç"
       action: "İşlem"
       restore: "Geri Yükle"
+      home: "Ana Sayfa"
+      crm: "Firma Yönetimi"
+      operation: "Operasyon Yönetimi"
+      fleet: "Filo Yönetimi"
+      finance: "Finans Yönetimi"
+      new_record: "Yeni Kayıt Oluştur"
       new_report: "Yeni Rapor Oluştur"
       new_task: "Yeni Görev Ekle"
       new_departure: "Yükleme Noktası Ekle"
@@ -104,13 +113,15 @@ tr:
       new_cost: "Masraf Bilgisi Ekle"
       new_comment: "Yorum Ekle"
       new_post: "Mesajınız"
+      new_company: "Firma Oluştur"
       new_contact: "Kontak Bilgisi Ekle"
       new_partner: "İş Ortağı Ekle"
       new_event: "Olay Bildirimi Ekle"
       new_activity: "Aktivite Oluştur"
       new_branch: "Şube Oluştur"
       detailed_search: "Detaylı Ara >>"
-      new_loading: "Yeni Yük Bilgisi Ekle"
+      new_loading: "Yeni Yük Reservasyonu"
+      new_position: "Yeni Taşıma Projesi"
       edit_loading: "Bu Yük Bilgisini Güncelle"
       new_transport: "Multimodal Taşıma Ekle"
     validmsg:
@@ -406,6 +417,7 @@ tr:
       save: "Firma Bilgisini Kaydet"
   contacts:
     title:
+      quick_contact: "Hızlı Kişi Oluştur"
     label:
     placeholder:
       name: "Yetkili Adı"
@@ -470,7 +482,7 @@ tr:
       save: "Belge Bilgilerini Kaydet"
   junks:
     title:
-      junks: "Silinmiş Kayıtlar"
+      junks: "Çöp Kutusu"
     label:
       junk_time: "Silinme Zamanı"
       junk_reference: "Kayıt Referans No"
@@ -524,10 +536,12 @@ tr:
     label:
       name: "Sizi Tanıyalım"
       email: "Mail Adresiniz"
+      tel: "Telefon Numaranız"
+      company: "Firmanız"
       msg: "Mesajınız"
     placeholder:
       name: "Adınız ve Soyadınız"
-      email: "Size ulaşabileceğimiz mail adresiniz"
+      email: "Aktif mail adresiniz"
       msg: "Bütün sorularınızı, öneri ve şikayetlerinizi yazabilirsiniz"
     hint:
       new_feedback: "Aklınızdan geçeni yazabilirsiniz"

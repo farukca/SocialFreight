@@ -1,19 +1,19 @@
 <div class="navbar">
   <div id="main-navigation" class="row profile navbar-inner" style="margin-top:50px;margin-left:5px;">
     <ul class="nav">
-      <%= navigator("homenavigator", root_url, "Ana Sayfa", "icon-home") %>
-      <%= navigator("companynavigator", crm_path, "Müşteriler", "icon-star-empty") %>
+      <%= navigator("homenavigator", root_url, t("defaults.link.home"), "icon-home") %>
+      <%= navigator("companynavigator", crm_path, t("defaults.link.crm"), "icon-star-empty") %>
       <li id="opernavigator" <% if (current_tab == "opernavigator") %>class="dropdown active"<% else %>class="dropdown"<%  end %>>
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
           <i class="icon-cog"></i>
-          Operasyon Yönetimi
+          <%= t("defaults.link.operation") %>
           <b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
-          <%= navigator("airnavigator", home_operation_path(:air), "Hava Operasyon", "icon-plane") %>
-          <%= navigator("seanavigator", home_operation_path(:sea), "Deniz Operasyon", "icon-flag") %>
-          <%= navigator("roadnavigator", home_operation_path(:road), "Kara Operasyon", "icon-road") %>
-          <%= navigator("railnavigator", home_operation_path(:rail), "Demiryolu Operasyon", "icon-random") %>
+          <%= navigator("airnavigator", home_operation_path(:air), t("operations.title.airoperation"), "icon-plane") %>
+          <%= navigator("seanavigator", home_operation_path(:sea), t("operations.title.seaoperation"), "icon-flag") %>
+          <%= navigator("roadnavigator", home_operation_path(:road), t("operations.title.roadoperation"), "icon-road") %>
+          <%= navigator("railnavigator", home_operation_path(:rail), t("operations.title.railoperation"), "icon-random") %>
           <!--li id="inlandnavigator"><%#= link_to home_operation_path(:inland) do %><i class="icon-qrcode"></i>Dahili Nakliye<%# end %></li>
           <li id="distronavigator"><%#= link_to home_operation_path(:distro) do %><i class="icon-qrcode"></i>Ulusal Dağıtım<%# end %></li>
           <li id="heavynavigator"><%#= link_to home_operation_path(:heavy) do %><i class="icon-qrcode"></i>Ağır Nakliye<%# end %></li-->
@@ -25,8 +25,8 @@
           <!--li class="<%#= selected_navigation(operation.to_s) %>"><%#= link_to operation.to_s.humanize, home_operation_path(operation) %></li-->
         <%# end %>
       <%# end %>
-      <%= navigator("fleetnavigator", fleetman_path, "Filo Yönetimi", "icon-road") %>
-      <%= navigator("financenavigator", finance_path, "Finans", "icon-signal") %>
+      <%= navigator("fleetnavigator", fleetman_path, t("defaults.link.fleet"), "icon-road") %>
+      <%= navigator("financenavigator", finance_path, t("defaults.link.finance"), "icon-signal") %>
       <!--li id="glnavigator"><%#= link_to "#" do %><i class="icon-list-all"></i>Muhasebe<%# end %></li>
       <li id="iknavigator"><%#= link_to "#" do %><i class="icon-user"></i>İK<%# end %></li-->
       <!--li id="othersnavigator"><%#= link_to "#" do %><i class="icon-resize-full"></i>Diğer İşlemler<%# end %></li-->

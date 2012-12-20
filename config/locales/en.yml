@@ -41,6 +41,8 @@ en:
       country: "Country"
       city:   "City"
       district: "District"
+      seeall: "See all"
+      help_links: "Help Links"
       customer: "Customer"
       company: "Company"
       agent: "Foreign Agent"
@@ -75,6 +77,7 @@ en:
       picture_file: "Picture file"
       create_info: "Record Information"
       update_info: "Last Update Information"
+      quick_links: "Quick Record Create"
     placeholder:
       district: "District"
       postcode: "Postcode"
@@ -93,6 +96,12 @@ en:
       cancel: "Cancel"
       action: "Action"
       restore: "Restore"
+      home: "Home"
+      crm: "Accounts"
+      operation: "Operation Management"
+      fleet: "Fleet Management"
+      finance: "Finance Management"
+      new_record: "Create New"
       new_report: "Create New Report"
       new_task: "Create New Task"
       new_departure: "Add Departure Information"
@@ -104,13 +113,15 @@ en:
       new_cost: "Add New Cost"
       new_comment: "Add Comment"
       new_post: "Write your message"
-      new_contact: "Add New Contact"
-      new_partner: "Add New Partner"
-      new_event: "Add New Event"
+      new_company: "New Account"
+      new_contact: "New Contact"
+      new_partner: "New Partner"
+      new_event: "New Event"
       new_activity: "Add New Activity"
       new_branch: "Add New Branch"
       detailed_search: "Detailed Search >>"
       new_loading: "New Booking"
+      new_position: "New Project"
       edit_loading: "Edit Booking"
       new_transport: "Add Multimodal Transportation"
     validmsg:
@@ -396,7 +407,7 @@ en:
       address: "Mail Address"
     hint:
     link:
-      new_company: "Create New Company"
+      new_company: "Create New Account"
       new_contact: "Create New Contact"
       new_event: "Create New Event"
       company_list: "Active Company List"
@@ -406,6 +417,7 @@ en:
       save: "Save Company Information"
   contacts:
     title:
+      quick_contact: "Quick Contact Create"
     label:
     placeholder:
       name: "Contact Name"
@@ -470,7 +482,7 @@ en:
       save: "Save Document Information"
   junks:
     title:
-      junks: "Deleted Records"
+      junks: "Trash"
     label:
       junk_time: "Delete Time"
       junk_reference: "Record Reference No"
@@ -520,7 +532,7 @@ en:
   feedbacks:
     title:
       quick_feedback: "Great to hear from you!"
-      contact_us: "We'l love to hear your feedbacks. We will get back to you for your questions."
+      contact_us: "We’re here to help with any questions or comments. If you just want to say hi, that's cool too."
     label:
       name: "Name"
       email: "@Mail"

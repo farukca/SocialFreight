@@ -72,6 +72,8 @@ margin-left: 0px;
 }
 .control-group.error > label, .control-group.error .help-block, .control-group.error .help-inline {
   display: block;
+  white-space: nowrap;
+  font-size: 12px;
 }
 .form-horizontal .control-group {
   margin-bottom: 2px;

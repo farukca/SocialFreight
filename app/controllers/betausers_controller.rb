@@ -7,6 +7,8 @@ class BetausersController < ApplicationController
 
   def create
     @betauser = Betauser.new(params[:betauser])
+    @betauser.ipaddr = request.remote_ip
+    #@betauser.country = Timeout::timeout(5) { Net::HTTP.get_response(URI.parse('http://api.hostip.info/country.php?ip=' + request.remote_ip )).body }
 
     respond_to do |format|
       if @betauser.save

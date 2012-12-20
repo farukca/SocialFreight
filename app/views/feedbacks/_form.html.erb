@@ -2,24 +2,24 @@
   <%= simple_form_for @feedback, validate: true, html: { class: "form-horizontal" }, remote: true do |f| %>
     <%= f.error_notification %>
 
-    <div class="pageBlock">
+    <div class="row-fluid">
 
       <div class="page-header">
-        <h4><%= t("companies.title.quick_feedback") %></h4>
+        <h4><%= t("feedbacks.title.quick_feedback") %></h4>
       </div>
 
       <div class="page-body">
         <fieldset>
-          <legend>Bize Yazın</legend>
+          <h5><%= t("feedbacks.title.contact_us") %></h5>
           <div class="row">
-            <%= f.input :name, placeholder: "Adınız" %>
-            <%= f.input :email, placeholder: "Mail Adresiniz" %>
-            <%= f.input :msg, as: :text, placeholder: "Mesajınız" %>
+            <%= f.input :name, label: t("feedbacks.label.name"), placeholder: t("feedbacks.placeholder.name") %>
+            <%= f.input :email, label: t("feedbacks.label.email"), placeholder: t("feedbacks.placeholder.email") %>
+            <%= f.input :msg, as: :text, label: t("feedbacks.label.msg"), placeholder: t("feedbacks.placeholder.msg") %>
           </div>
         </fieldset>
       </div>
 
-      <div class="form-actions">
+      <div class="controls">
         <%= f.submit t("defaults.action.send"), class: 'btn btn-success' %>
       </div>
 
