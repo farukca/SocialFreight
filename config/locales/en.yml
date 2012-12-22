@@ -137,10 +137,10 @@ en:
       change_picture: "Click to change this picture"
   operations:
     title:
-      airoperation: "Air Operation"
-      seaoperation: "Sea Operation"
-      roadoperation: "Road Operation"
-      railoperation: "Railway Operation"
+      airoperation: "Air Transport"
+      seaoperation: "Sea Transport"
+      roadoperation: "Road Transport"
+      railoperation: "Rail Transport"
       inlandoperation: "Domestic Operation"
       planned_loadings: "Planned Bookings"
       reservations: "Bookings"
@@ -565,6 +565,9 @@ en:
       save: "Save Reference Format"
   web:
     title:
+      description: "SocialFreight, Cloud based Multimodal Transportation Management"
+      keywords: "SocialFreight, Social Transportation Logistics, Cloud based multimodal logistics software, saas logistics transportation, transportation management system, fleet management"
+      sitename: "Cloud based, Multimodal Transportation Management"
       fill_form_for_free_trial: "Sign up for a free 30-day trial"
       fill_all_fields_in_form: "Get to know you better, Please fill in all fields"
     label:
@@ -596,6 +599,12 @@ en:
       email_to_login: "You will use this email to login to SocialFreight"
       set_your_password: "You must set a password"
     placeholder:
+    link:
+      mainpage: "Home"
+      whysocialfreight: "Why SocialFreight"
+      services: "Services"
+      roadmap: "Roadmap"
+      contact: "Contact Us"
   dashboard:
     link:
       patron_info: "Company Informations"
@@ -626,9 +635,11 @@ en:
         Partial: "Partial"
   content:
     home:
-      betauser_message: "Would you like to be first users of SocialFreight ?"
+      betauser_message: "Our product experts will call you back"
       betauser_placeholder: "Enter your mail address"
       betauser_submit: "Let's inform you"
+      betauser_title: "Information Request Form"
+      betauser_saved: "Thanks for your time, we will call you back. Have a nice day"
 
 #  new_model_name:
 #    title:

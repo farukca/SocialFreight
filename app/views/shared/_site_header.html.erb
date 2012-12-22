@@ -1,11 +1,11 @@
 <div class="header">
   <div class="container">
     <div class="row">
-      <div class="logo-container span4">
+      <div class="logo-container span5">
         <%= link_to (image_tag "logo.png"), root_url %>
-        <br/><span class="tagline">Bulut tabanlı, Multimodal nakliye yönetimi</span>
+        <br/><span class="tagline"><%= t("web.title.sitename") %></span>
       </div>
-      <div class="span8">
+      <div class="span7 pull-right">
         <div class="row">
           <div class="customer_intro">
             <%= link_to login_path, class: "btn btn-info" do %>
@@ -18,10 +18,10 @@
         </div>
         <div class="row">
           <ul id="main-nav" class="sf-menu">
-            <li><%= link_to "Ana Sayfa", root_url, :id => "home" %></li>
-            <li><%= link_to "Niçin SocialFreight", features_path, :id => "features" %></li>
+            <li><%= link_to t("web.link.mainpage"), root_url, :id => "home" %></li>
+            <li><%= link_to t("web.link.whysocialfreight"), features_path, :id => "features" %></li>
             <!--li><%#= link_to "Güvenlik", security_path, :id => "security" %></li-->
-            <li><%= link_to "Servisler", services_path, :id => "services" %>
+            <li><%= link_to t("web.link.services"), services_path, :id => "services" %>
               <!--ul>
                 <li><%#= link_to "Kara Taşımacılığı", road_path %></li>
                 <li><%#= link_to "Hava Taşımacılığı", air_path %></li>
@@ -30,8 +30,8 @@
                 <li><%#= link_to "Ulusal Dağıtım", inland_path %></li>
               </ul-->
             </li>
-            <li><%= link_to "Roadmap", roadmap_path, :id => "roadmap" %></li>
-            <li><%= link_to "İletişim", aboutus_path, :id => "contact_link" %></li>
+            <li><%= link_to t("web.link.roadmap"), roadmap_path, :id => "roadmap" %></li>
+            <li><%= link_to t("web.link.contact"), aboutus_path, :id => "contact_link" %></li>
           </ul>
         </div>
       </div>

@@ -68,7 +68,7 @@ gem 'select2-rails'
 # Deploy with Capistrano
  gem 'capistrano'
 
-gem 'blogger', git: "git@github.com:farukca/blogger.git"
+gem 'blogger', git: "git@github.com:farukca/blogger.git", ref: "212db5990a"
 #gem 'blogger', path: "../blogger"
 
 gem 'bullet', group: :development

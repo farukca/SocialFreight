@@ -1,9 +1,7 @@
 class PatronsController < ApplicationController
 
-  before_filter :require_login
+  before_filter :require_login, except: [:new, :create]
 
-  skip_before_filter :require_login, only: [:new, :create]
-  
   def index
     @patrons = Patron.all
 

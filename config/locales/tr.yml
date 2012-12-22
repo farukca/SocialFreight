@@ -567,6 +567,9 @@ tr:
       save: "Sayaç Bilgilerini Kaydet"
   web:
     title:
+      description: "SocialFreight, Bulut tabanlı multimodal lojistik yazılımı"
+      keywords: "SocialFreight, Sosyal Nakliye Lojistik, Bulut tabanlı multimodal lojistik yazılımı, saas lojistik nakliye, nakliye operasyon yönetimi, filo yönetimi"
+      sitename: "Bulut tabanlı, Multimodal nakliye yönetimi"
       fill_form_for_free_trial: "Ücretsiz 30 günlük kullanım için kaydolun"
       fill_all_fields_in_form: "Sizi daha iyi tanımamız için Lütfen formu eksiksiz doldurunuz."
     label:
@@ -603,6 +606,12 @@ tr:
       surname: "Soyadınız"
       email: "E-Posta adresiniz"
       phone: "Size ulaşabileceğimiz telefon no"
+    link:
+      mainpage: "Ana Sayfa"
+      whysocialfreight: "Niçin SocialFreight"
+      services: "Servisler"
+      roadmap: "Yol Haritası"
+      contact: "İletişim"
   dashboard:
     link:
       patron_info: "Firma Bilgileri"
@@ -633,9 +642,11 @@ tr:
         Partial: "Partial"
   content:
     home:
-      betauser_message: "SocialFreight'ın ilk kullanıcılarından olmak ister misiniz?"
+      betauser_message: "Sizi ofisinizde ziyaret edebilir veya  arayıp detaylı bilgi verebiliriz"
       betauser_placeholder: "Mail Adresinizi verin"
       betauser_submit: "Sizi Bilgilendirelim"
+      betauser_title: "Bilgi Talep Formu"
+      betauser_saved: "Zaman ayırdığınız için teşekkürler, en kısa sürede sizinle iletişime geçeceğiz"
 
 #  new_model_name:
 #    title:
