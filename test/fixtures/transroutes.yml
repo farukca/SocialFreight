@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  route_type: MyString
+  route_name: MyString
+  route_city: MyString
+  route_country: MyString
+  arrival_date: MyString
+  departure_date: MyString
+  route_id: MyString
+  transport_id: MyString
+  patron_id: MyString
+
+two:
+  route_type: MyString
+  route_name: MyString
+  route_city: MyString
+  route_country: MyString
+  arrival_date: MyString
+  departure_date: MyString
+  route_id: MyString
+  transport_id: MyString
+  patron_id: MyString

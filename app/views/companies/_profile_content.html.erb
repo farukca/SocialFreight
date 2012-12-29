@@ -1,10 +1,10 @@
 <div class="row-fluid profile-content">
 
-  <div class="row-fluid" style="padding-bottom:10px;text-align:center;">
+  <div class="row-fluid profile-summary">
     <%= link_to "Contacts(#{@company.contacts.size})", "##{@company.id}_contactList" %> |
     <%= link_to "Partners(#{@company.partners.size})", "##{@company.id}_partnerList" %> |
     <%= link_to "Events(#{@company.events.size})", "##{@company.id}_eventList" %> |
-    <%= link_to "Opportunities(0)", "##{@company.id}_opportunityList" %>
+    <%#= link_to "Opportunities(0)", "##{@company.id}_opportunityList" %>
   </div>
 
   <div class="row-fluid profile-section">  

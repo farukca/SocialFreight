@@ -48,11 +48,10 @@
           <%= f.input_field :arv_country_id, as: :select, collection: Country.all, include_blank: true, class: "input-small country_select", placeholder: t("transports.placeholder.arrival_country") %>
           <%= f.input_field :arv_city, class: "input-small", placeholder: t("transports.placeholder.arrival_city") %>
         <% end %>
-        <%= link_to t("transports.link.show_air_transnodes"), "#", class: "togglebutton pull-right", "data-href" => "#transnode_info" %>
+        <% if params[:action] != "edit" %>
+          <span class="pull-right label"><%= t("transports.message.enter_air_route") %></span>
+        <% end %>
       </fieldset>
     </div>
-  </div>
-  <div id="transnode_info" class="row-fluid slidingDiv">
-    <legend><%= t("transports.title.air_transnode") %></legend>
   </div>
 </div>

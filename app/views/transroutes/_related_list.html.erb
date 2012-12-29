@@ -1,0 +1,15 @@
+<%= table_for objects, table_html: { class: "table table-condensed table-striped table-fixed"}, 
+              header_row_html: { class: "headerRow" },
+              row_html: { class: "dataRow" } do |table| %>
+  <% table.column :action, label: t("defaults.link.action"), column_html: { class: "actionCol", scope: "col" } do |transroute| %>
+    <%= link_to t("defaults.link.edit"), edit_transroute_path(transroute) %> 
+    | 
+    <%#= link_to t("defaults.link.destroy"), transroute, method: :delete, data: {confirm: t("defaults.messages.destroy_confirm")} %>              
+  <% end %>
+  <% table.column :route_type, label: t("transroutes.label.route_type"), column_html: { scope: "col" } %>
+  <% table.column :route_name, label: t("transroutes.label.route_name"), column_html: { scope: "col" } %>
+  <% table.column :arrival_date, label: t("transroutes.label.arrival_date"), column_html: { scope: "col" } %>
+  <% table.column :departure_date, label: t("transroutes.label.departure_date"), column_html: { scope: "col" } %>
+  <% table.column :route_city, label: t("defaults.label.city"), column_html: { scope: "col" } %>
+  <% table.column :route_country, label: t("defaults.label.country"), column_html: { scope: "col" } %>
+<% end %>

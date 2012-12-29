@@ -1,34 +1,14 @@
-<div id="transport-header" class="row-fluid">
-  <div class="span1">
-    <div id="profile-picture">
-      <%= image_tag("#{@transport.trans_method}.png") %>
-    </div>
-  </div>
-  <div class="span11">
-    <div id="profile-detail">
-      <div class="profile-content">
-        <div class="row-fluid">
-          <div id="transport_headline">
-            <dl class="yatay-info dl-horizontal" id="headline">
-              <dt>Taşıma Bilgileri</dt>
-              <dd><%= "#{transport.truck.to_s} #{transport.vessel}" %></dd>
-              <dd><%= transport.voyage %></dd>
-              <dd><%= transport_freight_price(transport) %></dd>
-              <dd><%= transport_waybill_info(transport) %></dd>
-            </dl>
-          </div>
+<div id="transport-header" class="profile-content">
+  <table class="outer" width="100%" id="headerTable" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="span1">
+        <div id="transport-picture" class="position">
+          <%= image_tag("#{@transport.trans_method}.png") %>
         </div>
-        <div class="row-fluid">
-          <dl class="dl-horizontal">
-            <dt>Çıkış Bilgisi</dt>
-            <dd><%= transport_departure(transport) %></dd>
-          </dl>
-          <dl class="dl-horizontal">
-            <dt>Varış Bilgisi</dt>
-            <dd><%= transport_arrival(transport) %></dd>
-          </dl>
-        </div>
-      </div>
-    </div>
-  </div>
+      </td>
+      <td style="vertical-align:top">
+        <%= render "profile_detail", transport: @transport %>
+      </td>
+    </tr>
+  </table>
 </div>

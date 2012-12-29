@@ -1,59 +1,51 @@
-<div id="person_form" class="row">
-<%= simple_form_for @vehicle, :validate => true do |f| %>
+<div id="person_form" class="row-fluid">
+<%= simple_form_for @vehicle, validate: true, html: { class: "form-horizontal" } do |f| %>
   <%= f.error_notification %>
 
   <fieldset>
-    <div class="row">
-      <div class="page-header span16 columns">
-        <h4>New Vehicle</h4>
+    <div class="page-header">
+      <h4>New Vehicle</h4>
+    </div>
+    <div class="row-fluid">
+      <div class="span6">
+        <%= f.input :code, label: "Plate" %>
+        <%= f.input :vehicle_class, as: :select, collection: Vehicle.vehicle_classes.map { |r| [r[1], r[0] ] }, include_blank: true %>
+        <%= f.input :vehicle_type %>
       </div>
-      <div class="span8 columns">
-        <%= f.input :code, :label => "Plate & Country" do %>
-          <%= f.input_field :code, :class => "small" %>
-          <%= f.input_field :country, :as => :select, :collection => Country.all, :class => "medium", :include_blank => false %>
-        <% end %>
-          <%= f.input :status, :as => :select, :collection => Vehicle.vehicle_statuses.map { |r| [r[1], r[0] ] }, :include_blank => false, :class => "medium" %>
-          <%= f.input :ownership, :as => :select, :collection => Vehicle.vehicle_ownerships.map { |r| [r[1], r[0] ] }, :include_blank => false, :class => "medium" %>
-      </div>
-      <div class="span8 columns">
-        <%= f.input :vehicle_type do %>
-          <%= f.input_field :vehicle_class, :as => :select, :collection => Vehicle.vehicle_classes.map { |r| [r[1], r[0] ] }, :include_blank => false, :class => "medium" %>
-          <%= f.input_field :vehicle_type, :as => :select, :collection => current_patron.branches, :include_blank => false, :class => "medium" %>
-        <% end %>
-        <%= f.input :brand, :label => "Brand/Model/Year" do %>
-          <%= f.input_field :brand, :class => "small" %>
-          <%= f.input_field :model, :class => "small" %>
-          <%= f.input_field :model_year, :class => "small" %>
+      <div class="span6">
+        <%= f.input :brand, label: "Brand" %>
+        <%= f.input :model, label: "Model/Year" do %>
+          <%= f.input_field :model, class: "input-small" %>
+          <%= f.input_field :model_year, class: "input-small" %>
         <% end %>
       <%= f.input :vehicle_price do %>
-        <%= f.input_field :vehicle_price, :class => "small" %>
-        <%= f.input_field :price_curr, :as => :select, :collection => Currency.all, :include_blank => false, :class => "medium" %>
+        <%= f.input_field :vehicle_price, class: "input-small" %>
+        <%= f.input_field :price_curr, as: :select, collection: Currency.all, include_blank: false, class: "input-small" %>
       <% end %>
       </div>
     </div>
 
-    <div class="row">
-      <div class="page-header span16 columns">
-        <h4>Teknik Bilgiler</h4>
-      </div>
-      <div class="span8 columns">
-          <%= f.input :fuel_type, :as => :select, :collection => Vehicle.fuel_types.map { |r| [r[1], r[0] ] }, :include_blank => false, :class => "medium" %>
+    <div class="page-header">
+      <h4>Teknik Bilgiler</h4>
+    </div>
+    <div class="row-fluid">
+      <div class="span6">
+          <%= f.input :fuel_type, as: :select, collection: Vehicle.fuel_types.map { |r| [r[1], r[0] ] }, include_blank: false, class: "medium" %>
         <%= f.input :sat_no %>
         <%= f.input :tire_size %>
       </div>
-      <div class="span8 columns">
+      <div class="span6">
         <%= f.input :fuel_capacity do %>
-          <%= f.input_field :fuel_capacity,  :class => "small" %>
-          <%= f.input_field :fuel_capacity2, :class => "small" %>
+          <%= f.input_field :fuel_capacity,  class: "input-small" %>
+          <%= f.input_field :fuel_capacity2, class: "input-small" %>
         <% end %>
-        <%= f.input :barcode %>
+        <%#= f.input :barcode %>
         <%= f.input :link_type %>
-        <div class="clearfix" style="margin-left:250px">
-          <%= f.button :submit, :class => 'btn primary' %>
-        </div>
       </div>
     </div>
   </fieldset>
-
+    <div class="form-actions">
+          <%= f.button :submit, class: 'btn btn-success' %>
+        </div>
 <% end %>
 </div>

@@ -24,6 +24,7 @@
 //= require transports
 //= require searches
 //= require operation_wizard
+//= require connects
 // require templates/positions/positions.jst.eco
 // require templates/loadings/reservations.jst.eco
 // require_tree.

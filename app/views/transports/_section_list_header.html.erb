@@ -15,7 +15,7 @@
               <li><%= link_to t("operations.link.new_road_transport"), new_transport_path(position_id: object.id, :trans_method => "road") %></li>
               <li><%= link_to t("operations.link.new_rail_transport"), new_transport_path(position_id: object.id, :trans_method => "rail") %></li>
               <li><%= link_to t("operations.link.new_air_transport"), new_transport_path(position_id: object.id, :trans_method => "air") %></li>
-              <li><%= link_to t("operations.link.new_inland_transport"), new_transport_path(position_id: object.id, :trans_method => "inland") %></li>
+              <li><%#= link_to t("operations.link.new_inland_transport"), new_transport_path(position_id: object.id, :trans_method => "inland") %></li>
             </ul>
           </div>
         </td>

@@ -11,9 +11,9 @@ class Comment < ActiveRecord::Base
 
   after_create :add_post
 
-  def self.log(user_id, target, target_name, commenter)
+  def self.log(user_id, target, target_name, commenter, msg=nil)
     
-    msg_text = 'created this ' + target.class.name.downcase
+    msg_text = msg.nil? ? ('created this ' + target.class.name.downcase) : msg.to_s
 
     comment = Comment.new(commentable: target, user_id: user_id, comment_text: msg_text, commenter: commenter)
 

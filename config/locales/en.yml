@@ -16,8 +16,8 @@ en:
       tasks: "Tasks"
       departures: "Loading Points"
       arrivals: "Unloading Points"
-      containers: "Container Information"
-      packages: "Package Information"
+      containers: "Containers"
+      packages: "Packages"
       documents: "Documents"
       invoitems: "Invoice Lines"
       costs: "Costs"
@@ -69,7 +69,7 @@ en:
       commodity: "Commodity"
       incoterm: "Incoterm"
       freight_collect: "Freight Collect"
-      freight_price: "Transportation Fee"
+      freight_price: "Freight Price"
       brut_weight: "Brut Weight"
       sender: "Sender"
       consignee: "Consignee"
@@ -124,6 +124,7 @@ en:
       new_position: "New Project"
       edit_loading: "Edit Booking"
       new_transport: "Add Multimodal Transportation"
+      new_transroute: "Add New Route"
     validmsg:
     errormsg:
       no_record_found: "No Record Found"
@@ -222,6 +223,7 @@ en:
       new_road_transport: "Add Truck Voyage"
       new_rail_transport: "Add Train Voyage"
       new_inland_transport: "Dahili(Ön/Son) Taşıma Bilgisi Ekle"
+      add_reservation: "Add Unprojected Bookings"
       list_reservation: "List Proper Bookings"
       loading_detail: "I want to complete Booking Details"
     button:
@@ -250,6 +252,8 @@ en:
     message:
       next_step: "You will enter vessels/voyages and bookings at next steps"
       plan_position: "Plan the transportation project"
+      operations_must_be_same: "Booking and project must be same operation(air/sea/road or rail)"
+      directions_must_be_same: "Booking and project must be same service(export or import)"
   transports:
     title:
       transport_info: "Multimodal Transportation Information"
@@ -270,14 +274,18 @@ en:
       sea_vessel: "Ship Name & Voyage No"
       rail_vessel: "Train Name & Vagoon No"
       road_vessel: "Truck & Romork No"
-      airline: "Airline"
-      armator: "Shipowner"
-      traincompany: "Train Company"
-      air_supplier: "Airline Agent"
-      sea_liner: "Liner Agent"
+      air_vehicle: "Plane Info"
+      sea_vehicle: "Ship Info"
+      road_vehicle: "Trucks Info"
+      rail_vehicle: "Train Info"
+      airowner: "Airline"
+      seaowner: "Shipowner"
+      railowner: "Train Company"
+      roadowner: "Transporter Firm"
+      airsupplier: "Airline Agent"
+      seasupplier: "Liner Agent"
       voyage: "Voyage No"
       driver: "Driver Name"
-      transporter: "Transporter Firm"
       tircarnet_info: "Tir Carnet Information"
       tircarnet_no: "Tir Carnet No"
       tircarnet_date: "Tir Carnet Date"
@@ -285,12 +293,14 @@ en:
       waybill_no: "Waybill No"
       waybill_date: "Waybill Date"
       cim_info: "CIM Information"
+      departure: "Departure"
       departure_datehour: "Departure Date&Hour"
       departure_citycountry: "Departure Country&City"
       departure_airport: "Departure Airport"
       departure_seaport: "Departure Seaport"
       departure_station: "Departure Station"
       departure_place: "Departure Place"
+      arrival: "Arrival"
       arrival_datehour: "Arrival Date&Hour"
       arrival_citycountry: "Arrival Country&City"
       arrival_airport: "Arrival Airport"
@@ -322,10 +332,6 @@ en:
       arrival_city: "Arrival City"
     hint:
     link:
-      show_air_transnodes: "Enter transfer airports informations >>"
-      show_sea_transnodes: "Enter transfer seaports informations >>"
-      show_rail_transnodes: "Enter transfer stations informations >>"
-      show_road_transnodes: "Enter route (transfer points) informations >>"
     action:
       save: "Save Multimodal Transportation"
     message:
@@ -333,6 +339,25 @@ en:
       sea_transport: "Let's enter ship Information"
       rail_transport: "Let's enter train Information"
       road_transport: "Let's enter truck/romork Information"
+      enter_air_route: "You can enter route information (transfer airports) later"
+      enter_sea_route: "You can enter route information (transfer seaports) later"
+      enter_rail_route: "You can enter route information (transfer stations) later"
+      enter_road_route: "You can enter route information (transfer points) later"
+  transroutes:
+    title:
+      transroute_info: "Route Information"
+    label:
+      route_type: "Point Type"
+      route_name: "Route Point"
+      arrival_date: "Arrival Date"
+      departure_date: "Departure Date"
+
+    placeholder:
+    hint:
+    link:
+    action:
+      save: "Save Route Information"
+    messages:
   containers:
     title:
       container_info: "Container Informations"
@@ -519,6 +544,8 @@ en:
       edit_patron: "Edit Company Information"
       destroy_logo: "Delete Logo"
     action:
+    messages:
+      mailexists: "This email already registered, just login"
   users:
     title:
     label:
@@ -536,6 +563,8 @@ en:
     label:
       name: "Name"
       email: "@Mail"
+      tel: "Phone Number"
+      company: "Your Company"
       msg: "Message"
     placeholder:
       name: "First and last name"
@@ -583,7 +612,7 @@ en:
       remember_me: "Remember Username"
       free_trial: "Free Trial"
       login: "Login"
-      signup: "Arrival Country"
+      signup: "Sign Up"
       forgot_password: Arrival Cityt Password"
       signup_for_free: "Sign up Arrival Place free 30-day trial"
       no_account_yet: "Don't have Arrival Airport,"
@@ -599,6 +628,11 @@ en:
       email_to_login: "You will use this email to login to SocialFreight"
       set_your_password: "You must set a password"
     placeholder:
+      company_name: "Your company"
+      name: "Your Name"
+      surname: "Surname"
+      email: "Mail address"
+      phone: "Phone number"
     link:
       mainpage: "Home"
       whysocialfreight: "Why SocialFreight"
@@ -640,7 +674,6 @@ en:
       betauser_submit: "Let's inform you"
       betauser_title: "Information Request Form"
       betauser_saved: "Thanks for your time, we will call you back. Have a nice day"
-
 #  new_model_name:
 #    title:
 #    label:
@@ -648,6 +681,7 @@ en:
 #    hint:
 #    link:
 #    action:
+#    messages:
   activerecord:
     errors:
       template:

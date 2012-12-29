@@ -1,5 +1,7 @@
 Socialfreight::Application.routes.draw do
 
+  resources :transroutes
+
   get "logout" => "sessions#destroy", :as => "logout"
   get "login"  => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
@@ -42,7 +44,9 @@ Socialfreight::Application.routes.draw do
       get :plan
     end
   end
-  resources :transports
+  resources :transports do
+    resources :comments
+  end
   resources :loadings do
     resources :comments
     member do
@@ -54,6 +58,8 @@ Socialfreight::Application.routes.draw do
   resources :arrivals
   resources :packages
   resources :containers
+  resources :transnodes
+  resources :connects
 
   resources :rentals
   resources :vehicles
@@ -91,7 +97,6 @@ Socialfreight::Application.routes.draw do
   resources :operation_wizard
   resources :payback
   
-
   get "air" => "home#air", :as => "air"
   get "sea" => "home#sea", :as => "sea"
   get "road" => "home#road", :as => "road"

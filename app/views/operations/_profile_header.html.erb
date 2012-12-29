@@ -12,11 +12,6 @@
             <div class="title">
               <span><%= t "operations.title.#{@operation.code}operation" %></span>
             </div>
-            <div class="buttons">
-              <%# if current_user.admin = @user.id %>
-                <%#= link_to "Edit Parameters", edit_params_path(@operation), :class => 'btn primary' %>
-              <%# end %>
-            </div>
           </div>
           <%= render 'profile_detail' %>
         </div>

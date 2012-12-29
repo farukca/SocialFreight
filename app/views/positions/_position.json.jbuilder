@@ -1,0 +1,1 @@
+json.(position, :id, :reference, :description, :operation, :direction)

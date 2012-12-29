@@ -27,17 +27,7 @@ class LoadingsController < ApplicationController
 
   def plan
     @loading = Loading.find(params[:id])
-
-    respond_to do |format|
-      format.html
-      format.json {
-        if params[:listpositions]
-          render json: @loading.positions
-        else
-          render json: @loading
-        end
-      }
-    end
+    @listpositions = params[:listpositions]
   end
 
   def new
@@ -119,19 +109,13 @@ class LoadingsController < ApplicationController
   end
 
   def addtoplan
-    loadid = params[:id]
-    @loading = Loading.find(loadid)
-    if @loading
+    @loading = Loading.find(params[:id])
+    @connect = Connect.new
+    @connect.loading_id  = params[:id]
+    @connect.position_id = params[:position_id]
 
-      if @loading.operation != session[:plan_operation]
-        @loading.errors[:base] << "Operations different"
-      end
-
-      if @loading.direction != session[:plan_direction]
-        @loading.errors[:base] << "Import Export selection must be different"
-      end
-
-      session[:wicked_loading_ids] << @loading.id
+    if @connect.valid?
+       @loading.update_attribute(:position_id, params[:position_id])
     end
   end
 

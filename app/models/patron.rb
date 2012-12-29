@@ -36,7 +36,10 @@ class Patron < ActiveRecord::Base
   after_create  :create_head_office, :create_patron_user, :create_company #, :create_admin_user
 
   validates :name, presence: true, length: { in: 2..40 }
-  validates :email, presence: true, uniqueness: { case_sensitive: false }, length: { in: 7..60 }, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, on: :create }
+  validates :email, check_registered: { message: I18n.t("patrons.messages.mailexists")}, 
+                    presence: true, 
+                    uniqueness: { case_sensitive: false }, length: { in: 7..60 }, 
+                    format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, on: :create }
   validates :contact_name, presence: true, length: { in: 2..40 }
   validates :contact_surname, presence: true, length: { in: 2..40 }
   validates :tel, presence: true, length: { in: 2..20 }

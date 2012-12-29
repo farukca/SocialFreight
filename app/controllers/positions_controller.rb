@@ -21,17 +21,7 @@ class PositionsController < ApplicationController
 
   def plan
     @position  = Position.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json {
-        if params[:listreservations]
-          render json: @position.reservations
-        else
-          render json: @position
-        end
-      }
-    end
+    @listreservations = params[:listreservations]
   end
 
   def new

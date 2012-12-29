@@ -1,62 +1,10 @@
 <div id="operation_home" class="row-fluid">
 
-  <%#= render 'searches/loading_form' %>
   <div class="span6">
-
     <div class="row-fluid">
       <div id="operation_links">
         <legend><%= t "operations.title.process_list" %></legend>
         <%= render "operations/menu_#{@operation.code}" %>
-      </div>
-    </div>
-
-   <div class="row-fluid">
-    <div class="alert alert-error">
-      Proje ve reservasyon sayaçları tanımlı değil,<%= link_to setup_path(:set_params, operation: @operation.code) do %> lütfen tanımlayınız<i class="icon-forward"></i><% end %>
-    </div>
-   </div>
-
-    <div class="row-fluid">
-      <legend><%= t "defaults.title.last_items" %></legend>
-      <div id="last_operations" class="profile tabbable">
-        <ul class="nav nav-tabs" data-tabs="tabs">
-          <li class="active"><a data-toggle="tab" href="#loading_list"><%= t "operations.title.planned_loadings" %></a></li>
-          <li><a data-toggle="tab" href="#reservation_list"><%= t "operations.title.reservations" %></a></li>
-          <li><a data-toggle="tab" href="#position_list"><%= t "operations.title.planned_transports" %></a></li>
-          <li><%= link_to t("defaults.link.detailed_search"), new_search_path(operation: @operation.code), class: "small-size-link" %></li>
-          <!--li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-              Yeni Kayıt Oluştur
-              <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to new_position_path(:operation => @operation.code) do %><i class="icon-position"></i>Pozisyon<% end %></li>
-              <li><%= link_to new_loading_path(:operation => @operation.code) do %><i class="icon-loading"></i>Reservasyon<% end %></li>
-            </ul>
-          </li-->
-        </ul>
-
-        <div id="my-tab-content" class="tab-content">
-
-          <div id="loading_list" class="tab-pane profile-content active">
-            <% if @operation.loadings %>
-              <%= render partial: 'loadings/small_list', locals: { objects: @operation.loadings } %>
-            <% end %>
-          </div>
-
-          <div id="reservation_list" class="tab-pane profile-content">
-            <% if @operation.loadings %>
-              <%= render partial: 'loadings/small_list', locals: { objects: @operation.reservations } %>
-            <% end %>
-          </div>
-
-          <div id="position_list" class="tab-pane profile-content">
-            <% if @operation.positions %>
-              <%= render partial: 'positions/small_list', locals: { objects: @operation.positions } %>
-            <% end %>
-          </div>
-        </div>
-
       </div>
     </div>
   </div>
@@ -67,24 +15,43 @@
         <legend><%= t "defaults.title.reports" %></legend>
         <table class="table table-condensed">
           <tr><td><%= link_to t("operations.link.position_list"), new_search_path(operation: @operation.code, model: "positions") %></td></tr>
-          <tr><td><%= link_to t("operations.link.loading_list"), new_search_path(operation: @operation.code, model: "loadings") %></td></tr>      
-          <tr><td><%#= link_to t("operations.link.cass_report"), positions_path(operation: @operation.code, model: "invoice") %></td></tr>
-          <tr><td><%#= link_to "Uçuş Bilgileri Sorgulama", positions_path(operation: @operation.code, model: "transport") %></td></tr>
-        </table>
-
-        <legend><%= t "defaults.title.tasks" %></legend>
-        <table class="table table-condensed">
-          <tr><td>TK253 Nolu sefer kontrol edilecek, Beko'ya bilgi verilecek</td></tr>
-          <tr><td>@KRF545654 yük dosyası kapatılmalı %></td></tr>
-          <tr><td>@KRF854126 yük taşıması tamamlanınca faturası kesilecek</td></tr>
-          <tr><td>CASS yeni stok talebi yapılacak</td></tr>
-          <tr><td>Haftalık genel taşıma raporu düzenlenecek</td></tr>
+          <tr><td><%= link_to t("operations.link.loading_list"), new_search_path(operation: @operation.code, model: "loadings") %></td></tr>
+          <tr><td><%= link_to t("operations.link.transport_list"), new_search_path(operation: @operation.code, model: "transports") %></td></tr>
         </table>
       </div>
     </div>
+  </div>
+</div>
+<div class="row-fluid">
+  <legend><%= t "defaults.title.last_items" %></legend>
+  <div id="last_operations" class="profile tabbable">
+    <ul class="nav nav-tabs" data-tabs="tabs">
+      <li class="active"><a data-toggle="tab" href="#loading_list"><%= t "operations.title.planned_loadings" %></a></li>
+      <li><a data-toggle="tab" href="#reservation_list"><%= t "operations.title.reservations" %></a></li>
+      <li><a data-toggle="tab" href="#position_list"><%= t "operations.title.planned_transports" %></a></li>
+      <li class="pull-right"><%= link_to t("defaults.link.detailed_search"), new_search_path(operation: @operation.code), class: "small-size-link" %></li>
+    </ul>
 
-    <div id="operation_chart">
+    <div id="my-tab-content" class="tab-content">
 
+      <div id="loading_list" class="tab-pane profile-content active">
+        <% if @operation.loadings %>
+          <%= render partial: 'loadings/small_list', locals: { objects: @operation.loadings } %>
+        <% end %>
+      </div>
+
+      <div id="reservation_list" class="tab-pane profile-content">
+        <% if @operation.loadings %>
+          <%= render partial: 'loadings/small_list', locals: { objects: @operation.reservations } %>
+        <% end %>
+      </div>
+
+      <div id="position_list" class="tab-pane profile-content">
+        <% if @operation.positions %>
+          <%= render partial: 'positions/small_list', locals: { objects: @operation.positions } %>
+        <% end %>
+      </div>
     </div>
+
   </div>
 </div>

@@ -11,12 +11,12 @@
         </div>
         <% end %>
 
-        <div class="row-fluid" style="text-align:center;">
-          <%= link_to "Yükleme Noktası(#{@loading.departures_count})", "##{@loading.id}_departureList" %> |
-          <%= link_to "Boşaltma Noktası(#{@loading.arrivals_count})", "##{@loading.id}_arrivalList" %> |
-          <%= link_to "Konteyner(#{@loading.containers_count})", "##{@loading.id}_containerList" %> |
-          <%= link_to "Koli(#{@loading.packages_count})", "##{@loading.id}_packageList" %> |
-          <%= link_to "Döküman(#{@loading.documents_count})", "##{@loading.id}_documentList" %>
+        <div class="row-fluid profile-summary">
+          <%= link_to "#{t("defaults.title.departures")}(#{@loading.departures_count})", "##{@loading.id}_departureList" %> |
+          <%= link_to "#{t("defaults.title.arrivals")}(#{@loading.arrivals_count})", "##{@loading.id}_arrivalList" %> |
+          <%= link_to "#{t("defaults.title.containers")}(#{@loading.containers_count})", "##{@loading.id}_containerList" %> |
+          <%= link_to "#{t("defaults.title.packages")}(#{@loading.packages_count})", "##{@loading.id}_packageList" %> |
+          <%= link_to "#{t("defaults.title.documents")}(#{@loading.documents_count})", "##{@loading.id}_documentList" %>
         </div>
 
         <div class="row-fluid profile-section">  

@@ -24,6 +24,10 @@ class Search < ActiveRecord::Base
     @contacts = find_contacts
   end
 
+  def transports
+    @transports = find_transports
+  end
+
   private
   def find_positions
     positions = Position.active
@@ -63,5 +67,14 @@ class Search < ActiveRecord::Base
     contacts  = contacts.where(company_id: self.company_id) if self.company_id.present?
     contacts  = contacts.where("lower(name) like ?", "%#{self.reference}%") if self.reference.present?
     contacts
+  end
+
+  def find_transports
+    transports = Transport.active
+    transports = transports.where(trans_method: self.operation) if self.operation.present?
+    transports = transports.where(supplier_id: self.company_id) if self.company_id.present?
+    transports = transports.where(branch_id: self.branch_id) if self.branch_id.present?
+    transports = transports.where(created_at: self.docdate1..self.docdate2) if self.docdate1.present?
+    transports
   end
 end

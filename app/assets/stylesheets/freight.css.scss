@@ -57,29 +57,35 @@ form {
 #socialCell span {
     color:#fff;
 }
+#recentItems {
+  min-height: 200px;
+}
 .recentItem {
-    padding:2px 0 2px 5px;
-    position:relative;
-    z-index:7;
+  padding:2px 0 2px 5px;
+  position:relative;
+  z-index:7;
+}
+.recentItem a {
+  white-space: nowrap;
 }
 .recentItem a img {
-    left:0;
-    margin-left:3px;
-    position:absolute;
+  left:0;
+  margin-left:3px;
+  position:absolute;
 }
 .companyItem .companyIcon {
-    background-image:url("/assets/master.png");
-    background-position:0 -2px;
-    background-repeat: no-repeat;
-    height:16px;
-    width:16px;
+  background-image:url("/assets/master.png");
+  background-position:0 -2px;
+  background-repeat: no-repeat;
+  height:16px;
+  width:16px;
 }
 .loadingItem .loadingIcon {
-    background-image:url("/assets/master.png");
-    background-position:0 -24px;
-    background-repeat: no-repeat;
-    height:16px;
-    width:16px;
+  background-image:url("/assets/master.png");
+  background-position:0 -24px;
+  background-repeat: no-repeat;
+  height:16px;
+  width:16px;
 }
 .positionItem .positionIcon {
     background-image:url("/assets/master.png");
@@ -186,7 +192,7 @@ form {
 	width :60px;
   text-align:center;
 	border:1px solid #DDDDDD;
-	background-color:#EDEDED;
+	*background-color:#EDEDED;
   font-weight:bold;
 }
 .numbers td {
@@ -281,6 +287,10 @@ form {
 }
 .profile-content #overview {
     overflow:visible;
+}
+.profile-summary {
+  text-align:center;
+  font-size: 12px;
 }
 #overview dt {
     left:-10px;
@@ -891,9 +901,6 @@ div.addIcon {
 .table .currencyCol, .table .phoneCol, .table .dateCol, .table .emailCol {
   white-space: nowrap;
 }
-.headerRow th {
-  background:url("/assets/todoBack.png") repeat-x scroll 0 0 #FFE5A7;
-}
 .dataRow:hover {
   background-color: #E3F3EE;
   cursor: hand;
@@ -939,9 +946,6 @@ div.addIcon {
 }
 #loading {
   background: url("/assets/loading.gif") no-repeat center;
-}
-#recentItems {
-  min-height: 200px;
 }
 #new_betauser label abbr {
   display: none;

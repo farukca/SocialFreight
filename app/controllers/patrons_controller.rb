@@ -25,7 +25,7 @@ class PatronsController < ApplicationController
 
     respond_to do |format|
       format.html { render layout: "guest" }
-      format.json { render json: @bank }
+      format.json { render json: @patron }
     end
   end
 

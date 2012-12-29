@@ -112,6 +112,8 @@ GEM
     httpi (0.9.7)
       rack
     i18n (0.6.1)
+    jbuilder (0.9.1)
+      activesupport (>= 3.0.0)
     journey (1.0.4)
     jquery-rails (1.0.18)
       railties (~> 3.0)
@@ -308,6 +310,7 @@ DEPENDENCIES
   fakeweb
   friendly_id
   gmaps4rails
+  jbuilder
   jquery-rails
   kaminari (~> 0.13.0)
   mini_magick

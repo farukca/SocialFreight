@@ -35,14 +35,10 @@ class TransportsController < ApplicationController
     
     respond_to do |format|
       if @transport.save
-        if fromwhere == 'position'
-          format.html { redirect_to new_loading_path(:position_id => @position.id), notice: 'New Node added successfully.' }
-        else
-          format.html { redirect_to @position, notice: 'New Node added successfully.' }
-        end
+        format.html { redirect_to @transport, notice: 'New Node added successfully.' }
         format.json { render json: @transport, status: :created, location: @transport }
       else
-        format.html { redirect_to @position, alert: 'Errors on creating transport.' }
+        format.html { render action: "new" }
         format.json { render json: @transport.errors, status: :unprocessable_entity }
       end
     end

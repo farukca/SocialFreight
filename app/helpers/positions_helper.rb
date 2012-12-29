@@ -1,7 +1,7 @@
 module PositionsHelper
 
   def position_name(position=@position)
-    position.reference
+    link_to position.reference, position
   end
 
 end

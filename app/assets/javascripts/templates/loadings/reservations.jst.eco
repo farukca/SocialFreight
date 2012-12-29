@@ -1,20 +1,22 @@
-<% if @reservations.length: %>
+<% if @parent.reservations.length: %>
   <table class="table table-condensed table-bordered table-hover">
     <tr>
-      <th>Reservasyon Referans</th>
+      <th>Referans</th>
       <th>Operasyon</th>
-      <th>Şube</th>
+      <th>Yükleme Ülkesi</th>
+      <th>Boşaltma Ülkesi</th>
       <th></th>
     </tr>
-  <% for loading in @reservations: %>
+  <% for reservation in @parent.reservations: %>
     <tr>
-      <td><%= loading.reference %></td>
-      <td><%= "#{loading.operation}#{loading.direction}" %></td>
-      <td><%= loading.position_name %></td>
-      <td><a href="#" data-refid="<%= loading.slug %>" data-refname="<%= loading.reference %>" class="btn btn-success connect-loading-position">Bu Projeye Yükleri Ekle</a></td>
+      <td><%= reservation.reference %></td>
+      <td><%= "#{reservation.operation}#{reservation.direction}" %></td>
+      <td><%= reservation.load_coun %></td>
+      <td><%= reservation.unload_coun %></td>
+      <td><a data-position_id="<%= @parent.id %>" data-loading_id="<%= reservation.id %>" data-refname="<%= position.reference %>" class="connect-loading-position btn btn-success" data-remote="true">Seçili Projeye Bu Reservasyonu Ekle</a></td>
     </tr>
   <% end %>
   </table>
 <% else: %>
-  No reservations
+  <div class="alert alert-warning">No reservations found for this project</div>
 <% end %>

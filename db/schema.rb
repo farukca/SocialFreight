@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121220144348) do
+ActiveRecord::Schema.define(:version => 20121228140903) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                                  :null => false
@@ -314,8 +314,8 @@ ActiveRecord::Schema.define(:version => 20121220144348) do
   add_index "counters", ["patron_id", "counter_type", "operation", "period"], :name => "index_counters_unique", :unique => true
 
   create_table "countries", :id => false, :force => true do |t|
-    t.string  "code",          :limit => 2,  :null => false
-    t.string  "name",          :limit => 40, :null => false
+    t.string  "code",          :limit => 2,                     :null => false
+    t.string  "name",          :limit => 40,                    :null => false
     t.string  "telcode",       :limit => 10
     t.float   "latitude"
     t.float   "longitude"
@@ -325,6 +325,12 @@ ActiveRecord::Schema.define(:version => 20121220144348) do
     t.string  "language",      :limit => 10
     t.string  "time_zone"
     t.string  "mail_encoding", :limit => 20
+    t.string  "domain",        :limit => 10
+    t.string  "code3",         :limit => 3
+    t.string  "currency",      :limit => 20
+    t.string  "region",        :limit => 100
+    t.string  "subregion",     :limit => 100
+    t.boolean "listable",                     :default => true
   end
 
   add_index "countries", ["slug"], :name => "index_countries_on_slug"
@@ -1112,6 +1118,8 @@ ActiveRecord::Schema.define(:version => 20121220144348) do
     t.string   "arrival_coun",    :limit => 2
     t.datetime "created_at",                                      :null => false
     t.datetime "updated_at",                                      :null => false
+    t.integer  "patron_id",                                       :null => false
+    t.integer  "transport_id",                                    :null => false
   end
 
   add_index "transnodes", ["position_id"], :name => "index_transnodes_on_position_id"
@@ -1153,10 +1161,30 @@ ActiveRecord::Schema.define(:version => 20121220144348) do
     t.string   "arv_place",      :limit => 60
     t.string   "dep_city",       :limit => 100
     t.string   "arv_city",       :limit => 100
+    t.string   "status",         :limit => 1,    :default => "A"
+    t.integer  "branch_id"
   end
 
   add_index "transports", ["position_id", "patron_id"], :name => "index_transports_on_position_id_and_patron_id"
   add_index "transports", ["vessel", "voyage", "patron_id"], :name => "index_transports_on_vessel_and_voyage_and_patron_id"
+
+  create_table "transroutes", :force => true do |t|
+    t.string   "route_type",     :limit => 20,  :null => false
+    t.string   "route_name",     :limit => 60,  :null => false
+    t.string   "route_city",     :limit => 50
+    t.string   "route_country",  :limit => 2,   :null => false
+    t.date     "arrival_date"
+    t.date     "departure_date"
+    t.integer  "route_id"
+    t.float    "longitude"
+    t.float    "latitude"
+    t.boolean  "gmaps"
+    t.integer  "transport_id",                  :null => false
+    t.integer  "patron_id",                     :null => false
+    t.string   "notes",          :limit => 250
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                           :limit => 40,                                           :null => false
