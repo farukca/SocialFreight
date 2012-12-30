@@ -1,4 +1,6 @@
 <div id="loading">
+  
+  <%= render 'breadcrumb', step: 1 %>
 
   <div id="opform" class="row-fluid">
     <%= simple_form_for @loading, :url => wizard_path, :method => :put, :html => {:class => 'form-horizontal'}, :validate => true do |f| %>
@@ -6,7 +8,7 @@
 
       <div class="pageBlock">
         <div class="page-header">
-          <h4><%= t("operations.title.loading_info") %></h4>
+          <h4><%= t("operations.title.loading_info") %><small class=""> <%= t("operations.title.talk_about_loading") %></small></h4>
         </div>
         
         <% if @loading.operation == 'inland' %>
@@ -16,15 +18,12 @@
         <% end %>
 
         <%= f.error :base %>
-        <div class="controls rightside">
-          <%#= link_to "Bu Adımı Atla >>", next_wizard_path, :class => 'btn btn-danger' %>
+        <div class="form-actions">
           <%= f.button :submit, t("operations.button.save_loading_continue_to_departure"), :class => 'btn btn-info' %>
         </div>
       </div>
 
     <% end %>
   </div>
-
-  <%= render 'breadcrumb', step: 1 %>
 
 </div>

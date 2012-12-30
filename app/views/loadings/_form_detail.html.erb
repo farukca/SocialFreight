@@ -3,10 +3,10 @@
     <legend><%= t("operations.title.loading_detail") %></legend>
     <div class="row-fluid">
     <div class="span6">
-      <%= f.input :category, as: :select, label: t("operations.label.category") %>
+      <%= f.input :category, as: :select, label: t("operations.label.category"), collection: Listitem.sectors.map { |t| [t.name, t.code] }, include_blank: true %>
       <%#= f.input :bank_flag, label: t("operations.label.bank_flag") %>
       <%= f.input :bank, label: t("operations.label.bank") %>
-      <%= f.input :notes, as: :text, input_html: { rows: 1 }, label: t("operations.label.loading_notes") %>
+      <%= f.input :notes, as: :text, input_html: { rows: 2 }, label: t("operations.label.loading_notes") %>
     </div>
     <div class="span6">
       <%= f.input :producer, label: t("operations.label.producer") %>
@@ -14,7 +14,7 @@
         <%= f.input_field :product_price, class: "input-small" %>
         <%= f.input_field :product_curr, as: :select, collection: Currency.all, include_blank: false, class: "input-small" %>
       <% end %>
-      <%= f.input :marks_nos, as: :text, input_html: { rows: 1 }, label: t("operations.label.marks_nos") %>
+      <%= f.input :marks_nos, as: :text, input_html: { rows: 2 }, label: t("operations.label.marks_nos") %>
     </div>
     </div>
   </fieldset>

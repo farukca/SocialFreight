@@ -5,7 +5,7 @@
   <div class="pageBlock">
     
     <div class="page-header">
-      <h4><%= t("operations.title.loading_info") %></h4>
+      <h4><%= t("operations.title.loading_info") %><small class=""> <%= t("operations.title.talk_about_loading") %></small></h4>
     </div>
 
     <div class="row-fluid">
@@ -14,18 +14,6 @@
         <div id="loading-main-form" class="tab-pane active form_tab_pane">
           <%= render 'form_main', :f => f %>
         </div>
-        <%# unless params[:action] == "edit" %>
-        <!--div id="loading-load-form" class="tab-pane form_tab_pane">
-          <%#= f.fields_for :departures do |builder| %>
-            <%#= render 'departures/form_fields', :f => builder %>
-          <%# end %>
-        </div>
-        <div id="loading-unload-form" class="tab-pane form_tab_pane">
-          <%#= f.fields_for :arrivals do |builder| %>
-            <%#= render 'arrivals/form_fields', :f => builder %>
-          <%# end %>
-        </div-->
-        <%# end %>
         <div class="row-fluid">
           <span class="pull-left">
             <%= link_to "#{t("operations.link.loading_detail")} >>", "#", :class => 'togglebutton', "data-href" => "#loading-detail-form" %>
@@ -36,15 +24,6 @@
           <%= render 'form_detail', :f => f %>
         </div>
       </div>
-
-      <!--ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#loading-main-form">1-Genel Yük Bilgileri</a></li>
-        <%# unless params[:action] == "edit" %>
-        <li><a data-toggle="tab" href="#loading-load-form">2-Yükleme Bilgileri</a></li>
-        <li><a data-toggle="tab" href="#loading-unload-form">3-Boşaltma Bilgileri</a></li>
-        <%# end %>
-        <li><a data-toggle="tab" href="#loading-detail-form">4-Diğer Bilgiler</a></li>
-      </ul-->
 
     </div>
     <div class="form-actions">

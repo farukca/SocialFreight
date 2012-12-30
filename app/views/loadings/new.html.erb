@@ -1,17 +1,7 @@
-<div id="loading">
-
-  <!--div class="row-fluid">
-    <ul class="breadcrumb">
-      <li><a href="#">Pozisyon Bilgileri</a><span class="divider">>></span></li>
-      <li><a href="#">Gemi Bilgileri</a><span class="divider">>></span></li>
-      <li class="active">Yük Bilgileri<span class="divider">>></span></li>
-      <li><a href="#">Konteyner Bilgileri</a></li>
-    </ul>
-  </div-->
+<div class="row-fluid">
   <% if @loading.operation == 'inland' %>
     <%= render 'form_inland' %>
   <% else %>
     <%= render 'form' %>
   <% end %>
-  
 </div>

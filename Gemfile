@@ -73,9 +73,6 @@ gem 'jbuilder'
 gem 'blogger', git: "git@github.com:farukca/blogger.git", ref: "212db5990a"
 #gem 'blogger', path: "../blogger"
 
-gem 'bullet', group: :development
-#gem 'rspec-rails', group: [:test, :development]
-gem 'ruby-debug19', group: [:development]
 group :test do
   # Pretty printed test output
   #gem 'mongoid-rspec'
@@ -86,4 +83,9 @@ group :test do
   gem 'capybara'
   gem 'fakeweb'
   gem 'simplecov', require: false
+end
+group :development do
+  gem 'meta_request', '0.2.0'
+  gem 'ruby-debug19'
+  gem 'bullet'
 end

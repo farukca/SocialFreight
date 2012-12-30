@@ -176,8 +176,7 @@ tr:
       category: "Yük Kategorisi"
       producer: "Yük Üreticisi"
       product_price: "Ürün Fiyatı"
-      marks_nos: "Marka & Numara"
-      bank_flag: "Akreditif mi?"
+      marks_nos: "Marka & Numaralar"
       bank: "Akreditif Bankası"
       loading_notes: "Detay Notlar"
       trans_method: "Taşıma Şekli"
@@ -230,6 +229,8 @@ tr:
       skip_this_step: "Bu Adımı Atla >>"
       save_loading_continue_to_departure: "Kaydet & Yükleme Bilgilerine Devam Et >>"
       save_departure_continue_to_arrival: "Kaydet & Boşaltma Bilgilerine Devam Et >>"
+      save_departure_continue_to_details: "Kaydet & Yük Detay Bilgilerine Devam Et >>"
+      save_details_and_continue_to_profile: "Kaydet & Yük Profil Sayfasına Devam Et"
       add_package: "Koli Bilgisi Ekle"
       save_loading: "Yük Bilgisini Kaydet"
     validmsg:

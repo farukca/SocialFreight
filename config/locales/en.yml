@@ -176,9 +176,8 @@ en:
       category: "Booking Category"
       producer: "Product Producer"
       product_price: "Product Price"
-      marks_nos: "Marks & Arrival Country"
-      bank_flag: "Akreditif Arrival City"
-      bank: "Akreditif Bankası"
+      marks_nos: "Marks & Nos"
+      bank: "Lettef of credit bank"
       loading_notes: "Detail Notes"
       trans_method: "Transportation Method"
       load_date: "Loading Arrival Seaport"
@@ -199,7 +198,7 @@ en:
     placeholder:
       customer: "Select Customer Company"
       sender: "Select Sender Company"
-      consignee: "SElect Consignee Company"
+      consignee: "Select Consignee Company"
       agent: "Select Foreign Agent"
       loader: "Select Loader Company"
       customofficer: "Select Customer Officer"
@@ -228,8 +227,10 @@ en:
       loading_detail: "I want to complete Booking Details"
     button:
       skip_this_step: "Skip This Step >>"
-      save_loading_continue_to_departure: "Save & Continue Loading Informations >>"
-      save_departure_continue_to_arrival: "Save & Continue Unloading Informations >>"
+      save_loading_continue_to_departure: "Save & Continue Departure Details >>"
+      save_departure_continue_to_arrival: "Save & Continue Arrical Details >>"
+      save_departure_continue_to_details: "Save & Continue Booking Details"
+      save_details_and_continue_to_profile: "Save & Continue Booking Profile"
       add_package: "Add Package Information"
       save_loading: "Save Booking"
     validmsg:

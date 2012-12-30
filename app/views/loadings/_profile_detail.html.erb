@@ -8,8 +8,8 @@
         <td class="labelCol2"><%= t("defaults.label.customer") %> :</td>
         <td class="dataCol2"><%= company_name(loading.company) if loading.company %></td>
         <td class="labelCol2"><%= t("defaults.label.freight_price") %> :</td>
-        <td class="dataCol2"><%= loading.freight_price %>&nbsp;<%= loading.freight_curr %></td>
-        <td class="dataCol2 lastCol"><%= t("defaults.label.brut_weight") %>:<%= loading.brut_wg %></td>
+        <td class="dataCol2"><%= loading_freight_price(loading) %></td>
+        <td class="dataCol2 lastCol"><%= t("defaults.label.brut_weight") %>:<%= loading_brut_weight(loading) %></td>
       </tr>
       <tr>
         <td class="labelCol2"><%= t("defaults.label.commodity")%> :</td>

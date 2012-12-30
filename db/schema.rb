@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121228140903) do
+ActiveRecord::Schema.define(:version => 20121230102244) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                                  :null => false
@@ -673,6 +673,7 @@ ActiveRecord::Schema.define(:version => 20121228140903) do
     t.integer  "containers_count",                :default => 0
     t.integer  "packages_count",                  :default => 0
     t.integer  "documents_count",                 :default => 0
+    t.string   "weight_unit",      :limit => 20
   end
 
   add_index "loadings", ["branch_id", "patron_id"], :name => "index_loadings_on_branch_id_and_patron_id"
