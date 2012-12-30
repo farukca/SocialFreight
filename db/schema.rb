@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121230102244) do
+ActiveRecord::Schema.define(:version => 20121230182247) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                                  :null => false
@@ -1260,6 +1260,8 @@ ActiveRecord::Schema.define(:version => 20121230102244) do
     t.string   "notes",          :limit => 250
     t.datetime "created_at",                                     :null => false
     t.datetime "updated_at",                                     :null => false
+    t.string   "vehicle_status", :limit => 20
+    t.string   "motor_number",   :limit => 50
   end
 
   add_index "vehicles", ["code", "patron_id"], :name => "index_vehicles_on_code_and_patron_id", :unique => true

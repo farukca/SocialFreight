@@ -16,7 +16,7 @@ class Contact < ActiveRecord::Base
   scope :latest, order("created_at desc")
 
   def to_s
-    "#{salutation}. #{name} #{surname}"
+    "#{salutation} #{name} #{surname}"
   end
   
 end

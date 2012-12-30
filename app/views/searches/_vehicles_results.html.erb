@@ -1,8 +1,8 @@
 <div id="report-results">
-  <%= render 'searches/contacts_form' %>
+  <%= render 'searches/vehicles_form' %>
   <div class="page-header">
-    <h4>Kişi Listesi
-    	<small><%= sanitize page_entries_info @contacts %></small>
+    <h4>Araç Listesi
+    	<small><%= sanitize page_entries_info @vehicles %></small>
 	  	<small class="pull-right">
 	  		<a href="#" class="saveascsv" data-table="contact_report_results">Excele Aktar</a>
 	  	</small>
@@ -10,10 +10,10 @@
   </div>
 
   <div class="row-fluid">
-    <%= render 'contacts/related_list', :objects => @contacts %>
+    <%= render 'vehicles/related_list', :objects => @vehicles %>
   </div>
 
   <div class="row-fluid">
-    <%= paginate @contacts %>
+    <%= paginate @vehicles %>
   </div>
 </div>

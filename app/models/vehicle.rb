@@ -3,8 +3,11 @@ class Vehicle < ActiveRecord::Base
   extend FriendlyId
   include GeneratesNick
 
-  #belongs_to :patron
   friendly_id :code, use: :slugged, use: :scoped, scope: :patron_id
+
+  validates :code, uniqueness: { scope: :patron_id, message: I18n.t('defaults.inputerror.must_be_unique') }, presence: { message: I18n.t('defaults.inputerror.cant_be_blank') }
+  validates :vehicle_class, presence: { message: I18n.t('defaults.inputerror.cant_be_blank') }
+  validates :vehicle_status, presence: { message: I18n.t('defaults.inputerror.cant_be_blank') }
 
   default_scope { where(patron_id: Patron.current_id) }
 
@@ -22,46 +25,6 @@ class Vehicle < ActiveRecord::Base
 
   def social_name
     self.slug
-  end
-
-  class << self
-    def vehicle_classes()
-      vehicle_classes = {
-        'TRLR' => 'Trailer',
-        'TRCK' => 'Truck/TIR',
-        'LRRY' => 'Lorry/Bogie',
-        'RMRK' => 'Romork',
-        'PCKP' => 'Van/Pickup',
-        'OTOB' => 'Otobus',
-        'OTOM' => 'Otomobile',
-        'MOTO' => 'Motorcycle'
-      }
-    end
-
-    def vehicle_statuses()
-      vehicle_statuses = {
-        'A' => 'Active',
-        'S' => 'Sold',
-        'P' => 'Pert'
-      }
-    end
-
-    def vehicle_ownerships()
-      vehicle_ownerships = {
-        'O' => 'Firm Property',
-        'P' => 'Has Partnership',
-        'R' => 'Rented'
-      }
-    end
-
-    def fuel_types()
-      fuel_types = {
-        'DIESEL' => 'Diesel',
-        'FUEL' => 'Motor Fuel',
-        'GAS' => 'Auto Gas'
-      }
-    end
-
   end
 
 end

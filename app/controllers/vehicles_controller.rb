@@ -30,7 +30,7 @@ class VehiclesController < ApplicationController
   end
 
   def new
-    @vehicle = Vehicle.new
+    @vehicle = Vehicle.new(vehicle_status: "active")
 
     respond_to do |format|
       format.html # new.html.erb

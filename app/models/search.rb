@@ -28,6 +28,10 @@ class Search < ActiveRecord::Base
     @transports = find_transports
   end
 
+  def vehicles
+    @vehicles = find_vehicles
+  end
+
   private
   def find_positions
     positions = Position.active
@@ -54,7 +58,7 @@ class Search < ActiveRecord::Base
   end
 
   def find_companies
-    companies = Company.latest
+    companies = Company.order(:name)
     companies = companies.where("lower(name) like ?", "%#{self.reference}%") if self.reference.present?
     companies = companies.where(created_at: self.docdate1..self.docdate2) if self.docdate1.present?
     companies = companies.where(branch_id: self.branch_id) if self.branch_id.present?
@@ -63,7 +67,7 @@ class Search < ActiveRecord::Base
   end
 
   def find_contacts
-    contacts  = Contact.latest
+    contacts  = Contact.order(:name)
     contacts  = contacts.where(company_id: self.company_id) if self.company_id.present?
     contacts  = contacts.where("lower(name) like ?", "%#{self.reference}%") if self.reference.present?
     contacts
@@ -77,4 +81,12 @@ class Search < ActiveRecord::Base
     transports = transports.where(created_at: self.docdate1..self.docdate2) if self.docdate1.present?
     transports
   end
+
+  def find_vehicles
+    vehicles = Vehicle.order(:code)
+    vehicles = vehicles.where("code like ?", "%#{self.reference}%") if self.reference.present?
+    vehicles = vehicles.where(created_at: self.docdate1..self.docdate2) if self.docdate1.present?
+    vehicles
+  end
+
 end

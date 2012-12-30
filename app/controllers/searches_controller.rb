@@ -41,7 +41,9 @@ class SearchesController < ApplicationController
       when "contacts"
         @contacts     = @search.contacts.page(params[:page]).per(10)
       when "transports"
-        @transports     = @search.transports.page(params[:page]).per(10)
+        @transports   = @search.transports.page(params[:page]).per(10)
+      when "vehicles"
+        @vehicles     = @search.vehicles.page(params[:page]).per(10)
     end 
   end
 
