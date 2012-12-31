@@ -1,5 +1,7 @@
 class Vehicle < ActiveRecord::Base
   
+  has_many :comments, as: :commentable, dependent: :destroy
+
   extend FriendlyId
   include GeneratesNick
 

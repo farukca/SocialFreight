@@ -33,8 +33,9 @@ class PayoffsController < ApplicationController
       @payoff.staff_id       = @transport.driver_id
       @payoff.vehicle        = @transport.vessel
       @payoff.truck          = @transport.truck
-      @payoff.departure_place = "#{@transport.dep_country.name} #{@transport.dep_city.name}"
-      @payoff.arrival_place  =  "#{@transport.arv_country.name} #{@transport.arv_city.name}"
+      @payoff.voyage         = @transport.voyage
+      @payoff.departure_place = "#{@transport.dep_country.name} #{@transport.dep_city}"
+      @payoff.arrival_place   =  "#{@transport.arv_country.name} #{@transport.arv_city}"
     end
 
     respond_to do |format|

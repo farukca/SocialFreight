@@ -25,7 +25,7 @@ class Payoff < ActiveRecord::Base
 
   private
   def set_initials
-    self.name = self.patron.generate_counter("Payoff", nil, nil)
+    self.name = Patron.generate_counter("Payoff", nil, nil)
     set_slug(self.name)
   end
 

@@ -16,7 +16,8 @@ class PaybackController < ApplicationController
       when :work_list
       	@staff_id = session[:wicked_payback_staff_id]
       	@staff_id = 1
-      	@person = People.find(@staff_id)
+      	@person = Person.find(@staff_id)
+        @user   = @person.user || User.new
       	#TODO burada staff'ı people tablosundan kontrol etmeli, sürücü mü yoksa gümrük personeli mi yoksa diğer mi
       	#@transports = current_patron.transports.where(:driver_id => @staff_id)
       	@transports = Transport.where(:driver_id => @staff_id)

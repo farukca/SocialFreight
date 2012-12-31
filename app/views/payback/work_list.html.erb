@@ -40,12 +40,10 @@
 			  <% table.column :truck, column_html: { class: "emailCol", scope: "col" } %>
 			  <% table.column :voyage, column_html: { class: "phoneCol", scope: "col" } %>
 			  <% table.column :dep_place, column_html: { class: "phoneCol", scope: "col" } do |transport| %>
-			    <%= transport.dep_country.name if transport.dep_country %>
-			    <%= "-#{transport.dep_city.name}" if transport.dep_city %>
+			    <%= "#{transport.dep_city} #{transport.dep_country_id}" %>
 			  <% end %>
 			  <% table.column :arv_place, column_html: { class: "phoneCol", scope: "col" } do |transport| %>
-			    <%= transport.arv_country.name if transport.arv_country %>
-			    <%= "-#{transport.arv_city.name}" if transport.arv_city %>
+			    <%= "#{transport.arv_city} #{transport.arv_country_id}" %>
 			  <% end %>
 			  <% table.column :payoff, column_html: { class: "actionCol", scope: "col" } do |transport| %>
 			    <%= link_to "Hesaplaş", new_payoff_path(transport_id: transport.id), class: "btn btn-info btn-mini" %> 

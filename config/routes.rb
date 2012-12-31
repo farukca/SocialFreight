@@ -62,7 +62,9 @@ Socialfreight::Application.routes.draw do
   resources :connects
 
   resources :rentals
-  resources :vehicles
+  resources :vehicles do
+    resources :comments
+  end
   resources :vessels
   resources :documents
   resources :costs

@@ -12,6 +12,9 @@
       <div class="form-actions">
         <%= f.button :submit, t("transports.action.save"), class: 'btn btn-info', accesskey: "s" %>
         <%= link_to t("defaults.link.cancel"), position_path(@transport.position), class: "btn" %>
+        <% if params[:action] != "edit" %>
+          <span class="pull-right label"><%= t("transports.message.enter_road_route") %></span>
+        <% end %>
       </div>
 
       <div style="display:none">

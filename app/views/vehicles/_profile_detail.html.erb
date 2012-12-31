@@ -1,0 +1,26 @@
+<div id="quick-profile" class="vehicle">
+  <div>
+    <table style="width:100%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td class="labelCol2"><%= t("vehicles.label.plate") %>:</td>
+        <td class="dataCol2"><%= detailed_vehicle_name(vehicle) %></td>
+        <td class="labelCol2"><%= t("vehicles.label.vehicle_status") %>:</td>
+        <td class="dataCol2 lastCol"><%= vehicle.vehicle_status %>
+          <small class="pull-right"><%= link_to t("defaults.link.edit"), edit_vehicle_path(vehicle) %></small>
+        </td>
+      </tr>
+      <tr>
+        <td class="labelCol2"><%= t("vehicles.label.model") %>:</td>
+        <td class="dataCol2"><%= detailed_vehicle_model(vehicle) %></td>
+        <td class="labelCol2"><%= t("vehicles.label.motor_number") %>:</td>
+        <td class="dataCol2 lastCol"><%= vehicle.motor_number %></td>
+      </tr>
+      <tr>
+        <td class="labelCol2"><%= t("vehicles.label.fuel_type") %>:</td>
+        <td class="dataCol2"><%= vehicle.fuel_type %></td>
+        <td class="labelCol2"><%= t("defaults.label.vehicle_price") %>:</td>
+        <td class="dataCol2 lastCol"><%= vehicle_buying_price(vehicle) %></td>
+      </tr>
+    </table>
+  </div>
+</div>

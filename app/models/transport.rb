@@ -23,6 +23,8 @@ class Transport < ActiveRecord::Base
   validates_presence_of :trans_method
   validates_presence_of :departure_date
   validates_presence_of :arrival_date
+  validates :dep_country, presence: true
+  validates :arv_country, presence: true
 
   default_scope { where(patron_id: Patron.current_id) }
   scope :active, where(status: "A")

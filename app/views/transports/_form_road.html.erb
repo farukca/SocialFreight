@@ -8,14 +8,14 @@
   <div class="row-fluid">
     <div class="span6">
       <fieldset>
-        <legend><%= t("transports.title.road_transport") %></legend>
+        <div class="page-header"><h5><%= t("transports.title.road_transport") %></h5></div>
         <%= f.input :vessel, label: t("transports.label.road_vessel") do %>
           <%= f.input_field :vessel, class: "input-small", placeholder: t("transports.placeholder.vehicle") %>
           <%= f.input_field :truck, class: "input-small", placeholder: t("transports.placeholder.truck") %>
         <% end %>
         <%= f.input :voyage, label: t("transports.label.voyage") %>
         <%= f.input :driver_name, label: t("transports.label.driver") %>
-        <%#= f.input :driver_id, as: :hidden, label: t("transports.label.driver"), input_html: {class: "chosen_input", "data-url" => "/people.json", "data-newrecurl" => "/people/new", "data-placeholder" => t("transports.placeholder.driver") } %>
+        <%= f.input :driver_id, as: :hidden, label: t("transports.label.driver"), input_html: {class: "chosen_input", "data-url" => "/people.json", "data-newrecurl" => "/people/new", "data-placeholder" => t("transports.placeholder.driver") } %>
         <hr>
         <%#= f.input :owner_id, as: :hidden, label: "Araç Sahibi Firma", input_html: { class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => "Araç Sahibi Firmayı Seçiniz"} %>
         <%= f.input :supplier_id, as: :hidden, label: t("transports.label.transporter"), input_html: { class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => t("transports.placeholder.transporter") } %>
@@ -31,35 +31,32 @@
     </div>
     <div class="span6">
       <fieldset>
-        <legend><%= t("transports.title.road_departure") %></legend>
+        <div class="page-header"><h5><%= t("transports.title.road_departure") %></h5></div>
         <%= f.input :departure_date, label: t("transports.label.departure_datehour") do %>
           <%= f.input_field :departure_date, as: :string, placeholder: t("operations.label.departure_date"), class: "input-date", "data-datepicker" => "datepicker" %>
           <%= f.input_field :departure_hour, placeholder: t("transports.placeholder.transport_hour"), class: "input-hour" %>
         <% end %>
         <%= f.input :dep_place, label: t("transports.label.departure_place") do %>
-          <%= f.input_field :dep_place_type, as: :select, collection: Loading.point_types.map { |r| [r[1], r[0] ] }, include_blank: true, class: "input-small" %>
+          <%= f.input_field :dep_place_type, as: :select, collection: Listitem.transpoints.map { |t| [t.name, t.code] }, include_blank: true, class: "input-small" %>
           <%= f.input_field :dep_place, class: "input-small" %>
         <% end %>
         <%= f.input :dep_country_id, label: t("transports.label.departure_citycountry") do %>
-          <%=f.input_field :dep_country_id, as: :select, collection: Country.all, include_blank: true, class: "input-small country_select", placeholder: t("transports.placeholder.departure_country") %>
-          <%= f.input_field :dep_city, class: "input-small", placeholder: t("transports.placeholder.departure_city") %>
+          <%=f.input_field :dep_country_id, as: :select, collection: Country.all, include_blank: true, class: "country_select", placeholder: t("transports.placeholder.departure_country") %>
         <% end %>
+        <%= f.input :dep_city, placeholder: t("transports.placeholder.departure_city") %>
         <hr>
         <%= f.input :arrival_date, label: t("transports.label.arrival_datehour") do %>
           <%= f.input_field :arrival_date, as: :string, placeholder: t("operations.label.arrival_date"), class: "input-date", "data-datepicker" => "datepicker" %>
           <%= f.input_field :arrival_hour, placeholder: t("transports.placeholder.transport_hour"), class: "input-hour" %>
         <% end %>
         <%= f.input :arv_place, label: t("transports.label.arrival_place") do %>
-          <%= f.input_field :arv_place_type, as: :select, collection: Loading.point_types.map { |r| [r[1], r[0] ] }, include_blank: true, class: "input-small" %>
+          <%= f.input_field :arv_place_type, as: :select, collection: Listitem.transpoints.map { |t| [t.name, t.code] }, include_blank: true, class: "input-small" %>
           <%= f.input_field :arv_place, class: "input-small" %>
         <% end %>
         <%= f.input :arv_country_id, label: t("transports.label.arrival_citycountry") do %>
-          <%= f.input_field :arv_country_id, as: :select, collection: Country.all, include_blank: true, class: "input-small country_select", placeholder: t("transports.placeholder.arrival_country") %>
-          <%= f.input_field :arv_city, class: "input-small", placeholder: t("transports.placeholder.arrival_city") %>
+          <%= f.input_field :arv_country_id, as: :select, collection: Country.all, include_blank: true, class: "country_select", placeholder: t("transports.placeholder.arrival_country") %>
         <% end %>
-        <% if params[:action] != "edit" %>
-          <span class="pull-right label"><%= t("transports.message.enter_road_route") %></span>
-        <% end %>
+        <%= f.input :arv_city, placeholder: t("transports.placeholder.arrival_city") %>
       </fieldset>
     </div>
   </div>
