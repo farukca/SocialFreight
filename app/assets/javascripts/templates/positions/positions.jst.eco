@@ -17,5 +17,4 @@
   </table>
 <% else: %>
   <div class="alert alert-warning">No Project found for this booking</div>
-  No positions
 <% end %>

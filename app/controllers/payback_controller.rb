@@ -14,14 +14,10 @@ class PaybackController < ApplicationController
       	@payoff = Payoff.new
 
       when :work_list
-      	@staff_id = session[:wicked_payback_staff_id]
-      	@staff_id = 1
-      	@person = Person.find(@staff_id)
+      	staff_id = session[:wicked_payback_staff_id]
+    	  @person = Person.find(staff_id)
         @user   = @person.user || User.new
-      	#TODO burada staff'ı people tablosundan kontrol etmeli, sürücü mü yoksa gümrük personeli mi yoksa diğer mi
-      	#@transports = current_patron.transports.where(:driver_id => @staff_id)
-      	@transports = Transport.where(:driver_id => @staff_id)
-      	
+    	  @transports = Transport.where(:driver_id => staff_id)
     end
 
     render_wizard
@@ -33,9 +29,12 @@ class PaybackController < ApplicationController
     case step
 
       when :select_staff
-      	@staff_id = params[:payoff][:staff_id]
-      	session[:wicked_payback_staff_id] = @staff_id
-      	skip_step
+        if params[:payoff][:staff_id].blank?
+          redirect_to payback_path(:select_staff)
+        else
+          session[:wicked_payback_staff_id] = params[:payoff][:staff_id]
+      	  skip_step
+        end
     end
 
     render_wizard

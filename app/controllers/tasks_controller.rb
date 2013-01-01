@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   before_filter :require_login
 
   def index
-  	@tasks = Task.all
+  	@tasks = current_user.tasks
   end
 
   def new
