@@ -10,7 +10,7 @@
 
       <div class="row-fluid">
         <div class="span6">
-          <%= f.input :document_type, as: :select, collection: Place.place_types.map { |r| [r[1], r[0] ] }, include_blank: true, label: t("documents.label.document_type") %>
+          <%= f.input :document_type, as: :select, collection: Listitem.documenttypes.map { |t| [t.name, t.code ] }, label: t("documents.label.document_type") %>
           <%= f.input :document_date, as: :string, input_html: {class: "input-small", "data-datepicker" => "datepicker"}, label: t("documents.label.document_date") %>
           <%= f.input :document_no, label: t("documents.label.document_no") %>
           <%= f.input :document_file, as: :file, label: t("documents.label.upload_document") %>

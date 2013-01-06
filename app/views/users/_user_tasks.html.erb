@@ -4,7 +4,7 @@
       <h5><%= t("tasks.title.last_tasks") %><small class="pull-right"><a href="#"><%= t("defaults.label.seeall") %></a></small></h5>
     </div>
     <ul class="media-list">
-      <%= render current_user.tasks %>
+      <%= render current_user.active_tasks %>
     <ul>
   </div>
 </div>

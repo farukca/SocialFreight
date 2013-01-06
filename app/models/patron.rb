@@ -19,10 +19,10 @@ class Patron < ActiveRecord::Base
 
   attr_accessor :username
 
-  attr_accessible :name, :website, :tel, :fax, :postcode, :district, :address, :city_id, :country_id, :status, :saler_id, 
+  attr_accessible :name, :website, :tel, :fax, :postcode, :district, :address, :city, :country_id, :status, :saler_id, 
                   :email, :operations, :contact_name, :contact_surname, :time_zone, :language, :logo, :remove_logo,
                   :vehicle_owner, :depot_owner, :patron_type, :iata_code, :fmc_code, :locale, :mail_encoding, 
-                  :counters_attributes, :users_attributes, :branches_attributes
+                  :title, :currency, :username, :counters_attributes, :users_attributes, :branches_attributes
 
   def self.current_id=(id)
     Thread.current[:patron_id] = id
@@ -36,9 +36,9 @@ class Patron < ActiveRecord::Base
   after_create  :create_head_office, :create_patron_user, :create_company #, :create_admin_user
 
   validates :name, presence: true, length: { in: 2..40 }
-  validates :email, check_registered: { message: I18n.t("patrons.messages.mailexists")}, 
+  validates :email, check_registered: { message: I18n.t("patrons.messages.mailexists"), on: :create}, 
                     presence: true, 
-                    uniqueness: { case_sensitive: false }, length: { in: 7..60 }, 
+                    uniqueness: { case_sensitive: false, on: :create }, length: { in: 7..60 }, 
                     format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, on: :create }
   validates :contact_name, presence: true, length: { in: 2..40 }
   validates :contact_surname, presence: true, length: { in: 2..40 }

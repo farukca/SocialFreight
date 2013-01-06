@@ -610,11 +610,11 @@ tr:
       email: "E-Posta"
       password: "Şifre"
       comfirm_password: "Şifrenizi Tekrar Giriniz"
-      remember_me: "Kullanıcı Adımı Hatırla, Beni Yorma"
+      remember_me: "Kullanıcı Adımı Hatırla"
       free_trial: "Ücretsiz Deneyebilirsiniz"
       login: "Giriş Yap"
       signup: "Üye Ol"
-      forgot_password: "Yine Şifremi Unuttum"
+      forgot_password: "Şifremi Unuttum"
       signup_for_free: "Ücretsiz bireysel hesabını açabilirsiniz"
       no_account_yet: "Henüz üye olmadıysanız,"
       are_you_freighter: "Lojistik hizmet sağlayıcı mısınız ?"
@@ -710,6 +710,7 @@ tr:
         less_than_or_equal_to: "{{count}} değerinden küçük veya eşit olmalı"
         odd: "çift sayıları kullanamazsınız, tek sayı olmalı"
         even: "tek sayıları kullanamazsınız, çift sayı olmalı"
+        record_invalid: "Kayıt geçerli değil, tekrar deneyiniz"
   views:
     pagination:
       first: "&laquo; İlk Sayfa"

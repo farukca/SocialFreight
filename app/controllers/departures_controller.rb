@@ -13,7 +13,7 @@ class DeparturesController < ApplicationController
   end
 
   def new
-  	@loading = current_patron.loadings.find(params[:loading_id])
+  	@loading = Loading.find(params[:loading_id])
     @departure = @loading.departures.build(params[:departure])
     @departure.country_id = @loading.load_coun if @loading.load_coun
     
@@ -28,7 +28,7 @@ class DeparturesController < ApplicationController
   end
 
   def create
-  	@loading = current_patron.loadings.find(params[:departure][:loading_id])
+  	@loading = Loading.find(params[:departure][:loading_id])
     @departure = @loading.departures.build(params[:departure])
     #@departure.user_id = current_user.id
     

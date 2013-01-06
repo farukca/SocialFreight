@@ -95,7 +95,11 @@ class User < ActiveRecord::Base
 
   def social_posts
     #@social_posts = Post.where("user_id IN (?) OR user_id = ? ", self.followees(User), self.id).limit(6).order("created_at desc")
-    @social_posts = Post.limit(6).order("created_at desc")
+    @social_posts = Post.includes(:user).limit(6).order("created_at desc")
+  end
+
+  def active_tasks
+    @tasks = Task.includes(:user).active.where(user_id: self.id)
   end
 
 end

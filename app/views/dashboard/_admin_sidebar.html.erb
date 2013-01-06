@@ -6,7 +6,6 @@
         <li><%= link_to patron_path(current_patron) do %><i class="icon-home"></i> <%= t("dashboard.link.patron_info") %><% end %></li>
         <li><%= link_to users_path do %><i class="icon-user"></i><%= t("dashboard.link.user_actions") %><% end %></li>
         <li><%= link_to branches_path do %><i class="icon-comment"></i> <%= t("dashboard.link.branch_actions") %><% end %></li>
-        <li><%= link_to listheaders_path do %><i class="icon-list"></i> <%= t("dashboard.link.params_actions") %><% end %></li>
         <!--li><%#= link_to counters_path do %><i class="icon-user"></i> Sayaçlar<%# end %></li-->
         <li class="divider"></li>
       <% end %>
@@ -24,6 +23,7 @@
         <li><%= link_to feedbacks_path do %><i class="icon-cog"></i><%= t("dashboard.link.feedback_actions") %><% end %></li>
         <li><%= link_to patrons_path do %><i class="icon-user"></i><%= t("dashboard.link.patron_actions") %><% end %></li>
         <li class="divider"></li>
+        <li><%= link_to listheaders_path do %><i class="icon-list"></i> <%= t("dashboard.link.params_actions") %><% end %></li>
         <li><%= link_to countries_path do %><i class="icon-globe"></i><%= t("dashboard.link.country_actions") %><% end %></li>
         <li><%= link_to banks_path do %><i class="icon-gift"></i><%= t("dashboard.link.bank_actions") %><% end %></li>
         <li><%= link_to currencies_path do %><i class="icon-bell"></i><%= t("dashboard.link.currency_actions") %><% end %></li>

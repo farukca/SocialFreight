@@ -89,3 +89,4 @@ group :development do
   gem 'ruby-debug19'
   gem 'bullet'
 end
+gem 'rack-mini-profiler'

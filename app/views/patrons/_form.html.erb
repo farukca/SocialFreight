@@ -18,7 +18,7 @@
     <%#= f.input :language %>
   </fieldset>
   <div class="form-actions">
-    <%= f.button :submit, t("web.label.signup"), class: 'btn btn-success' %>
+    <%= f.button :submit, t("web.label.signup"), class: 'btn btn-success', "data-loading-text" => "Processing..." %>
   </div>
 <% end %>
 </div>

@@ -20,10 +20,10 @@
           <%= f.input_field :brutwg, class: "input-small" %>
           <%= f.input_field :netwg,  class: "input-small" %>
         <% end %>
-        <%= f.input :volume, label: t("packages.label.volume_lada") do %>
-          <%= f.input_field :volume, class: "input-small" %>
-          <%= f.input_field :lada,  class: "input-small" %>
-        <% end %>
+        <%#= f.input :volume, label: t("packages.label.volume_lada") do %>
+          <%#= f.input_field :volume, class: "input-small" %>
+          <%#= f.input_field :lada,  class: "input-small" %>
+        <%# end %>
         <%= f.input :description, as: :text, input_html: { rows: "2" }, label: t("packages.label.description") %>
       </fieldset>
     </div>
@@ -32,7 +32,7 @@
         <%= f.input :imo, label: t("packages.label.imo") %>
         <%= f.input :gtip, label: t("packages.label.gtip") %>
         <%= f.input :po, label: t("packages.label.po") %>
-        <%= f.input :container_no, label: t("packages.label.container_no"), placeholder: t("packages.placeholder.container_no") %>
+        <%#= f.input :container_no, label: t("packages.label.container_no"), placeholder: t("packages.placeholder.container_no") %>
         <%= f.input :loading_notes, as: :text, input_html: { rows: "2" }, label: t("packages.label.loading_notes") %>
       </fieldset>
     </div>

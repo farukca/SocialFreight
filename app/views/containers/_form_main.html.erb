@@ -21,8 +21,9 @@
       <% end %>
       <%= f.input :notes, as: :text, input_html: { rows: "2" }, label: t("defaults.label.notes") %>
     </fieldset>
-    <div class="controls">
-      <%= f.button :submit, t("containers.action.save"), :class => 'btn btn-info' %>
-    </div>
   </div>
+</div>
+<div class="form-actions">
+  <%= f.button :submit, t("containers.action.save"), :class => 'btn btn-info' %>
+  
 </div>

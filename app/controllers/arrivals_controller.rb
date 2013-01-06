@@ -13,7 +13,7 @@ class ArrivalsController < ApplicationController
   end
 
   def new
-    @loading = current_patron.loadings.find(params[:loading_id])
+    @loading = Loading.find(params[:loading_id])
     @arrival = @loading.arrivals.build(params[:arrival])
     @arrival.country_id = @loading.unload_coun if @loading.unload_coun
 
@@ -28,7 +28,7 @@ class ArrivalsController < ApplicationController
   end
 
   def create
-    @loading = current_patron.loadings.find(params[:arrival][:loading_id])
+    @loading = Loading.find(params[:arrival][:loading_id])
     @arrival = @loading.arrivals.build(params[:arrival])
     #@arrival.user_id = current_user.id
     

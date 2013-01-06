@@ -11,10 +11,16 @@ class ReservationController < ApplicationController
 
     case step
       when :load_info
-        @loading = Loading.new
-        @loading.operation = params[:operation]
-        @loading.setup
-        
+
+        operation = current_operation
+        if operation.blank?
+          session[:return_to_operation] = request.url
+          redirect_to operations_path
+        else
+          @loading = Loading.new
+          @loading.operation = params[:operation]
+          @loading.setup
+        end
       when :departure_info
 		    @loading = Loading.find(session[:wicked_loading_id])
         @departure = @loading.departures.new
