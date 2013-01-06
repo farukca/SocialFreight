@@ -87,7 +87,9 @@ Socialfreight::Application.routes.draw do
   resources :currencies
   resources :banks
   resources :feedbacks
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
   resources :activities
   resources :tasks
   resources :nicks

@@ -5,10 +5,14 @@
       <%= user_name(post.user) %>
       <span class="pull-right timeago" title="<%= post.created_at.round(0).iso8601(10) %>"></span>
     </h6>
-    <p>
+    <div class="media">
       <%= sanitize(auto_link(post.message)) %>
       <%#= link_to post.target_name, polymorphic_url(post.target), title: "#{post.target_type}: #{post.target_name}" if post.target_id %>
       <%= link_to post.target_name, "#", title: "#{post.target_type}: #{post.target_name}" if post.target_id %>
-    </p>
+    </div>
+    <div class="media-footer">
+      <a href="#" class="replytopost" data-post-id="<%= post.id %>">Comment</div>
+      <div class="post-comment-form"></div>
+    </div>
   </div>
 </li>

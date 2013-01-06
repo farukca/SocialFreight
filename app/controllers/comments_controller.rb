@@ -3,6 +3,11 @@ class CommentsController < ApplicationController
   before_filter :require_login
   respond_to :js, :json
 
+  def new
+    @commentable = find_commentable
+    @comment = @commentable.comments.new
+  end
+
   def create
     @commentable = find_commentable
     @comment = @commentable.comments.build(params[:comment])

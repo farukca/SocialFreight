@@ -1,0 +1,15 @@
+<%= @formFor @comment, (form) => %>
+  <label>Comment:</label>
+  <%= form.textField "comment_text" %>
+<% end %>
+
+<% formFor: (comment, yield_to) -> %>
+  <% form = %>
+    <% textField: (attribute) => %>
+      <% name  = @escape attribute %>
+      <% value = @escape @comment[attribute] %>
+      <% @safe "<input type='text' name='#{name}' value='#{value}'>" %>
+  <% url  = "/comments" %>
+  <% body = yield_to form %>
+  <% @safe "<form action='#{url}' method='post'>#{body}</form>" %>
+<% end %>
