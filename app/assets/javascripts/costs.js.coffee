@@ -3,9 +3,10 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ->
   $(".replytopost").click ->
+    postElement = $(this)
     $.ajax
-      url: "/posts/" + $(this).data("post-id") + "/comments/new"
+      url: "/posts/" + postElement.data("post-id") + "/comments/new"
       type: "GET",
       dataType: "json",
       success: (data) ->
-        $(this).next(".post-comment-form").html JST["templates/comments/form"](comment : data)
+        postElement.next("div.post-comment-form").html JST["templates/comments/form"](comment : data)

@@ -1,15 +1,9 @@
-<%= @formFor @comment, (form) => %>
-  <label>Comment:</label>
-  <%= form.textField "comment_text" %>
-<% end %>
-
-<% formFor: (comment, yield_to) -> %>
-  <% form = %>
-    <% textField: (attribute) => %>
-      <% name  = @escape attribute %>
-      <% value = @escape @comment[attribute] %>
-      <% @safe "<input type='text' name='#{name}' value='#{value}'>" %>
-  <% url  = "/comments" %>
-  <% body = yield_to form %>
-  <% @safe "<form action='#{url}' method='post'>#{body}</form>" %>
-<% end %>
+<form id="new_comment_<%= @comment.commentable_id%>" class="form-horizontal" action="<%= @comment.commentable_path %>/comments" data-remote="true" method="post">
+  <input name="authenticity_token" type="hidden" value="" />
+  <div class="row-fluid">
+    <div class="input-append">
+      <input class="input-xlarge" id="comment_comment_text" name="comment[comment_text]" size="30" type="text" />
+      <input class="btn btn-info" name="commit" type="submit" value="Paylaş" />
+    </div>
+  </div>  
+</form>

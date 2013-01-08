@@ -10,9 +10,11 @@
       <%#= link_to post.target_name, polymorphic_url(post.target), title: "#{post.target_type}: #{post.target_name}" if post.target_id %>
       <%= link_to post.target_name, "#", title: "#{post.target_type}: #{post.target_name}" if post.target_id %>
     </div>
+    <div class="row-fluid comment-list">
+      <%= render 'comments/comments', object: post %>
+    </div>
     <div class="media-footer">
-      <a href="#" class="replytopost" data-post-id="<%= post.id %>">Comment</div>
-      <div class="post-comment-form"></div>
+      <a href="#" class="replytopost" data-post-id="<%= post.id %>">Comment</a>
     </div>
   </div>
 </li>

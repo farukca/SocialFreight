@@ -1,9 +1,5 @@
-<div id="commentlist">
-  <div class="todoListHeader"><%= t("default.title.comments") %>
-    <!--span id="commentCount" class="rightside"><%= object.comments.count %></span-->
-  </div>
-      <ul>
-        <%= render object.comments.order("created_at desc") %>
-      </ul>
-  </div>
+<div id="commentlist_<%= object.id %>">
+  <ul>
+    <%= render object.comments.order("created_at desc") %>
+  </ul>
 </div>

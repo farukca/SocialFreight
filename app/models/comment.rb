@@ -1,7 +1,7 @@
 class Comment < ActiveRecord::Base
 
   belongs_to :user
-  belongs_to :commentable, polymorphic: true
+  belongs_to :commentable, polymorphic: true, touch: true
 
   attr_accessible :comment_text, :commenter, :commentable, :user_id
 
@@ -23,7 +23,9 @@ class Comment < ActiveRecord::Base
 
   private
   def add_post
-    Post.log(user_id, commentable, commentable.to_s, comment_text, true)
+    unless commentable.class.name == "Post"
+      Post.log(user_id, commentable, commentable.to_s, comment_text, true)
+    end
   end
 
 end

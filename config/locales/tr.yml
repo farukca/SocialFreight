@@ -479,7 +479,7 @@ tr:
       save: "Firma Bilgisini Kaydet"
   tasks:
     title:
-      last_tasks: "Son Eklenen Firmalar"
+      last_tasks: "Aktif Görevler"
       task_info: "Yetkili Bilgisi"
     label:
       user: "Kullanıcı"
