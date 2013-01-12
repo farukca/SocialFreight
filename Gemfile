@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.6'
+gem 'rails', '3.2.11'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -28,10 +28,11 @@ gem 'client_side_validations', '~> 3.2.0'
 gem 'client_side_validations-simple_form', '~> 2.0.0'
 
 gem 'table-for'
+gem 'mobile-fu'
 
 #gem 'rails3-jquery-autocomplete'
 gem 'kaminari', '~> 0.13.0'
-gem 'friendly_id'
+gem 'friendly_id', '~> 4.0.9'
 gem 'socialization'
 gem 'twitter-text'
 

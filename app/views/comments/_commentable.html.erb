@@ -1,6 +1,6 @@
-<div id="commentable">
+<%= render 'comments/comments', :object => object %>
+<div class="commentable_form">
   <div class="post-module-in">
     <%= render 'comments/form', :object => object %>
   </div>
 </div>
-<%= render 'comments/comments', :object => object %>

@@ -32,6 +32,7 @@ class Loading < ActiveRecord::Base
     
   #has_many :waybills, as: :waybillable, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
+  has_many :posts, as: :target, dependent: :destroy
   has_many :documents, as: :documented, dependent: :destroy
   has_many :costs, as: :costable, dependent: :destroy
   has_many :invoitems, as: :invoitem_owner, dependent: :destroy

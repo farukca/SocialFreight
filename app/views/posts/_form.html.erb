@@ -1,11 +1,11 @@
 <div class="row-fluid">
   <%= form_for Post.new, remote: true, html: {class: "condensed-form"} do |f| %>
     <fieldset>
-      <%= f.text_area :message, class: "span12", rows: "2", placeholder: "Mesajınız" %>
+      <%= f.text_area :message, class: "input-block-level", rows: "2", placeholder: t("posts.placeholder.message") %>
       <!--h6 class="pull-right">Type your message</h6-->
       <div class="condensed-fields">
         <%= f.text_field :related_user_ids, as: :hidden, "data-url" => "/users.json" %>
-        <%= f.submit("Mesajı Gönder", class: 'btn btn-info pull-right') %>
+        <%= f.submit t("posts.action.submit"), class: 'btn btn-info pull-right' %>
       </div>
     </fieldset>
   <% end %>

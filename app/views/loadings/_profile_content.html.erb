@@ -53,9 +53,7 @@
         </div-->
 
         <div class="row-fluid profile-section">
-          <div id="loading_comments" class="feeds">
-            <%= render 'comments/commentable', :object => @loading %>
-          </div>
+          <%= render 'posts/postlist', posts: @loading.posts %>
         </div>
 
       <!--/td>

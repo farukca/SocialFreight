@@ -156,9 +156,6 @@ hr {
   border: 1px solid #dddddd;
   border-left-width: 0;
 }
-.media-footer {
-  display: none;
-}
-.media-body:hover .media-footer {
-  display: inline;
+.media {
+  border-bottom: 1px solid #EEEEEE;
 }

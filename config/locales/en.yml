@@ -112,7 +112,7 @@ en:
       new_invoitem: "Add New Invoice Line"
       new_cost: "Add New Cost"
       new_comment: "Add Comment"
-      new_post: "Write your message"
+      new_post: "Share an Update"
       new_company: "New Account"
       new_contact: "New Contact"
       new_partner: "New Partner"
@@ -506,6 +506,13 @@ en:
     link:
     action:
       save: "Save Document Information"
+  posts:
+    link:
+      new_post: "Share and Update"
+    placeholder:
+      message: "What are you working on ?"
+    action:
+      submit: "Share Post"
   junks:
     title:
       junks: "Trash"

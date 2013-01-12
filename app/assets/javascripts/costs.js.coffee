@@ -9,4 +9,4 @@ jQuery ->
       type: "GET",
       dataType: "json",
       success: (data) ->
-        postElement.next("div.post-comment-form").html JST["templates/comments/form"](comment : data)
+        postElement.parent().next("div.post-comment-list").html JST["templates/comments/form"](comment : data)

@@ -1,5 +1,5 @@
 <div id="commentlist_<%= object.id %>">
   <ul>
-    <%= render object.comments.order("created_at desc") %>
+    <%= render object.comments.order("created_at asc") %>
   </ul>
 </div>

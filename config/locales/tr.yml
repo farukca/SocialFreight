@@ -112,7 +112,7 @@ tr:
       new_invoitem: "Fatura Kalem Bilgisi Ekle"
       new_cost: "Masraf Bilgisi Ekle"
       new_comment: "Yorum Ekle"
-      new_post: "Mesajınız"
+      new_post: "Ne konuda çalışıyorsunuz ?"
       new_company: "Firma Oluştur"
       new_contact: "Kontak Bilgisi Ekle"
       new_partner: "İş Ortağı Ekle"
@@ -506,6 +506,13 @@ tr:
     link:
     action:
       save: "Belge Bilgilerini Kaydet"
+  posts:
+    link:
+      new_post: "Mesaj Yaz"
+    placeholder:
+      message: "Çalıştığın konu hakkında yazabilirsin"
+    action:
+      submit: "Mesajı Gönder"
   junks:
     title:
       junks: "Çöp Kutusu"
