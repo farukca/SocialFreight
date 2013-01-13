@@ -1,2 +1,2 @@
-$('#commentlist ul').prepend("<%= j render @comment %>");
+$('#<%= @comment.commentable_type%>_<%= @comment.commentable_id%>_commentlist').append("<%= j render @comment %>");
 $('#new_comment').each(function() { this.reset(); });

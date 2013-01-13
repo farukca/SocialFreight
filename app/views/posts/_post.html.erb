@@ -1,7 +1,7 @@
-<li class="media">
+<li id="Post_<%= post.id %>" class="media">
   <%= link_to (image_tag user_small_avatar(post.user), class: "media-object img-circle"), user_path(post.user), class: "pull-left" %>
   <div class="media-body">
-    <div class="media">
+    <div class="media-content">
       <%= link_to post.target_name, "#", title: "#{post.target_type}: #{post.target_name}" if post.target_id %>&nbsp;-&nbsp;
       <%= link_to user_name(post.user), user_path(post.user) %>:&nbsp;
       <%= sanitize(auto_link(post.message)) %>

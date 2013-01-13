@@ -15,14 +15,13 @@ class PostsController < ApplicationController
     end if usernames
 
     @post.save!
-    respond_with @post, :success => "post added"
+    respond_with @post, success: "Successfully saved post"
   end
 
   def destroy
     @post = post.find(params[:id])
     @post.destroy
-    flash[:notice] = "Successfully destroyed post."
-    redirect_to posts_url
+    respond_with @post, notice: "Successfully destroyed post"
   end
 
 end

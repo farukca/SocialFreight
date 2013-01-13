@@ -959,7 +959,13 @@ div.addIcon {
   background-color: #dff0d8;
   border-color: #d6e9c6;  
 }
+.sub-link {
+  padding-left: 20px;
+}
 .sub-info {
   color: #8b8b8b;
   font-size: 12px;
+}
+.deleted {
+  text-decoration: line-through;
 }

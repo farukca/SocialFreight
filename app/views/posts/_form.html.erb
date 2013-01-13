@@ -5,6 +5,8 @@
       <!--h6 class="pull-right">Type your message</h6-->
       <div class="condensed-fields">
         <%= f.text_field :related_user_ids, as: :hidden, "data-url" => "/users.json" %>
+      </div>
+      <div class="form-actions">
         <%= f.submit t("posts.action.submit"), class: 'btn btn-info pull-right' %>
       </div>
     </fieldset>
