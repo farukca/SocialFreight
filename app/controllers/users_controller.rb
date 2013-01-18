@@ -97,6 +97,13 @@ class UsersController < ApplicationController
     #user = login(params[:email], params[:password], params[:remember_me])
 
   end
+
+  def invite_coworkers
+    @users = Array.new(10) { User.new }
+  end
+
+  def create_coworkers
+  end
   
   def follow
     @followable = find_followable

@@ -1,0 +1,15 @@
+<div class="row-fluid">
+
+	<div class="page-header">
+		<h4>Invite your co-workers</h4>
+	</div>
+
+	<div class="row-fluid">
+		<%= form_for :user, url: create_coworkers_users_path, html: { method: :put } do |form| %>  
+      <% for user in @users %>
+        <label>E-Mail:</label>
+        <%= text_field_tag "user[][email]" %><br>
+      <% end %>
+		<% end %>
+	</div>
+</div>

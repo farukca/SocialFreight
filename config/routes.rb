@@ -15,6 +15,12 @@ Socialfreight::Application.routes.draw do
     member do
       get :activate, :activation, :follow
     end
+    collection do
+      get :invite_coworkers
+    end
+    collection do
+      put  :create_coworkers
+    end
   end
   resources :sessions
   resources :password_resets
