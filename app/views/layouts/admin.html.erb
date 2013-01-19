@@ -10,33 +10,33 @@
   <%= yield :head %>  
 </head>
 <body>
-<%= render 'layouts/topbar' %>
+  <%= render 'layouts/topbar' %>
 
-<div class="container-fluid">
+  <div class="container-fluid">
 
-  <div id="wrapper">
-    
-    <div id="messages" class="row-fluid">
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}", :class => "alert-message #{name}" %>
-      <% end %>
-    </div>
-
-    <div class="row-fluid">
-      <div class="span3">
-        <%= render "dashboard/admin_sidebar" %>
+    <div id="wrapper" class="row-fluid" style="margin-top:90px;">
+      <div id="messages" class="row-fluid">
+        <% flash.each do |name, msg| %>
+          <a class="close" data-dismiss="alert" href="#">&times;</a>
+          <%= content_tag :div, msg, :id => "flash_#{name}", :class => "alert-message #{name}" %>
+        <% end %>
       </div>
-      <div class="span9">
-        <%= yield %>
+
+      <div class="row-fluid">
+        <div class="span3">
+          <%= render "dashboard/admin_sidebar" %>
+        </div>
+        <div class="span9">
+          <%= yield %>
+        </div>
       </div>
+
     </div>
 
   </div>
-
-</div>
-<footer>
-<%= yield :scripts %>
-</footer>
+  <footer>
+    <%= yield :scripts %>
+  </footer>
 </body>
 </html>
 

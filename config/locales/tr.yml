@@ -443,7 +443,7 @@ tr:
       save: "Firma Bilgisini Kaydet"
   contacts:
     title:
-      quick_contact: "Hızlı Kişi Oluştur"
+      quick_contact: "Hızlı Kontak Oluştur"
     label:
     placeholder:
       name: "Yetkili Adı"

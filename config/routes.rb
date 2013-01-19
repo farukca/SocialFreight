@@ -44,17 +44,17 @@ Socialfreight::Application.routes.draw do
   resources :branches
   resources :people
   resources :positions do
-    resources :comments
+    resources :posts
     member do
       get :addload
       get :plan
     end
   end
   resources :transports do
-    resources :comments
+    resources :posts
   end
   resources :loadings do
-    resources :comments
+    resources :posts
     member do
       get :addtoplan
       get :plan
@@ -69,7 +69,7 @@ Socialfreight::Application.routes.draw do
 
   resources :rentals
   resources :vehicles do
-    resources :comments
+    resources :posts
   end
   resources :vessels
   resources :documents

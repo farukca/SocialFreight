@@ -51,7 +51,12 @@ class Patron < ActiveRecord::Base
     patron = Patron.find(Patron.current_id)
     counter = patron.counters.find_or_initialize_by_operation_and_counter_type(operation, ctype)
     if operation.present? && (counter.count == 0)
-      
+      if ctype == "Loading"
+        counter.prefix = "BKG"
+      end
+      if ctype == "Position"
+        counter.prefix = "PRJ"
+      end
     end
     counter.increment(:count, 1)
     counter.save!

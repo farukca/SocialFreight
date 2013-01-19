@@ -60,7 +60,7 @@
     </div>
     <div id="new_post_div" class="row-fluid slidingDiv">
       <div class="span6">
-        <%= render 'posts/form' %>
+        <%= render 'posts/form', object: @loading %>
       </div>
     </div>
     <%= render 'posts/postlist', posts: @loading.posts %>
