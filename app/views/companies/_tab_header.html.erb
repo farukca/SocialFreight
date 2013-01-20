@@ -7,13 +7,21 @@
     </dd>
     <dd>
         Search company:
-        <a href="https://twitter.com/search?q=<%= company_name(company) %>" target="_blank">Twitter</a>
+        <a href="https://www.google.com.tr/#q=<%= company_name(company) %>" title="Search on Google" target="_blank">
+          <%= image_tag "/assets/icons/google.png" %>
+        </a>
         |
-        <a href="https://www.facebook.com/search/results.php?q=<%= company_name(company) %>" target="_blank">Facebook</a>
+        <a href="https://twitter.com/search?q=<%= company_name(company) %>" title="Search on Twitter" target="_blank">
+          <%= image_tag "/assets/icons/twitter.png" %>
+        </a>
         |
-        <a href="https://www.google.com.tr/#q=<%= company_name(company) %>" target="_blank">Google</a>
+        <a href="https://www.facebook.com/search/results.php?q=<%= company_name(company) %>" title="Search on Facebook" target="_blank">
+          <%= image_tag "/assets/icons/facebook.png" %>
+        </a>
         |
-        <a href="http://www.linkedin.com/search/fpsearch?keywords=sales-force" target="_blank">Linkedin</a>
+        <a href="http://www.linkedin.com/search/fpsearch?keywords=sales-force" title="Search on Linkedin" target="_blank">
+          <%= image_tag "/assets/icons/linkedin.png" %>
+        </a>
     </dd>
   </dl>
 </div>
