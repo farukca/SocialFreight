@@ -31,7 +31,7 @@ class Loading < ActiveRecord::Base
   accepts_nested_attributes_for :packages, :containers
     
   #has_many :waybills, as: :waybillable, dependent: :destroy
-  has_many :comments, as: :commentable, dependent: :destroy
+  #has_many :comments, as: :commentable, dependent: :destroy
   has_many :posts, as: :target, dependent: :destroy
   has_many :documents, as: :documented, dependent: :destroy
   has_many :costs, as: :costable, dependent: :destroy

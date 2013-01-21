@@ -13,7 +13,6 @@ class LoadingsController < ApplicationController
 
   def show
     @loading = Loading.find(params[:id])
-    @comment = @loading.comments.build()
 
     respond_to do |format|
       format.html

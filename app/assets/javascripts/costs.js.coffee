@@ -3,6 +3,7 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ->
   $(".replytopost").live "click", (ev) ->
+    ev.preventDefault()
     postElement = $(this)
     $.ajax
       url: "/posts/" + postElement.data("post-id") + "/comments/new"
@@ -10,4 +11,3 @@ jQuery ->
       dataType: "json",
       success: (data) ->
         postElement.parent().next("div.post-comment-list").html JST["templates/comments/form"](comment : data)
-    ev.preventDefault()

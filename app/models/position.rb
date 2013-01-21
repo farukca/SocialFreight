@@ -20,7 +20,8 @@ class Position < ActiveRecord::Base
   has_many :costs, as: :costable, dependent: :destroy
   has_many :invoitems, as: :invoitem_owner, dependent: :destroy
   has_many :documents, as: :documented, dependent: :destroy
-  has_many :comments, as: :commentable, dependent: :destroy
+  #has_many :comments, as: :commentable, dependent: :destroy
+  has_many :posts, as: :target, dependent: :destroy
 
   has_many :transports, dependent: :destroy
   accepts_nested_attributes_for :transports, :reject_if => lambda { |a| a[:trans_method].blank? }, :allow_destroy => true
