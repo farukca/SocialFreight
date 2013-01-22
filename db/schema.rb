@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121230182247) do
+ActiveRecord::Schema.define(:version => 20130122180801) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                                  :null => false
@@ -416,18 +416,22 @@ ActiveRecord::Schema.define(:version => 20121230182247) do
   end
 
   create_table "events", :force => true do |t|
-    t.integer  "company_id",                  :null => false
-    t.date     "event_date",                  :null => false
-    t.string   "event_type",   :limit => 40,  :null => false
-    t.string   "event_source", :limit => 40
-    t.string   "source_url",   :limit => 100
-    t.string   "event_status", :limit => 10
+    t.integer  "company_id",                    :null => false
+    t.date     "event_date",                    :null => false
+    t.string   "event_type",     :limit => 40,  :null => false
+    t.string   "event_source",   :limit => 40
+    t.string   "source_url",     :limit => 100
+    t.string   "event_status",   :limit => 10
     t.text     "description"
-    t.integer  "user_id",                     :null => false
-    t.integer  "patron_id",                   :null => false
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.integer  "user_id",                       :null => false
+    t.integer  "patron_id",                     :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.string   "eventable_type", :limit => 100
+    t.integer  "eventable_id"
   end
+
+  add_index "events", ["patron_id", "eventable_type", "eventable_id"], :name => "index_eventable_patron"
 
   create_table "feedbacks", :force => true do |t|
     t.string   "name",       :limit => 40,  :null => false

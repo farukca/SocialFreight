@@ -36,6 +36,7 @@ class Loading < ActiveRecord::Base
   has_many :documents, as: :documented, dependent: :destroy
   has_many :costs, as: :costable, dependent: :destroy
   has_many :invoitems, as: :invoitem_owner, dependent: :destroy
+  has_many :events, as: :eventable, dependent: :destroy
 
   attr_accessible :position_id, :operation, :direction, :incoterm, :paid_at, :load_type, :channel, :branch_id, :company_id,
                   :agent_id, :user_id, :saler_id, :freight_price, :freight_curr, :agent_price, :agent_curr, :agent_share,

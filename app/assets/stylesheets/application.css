@@ -8,6 +8,7 @@
  *= require bootstrap_changes
  *= require freight
  *= require contacts
+ *= require tasks
  *= require gmaps4rails
  *= require token-input
  * require chosen

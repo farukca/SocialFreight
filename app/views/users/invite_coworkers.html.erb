@@ -5,12 +5,16 @@
 	</div>
 
 	<div class="row-fluid">
-		<%= form_for :user, url: create_coworkers_users_path, html: { method: :put } do |form| %>  
+		<%= form_for :user, url: create_coworkers_users_path, html: { method: :put, class: "form-horizontal" } do |form| %>  
       <% for user in @users %>
-        <label>E-Mail:</label>
-        <%= text_field_tag "user[][email]" %><br>
+        <div class="control-group">
+	        <label class="control-label">E-Mail:</label>
+	        <div class="controls"><%= text_field_tag "user[][email]" %></div>
+        </div>
       <% end %>
-      <%= submit_tag "Invite friends" %> 
+      <div class="form-actions">
+        <%= submit_tag "Invite friends", class: "btn btn-success" %> 
+      </div>
 		<% end %>
 	</div>
 </div>
