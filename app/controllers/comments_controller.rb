@@ -6,6 +6,8 @@ class CommentsController < ApplicationController
   def new
     @commentable = find_commentable
     @comment = @commentable.comments.new
+    @comment.commentable_type = @commentable.class.name
+    @comment.commentable_id = @commentable.id
   end
 
   def create

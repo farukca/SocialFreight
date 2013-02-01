@@ -143,12 +143,12 @@ form {
     width:3px;
 }
 .pageBlock {
-    background-color:#F8F8F8;
-    border-bottom:2px solid #EAEAEA;
+    //background-color:#F8F8F8;
+    border-bottom:1px solid #E5D5E5;
     border-left:1px solid #EAEAEA;
     border-radius:4px 4px 4px 4px;
     border-right:1px solid #EAEAEA;
-    border-top:3px solid #236FBD;
+    border-top:2px solid #E5D5E5;
 }
 .subHeader {
     background-color:#C4C5C6;
@@ -732,28 +732,9 @@ h4.profile-data-section {
     vertical-align:middle;
 }
 .profile {
-    background:url("/assets/feedbg.png") repeat-x scroll left -40px #FFFFFF;
     border-top-left-radius:5px;
     border-top-right-radius:5px;
     margin-top: 5px;
-}
-
-.publishercontainer {
-    -moz-border-bottom-colors:none;
-    -moz-border-image:none;
-    -moz-border-left-colors:none;
-    -moz-border-right-colors:none;
-    -moz-border-top-colors:none;
-    background:url("/assets/cloud.png") no-repeat scroll right top transparent;
-    border-color:-moz-use-text-color -moz-use-text-color #E6E6E6;
-    border-style:none none solid;
-    border-width:0 0 1px;
-    line-height:normal;
-    margin-bottom:5px;
-    max-width:640px;
-    min-height:75px;
-    overflow:visible;
-    position:relative;
 }
 .justhead {
     background-color: #DDECF3;
@@ -971,4 +952,8 @@ div.addIcon {
 }
 .condensed-fields {
   margin-bottom: 10px;
+}
+.comment-avatar {
+  width: 30px;
+  height: 30px;
 }

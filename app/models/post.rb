@@ -21,11 +21,8 @@ class Post < ActiveRecord::Base
   def self.log(user_id, target, target_name, action_text, syspost_flag)
 
     private_post = true
-
     post = Post.new(target: target, user_id: user_id, target_name: target_name, message: action_text, is_private: private_post, is_syspost: syspost_flag)
-
-    post.save!
-    
+    post.save!    
     post
   end
 

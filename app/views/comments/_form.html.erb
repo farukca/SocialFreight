@@ -1,5 +1,5 @@
 <div class="row-fluid">
-  <%= form_for [object, object.comments.build()], remote: true do |f| %>
+  <%= form_for [object, object.comments.new], html: {id: "new_comment_#{object.class.name}_#{object.id}"}, remote: true do |f| %>
     <div class="row-fluid">
     <%#= f.error_notification %>
     <%#= f.input :comment_text, :as => :text, :input_html => {:rows => "1", :style => "width:95%"}, :label => "Yorum Ekle" %>

@@ -1,5 +1,3 @@
-<div class="row-fluid">
-  <ul id="<%= object.class.name%>_<%= object.id %>_commentlist">
-    <%= render object.comments.order("created_at asc") %>
-  </ul>
-</div>
+<ul id="<%= object.class.name%>_<%= object.id %>_commentlist">
+  <%= render object.comments.order("created_at asc") %>
+</ul>

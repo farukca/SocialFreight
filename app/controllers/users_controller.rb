@@ -103,6 +103,26 @@ class UsersController < ApplicationController
   end
 
   def create_coworkers
+    @branch_id = params[:branch_id]
+    
+    @saved_emails = []
+    @rejected_emails = []
+    params[:user_emails].each do |email|
+      unless email.blank?
+        @user = User.new
+        @user.email     = email
+        @user.branch_id = @branch_id
+        @user.patron_id = current_patron.id
+        @user.password  = "Deneme"
+        @user.password_confirmation  = "Deneme"
+        if @user.valid?
+          @user.save!
+          @saved_emails << email
+        else
+          @rejected_emails << email
+        end        
+      end
+    end
   end
   
   def follow

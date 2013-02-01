@@ -1,7 +1,7 @@
 <li class="media">
   <div class="feedline">
-    <a href="#" class="img-load"><%= image_tag comment.user.avatar_url(:small), style: "width:30px;height:30px;" %></a> 
-    <span><%= link_to comment.user, user_path(comment.user) %></span>&nbsp;-&nbsp;
+    <a href="#"><%= image_tag comment.user.avatar_url(:small), class: "comment-avatar" %></a> 
+    <span><%= link_to comment.user, user_path(comment.user) %></span>
     <span><%= comment.comment_text %></span>
     <span class="sub-info"><%= comment.created_at.to_s(:pretty) %></span>
   </div>

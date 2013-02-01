@@ -1,2 +1,2 @@
-$('#<%= @comment.commentable_type%>_<%= @comment.commentable_id%>_commentlist').append("<%= j render @comment %>");
-$('#new_comment').each(function() { this.reset(); });
+$("#<%= @comment.commentable_type %>_<%= @comment.commentable_id %>_commentlist").append('<%= j render(@comment) %>');
+$("#new_comment_<%= @comment.commentable_type %>_<%= @comment.commentable_id %>").each (function(){ this.reset(); });

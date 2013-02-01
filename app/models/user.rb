@@ -49,14 +49,6 @@ class User < ActiveRecord::Base
     #QC.enqueue "UserMailer.activation_needed_email.deliver", self.id
   end
 
-  #def roles_list
-  #  [:admin, :operator, :financer, :ledger, :saler, :planner, :manager]
-  #end
-
-  #def has_role? role
-  #  roles_list.include? role.to_sym
-  #end
-
   #def send_password_reset_email
   #  generate_token(:password_reset_token)
   #  self.password_reset_email_time = Time.zone.now

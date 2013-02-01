@@ -1,6 +1,10 @@
-<%= render 'comments/comments', :object => object %>
-<div class="commentable_form">
-  <div class="post-module-in">
-    <%= render 'comments/form', :object => object %>
-  </div>
+<div class="row-fluid comment-list">
+  <%= render 'comments/comments', object: object %>
+</div>
+<div class="row-fluid comment-form">
+	<div id="<%= object.class.name%>_<%= object.id %>_commentform" class="row-fluid">
+	  <% if object.comments.size > 0 %>
+	    <%= render 'comments/form', object: object %>
+	  <% end %>
+	</div>
 </div>

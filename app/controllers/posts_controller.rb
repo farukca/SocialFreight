@@ -6,8 +6,12 @@ class PostsController < ApplicationController
 
   def create
     @target = find_target
-    @post = @target.posts.build(params[:post])
-    @post.target_name = @target.to_s[0, 40]
+    if @target
+      @post = @target.posts.build(params[:post])
+      @post.target_name = @target.to_s[0, 40]
+    else
+      @post = Post.new
+    end
     @post.user_id  = current_user.id
 
     usernames = extract_mentioned_screen_names(params[:post][:message]) if params[:post][:message]
@@ -15,7 +19,7 @@ class PostsController < ApplicationController
       @object = Nick.find_by_name(username)
       @post.mention!(@object.nicknamed) unless @object.nil?
     end if usernames
-
+    debugger
     @post.save!
     respond_with @post, success: "Successfully saved post"
   end

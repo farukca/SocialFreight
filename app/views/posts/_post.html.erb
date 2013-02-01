@@ -14,11 +14,6 @@
         <a href="#" class="replytopost" data-post-id="<%= post.id %>">Comment</a>
       <% end %>
     </div>
-    <div class="row-fluid post-comment-list">
-      <% if post.comments.size > 0 %>
-        <%= render 'comments/commentable', object: post %>
-      <% end %>
-      <%#= render 'comments/comments', object: post %>
-    </div>
+    <%= render "comments/commentable", object: post %>
   </div>
 </li>
