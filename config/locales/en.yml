@@ -414,6 +414,7 @@ en:
       partner: "Partner"
       partner_type: "Partnership Type"
       event_date: "Event Date"
+      event_title: "Event Title"
       event_type: "Event Type"
       event_status: "Event Status"
       event_description: "Event Description"

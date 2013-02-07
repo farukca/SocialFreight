@@ -18,7 +18,7 @@ class Company < ActiveRecord::Base
   friendly_id :name, use: :slugged, use: :scoped, scope: :patron_id
   
   has_many :contacts
-  has_many :events
+  has_many :events, as: :eventable, dependent: :destroy
   has_many :partners
 
   accepts_nested_attributes_for :contacts, :reject_if => lambda { |a| a[:surname].blank? }, :allow_destroy => true

@@ -33,7 +33,9 @@ Socialfreight::Application.routes.draw do
     end
   end
   resources :places
-  resources :companies
+  resources :companies do
+    resources :posts
+  end
   resources :partners
   resources :contacts
   resources :events
@@ -60,19 +62,27 @@ Socialfreight::Application.routes.draw do
       get :plan
     end
   end
-  resources :departures
-  resources :arrivals
+  resources :departures do
+    resources :posts
+  end
+  resources :arrivals do
+    resources :posts
+  end
   resources :packages
   resources :containers
   resources :transnodes
   resources :connects
 
-  resources :rentals
+  resources :rentals do
+    resources :posts
+  end
   resources :vehicles do
     resources :posts
   end
   resources :vessels
-  resources :documents
+  resources :documents do
+    resources :posts
+  end
   resources :costs
   resources :payoffs
   resources :payments

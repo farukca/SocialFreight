@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130122180801) do
+ActiveRecord::Schema.define(:version => 20130205050943) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                                  :null => false
@@ -416,7 +416,7 @@ ActiveRecord::Schema.define(:version => 20130122180801) do
   end
 
   create_table "events", :force => true do |t|
-    t.integer  "company_id",                    :null => false
+    t.integer  "company_id"
     t.date     "event_date",                    :null => false
     t.string   "event_type",     :limit => 40,  :null => false
     t.string   "event_source",   :limit => 40
@@ -429,6 +429,9 @@ ActiveRecord::Schema.define(:version => 20130122180801) do
     t.datetime "updated_at",                    :null => false
     t.string   "eventable_type", :limit => 100
     t.integer  "eventable_id"
+    t.string   "event_title"
+    t.string   "event_hour",     :limit => 5
+    t.date     "finish_date"
   end
 
   add_index "events", ["patron_id", "eventable_type", "eventable_id"], :name => "index_eventable_patron"
