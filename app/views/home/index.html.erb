@@ -1,13 +1,16 @@
-<div class="slider clearfix">
-  <div class="container">
-    <div class="row">
-      <div class="span-one-third slider-intro">
-        <h1>Social Freight</h1>
-        <p style="font-size:14px;">3PL, Freight Forwarder, NVOCC firmalarının uluslararası nakliye operasyonları ile Dahili Nakliye ve Dağıtım firmalarının süreçlerini yönetmek üzere tasarlanmış, bulut tabanlı multimodal lojistik yazılımıdır.</p>
-        <p style="font-size:14px;">Donanım, yazılım lisansı gibi maliyetler olmaksızın, en güncel lojistik yazılımını kullanmak için;&nbsp;<%= link_to "hemen üye olabilirsiniz", new_patron_path %></p>
+<div class="slider clearfix row">
+  <div class="span5 slider-intro">
+        <h1>SocialFreight</h1>
+        <p style="font-size:15px;">3PL, Freight Forwarder ve lojistik hizmet sağlayıcı firmalarının nakliye süreçlerini yönetmek üzere tasarlanmış, bulut tabanlı multimodal lojistik yazılımıdır.</p>
+        <ul style="list-style:initial;margin-left:20px;margin-bottom:10px;">
+          <li>Donanım, sunucu yatırımı gerektirmez</li>
+          <li>Yazılım lisans bedeli, güncelleme ücreti gibi maliyetler yoktur</li>
+          <li>Herhangi bir kurulum işlemi gerektirmez</li>
+        </ul>
+        <p style="font-size:14px;">En güncel lojistik yazılımını kullanmak için;&nbsp;<%= link_to "hemen üye olabilirsiniz", new_patron_path %></p>
         <%= link_to "Daha Fazlası için tıklayınız", features_path, :class => "small-btn blue rounded-1" %>
       </div>
-      <div class="span-two-thirds">
+      <div class="span7">
         <div id="slider">
           <ul class="images">
             <li><%= link_to image_tag("big_images/slider-img-1.jpg"), road_path %></li>
@@ -25,10 +28,9 @@
           </ul>
         </div>
       </div>
-    </div>
-  </div>
+
 </div>
-<div id="index-portofilo" class="row">
+<div class="row">
   <div class="callout container clearfix">
     <div class="callout-info">
       <%= render "betausers/form" %>
@@ -36,6 +38,8 @@
   </div>
 
   <%= render "shared/site_portofilo" %>
+</div>
+<div class="row">
   <%= render "shared/site_description" %>
 </div>
 <script type="text/javascript">document.getElementById('home').classList.add('active');</script>

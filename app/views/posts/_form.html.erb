@@ -1,4 +1,5 @@
 <div class="row-fluid">
+	<%= link_to (image_tag user_small_avatar(current_user), class: "media-object img-circle"), user_path(current_user), class: "pull-left" %>
   <%= form_for [object, Post.new], remote: true, html: {class: "condensed-form"} do |f| %>
     <%= render "posts/fields", f: f %>
   <% end %>

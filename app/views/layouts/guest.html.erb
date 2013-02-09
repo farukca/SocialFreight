@@ -16,9 +16,9 @@
 <%#= render 'layouts/topbar' %>
 <%= render 'shared/site_header' %>
 
-<div class="container-fluid" style="padding:0">
+<div id="content" style="padding:0">
 
-  <div id="content" class="row">
+  <div class="container"  class="row">
     <div id="messages">
       <% flash.each do |name, msg| %>
         <a class="close" data-dismiss="alert" href="#">&times;</a>

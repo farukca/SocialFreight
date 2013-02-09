@@ -12,12 +12,12 @@
       <fieldset>
         <%#= f.label :email, t("content.home.betauser_message"), style: "color: #686868;font-weight:bold;font-size: 18px;line-height: 27px;margin-right:15px;" %>
         <div class="span5">
-          <%= f.input :name, label: t("feedbacks.label.name"), placeholder: t("feedbacks.placeholder.name"), input_html: { class: "input-medium" } %>
-          <%= f.input :email, label: t("feedbacks.label.email"), placeholder: t("feedbacks.placeholder.email"), input_html: { class: "input-medium" } %>
+          <%= f.input :name, label: t("feedbacks.label.name"), placeholder: t("feedbacks.placeholder.name") %>
+          <%= f.input :email, label: t("feedbacks.label.email"), placeholder: t("feedbacks.placeholder.email") %>
         </div>
         <div class="span5">
-          <%= f.input :phone, label: t("defaults.label.tel"), input_html: { class: "input-medium" } %>
-          <%= f.input :company, label: t("defaults.label.company"), input_html: { class: "input-medium" } %>
+          <%= f.input :phone, label: t("defaults.label.tel") %>
+          <%= f.input :company, label: t("defaults.label.company") %>
         </div>
         <div class="span1">
         	<%= f.submit "Gönder", class: 'btn btn-success' %>

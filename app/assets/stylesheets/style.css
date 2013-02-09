@@ -8,10 +8,6 @@ body {
     background-position: center top;
     background-repeat: repeat;
 }
-#index-portofilo {
-    background-image: none;
-    background-color: #fff;
-}
 h2 {
     margin-bottom: 10px;
 }
@@ -322,7 +318,6 @@ p {
     -o-border-radius: 5px 5px 0 0;
 }
 .callout {
-    padding: 10px 25px 15px;
     background: rgb(255,255,255); /* Old browsers */
     background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(242,242,242,1) 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(242,242,242,1))); /* Chrome,Safari4+ */
@@ -337,9 +332,7 @@ p {
     -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
     -o-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
-    width: 890px;
     margin-bottom: 20px;
-    *margin-top: 20px;
 }
 .callout{	/* IE7 */
           *margin-top: 130px;
@@ -357,6 +350,9 @@ p {
 .home-portfolio {
     min-height: 235px;
     position: relative;
+}
+.home-portfolio-item {
+    margin-top: 5px;
 }
 .home-portfolio-item span {
     *background: rgb(70,75,77); /* Old browsers */
@@ -376,9 +372,7 @@ p {
     *-webkit-border-radius: 0 0 5px 5px;
     *-o-border-radius: 0 0 5px 5px;
     float: left;
-    width: 258px;
     padding: 15px 20px;
-    margin-top: -2px;
 }
 .home-portfolio-item span a {
     color: #969696;
@@ -585,7 +579,6 @@ p {
 .page-content {
     background: #fff;
     padding: 15px 25px 25px 25px;
-    width: 578px;
     -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
     -o-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
@@ -1402,6 +1395,10 @@ form {
   color: #fff;
 }
 #aboutus p {
+  color: #fff;
+  font-size:14px;
+}
+.home-info {
   color: #fff;
   font-size:14px;
 }
