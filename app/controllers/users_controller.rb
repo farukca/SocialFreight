@@ -30,7 +30,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = current_patron.users.find(params[:id])
+    if @user.id != current_user.id
+      redirect_to @user.person
+    end
     @post = Post.new
   end
 
@@ -107,19 +110,21 @@ class UsersController < ApplicationController
     
     @saved_emails = []
     @rejected_emails = []
+    @reject_reasons = []
     params[:user_emails].each do |email|
       unless email.blank?
         @user = User.new
         @user.email     = email
         @user.branch_id = @branch_id
         @user.patron_id = current_patron.id
-        @user.password  = "Deneme"
-        @user.password_confirmation  = "Deneme"
+        @user.password  = "Deneme2121"
+        @user.password_confirmation  = "Deneme2121"
         if @user.valid?
           @user.save!
           @saved_emails << email
         else
           @rejected_emails << email
+          @reject_reasons << @user.errors.full_messages
         end        
       end
     end

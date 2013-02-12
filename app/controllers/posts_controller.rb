@@ -10,16 +10,15 @@ class PostsController < ApplicationController
       @post = @target.posts.build(params[:post])
       @post.target_name = @target.to_s[0, 40]
     else
-      @post = Post.new
+      @post = Post.new(params[:post])
     end
     @post.user_id  = current_user.id
-
-    usernames = extract_mentioned_screen_names(params[:post][:message]) if params[:post][:message]
-    usernames.each do |username|
-      @object = Nick.find_by_name(username)
-      @post.mention!(@object.nicknamed) unless @object.nil?
-    end if usernames
-    debugger
+#TODO daha sonra bakmak üzere şimdilik kapatalım mention olayını
+    #usernames = extract_mentioned_screen_names(params[:post][:message]) if params[:post][:message]
+    #usernames.each do |username|
+    #  @object = Nick.find_by_name(username)
+    #  @post.mention!(@object.nicknamed) unless @object.nil?
+    #end if usernames
     @post.save!
     respond_with @post, success: "Successfully saved post"
   end

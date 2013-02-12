@@ -1,5 +1,6 @@
 class Task < ActiveRecord::Base
 
+  belongs_to :todolist, counter_cache: true
   belongs_to :user
   belongs_to :cruser, :class_name => "User", :foreign_key => "cruser_id"
 

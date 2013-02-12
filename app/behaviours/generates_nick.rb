@@ -6,7 +6,9 @@ module GeneratesNick
 
   def generate_nick
     cleared_socialname = clear_socialname(self.to_s)
-    Nick.log(self, cleared_socialname, self.patron_id)
+    unless cleared_socialname.blank?
+      Nick.log(self, cleared_socialname, self.patron_id)
+    end
   end
 
   private

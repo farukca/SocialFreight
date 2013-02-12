@@ -211,6 +211,8 @@ en:
       unload_city: "Unloading City"
     hint:
     link:
+      create_loading: "Create a booking lead"
+      create_position: "Start a transportation project"
       new_loading: "New Booking Reservation"
       new_planning: "New Project"
       loading_list: "Booking List"
@@ -557,7 +559,10 @@ en:
       mailexists: "This email already registered, just login"
   users:
     title:
+      user_info: "User Information"
+      user_settings: "User Settings"
     label:
+      avatar: "Profile Picture"
     placeholder:
     hint:
     link:
@@ -696,8 +701,8 @@ en:
       template:
         body: There were problems with the following fields
         header:
-          one: 1 error prohibited this {{model}} from being saved
-          other: "{{count}} errors prohibited this {{model}} from being saved"  
+          one: "1 error prohibited this %{model} from being saved"
+          other: "%{count} errors prohibited this %{model} from being saved"  
       messages:
         inclusion: "is not included in the list"
         exclusion: "is reserved"
@@ -706,16 +711,16 @@ en:
         accepted: "must be accepted"
         empty: "can't be empty"
         blank: "can't be blank"
-        too_long: "is too long (maximum is {{count}} characters)"
-        too_short: "is too short (minimum is {{count}} characters)"
-        wrong_length: "is the wrong length (should be {{count}} characters)"
+        too_long: "is too long (maximum is %{count} characters)"
+        too_short: "is too short (minimum is %{count} characters)"
+        wrong_length: "is the wrong length (should be %{count} characters)"
         taken: "has already been taken"
         not_a_number: "is not a number"
-        greater_than: "must be greater than {{count}}"
-        greater_than_or_equal_to: "must be greater than or equal to {{count}}"
-        equal_to: "must be equal to {{count}}"
-        less_than: "must be less than {{count}}"
-        less_than_or_equal_to: "must be less than or equal to {{count}}"
+        greater_than: "must be greater than %{count}"
+        greater_than_or_equal_to: "must be greater than or equal to %{count}"
+        equal_to: "must be equal to %{count}"
+        less_than: "must be less than %{count}"
+        less_than_or_equal_to: "must be less than or equal to %{count}"
         odd: "must be odd"
         even: "must be even"
         record_invalid: "Record invalid"

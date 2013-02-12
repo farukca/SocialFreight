@@ -1,5 +1,8 @@
 Socialfreight::Application.routes.draw do
 
+  resources :todolists
+
+
   resources :transroutes
 
   get "logout" => "sessions#destroy", :as => "logout"

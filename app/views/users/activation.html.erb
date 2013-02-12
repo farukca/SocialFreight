@@ -1,33 +1,38 @@
-<div id="activation_form" class="container">
+<div id="activation_form">
 
   <div class="widget" style="margin-bottom:130px;">  
-    <div class="row">
+    <div class="page-header">
       <h4><%= t("web.label.activated_your_account") %></h4>
     </div>
     
-    <div class="row">
+    <div>
       <h5><%= t("web.label.email_to_login") %>;&nbsp;<%= @user.email %></h5>
       <h5><%= t("web.label.set_your_password") %>;</h5>
     </div>
 
-    <div class="row">
+    <div class="activation_form">
       <%= simple_form_for @user, validate: true, html: { class: "form-horizontal" }  do |f| %>
         <%= f.error_notification %>
         
-        <div class="row">
           <div class="span6">
             <fieldset>
               <%= f.input :password, label: t("web.label.password") %>
               <%= f.input :password_confirmation, label: t("web.label.comfirm_password") %>
+              <hr>
+              <%= f.input :name, label: t("web.label.name") %>
+              <%= f.input :surname, label: t("web.label.surname") %>
+              <div class="control-group">
+                <label class="control-label"><%= t("users.label.avatar") %></label>
+                <div class="controls">
+                  <%= f.file_field :avatar %>
+                </div>
+              </div>
             </fieldset>
           
             <div class="form-actions">
               <%= f.button :submit, t("users.action.change_password"), class: 'btn btn-success' %>
             </div>
-
           </div>
-
-        </div>
         
       <% end %>
     </div>

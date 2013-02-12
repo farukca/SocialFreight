@@ -149,7 +149,7 @@ tr:
       process_list: "Operasyon Menü"
       new_loading: "Yeni Yük Oluşturma"
       loading_info: "Yük Bilgisi"
-      talk_about_loading: "Taşınacak cargo hakkında bahsedelim"
+      talk_about_loading: "Taşınacak yük hakkında konuşalım"
       loading_detail: "Yük Detayları"
       package_info: "Koli Bilgileri"
       departure_info: "Yükleme Bilgisi"
@@ -211,6 +211,8 @@ tr:
       unload_city: "Boşaltma Şehri"
     hint:
     link:
+      create_loading: "Yeni yük reservasyonu oluştur"
+      create_position: "Yeni bir taşıma projesi başlat"
       new_loading: "Yük Reservasyonu Oluştur"
       new_planning: "Reservasyon & Uçak Planlama"
       loading_list: "Yük Listesi"
@@ -557,7 +559,10 @@ tr:
       mailexists: "Bu mail adresi zaten kayıtlı, giriş yapmak mı istiyorsunuz"
   users:
     title:
+      user_info: "Kullanıcı Bilgisi"
+      user_settings: "Kullanıcı Ayarları"
     label:
+      avatar: "Profil Resminiz"
     placeholder:
     hint:
     link:
@@ -696,8 +701,8 @@ tr:
       template:
         body: There were problems with the following fields
         header:
-          one: 1 error prohibited this {{model}} from being saved
-          other: "{{count}} errors prohibited this {{model}} from being saved"  
+          one: "1 error prohibited this %{model} from being saved"
+          other: "%{count} errors prohibited this %{model} from being saved"  
       messages:
         inclusion: "alabileceği değerler içinde bu bilgi yok"
         exclusion: "bu değeri alamaz, farklı bir değer giriniz"
@@ -706,16 +711,16 @@ tr:
         accepted: "bu alanı okundu olarak işaretlemelisiniz"
         empty: "bu alanı boş geçemezsiniz, değer girmelisiniz"
         blank: "bu alanı boş geçemezsiniz, değer girmelisiniz"
-        too_long: "maksimum {{count}} karakter olabilir, daha fazla değil)"
-        too_short: "minimum {{count}} karakter girmelisiniz)"
-        wrong_length: "sadece {{count}} karakter girmelisiniz, ne daha fazla, ne daha az)"
+        too_long: "maksimum %{count} karakter olabilir, daha fazla değil)"
+        too_short: "minimum %{count} karakter girmelisiniz)"
+        wrong_length: "sadece %{count} karakter girmelisiniz, ne daha fazla, ne daha az)"
         taken: "bu bilgi zaten sistemde mevcut"
         not_a_number: "sadece rakam girebilirsiniz"
-        greater_than: "{{count}} değerinden büyük olmalı"
-        greater_than_or_equal_to: "{{count}} değerinden büyük veya eşit olmalı"
-        equal_to: "{{count}} değerine eşit olmalı"
-        less_than: "{{count}} değerinden küçük olmalı"
-        less_than_or_equal_to: "{{count}} değerinden küçük veya eşit olmalı"
+        greater_than: "%{count} değerinden büyük olmalı"
+        greater_than_or_equal_to: "%{count} değerinden büyük veya eşit olmalı"
+        equal_to: "%{count} değerine eşit olmalı"
+        less_than: "%{count} değerinden küçük olmalı"
+        less_than_or_equal_to: "%{count} değerinden küçük veya eşit olmalı"
         odd: "çift sayıları kullanamazsınız, tek sayı olmalı"
         even: "tek sayıları kullanamazsınız, çift sayı olmalı"
         record_invalid: "Kayıt geçerli değil, tekrar deneyiniz"

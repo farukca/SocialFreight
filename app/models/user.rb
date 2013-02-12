@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
                    :region, :time_zone, :user_type, :language, :locale, :mail_encoding, :role, :branch_id
   #attr_protected  :password
 
-  validates :password, presence: true, confirmation: true, length: { minimum: 8, maximum: 20}, on: :create
+  validates :password, presence: true, confirmation: true, length: { minimum: 8, maximum: 20 }
   #validates_confirmation_of :password
   #validates_presence_of :password, on: :create
   #validates_length_of :password, minimum: 8 
@@ -67,7 +67,7 @@ class User < ActiveRecord::Base
   end
 
   def to_s
-    self.name + " " + self.surname
+    "#{name} #{surname}"
   end
 
   def social_name

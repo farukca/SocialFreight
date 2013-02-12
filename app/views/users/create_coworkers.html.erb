@@ -21,8 +21,8 @@
 				<h5>Email adresi geçersiz olanlar</h5>
 			</div>
       <p>Aşağıdaki mail adresleri geçersiz olduğu için herhangi bir davet maili gönderilmedi<br>
-        <% @rejected_emails.each do |email| %>
-          <%= email %>;&nbsp;
+        <% @rejected_emails.each_with_index do |email, index| %>
+          <%= email %>&nbsp;(<%= @reject_reasons[index] %>)<br>
         <% end %>
 			</p>
 		<% end %>
