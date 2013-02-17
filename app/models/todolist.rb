@@ -9,5 +9,4 @@ class Todolist < ActiveRecord::Base
 
   default_scope { where(patron_id: Patron.current_id) }
 
-
 end
