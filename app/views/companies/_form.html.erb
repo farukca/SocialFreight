@@ -12,7 +12,7 @@
     <div id="company-main-form" class="row-fluid">
       <%= render 'form_main', :f => f %>
       <% unless params[:action] == "edit" %>
-        <%= f.fields_for :contacts do |builder| %>
+        <%= f.fields_for :contacts, validate: false do |builder| %>
           <%= render 'contacts_fields', :f => builder %>
         <% end %>
       <% end %>

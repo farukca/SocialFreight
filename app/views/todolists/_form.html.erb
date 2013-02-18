@@ -1,0 +1,9 @@
+<div class="row-fluid">
+  <div class="span6">
+    <%= simple_form_for @todolist, html: { class: 'form-horizontal' }, validate: true, remote: true do |f| %>
+      <%= f.error_notification %>
+      <%= f.input :name, placeholder: t("defaults.link.new_comment"), class: "input-block-level" %>
+      <%= f.submit(t("defaults.action.share"), class: 'btn btn-info') %>
+    <% end %>    
+  </div>
+</div>

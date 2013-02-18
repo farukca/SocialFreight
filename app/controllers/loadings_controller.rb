@@ -6,14 +6,14 @@ class LoadingsController < ApplicationController
     @loadings = Loading.all
 
     respond_to do |format|
-      format.html
+      format.htmlhttps://www.google.com.tr/
       format.json { render json: @loadings }
     end
   end
 
   def show
     @loading = Loading.find(params[:id])
-
+    @todolist = Todolist.new
     respond_to do |format|
       format.html
       format.json { render json: @loading }

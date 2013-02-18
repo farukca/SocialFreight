@@ -21,7 +21,7 @@ class Company < ActiveRecord::Base
   has_many :events, as: :eventable, dependent: :destroy
   has_many :partners
 
-  accepts_nested_attributes_for :contacts, :reject_if => lambda { |a| a[:surname].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :contacts, :reject_if => proc { |a| a[:surname].blank? }, :allow_destroy => true
   has_many :comments, as: :commentable, dependent: :destroy
 
   attr_accessible :name, :title, :company_type, :branch_id, :postcode, :address, :district, :city, :country_id, :state, 
@@ -31,9 +31,13 @@ class Company < ActiveRecord::Base
   validates :name, uniqueness: { scope: :patron_id, message: I18n.t('defaults.inputerror.must_be_unique') }, presence: { message: I18n.t('defaults.inputerror.cant_be_blank') }
   validates :title, length: { maximum: 100 }
   validates :tel, :fax, :gsm, :voip, length: { maximum: 15 }
+  validates :website, length: { maximum: 30 }
   validates :email, length: { in: 7..40 }, format: { with: /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i }, :unless => Proc.new { |a| a.email.blank? }
-  #validates :postcode, numericality: { only_integer: true }, length: { maximum: 5 }
+  validates :postcode, length: { maximum: 5 }
+  validates :district, :city, :state, length: { maximum: 40 }
+  validates :address, length: { maximum: 80 }
   validates :branch_id, presence: { message: I18n.t('defaults.inputerror.branch_is_blank') }
+  validates :description, :notes, length: { maximum: 250 }
 
   #before_save   :get_coordinates
   before_create :set_initials, :set_contact_user

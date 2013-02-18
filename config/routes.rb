@@ -1,10 +1,5 @@
 Socialfreight::Application.routes.draw do
 
-  resources :todolists
-
-
-  resources :transroutes
-
   get "logout" => "sessions#destroy", :as => "logout"
   get "login"  => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
@@ -58,6 +53,8 @@ Socialfreight::Application.routes.draw do
   resources :transports do
     resources :posts
   end
+  resources :transroutes
+
   resources :loadings do
     resources :posts
     member do
@@ -110,6 +107,7 @@ Socialfreight::Application.routes.draw do
     resources :comments
   end
   resources :activities
+  resources :todolists
   resources :tasks
   resources :nicks
   resources :junks
