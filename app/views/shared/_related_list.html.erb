@@ -1,6 +1,4 @@
-<div id="<%= "#{parent.id}_#{list_model}" %>List" class="pageBlock subRecordList">
-  <div class="listSubRecords <%= list_model.pluralize %>">
-    <div class="pPageBlock brndScnBrd secondaryPalette">
+<div id="<%= "#{parent.id}_#{list_model}" %>List">
       <% if lookup_context.find_all("#{list_model.pluralize}/_section_list_header").any? %>
         <%= render "#{list_model.pluralize}/section_list_header", listItem: list_model, object: parent %>
       <% else %>
@@ -14,7 +12,4 @@
          <p>Kayıt Bulunamadı</p>
         <% end %>
       </div>
-
-    </div>
-  </div>
 </div>

@@ -1,6 +1,5 @@
 class Event < ActiveRecord::Base
 
-  belongs_to :patron
   belongs_to :company, counter_cache: true
   belongs_to :eventable, polymorphic: true, counter_cache: true
   belongs_to :user

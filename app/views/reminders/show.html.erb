@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @reminder.title %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%= @reminder.start_date %>
+</p>
+
+<p>
+  <b>Start hour:</b>
+  <%= @reminder.start_hour %>
+</p>
+
+<p>
+  <b>Finish date:</b>
+  <%= @reminder.finish_date %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @reminder.description %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @reminder.user_id %>
+</p>
+
+<p>
+  <b>Patron:</b>
+  <%= @reminder.patron_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_reminder_path(@reminder) %> |
+<%= link_to 'Back', reminders_path %>

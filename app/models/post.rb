@@ -26,6 +26,10 @@ class Post < ActiveRecord::Base
     post
   end
 
+  def last_comment
+    comments.last
+  end
+
 private
   def set_after_jobs
     if self.related_user_ids && self.related_user_ids.length > 0

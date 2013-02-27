@@ -34,8 +34,7 @@ class Position < ActiveRecord::Base
                    :ref_no1, :ref_type1, :ref_no2, :ref_type2, :ref_no3, :ref_type3, :ref_no4, :ref_type4, :notes, :agent_price, 
                    :agent_curr, :branch_id, :waybill_no, :waybill_date, :description, :transports_attributes, :loading_ids
 
-  validates_uniqueness_of :reference, case_sensitive: false, scope: :patron_id
-  validates_presence_of :reference, on: :update
+  validates :reference, presence: { on: :update }, uniqueness: { case_sensitive: false, scope: :patron_id }
   validates :operation, presence: { message: I18n.t('defaults.inputerror.cant_be_blank') }
   validates :direction, presence: { message: I18n.t('defaults.inputerror.cant_be_blank') }, inclusion: { in: %w(E I T D) }
   validates :branch_id, presence: { message: I18n.t('defaults.inputerror.cant_be_blank') }
@@ -53,8 +52,6 @@ class Position < ActiveRecord::Base
   scope :import, where(direction: "I")
   scope :transit, where(direction: "T")
   scope :domestic, where(direction: "D")
-
-  #scope :washed_up, where(:age.gt => 30)
   scope :newones, order("created_at desc")
 
   before_create :set_initials

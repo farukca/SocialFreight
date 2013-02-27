@@ -496,6 +496,7 @@ tr:
       task_list: "Görev Listesi"
   documents:
     title:
+      document_info: "Döküman Bilgileri"
     label:
       document_type: "Belge Tipi"
       document_date: "Belge Tarihi"

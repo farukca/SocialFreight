@@ -10,7 +10,7 @@
         <p style="font-size:14px;">En güncel lojistik yazılımını kullanmak için;&nbsp;<%= link_to "hemen üye olabilirsiniz", new_patron_path %></p>
         <%= link_to "Daha Fazlası için tıklayınız", features_path, :class => "small-btn blue rounded-1" %>
       </div>
-      <div class="span7">
+      <div class="span7 hidden-phone">
         <div id="slider">
           <ul class="images">
             <li><%= link_to image_tag("big_images/slider-img-1.jpg"), road_path %></li>
@@ -39,7 +39,7 @@
 
   <%= render "shared/site_portofilo" %>
 </div>
-<div class="row">
+<div class="row hidden-phone">
   <%= render "shared/site_description" %>
 </div>
 <script type="text/javascript">document.getElementById('home').classList.add('active');</script>

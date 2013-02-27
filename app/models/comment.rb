@@ -8,6 +8,7 @@ class Comment < ActiveRecord::Base
   validates_presence_of :comment_text, :user_id
 
   default_scope { where(patron_id: Patron.current_id) }
+  scope :recents, order("created_at desc")
 
   after_create :add_post
 

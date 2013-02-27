@@ -1,5 +1,8 @@
 Socialfreight::Application.routes.draw do
 
+  resources :reminders
+
+
   get "logout" => "sessions#destroy", :as => "logout"
   get "login"  => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
@@ -45,6 +48,7 @@ Socialfreight::Application.routes.draw do
   resources :people
   resources :positions do
     resources :posts
+    resources :todolists
     member do
       get :addload
       get :plan
@@ -52,11 +56,13 @@ Socialfreight::Application.routes.draw do
   end
   resources :transports do
     resources :posts
+    resources :todolists
   end
   resources :transroutes
 
   resources :loadings do
     resources :posts
+    resources :todolists
     member do
       get :addtoplan
       get :plan
@@ -64,9 +70,11 @@ Socialfreight::Application.routes.draw do
   end
   resources :departures do
     resources :posts
+    resources :todolists
   end
   resources :arrivals do
     resources :posts
+    resources :todolists
   end
   resources :packages
   resources :containers
@@ -75,13 +83,16 @@ Socialfreight::Application.routes.draw do
 
   resources :rentals do
     resources :posts
+    resources :todolists
   end
   resources :vehicles do
     resources :posts
+    resources :todolists
   end
   resources :vessels
   resources :documents do
     resources :posts
+    resources :todolists
   end
   resources :costs
   resources :payoffs
@@ -107,7 +118,6 @@ Socialfreight::Application.routes.draw do
     resources :comments
   end
   resources :activities
-  resources :todolists
   resources :tasks
   resources :nicks
   resources :junks

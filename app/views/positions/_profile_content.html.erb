@@ -48,9 +48,12 @@
       <h5>
         Todo List
         <span class="sub-link">
-          <span class="btn btn-small btn-info togglebutton" data-href="#new_post_div">Create a todo list</span>
+          <span class="btn btn-small btn-info togglebutton" data-href="#new_todolist_div">Create a todo list</span>
         </span>
       </h5>
+    </div>
+    <div id="new_todolist_div" class="row-fluid slidingDiv">
+      <%= render "todolists/form", todop: @position %>
     </div>
   </div>
 

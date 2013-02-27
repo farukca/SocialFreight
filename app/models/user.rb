@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
   has_many :journals, as: :journaled, dependent: :destroy
   has_many :documents
   has_many :junks
+  has_many :reminders
 
   attr_accessible :email, :password, :password_confirmation, :name, :surname, :patron_id, :avatar, :remove_avatar, 
                    :region, :time_zone, :user_type, :language, :locale, :mail_encoding, :role, :branch_id

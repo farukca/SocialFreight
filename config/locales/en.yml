@@ -496,6 +496,7 @@ en:
       task_list: "Task List"
   documents:
     title:
+      document_info: "Document Details"
     label:
       document_type: "Document Type"
       document_date: "Document date"

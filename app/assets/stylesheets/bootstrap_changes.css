@@ -118,6 +118,19 @@ select, input[type="file"] {
   overflow: hidden;
   white-space: nowrap;
 }
+table th {
+  background: #f2f3f3;
+  border-width: 0 0 1px 1px;
+  border-color: #e0e3e5;
+  color: #666;
+  font-size: .9em;
+  font-weight: bold;
+  padding: 5px 2px 4px 5px;
+  line-height:12px;
+}
+.table-bordered {
+  border: 1px solid #e0e3e5;
+}
 input:-moz-placeholder,
 textarea:-moz-placeholder {
   font-style: italic;

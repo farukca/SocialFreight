@@ -45,13 +45,18 @@ class Loading < ActiveRecord::Base
                   :report_date, :sender_id, :consignee_id, :waybill_no, :waybill_date, :weight_unit, :category,
                   :packages_attributes, :containers_attributes
 
-  validates_uniqueness_of :reference, case_sensitive: false, scope: :patron_id
-  validates_presence_of :reference, on: :update
-  validates_presence_of :operation, :direction, :branch_id, :load_coun, :unload_coun, :load_type
-  validates_presence_of :company_id
-  #validates_associated :company
-  validates_presence_of :commodity
-  validates_presence_of :user
+  validates :reference, presence: { on: :update }, uniqueness: { case_sensitive: false, scope: :patron_id }
+  validates :operation, :direction, :branch_id, :load_coun, :unload_coun, :load_type, presence: true
+  validates :company_id, presence: true
+  validates :commodity, presence: true, length: { maximum: 500 }
+  validates :user_id, presence: true
+  validates :brut_wg, numericality: true
+  validates :freight_price, :product_price, numericality: true
+  validates :bank, length: { maximum: 100 }
+  validates :category, length: { maximum: 60 }
+  validates :producer, length: { maximum: 60 }
+  validates :marks_nos, length: { maximum: 60 }
+  validates :notes, length: { maximum: 500 }
 
   default_scope { where(patron_id: Patron.current_id) }
   scope :active, where(status: "A")

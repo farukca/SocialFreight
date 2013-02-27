@@ -1,11 +1,11 @@
 <div id="opform">
 
-<%= simple_form_for @arrival, :html => { :class => 'form-horizontal' }, :validate => true do |f| %>
+<%= simple_form_for @arrival, html: { class: 'form-horizontal' }, validate: true do |f| %>
   <%= f.error_notification %>
 
   <fieldset>
   <div class="pageBlock">
-    <%= render 'shared/form_buttonsh', :f => f %>
+    <%#= render 'shared/form_buttonsh', :f => f %>
 
     <div class="tabbable tabs-below">
 

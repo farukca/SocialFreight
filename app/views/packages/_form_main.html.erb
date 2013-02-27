@@ -9,7 +9,8 @@
       <fieldset>
         <%= f.input :total, label: t("packages.label.total") do %>
           <%= f.input_field :total, class: "input-mini50" %>
-          <%= f.input_field :pack_type, as: :select, collection: Package.pack_types.map { |r| [r[1], r[0] ] }, class: "input-medium" %>
+          <%= f.input_field :pack_type, class: "input-medium" %>
+          <%#= f.input_field :pack_type, as: :select, collection: Package.pack_types.map { |r| [r[1], r[0] ] }, class: "input-medium" %>
         <% end %>
         <%= f.input :dimension1, label: t("packages.label.dimension") do %>
           <%= f.input_field :dimension1, class: "input-mini50" %>X

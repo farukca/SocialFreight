@@ -13,7 +13,15 @@ class Departure < ActiveRecord::Base
   has_many :packages, as: :packed, dependent: :destroy
   accepts_nested_attributes_for :packages, allow_destroy: true, reject_if: proc { |attributes| attributes['pack_type'].blank? }
 
-  validate :loading_id, :presence => true
+  validates :loading_id, presence: true
+  validates :country_id, presence: true
+  validates :load_place, length: { maximum: 60 }
+  validates :load_city, length: { maximum: 100 }
+  validates :notes, length: { maximum: 250 }
+  validates :statement, length: { maximum: 20 }
+  validates :address, length: { maximum: 100 }
+  validates :district, length: { maximum: 30 }
+  validates :postcode, length: { maximum: 5 }
 
   default_scope { where(patron_id: Patron.current_id) }
   
