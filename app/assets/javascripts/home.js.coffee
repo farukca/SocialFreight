@@ -112,5 +112,4 @@ jQuery ->
   #      success: (data) ->
   #        callback data
 
-
   $(".simple_form").find("input[type=text],textarea,select").filter(":visible:first").focus()

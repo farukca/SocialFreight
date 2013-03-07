@@ -480,16 +480,21 @@ tr:
       branch_list: "Şube Listesi"
     action:
       save: "Firma Bilgisini Kaydet"
+  todolists:
+    title:
+      new_todolist: "Yeni Yapılacaklar Listesi"
+    placeholder:
+      todolist_name: "Yapılacak maddeler için genel bir başlık giriniz"
   tasks:
     title:
       last_tasks: "Aktif Görevler"
-      task_info: "Yetkili Bilgisi"
+      task_info: "Görev Bilgisi"
     label:
       user: "Kullanıcı"
       due_date: "Tamamlanma Tarihi"
       task_text: "Görev Açıklaması"
     placeholder:
-      user: "Görevin Atanacağı Kullanıcıyı Seçiniz"
+      user: "Bu işi kim yapacak ?"
     hint:
     link:
       new_task: "Görev Oluştur"

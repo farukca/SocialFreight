@@ -52,6 +52,23 @@
   <div class="row-fluid profile-section">
     <div class="page-header">
       <h5>
+        Todo List
+        <span class="sub-link">
+          <%= link_to "Create todolist for this loading", new_todolist_path(loading_id: @loading.id), class: "btn btn-small btn-info" %>
+        </span>
+      </h5>
+    </div>
+    <div class="row-fluid">
+      <ul id="loading_<%= @loading.id %>_todolists">
+        <%= render partial: "todolists/todolist_listitem", collection: @loading.todolists, as: :todolist %>
+        <%#= render "todolists/form", todop: @loading %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row-fluid profile-section">
+    <div class="page-header">
+      <h5>
         Discussions
         <span class="sub-link">
           <span class="btn btn-small btn-info togglebutton" data-href="#new_post_div">Post a new message</span>
@@ -65,19 +82,4 @@
     </div>
     <%= render 'posts/postlist', posts: @loading.posts %>
   </div>
-
-  <div class="row-fluid profile-section">
-    <div class="page-header">
-      <h5>
-        Todo List
-        <span class="sub-link">
-          <span class="btn btn-small btn-info togglebutton" data-href="#new_todolist_div">Create a todo list</span>
-        </span>
-      </h5>
-    </div>
-    <div id="new_todolist_div" class="row-fluid slidingDiv">
-      <%= render "todolists/form", todop: @loading %>
-    </div>
-  </div>
-
 </div>

@@ -28,7 +28,7 @@ class Company < ActiveRecord::Base
                   :email, :website, :tel, :gsm, :voip, :fax, :contact, :sector, :twitter_url, :facebook_url, :linkedin_url, 
                   :notes, :description, :saler_id, :parent_id, :contacts_attributes
 
-  validates :name, uniqueness: { scope: :patron_id, message: I18n.t('defaults.inputerror.must_be_unique') }, presence: { message: I18n.t('defaults.inputerror.cant_be_blank') }
+  validates :name, uniqueness: { scope: :patron_id, message: I18n.t('defaults.inputerror.must_be_unique') }, length: { maximum: 50 }, presence: { message: I18n.t('defaults.inputerror.cant_be_blank') }
   validates :title, length: { maximum: 100 }
   validates :tel, :fax, :gsm, :voip, length: { maximum: 15 }
   validates :website, length: { maximum: 30 }

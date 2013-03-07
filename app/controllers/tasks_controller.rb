@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   
   before_filter :require_login
+  respond_to :js, :json
 
   def index
   	@tasks = current_user.tasks
@@ -19,32 +20,21 @@ class TasksController < ApplicationController
   end
 
   def create
-  	@task = Task.new(params[:task])
-  	@task.cruser_id = current_user.id
+    @todolist = Todolist.find(params[:todolist_id])
 
-    respond_to do |format|
-      if @task.save
-        format.html { redirect_to @task, notice: 'task was successfully created.' }
-        format.json { render json: @task, status: :created, location: @task }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
-    end
+  	@task = @todolist.tasks.new(params[:task])
+  	@task.cruser_id = current_user.id
+    @task.user_id   = 0
+
+    @task.save!
+    respond_with @task, success: "Successfully saved task"
   end
 
   def update
   	@task = Task.find(params[:id])
 
-  	respond_to do |format|
-      if @task.update_attributes(params[:task])
-        format.html { redirect_to @task, notice: 'task was successfully updated.' }
-        format.json { head :ok }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
-    end
+    @task.update_attributes!(params[:task])
+    respond_with @task, success: 'task was successfully updated.'
   end
 
   def destroy

@@ -1,1 +1,25 @@
-<%= render "form" %>
+<div id="task_form" class="row-fluid">
+
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+    <h4><%= t("feedbacks.title.quick_feedback") %></h4>
+  </div>
+
+	<%= simple_form_for [@todolist, @task], html: { class: "form-horizontal" }, validate: true, remote: true do |f| %>
+    <div class="modal-body">
+	    <%= f.error_notification %>
+			<div class="row-fluid">
+			  <%= f.input :user_id, as: :hidden, label: t("tasks.label.user"), input_html: { class: "chosen_input", "data-url" => "/people.json", "data-placeholder" => t("tasks.placeholder.user") } %>
+			  <%= f.input :due_date, as: :string, label: t("tasks.label.due_date"), input_html: {class: "input-small", "data-datepicker" => "datepicker"} %>		  
+			  <%#= f.text_field :task_text, label: false, placeholder: t("tasks.label.task_text"), class: "input-xxlarge" %>
+			</div>
+    </div>
+
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal" aria-hidden="true"><%= t("defaults.action.close") %></a>
+    <%= f.submit t("defaults.action.send"), class: 'btn btn-success' %>
+  </div>
+	<% end %>
+
+</div>
+<script type="text/javascript">$("#edit_task_<%= @task.id %>").validate();</script>

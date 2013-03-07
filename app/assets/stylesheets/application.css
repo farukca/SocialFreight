@@ -6,7 +6,6 @@
  *= require normalize
  *= require bootstrap
  *= require bootstrap_changes
- *= require freight
  *= require contacts
  *= require tasks
  *= require gmaps4rails
@@ -14,6 +13,7 @@
  * require chosen
  *= require select2
  *= require calendar
+ *= require freight
  * require jquery.atwho
  * require_tree . 
 */

@@ -29,6 +29,8 @@ class Loading < ActiveRecord::Base
   has_many :containers
   has_many :packages, as: :packed, dependent: :destroy
   accepts_nested_attributes_for :packages, :containers
+
+  has_many :todolists, as: :todop, dependent: :destroy
     
   #has_many :waybills, as: :waybillable, dependent: :destroy
   #has_many :comments, as: :commentable, dependent: :destroy
