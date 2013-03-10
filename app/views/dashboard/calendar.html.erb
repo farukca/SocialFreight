@@ -1,5 +1,5 @@
 <div id="calendar">
-  <h3 id="month">
+  <h3 id="month" data-current-date="<%= @date %>">
     <%= link_to "<", date: @date.prev_month %>
     <%= @date.strftime("%B %Y") %>
     <%= link_to ">", date: @date.next_month %>

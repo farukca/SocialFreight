@@ -1,3 +1,2 @@
-$('#postlist').prepend("<%= j render @post %>");
+$("#<%= @post.target_type %>_<%= @post.target_id %>_posts").prepend('<%= j render(@post) %>');
 $('#new_post').each(function() { this.reset(); });
-$("#post_related_user_ids").select2("val", "");

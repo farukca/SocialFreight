@@ -2,7 +2,11 @@ class PostsController < ApplicationController
 
   include Twitter::Extractor
   before_filter :require_login
-  respond_to :js, :json
+  respond_to :js, :json, :html
+
+  def show
+    @post = Post.find(params[:id])
+  end
 
   def create
     @target = find_target
@@ -24,7 +28,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = post.find(params[:id])
+    @post = Post.find(params[:id])
     @post.destroy
     respond_with @post, notice: "Successfully destroyed post"
   end

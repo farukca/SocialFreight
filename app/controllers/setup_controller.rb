@@ -9,19 +9,21 @@ class SetupController < ApplicationController
     @patron = current_patron
     @user   = current_user
     case step
-    when :set_params
-      #counter_size = @patron.counters.size
-      #if counter_size == 0
-      @operation = params[:operation]
-      if params[:operation].present?
-        counter = @patron.counters.find_or_initialize_by_operation_and_counter_type(params[:operation],"Loading")
-        counter = @patron.counters.find_or_initialize_by_operation_and_counter_type(params[:operation],"Position")
-      else      
-        ["air","sea","road","rail"].each { |o|
-          counter = @patron.counters.find_or_initialize_by_operation_and_counter_type(o,"Loading")
-          counter = @patron.counters.find_or_initialize_by_operation_and_counter_type(o,"Position")
-        }
-      end
+      when :set_params
+        #counter_size = @patron.counters.size
+        #if counter_size == 0
+        @operation = params[:operation]
+        if params[:operation].present?
+          counter = @patron.counters.find_or_initialize_by_operation_and_counter_type(params[:operation],"Loading")
+          counter = @patron.counters.find_or_initialize_by_operation_and_counter_type(params[:operation],"Position")
+        else      
+          ["air","sea","road","rail"].each { |o|
+            counter = @patron.counters.find_or_initialize_by_operation_and_counter_type(o,"Loading")
+            counter = @patron.counters.find_or_initialize_by_operation_and_counter_type(o,"Position")
+          }
+        end
+      when :set_users
+        @users = Array.new(7) { User.new }
     end
     render_wizard
       

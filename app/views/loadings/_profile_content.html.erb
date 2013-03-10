@@ -59,7 +59,7 @@
       </h5>
     </div>
     <div class="row-fluid">
-      <ul id="loading_<%= @loading.id %>_todolists">
+      <ul id="Loading_<%= @loading.id %>_todolists">
         <%= render partial: "todolists/todolist_listitem", collection: @loading.todolists, as: :todolist %>
         <%#= render "todolists/form", todop: @loading %>
       </ul>
@@ -80,6 +80,11 @@
         <%= render 'posts/form', object: @loading %>
       </div>
     </div>
-    <%= render 'posts/postlist', posts: @loading.posts %>
+    <%#= render 'posts/postlist', posts: @loading.posts %>
+    <div class="row-fluid">
+      <ul id="Loading_<%= @loading.id %>_posts">
+        <%= render partial: "posts/post_listitem", collection: @loading.posts.latests, as: :post %>
+      </ul>
+    </div>
   </div>
 </div>
