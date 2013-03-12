@@ -1,12 +1,12 @@
 <div class="row-fluid">
 
   <div class="page-header">
-    <h4><%= todolist.name %></h4>
+    <h4>Todolist Details</h4>
   </div>
 
   <div class="row-fluid">
 	  <div class="page-header">
-      <h5>Yapılacak Maddeler</h5>
+      <h5><%= todolist.name %></h5>
     </div>
     <ul id="todolist_<%= @todolist.id %>_tasks_list">
       <%= render todolist.tasks %>
@@ -15,7 +15,7 @@
 
   <div class="row-fluid">
     <div class="page-header">
-      <h5>Yeni Maddeler Ekleyebilirsin</h5>
+      <h5>Yeni Madde Ekle</h5>
     </div>
     <div class="row-fluid">
       <%= render "tasks/form", todolist: todolist %>

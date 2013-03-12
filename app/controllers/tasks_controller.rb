@@ -17,6 +17,7 @@ class TasksController < ApplicationController
 
   def edit
   	@task = Task.find(params[:id])
+    @todolist = @task.todolist
   end
 
   def create

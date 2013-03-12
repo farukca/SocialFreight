@@ -8,8 +8,13 @@
     <% end %>
     <p class="task">
       <%= sanitize(auto_link(task.task_text)) %>
-      <span class="assign-info">
-        <%= link_to "Not Assigned", edit_todolist_task_path(@todolist, task, nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" %>
+      <span class="sub-info">
+        <% if task.user_id == 0 %>
+          <%= link_to "Not Assigned", edit_todolist_task_path(@todolist, task, nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" %>
+        <% else %>
+          <%= "#{task.user.to_s}-#{task.due_date}" %>
+          <%= link_to "Change User", edit_todolist_task_path(@todolist, task, nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" %>
+        <% end %>
       </span>
       <span class="task-actions">
         <%#= link_to "Edit", edit_task_path(task) %>
