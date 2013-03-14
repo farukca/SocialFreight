@@ -1,9 +1,19 @@
-<div class="container">
-  <%= form_tag password_resets_path, method: :post, class: "form-inline" do %>
-    <div class="field">
-      <%= label_tag :email %>
-      <%= text_field_tag :email, params[:email] %>
-    </div>
-    <div class="actions"><%= submit_tag "Reset Password" %></div>
-  <% end %>
+<div class="row-fluid">
+	<div class="page-header">
+    <h4>Reset your password</h4>
+	</div>
+  <div class="row-fluid">
+  	<p>To reset your password, enter your SocialFreight account email</p>
+  </div>
+	<div class="row-fluid">
+	  <%= form_tag password_resets_path, method: :post, class: "form-horizontal" do %>
+	    <div class="control-group">
+	      <%= label_tag :email, t("defaults.label.email"), class: "control-label" %>
+	      <div class="controls">
+	        <%= text_field_tag :email, params[:email] %>
+	      </div>
+	    </div>
+	    <div class="form-actions"><%= submit_tag "Reset Password", class: "btn btn-success" %></div>
+	  <% end %>
+  </div>
 </div>

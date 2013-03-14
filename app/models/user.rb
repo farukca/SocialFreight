@@ -28,17 +28,13 @@ class User < ActiveRecord::Base
   has_many :reminders
 
   attr_accessible :email, :password, :password_confirmation, :name, :surname, :patron_id, :avatar, :remove_avatar, 
-                   :region, :time_zone, :user_type, :language, :locale, :mail_encoding, :role, :branch_id
+                   :region, :time_zone, :user_type, :language, :locale, :mail_encoding, :role, :branch_id, :user_status
   #attr_protected  :password
 
-  validates :password, presence: true, confirmation: true, length: { minimum: 8, maximum: 20 }
-  #validates_confirmation_of :password
-  #validates_presence_of :password, on: :create
-  #validates_length_of :password, minimum: 8 
-  validates :email, presence: true, uniqueness: { case_sensitive: false }, length: { in: 7..60 }, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, on: :create }
+  validates :password, presence: { on: :create }, confirmation: { on: :create }, length: { minimum: 6, maximum: 20, on: :create }
+  validates :email, presence: { on: :create }, uniqueness: { case_sensitive: false }, length: { in: 7..60 }, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, on: :create }
   validates :name, presence: true, on: :update
   validates :surname, presence: true, on: :update
-  #validates_uniqueness_of :email, :case_sensitive => false
   validates :branch_id, presence: true
   #validates_inclusion_of :time_zone, in: ActiveSupport::TimeZone.zones_map(&:name)
   scope :active, where(user_status: "A")

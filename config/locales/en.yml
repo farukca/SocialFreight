@@ -476,6 +476,7 @@ en:
       postcode: "Postcode"
     hint:
     link:
+      add_branch: "Add New Branch"
       new_branch: "Create New Branch"
       branch_list: "Branch List"
     action:

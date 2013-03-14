@@ -61,5 +61,4 @@ class AvatarUploader < CarrierWave::Uploader::Base
   def public_id
     return "#{model.slug}-#{model.id}"
   end
-
 end

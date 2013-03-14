@@ -76,7 +76,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-
+    debugger
     if @user.update_attributes(params[:user])
       if @user.last_login_at.nil?
         login_user = login(@user.email, params[:user][:password], params[:remember_me])

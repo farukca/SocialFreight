@@ -476,6 +476,7 @@ tr:
       postcode: "Posta kodu"
     hint:
     link:
+      add_branch: "Yeni Şube Ekle"
       new_branch: "Yeni Şube Oluştur"
       branch_list: "Şube Listesi"
     action:

@@ -13,12 +13,15 @@
             <fieldset>
               <div class="row-fluid">
                 <div class="span6">
+                  <% if params[:action] == "new" %>
+                    <%= f.input :email %>
+                  <% end %>
                   <%= f.input :name %>
                   <%= f.input :surname %>
                 </div>
                 <div class="span6">
-                  <%= f.input :email %>
                   <%= f.input :branch_id, as: :select, collection: current_patron.branches, include_blank: false, selected: current_user.branch_id %>                
+                  <%= f.input :user_status %>
                   <%#= f.input :role, as: :select, collection: Role.all, include_blank: false, selected: "operator" %>
                 </div>
               </div>
