@@ -3,7 +3,7 @@ class Loading < ActiveRecord::Base
   acts_as_followable
   acts_as_likeable
   extend FriendlyId
-  include GeneratesNick
+  #include GeneratesNick
   include GeneratesActivity
 
   belongs_to :patron
@@ -48,7 +48,8 @@ class Loading < ActiveRecord::Base
                   :packages_attributes, :containers_attributes
 
   validates :reference, presence: { on: :update }, uniqueness: { case_sensitive: false, scope: :patron_id }
-  validates :operation, :direction, :branch_id, :load_coun, :unload_coun, :load_type, presence: true
+  #validates :operation, :direction, :load_type, presence: true
+  validates :branch_id, :load_coun, :unload_coun, presence: true
   validates :company_id, presence: true
   validates :commodity, presence: true, length: { maximum: 500 }
   validates :user_id, presence: true

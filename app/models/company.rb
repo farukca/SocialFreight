@@ -4,7 +4,7 @@ class Company < ActiveRecord::Base
   acts_as_followable
   acts_as_likeable
   extend FriendlyId
-  include GeneratesNick
+  #include GeneratesNick
   include GeneratesActivity
   
   #belongs_to :patron

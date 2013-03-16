@@ -4,7 +4,7 @@ class Position < ActiveRecord::Base
   acts_as_likeable
   acts_as_mentionable
   extend FriendlyId
-  include GeneratesNick
+  #include GeneratesNick
   include GeneratesActivity
   
   belongs_to :patron  
@@ -23,6 +23,7 @@ class Position < ActiveRecord::Base
   #has_many :comments, as: :commentable, dependent: :destroy
   has_many :posts, as: :target, dependent: :destroy
   has_many :events, as: :eventable, dependent: :destroy
+  has_many :todolists, as: :todop, dependent: :destroy
 
   has_many :transports, dependent: :destroy
   accepts_nested_attributes_for :transports, :reject_if => lambda { |a| a[:trans_method].blank? }, :allow_destroy => true
@@ -35,8 +36,8 @@ class Position < ActiveRecord::Base
                    :agent_curr, :branch_id, :waybill_no, :waybill_date, :description, :transports_attributes, :loading_ids
 
   validates :reference, presence: { on: :update }, uniqueness: { case_sensitive: false, scope: :patron_id }
-  validates :operation, presence: { message: I18n.t('defaults.inputerror.cant_be_blank') }
-  validates :direction, presence: { message: I18n.t('defaults.inputerror.cant_be_blank') }, inclusion: { in: %w(E I T D) }
+  #validates :operation, presence: { message: I18n.t('defaults.inputerror.cant_be_blank') }
+  #validates :direction, presence: { message: I18n.t('defaults.inputerror.cant_be_blank') }, inclusion: { in: %w(E I T D) }
   validates :branch_id, presence: { message: I18n.t('defaults.inputerror.cant_be_blank') }
   validates :description, presence: { message: I18n.t('defaults.inputerror.cant_be_blank') }, length: { maximum: 255 }
   validates :notes, length: { maximum: 500 }

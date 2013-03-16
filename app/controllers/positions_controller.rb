@@ -25,26 +25,14 @@ class PositionsController < ApplicationController
   end
 
   def new
-    #control selected operation
-    operation = current_operation
-    if operation.blank?
-      session[:return_to_operation] = request.url
-      redirect_to operations_path
-      #TODO if operation still blank, go to operation select page
-      #if operation.blank?
-        #session[:operation_select_return_path] = "new_position"
-        #redirect_to select_operation_path
-      #end
-    else
-      @position = Position.new(params[:position])
-      @position.operation = operation
+    @position = Position.new
+    #@position.operation = operation
       
-      #@transport = @position.transports.build(:trans_method => @position.operation)
+    #@transport = @position.transports.build(:trans_method => @position.operation)
       
-      respond_to do |format|
-        format.html # new.html.erb
-        format.json { render json: @position }
-      end
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @position }
     end
   end
 

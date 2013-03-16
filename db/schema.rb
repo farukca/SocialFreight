@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130301215731) do
+ActiveRecord::Schema.define(:version => 20130316215348) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                                  :null => false
@@ -630,8 +630,8 @@ ActiveRecord::Schema.define(:version => 20130301215731) do
   create_table "loadings", :force => true do |t|
     t.string   "reference",        :limit => 30,                   :null => false
     t.integer  "position_id"
-    t.string   "operation",        :limit => 20,                   :null => false
-    t.string   "direction",        :limit => 1,                    :null => false
+    t.string   "operation"
+    t.string   "direction"
     t.string   "incoterm",         :limit => 20
     t.string   "paid_at",          :limit => 20
     t.string   "channel",          :limit => 30
@@ -916,8 +916,8 @@ ActiveRecord::Schema.define(:version => 20130301215731) do
 
   create_table "positions", :force => true do |t|
     t.string   "reference",        :limit => 30,                   :null => false
-    t.string   "operation",        :limit => 20,                   :null => false
-    t.string   "direction",        :limit => 1,                    :null => false
+    t.string   "operation"
+    t.string   "direction"
     t.string   "incoterm",         :limit => 20
     t.string   "paid_at",          :limit => 20
     t.string   "load_type",        :limit => 1
