@@ -17,8 +17,6 @@ class TransportsController < ApplicationController
     @transport.fromwhere  = params[:fromwhere] if params[:fromwhere]
     if params[:trans_method]
       @transport.trans_method = params[:trans_method]
-    else
-      @transport.trans_method = @position.operation
     end
   end
 

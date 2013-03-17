@@ -1,8 +1,7 @@
-<div>
-  <h5>
-    <%= t("defaults.title.#{listItem.pluralize}") %>
-    <span class="sub-link">
-      <%= link_to t("defaults.link.new_#{listItem}"), new_record_path(listItem, object), class: "btn btn-mini btn-info" %>
-    </span>
-  </h5>
+<div class="page-header">
+	<ul class="inline">
+    <li><h5><%= t("defaults.title.#{listItem.pluralize}") %></h5></li>
+    <li><%= link_to t("defaults.link.new_#{listItem}"), new_record_path(listItem, object), class: "btn btn-info" %></li>
+    <li class="pull-right"><%= link_to "#" do %><%= "#{listItem.humanize.pluralize} Help" %><i class="icon-question-sign"></i><% end %></li>
+  </ul>
 </div>

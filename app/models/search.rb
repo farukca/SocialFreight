@@ -35,8 +35,8 @@ class Search < ActiveRecord::Base
   private
   def find_positions
     positions = Position.active
-    positions = positions.where(operation: self.operation) if self.operation.present?
-    positions = positions.where(direction: self.direction) if self.direction.present?
+    #positions = positions.where(operation: self.operation) if self.operation.present?
+    #positions = positions.where(direction: self.direction) if self.direction.present?
     positions = positions.where(branch_id: self.branch_id) if self.branch_id.present?
     positions
   end
@@ -44,15 +44,15 @@ class Search < ActiveRecord::Base
   def find_loadings
     loadings = Loading.active
     loadings = loadings.where(company_id: self.company_id) if self.company_id.present?
-    loadings = loadings.where(operation: self.operation) if self.operation.present?
-    loadings = loadings.where(direction: self.direction) if self.direction.present?
+    #loadings = loadings.where(operation: self.operation) if self.operation.present?
+    #loadings = loadings.where(direction: self.direction) if self.direction.present?
     loadings
   end
 
   def find_reservations
     reservations = Loading.active.reservation
-    reservations = reservations.where(operation: self.operation) if self.operation.present?
-    reservations = reservations.where(direction: self.direction) if self.direction.present?
+    #reservations = reservations.where(operation: self.operation) if self.operation.present?
+    #reservations = reservations.where(direction: self.direction) if self.direction.present?
     reservations = reservations.where('id not in (?)', self.session_loading_ids) if self.session_loading_ids.present?
     reservations
   end

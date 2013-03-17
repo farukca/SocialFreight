@@ -28,11 +28,11 @@ class OperationsController < ApplicationController
   end
 
   def home
-    @operation = Operation.find_by_code(params[:id])
-    session[:current_operation] = @operation.code
+    #@operation = Operation.find_by_code(params[:id])
+    #session[:current_operation] = @operation.code
 
     @search    = Search.new
-    @search.operation = @operation.code
+    #@search.operation = @operation.code
 
     respond_to do |format|
       format.html # show.html.erb

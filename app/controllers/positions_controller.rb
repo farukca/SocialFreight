@@ -26,10 +26,7 @@ class PositionsController < ApplicationController
 
   def new
     @position = Position.new
-    #@position.operation = operation
-      
-    #@transport = @position.transports.build(:trans_method => @position.operation)
-      
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @position }

@@ -3,23 +3,25 @@
     <ul class="nav">
       <%= navigator("homenavigator", root_url, t("defaults.link.home"), "icon-home") %>
       <%= navigator("companynavigator", crm_path, t("defaults.link.crm"), "icon-star-empty") %>
-      <li id="opernavigator" <% if (current_tab == "opernavigator") %>class="dropdown active"<% else %>class="dropdown"<%  end %>>
+      <%= navigator("opernavigator", home_operation_path, t("defaults.link.operation"), "icon-cog") %>
+
+      <!--li id="opernavigator" <% if (current_tab == "opernavigator") %>class="dropdown active"<% else %>class="dropdown"<%  end %>>
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
           <i class="icon-cog"></i>
-          <%= t("defaults.link.operation") %>
+          <%#= t("defaults.link.operation") %>
           <b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
-          <%= navigator("airnavigator", home_operation_path(:air), t("operations.title.airoperation"), "icon-plane") %>
-          <%= navigator("seanavigator", home_operation_path(:sea), t("operations.title.seaoperation"), "icon-flag") %>
-          <%= navigator("roadnavigator", home_operation_path(:road), t("operations.title.roadoperation"), "icon-road") %>
-          <%= navigator("railnavigator", home_operation_path(:rail), t("operations.title.railoperation"), "icon-random") %>
-          <!--li id="inlandnavigator"><%#= link_to home_operation_path(:inland) do %><i class="icon-qrcode"></i>Dahili Nakliye<%# end %></li>
+          <%#= navigator("airnavigator", home_operation_path(:air), t("operations.title.airoperation"), "icon-plane") %>
+          <%#= navigator("seanavigator", home_operation_path(:sea), t("operations.title.seaoperation"), "icon-flag") %>
+          <%#= navigator("roadnavigator", home_operation_path(:road), t("operations.title.roadoperation"), "icon-road") %>
+          <%#= navigator("railnavigator", home_operation_path(:rail), t("operations.title.railoperation"), "icon-random") %>
+          <li id="inlandnavigator"><%#= link_to home_operation_path(:inland) do %><i class="icon-qrcode"></i>Dahili Nakliye<%# end %></li>
           <li id="distronavigator"><%#= link_to home_operation_path(:distro) do %><i class="icon-qrcode"></i>Ulusal Dağıtım<%# end %></li>
-          <li id="heavynavigator"><%#= link_to home_operation_path(:heavy) do %><i class="icon-qrcode"></i>Ağır Nakliye<%# end %></li-->
+          <li id="heavynavigator"><%#= link_to home_operation_path(:heavy) do %><i class="icon-qrcode"></i>Ağır Nakliye<%# end %></li>
 
         </ul>
-      </li>
+      </li-->
       <%# current_patron.operations.each_with_index do |operation, index| %>
         <%# unless operation.to_s.blank? %>
           <!--li class="<%#= selected_navigation(operation.to_s) %>"><%#= link_to operation.to_s.humanize, home_operation_path(operation) %></li-->

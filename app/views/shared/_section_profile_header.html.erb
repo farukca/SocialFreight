@@ -2,8 +2,8 @@
   <h5>
     <%= t("operations.title.#{object.class.to_s.downcase}_profile") %>
     <span class="sub-link">
-      <%= link_to t("defaults.link.new_#{object.class.to_s.downcase}"), new_record_path(object.class.to_s.downcase), class: "btn btn-small btn-info" %>
-      |
+      <%#= link_to t("defaults.link.new_#{object.class.to_s.downcase}"), new_record_path(object.class.to_s.downcase), class: "btn btn-small btn-info" %>
+      
       <%= link_to t("defaults.link.edit_#{object.class.to_s.downcase}"), edit_record_path(object), class: "btn btn-small btn-info" %>
     </span>
     <span class="help-link">

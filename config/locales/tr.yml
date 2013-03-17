@@ -138,6 +138,7 @@ tr:
       change_picture: "Resmi Değiştirmek için Tıklayınız"
   operations:
     title:
+      operationmanagement: "Operasyon Yönetimi"
       airoperation: "Hava Operasyon"
       seaoperation: "Deniz Operasyon"
       roadoperation: "Kara Operasyon"
@@ -241,6 +242,7 @@ tr:
     title:
       new_position: "Yeni Taşıma Projesi"
       position_info: "Proje Bilgileri"
+      position_loadings: "Projede Taşınacak Yükler"
     label:
       direction: "Servis Tipi"
       description: "Proje Adı"
@@ -250,6 +252,8 @@ tr:
       description: "Kolayca hatırlayabileceğiniz bir isim verin"
     hint:
     link:
+      new_loading: "Yeni Yük Bilgisi Ekle"
+      add_reservation: "Daha önceden oluşturulmuş reservasyonu projeye bağla"
     action:
       create: "Yeni Taşıma Projesini Başlat"
     message:

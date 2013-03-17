@@ -4,7 +4,10 @@
     <div class="row-fluid">
       <div id="operation_links">
         <legend><%= t "operations.title.process_list" %></legend>
-        <%= render "operations/menu_#{@operation.code}" %>
+        <ul class="unstyled">
+          <li><%= link_to t("operations.link.create_position"), new_position_path %></li>
+          <li><%= link_to t("operations.link.create_loading"), new_loading_path %></li>
+        </ul>
       </div>
     </div>
   </div>
@@ -14,9 +17,9 @@
       <div id="operation_tasks">
         <legend><%= t "defaults.title.reports" %></legend>
         <table class="table table-condensed">
-          <tr><td><%= link_to t("operations.link.position_list"), new_search_path(operation: @operation.code, model: "positions") %></td></tr>
-          <tr><td><%= link_to t("operations.link.loading_list"), new_search_path(operation: @operation.code, model: "loadings") %></td></tr>
-          <tr><td><%= link_to t("operations.link.transport_list"), new_search_path(operation: @operation.code, model: "transports") %></td></tr>
+          <tr><td><%= link_to t("operations.link.position_list"), new_search_path(model: "positions") %></td></tr>
+          <tr><td><%= link_to t("operations.link.loading_list"), new_search_path(model: "loadings") %></td></tr>
+          <tr><td><%= link_to t("operations.link.transport_list"), new_search_path(model: "transports") %></td></tr>
         </table>
       </div>
     </div>
@@ -29,27 +32,27 @@
       <li class="active"><a data-toggle="tab" href="#loading_list"><%= t "operations.title.planned_loadings" %></a></li>
       <li><a data-toggle="tab" href="#reservation_list"><%= t "operations.title.reservations" %></a></li>
       <li><a data-toggle="tab" href="#position_list"><%= t "operations.title.planned_transports" %></a></li>
-      <li class="pull-right"><%= link_to t("defaults.link.detailed_search"), new_search_path(operation: @operation.code), class: "small-size-link" %></li>
+      <li class="pull-right"><%= link_to t("defaults.link.detailed_search"), new_search_path, class: "small-size-link" %></li>
     </ul>
 
     <div id="my-tab-content" class="tab-content">
 
       <div id="loading_list" class="tab-pane profile-content active">
-        <% if @operation.loadings %>
-          <%= render partial: 'loadings/small_list', locals: { objects: @operation.loadings } %>
-        <% end %>
+        <%# if @operation.loadings %>
+          <%#= render partial: 'loadings/small_list', locals: { objects: @operation.loadings } %>
+        <%# end %>
       </div>
 
       <div id="reservation_list" class="tab-pane profile-content">
-        <% if @operation.loadings %>
-          <%= render partial: 'loadings/small_list', locals: { objects: @operation.reservations } %>
-        <% end %>
+        <%# if @operation.loadings %>
+          <%#= render partial: 'loadings/small_list', locals: { objects: @operation.reservations } %>
+        <%# end %>
       </div>
 
       <div id="position_list" class="tab-pane profile-content">
-        <% if @operation.positions %>
-          <%= render partial: 'positions/small_list', locals: { objects: @operation.positions } %>
-        <% end %>
+        <%# if @operation.positions %>
+          <%#= render partial: 'positions/small_list', locals: { objects: @operation.positions } %>
+        <%# end %>
       </div>
     </div>
 

@@ -4,7 +4,7 @@ class SearchesController < ApplicationController
 
   def new
     @search = Search.new
-    @search.operation = params[:operation] if params[:operation]
+    #@search.operation = params[:operation] if params[:operation]
     @search.model     = params[:model] if params[:model]
     @search.docdate1  = 1.month.ago
     @search.docdate2  = Date.today
@@ -50,7 +50,7 @@ class SearchesController < ApplicationController
   def planning
 
     @search = Search.new
-    @search.operation = params[:operation] if params[:operation]
+    #@search.operation = params[:operation] if params[:operation]
 
     respond_to do |format|
       format.html # show.html.erb

@@ -6,7 +6,7 @@ class LoadingsController < ApplicationController
     @loadings = Loading.all
 
     respond_to do |format|
-      format.htmlhttps://www.google.com.tr/
+      format.html
       format.json { render json: @loadings }
     end
   end
@@ -35,15 +35,10 @@ class LoadingsController < ApplicationController
     @loading  = nil
     unless @position.nil?
        @loading = @position.loadings.build(params[:loading])
-       @loading.operation = @position.operation
-       @loading.direction = @position.direction
     else
        @loading = Loading.new(params[:loading])
-       @loading.operation = params[:operation] if params[:operation]
     end
-    @loading.departures.build()
-    @loading.arrivals.build()
-    
+
     respond_to do |format|
       format.html
       format.json { render json: @loading }

@@ -12,8 +12,8 @@
   <% table.column :company, label: t("defaults.label.customer"), column_html: { scope: "col" } do |loading| %>
     <%= loading.company.name %>
   <% end %>
-  <% table.column :load_type, label: t("defaults.label.load_type"), column_html: { scope: "col" } %>
-  <% table.column :incoterm, label: t("defaults.label.incoterm"), column_html: { class: "emailCol", scope: "col" } %>
+  <%# table.column :load_type, label: t("defaults.label.load_type"), column_html: { scope: "col" } %>
+  <%# table.column :incoterm, label: t("defaults.label.incoterm"), column_html: { class: "emailCol", scope: "col" } %>
   <% table.column :load_coun, label: t("defaults.label.load_country"), column_html: { class: "phoneCol", scope: "col" } %>
   <% table.column :unload_coun, label: t("defaults.label.unload_country"), column_html: { class: "phoneCol", scope: "col" } %>
   <% table.column :freight_price, label: t("defaults.label.freight_price"), column_html: { scope: "col" } do |loading| %>

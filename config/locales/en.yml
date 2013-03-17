@@ -138,6 +138,7 @@ en:
       change_picture: "Click to change this picture"
   operations:
     title:
+      operationmanagement: "Operation Management"
       airoperation: "Air Transport"
       seaoperation: "Sea Transport"
       roadoperation: "Road Transport"
@@ -241,6 +242,7 @@ en:
     title:
       new_position: "New Transportation Project"
       position_info: "Project Informations"
+      position_loadings: "Project's Bookings"
     label:
       direction: "Service Type"
       description: "Project Name"
@@ -250,6 +252,8 @@ en:
       description: "write a rememberable name for this project"
     hint:
     link:
+      new_loading: "Add New Booking"
+      add_reservation: "Add Existing Booking to this project"
     action:
       create: "Create New Transportation Project"
     message:
@@ -481,6 +485,11 @@ en:
       branch_list: "Branch List"
     action:
       save: "Save Branch Information"
+  todolists:
+    title:
+      new_todolist: "Todo lists"
+    placeholder:
+      todolist_name: "Add a description to todolist as header"
   tasks:
     title:
       last_tasks: "Last Tasks"
