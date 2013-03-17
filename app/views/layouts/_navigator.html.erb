@@ -3,9 +3,9 @@
     <ul class="nav">
       <%= navigator("homenavigator", root_url, t("defaults.link.home"), "icon-home") %>
       <%= navigator("companynavigator", crm_path, t("defaults.link.crm"), "icon-star-empty") %>
-      <%= navigator("opernavigator", home_operation_path, t("defaults.link.operation"), "icon-cog") %>
+      <%= navigator("opernavigator", operations_path, t("defaults.link.operation"), "icon-cog") %>
 
-      <!--li id="opernavigator" <% if (current_tab == "opernavigator") %>class="dropdown active"<% else %>class="dropdown"<%  end %>>
+      <!--li id="opernavigator" <%# if (current_tab == "opernavigator") %>class="dropdown active"<%# else %>class="dropdown"<%#  end %>>
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
           <i class="icon-cog"></i>
           <%#= t("defaults.link.operation") %>

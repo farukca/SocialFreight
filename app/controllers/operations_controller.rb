@@ -1,10 +1,9 @@
 class OperationsController < ApplicationController
 
   before_filter :require_login 
-  before_filter(:only => [:home, :select]) { |c| c.set_tab "opernavigator" }
+  before_filter(:only => [:index]) { |c| c.set_tab "opernavigator" }
     
   def index
-    @operations = Operation.find(["air","sea","road","rail"])
 
     respond_to do |format|
       format.html # index.html.erb

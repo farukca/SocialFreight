@@ -29,29 +29,21 @@
   <legend><%= t "defaults.title.last_items" %></legend>
   <div id="last_operations" class="profile tabbable">
     <ul class="nav nav-tabs" data-tabs="tabs">
-      <li class="active"><a data-toggle="tab" href="#loading_list"><%= t "operations.title.planned_loadings" %></a></li>
+      <li class="active"><a data-toggle="tab" href="#position_list"><%= t "operations.title.planned_transports" %></a></li>
       <li><a data-toggle="tab" href="#reservation_list"><%= t "operations.title.reservations" %></a></li>
-      <li><a data-toggle="tab" href="#position_list"><%= t "operations.title.planned_transports" %></a></li>
       <li class="pull-right"><%= link_to t("defaults.link.detailed_search"), new_search_path, class: "small-size-link" %></li>
     </ul>
 
     <div id="my-tab-content" class="tab-content">
-
-      <div id="loading_list" class="tab-pane profile-content active">
-        <%# if @operation.loadings %>
-          <%#= render partial: 'loadings/small_list', locals: { objects: @operation.loadings } %>
+      <div id="position_list" class="tab-pane profile-content">
+        <%# if @operation.positions %>
+          <%#= render partial: 'positions/small_list', locals: { objects: @operation.positions } %>
         <%# end %>
       </div>
 
       <div id="reservation_list" class="tab-pane profile-content">
         <%# if @operation.loadings %>
           <%#= render partial: 'loadings/small_list', locals: { objects: @operation.reservations } %>
-        <%# end %>
-      </div>
-
-      <div id="position_list" class="tab-pane profile-content">
-        <%# if @operation.positions %>
-          <%#= render partial: 'positions/small_list', locals: { objects: @operation.positions } %>
         <%# end %>
       </div>
     </div>
