@@ -621,7 +621,7 @@ tr:
     title:
       description: "SocialFreight, Bulut tabanlı multimodal lojistik yazılımı"
       keywords: "SocialFreight, Sosyal Nakliye Lojistik, Bulut tabanlı multimodal lojistik yazılımı, saas lojistik nakliye, nakliye operasyon yönetimi, filo yönetimi"
-      sitename: "Bulut tabanlı, Multimodal nakliye yönetimi"
+      sitename: "Bulut tabanlı, Multimodal lojistik yönetimi"
       fill_form_for_free_trial: "Ücretsiz 30 günlük kullanım için kaydolun"
       fill_all_fields_in_form: "Sizi daha iyi tanımamız için Lütfen formu eksiksiz doldurunuz."
     label:
@@ -652,6 +652,13 @@ tr:
       activated_your_account: "Tebrikler, Hesabınızı Etkinleştirdiniz."
       email_to_login: "Giriş yapmak için kullanacağınız mail adresiniz"
       set_your_password: "Lütfen Şifrenizi Belirleyiniz"
+      online_logistics_management: "Online lojistik yönetimi, şimdi daha basit"
+      no_hardware: "Özel bir donanım gerektirmez"
+      no_software: "Kurulum ve güncelleme gerektirmez"
+      multimodal_process_management: "Multimodal Operasyon Yönetimi"
+      painless_management: "Freight Forwarders, 3PLs, Nakliye firmaları için operasyonlarını daha kolay yönetmenin yeni yolu."
+      save_time_and_money: "Paradan ve zamandan tasarruf için; "
+      say_hello: "ücretsiz deneyiniz."
     placeholder:
       company_name: "Çalıştığınız Firmanın Adı"
       name: "Adınız"
@@ -664,6 +671,8 @@ tr:
       services: "Servisler"
       roadmap: "Yol Haritası"
       contact: "İletişim"
+      get_started: "Servis Detayları"
+      try_for_free: "SocialFreight'ı ücretsiz deneyin"
   dashboard:
     link:
       patron_info: "Firma Bilgileri"

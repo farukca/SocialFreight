@@ -2,18 +2,18 @@
   <ul>
     <li class="home-portfolio-item span4">
       <%= link_to (image_tag("big_images/no-hardware.jpg")), features_path(anchor: "noheadache") %>
-      <span><%= link_to "Server, Yedekleme işlemlerine Son", features_path(anchor: "noheadache") %></span>
+      <span><%= link_to t("web.label.no_hardware"), features_path(anchor: "noheadache") %></span>
     </li>
     <li class="home-portfolio-item span4">
       <%= link_to (image_tag("big_images/no-software.png")), features_path(anchor: "social") %>
-      <span><%= link_to "Yazılım kurulum dertlerine son", features_path(anchor: "social") %></span>
+      <span><%= link_to t("web.label.no_software"), features_path(anchor: "social") %></span>
     </li>
     <li class="home-portfolio-item span3">
       <%= link_to (image_tag("big_images/freight-management.jpg")), features_path(anchor: "multimodal") %>
-      <span><%= link_to "Multimodal Operasyon Yönetimi", features_path(anchor: "multimodal") %></span>
+      <span><%= link_to t("web.label.multimodal_process_management"), features_path(anchor: "multimodal") %></span>
     </li>
   </ul>
-  <ul>
+  <!--ul>
     <li class="home-portfolio-item span4">
       <%= link_to (image_tag("big_images/fleet_mgmt.jpg")), services_path(anchor: "fillos") %>
       <span><%= link_to "Filo Yönetimi", services_path(anchor: "fillos") %></span>
@@ -40,7 +40,7 @@
       <%= link_to (image_tag("big_images/finance-mgmt.jpg")), roadmap_path(anchor: "finance") %>
       <span><%= link_to "Finans Yönetimi", roadmap_path(anchor: "finance") %></span>
     </li>
-  </ul>
+  </ul-->
 </div>
 <div class="container portfolio-pager">
   <div id="portfolio-pager"></div>

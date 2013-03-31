@@ -14,20 +14,20 @@
     <%= f.input :commodity, as: :text, label: t("defaults.label.commodity"), input_html: {rows: 2} %>
   </div>
   </div>
-  <div class="page-header"><h5><%= t("defaults.title.additional_info") %></h5></div>
+  <!--div class="page-header"><h5><%#= t("defaults.title.additional_info") %></h5></div-->
   <div class="row-fluid">
-  <div class="span6">
-    <%= f.input :incoterm, as: :select, label: t("defaults.label.incoterm"), collection: Listitem.incoterms.map { |t| [t.name, t.code] }, include_blank: true %>
-    <%= f.input :paid_at, as: :select, label: t("defaults.label.freight_collect"), collection: Position.payment_types.map { |r| [r[1], r[0] ] }, include_blank: true %>
-    <%= f.input :freight_price, label: t("defaults.label.freight_price") do %>
-      <%= f.input_field :freight_price, class: "input-small" %>
-      <%= f.input_field :freight_curr, as: :select, collection: Currency.all, include_blank: false, class: "input-small" %>
-    <% end %>
-  </div>
   <div class="span6">
     <%= f.input :brut_wg, label: t("defaults.label.brut_weight") do %>
       <%= f.input_field :brut_wg, class: "input-small" %>
       <%= f.input_field :weight_unit, as: :select, collection: Listitem.weightunits.map { |t| [t.name, t.code] }, class: "input-small" %>
+    <% end %>
+    <%= f.input :incoterm, as: :select, label: t("defaults.label.incoterm"), collection: Listitem.incoterms.map { |t| [t.name, t.code] }, include_blank: true %>
+    <%= f.input :paid_at, as: :select, label: t("defaults.label.freight_collect"), collection: Position.payment_types.map { |r| [r[1], r[0] ] }, include_blank: true %>
+  </div>
+  <div class="span6">
+    <%= f.input :freight_price, label: t("defaults.label.freight_price") do %>
+      <%= f.input_field :freight_price, class: "input-small" %>
+      <%= f.input_field :freight_curr, as: :select, collection: Currency.all, include_blank: false, class: "input-small" %>
     <% end %>
     <%= f.input :sender_id, as: :hidden, label: t("defaults.label.sender"), input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => t("operations.placeholder.sender") } %>
     <%= f.input :consignee_id, as: :hidden, label: t("defaults.label.consignee"), input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => t("operations.placeholder.consignee") } %>

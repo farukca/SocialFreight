@@ -1,46 +1,50 @@
 <div class="slider clearfix row">
   <div class="span5 slider-intro">
-        <h1>SocialFreight</h1>
-        <p style="font-size:15px;">3PL, Freight Forwarder ve lojistik hizmet sağlayıcı firmalarının nakliye süreçlerini yönetmek üzere tasarlanmış, bulut tabanlı multimodal lojistik yazılımıdır.</p>
-        <ul style="list-style:disc;margin-left:20px;margin-bottom:10px;">
-          <li>Donanım, sunucu yatırımı gerektirmez</li>
-          <li>Yazılım lisans bedeli, güncelleme ücreti gibi maliyetler yoktur</li>
-          <li>Herhangi bir kurulum işlemi gerektirmez</li>
-        </ul>
-        <p style="font-size:14px;">En güncel lojistik yazılımını kullanmak için;&nbsp;<%= link_to "hemen üye olabilirsiniz", new_patron_path %></p>
-        <%= link_to "Daha Fazlası için tıklayınız", features_path, :class => "small-btn blue rounded-1" %>
-      </div>
-      <div class="span7 hidden-phone">
-        <div id="slider">
-          <ul class="images">
-            <li><%= link_to image_tag("big_images/slider-img-1.jpg"), road_path %></li>
-            <li><%= link_to image_tag("big_images/slider-img-3.jpg"), air_path %></li>
-            <li><%= link_to image_tag("big_images/slider-img-2.jpg"), sea_path %></li>
-            <li><%= link_to image_tag("big_images/slider-img-4.jpg"), rail_path %></li>
-            <!--<li><a href="single-portfolio.html"><img src="assets/big_images/slider-img-3.jpg" alt="" /></a></li>-->
-          </ul>
-          <ul class="slider-nav clearfix">
-            <li><a href="#"><%= t("operations.title.roadoperation") %></a></li>
-            <li><a href="#"><%= t("operations.title.airoperation") %></a></li>
-            <li><a href="#"><%= t("operations.title.seaoperation") %></a></li>
-            <li><a href="#"><%= t("operations.title.railoperation") %></a></li>
-            <!--<li><a href="#">Dahili Nakliye</a></li>-->
-          </ul>
-        </div>
-      </div>
-
+    <h1 style="font-size: 20px;"><%= t("web.label.online_logistics_management") %></h1>
+    <p style="font-size:16px;line-height:170%;">
+      <%= t("web.label.painless_management") %></p>
+      <p style="font-size:16px;line-height:170%;"><%= t("web.label.save_time_and_money") %> <%= link_to t("web.label.say_hello"), new_patron_path %></p>
+    <!--ul style="list-style:disc;margin-left:20px;margin-bottom:10px;">
+      <li>Donanım, sunucu yatırımı gerektirmez</li>
+      <li>Yazılım lisans bedeli, güncelleme ücreti gibi maliyetler yoktur</li>
+      <li>Herhangi bir kurulum işlemi gerektirmez</li>
+    </ul>
+    <p style="font-size:14px;">En güncel lojistik yazılımını kullanmak için;&nbsp;<%#= link_to "hemen üye olabilirsiniz", new_patron_path %></p-->
+    <span><%= link_to t("web.link.get_started"), features_path, :class => "small-btn blue rounded-1" %></span>
+    <span class="pull-right">
+    <%= link_to t("web.link.try_for_free"), new_patron_path, :class => "small-btn blue rounded-1 pull-right" %>
+    </span>
+  </div>
+  <div class="span7 hidden-phone">
+    <div id="slider">
+      <ul class="images">
+        <li><%= link_to image_tag("big_images/slider-img-1.jpg"), road_path %></li>
+        <li><%= link_to image_tag("big_images/slider-img-3.jpg"), air_path %></li>
+        <li><%= link_to image_tag("big_images/slider-img-2.jpg"), sea_path %></li>
+        <li><%= link_to image_tag("big_images/slider-img-4.jpg"), rail_path %></li>
+        <!--<li><a href="single-portfolio.html"><img src="assets/big_images/slider-img-3.jpg" alt="" /></a></li>-->
+      </ul>
+      <ul class="slider-nav clearfix">
+        <li><a href="#"><%= t("operations.title.roadoperation") %></a></li>
+        <li><a href="#"><%= t("operations.title.airoperation") %></a></li>
+        <li><a href="#"><%= t("operations.title.seaoperation") %></a></li>
+        <li><a href="#"><%= t("operations.title.railoperation") %></a></li>
+        <!--<li><a href="#">Dahili Nakliye</a></li>-->
+      </ul>
+    </div>
+  </div>
 </div>
+
 <div class="row">
   <div class="callout container clearfix">
     <div class="callout-info">
       <%= render "betausers/form" %>
     </div>
   </div>
-
   <%= render "shared/site_portofilo" %>
 </div>
+
 <div class="row hidden-phone">
-  <%= render "shared/site_description" %>
+  <%#= render "shared/site_description" %>
 </div>
 <script type="text/javascript">document.getElementById('home').classList.add('active');</script>
-

@@ -652,6 +652,13 @@ en:
       activated_your_account: "Congratulations, you have activated your account."
       email_to_login: "You will use this email to login to SocialFreight"
       set_your_password: "You must set a password"
+      online_logistics_management: "Online logistics management, now simplified"
+      no_hardware: "You don't need any special hardware"
+      no_software: "No installation or upgrade requires"
+      multimodal_process_management: "Multimodal Operation Management"
+      painless_management: "Painless way to manage operations for logistics service providers, like Freight Forwarders, 3PLs, Hauilers."
+      save_time_and_money: "To save your money and your time; "
+      say_hello: "say hello to SocialFreight."
     placeholder:
       company_name: "Your company"
       name: "Your Name"
@@ -664,6 +671,8 @@ en:
       services: "Services"
       roadmap: "Roadmap"
       contact: "Contact Us"
+      get_started: "Get Started"
+      try_for_free: "Try SocialFreight for free"
   dashboard:
     link:
       patron_info: "Company Informations"

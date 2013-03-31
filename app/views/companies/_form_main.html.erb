@@ -23,7 +23,7 @@
       </div>
       <div class="span6">
         <%= f.input :country_id, label: t("defaults.label.country") do %>
-          <%= f.input_field :country_id, class: "country_select input-small", as: :select, collection: Country.all, include_blank: false, selected: current_patron.country_id %>
+          <%= f.input_field :country_id, class: "input-small", as: :select, collection: Country.all, include_blank: false, selected: current_patron.country_id %>
           <%= f.input_field :city, class: "input-small" %>
         <% end %>
         <%= f.input :district, label: t("defaults.label.district") do %>

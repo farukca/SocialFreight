@@ -3,10 +3,7 @@
     <li class="widget category-widget clearfix">
       <h4>Mevcut Servisler</h4>
       <ul class="clearfix">
-        <li><%= link_to "Hava Operasyon Yönetimi", air_path %></li>
-        <li><%= link_to "Deniz Operasyon Yönetimi", sea_path %></li>
-        <li><%= link_to "Kara Operasyon Yönetimi", road_path %></li>
-        <li><%= link_to "Tren Operasyon Yönetimi", rail_path %></li>
+        <li><%= link_to "Operasyon Yönetimi", air_path %></li>
         <li><%= link_to "Müşteri & Tedarikçi Yönetimi", services_path(anchor: "companies") %></li>
         <li><%= link_to "Filo Yönetimi", services_path(anchor: "fillos") %></li>
         <li><%= link_to "Masraf Yönetimi", services_path(anchor: "costs") %></li>
@@ -16,10 +13,10 @@
       <ul class="clearfix">
         <li><%= link_to "Finans Yönetimi", roadmap_path(anchor: "finance") %><span><a href="#">Soon</a></span></li>
         <li><%= link_to "Depo & Antrepo Yönetimi", roadmap_path(anchor: "depot") %><span><a href="#">Soon</a></span></li>
-        <li><%= link_to "Mobil Uygulamalar", roadmap_path(anchor: "mobil") %><span><a href="#">Soon</a></span></li>
+        <li><%= link_to "Yakıt Yönetimi", roadmap_path(anchor: "fuel") %><span><a href="#">Soon</a></span></li>
+        <li><%= link_to "Mobil Erişim", roadmap_path(anchor: "mobil") %><span><a href="#">Soon</a></span></li>
         <li><%= link_to "Araç Takip Entegrasyonu", roadmap_path(anchor: "nagivation") %><span><a href="#">Soon</a></span></li>
         <li><%= link_to "Harita Servis Entegrasyonu", roadmap_path(anchor: "maps") %><span><a href="#">Soon</a></span></li>
-        <li><%= link_to "Yakıt Yönetimi", roadmap_path(anchor: "fuel") %><span><a href="#">Soon</a></span></li>
       </ul>
     </li>
     <li class="widget sidebar-twitter-widget">
