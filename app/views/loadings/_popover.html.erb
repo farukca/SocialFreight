@@ -1,0 +1,9 @@
+<div class="span3" id="loading_<%= loading.id %>_popover">
+  <ul class="unstyled">
+    <li><strong><%= loading_name(loading) %></strong></li>
+    <li><%= company_name(loading.company) if loading.company %></li>
+    <li><%= t("countries.#{loading.load_coun}") if loading.load_coun.present? %></li>
+    <li><%= t("countries.#{loading.unload_coun}") if loading.unload_coun.present? %></li>
+    <li><%= loading.commodity %></li>
+  </ul>
+</div>

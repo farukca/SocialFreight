@@ -3,7 +3,10 @@
     <ul class="nav">
       <%= navigator("homenavigator", root_url, t("defaults.link.home"), "icon-home") %>
       <%= navigator("companynavigator", crm_path, t("defaults.link.crm"), "icon-star-empty") %>
-      <%= navigator("opernavigator", operations_path, t("defaults.link.operation"), "icon-cog") %>
+      <%= navigator("contactnavigator", contacts_path, t("contacts.title.contacts"), "icon-user") %>
+      <%= navigator("loadingnavigator", loadings_path, t("operations.title.reservations"), "icon-loading") %>
+      <%= navigator("positionnavigator", positions_path, t("positions.title.positions"), "icon-cog") %>
+      <%#= navigator("opernavigator", operations_path, t("defaults.link.operation"), "icon-cog") %>
 
       <!--li id="opernavigator" <%# if (current_tab == "opernavigator") %>class="dropdown active"<%# else %>class="dropdown"<%#  end %>>
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">

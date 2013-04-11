@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130316215348) do
+ActiveRecord::Schema.define(:version => 20130405193444) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                                  :null => false
@@ -240,7 +240,6 @@ ActiveRecord::Schema.define(:version => 20130316215348) do
   add_index "contacts", ["patron_id"], :name => "index_contacts_on_patron_id"
 
   create_table "containers", :force => true do |t|
-    t.integer  "name",                                           :null => false
     t.string   "sealno",         :limit => 40
     t.string   "container_type", :limit => 40
     t.integer  "free_day",                      :default => 0
@@ -251,10 +250,11 @@ ActiveRecord::Schema.define(:version => 20130316215348) do
     t.datetime "created_at",                                     :null => false
     t.datetime "updated_at",                                     :null => false
     t.integer  "patron_id",                                      :null => false
+    t.string   "name",           :limit => 30,                   :null => false
+    t.date     "due_date"
   end
 
   add_index "containers", ["loading_id"], :name => "index_containers_on_loading_id"
-  add_index "containers", ["name", "loading_id"], :name => "index_containers_on_name_and_loading_id", :unique => true
   add_index "containers", ["patron_id"], :name => "index_containers_on_patron_id"
 
   create_table "costs", :force => true do |t|

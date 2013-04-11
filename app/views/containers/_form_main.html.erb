@@ -16,12 +16,12 @@
   </div>
   <div class="span6">
     <fieldset>
-      <%= f.input :free_day, label: t("containers.label.free_day"), input_html: { class: "input-small" } %>
+      <%= f.input :notes, as: :text, input_html: { rows: "2" }, label: t("defaults.label.notes") %>
+      <%= f.input :due_date, as: :string, label: t("defaults.label.unload_date"), input_html: {class: "input-small", "data-datepicker" => "datepicker"} %>
       <%= f.input :demurrage, label: t("containers.label.demurrage") do %>
         <%= f.input_field :demurrage, class: "input-small" %>
         <%= f.input_field :demurrage_curr, as: :select, collection: Currency.all, include_blank: false, class: "input-small" %>
       <% end %>
-      <%= f.input :notes, as: :text, input_html: { rows: "2" }, label: t("defaults.label.notes") %>
     </fieldset>
   </div>
 </div>

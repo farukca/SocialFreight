@@ -12,7 +12,7 @@ class Activity < ActiveRecord::Base
 
   scope :latests, order("created_at desc")
 
-  after_create :create_comment
+  #after_create :create_comment
 
   def self.log(user_id, target, branch_id)
     activity = Activity.new(target: target, user_id: user_id, target_name: target.to_s, branch_id: branch_id)

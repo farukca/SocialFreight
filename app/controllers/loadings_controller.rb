@@ -3,7 +3,7 @@ class LoadingsController < ApplicationController
   before_filter :require_login
 
   def index
-    @loadings = Loading.all
+    @loadings = Loading.active.order("id desc").page(params[:page]).per(10)
 
     respond_to do |format|
       format.html
@@ -38,6 +38,7 @@ class LoadingsController < ApplicationController
     else
        @loading = Loading.new(params[:loading])
     end
+    @loading.load_coun = current_patron.country_id
 
     respond_to do |format|
       format.html

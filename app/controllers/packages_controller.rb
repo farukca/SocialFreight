@@ -4,6 +4,7 @@ class PackagesController < ApplicationController
 
   def new
     @packed = find_packed
+    @loading = @packed
     @package = @packed.packages.build(params[:package])
   end
 

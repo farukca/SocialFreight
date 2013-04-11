@@ -1,41 +1,45 @@
-<h1>Listing loadings</h1>
+<div class="row-fluid">
+  <div class="page-header">
+    <h4>
+      Reservasyon Listesi 
+      <small><%= link_to "Yeni Reservasyon Başlat", new_loading_path, class: "btn btn-success" %></small>
+      <div class="pull-right">
+        <form class="form-search">
+          <input type="text" class="input-xlarge search-query" placeholder="Referans/Customer name/Commodity">
+          <button type="submit" class="btn">Search</button>
+        </form>
+      </div>
+    <h4>
+  </div>
+  <%#= render partial: "loadings/popover", collection: @loadings, as: :loading %>
+  <div id="loading_list">
+    <table class="table table-bordered">
+      <tr>
+        <th class="span1">Referans</th>
+        <th class="span2">Müşteri</th>
+        <th class="span2">Çıkış Yeri</th>
+        <th class="span2">Varış Yeri</th>
+        <th class="span1">Pozisyon</th>
+        <th class="span2">Commodity</th>
+        <th class="span1">User</th>
+        <th class="span1"></th>
+      </tr>
 
-<table>
-  <tr>
-    <th>Referans</th>
-    <th>Operation</th>
-    <th>Direction</th>
-    <th>Müşteri</th>
-    <th>Agent</th>
-    <th>Çıkış Yeri</th>
-    <th>Çıkış Tarihi</th>
-    <th>Varış Yeri</th>
-    <th>Varış Tarihi</th>
-    <th>Pozisyon</th>
-    <th>Incoterm</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @loadings.each do |loading| %>
-  <tr>
-    <td><%= link_to loading.reference, loading_path(loading) %></td>
-    <td><%= loading.operation %></td>
-    <td><%= loading.direction %></td>
-    <td><%= loading.company.name if loading.company %></td>
-    <td><%= loading.agent.name if loading.agent %></td>
-    <td><%#= loading.load_place.name if loading.load_place %></td>
-    <td><%#= loading.load_date %></td>
-    <td><%#= loading.unload_place.name if loading.unload_place %></td>
-    <td><%#= loading.load_date %></td>
-    <td><%= loading.position.reference if loading.position %></td>
-    <td><%= loading.incoterm %></td>
-    <td><%= link_to "Edit", edit_loading_path(loading) %></td>
-    <td><%= link_to 'Destroy', loading, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New loading', new_loading_path %>
+    <% @loadings.each do |loading| %>
+      <tr>
+        <td><%= link_to loading.reference, loading_path(loading) %></td>
+        <td><%= link_to company_name(loading.company), company_path(loading.company) if loading.company %></td>
+        <td><%= t("countries.#{loading.load_coun}") if loading.load_coun %></td>
+        <td><%= t("countries.#{loading.unload_coun}") if loading.unload_coun %></td>
+        <td><%= link_to position_name(loading.position), position_path(loading.position) if loading.position %></td>
+        <td><%= loading.commodity %></td>
+        <td><%= image_tag user_mini_avatar(loading.user), class: "img-circle", title: user_name(loading.user) %></td>
+        <td><%= link_to "Edit", edit_loading_path(loading) %></td>
+      </tr>
+    <% end %>
+    </table>
+    <div class="pagination">
+      <%= paginate @loadings %>
+    </div>
+  </div>
+</div>

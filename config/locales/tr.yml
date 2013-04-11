@@ -240,6 +240,7 @@ tr:
     errormsg:
   positions:
     title:
+      positions: "Taşıma Projeleri"
       new_position: "Yeni Taşıma Projesi"
       position_info: "Proje Bilgileri"
       position_loadings: "Projede Taşınacak Yükler"
@@ -450,6 +451,7 @@ tr:
       save: "Firma Bilgisini Kaydet"
   contacts:
     title:
+      contacts: "Kişiler"
       quick_contact: "Hızlı Kontak Oluştur"
     label:
     placeholder:

@@ -12,6 +12,10 @@ module UsersHelper
     user.avatar_url(:small)
   end
 
+  def user_mini_avatar(user = @user)
+    user.avatar_url(:mini)
+  end
+
   def users_active_tasks_count(user = @user)
     user.tasks.active.count
   end

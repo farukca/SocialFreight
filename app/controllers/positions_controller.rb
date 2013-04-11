@@ -3,7 +3,7 @@ class PositionsController < ApplicationController
   before_filter :require_login#, :current_patron
 
   def index
-    @positions = Position.all
+    @positions = Position.active.order("id desc").page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # index.html.erb

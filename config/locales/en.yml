@@ -240,6 +240,7 @@ en:
     errormsg:
   positions:
     title:
+      positions: "Projects"
       new_position: "New Transportation Project"
       position_info: "Project Informations"
       position_loadings: "Project's Bookings"
@@ -450,6 +451,7 @@ en:
       save: "Save Company Information"
   contacts:
     title:
+      contacts: "Contacts"
       quick_contact: "Quick Contact Create"
     label:
     placeholder:
@@ -656,7 +658,7 @@ en:
       no_hardware: "You don't need any special hardware"
       no_software: "No installation or upgrade requires"
       multimodal_process_management: "Multimodal Operation Management"
-      painless_management: "Painless way to manage operations for logistics service providers, like Freight Forwarders, 3PLs, Hauilers."
+      painless_management: "Painless way to manage operations for logistics service providers."
       save_time_and_money: "To save your money and your time; "
       say_hello: "say hello to SocialFreight."
     placeholder:

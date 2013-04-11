@@ -53,8 +53,8 @@ class Loading < ActiveRecord::Base
   validates :company_id, presence: true
   validates :commodity, presence: true, length: { maximum: 500 }
   validates :user_id, presence: true
-  validates :brut_wg, numericality: true
-  validates :freight_price, :product_price, numericality: true
+  validates :brut_wg, numericality: true, allow_blank: true
+  validates :freight_price, :product_price, numericality: true, allow_blank: true
   validates :bank, length: { maximum: 100 }
   validates :category, length: { maximum: 60 }
   validates :producer, length: { maximum: 60 }

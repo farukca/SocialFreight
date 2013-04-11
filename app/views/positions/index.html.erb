@@ -1,7 +1,39 @@
-<h1>Listing positions</h1>
+<div class="row-fluid">
+  <div class="page-header">
+    <h4>
+      Proje Listesi 
+      <small><%= link_to "Yeni Proje Başlat", new_position_path, class: "btn btn-success" %></small>
+      <div class="pull-right">
+        <form class="form-search">
+          <input type="text" class="input-xlarge search-query" placeholder="Referans/Proje Adı">
+          <button type="submit" class="btn">Search</button>
+        </form>
+      </div>
+    <h4>
+  </div>
+  <%#= render partial: "positions/popover", collection: @positions, as: :position %>
+  <div id="position_list">
+    <table class="table table-bordered">
+      <tr>
+        <th class="span1">Referans</th>
+        <th class="span5">Proje Adı</th>
+        <th class="span2">Şube</th>
+        <th class="span1">User</th>
+        <th class="span1"></th>
+      </tr>
 
-<%= render 'positions', :positions => @positions %>
-
-<br />
-
-<%= link_to 'New Position', new_position_path %>
+    <% @positions.each do |position| %>
+      <tr>
+        <td><%= link_to position.reference, position_path(position) %></td>
+        <td><%= position.description %></td>
+        <td><%= branch_name(position.branch) if position.branch %></td>
+        <td><%= image_tag user_mini_avatar(position.user), class: "img-circle", title: user_name(position.user) %></td>
+        <td><%= link_to "Edit", edit_position_path(position) %></td>
+      </tr>
+    <% end %>
+    </table>
+    <div class="pagination">
+      <%= paginate @positions %>
+    </div>
+  </div>
+</div>
