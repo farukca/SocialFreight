@@ -1,25 +1,35 @@
 <div class="row-fluid">
   <div class="page-header">
-    <h4>
-      Reservasyon Listesi 
+    <h3>
+      Reservasyonlar
       <small><%= link_to "Yeni Reservasyon Başlat", new_loading_path, class: "btn btn-success" %></small>
+    </h3>
+  </div>
+  <div class="row-fluid">
+    <p>
+      Müşterilerin taşınacak yükleri birer rezervasyondur. Yükün yükleme-boşaltma bilgileri, koli-konteyner bilgileri ve teklif bilgilerini bu sayfadan yönetebilirsiniz.
+    </p>
+  </div>
+  <div class="page-header">
+    <h5>
+      Son Rezervasyonlar/Yükler
       <div class="pull-right">
         <form class="form-search">
           <input type="text" class="input-xlarge search-query" placeholder="Referans/Customer name/Commodity">
           <button type="submit" class="btn">Search</button>
         </form>
       </div>
-    <h4>
+    <h5>
   </div>
   <%#= render partial: "loadings/popover", collection: @loadings, as: :loading %>
   <div id="loading_list">
-    <table class="table table-bordered">
+    <table class="table table-bordered table-condensed">
       <tr>
         <th class="span1">Referans</th>
         <th class="span2">Müşteri</th>
         <th class="span2">Çıkış Yeri</th>
         <th class="span2">Varış Yeri</th>
-        <th class="span1">Pozisyon</th>
+        <th class="span1">Proje Referans</th>
         <th class="span2">Commodity</th>
         <th class="span1">User</th>
         <th class="span1"></th>
@@ -43,3 +53,6 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  document.getElementById('loadingnavigator').classList.add('active');
+</script>

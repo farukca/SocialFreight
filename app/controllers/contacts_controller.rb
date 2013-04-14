@@ -1,8 +1,15 @@
 class ContactsController < ApplicationController
 
   before_filter :require_login
+  before_filter(:only => [:index]) { |c| c.set_tab "contactnavigator" }
 
   def index
+    @contacts = Contact.order("id desc").page(params[:page]).per(10)
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @contacts }
+    end
   end
 
   def show

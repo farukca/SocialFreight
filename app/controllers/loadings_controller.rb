@@ -1,6 +1,7 @@
 class LoadingsController < ApplicationController
 
   before_filter :require_login
+  before_filter(:only => [:index]) { |c| c.set_tab "loadingnavigator" }
 
   def index
     @loadings = Loading.active.order("id desc").page(params[:page]).per(10)

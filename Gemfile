@@ -71,7 +71,7 @@ gem 'jbuilder'
 # Deploy with Capistrano
  gem 'capistrano'
 
-gem 'blogger', git: "git@github.com:farukca/blogger.git", ref: "212db5990a"
+gem 'blogger', git: "git@github.com:farukca/blogger.git", ref: "80aa61e7fd196f966239a710faf92fcc79d98370"
 #gem 'blogger', path: "../blogger"
 
 group :test do

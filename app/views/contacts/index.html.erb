@@ -1,0 +1,57 @@
+<div class="row-fluid">
+  <div class="page-header">
+    <h3>
+      Kişiler
+      <small><%= link_to "Yeni Kişi Bilgisi Ekle", new_contact_path, class: "btn btn-success" %></small>
+    <h3>
+  </div>
+  <div class="row-fluid">
+    <p>Kontak bilgilerinizi .</p>
+  </div>
+  <div class="page-header">
+    <h5>
+      Son Eklenen Kişiler
+      <div class="pull-right">
+        <form class="form-search">
+          <input type="text" class="input-xlarge search-query" placeholder="Referans/Proje Adı">
+          <button type="submit" class="btn">Search</button><br>
+          <a href="#" class="pull-right">Detaylı Ara >></a>
+        </form>
+      </div>
+    </h5>
+  </div>
+  <%#= render partial: "contacts/popover", collection: @contacts, as: :contact %>
+  <div id="contact_list" class="row-fluid">
+    <table class="table table-bordered table-condensed">
+      <tr>
+        <th class="span2">Kişi</th>
+        <th class="span2">Mail</th>
+        <th class="span2">Telefon</th>
+        <th class="span2">Firma</th>
+        <th class="span3">Görev</th>
+        <th class="span1"></th>
+      </tr>
+
+    <% @contacts.each do |contact| %>
+      <tr>
+        <td><%= link_to contact_name(contact), contact_path(contact) %></td>
+        <td><%= mail_to contact.email, contact.email %></td>
+        <td><%= "#{contact.tel} #{contact.gsm}" %></td>
+        <td><%= link_to company_name(contact.company), company_path(contact.company) %></td>
+        <td>
+          <%= "#{contact.jobtitle} / #{contact.department}" %>
+          <%= link_to (image_tag "/assets/icons/twitter.png"), url_with_protocol("https://twitter.com/search?q=#{contact.twitter}"), target: "_blank" if contact.twitter %>
+          <%= link_to (image_tag "/assets/icons/linkedin.png"), url_with_protocol("http://www.linkedin.com/in/#{contact.linkedin}"), target: "_blank" if contact.linkedin %>
+        </td>
+        <td><%= link_to "Edit", edit_contact_path(contact) %></td>
+      </tr>
+    <% end %>
+    </table>
+    <div class="pagination">
+      <%= paginate @contacts %>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  document.getElementById('contactnavigator').classList.add('active');
+</script>
