@@ -47,4 +47,13 @@ module ApplicationHelper
   def created_time(ctime)
     ctime.strftime("%d/%m/%Y %H:%M")
   end
+
+  def search_form_helper
+    form_tag('/posts', class: "form-search") do -
+      text_field_tag "name", nil, class: "input-xlarge search-query", placeholder: "Referans/Proje Adi"
+      submit_tag "Search", class: "btn"
+      link_to "Detayli Ara", "#"
+    end
+  end
+
 end

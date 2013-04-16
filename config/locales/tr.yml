@@ -453,7 +453,13 @@ tr:
     title:
       contacts: "Kişiler"
       quick_contact: "Hızlı Kontak Oluştur"
+      last_contacs: "Son Eklenen Kişiler"
     label:
+      fullname: "Adı Soyadı"
+      email: "Mail Adresi"
+      phone: "Telefon"
+      company: "Firması"
+      jobtitle: "Görev/Departman"
     placeholder:
       name: "Yetkili Adı"
       surname: "Yetkili Soyadı"
@@ -463,8 +469,11 @@ tr:
       phone: "Telefon Numarası"
     hint:
     link:
+      new_contact: "Yeni Kişi Bilgisi Ekle"
     action:
       save: "Yetkili Bilgisini Kaydet"
+    message:
+      intro: "Kontak bilgilerinizi takip edebilirsiniz, bir firma ile ilişkilendirmediğiniz sürece kontak bilgileriniz size özeldir."
   branches:
     title:
       branches: "Şubeler"

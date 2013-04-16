@@ -453,7 +453,13 @@ en:
     title:
       contacts: "Contacts"
       quick_contact: "Quick Contact Create"
+      last_contacs: "Last Added Contacts"
     label:
+      fullname: "Name"
+      email: "Mail"
+      phone: "Phone"
+      company: "Company"
+      jobtitle: "Position/Department"
     placeholder:
       name: "Contact Name"
       surname: "Contact Surname"
@@ -463,8 +469,11 @@ en:
       phone: "Phone"
     hint:
     link:
+      new_contact: "Add New Contact Info"
     action:
       save: "Save Contact Information"
+    message:
+      intro: "Kontak bilgilerinizi takip edebilirsiniz, bir firma ile ilişkilendirmediğiniz sürece kontak bilgileriniz size özeldir."
   branches:
     title:
       branches: "Branches"

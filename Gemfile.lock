@@ -1,7 +1,5 @@
-GIT
-  remote: git@github.com:farukca/blogger.git
-  revision: 212db5990a1208f8a4dd8ea68ea392db928c2011
-  ref: 212db5990a
+PATH
+  remote: ../blogger
   specs:
     blogger (0.0.1)
       rails (~> 3.2.6)
