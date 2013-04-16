@@ -49,10 +49,12 @@ module ApplicationHelper
   end
 
   def search_form_helper
-    form_tag('/posts', class: "form-search") do -
-      text_field_tag "name", nil, class: "input-xlarge search-query", placeholder: "Referans/Proje Adi"
-      submit_tag "Search", class: "btn"
-      link_to "Detayli Ara", "#"
+    capture do
+      form_tag('/posts', class: "form-search") do 
+        concat text_field_tag "name", nil, class: "input-xlarge search-query", placeholder: "Referans/Proje Adi"
+        concat submit_tag "Search", class: "btn"
+        concat link_to "Detayli Ara >>", "#"
+      end
     end
   end
 
