@@ -48,12 +48,45 @@ module ApplicationHelper
     ctime.strftime("%d/%m/%Y %H:%M")
   end
 
-  def search_form_helper
+  def search_form_helper(model_name)
     capture do
-      form_tag('/posts', class: "form-search") do 
-        concat text_field_tag "name", nil, class: "input-xlarge search-query", placeholder: "Referans/Proje Adi"
-        concat submit_tag "Search", class: "btn"
+      form_for(Search.new, remote: true, class: "form-search") do |f|
+        concat f.text_field :reference, class: "input-xlarge search-query", placeholder: "Referans/Proje Adi"
+        concat f.hidden_field :model, value: model_name
+        concat f.submit "Search", class: "btn"
         concat link_to "Detayli Ara >>", "#"
+      end
+    end
+  end
+
+  def page_header_helper(title, new_record_path, link_title)
+    content_tag :div, class: "page-header" do
+      content_tag :h3 do
+        concat title
+        concat (
+          content_tag :small do
+            link_to link_title, "#{new_record_path}", class: "btn btn-success header_btn"
+          end
+        )
+      end
+    end
+  end
+
+  def page_intro_helper(intro_text)
+    content_tag :div, class: "row-fluid" do
+      content_tag :p, intro_text
+    end
+  end
+
+  def sub_header_with_search_form(title, model_name)
+    content_tag :div, class: "page-header" do
+      content_tag :h5 do
+        concat title
+        concat (
+          content_tag :div, class: "pull-right" do
+            search_form_helper(model_name)
+          end
+        )
       end
     end
   end

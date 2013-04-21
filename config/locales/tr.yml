@@ -454,6 +454,8 @@ tr:
       contacts: "Kişiler"
       quick_contact: "Hızlı Kontak Oluştur"
       last_contacs: "Son Eklenen Kişiler"
+      contact_info: "Kişi Bilgisi"
+      new_contact_info: "Yeni Kişi Bilgisi"
     label:
       fullname: "Adı Soyadı"
       email: "Mail Adresi"

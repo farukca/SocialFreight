@@ -1,48 +1,14 @@
 <div class="row-fluid">
-  <div class="page-header">
-    <h3>
-      <%= t("contacts.title.contacts") %>
-      <small><%= link_to t("contacts.link.new_contact"), new_contact_path, class: "btn btn-success" %></small>
-    <h3>
-  </div>
-  <div class="row-fluid">
-    <p><%= t("contacts.message.intro") %></p>
-  </div>
-  <div class="page-header">
-    <h5>
-      <%= t("contacts.title.last_contacs") %>
-      <div class="pull-right">
-        <%= search_form_helper %>
-      </div>
-    </h5>
-  </div>
-  <%#= render partial: "contacts/popover", collection: @contacts, as: :contact %>
-  <div id="contact_list" class="row-fluid">
-    <table class="table table-bordered table-condensed">
-      <tr>
-        <th class="span2"><%= t("contacts.label.fullname") %></th>
-        <th class="span2"><%= t("contacts.label.mail") %></th>
-        <th class="span2"><%= t("contacts.label.phone") %></th>
-        <th class="span2"><%= t("contacts.label.company") %></th>
-        <th class="span3"><%= t("contacts.label.jobtitle") %></th>
-        <th class="span1"></th>
-      </tr>
+  <%= page_header_helper(t("contacts.title.contacts"), new_contact_path, t("contacts.link.new_contact")) %>
+  <%= page_intro_helper(t("contacts.message.intro")) %>
 
-    <% @contacts.each do |contact| %>
-      <tr>
-        <td><%= link_to contact_name(contact), contact_path(contact) %></td>
-        <td><%= mail_to contact.email, contact.email %></td>
-        <td><%= "#{contact.tel} #{contact.gsm}" %></td>
-        <td><%= link_to company_name(contact.company), company_path(contact.company) %></td>
-        <td>
-          <%= "#{contact.jobtitle} / #{contact.department}" %>
-          <%= link_to (image_tag "/assets/icons/twitter.png"), url_with_protocol("https://twitter.com/search?q=#{contact.twitter}"), target: "_blank" if contact.twitter %>
-          <%= link_to (image_tag "/assets/icons/linkedin.png"), url_with_protocol("http://www.linkedin.com/in/#{contact.linkedin}"), target: "_blank" if contact.linkedin %>
-        </td>
-        <td><%= link_to "Edit", edit_contact_path(contact) %></td>
-      </tr>
-    <% end %>
-    </table>
+  <%= sub_header_with_search_form(t("contacts.title.last_contacs"), "contacts") %>
+
+  <%#= render partial: "contacts/popover", collection: @contacts, as: :contact %>
+
+  <div id="contact_list" class="row-fluid">
+    <%= simple_table_for @contacts, with: ContactTable %>
+    <%#= contacts_list_table(@contacts) %>
     <div class="pagination">
       <%= paginate @contacts %>
     </div>
