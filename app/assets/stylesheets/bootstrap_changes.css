@@ -152,3 +152,6 @@ hr {
 .media {
   border-bottom: 1px solid #EEEEEE;
 }
+legend {
+  line-height: 20px;
+}

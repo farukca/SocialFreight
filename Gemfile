@@ -27,8 +27,9 @@ gem 'simple_form', '~> 2.0'
 gem 'client_side_validations', '~> 3.2.0'
 gem 'client_side_validations-simple_form', '~> 2.0.0'
 
-gem 'table-for'
-gem 'table_cloth'
+#gem 'table-for'
+#gem 'table_cloth'
+gem 'table_for_collection'
 gem 'mobile-fu'
 
 #gem 'rails3-jquery-autocomplete'

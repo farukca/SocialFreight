@@ -1,30 +1,43 @@
 <div id="contact_<%= contact.id %>" class="active">
 
   <div class="row-fluid">
-    <legend>
-      <%= link_to edit_contact_path(contact) do %><i class="icon-edit"></i><% end %>
-      <%= contact.to_s %>&nbsp;<span class="subtitle"><%= contact.jobtitle %>&nbsp;<%= contact.department %></span>
-    </legend>
-    <dl class="yatay-info" id="headline">
-      <dd></dd>
-      <dd class="email">
-        <%= mail_to contact.email, contact.email %>
-      </dd>
-      <dd class="tel">
-      <%= link_to contact.tel do %>
-        <i class="icon-tag"></i> <%= contact.tel %>
-      <% end %>
-      </dd>
-      <dd class="tel">
-      <%= link_to contact.gsm do %>
-        <i class="icon-tag"></i> <%= contact.gsm %>
-      <% end %>
-      </dd>
-      <dd class="twitter">
-        <%= link_to "@#{contact.twitter}", "https://twitter.com/#!/#{contact.twitter}", :target => "_blank" unless contact.twitter.blank? %>
-      </dd>
-    </dl>
-  </div>
- 
+    <div class="span2">
+      <%= image_tag "customer.png" %>
+    </div>
+    <div class="span10">
+      <legend>
+        <%= contact.to_s %>
+        <br><small><%= contact_jobinfo(contact) %></small>
+      </legend>
+      <div class="contact-details">
+        <div class="row-fluid">
+          <table>
+            <tr>
+              <td class="span2 profile-label"><%= t("defaults.label.email") %>:</td>
+              <td class="span4"><%= mail_to contact.email, contact.email %></td>
+            </tr>
+            <tr>
+              <td class="span2 profile-label"><%= t("defaults.label.tel") %>:</td>
+              <td class="span4"><%= "#{contact.tel} #{contact.gsm}" %></td>
+            </tr>
+            <tr>
+              <td class="span2 profile-label"><%= t("defaults.label.social") %>:</td>
+              <td class="span4">
+                <% unless contact.twitter.blank? %>
+                  <%= link_to url_with_protocol("https://twitter.com/#!/#{contact.twitter}"), target: "_blank" do %>
+                    <%= image_tag "/assets/icons/twitter.png" %><%= " @#{contact.twitter} " %>
+                  <% end %>
+                <% end %>
+                <% unless contact.linkedin.blank? %>
+                  <%= link_to url_with_protocol("www.linkedin.com/in/#{contact.linkedin}"), target: "_blank" do %>
+                    <%= image_tag "/assets/icons/linkedin.png" %><%= "#{contact.linkedin}" %>
+                  <% end %>
+                <% end %>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div> 
 </div>
-

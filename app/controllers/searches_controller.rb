@@ -31,20 +31,24 @@ class SearchesController < ApplicationController
     
     case @search.model
       when "positions" 
-        @positions    = @search.positions.page(params[:page]).per(10)
+        @search_results   = @search.positions.page(params[:page]).per(10)
       when "loadings"
-        @loadings     = @search.loadings.page(params[:page]).per(10)
+        @search_results   = @search.loadings.page(params[:page]).per(10)
       when "reservations"
-        @reservations = @search.reservations.page(params[:page]).per(10)
+        @search_results   = @search.reservations.page(params[:page]).per(10)
       when "companies"
-        @companies    = @search.companies.page(params[:page]).per(10)
+        @search_results   = @search.companies.page(params[:page]).per(10)
       when "contacts"
-        @contacts     = @search.contacts.page(params[:page]).per(10)
+        @search_results   = @search.contacts.page(params[:page]).per(10)
       when "transports"
-        @transports   = @search.transports.page(params[:page]).per(10)
+        @search_results   = @search.transports.page(params[:page]).per(10)
       when "vehicles"
-        @vehicles     = @search.vehicles.page(params[:page]).per(10)
+        @search_results   = @search.vehicles.page(params[:page]).per(10)
     end 
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @search_results }
+    end
   end
 
   def planning

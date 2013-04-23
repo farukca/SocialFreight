@@ -4,7 +4,7 @@ class ContactsController < ApplicationController
   before_filter(:only => [:index]) { |c| c.set_tab "contactnavigator" }
 
   def index
-    @contacts = Contact.order("id desc").page(params[:page]).per(10)
+    @contacts = Contact.order("id desc").includes(:company).limit(10).page(params[:page]).per(10)
 
     respond_to do |format|
       format.html
