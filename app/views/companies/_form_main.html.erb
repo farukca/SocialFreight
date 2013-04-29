@@ -3,25 +3,19 @@
     <div class="row-fluid">
       <div class="span6">
         <%= f.input :name, label: t("companies.label.name"), placeholder: t("companies.placeholder.name") %>
-        <%= f.input :company_type, as: :select, collection: Company.company_types.map { |r| [r[1], r[0] ] }, include_blank: false, label: t("companies.label.company_type") %>
+        <%= f.input :tel, label: t("defaults.label.tel") %>
+        <%= f.input :fax, label: t("defaults.label.fax")  %>
+        <%#= f.input :company_type, as: :select, collection: Company.company_types.map { |r| [r[1], r[0] ] }, include_blank: false, label: t("companies.label.company_type") %>
         <%= f.input :sector, label: t("companies.label.sector"), placeholder: t("companies.placeholder.sector") do %>
           <%= f.select :sector, Listitem.sectors.map { |t| [t.name, t.code] }, include_blank: true %>
         <% end %>
-      </div>
-      <div class="span6">
-        <%= f.input :tel, label: t("defaults.label.tel") %>
-        <%= f.input :fax, label: t("defaults.label.fax")  %>
-        <%= f.input :website, label: t("defaults.label.website") %>
-      </div>
-    </div>
-    <hr>
-    <div class="row-fluid">
-      <div class="span6">
-        <%= f.input :parent_id, as: :hidden, label: t("companies.label.parent_company"), input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => t("companies.placeholder.group_firm")} %>
         <%= f.input :branch_id, as: :select, collection: current_patron.branches, include_blank: false, selected: current_user.branch_id, label: t("defaults.label.branch") %>
-        <%= f.input :notes, as: :text, label: t("defaults.label.notes"), input_html: {rows: "2"} %>
+        <%#= f.input :notes, as: :text, label: t("defaults.label.notes"), input_html: {rows: "2"} %>
       </div>
       <div class="span6">
+        <%#= f.input :parent_id, as: :hidden, label: t("companies.label.parent_company"), input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => t("companies.placeholder.group_firm")} %>
+        <%= f.input :email, label: t("defaults.label.email") %>
+        <%= f.input :website, label: t("defaults.label.website") %>
         <%= f.input :country_id, label: t("defaults.label.country") do %>
           <%= f.input_field :country_id, class: "input-small", as: :select, collection: Country.all, include_blank: false, selected: current_patron.country_id %>
           <%= f.input_field :city, class: "input-small" %>

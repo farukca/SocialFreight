@@ -4,7 +4,7 @@ class LoadingsController < ApplicationController
   before_filter(:only => [:index]) { |c| c.set_tab "loadingnavigator" }
 
   def index
-    @loadings = Loading.active.order("id desc").page(params[:page]).per(10)
+    @loadings = Loading.active.includes(:user, :company, :position).order("id desc").page(params[:page]).per(10)
 
     respond_to do |format|
       format.html

@@ -1,15 +1,15 @@
 <div id="<%= "#{parent.id}_#{list_model}" %>List">
-      <% if lookup_context.find_all("#{list_model.pluralize}/_section_list_header").any? %>
-        <%= render "#{list_model.pluralize}/section_list_header", listItem: list_model, object: parent %>
-      <% else %>
-        <%= render "shared/section_list_header", listItem: list_model, object: parent %>
-      <% end %>
+  <% if lookup_context.find_all("#{list_model.pluralize}/_section_list_header").any? %>
+    <%= render "#{list_model.pluralize}/section_list_header", listItem: list_model, object: parent %>
+  <% else %>
+    <%= render "shared/section_list_header", listItem: list_model, object: parent %>
+  <% end %>
 
-      <div id="<%= "#{parent.id}_#{list_model}" %>List_Body" class="listBody">
-      	<% if objects.size > 0 %>
-          <%= render "#{list_model.pluralize}/related_list", objects: objects %>
-        <% else %>
-         <p>Kayıt Bulunamadı</p>
-        <% end %>
-      </div>
+  <div id="<%= "#{parent.id}_#{list_model}" %>List_Body" class="listBody">
+    <% if objects.size > 0 %>
+      <%= render "#{list_model.pluralize}/related_list", objects: objects %>
+    <% else %>
+      <p><%= t("defaults.errormsg.no_record_found") %></p>
+    <% end %>
+  </div>
 </div>

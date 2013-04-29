@@ -1,12 +1,15 @@
 class Contact < ActiveRecord::Base
 
   extend FriendlyId
+  include Tire::Model::Search
+  include Tire::Model::Callbacks
   
   belongs_to :patron
   belongs_to :company, counter_cache: true
   belongs_to :user
 
   friendly_id :to_s, use: :slugged, use: :scoped, scope: :patron
+  index_name { "contacts-#{Patron.current_id}" }
 
   attr_accessible :name, :surname, :salutation, :company_id, :user_id, :email, :tel, :gsm, :twitter, :facebook, :linkedin, 
                   :jobtitle, :department, :fax, :tel2, :des, :birthdate
@@ -18,6 +21,34 @@ class Contact < ActiveRecord::Base
   validates :jobtitle, length: { maximum: 40 }
   validates :department, length: { maximum: 60 }
 
+  mapping do
+    indexes :_id, index: :not_analyzed
+    indexes :name, analyzer: 'snowball', boost: 50
+    indexes :surname, analyzer: 'snowball', boost: 100
+    indexes :tel, index: :not_analyzed
+    indexes :gsm, index: :not_analyzed
+    indexes :email, index: :not_analyzed, boost: 100
+    indexes :company_name, analyzer: 'snowball'
+    indexes :jobtitle, analyzer: 'snowball'
+    indexes :department, analyzer: 'snowball'
+    indexes :created_at, type: 'date', index: :not_analyzed
+  end
+
+  def to_indexed_json
+    {
+      _id: _id,
+      name: name,
+      surname: surname,
+      tel: tel,
+      gsm: gsm,
+      email: email,
+      jobtitle: jobtitle,
+      department: department,
+      company_name: company_name,
+      created_at: created_at
+    }.to_json
+  end
+
   default_scope { where(patron_id: Patron.current_id) }
   scope :latest, order("created_at desc")
 
@@ -25,4 +56,7 @@ class Contact < ActiveRecord::Base
     "#{salutation} #{name} #{surname}"
   end
   
+  def company_name
+    company.name
+  end
 end

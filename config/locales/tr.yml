@@ -97,7 +97,7 @@ tr:
       action: "İşlem"
       restore: "Geri Yükle"
       home: "Ana Sayfa"
-      crm: "Firma Yönetimi"
+      crm: "Firmalar"
       operation: "Operasyon Yönetimi"
       fleet: "Filo Yönetimi"
       finance: "Finans Yönetimi"
@@ -119,6 +119,7 @@ tr:
       new_event: "Olay Bildirimi Ekle"
       new_activity: "Aktivite Oluştur"
       new_branch: "Şube Oluştur"
+      search: "Ara"
       detailed_search: "Detaylı Ara >>"
       new_loading: "Yeni Yük Reservasyonu"
       new_position: "Yeni Taşıma Projesi"
@@ -238,7 +239,28 @@ tr:
       save_loading: "Yük Bilgisini Kaydet"
     validmsg:
     errormsg:
+  loadings:
+    defaults:
+      page_header: "Yükler (Reservasyonlar)"
+      intro_message: "Müşterilerinizden gelen taşıma taleplerini ve kesinleşen yük bilgilerini yönetebilirsiniz"
+      last_records_title: "En Son Oluşturulmuş Yükler (Reservasyonlar)"
+      new_record_label: "Yeni Reservasyon Oluştur"
+      fullsearch_placeholder: "Referans no/müşteri/mal cinsi ile arama yapabilirsiniz"
+      show_page_header: "Yük Bilgisi"
+      edit_page_header: "Yük Bilgisi Güncelleme"
+      new_page_header: "Yeni Reservasyon Oluşturma"
+      small_form_help: "Yüke ait temel bilgileri girebilirsiniz, Zorunlu alanları daha sonra girebilirsiniz"
   positions:
+    defaults:
+      page_header: "Taşıma Projeleri"
+      intro_message: "Taşıması kesinleşen yüklerin taşıma bilgileri ve diğer süreçlerini projeler ile takip ediyoruz"
+      last_records_title: "En Son Oluşturulmuş Projeler"
+      new_record_label: "Yeni Taşıma Proje Başlat"
+      fullsearch_placeholder: "Proje adı/Referans/Yük Referans ile arayabilirsiniz"
+      show_page_header: "Proje Bilgisi"
+      edit_page_header: "Proje Bilgisi Güncelleme"
+      new_page_header: "Yeni Proje Oluşturma"
+      small_form_help: "Parsiyel ve komple her taşıma işlemi yeni bir projedir."
     title:
       positions: "Taşıma Projeleri"
       new_position: "Yeni Taşıma Projesi"
@@ -401,7 +423,18 @@ tr:
     action:
       save: "Koli Bilgisini Kaydet"
   companies:
+    defaults:
+      page_header: "Firmalar"
+      intro_message: "Müşterileriniz, tedarikçileriniz ve acentalar gibi diğer firma bilgilerini yönetebilirsiniz"
+      last_records_title: "En Son Oluşturulmuş Firmalar"
+      new_record_label: "Yeni Firma Kaydı Oluştur"
+      fullsearch_placeholder: "Firma adı/telefonu/web adresi ile arayabilirsiniz"
+      show_page_header: "Firma Bilgisi"
+      edit_page_header: "Firma Bilgisi Güncelleme"
+      new_page_header: "Yeni Firma Oluşturma"
+      small_form_help: "Firma ile ilgili bütün bilgilerin tamamlanması, sonrasında işlerinizi azaltacaktır. Zorunlu olmayan verileri daha sonrada tamamlayabilirsiniz."
     title:
+      companies: "Firmalar"
       company_management: "Müşteri Yönetimi"
       company_menu: "Müşteri İşlemleri"
       last_companies: "Son Eklenen Firmalar"
@@ -409,6 +442,8 @@ tr:
       contact_info: "Yetkili Bilgisi"
       partner_info: "İş Ortağı Bilgisi"
       quick_company: "Hızlı Firma Oluştur"
+      edit_company: "Firma Bilgileri Güncelleme"
+      new_company: "Yeni Firma Oluşturma"
     label:
       name: "Firma Adı"
       parent_company: "Grup Firması"
@@ -450,6 +485,16 @@ tr:
     action:
       save: "Firma Bilgisini Kaydet"
   contacts:
+    defaults:
+      page_header: "Kişiler"
+      intro_message: "Kontak bilgilerinizi takip edebilirsiniz, bir firma ile ilişkilendirmediğiniz sürece kontak bilgileriniz size özeldir."
+      last_records_title: "En Son Oluşturulmuş Kişiler"
+      new_record_label: "Yeni Kişi Kaydı Oluştur"
+      fullsearch_placeholder: "Kişi adı/firması/mail adresi ile arayabilirsiniz"
+      show_page_header: "Kişi Bilgisi"
+      edit_page_header: "Kişi Bilgisi Güncelleme"
+      new_page_header: "Yeni Kişi Bilgisi"
+      small_form_help: "İletişim kurduğunuz kişi bilgilerinizi takip girebilirsiniz."
     title:
       contacts: "Kişiler"
       quick_contact: "Hızlı Kontak Oluştur"
@@ -463,6 +508,7 @@ tr:
       company: "Firması"
       jobtitle: "Görev/Departman"
     placeholder:
+      fulltextsearch: "Kişi adı/firması/mail adresi ile arayabilirsiniz"
       name: "Yetkili Adı"
       surname: "Yetkili Soyadı"
       jobtitle: "Pozisyon Ünvanı"
@@ -476,6 +522,7 @@ tr:
       save: "Yetkili Bilgisini Kaydet"
     message:
       intro: "Kontak bilgilerinizi takip edebilirsiniz, bir firma ile ilişkilendirmediğiniz sürece kontak bilgileriniz size özeldir."
+      form_small_help: "İletişim kurduğunuz kişi bilgilerinizi takip girebilirsiniz."
   branches:
     title:
       branches: "Şubeler"

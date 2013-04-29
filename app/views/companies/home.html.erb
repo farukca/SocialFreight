@@ -1,8 +1,13 @@
-<div id="crm_home">
-  <div>
-    <%= render 'home_header' %>
-  </div>
-  <div>
-    <%= render 'home_content' %>
-  </div>
+<div id="companies_index_page" class="row-fluid">
+
+  <%= page_header_helper(t("companies.title.companies"), new_company_path, t("companies.link.new_company")) %>
+  <%= page_intro_helper(t("contacts.message.intro")) %>
+
+  <%= sub_header_with_search_form(t("companies.title.last_companies"), "companies") %>
+
+  <%= render "companies/list", companies: @companies %>
+
 </div>
+<script type="text/javascript">
+  document.getElementById('companynavigator').classList.add('active');
+</script>

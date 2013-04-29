@@ -51,7 +51,7 @@ gem 'wicked'
 gem 'resque', require: "resque/server"
 gem 'savon'
 gem 'whenever', require: false
-
+gem 'tire'
 #PDF
 gem 'prawn'
 
@@ -68,10 +68,10 @@ gem 'select2-rails'
 gem 'jbuilder'
 
 # Use unicorn as the web server
- gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
- gem 'capistrano'
+gem 'capistrano'
 
 gem 'blogger', git: "git@github.com:farukca/blogger.git", ref: "80aa61e7fd196f966239a710faf92fcc79d98370"
 #gem 'blogger', path: "../blogger"

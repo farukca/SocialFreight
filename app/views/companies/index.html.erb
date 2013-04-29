@@ -1,52 +1,13 @@
-<div id="customers">
-  <div class="profile-content">
-  <table class="outer" width="100%" id="headerTable" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="span2 noborder">
-        <div id="profile-picture" class="loading">
-          <%= image_tag("customer.png") %>
-        </div>
-      </td>
-      <td style="vertical-align:top">
-        <div id="profile-detail">
-          <div id="profile-title" class="row-fluid">
-            <div class="title">
-              <span>Müşteri Yönetimi</span>
-            </div>
-            <div class="buttons">
-              <%= link_to new_company_path, :class => "btn btn-success" do %><i class="icon-plus-sign icon-white"></i>Firma Ekle<%end%>
-            </div>
-          </div>
-          <%#= render 'home_profile_detail' %>
-        </div>
-      </td>
-    </tr>
-  </table>
-  </div>
-<table class="table table-striped">
-  <tr>
-    <th>Firma No</th>
-    <th>Ünvanı</th>
-    <th>Yetkili</th>
-    <th>Telefon</th>
-    <th>Fax</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-<% if @companies %>
-	<% @companies.each do |company| %>
-		<tr>
-      <td><%= link_to company.company_no, company_path(company) %></td>
-      <td><%= link_to company.name, company_path(company) %></td>
-      <td><%= company.contact %></td>
-      <td><%= company.tel %></td>
-      <td><%= company.fax %></td>
-		  <td><%= link_to company do %><i class="icon-search"></i><% end %></td>
-		  <td><%= link_to edit_company_path(company) do %><i class="icon-edit"></i><% end %></td>
-		  <td><%#= link_to 'Destroy', company, confirm: 'Are you sure?', method: :delete %></td>
-		</tr>
-	<% end %>
-<% end %>
-</table>
+<div id="companies_index_page" class="row-fluid">
 
+  <%= page_header_helper(t("companies.title.companies"), new_company_path, t("contacts.link.new_company")) %>
+  <%= page_intro_helper(t("contacts.message.intro")) %>
+
+  <%= sub_header_with_search_form(t("companies.title.last_companies"), "companies") %>
+
+  <%= render "companies/list", companies: @companies %>
+
+</div>
+<script type="text/javascript">
+  document.getElementById('companynavigator').classList.add('active');
+</script>

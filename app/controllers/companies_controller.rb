@@ -4,6 +4,7 @@ class CompaniesController < ApplicationController
   before_filter(:only => [:home]) { |c| c.set_tab "companynavigator" }
   
   def home
+    @companies = Company.latest.includes(:user).limit(10).page(params[:page]).per(10)
   end
   
   def index
@@ -14,7 +15,7 @@ class CompaniesController < ApplicationController
        if params[:id]
          @companies = Company.find_all_by_id(params[:id])
        else
-         @companies = Company.latest.limit(10)
+         @companies = Company.latest.limit(10).page(params[:page]).per(10)
        end
     end
 

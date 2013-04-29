@@ -50,16 +50,17 @@ module ApplicationHelper
 
   def search_form_helper(model_name)
     capture do
-      form_for(Search.new, remote: true, class: "form-search") do |f|
-        concat f.text_field :reference, class: "input-xlarge search-query", placeholder: "Referans/Proje Adi"
+      form_for(Search.new, class: "form-search") do |f| #, remote: true
+        concat f.text_field :reference, class: "input-xlarge search-query", placeholder: t("#{model_name}.defaults.fullsearch_placeholder")
         concat f.hidden_field :model, value: model_name
-        concat f.submit "Search", class: "btn"
-        concat link_to "Detayli Ara >>", "#"
+        concat f.hidden_field :full_text, value: "E"
+        concat f.submit t("defaults.link.search"), class: "btn"
+        concat link_to t("defaults.link.detailed_search"), new_search_path(model: model_name)
       end
     end
   end
 
-  def page_header_helper(title, new_record_path, link_title)
+  def page_header_helper(title, new_record_path=nil, link_title=nil)
     content_tag :div, class: "page-header" do
       content_tag :h3 do
         concat title
@@ -67,7 +68,7 @@ module ApplicationHelper
           content_tag :small do
             link_to link_title, "#{new_record_path}", class: "btn btn-success header_btn"
           end
-        )
+        ) if new_record_path
       end
     end
   end

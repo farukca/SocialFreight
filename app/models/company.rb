@@ -4,9 +4,26 @@ class Company < ActiveRecord::Base
   acts_as_followable
   acts_as_likeable
   extend FriendlyId
+
+  include Tire::Model::Search
+  include Tire::Model::Callbacks
+  #include Searchable
+
+  mapping do
+    indexes :_id, index: :not_analyzed
+    indexes :name, analyzer: 'snowball', boost: 100
+    indexes :tel, index: :not_analyzed
+    indexes :website, index: :not_analyzed
+    indexes :email, index: :not_analyzed
+    indexes :created_at, type: 'date', index: :not_analyzed
+  end
+
   #include GeneratesNick
   include GeneratesActivity
-  
+
+  friendly_id :name, use: :slugged, use: :scoped, scope: :patron_id
+  index_name { "companies-#{Patron.current_id}" }
+
   #belongs_to :patron
   belongs_to :branch
   #belongs_to :city
@@ -15,8 +32,7 @@ class Company < ActiveRecord::Base
   belongs_to :user
   belongs_to :saler, :class_name => User, :inverse_of => :saler
   belongs_to :parent, :class_name => Company, :inverse_of => :parent
-  friendly_id :name, use: :slugged, use: :scoped, scope: :patron_id
-  
+
   has_many :contacts
   has_many :events, as: :eventable, dependent: :destroy
   has_many :partners
@@ -39,14 +55,34 @@ class Company < ActiveRecord::Base
   validates :branch_id, presence: { message: I18n.t('defaults.inputerror.branch_is_blank') }
   validates :description, :notes, length: { maximum: 250 }
 
+  #searchable :name, :tel, :website, :fax, :email
   #before_save   :get_coordinates
   before_create :set_initials, :set_contact_user
 
   after_create  :set_after_jobs
 
-
   default_scope { where(patron_id: Patron.current_id) }
   scope :latest, order("created_at desc")
+
+  def to_indexed_json
+    {
+      _id: _id,
+      name: name,
+      tel: tel,
+      website: website,
+      email: email,
+      created_at: created_at
+    }.to_json
+  end
+
+  def self.search(params)
+    query = params[:query]
+    model.tire.search(load: true, page: params[:page], per_page: 10) do
+      query { string query, default_operator: "AND" } if query.present?
+      sort  { by :created_at, "desc" } if query.blank?
+      #filter :range, published_at: {lte: Time.zone.now}
+    end
+  end
 
   def gmaps4rails_address
   #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
@@ -55,20 +91,6 @@ class Company < ActiveRecord::Base
 
   def prevent_geocoding
     self.address.blank? #|| (!self.location.blank?)
-  end
-
-  class << self
-
-    def company_types()
-      company_types = {
-        'CU' => 'Customer',
-        'SU' => 'Supplier',
-        'FA' => 'Foreign Agent',
-        'BN' => 'Bank',
-        'TO' => 'Tax Office',
-        'XF' => 'Other'
-      }
-    end
   end
 
   def token_inputs
@@ -87,7 +109,7 @@ class Company < ActiveRecord::Base
   def set_initials
     self.company_no = Patron.generate_counter("Company", nil, nil)
   end
-  
+
   def set_after_jobs
     self.user.follow!(self) if self.user
       #self.user.create_activity(self, name, patron_id, patron_token)

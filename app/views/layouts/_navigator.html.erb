@@ -1,11 +1,28 @@
 <div class="navbar-inner fill">
   <div id="main-navigation" class="row navbar-inner" style="margin-left:10px;">
     <ul class="nav">
-      <%= navigator("homenavigator", root_url, t("defaults.link.home"), "icon-home") %>
+      <%= navigator("homenavigator", root_url, "", "icon-home") %>
+      <%= navigator("costnavigator", "#", "Sohbet", "icon-comment") %>
+      <%#= firmalar, kişiler, yükler, pozisyonlar, dökümanlar, masraf formları, araçlar, sürücüler(personel), sohbetler, seferler(taşımalar)?,  %>
+      <%#= yakıt, faturalar, tahsilat-ödemeler, kiralamalar, garaj giriş-çıkışları, gemiler-trenler?, konşimentolar? %>
       <%= navigator("companynavigator", crm_path, t("defaults.link.crm"), "icon-star-empty") %>
+      <%#= navigator("companynavigator", companies_path, t("defaults.link.crm"), "icon-star-empty") %>
       <%= navigator("contactnavigator", contacts_path, t("contacts.title.contacts"), "icon-user") %>
       <%= navigator("loadingnavigator", loadings_path, t("operations.title.reservations"), "icon-loading") %>
       <%= navigator("positionnavigator", positions_path, t("positions.title.positions"), "icon-cog") %>
+      <%= navigator("costnavigator", "#", "Faturalar", "icon-hdd") %>
+      <%= navigator("costnavigator", "#", "Masraf Formları", "icon-list-alt") %>
+      <li id="othernavigator" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          Diğer Modüller
+          <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <%= navigator("documentnavigator", "#", "Dokümanlar", "icon-file") %>
+          <%= navigator("vehiclenavigator", "#", "Araçlar", "icon-road") %>
+          <%= navigator("staffnavigator", "#", "Şoförler", "icon-user") %>
+        </ul>
+      </li>
       <%#= navigator("opernavigator", operations_path, t("defaults.link.operation"), "icon-cog") %>
 
       <!--li id="opernavigator" <%# if (current_tab == "opernavigator") %>class="dropdown active"<%# else %>class="dropdown"<%#  end %>>
@@ -30,8 +47,8 @@
           <!--li class="<%#= selected_navigation(operation.to_s) %>"><%#= link_to operation.to_s.humanize, home_operation_path(operation) %></li-->
         <%# end %>
       <%# end %>
-      <%= navigator("fleetnavigator", fleetman_path, t("defaults.link.fleet"), "icon-road") %>
-      <%= navigator("financenavigator", finance_path, t("defaults.link.finance"), "icon-signal") %>
+      <%#= navigator("fleetnavigator", fleetman_path, t("defaults.link.fleet"), "icon-road") %>
+      <%#= navigator("financenavigator", finance_path, t("defaults.link.finance"), "icon-signal") %>
       <!--li id="glnavigator"><%#= link_to "#" do %><i class="icon-list-all"></i>Muhasebe<%# end %></li>
       <li id="iknavigator"><%#= link_to "#" do %><i class="icon-user"></i>İK<%# end %></li-->
       <!--li id="othersnavigator"><%#= link_to "#" do %><i class="icon-resize-full"></i>Diğer İşlemler<%# end %></li-->

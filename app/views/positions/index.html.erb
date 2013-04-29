@@ -1,52 +1,12 @@
-<div class="row-fluid">
-  <div class="page-header">
-    <h3>
-      Taşıma Projeleri
-      <small><%= link_to "Yeni Proje Başlat", new_position_path, class: "btn btn-success" %></small>
-    <h3>
-  </div>
-  <div class="row-fluid">
-    <p>
-      Her taşıma bir projedir, bütün bu süreçlerinizi bu sayfadan yönetebilirsiniz. Yükler, farklı modda ki taşımalar, masraf formları, faturalar hepsi proje ile ilişkili olarak takip edilebilir.
-    </p>
-  </div>
-  <div class="page-header">
-    <h5>
-      Son Taşıma Projeleri
-      <div class="pull-right">
-        <form class="form-search">
-          <input type="text" class="input-xlarge search-query" placeholder="Referans/Proje Adı">
-          <button type="submit" class="btn">Search</button><br>
-          <a href="#" class="pull-right">Detaylı Ara >></a>
-        </form>
-      </div>
-    </h5>
-  </div>
-  <%#= render partial: "positions/popover", collection: @positions, as: :position %>
-  <div id="position_list" class="row-fluid">
-    <table class="table table-bordered table-condensed">
-      <tr>
-        <th class="span1">Referans</th>
-        <th class="span5">Proje Adı</th>
-        <th class="span2">Şube</th>
-        <th class="span1">User</th>
-        <th class="span1"></th>
-      </tr>
+<div id="positions_index_page" class="row-fluid">
 
-    <% @positions.each do |position| %>
-      <tr>
-        <td><%= link_to position.reference, position_path(position) %></td>
-        <td><%= position.description %></td>
-        <td><%= branch_name(position.branch) if position.branch %></td>
-        <td><%= image_tag user_mini_avatar(position.user), class: "img-circle", title: user_name(position.user) %></td>
-        <td><%= link_to "Edit", edit_position_path(position) %></td>
-      </tr>
-    <% end %>
-    </table>
-    <div class="pagination">
-      <%= paginate @positions %>
-    </div>
-  </div>
+  <%= page_header_helper(t("positions.defaults.page_header"), new_position_path, t("positions.defaults.new_record_label")) %>
+  <%= page_intro_helper(t("positions.defaults.intro_message")) %>
+
+  <%= sub_header_with_search_form(t("positions.defaults.last_records_title"), "positions") %>
+
+  <%= render "positions/list", positions: @positions %>
+
 </div>
 <script type="text/javascript">
   document.getElementById('positionnavigator').classList.add('active');

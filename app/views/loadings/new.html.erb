@@ -1,4 +1,5 @@
 <div class="row-fluid">
+	<%= page_header_helper(t("loadings.defaults.new_page_header")) %>
   <% if @loading.operation == 'inland' %>
     <%= render 'form_inland' %>
   <% else %>

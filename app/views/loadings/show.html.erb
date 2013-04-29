@@ -1,11 +1,9 @@
 <div id="Loading_<%= @loading.id %>">
-	<div class="page-header">
-		<h3>Yük Detayı</h3>
-	</div>
-  <div>
+	<%= page_header_helper(t("loadings.defaults.show_page_header")) %>
+  <div class="row-fluid">
     <%= render 'profile_header' %>
   </div>
-  <div>
+  <div class="row-fluid">
     <%= render 'profile_content' %>
   </div>
 </div>

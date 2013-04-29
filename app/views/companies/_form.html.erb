@@ -6,7 +6,10 @@
   <div class="pageBlock">
       
     <div class="page-header">
-      <h4><%= t("companies.title.company_info") %><small class="pull-right">Firma ile ilgili bütün bilgilerin tamamlanması, sonrasında işlerinizi azaltacaktır. Zorunlu olmayan verileri daha sonrada tamamlayabilirsiniz.</small></h4>
+      <h4>
+        <%= t("companies.title.company_info") %>
+        <small class="pull-right"><%= t("companies.message.form_small_help") %></small>
+      </h4>
     </div>
 
     <div id="company-main-form" class="row-fluid">
@@ -15,6 +18,8 @@
         <%= f.fields_for :contacts, validate: false do |builder| %>
           <%= render 'contacts_fields', :f => builder %>
         <% end %>
+      <%# else %>
+        <%# buraya social bilgileri ve detay bilgileri güncelleyebileceği bir form_detail alalım %>
       <% end %>
     </div>
 
