@@ -3,6 +3,11 @@ class Loading < ActiveRecord::Base
   acts_as_followable
   acts_as_likeable
   extend FriendlyId
+  
+  include Tire::Model::Search
+  include Tire::Model::Callbacks
+  index_name { "loadings-#{Patron.current_id}" }
+
   #include GeneratesNick
   include GeneratesActivity
 

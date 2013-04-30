@@ -3,6 +3,10 @@ class Vehicle < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
 
   extend FriendlyId
+  include Tire::Model::Search
+  include Tire::Model::Callbacks
+  index_name { "vehicles-#{Patron.current_id}" }
+
   include GeneratesNick
 
   friendly_id :code, use: :slugged, use: :scoped, scope: :patron_id

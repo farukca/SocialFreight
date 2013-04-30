@@ -4,6 +4,10 @@ class Position < ActiveRecord::Base
   acts_as_likeable
   acts_as_mentionable
   extend FriendlyId
+  include Tire::Model::Search
+  include Tire::Model::Callbacks
+  index_name { "loadings-#{Patron.current_id}" }
+
   #include GeneratesNick
   include GeneratesActivity
   
