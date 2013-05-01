@@ -526,6 +526,7 @@ en:
       operation: "Operation Type"
       owner_reference: "Related Operation"
       description: "Document Description"
+      attachment: "Attachment"
     placeholder:
     hint:
     link:

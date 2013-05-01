@@ -29,7 +29,7 @@
 
   <div id="branches_list" class="row-fluid">
     <legend><%= t("branches.title.branches") %></legend>
-    <%= render "branches/related_list", objects: @branches %>
+    <%= render "branches/list", objects: @branches, is_paginated: false %>
   </div>
 
 </div>

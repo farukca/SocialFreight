@@ -37,7 +37,11 @@ class SearchesController < ApplicationController
       when "reservations"
         @search_results   = @search.reservations.page(params[:page]).per(10)
       when "companies"
-        @search_results   = @search.companies.page(params[:page]).per(10)
+        if @search.searched
+          @search_results   = Company.search(@search.reference, params[:page])
+        else
+          @search_results   = @search.companies.page(params[:page]).per(10)
+        end
       when "contacts"
         @search_results   = @search.contacts.page(params[:page]).per(10)
       when "transports"
@@ -47,6 +51,7 @@ class SearchesController < ApplicationController
     end 
     respond_to do |format|
       format.html # show.html.erb
+      format.js
       format.json { render json: @search_results }
     end
   end

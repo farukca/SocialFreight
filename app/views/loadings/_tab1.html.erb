@@ -3,7 +3,7 @@
     <table class="detailList" width="100%" border="0" cellpadding="0" cellspacing="0" style="border:none">
       <tr>
         <td class="labelCol2"><%= t("defaults.label.load_country") %> :</td>
-        <td class="dataCol2"><%= t("countries.#{@loading.load_coun}") if @loading.load_coun.present? %></td>
+        <td class="dataCol2"><%= country_name(@loading.load_coun) %></td>
         <td class="labelCol2"><%= t("defaults.label.sender") %> :</td>
         <td class="dataCol2"><%= @loading.sender.name if @loading.sender %></td>
         <td class="labelCol2"><%= t("operations.label.producer") %> :</td>
@@ -11,7 +11,7 @@
       </tr>
       <tr>
         <td class="labelCol2"><%= t("defaults.label.unload_country") %> :</td>
-        <td class="dataCol2"><%= t("countries.#{@loading.unload_coun}") if @loading.unload_coun.present? %></td>
+        <td class="dataCol2"><%= country_name(@loading.unload_coun) %></td>
         <td class="labelCol2"><%= t("defaults.label.consignee") %> :</td>
         <td class="dataCol2"><%= @loading.consignee.name if @loading.consignee %></td>
         <td class="labelCol2"><%= t("operations.label.product_price") %> :</td>

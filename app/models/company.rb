@@ -75,9 +75,9 @@ class Company < ActiveRecord::Base
     }.to_json
   end
 
-  def self.search(query) #params
+  def self.search(query, page_num) #params
     #query = params[:query]
-    model.tire.search(load: true, page: params[:page], per_page: 10) do
+    Company.tire.search(load: true, page: page_num, per_page: 10) do
       query { string query } if query.present? #, default_operator: "AND"
       #sort  { by :created_at, "desc" } if query.blank?
       #filter :range, published_at: {lte: Time.zone.now}

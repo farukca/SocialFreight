@@ -58,11 +58,15 @@ class Search < ActiveRecord::Base
   end
 
   def find_companies
-    companies = Company.order(:name)
-    companies = companies.where("lower(name) like ?", "%#{self.reference}%") if self.reference.present?
-    companies = companies.where(created_at: self.docdate1..self.docdate2) if self.docdate1.present?
-    companies = companies.where(branch_id: self.branch_id) if self.branch_id.present?
-    companies = companies.where(country_id: self.country_id) if self.country_id.present?
+    if self.searched
+      companies = Company.search(self.reference)
+    else
+      companies = Company.order(:name)
+      companies = companies.where("lower(name) like ?", "%#{self.reference}%") if self.reference.present?
+      companies = companies.where(created_at: self.docdate1..self.docdate2) if self.docdate1.present?
+      companies = companies.where(branch_id: self.branch_id) if self.branch_id.present?
+      companies = companies.where(country_id: self.country_id) if self.country_id.present?
+    end
     companies
   end
 

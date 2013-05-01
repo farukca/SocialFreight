@@ -575,6 +575,7 @@ tr:
       operation: "Operasyon Tipi"
       owner_reference: "İlgili Operasyon"
       description: "Belge Açıklaması"
+      attachment: "Ekli Belgeler"
     placeholder:
     hint:
     link:
