@@ -29,6 +29,7 @@ en:
       loadings: "Goods (Bookings)"
       positions: "Projects"
       transports: "Multimodal Tranports"
+      search_results: "Search Results"
     label:
       reference: "Reference"
       operation: "Operation"
@@ -119,6 +120,7 @@ en:
       new_event: "New Event"
       new_activity: "Add New Activity"
       new_branch: "Add New Branch"
+      search: "Search"
       detailed_search: "Detailed Search >>"
       new_loading: "New Booking"
       new_position: "New Project"
@@ -238,7 +240,28 @@ en:
       save_loading: "Save Booking"
     validmsg:
     errormsg:
+  loadings:
+    defaults:
+      page_header: "Bookings (Quotes)"
+      intro_message: "You can manage your customer booking reservations"
+      last_records_title: "Last Boookings (Quotes)"
+      new_record_label: "Start New Booking"
+      fullsearch_placeholder: "Write some keywords about booking you look"
+      show_page_header: "Booking Profile"
+      edit_page_header: "Edit Booking Informations"
+      new_page_header: "Bookings"
+      small_form_help: ""
   positions:
+    defaults:
+      page_header: "Transportation Projects"
+      intro_message: "Taşıması kesinleşen yüklerin taşıma bilgileri ve diğer süreçlerini projeler ile takip ediyoruz"
+      last_records_title: "En Son Oluşturulmuş Projeler"
+      new_record_label: "Yeni Taşıma Proje Başlat"
+      fullsearch_placeholder: "Proje adı/Referans/Yük Referans ile arayabilirsiniz"
+      show_page_header: "Proje Bilgisi"
+      edit_page_header: "Proje Bilgisi Güncelleme"
+      new_page_header: "Yeni Proje Oluşturma"
+      small_form_help: "Parsiyel ve komple her taşıma işlemi yeni bir projedir."
     title:
       positions: "Projects"
       new_position: "New Transportation Project"

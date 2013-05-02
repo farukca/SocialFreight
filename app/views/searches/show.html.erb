@@ -1,34 +1,13 @@
-<% case @search.model %>
-  <% when "positions" %>
-    <%= render 'searches/positions_form' %>
-    <div class="page-header">
-      <h4>Proje Listesi
-        <small class="pull-right">
-          <a href="#" class="saveascsv" data-table="position_report_results">Excele Aktar</a>
-        </small>
-      </h4>
-    </div>
-    <div class="row-fluid">
-      <%= render 'positions/related_list', :objects => @positions %>
-    </div>
+<div class="row-fluid">
+  <%= page_header_helper(t("defaults.title.search_results")) %>
+  <div class="row-fluid">
+    <%= render 'searches/#{@search.model}_form' %>
 
-  <% when "loadings" %>
-    <%= render 'searches/loadings_form' %>
-    <div class="page-header">
-    	<h4>Yük Listesi
-	    	<small class="pull-right">
-	    		<a href="#" class="saveascsv" data-table="loading_report_results">Excele Aktar</a>
-	    	</small>
-      </h4>
-    </div>
-    <div class="row-fluid">
-      <%= render 'loadings/related_list', :objects => @loadings %>
-    </div>
+    <%= sub_header_with_search_form(t("companies.title.last_companies"), "companies") %>
 
-  <% when "reservations" %>
-    <%= render 'searches/reservation_form' %>
-    <%= render 'reservations', :reservations => @reservations %>
-  <% else %>
-    <%= render "#{@search.model}_results" %>
-<% end %>
+    <div id="<%= @search.model %>_list" class="row-fluid">
+      <%= render '#{@search.model}/list', objects: @search_results, is_paginated: true %>
+    </div>
+  </div>
+</div>
 <% javascript "report_manifest" %>

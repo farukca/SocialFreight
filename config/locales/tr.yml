@@ -29,6 +29,7 @@ tr:
       loadings: "Yükler"
       positions: "Pozisyonlar"
       transports: "Multimodal Taşımalar"
+      search_results: "Arama Sonuçları"
     label:
       reference: "Referans"
       operation: "Operasyon"
