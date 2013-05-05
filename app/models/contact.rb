@@ -3,13 +3,13 @@ class Contact < ActiveRecord::Base
   extend FriendlyId
   include Tire::Model::Search
   include Tire::Model::Callbacks
+  index_name { "contacts-#{Patron.current_id}" }
   
   belongs_to :patron
   belongs_to :company, counter_cache: true
   belongs_to :user
 
   friendly_id :to_s, use: :slugged, use: :scoped, scope: :patron
-  index_name { "contacts-#{Patron.current_id}" }
 
   attr_accessible :name, :surname, :salutation, :company_id, :user_id, :email, :tel, :gsm, :twitter, :facebook, :linkedin, 
                   :jobtitle, :department, :fax, :tel2, :des, :birthdate
@@ -22,7 +22,7 @@ class Contact < ActiveRecord::Base
   validates :department, length: { maximum: 60 }
 
   mapping do
-    indexes :_id, index: :not_analyzed
+    indexes :id, index: :not_analyzed
     indexes :name, analyzer: 'snowball', boost: 50
     indexes :surname, analyzer: 'snowball', boost: 100
     indexes :tel, index: :not_analyzed
@@ -36,7 +36,7 @@ class Contact < ActiveRecord::Base
 
   def to_indexed_json
     {
-      _id: _id,
+      id: id,
       name: name,
       surname: surname,
       tel: tel,

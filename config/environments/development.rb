@@ -29,4 +29,8 @@ Socialfreight::Application.configure do
   config.assets.debug = false
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  #Tire.configure do
+  #  logger STDERR, :level => 'debug'
+  #end
 end

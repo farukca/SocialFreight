@@ -7,10 +7,11 @@ class Company < ActiveRecord::Base
 
   include Tire::Model::Search
   include Tire::Model::Callbacks
+  index_name { "companies-#{Patron.current_id}" }
   #include Searchable
 
   mapping do
-    indexes :_id, index: :not_analyzed
+    indexes :id, index: :not_analyzed
     indexes :name, analyzer: 'snowball', boost: 100
     indexes :tel, index: :not_analyzed
     indexes :website, index: :not_analyzed
@@ -22,7 +23,6 @@ class Company < ActiveRecord::Base
   include GeneratesActivity
 
   friendly_id :name, use: :slugged, use: :scoped, scope: :patron_id
-  index_name { "companies-#{Patron.current_id}" }
 
   #belongs_to :patron
   belongs_to :branch
@@ -66,7 +66,7 @@ class Company < ActiveRecord::Base
 
   def to_indexed_json
     {
-      _id: _id,
+      id: id,
       name: name,
       tel: tel,
       website: website,

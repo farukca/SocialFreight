@@ -90,6 +90,6 @@ end
 group :development do
   gem 'meta_request', '0.2.0'
   gem 'ruby-debug19'
-  gem 'bullet'
+#  gem 'bullet'
 end
-gem 'rack-mini-profiler'
+#gem 'rack-mini-profiler'

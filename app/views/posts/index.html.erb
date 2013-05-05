@@ -1,0 +1,21 @@
+<div class="profile-content">
+  <div class="row-fluid">
+    <div class="span6">
+      <%= page_sub_header("Ofiste neler oluyor") %>
+      <%= render 'users/user_posts' %>
+    </div>
+    <div class="span5 offset1">
+      <div class="online_users">
+        <%= page_sub_header(t("users.title.online_users")) %>
+        <%= render partial: "users/user_avatar", collection: current_patron.users.online, as: :user %>
+      </div>
+      <div class="offline_users">
+        <%= page_sub_header(t("users.title.offline_users")) %>
+        <%= render partial: "users/user_avatar", collection: current_patron.users.offline, as: :user %>
+      </div>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <%#= render 'user_statics' %>
+  </div>
+</div>

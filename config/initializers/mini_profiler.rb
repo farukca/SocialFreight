@@ -1,1 +1,1 @@
-Rack::MiniProfiler.config.pre_authorize_cb = lambda {|env| false }
+#Rack::MiniProfiler.config.pre_authorize_cb = lambda {|env| false }

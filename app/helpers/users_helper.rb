@@ -28,4 +28,8 @@ module UsersHelper
   	0
   end
 
+  def user_picture_tag(user=@user)
+    link_to (image_tag user.avatar_url(:small), class: "img-circle"), user_path(user), title: user_name(user)
+  end
+
 end

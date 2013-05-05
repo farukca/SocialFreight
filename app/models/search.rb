@@ -71,9 +71,13 @@ class Search < ActiveRecord::Base
   end
 
   def find_contacts
+    if self.searched
+      contacts = Contact.search(self.reference)
+    else
     contacts  = Contact.order(:name, :surname)
     contacts  = contacts.where(company_id: self.company_id) if self.company_id.present?
     contacts  = contacts.where("lower(name) like ?", "%#{self.reference}%") if self.reference.present?
+    end
     contacts
   end
 

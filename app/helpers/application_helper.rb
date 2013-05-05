@@ -73,6 +73,14 @@ module ApplicationHelper
     end
   end
 
+  def page_sub_header(title)
+    content_tag :div, class: "page-header" do
+      content_tag :h5 do
+        concat title
+      end
+    end
+  end
+
   def page_intro_helper(intro_text)
     content_tag :div, class: "row-fluid" do
       content_tag :p, intro_text

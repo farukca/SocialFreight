@@ -2,7 +2,7 @@
   <div id="main-navigation" class="row navbar-inner" style="margin-left:10px;">
     <ul class="nav">
       <%= navigator("homenavigator", root_url, "", "icon-home") %>
-      <%= navigator("costnavigator", "#", "Sohbet", "icon-comment") %>
+      <%= navigator("postnavigator", posts_path, "Sohbet", "icon-comment") %>
       <%#= firmalar, kişiler, yükler, pozisyonlar, dökümanlar, masraf formları, araçlar, sürücüler(personel), sohbetler, seferler(taşımalar)?,  %>
       <%#= yakıt, faturalar, tahsilat-ödemeler, kiralamalar, garaj giriş-çıkışları, gemiler-trenler?, konşimentolar? %>
       <%= navigator("companynavigator", crm_path, t("defaults.link.crm"), "icon-star-empty") %>

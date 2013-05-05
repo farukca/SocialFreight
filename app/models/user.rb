@@ -38,6 +38,8 @@ class User < ActiveRecord::Base
   validates :branch_id, presence: true
   #validates_inclusion_of :time_zone, in: ActiveSupport::TimeZone.zones_map(&:name)
   scope :active, where(user_status: "A")
+  scope :online, lambda{ where("last_activity_at > ?", 10.minutes.ago) }
+  scope :offline, lambda{ where("last_activity_at < ?", 10.minutes.ago) }
 
   after_create  :send_activation_mail
 
