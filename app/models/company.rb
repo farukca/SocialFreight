@@ -20,6 +20,7 @@ class Company < ActiveRecord::Base
   end
 
   #include GeneratesNick
+  include GeneratesPost
   include GeneratesActivity
 
   friendly_id :name, use: :slugged, use: :scoped, scope: :patron_id

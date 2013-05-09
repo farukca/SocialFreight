@@ -9,6 +9,7 @@ class Loading < ActiveRecord::Base
   index_name { "loadings-#{Patron.current_id}" }
 
   #include GeneratesNick
+  include GeneratesPost
   include GeneratesActivity
 
   belongs_to :patron
@@ -81,44 +82,9 @@ class Loading < ActiveRecord::Base
   before_create :set_initials
   after_create  :set_after_jobs
 
-  class << self
-    def incoterms()
-      incoterms = {
-        'FOB' => 'FOB',
-        'CIF' => 'CIF',
-        'COB' => 'COB'
-      }
-    end
-
-    def load_types()
-      load_types = {
-        'F' => 'Full',
-        'P' => 'Partial'#,
-        #'B' => 'Bulk'
-      }
-    end
-
-    def stages()
-      stages = {
-        'R' => 'Reservation',
-        'B' => 'Booking',
-        'G' => 'Going on',
-        'D' => 'Delivered',
-        'C' => 'Closed'
-      }
-    end
-
-    def point_types()
-      point_types = {
-        'P' => 'Airport/Seaport/Rail Station',
-        'M' => 'Customer Place'
-      }
-    end
-  end
-
   def position_name
     if self.position_id.nil?
-      "RESERVATION"
+      "RESERVATION" #t("defaults.label.reservation")
     else
        self.position.reference
     end

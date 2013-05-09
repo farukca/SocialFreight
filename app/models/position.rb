@@ -9,6 +9,7 @@ class Position < ActiveRecord::Base
   index_name { "loadings-#{Patron.current_id}" }
 
   #include GeneratesNick
+  include GeneratesPost
   include GeneratesActivity
   
   belongs_to :patron  
@@ -61,43 +62,6 @@ class Position < ActiveRecord::Base
 
   before_create :set_initials
   after_create  :set_after_jobs
-
-  class << self
-    def direction_types()
-      direction_types = {
-        'E' => 'Export',
-        'I' => 'Import',
-        'T' => 'Transit',
-        'D' => 'Domestic'
-      }
-    end
-  end
-
-  class << self
-    def payment_types()
-      payment_types = {
-        'PP' => 'PrePaid',
-        'CC' => 'CustomCollect'
-      }
-    end
-  end
-
-  class << self
-    def master_types()
-      master_types = {
-        'MO' => 'Master Only',
-        'CO' => 'Consolidated'
-      }
-    end
-
-    def stages()
-      stages = {
-        'R' => 'Reservation',
-        'B' => 'Booking',
-        'C' => 'Closed'
-      }
-    end
-  end
 
   def to_s
     reference

@@ -69,6 +69,7 @@ tr:
       load_type: "Yük Tipi"
       commodity: "Yük İçeriği"
       incoterm: "Incoterm"
+      reservation: "Rezervasyon"
       freight_collect: "Freight Collect"
       freight_price: "Navlun Fiyatı"
       brut_weight: "Brüt Ağırlık"

@@ -69,6 +69,7 @@ en:
       load_type: "Booking Type"
       commodity: "Commodity"
       incoterm: "Incoterm"
+      reservation: "Reservation"
       freight_collect: "Freight Collect"
       freight_price: "Freight Price"
       brut_weight: "Brut Weight"
