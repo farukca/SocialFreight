@@ -11,6 +11,7 @@ load "config/recipes/nodejs"
 load "config/recipes/rbenv"
 load "config/recipes/redis"
 load "config/recipes/resque"
+load "config/recipes/elasticsearch"
 load "config/recipes/check"
 load "config/recipes/assets"
 

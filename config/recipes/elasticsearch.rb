@@ -2,10 +2,10 @@ namespace :elasticsearch do
 
   desc "Install the latest release of ElasticSearch"
   task :install, roles: :app do
-    run "#{sudo} apt-get install openjdk-7-jre -y"
-    run "wget https://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.90.0.tar.gz -O elasticsearch.tar.gz"
-    run "tar -xf elasticsearch.tar.gz"
-    run "rm elasticsearch.tar.gz"
+    run "#{sudo} apt-get install openjdk-6-jre -y"
+    run "wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.0.tar.gz -O elasticsearch090.tar.gz"
+    run "tar -xf elasticsearch090.tar.gz"
+    run "rm elasticsearch090.tar.gz"
     run "#{sudo} mv elasticsearch-* elasticsearch"
     run "#{sudo} mv elasticsearch /usr/local/share"
 
