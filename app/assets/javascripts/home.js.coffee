@@ -4,6 +4,13 @@
 jQuery ->
   $(".dropdown-toggle").dropdown()
   $("a[rel=popover]").popover(offset: 10, delay:{show:1000, hide:500})
+  $(".datepicker").datepicker
+    format: 'yyyy-mm-dd'
+    weekStart: 1
+    todayBtn: "linked"
+    calendarWeeks: true
+    autoclose: true
+    todayHighlight: true
   $(".alert-message").alert()
   $(".collapse").collapse('show')
   $("span.timeago").timeago()
@@ -111,5 +118,4 @@ jQuery ->
   #        page: page
   #      success: (data) ->
   #        callback data
-
   $(".simple_form").find("input[type=text],textarea,select").filter(":visible:first").focus()

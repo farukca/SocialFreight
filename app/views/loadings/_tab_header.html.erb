@@ -2,12 +2,8 @@
   <div class="row-fluid">
     <dl class="yatay-info">
       <dd><strong><%= loading_name %></strong></dd>
-      <dd><%= operation_name(loading.operation) %></dd>
-      <dd><%= direction_name(loading.direction) %></dd>
       <dd><%= branch_name(loading.branch) %></dd>
-      <dd><%= Position.payment_types[loading.paid_at] %></dd>
       <dd><%= incoterm_name(loading.incoterm) %></dd>
-      <dd><%= Loading.load_types[loading.load_type] %></dd>
       <dd class="pull-right">
         <%= link_to position_name(loading.position), position_path(loading.position) if loading.position %>
       </dd>

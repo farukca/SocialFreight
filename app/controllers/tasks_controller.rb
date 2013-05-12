@@ -33,6 +33,7 @@ class TasksController < ApplicationController
 
   def update
   	@task = Task.find(params[:id])
+    @todolist = @task.todolist
 
     @task.update_attributes!(params[:task])
     respond_with @task, success: 'task was successfully updated.'

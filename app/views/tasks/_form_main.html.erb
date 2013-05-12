@@ -1,4 +1,5 @@
 <div class="row-fluid">
+	<%= f.check_box :status,  %>
   <%= f.text_field :task_text, label: false, placeholder: t("tasks.label.task_text"), class: "input-xxlarge" %>
   <%#= f.input :user_id, as: :hidden, label: t("tasks.label.user"), input_html: { class: "chosen_input", "data-url" => "/people.json", "data-placeholder" => t("tasks.placeholder.user") } %>
   <%#= f.input :due_date, as: :string, label: t("tasks.label.due_date"), input_html: {class: "input-small", "data-datepicker" => "datepicker"} %>

@@ -11,4 +11,13 @@ class Todolist < ActiveRecord::Base
 
   default_scope { where(patron_id: Patron.current_id) }
 
+
+  def incomplete_tasks
+    tasks.where(status: "A")
+  end
+
+  def completed_tasks
+    tasks.where(status: "C")
+  end
+
 end

@@ -1,1 +1,6 @@
-$('#task_<%= @task.id %>').html("<%= j render @task %>");
+<% if @task.status == "A" %>
+  $('#task_<%= @task.id %>').appendTo('#todolist_<%= @todolist.id %>_uncompleted_tasks_list');
+<% else %>
+  $('#task_<%= @task.id %>').appendTo('#todolist_<%= @todolist.id %>_completed_tasks_list');
+<% end %>
+$('#newAgileRecord').modal('hide')

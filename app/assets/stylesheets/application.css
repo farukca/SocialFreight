@@ -6,6 +6,7 @@
  *= require normalize
  *= require bootstrap
  *= require bootstrap_changes
+ *= require datepicker
  *= require contacts
  *= require tasks
  *= require gmaps4rails

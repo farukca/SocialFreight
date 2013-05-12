@@ -3,7 +3,7 @@ class PatronsController < ApplicationController
   before_filter :require_login, except: [:new, :create]
 
   def index
-    @patrons = Patron.all.order("id desc")
+    @patrons = Patron.order("id desc").all
 
     respond_to do |format|
       format.html { render layout: "admin" }

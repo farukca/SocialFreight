@@ -11,12 +11,12 @@
 //= require rails.validations.simple_form
 //= require jquery.timeago
 //= require bootstrap
-//= require bootstrap-datepicker
-//= require highcharts
+// require highcharts
 //= require select2
 //= require patron
 //= require loading
 //= require search
+//= require bootstrap-datepicker
 //= require home
 //= require modal_popup
 //= require reservation
