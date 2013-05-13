@@ -1,5 +1,5 @@
 <div id="task_form" class="row-fluid">
-  <%= form_for [todolist, Task.new], html: { class: "form-horizontal" }, validate: true, remote: true do |f| %>
+  <%= form_for [todolist, Task.new], html: { class: "form-search" }, validate: true, remote: true do |f| %>
     <%#= f.error_notification %>
     <%= render 'tasks/form_main', :f => f %>
   <% end %>

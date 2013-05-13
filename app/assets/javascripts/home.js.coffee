@@ -16,10 +16,11 @@ jQuery ->
   $("span.timeago").timeago()
   $(".slidingDiv").hide()
   $(".togglebutton").show()
-  $(".togglebutton").click ->
-     $($(this).data('href')).slideToggle()
+  $(".togglebutton").click (event) ->
+    $($(this).data('href')).slideToggle()
+    event.preventDefault()
   $(".nexttab").click ->
-     $($(this).data('newtab')).click()
+    $($(this).data('newtab')).click()
   $(".chosen_select").each ->
     $(this).chosen()
   $(".country_select").each ->

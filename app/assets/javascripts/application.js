@@ -25,6 +25,7 @@
 //= require searches
 //= require operation_wizard
 //= require connects
+//= require todolists
 //= require tasks
 //= require costs
 //= require comments

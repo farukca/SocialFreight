@@ -1,5 +1,5 @@
 <li id="task_<%= task.id %>">
-  <%= form_for [@todolist, task], remote: true, html: {class: "form-search"} do |f| %>
+  <%= form_for [@todolist, task], remote: true, html: {class: "edit_task form-search"} do |f| %>
     <%= f.check_box :status, {}, "C", "A" %>
     <%= f.label :status, task.task_text %>
     <%= link_to "(remove)", todolist_task_path(@todolist, task), method: :delete, data: {confirm: "Are you sure?"}, remote: true %>

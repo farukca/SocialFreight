@@ -8,7 +8,8 @@ class TasksController < ApplicationController
   end
 
   def new
-  	@task = Task.new
+    @todolist = Todolist.find(params[:todolist_id])
+    @task = @todolist.tasks.new
   end
 
   def show
