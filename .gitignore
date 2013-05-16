@@ -10,3 +10,4 @@ public/uploads
 uploads/
 config/database.yml
 config/database.example.yml
+app/assets/javascripts/basecamp.js
