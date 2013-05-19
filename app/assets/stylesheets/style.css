@@ -188,7 +188,7 @@ p {
 }
 #slider {
     position: relative;
-    margin-bottom: 360px;
+    margin-bottom: 90px;
 }
 #slider-thumbs {
     position: relative;
@@ -213,9 +213,9 @@ p {
     -o-border-radius: 0 0 5px 5px;
     position: absolute;
     z-index: 2;
-    bottom: -340px;
     left: 0;
     width: 618px;
+    display: none;
 }
 .slider-nav-thumbs {
     bottom: -426px;

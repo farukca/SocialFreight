@@ -4,8 +4,8 @@
   <div class="span6">
     <%= f.input :company_id, as: :hidden, label: t("defaults.label.customer"), input_html: { class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => t("operations.placeholder.customer") } %>
     <%#= f.input :direction, as: :select, label: t("defaults.label.service"), collection: Position.direction_types.map{|r| [r[1], r[0] ]}, include_blank: true %>
-    <%= f.input :load_coun, as: :select, label: t("defaults.label.load_country"), collection: Country.all, include_blank: true %>
-    <%= f.input :unload_coun, as: :select, label: t("defaults.label.unload_country"), collection: Country.all, include_blank: true %>
+    <%= f.input :load_coun, as: :select, label: t("defaults.label.load_country"), collection: Country.all, input_html: { class: "country_select" }, include_blank: true %>
+    <%= f.input :unload_coun, as: :select, label: t("defaults.label.unload_country"), collection: Country.all, input_html: { class: "country_select" }, include_blank: true %>
   </div>
   <div class="span6">
     <%#= f.input :load_type, as: :select, label: t("defaults.label.load_type"), collection: Loading.load_types.map { |r| [r[1], r[0] ] }, include_blank: false %>
@@ -22,7 +22,10 @@
       <%= f.input_field :weight_unit, as: :select, collection: Listitem.weightunits.map { |t| [t.name, t.code] }, class: "input-small" %>
     <% end %>
     <%= f.input :incoterm, as: :select, label: t("defaults.label.incoterm"), collection: Listitem.incoterms.map { |t| [t.name, t.code] }, include_blank: true %>
-    <%= f.input :paid_at, as: :select, label: t("defaults.label.freight_collect"), collection: Position.payment_types.map { |r| [r[1], r[0] ] }, include_blank: true %>
+    <%#= f.collection_radio_buttons :paid_at, [["PP", "Pre Paid"] ,["CC", "Custom Collect"]], :first, :last %>
+    <%= f.input :paid_at, as: :select, label: t("defaults.label.freight_collect") do %>
+      <%= f.select :paid_at, [["Pre Paid", "PP" ], ["Custom Collect", "CC" ]], include_blank: true %>
+    <% end %>
   </div>
   <div class="span6">
     <%= f.input :freight_price, label: t("defaults.label.freight_price") do %>

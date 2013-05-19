@@ -14,10 +14,10 @@ class TransportsController < ApplicationController
   def new
     @position   = Position.find(params[:position_id]) #if params[:position_id] #her daim pozisyon olmalı
     @transport  = @position.transports.build(params[:transport])
-    @transport.fromwhere  = params[:fromwhere] if params[:fromwhere]
-    if params[:trans_method]
-      @transport.trans_method = params[:trans_method]
-    end
+    @transport.fromwhere  = params[:fromwhere] if params[:fromwhere].present?
+    @transport.trans_method = params[:trans_method] if params[:trans_method].present?
+    @transport.waybill_flag = true
+
   end
 
   def edit

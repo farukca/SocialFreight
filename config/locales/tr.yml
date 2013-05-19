@@ -279,6 +279,7 @@ tr:
     link:
       new_loading: "Yeni Yük Bilgisi Ekle"
       add_reservation: "Daha önceden oluşturulmuş reservasyonu projeye bağla"
+      list_positions: "Taşıma Projelerini Listele"
     action:
       create: "Yeni Taşıma Projesini Başlat"
     message:

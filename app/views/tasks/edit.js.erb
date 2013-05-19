@@ -1,0 +1,1 @@
+$('#task_<%= @task.id %>').html('<%= escape_javascript(render "tasks/form", todolist: @todolist, task: @task) %>');

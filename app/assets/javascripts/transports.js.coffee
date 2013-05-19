@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ->
-  $(".country_select").each ->
+  $(".country_select_old").each ->
     cs = $(this)
     cs.unbind("change").bind "change", ->
       selected   = cs.find("option").eq(@selectedIndex)

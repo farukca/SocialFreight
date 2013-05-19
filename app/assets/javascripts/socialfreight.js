@@ -12,7 +12,7 @@
 //= require bootstrap
 //= require modal_popup
 //= require twitter
-//= require superfish
+// require superfish
 //= require script
 
 // require_tree .

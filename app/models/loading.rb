@@ -122,9 +122,6 @@ private
 
   def find_positions
     positions = Position.active
-    positions = positions.where(operation: self.operation)
-    positions = positions.where(direction: self.direction)
-    #positions = positions.where(branch_id: self.branch_id) if self.branch_id.present?
     positions
   end
 

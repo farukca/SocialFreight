@@ -50,7 +50,7 @@ jQuery('.portfolio-hover').hover(function(){
 
 	
         
-    jQuery('.blog-slider').cycle({
+        jQuery('.blog-slider').cycle({
             'fx' : 'fade',
             before: before_cycle,
             speed:   400,
@@ -70,15 +70,14 @@ jQuery('.portfolio-hover').hover(function(){
 
         });
 
-        // Submenues
+// Submenues
 
-                jQuery('ul.sf-menu').superfish();
+        //jQuery('ul.sf-menu').superfish();
+        //jQuery('ul.sf-menu2').superfish();
 
-        jQuery('ul.sf-menu2').superfish();
-        
 // Sliders
 
-jQuery('.images').cycle({
+        jQuery('.slider-images').cycle({
             fx:     'fade',
             speed:    1500,
             timeout:  1500,
@@ -88,7 +87,7 @@ jQuery('.images').cycle({
                 return '.slider-nav li:eq(' + idx + ') a';}
         });
 
-          jQuery('.images-thumb').cycle({
+        jQuery('.images-thumb').cycle({
             fx:     'fade',
             speed:    1500,
             timeout:  1500,
@@ -98,7 +97,7 @@ jQuery('.images').cycle({
                 return '.slider-nav-thumbs li:eq(' + idx + ') a';}
         });
 
-         jQuery('.images-wide').cycle({
+        jQuery('.images-wide').cycle({
             fx:     'fade',
             speed:    1500,
             timeout:  1500,
@@ -108,7 +107,7 @@ jQuery('.images').cycle({
                 return '.slider-nav-wide li:eq(' + idx + ') a';}
         });
 
-          jQuery('.images-wide-thumb').cycle({
+        jQuery('.images-wide-thumb').cycle({
             fx:     'fade',
             speed:    1500,
             timeout:  1500,
@@ -118,14 +117,14 @@ jQuery('.images').cycle({
                 return '.slider-nav-thumbs li:eq(' + idx + ') a';}
         });
         
-    jQuery('.content-slider').cycle({
+        jQuery('.content-slider').cycle({
             'fx' : 'fade',
             'timeout' : 4000,
             'pager' : '#content-slider-pager',
             'next':   '#next-arrow',
             'pause':   1,
-    'prev':   '#prev-arrow'
-         });
+            'prev':   '#prev-arrow'
+        });
 
 // Portfolio Slider
 

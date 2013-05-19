@@ -4,6 +4,10 @@
 .task-actions {
 	display: none;
 }
-.task:hover .task-actions {
+.task_A:hover .task-actions {
 	display:inline;
+}
+.task_C label {
+	color: #8B8B8B;
+  font-size: 12px;
 }

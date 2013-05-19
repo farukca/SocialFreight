@@ -12,7 +12,7 @@
     </div>
     <div id="new_task_div" class="row-fluid slidingDiv">
       <div class="row-fluid">
-        <%= render "tasks/form", todolist: todolist %>
+        <%= render "tasks/form", todolist: todolist, task: Task.new %>
       </div>
       <%= link_to "Ok, I am done", "#", "data-href" => "#new_task_div", class: "togglebutton",  %>
     </div>

@@ -90,8 +90,8 @@ private
 
   def find_reservations
     reservations = Loading.active.reservation
-    reservations = reservations.where(operation: self.operation)
-    reservations = reservations.where(direction: self.direction)
+    #reservations = reservations.where(operation: self.operation)
+    #reservations = reservations.where(direction: self.direction)
     #reservations = reservations.where('id not in (?)', self.session_loading_ids) if self.session_loading_ids.present?
     reservations
   end

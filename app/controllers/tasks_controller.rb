@@ -14,6 +14,7 @@ class TasksController < ApplicationController
 
   def show
   	@task = Task.find(params[:id])
+    @todolist = @task.todolist
   end
 
   def edit

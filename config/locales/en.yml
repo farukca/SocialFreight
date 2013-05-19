@@ -279,6 +279,7 @@ en:
     link:
       new_loading: "Add New Booking"
       add_reservation: "Add Existing Booking to this project"
+      list_positions: "List Projects"
     action:
       create: "Create New Transportation Project"
     message:
