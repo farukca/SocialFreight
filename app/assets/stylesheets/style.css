@@ -164,6 +164,7 @@ p {
 .slider {
     margin-top: 20px;
     position: relative;
+    min-height: 350px;
 }
 .slider-intro {
     margin-right: 0px;
