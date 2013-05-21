@@ -8,13 +8,13 @@
       <%= render todolist.incomplete_tasks %>
     </ul>
     <div id="new_task_div_link" class="row-fluid">
-      <%= link_to "Add new task", "#", "data-href" => "#new_task_div", class: "togglebutton",  %>
+      <%= link_to "Add new task", "#", "data-href" => "#new_task_div", class: "togglebutton" %>
     </div>
     <div id="new_task_div" class="row-fluid slidingDiv">
       <div class="row-fluid">
         <%= render "tasks/form", todolist: todolist, task: Task.new %>
       </div>
-      <%= link_to "Ok, I am done", "#", "data-href" => "#new_task_div", class: "togglebutton",  %>
+      <%= link_to "Ok, I am done", "#", "data-href" => "#new_task_div", class: "togglebutton" %>
     </div>
 
     <ul id="todolist_<%= @todolist.id %>_completed_tasks_list">
