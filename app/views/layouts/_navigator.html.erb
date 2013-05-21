@@ -10,8 +10,9 @@
       <%= navigator("contactnavigator", contacts_path, t("contacts.title.contacts"), "icon-user") %>
       <%= navigator("loadingnavigator", loadings_path, t("operations.title.reservations"), "icon-loading") %>
       <%= navigator("positionnavigator", positions_path, t("positions.title.positions"), "icon-cog") %>
-      <%= navigator("costnavigator", "#", "Faturalar", "icon-hdd") %>
+      <%= navigator("transportnavigator", transports_path, t("transports.title.transports"), "icon-random") %>
       <%= navigator("costnavigator", "#", "Masraf Formları", "icon-list-alt") %>
+      <%#= navigator("costnavigator", "#", "Faturalar", "icon-hdd") %>
       <li id="othernavigator" class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
           Diğer

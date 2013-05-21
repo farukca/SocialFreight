@@ -255,14 +255,14 @@ en:
   positions:
     defaults:
       page_header: "Transportation Projects"
-      intro_message: "Taşıması kesinleşen yüklerin taşıma bilgileri ve diğer süreçlerini projeler ile takip ediyoruz"
-      last_records_title: "En Son Oluşturulmuş Projeler"
-      new_record_label: "Yeni Taşıma Proje Başlat"
-      fullsearch_placeholder: "Proje adı/Referans/Yük Referans ile arayabilirsiniz"
-      show_page_header: "Proje Bilgisi"
-      edit_page_header: "Proje Bilgisi Güncelleme"
-      new_page_header: "Yeni Proje Oluşturma"
-      small_form_help: "Parsiyel ve komple her taşıma işlemi yeni bir projedir."
+      intro_message: "You can manage bookings, voyages, documents related to this project"
+      last_records_title: "Last Added Projects"
+      new_record_label: "Create New Transportation Project"
+      fullsearch_placeholder: "Project reference/description... "
+      show_page_header: "Project Profile"
+      edit_page_header: "Edit Project"
+      new_page_header: "New Project"
+      small_form_help: "Full truck or less than full truck, all different transportations are different projects."
     title:
       positions: "Projects"
       new_position: "New Transportation Project"
@@ -289,6 +289,7 @@ en:
       directions_must_be_same: "Booking and project must be same service(export or import)"
   transports:
     title:
+      transports: "Voyages"
       transport_info: "Multimodal Transportation Information"
       air_transport: "Plane/Voyage Information"
       air_departure: "Plane Voyage Plan"
@@ -426,6 +427,16 @@ en:
     action:
       save: "Save Parcel Information"
   companies:
+    defaults:
+      page_header: "Companies"
+      intro_message: "You can manage your customers, suppliers and agents."
+      last_records_title: "Last added companies"
+      new_record_label: "Create New Company Account"
+      fullsearch_placeholder: "Company name/email/phone..."
+      show_page_header: "Company Profile"
+      edit_page_header: "Edit Company"
+      new_page_header: "New Company"
+      small_form_help: "If you pay peanuts you get monkeys, of course you can update details later"
     title:
       company_management: "Companies"
       company_menu: "Company Menu"
@@ -475,6 +486,16 @@ en:
     action:
       save: "Save Company Information"
   contacts:
+    defaults:
+      page_header: "Contacts"
+      intro_message: "You can manage your business and personal contacts."
+      last_records_title: "Last Added Contacts"
+      new_record_label: "Create New Contact"
+      fullsearch_placeholder: "Name/email/phone/company..."
+      show_page_header: "Contact Profile"
+      edit_page_header: "Edit Contact"
+      new_page_header: "New Contact"
+      small_form_help: ""
     title:
       contacts: "Contacts"
       quick_contact: "Quick Contact Create"

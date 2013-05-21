@@ -289,6 +289,7 @@ tr:
       plan_position: "Taşımayı Planlamak için Tıklayınız"
   transports:
     title:
+      transports: "Seferler"
       transport_info: "Multimodal Taşıma Bilgisi"
       air_transport: "Uçak ve Havayolu Bilgisi"
       air_departure: "Uçak Hareket Bilgisi"
@@ -306,7 +307,7 @@ tr:
       air_vessel: "Uçak Adı & Sefer No"
       sea_vessel: "Gemi Adı & Sefer No"
       rail_vessel: "Tren Adı & Vagon No"
-      road_vessel: "Dorse & Çekici"
+      road_vessel: "Çekici & Dorse"
       air_vehicle: "Uçak Bilgisi"
       sea_vehicle: "Gemi Bilgisi"
       road_vehicle: "Araç Bilgisi"
