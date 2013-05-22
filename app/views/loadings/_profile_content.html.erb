@@ -60,7 +60,7 @@
     </div>
     <div class="row-fluid">
       <ul id="Loading_<%= @loading.id %>_todolists">
-        <%= render partial: "todolists/todolist_listitem", collection: @loading.todolists, as: :todolist %>
+        <%= render @loading.todolists %>
         <%#= render "todolists/form", todop: @loading %>
       </ul>
     </div>
@@ -87,4 +87,5 @@
       </ul>
     </div>
   </div>
+
 </div>

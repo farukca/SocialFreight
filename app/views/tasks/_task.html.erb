@@ -1,18 +1,18 @@
 <li id="task_<%= task.id %>" class="task_<%= task.status %>">
-  <%= form_for [@todolist, task], remote: true, html: {class: "edit_task form-search"} do |f| %>
+  <%= form_for [task.todolist, task], remote: true, html: {class: "edit_task form-search"} do |f| %>
     <%= f.check_box :status, {}, "C", "A" %>
     <%= f.label :status, task.task_text %>
     <span class="sub-info">
       <% if task.user_id == 0 %>
-        <%= link_to "Not Assigned", edit_todolist_task_path(@todolist, task, nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" %>
+        <%= link_to "Not Assigned", edit_todolist_task_path(task.todolist, task, nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" %>
       <% else %>
         <%= "#{task.user.to_s}-#{task.due_date}" %>
-        <%= link_to "Change User", edit_todolist_task_path(@todolist, task, nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" %>
+        <%= link_to "Change User", edit_todolist_task_path(task.todolist, task, nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" %>
       <% end %>
     </span>
     <span class="task-actions">
-      <%= link_to "(edit)", edit_todolist_task_path(@todolist, task), remote: true %>|
-      <%= link_to "(remove)", todolist_task_path(@todolist, task), method: :delete, data: {confirm: "Are you sure?"}, remote: true %>
+      <%= link_to "(edit)", edit_todolist_task_path(task.todolist, task), remote: true %>|
+      <%= link_to "(remove)", todolist_task_path(task.todolist, task), method: :delete, data: {confirm: "Are you sure?"}, remote: true %>
         <%#= link_to "Edit", edit_task_path(task) %>
         <%#= link_to "Delete", task, confirm: 'You are deleting the task, are you sure ?', method: :delete, remote: true %>
     </span>
@@ -25,19 +25,4 @@
       <span class="pull-right timeago" title="<%#= task.created_at.round(0).iso8601(10) %>"></span>
     </h6-->
   <%# end %>
-  <!--p class="task">
-    <%= sanitize(auto_link(task.task_text)) %>
-    <span class="sub-info">
-      <% if task.user_id == 0 %>
-        <%= link_to "Not Assigned", edit_todolist_task_path(@todolist, task, nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" %>
-      <% else %>
-        <%= "#{task.user.to_s}-#{task.due_date}" %>
-        <%= link_to "Change User", edit_todolist_task_path(@todolist, task, nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" %>
-      <% end %>
-    </span>
-    <span class="task-actions">
-        <%#= link_to "Edit", edit_task_path(task) %>
-        <%#= link_to "Delete", task, confirm: 'You are deleting the task, are you sure ?', method: :delete, remote: true %>
-    </span>
-  </p-->
 </li>

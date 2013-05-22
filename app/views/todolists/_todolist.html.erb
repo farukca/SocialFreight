@@ -4,7 +4,7 @@
 	  <div class="page-header">
       <h5><%= todolist.name %></h5>
     </div>
-    <ul id="todolist_<%= @todolist.id %>_uncompleted_tasks_list">
+    <ul id="todolist_<%= todolist.id %>_uncompleted_tasks_list">
       <%= render todolist.incomplete_tasks %>
     </ul>
     <div id="new_task_div_link" class="row-fluid">
@@ -17,7 +17,7 @@
       <%= link_to "Ok, I am done", "#", "data-href" => "#new_task_div", class: "togglebutton" %>
     </div>
 
-    <ul id="todolist_<%= @todolist.id %>_completed_tasks_list">
+    <ul id="todolist_<%= todolist.id %>_completed_tasks_list">
       <%= render todolist.completed_tasks %>
     </ul>
   </div>
