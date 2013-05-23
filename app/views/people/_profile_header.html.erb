@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="span10 columns">
-      <p><strong><%= "#{@person}" %></strong><small class="pull-right"><%= link_to "Profil Bilgilerimi Güncelle", edit_person_path(@person), class: "btn btn-info" %></small></p>
+      <p><strong><%= "#{@person}" %></strong><small class="pull-right"><%= link_to "Profil Bilgilerimi Güncelle", edit_person_path(@person), class: "btn btn-info" if @user.id == current_user.id %></small></p>
       <p><%= "#{@person.jobtitle} #{@person.department}" %></p>
       <p><%= "#{@person.busitel} #{@person.exttel}" %></p>
       <p><%= "#{@person.city} #{@person.country_id}" %></p>

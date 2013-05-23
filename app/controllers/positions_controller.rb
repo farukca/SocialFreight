@@ -1,7 +1,7 @@
 class PositionsController < ApplicationController
 
   before_filter :require_login#, :current_patron
-  before_filter(:only => [:index]) { |c| c.set_tab "positionnavigator" }
+  before_filter(:only => [:index]) { |c| c.set_tab "transportnavigator" }
 
   def index
     @positions = Position.active.order("id desc").page(params[:page]).per(10)

@@ -288,6 +288,16 @@ tr:
       directions_must_be_same: "Yük ve Proje (ith/ihr) servis tipleri uyumsuz"
       plan_position: "Taşımayı Planlamak için Tıklayınız"
   transports:
+    defaults:
+      page_header: "Seferler"
+      intro_message: "Gerek yurtdışı, gerekse yurtiçi seferlerinizi takip edebilirsiniz"
+      last_records_title: "En Son Oluşturulmuş Seferler"
+      new_record_label: "Yeni Sefer Başlat"
+      fullsearch_placeholder: "Sefer No/plaka/ ile arayabilirsiniz"
+      show_page_header: "Sefer Bilgisi"
+      edit_page_header: "Sefer Bilgisi Güncelleme"
+      new_page_header: "Yeni Sefer Oluşturma"
+      small_form_help: "Sefer sürecince uğrayacağı aktarma noktalarını takip edebilirsiniz."
     title:
       transports: "Seferler"
       transport_info: "Multimodal Taşıma Bilgisi"

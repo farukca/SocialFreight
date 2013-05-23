@@ -257,7 +257,7 @@ en:
       page_header: "Transportation Projects"
       intro_message: "You can manage bookings, voyages, documents related to this project"
       last_records_title: "Last Added Projects"
-      new_record_label: "Create New Transportation Project"
+      new_record_label: "Create New Project"
       fullsearch_placeholder: "Project reference/description... "
       show_page_header: "Project Profile"
       edit_page_header: "Edit Project"
@@ -288,6 +288,16 @@ en:
       operations_must_be_same: "Booking and project must be same operation(air/sea/road or rail)"
       directions_must_be_same: "Booking and project must be same service(export or import)"
   transports:
+    defaults:
+      page_header: "Voyages"
+      intro_message: "You can manage international/inland voyages"
+      last_records_title: "Last added Voyages"
+      new_record_label: "Create New Voyage"
+      fullsearch_placeholder: "Voyage reference/plates ..."
+      show_page_header: "Voyage Profile"
+      edit_page_header: "Edit Voyage"
+      new_page_header: "New Voyage"
+      small_form_help: ""
     title:
       transports: "Voyages"
       transport_info: "Multimodal Transportation Information"

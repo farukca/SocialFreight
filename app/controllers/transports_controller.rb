@@ -1,6 +1,16 @@
 class TransportsController < ApplicationController
   
   before_filter :require_login
+  before_filter(:only => [:index]) { |c| c.set_tab "transportnavigator" }
+
+  def index
+    @transports = Transport.order("id desc").page(params[:page]).per(10)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @transports }
+    end
+  end
 
   def show
     @transport = Transport.find(params[:id])
@@ -12,8 +22,12 @@ class TransportsController < ApplicationController
   end
 
   def new
-    @position   = Position.find(params[:position_id]) #if params[:position_id] #her daim pozisyon olmalı
-    @transport  = @position.transports.build(params[:transport])
+    @position   = Position.find(params[:position_id]) if params[:position_id].present?
+    if @position
+      @transport = @position.transports.build(params[:transport])
+    else
+      @transport = Transport.new
+    end
     @transport.fromwhere  = params[:fromwhere] if params[:fromwhere].present?
     @transport.trans_method = params[:trans_method] if params[:trans_method].present?
     @transport.waybill_flag = true

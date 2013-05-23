@@ -33,7 +33,7 @@ class PeopleController < ApplicationController
 
   def show
     @person = Person.find(params[:id])
-    @user = current_user
+    @user = @person.user
   end
 
   def create
