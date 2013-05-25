@@ -1,9 +1,9 @@
 <div id="Position_<%= @position.id %>">
 	<%= page_header_helper(t("positions.defaults.show_page_header")) %>
   <div class="row-fluid">
-    <%= render 'profile_header' %>
+    <%= render @position %>
   </div>
   <div class="row-fluid">
-    <%= render 'profile_content' %>
+    <%= render 'profile_content', position: @position %>
   </div>
 </div>

@@ -1,3 +1,6 @@
-<div class="todolistform">
-	<%= render "form" %>
+<div class="row-fluid">
+	<%= page_header_helper(t("todolists.title.new_todolist")) %>
+	<%= render @todop %>
+  <legend><%= "Todolist Bilgisi" %></legend>
+  <%= render 'todolists/form' %>
 </div>

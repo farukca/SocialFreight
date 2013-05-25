@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ->
-  $(".replytopost").live "click", (ev) ->
+  $(document).on "click", ".replytopost", (ev) ->
     ev.preventDefault()
     postElement = $(this)
     commentForm = "Post_" + postElement.data("post-id") + "_commentform"

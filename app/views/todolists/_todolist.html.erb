@@ -2,7 +2,7 @@
 
   <div class="row-fluid">
 	  <div class="page-header">
-      <h5><%= todolist.name %></h5>
+      <h5><%= link_to todolist.name, todolist_path(todolist) %></h5>
     </div>
     <ul id="todolist_<%= todolist.id %>_uncompleted_tasks_list">
       <%= render todolist.incomplete_tasks %>

@@ -1,6 +1,7 @@
 class Todolist < ActiveRecord::Base
   
   has_many :tasks
+  belongs_to :todop, polymorphic: true, touch: true
 
   attr_accessible :name, :user_id, :todop_type, :todop_id, :tasks_attributes
 

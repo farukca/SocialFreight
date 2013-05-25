@@ -1,7 +1,7 @@
 <div id="loading#{loading.id}_header">
   <div class="row-fluid">
     <dl class="yatay-info">
-      <dd><strong><%= link_to loading_name, loading_path(loading) %></strong></dd>
+      <dd><strong><%= link_to loading_name(loading), loading_path(loading) %></strong></dd>
       <dd><%= branch_name(loading.branch) %></dd>
       <dd><%= incoterm_name(loading.incoterm) %></dd>
       <dd><%= loading.paid_at %></dd>

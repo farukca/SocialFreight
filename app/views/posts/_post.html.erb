@@ -11,7 +11,7 @@
       <!--span class="pull-left timeago" title="<%= post.created_at.round(0).iso8601(10) %>"></span-->
       <span class="sub-info"><%= post.created_at.to_s(:pretty) %></span>
       <% if post.comments.size == 0 %>
-        <a href="#" class="replytopost" data-post-id="<%= post.id %>">Comment</a>
+        <a href="#" class="replytopost" data-post-id="<%= post.id %>"><%= t("defaults.link.new_comment") %></a>
       <% end %>
     </div>
     <%= render "comments/commentable", object: post %>

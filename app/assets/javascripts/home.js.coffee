@@ -16,7 +16,7 @@ jQuery ->
   $("span.timeago").timeago()
   $(".slidingDiv").hide()
   $(".togglebutton").show()
-  $(".togglebutton").click (event) ->
+  $(document).on "click", ".togglebutton", (event) ->
     $($(this).data('href')).slideToggle()
     event.preventDefault()
   $(".nexttab").click ->
