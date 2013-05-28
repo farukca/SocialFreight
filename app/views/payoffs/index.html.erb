@@ -1,36 +1,13 @@
-<h1>Listing payoffs</h1>
+<div id="payoffs_index_page" class="row-fluid">
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Payoff date</th>
-    <th>Staff</th>
-    <th>Truck</th>
-    <th>Vehicle</th>
-    <th>Voyage</th>
-    <th>Departure date</th>
-    <th>Departure place</th>
-    <th>Return date</th>
-    <th>Return place</th>
-    <th>Approved</th>
-    <th>Approved Date</th>
-    <th></th>
-  </tr>
+  <%= page_header_helper(t("payoffs.defaults.page_header"), new_payoff_path, t("payoffs.defaults.new_record_label")) %>
+  <%= page_intro_helper(t("payoffs.defaults.intro_message")) %>
 
-<% @payoffs.each do |payoff| %>
-  <tr>
-    <td><%= payoff.name %></td>
-    <td><%= payoff.payoff_date %></td>
-    <td><%= payoff.staff.to_s %></td>
-    <td><%= payoff.truck %></td>
-    <td><%= payoff.vehicle %></td>
-    <td><%= payoff.voyage %></td>
-    <td><%= payoff.departure_date %></td>
-    <td><%= payoff.return_date %></td>
-    <td><%= payoff.return_place %></td>
-    <td><%= payoff.approved %></td>
-    <td><%= payoff.approved_date %></td>
-    <td><%= link_to 'Show', payoff %></td>
-  </tr>
-<% end %>
-</table>
+  <%= sub_header_with_search_form(t("payoffs.defaults.last_records_title"), "payoffs") %>
+
+  <%= render "payoffs/list", payoffs: @payoffs, is_paginated: false %>
+
+</div>
+<script type="text/javascript">
+  document.getElementById('payoffnavigator').classList.add('active');
+</script>

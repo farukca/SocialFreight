@@ -15,7 +15,7 @@ class Cost < ActiveRecord::Base
 
   validates_presence_of :document_date
   validates_presence_of :cost_type
-  validates_presence_of :cost_source
+  #validates_presence_of :cost_source
   validates_presence_of :user_id
   validates_presence_of :patron_id
 

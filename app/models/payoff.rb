@@ -6,6 +6,7 @@ class Payoff < ActiveRecord::Base
   has_many :payments
   has_many :costs
   
+  belongs_to :user
   belongs_to :transport
   belongs_to :staff, class_name: "Person", foreign_key: "staff_id"
   belongs_to :patron

@@ -436,6 +436,17 @@ en:
     link:
     action:
       save: "Save Parcel Information"
+  payoffs:
+    defaults:
+      page_header: "Cost Forms"
+      intro_message: "You can manage costs, pre payments and driver settlements"
+      last_records_title: "Last Added Cost Forms"
+      new_record_label: "Create New Cost Form"
+      fullsearch_placeholder: "Driver name,plates... "
+      show_page_header: "Cost Form Profile"
+      edit_page_header: "Edit Cost Form"
+      new_page_header: "New Cost Form"
+      small_form_help: ""
   companies:
     defaults:
       page_header: "Companies"

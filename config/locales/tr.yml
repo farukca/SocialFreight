@@ -436,6 +436,17 @@ tr:
     link:
     action:
       save: "Koli Bilgisini Kaydet"
+  payoffs:
+    defaults:
+      page_header: "Masraf Formları"
+      intro_message: "Avanslar, masraflar ve sürücü hesaplaşmalarınızı takip edebilirsiniz"
+      last_records_title: "Son Hesaplaşma Formları"
+      new_record_label: "Yeni Masraf Formu Oluştur"
+      fullsearch_placeholder: "Sürücü adı, plakalar... "
+      show_page_header: "Masraf Formu Detayı"
+      edit_page_header: "Masraf Formu Güncelleme"
+      new_page_header: "Yeni Masraf Formu"
+      small_form_help: ""
   companies:
     defaults:
       page_header: "Firmalar"

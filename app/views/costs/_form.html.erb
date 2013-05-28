@@ -6,22 +6,22 @@
     <fieldset>
       <div class="row-fluid">
         <div class="span6">
-          <%= f.input :cost_type, as: :select, collection: Place.place_types.map { |r| [r[1], r[0] ] }, include_blank: true %>
+          <%= f.input :cost_type %>
           <%= f.input :cost_price do %>
             <%= f.input_field :cost_price, :class => "input-small" %>
             <%= f.input_field :price_curr, :as => :select, :collection => Currency.all, :include_blank => false, :class => "input-small" %>
           <% end %>
-          <%= f.input :cost_vat do %>
-            <%= f.input_field :cost_vat, :class => "input-small" %>
-            <%= f.input_field :curr_rate, :class => "input-small", "disabled" => "disabled" %>
-          <% end %>
-          <%= f.input :local_cost_price do %>
-            <%= f.input_field :local_cost_price, :class => "input-small" %>
-            <%= f.input_field :local_price_vat, :class => "input-small" %>
-          <% end %>
+          <%#= f.input :cost_vat do %>
+            <%#= f.input_field :cost_vat, :class => "input-small" %>
+            <%#= f.input_field :curr_rate, :class => "input-small", "disabled" => "disabled" %>
+          <%# end %>
+          <%#= f.input :local_cost_price do %>
+            <%#= f.input_field :local_cost_price, :class => "input-small" %>
+            <%#= f.input_field :local_price_vat, :class => "input-small" %>
+          <%# end %>
           <%= f.input :document_no do %>
             <%= f.input_field :document_no, class: "input-small" %>
-            <%= f.input_field :document_date, as: :string, class: "input-small","data-datepicker" => "datepicker" %>
+            <%= f.input_field :document_date, as: :string, class: "input-small datepicker" %>
           <% end %>
           <%= f.input :cost_firm %>
           <%= f.input :cost_taxoffice do %>
@@ -31,10 +31,10 @@
           
         </div>
         <div class="span6">
-          <%= f.input :costable_reference do %>
-            <%= f.input_field :costable_reference, class: "input-small", "disabled" => "disabled" %>
-            <%= f.input_field :branch_id, as: :select, collection: current_patron.branches, selected: current_user.branch_id, class: "input-small" %>
-          <% end %>
+          <%#= f.input :costable_reference do %>
+            <%#= f.input_field :costable_reference, class: "input-small", "disabled" => "disabled" %>
+            <%#= f.input_field :branch_id, as: :select, collection: current_patron.branches, selected: current_user.branch_id, class: "input-small" %>
+          <%# end %>
           <%= f.input :owner_id, as: :hidden, label: "Personel", input_html: {:class => "chosen_input", "data-url" => "/people.json", "data-newrecurl" => "/people/new", "data-selected" => @cost.owner_id ? @owner.owner.to_s : "", "data-placeholder" => "Personel/Sürücü Seçiniz."} %>
           <%= f.input :truck do %>
             <%= f.input_field :truck, class: "input-small" %>
@@ -44,19 +44,20 @@
             <%#= f.input_field :settlement_price, :class => "input-small" %>
             <%#= f.input_field :settlement_curr, :as => :select, :collection => Currency.all, :include_blank => false, :class => "input-small" %>
           <%# end %>
-          <%= f.input :country_id, as: :select, collection: Country.find(:all, order: :name), include_blank: true, input_html: { class: "country_select", "data-placeholder" => "Ülke Seçiniz" } %>
-          <%= f.input :city_id, as: :select, collection: City.find(:all, conditions: ["country_id = :c", { :c => @cost.country_id } ]), include_blank: true, input_html: { class: "city_select", "data-placeholder" => "Şehir Seçiniz"} %>
+          <%= f.input :country_id, as: :select, collection: Country.find(:all, order: :name), include_blank: true, input_html: { class: "country_select" } %>
+          <%#= f.input :city_id, as: :select, collection: City.find(:all, conditions: ["country_id = :c", { :c => @cost.country_id } ]), include_blank: true, input_html: { class: "city_select", "data-placeholder" => "Şehir Seçiniz"} %>
           <%= f.input :description, as: :text, input_html: {rows: "3"} %>
-          <div class="control">
-            <%= f.button :submit, :class => 'btn btn-primary' %>
-          </div>
         </div>
       </div>
       <%= f.input :costable_type, as: :hidden %>
       <%= f.input :costable_id, as: :hidden %>
       <%= f.input :cost_source, as: :hidden %>
       <%= f.input :operation, as: :hidden %>
+      <%= f.input :payoff_id, as: :hidden %>
     </fieldset>
+    <div class="form-actions">
+      <%= f.button :submit, :class => 'btn btn-primary' %>
+    </div>
 
   <% end %>
 </div>
