@@ -1,20 +1,14 @@
-<%= table_for objects, table_html: { class: "table table-condensed table-striped table-fixed"}, 
-              header_row_html: { class: "headerRow" },
-              row_html: { class: "dataRow" } do |table| %>
-  <% table.column :action, column_html: { class: "actionCol", scope: "col" } do |user| %>
-    <%= link_to "Güncelle", edit_user_path(user) %> 
-    | 
-    <%= link_to "İptal Et", user, method: :delete, data: {confirm: "Are you sure?"} %>              
+<%= table_for objects, html: { class: "table table-condensed table-striped table-fixed" } do -%>
+  <% column :name, html: { th: { class: "span2" } } %>
+  <% column :surname, html: { th: { class: "span2" } } %>
+  <% column :email, html: { th: { class: "span2" } } %>
+  <% column html: { th: { class: "span2" } } do |user| %>
+    <% "#{user.last_login_at.strftime("%d/%m/%Y %I:%M%p")}" if user.last_login_at %>
   <% end %>
-  <% table.column :name, column_html: { scope: "col" } %>
-  <% table.column :surname, column_html: { scope: "col" } %>
-  <% table.column :email, column_html: { scope: "col" } %>
-  <% table.column :user_type, column_html: { scope: "col" } %>
-  <% table.column :last_login_at, column_html: { scope: "col" } do |user| %>
-    <%= "#{user.last_login_at.strftime("%d/%m/%Y %I:%M%p")}" if user.last_login_at %>
+  <% column html: { th: { class: "span2" } } do |user| %>
+    <% "#{user.last_activity_at.strftime("%d/%m/%Y %I:%M%p")}" if user.last_activity_at %>
   <% end %>
-  <% table.column :last_activity_at, column_html: { scope: "col" } do |user| %>
-    <%= "#{user.last_activity_at.strftime("%d/%m/%Y %I:%M%p")}" if user.last_activity_at %>
+  <% column html: { th: { class: "span1" } } do |user| %>
+    <% link_to "Güncelle", edit_user_path(user) %>
   <% end %>
-
 <% end %>
