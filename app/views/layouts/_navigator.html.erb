@@ -19,9 +19,9 @@
           <b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
-          <%= navigator("documentnavigator", "#", "Dokümanlar", "icon-file") %>
-          <%= navigator("vehiclenavigator", "#", "Araçlar", "icon-road") %>
-          <%= navigator("staffnavigator", "#", "Şoförler", "icon-user") %>
+          <%= navigator("documentnavigator", documents_path, "Dokümanlar", "icon-file") %>
+          <%= navigator("vehiclenavigator", vehicles_path, "Araçlar", "icon-road") %>
+          <%= navigator("staffnavigator", people_path, "Şoförler", "icon-user") %>
         </ul>
       </li>
       <%#= navigator("opernavigator", operations_path, t("defaults.link.operation"), "icon-cog") %>

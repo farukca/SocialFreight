@@ -1,0 +1,13 @@
+<%= table_for objects, html: { class: "table table-condensed table-striped table-fixed" } do -%>
+  <% column title: t("Plaka"), html: { th: { class: "span2" } } do |vehicle| %>
+    <% link_to vehicle.code, vehicle_path(vehicle) %>
+  <% end %>
+  <% column :vehicle_class, title: "Sınıfı", html: { th: { class: "span2" } } %>
+  <% column :vehicle_type, title: "Tipi", html: { th: { class: "span2" } } %>
+  <% column :brand, title: "Brand", html: { th: { class: "span2" } } %>
+  <% column :model, title: "Model", html: { th: { class: "span2" } } %>
+  <% column :model_year, title: "Year", html: { th: { class: "span1" } } %>
+  <% column html: { th: { class: "span1" } } do |vehicle| %>
+    <% link_to "Güncelle", edit_vehicle_path(vehicle) %>
+  <% end %>
+<% end %>

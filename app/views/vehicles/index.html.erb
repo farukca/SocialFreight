@@ -1,19 +1,13 @@
-<div class="row">
-<h3>Vehicle List</h3>
-<span class="rightside"><%= link_to 'New Vehicle', new_vehicle_path, :class => "btn primary" %></span>
-<table>
-  <tr>
-    <th>Plate</th>
-    <th>Type</th>
-    <th>Brand/Model/Year</th>
-    <th>Country</th>
-    <th>Ownership</th>
-    <th>Price</th>
-    <th>Fuel Capacity&Type</th>
-    <th/>
-  </tr>
-  <%= render @vehicles %>
-</table>
+<div id="vehicles_index_page" class="row-fluid">
+
+  <%= page_header_helper(t("vehicles.defaults.page_header"), new_vehicle_path, t("vehicles.defaults.new_record_label")) %>
+  <%= page_intro_helper(t("vehicles.defaults.intro_message")) %>
+
+  <%= sub_header_with_search_form(t("vehicles.defaults.last_records_title"), "vehicles") %>
+
+  <%= render "vehicles/list", objects: @vehicles, is_paginated: false %>
+
 </div>
-
-
+<script type="text/javascript">
+  document.getElementById('vehiclenavigator').classList.add('active');
+</script>

@@ -402,6 +402,17 @@ tr:
     action:
       save: "Güzergah Bilgisini Kaydet"
     messages:
+  vehicles:
+    defaults:
+      page_header: "Araçlar"
+      intro_message: "Araçlarınızı ve araçlarınıza ait işlemlerini yönetebilirsiniz"
+      last_records_title: "En Son Eklenen Araçlar"
+      new_record_label: "Yeni Araç Bilgisi Ekle"
+      fullsearch_placeholder: "Araç plakası/tipi...."
+      show_page_header: "Araç Bilgisi"
+      edit_page_header: "Araç Bilgisi Güncelleme"
+      new_page_header: "Yeni Araç Bilgisi"
+      small_form_help: ""
   containers:
     title:
       container_info: "Konteyner Bilgisi"
