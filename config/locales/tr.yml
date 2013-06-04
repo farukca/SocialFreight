@@ -601,6 +601,16 @@ tr:
       new_task: "Görev Oluştur"
       task_list: "Görev Listesi"
   documents:
+    defaults:
+      page_header: "Dokümanlar"
+      intro_message: "Operasyonel belgelerinizi takip edebilirsiniz."
+      last_records_title: "En Son Eklenen Dokümanlar"
+      new_record_label: "Yeni Doküman Kaydı Oluştur"
+      fullsearch_placeholder: "Doküman Tipi/Açıklaması,ilgili referans adresi ile arayabilirsiniz"
+      show_page_header: "Doküman Bilgisi"
+      edit_page_header: "Doküman Güncelleme"
+      new_page_header: "Yeni Doküman"
+      small_form_help: ""
     title:
       document_info: "Döküman Bilgileri"
     label:
@@ -678,6 +688,17 @@ tr:
       change_password: "Şifreyi Değiştir"
     messages:
       activation_greeting: "Hoşgeldiniz, hesabınızı aktif yapmak için aşağıdaki bilgileri tamamlayınız"
+  people:
+    defaults:
+      page_header: "Sürücüler"
+      intro_message: "Kontak bilgilerinizi takip edebilirsiniz, bir firma ile ilişkilendirmediğiniz sürece kontak bilgileriniz size özeldir."
+      last_records_title: "En Son Oluşturulmuş Sürücüler"
+      new_record_label: "Yeni Sürücü Kaydı Oluştur"
+      fullsearch_placeholder: "Sürücü adı/firması/mail adresi ile arayabilirsiniz"
+      show_page_header: "Sürücü Bilgisi"
+      edit_page_header: "Sürücü Bilgisi Güncelleme"
+      new_page_header: "Yeni Sürücü Bilgisi"
+      small_form_help: ""
   feedbacks:
     title:
       quick_feedback: "Sesinizi duymak ne güzel!"

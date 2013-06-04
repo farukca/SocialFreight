@@ -17,7 +17,7 @@ module DocumentsHelper
 			  column :document_no, title: t("documents.label.document_no"), html: { th: { class: "span2" } }
 			  column :description, title: t("documents.label.description"), html: { th: { class: "span3" } }
 			  column title: t("documents.label.attachment"), html: { th: { class: "span2" }  } do |document|
-			  	document_file_link(document)
+			  	document_file_link(document) if document.document_file_url.present?
 			  end
 			  column title: "", html: { th: { class: "span1" } } do |document|
 			  	concat link_to t("defaults.link.edit"), edit_document_path(document) unless options[:hide_edit_link]

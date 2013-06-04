@@ -583,6 +583,16 @@ en:
       new_task: "Save Task"
       task_list: "Task List"
   documents:
+    defaults:
+      page_header: "Documents"
+      intro_message: "You can manage your operational documents."
+      last_records_title: "Last added Documents"
+      new_record_label: "Create New Document"
+      fullsearch_placeholder: "Document type, document no, description..."
+      show_page_header: "Document Profile"
+      edit_page_header: "Edit Document"
+      new_page_header: "New Document"
+      small_form_help: ""
     title:
       document_info: "Document Details"
     label:
@@ -660,6 +670,17 @@ en:
       change_password: "Change Password"
     messages:
       activation_greeting: "Welcome, please set your password for activation your account"
+  people:
+    defaults:
+      page_header: "Drivers"
+      intro_message: "You can manage drivers informations."
+      last_records_title: "Last Added Drivers"
+      new_record_label: "Create New Driver"
+      fullsearch_placeholder: "Driver name, phone..."
+      show_page_header: "Driver Profile"
+      edit_page_header: "Edit Driver"
+      new_page_header: "New Driver"
+      small_form_help: ""
   feedbacks:
     title:
       quick_feedback: "Great to hear from you!"
