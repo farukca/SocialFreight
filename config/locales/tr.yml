@@ -257,7 +257,7 @@ tr:
       page_header: "Taşıma Projeleri"
       intro_message: "Taşıması kesinleşen yüklerin taşıma bilgileri ve diğer süreçlerini projeler ile takip ediyoruz"
       last_records_title: "En Son Oluşturulmuş Projeler"
-      new_record_label: "Yeni Taşıma Proje Başlat"
+      new_record_label: "Yeni Taşıma Projesi Başlat"
       fullsearch_placeholder: "Proje adı/Referans/Yük Referans ile arayabilirsiniz"
       show_page_header: "Proje Bilgisi"
       edit_page_header: "Proje Bilgisi Güncelleme"

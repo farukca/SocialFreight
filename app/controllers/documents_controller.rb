@@ -15,9 +15,13 @@ class DocumentsController < ApplicationController
 
   def new
     @documented = find_documented
-    @document = @documented.documents.new
-    @document.owner_reference = @documented.to_s
-    @document.operation = @documented.operation if @documented.respond_to?("operation")
+    if @documented
+      @document = @documented.documents.new
+      @document.owner_reference = @documented.to_s
+    else
+      @document = Document.new
+    end
+    
     respond_with @document
   end
 
@@ -35,7 +39,7 @@ class DocumentsController < ApplicationController
    
     @document.save!
     #respond_with @document, :success => "Document saved successfully"
-    redirect_to @document.documented, :success => "Document saved successfully"
+    redirect_to @document, :success => "Document saved successfully"
   end
 
   def update
@@ -43,7 +47,7 @@ class DocumentsController < ApplicationController
 
     respond_to do |format|
       if @document.update_attributes(params[:document])
-        format.html { redirect_to @document.documented, notice: 'Document was successfully updated.' }
+        format.html { redirect_to @document, notice: 'Document was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
