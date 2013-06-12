@@ -402,6 +402,17 @@ en:
     action:
       save: "Save Route Information"
     messages:
+  vehicles:
+    defaults:
+      page_header: "Vehicles"
+      intro_message: "Araçlarınızı ve araçlarınıza ait işlemlerini yönetebilirsiniz"
+      last_records_title: "Last Added Vehicles"
+      new_record_label: "Create new vehicle"
+      fullsearch_placeholder: "Vehicle plate..."
+      show_page_header: "Vehicle Profile"
+      edit_page_header: "Edit Vehicle"
+      new_page_header: "New Vehicle"
+      small_form_help: ""
   containers:
     title:
       container_info: "Container Informations"
@@ -672,14 +683,14 @@ en:
       activation_greeting: "Welcome, please set your password for activation your account"
   people:
     defaults:
-      page_header: "Drivers"
-      intro_message: "You can manage drivers informations."
-      last_records_title: "Last Added Drivers"
-      new_record_label: "Create New Driver"
-      fullsearch_placeholder: "Driver name, phone..."
-      show_page_header: "Driver Profile"
-      edit_page_header: "Edit Driver"
-      new_page_header: "New Driver"
+      page_header: "Staff"
+      intro_message: "You can manage your personel's informations."
+      last_records_title: "Last added Staffs"
+      new_record_label: "Create New Staff"
+      fullsearch_placeholder: "Staff name, phone..."
+      show_page_header: "Staff Profile"
+      edit_page_header: "Edit Staff"
+      new_page_header: "New Staff"
       small_form_help: ""
   feedbacks:
     title:

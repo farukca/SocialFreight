@@ -690,14 +690,14 @@ tr:
       activation_greeting: "Hoşgeldiniz, hesabınızı aktif yapmak için aşağıdaki bilgileri tamamlayınız"
   people:
     defaults:
-      page_header: "Sürücüler"
-      intro_message: "Kontak bilgilerinizi takip edebilirsiniz, bir firma ile ilişkilendirmediğiniz sürece kontak bilgileriniz size özeldir."
-      last_records_title: "En Son Oluşturulmuş Sürücüler"
-      new_record_label: "Yeni Sürücü Kaydı Oluştur"
-      fullsearch_placeholder: "Sürücü adı/firması/mail adresi ile arayabilirsiniz"
-      show_page_header: "Sürücü Bilgisi"
-      edit_page_header: "Sürücü Bilgisi Güncelleme"
-      new_page_header: "Yeni Sürücü Bilgisi"
+      page_header: "Personel"
+      intro_message: "Personel bilgilerinizi takip edebilirsiniz."
+      last_records_title: "En Son Oluşturulmuş Personeller"
+      new_record_label: "Yeni Personel Kaydı Oluştur"
+      fullsearch_placeholder: "Personel adı/firması/mail adresi ile arayabilirsiniz"
+      show_page_header: "Personel Bilgisi"
+      edit_page_header: "Personel Bilgisi Güncelleme"
+      new_page_header: "Yeni Personel Bilgisi"
       small_form_help: ""
   feedbacks:
     title:

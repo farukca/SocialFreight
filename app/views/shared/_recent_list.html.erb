@@ -1,12 +1,12 @@
 <div id="recentItems" class="sidebarMenu">
   <div class="sidebarMenuHeader">
-        <a class="btn btn-info btn-block" href="#">
-        	<i class="icon-list-alt icon-white"></i><%= t("defaults.title.last_items") %><i class="icon-list-alt icon-white"></i>
-        </a>
-
+    <a class="btn btn-info btn-block" href="#">
+      <i class="icon-list-alt icon-white"></i><%= t("defaults.title.last_items") %><i class="icon-list-alt icon-white"></i>
+    </a>
   </div>
+
   <div class="sidebarMenuBody">
-    <div id="recentList">
+    <div class="row-fluid">
       <%= render current_user.activities.latests.limit(10) %>
     </div>
   </div>

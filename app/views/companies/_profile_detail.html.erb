@@ -11,16 +11,15 @@
         <td class="dataCol2">
           <%= link_to @company.website, url_with_protocol(@company.website), :target => '_blank' %>
         </td>
-        <td class="labelCol2"><%= t("companies.label.company_type") %> :</td>
-        <td class="dataCol2 lastCol"><%#= Company.company_types[@company.company_type] %></td>
-
+        <td></td>
+        <td></td>
       </tr>
       <tr>
         <td class="dataCol2"><i class="icon-print"></i><%= @company.fax %></td>
-        <td class="labelCol2"><%= t("companies.label.parent_company") %> :</td>
-        <td class="dataCol2"><%= link_to @company.parent.name, @company.parent if @company.parent %></td>
         <td class="labelCol2"><%= t("companies.label.sector") %> :</td>
-        <td class="dataCol2 lastCol"><%= @company.sector %></td>
+        <td class="dataCol2"><%= @company.sector %></td>
+        <td></td>
+        <td></td>
       </tr>
     </table>
   </div>

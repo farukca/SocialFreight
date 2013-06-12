@@ -1,24 +1,4 @@
-<div id="post-home">
-  <div class="tabbable">
-  	<ul class="nav nav-tabs">
-      <li class="active">
-        <a href="#new_post_tab" data-toggle="tab"><i class="icon-comment"></i><%= t("posts.link.new_post") %></a>
-      </li>
-      <!--li><a href="#new_discussion_tab" data-toggle="tab"><i class="icon-bullhorn"></i>Start Discussion</a></li>
-      <li><a href="#new_question_tab" data-toggle="tab"><i class="icon-question-sign"></i>Ask Question</a></li>
-      <li><a href="#new_file_tab" data-toggle="tab"><i class="icon-book"></i>Share File</a></li-->
-  	</ul>
-  </div>
-  <div class="tab-content">
-    <div id="new_post_tab" class="tab-pane active">
-      <%= render 'posts/form4user' %>
-    </div>
-    <hr>
-    <!--div id="new_discussion_tab" class="tab-pane">
-    </div>
-    <div id="new_question_tab" class="tab-pane">
-    </div>
-    <div id="new_file_tab" class="tab-pane">
-    </div-->
-  </div>
+<div class="row-fluid">
+  <%= render 'posts/form4user' %>
+  <hr>
 </div>

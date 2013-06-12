@@ -13,17 +13,9 @@
       <%= navigator("transportnavigator", transports_path, t("transports.title.transports"), "icon-random") %>
       <%= navigator("payoffnavigator", payoffs_path, "Masraf Formları", "icon-list-alt") %>
       <%#= navigator("costnavigator", "#", "Faturalar", "icon-hdd") %>
-      <li id="othernavigator" class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-          Diğer
-          <b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu">
-          <%= navigator("documentnavigator", documents_path, "Dokümanlar", "icon-file") %>
-          <%= navigator("vehiclenavigator", vehicles_path, "Araçlar", "icon-road") %>
-          <%= navigator("staffnavigator", people_path, "Şoförler", "icon-user") %>
-        </ul>
-      </li>
+      <%#= navigator("documentnavigator", documents_path, "Dokümanlar", "icon-file") %>
+      <%= navigator("fleetnavigator", vehicles_path, "Filo", "icon-road") %>
+      <%= navigator("peoplenavigator", people_path, "Personel", "icon-user") %>
       <%#= navigator("opernavigator", operations_path, t("defaults.link.operation"), "icon-cog") %>
 
       <!--li id="opernavigator" <%# if (current_tab == "opernavigator") %>class="dropdown active"<%# else %>class="dropdown"<%#  end %>>
