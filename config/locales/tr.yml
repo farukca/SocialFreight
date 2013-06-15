@@ -250,7 +250,7 @@ tr:
       fullsearch_placeholder: "Referans no/müşteri/mal cinsi ile arama yapabilirsiniz"
       show_page_header: "Yük Bilgisi"
       edit_page_header: "Yük Bilgisi Güncelleme"
-      new_page_header: "Yeni Reservasyon Oluşturma"
+      new_page_header: "Yeni Reservasyon"
       small_form_help: "Yüke ait temel bilgileri girebilirsiniz, Zorunlu alanları daha sonra girebilirsiniz"
   positions:
     defaults:

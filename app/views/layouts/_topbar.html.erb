@@ -6,7 +6,16 @@
         <div class="pull-right">
           <ul class="nav pull-right">
             <% if current_user %>
-              <li><%#= link_to "Others", "#", :class => 'togglebutton', "data-href" => "#socialCell" %></li>
+              <li>
+                <%= render partial: "shared/counter_dropdown", locals: { number: users_active_tasks_count(current_user), object: "tasks" } %>
+              </li>
+              <li>
+                <%= render partial: "shared/counter_dropdown", locals: { number: users_unread_messages_count(current_user), object: "envelope" } %>
+              </li>
+              <li>
+                <%= render partial: "shared/counter_dropdown", locals: { number: users_unread_notifications_count(current_user), object: "comment" } %>
+              </li>
+              <li style="line-height:30px;margin-top:4px;"><%= image_tag current_user.avatar_url(:mini), class: "img-rounded" %></li>
               <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.to_s %> <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><%= link_to main_app.dashboard_path do %><i class="icon-cog"></i>Preferences<% end %></li>

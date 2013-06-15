@@ -249,8 +249,8 @@ en:
       new_record_label: "Start New Booking"
       fullsearch_placeholder: "Write some keywords about booking you look"
       show_page_header: "Booking Profile"
-      edit_page_header: "Edit Booking Informations"
-      new_page_header: "Bookings"
+      edit_page_header: "Edit Booking"
+      new_page_header: "New Booking"
       small_form_help: ""
   positions:
     defaults:
