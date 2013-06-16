@@ -6,13 +6,13 @@
         <div class="pull-right">
           <ul class="nav pull-right">
             <% if current_user %>
-              <li>
+              <li style="min-width:55px;">
                 <%= render partial: "shared/counter_dropdown", locals: { number: users_active_tasks_count(current_user), object: "tasks" } %>
               </li>
-              <li>
+              <li style="min-width:55px;">
                 <%= render partial: "shared/counter_dropdown", locals: { number: users_unread_messages_count(current_user), object: "envelope" } %>
               </li>
-              <li>
+              <li style="min-width:55px;margin-right:50px;">
                 <%= render partial: "shared/counter_dropdown", locals: { number: users_unread_notifications_count(current_user), object: "comment" } %>
               </li>
               <li style="line-height:30px;margin-top:4px;"><%= image_tag current_user.avatar_url(:mini), class: "img-rounded" %></li>
