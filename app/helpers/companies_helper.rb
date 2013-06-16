@@ -8,6 +8,10 @@ module CompaniesHelper
   	link_to company.website, url_with_protocol(company.website), target: '_blank' if company.website.present?
   end
 
+  def company_input_hint
+  	link_to t("companies.hint.add_company"), new_company_path(nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord"
+  end
+
 	def companies_list_table(companies=@companies, options={})
 		content = content_tag :div, class: "row-fluid", id: "companies_list_div" do
 			table_for companies, html: {class: "table table-bordered table-condensed", id: "companies_list_table"} do

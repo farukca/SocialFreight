@@ -252,6 +252,8 @@ en:
       edit_page_header: "Edit Booking"
       new_page_header: "New Booking"
       small_form_help: ""
+    hint:
+      freight_price: "Enter trans fee which you dealed with your customer"
   positions:
     defaults:
       page_header: "Transportation Projects"
@@ -508,6 +510,7 @@ en:
       postcode: "Postcode"
       address: "Mail Address"
     hint:
+      add_company: "If you can't find company, you can add here a new one"
     link:
       new_company: "Create New Account"
       new_contact: "Create New Contact"

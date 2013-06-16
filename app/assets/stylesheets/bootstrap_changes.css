@@ -55,6 +55,12 @@ margin-left: 0px;
   white-space: nowrap;
   font-size: 12px;
 }
+.help-block {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  line-height: 12px;
+  font-size: 12px;
+}
 .form-horizontal .control-group {
   margin-bottom: 2px;
 }

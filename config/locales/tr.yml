@@ -252,6 +252,8 @@ tr:
       edit_page_header: "Yük Bilgisi Güncelleme"
       new_page_header: "Yeni Reservasyon"
       small_form_help: "Yüke ait temel bilgileri girebilirsiniz, Zorunlu alanları daha sonra girebilirsiniz"
+    hint:
+      freight_price: "Müşteri ile anlaştığınız taşıma ücretini giriniz"
   positions:
     defaults:
       page_header: "Taşıma Projeleri"
@@ -511,6 +513,7 @@ tr:
       postcode: "Posta kodu"
       address: "Firma Açık Adresi"
     hint:
+      add_company: "Kaydı bulamıyorsanız, hemen yeni kayıt oluşturabilirsiniz"
     link:
       new_company: "Firma Kaydı Oluştur"
       new_contact: "Yetkili Kaydı Oluştur"

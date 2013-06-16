@@ -2,45 +2,29 @@
   <fieldset>
   <div class="row-fluid">
   <div class="span6">
-    <%= f.input :company_id, as: :hidden, label: t("defaults.label.customer"), input_html: { class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => t("operations.placeholder.customer") } %>
-    <%#= f.input :direction, as: :select, label: t("defaults.label.service"), collection: Position.direction_types.map{|r| [r[1], r[0] ]}, include_blank: true %>
+    <%= f.input :company_id, as: :hidden, label: t("defaults.label.customer"), input_html: { class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => t("operations.placeholder.customer") }, hint: company_input_hint %>
     <%= f.input :load_coun, as: :select, label: t("defaults.label.load_country"), collection: Country.all, input_html: { class: "country_select" }, include_blank: true %>
     <%= f.input :unload_coun, as: :select, label: t("defaults.label.unload_country"), collection: Country.all, input_html: { class: "country_select" }, include_blank: true %>
-  </div>
-  <div class="span6">
-    <%#= f.input :load_type, as: :select, label: t("defaults.label.load_type"), collection: Loading.load_types.map { |r| [r[1], r[0] ] }, include_blank: false %>
-    <%= f.input :branch_id, as: :select, label: t("defaults.label.branch"), collection: current_patron.branches, include_blank: false, selected: current_user.branch_id %>
-    <%= f.input :agent_id, as: :hidden, label: t("defaults.label.agent"), input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => t("operations.placeholder.agent") } %>
     <%= f.input :commodity, as: :text, label: t("defaults.label.commodity"), input_html: {rows: 2} %>
-  </div>
-  </div>
-  <!--div class="page-header"><h5><%#= t("defaults.title.additional_info") %></h5></div-->
-  <div class="row-fluid">
-  <div class="span6">
     <%= f.input :brut_wg, label: t("defaults.label.brut_weight") do %>
       <%= f.input_field :brut_wg, class: "input-small" %>
       <%= f.input_field :weight_unit, as: :select, collection: Listitem.weightunits.map { |t| [t.name, t.code] }, class: "input-small" %>
+    <% end %>
+  </div>
+  <div class="span6">
+    <%= f.input :freight_price, label: t("defaults.label.freight_price"), hint: t("loadings.hint.freight_price") do %>
+      <%= f.input_field :freight_price, class: "input-small" %>
+      <%= f.input_field :freight_curr, as: :select, collection: Currency.all, include_blank: false, class: "input-small" %>
     <% end %>
     <%= f.input :incoterm, as: :select, label: t("defaults.label.incoterm"), collection: Listitem.incoterms.map { |t| [t.name, t.code] }, include_blank: true %>
     <%#= f.collection_radio_buttons :paid_at, [["PP", "Pre Paid"] ,["CC", "Custom Collect"]], :first, :last %>
     <%= f.input :paid_at, as: :select, label: t("defaults.label.freight_collect") do %>
       <%= f.select :paid_at, [["Pre Paid", "PP" ], ["Custom Collect", "CC" ]], include_blank: true %>
     <% end %>
-  </div>
-  <div class="span6">
-    <%= f.input :freight_price, label: t("defaults.label.freight_price") do %>
-      <%= f.input_field :freight_price, class: "input-small" %>
-      <%= f.input_field :freight_curr, as: :select, collection: Currency.all, include_blank: false, class: "input-small" %>
-    <% end %>
-    <%= f.input :sender_id, as: :hidden, label: t("defaults.label.sender"), input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => t("operations.placeholder.sender") } %>
-    <%= f.input :consignee_id, as: :hidden, label: t("defaults.label.consignee"), input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => t("operations.placeholder.consignee") } %>
-    <%#= f.input :stage do %>
-      <%#= f.input_field :stage, class: "input-medium", as: :select, :collection => Loading.stages.map { |r| [r[1], r[0] ] }, include_blank: false %>
-      <%#= f.input_field :stage_date, as: "string", class: "input-small", "data-datepicker" => "datepicker" %>
-    <%# end %>
-    <!--div class="controls">
-      <a class="nexttab btn btn-success" data-newtab="#loading-load-form">Sonraki Tab</a>
-    </div-->
+    <%= f.input :notes, as: :text, input_html: { rows: 2 }, label: t("operations.label.loading_notes") %>
+    <span class="pull-right">
+      <%= link_to "#{t("operations.link.loading_detail")} >>", "#", :class => 'togglebutton', "data-href" => "#loading-detail-form" %>
+    </span>
   </div>
   </div>
   <%= f.hidden_field :position_id %>
