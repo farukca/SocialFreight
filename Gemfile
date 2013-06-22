@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -75,6 +75,7 @@ gem 'capistrano'
 
 gem 'blogger', git: "git@github.com:farukca/blogger.git", ref: "80aa61e7fd196f966239a710faf92fcc79d98370"
 #gem 'blogger', path: "../blogger"
+gem 'assetim', path: "../assetim"
 
 group :test do
   # Pretty printed test output

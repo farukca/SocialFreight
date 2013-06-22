@@ -138,6 +138,7 @@ Socialfreight::Application.routes.draw do
 
   mount Resque::Server, at: "/resque"
   mount Blogger::Engine, at: "/blog"
+  mount Assetim::Engine, at: "/assetim"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

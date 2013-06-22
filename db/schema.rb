@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130405193444) do
+ActiveRecord::Schema.define(:version => 20130622115208) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                                  :null => false
@@ -64,6 +64,31 @@ ActiveRecord::Schema.define(:version => 20130405193444) do
   add_index "arrivals", ["city_id", "country_id"], :name => "index_arrivals_on_city_id_and_country_id"
   add_index "arrivals", ["loading_id"], :name => "index_arrivals_on_loading_id"
   add_index "arrivals", ["patron_id"], :name => "index_arrivals_on_patron_id"
+
+  create_table "assetim_ware_actions", :force => true do |t|
+    t.integer  "ware_id",                   :null => false
+    t.date     "action_date",               :null => false
+    t.string   "title",                     :null => false
+    t.string   "action_type", :limit => 30, :null => false
+    t.text     "desc"
+    t.integer  "user_id",                   :null => false
+    t.integer  "patron_id",                 :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  create_table "assetim_wares", :force => true do |t|
+    t.string   "name",       :limit => 100, :null => false
+    t.string   "serial_no",  :limit => 100
+    t.string   "barcode",    :limit => 30
+    t.string   "location"
+    t.integer  "branch_id"
+    t.string   "status",     :limit => 20
+    t.text     "desc"
+    t.integer  "patron_id",                 :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
 
   create_table "banks", :force => true do |t|
     t.string   "name",          :limit => 40, :null => false
