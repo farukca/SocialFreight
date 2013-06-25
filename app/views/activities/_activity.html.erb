@@ -1,6 +1,6 @@
 <div id="item<%= activity.target_id %>" class="hoverable <%= activity.target_type.downcase %>Item">
   <div id="<%= activity.target_type.downcase %><%= activity.target_id %>" class="recentItem">
-    <%= link_to activity_path(activity) do %>
+    <%= link_to main_app.activity_path(activity) do %>
       <i class="icon-<%= activity.target_type.downcase %>"></i>
       <span><%= activity.target_name %></span>
     <% end %>
