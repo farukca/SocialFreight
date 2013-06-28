@@ -76,6 +76,7 @@ gem 'capistrano'
 gem 'blogger', git: "git@github.com:farukca/blogger.git", ref: "80aa61e7fd196f966239a710faf92fcc79d98370"
 #gem 'blogger', path: "../blogger"
 gem 'assetim', path: "../assetim"
+gem 'helpdesk', path: "../helpdesk"
 
 group :test do
   # Pretty printed test output

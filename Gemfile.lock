@@ -13,6 +13,12 @@ PATH
       rails (~> 3.2.13)
       simple_form
 
+PATH
+  remote: ../helpdesk
+  specs:
+    helpdesk (0.0.1)
+      rails (~> 3.2.13)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -334,6 +340,7 @@ DEPENDENCIES
   fakeweb
   friendly_id (~> 4.0.9)
   gmaps4rails
+  helpdesk!
   jbuilder
   jquery-rails
   kaminari (~> 0.13.0)
