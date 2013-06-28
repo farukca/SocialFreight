@@ -47,7 +47,7 @@ class ApplicationController < ActionController::Base
   end
 
   def not_authenticated
-    redirect_to root_path, :alert => "Please login first."
+    redirect_to main_app.root_path, :alert => "Please login first."
   end
 
   def patron_user?
