@@ -1,5 +1,5 @@
 <li id="Post_<%= post.id %>" class="media">
-  <%= link_to (image_tag user_small_avatar(post.user), class: "media-object img-circle"), user_path(post.user), class: "pull-left" %>
+  <%= link_to (image_tag user_small_avatar(post.user), class: "media-object img-circle"), main_app.user_path(post.user), class: "pull-left" %>
   <div class="media-body">
     <div class="media-content">
       <%= link_to sanitize(post.message), post_path(post) %>
@@ -7,7 +7,7 @@
       <%#= link_to post.target_name, polymorphic_url(post.target), title: "#{post.target_type}: #{post.target_name}" if post.target_id %>
     </div>
     <div class="media-meta">
-      <span class="sub-info"><%= link_to user_name(post.user), user_path(post.user) %></span>
+      <span class="sub-info"><%= link_to user_name(post.user), main_app.user_path(post.user) %></span>
       <!--span class="pull-left timeago" title="<%= post.created_at.round(0).iso8601(10) %>"></span-->
       <span class="sub-info"><%= post.created_at.to_s(:pretty) %></span>
     </div>
