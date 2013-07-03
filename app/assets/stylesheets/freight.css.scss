@@ -441,6 +441,9 @@ form ul li label {
 }
 .widget .form-actions {
     background-color: inherit;
+    padding:1px;
+    overflow:hidden;
+    margin-top:5px;
 }
 .links img {
     opacity:0.8;

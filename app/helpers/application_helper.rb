@@ -1,6 +1,7 @@
 module ApplicationHelper
   
   include Twitter::Autolink
+  #helper Assetim::Engine.helpers
   
   def javascript(*files)
     content_for(:head) { javascript_include_tag(*files) }
@@ -65,8 +66,13 @@ module ApplicationHelper
       content_tag :h3 do
         concat title
         concat (
-          content_tag :small, class: "pull-right" do
+<<<<<<< HEAD
+          content_tag :small do
             link_to link_title, "#{new_record_path}", class: "btn btn-success header_btn"
+=======
+          content_tag :small do
+            link_to link_title, "#{new_record_path}", class: "btn btn-success header_btn pull-right"
+>>>>>>> 50b8545e83653c2be557455d31bb567c3ea5cc2a
           end
         ) if new_record_path
       end
