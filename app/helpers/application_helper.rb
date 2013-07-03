@@ -65,7 +65,7 @@ module ApplicationHelper
       content_tag :h3 do
         concat title
         concat (
-          content_tag :small do
+          content_tag :small, class: "pull-right" do
             link_to link_title, "#{new_record_path}", class: "btn btn-success header_btn"
           end
         ) if new_record_path
