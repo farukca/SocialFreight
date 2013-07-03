@@ -28,7 +28,7 @@ class SearchesController < ApplicationController
 
   def show
     @search = Search.find(params[:id])
-    
+    @engine = ""
     case @search.model
       when "positions" 
         @search_results   = @search.positions.page(params[:page]).per(10)
@@ -48,6 +48,9 @@ class SearchesController < ApplicationController
         @search_results   = @search.transports.page(params[:page]).per(10)
       when "vehicles"
         @search_results   = @search.vehicles.page(params[:page]).per(10)
+      when "wares"
+        @engine = "assetim/"
+        @search_results   = @search.wares#.page(params[:page]).per(10)
     end 
     respond_to do |format|
       format.html # show.html.erb

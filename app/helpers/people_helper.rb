@@ -1,7 +1,7 @@
 module PeopleHelper
   
   def person_name(person=@person)
-  	"#{person.name} #{person.surname}"
+  	person.to_s
   end
 
 end

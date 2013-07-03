@@ -58,8 +58,8 @@ gem 'prawn'
 gem 'exception_notification'
 
 gem 'jquery-rails'
-gem 'execjs'
-gem 'therubyracer'
+#gem 'execjs'
+#gem 'therubyracer'
 gem 'select2-rails'
 
 # To use ActiveModel has_secure_password
@@ -68,13 +68,14 @@ gem 'select2-rails'
 gem 'jbuilder'
 
 # Use unicorn as the web server
-gem 'unicorn'
+#gem 'unicorn'
+gem 'thin'
 
 # Deploy with Capistrano
 gem 'capistrano'
 
-gem 'blogger', git: "git@github.com:farukca/blogger.git", ref: "80aa61e7fd196f966239a710faf92fcc79d98370"
-#gem 'blogger', path: "../blogger"
+#gem 'blogger', git: "git@github.com:farukca/blogger.git", ref: "80aa61e7fd196f966239a710faf92fcc79d98370"
+gem 'blogger', path: "../blogger"
 gem 'assetim', path: "../assetim"
 gem 'helpdesk', path: "../helpdesk"
 

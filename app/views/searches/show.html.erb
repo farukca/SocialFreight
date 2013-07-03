@@ -3,7 +3,7 @@
   <div class="row-fluid">
     <%= render 'searches/#{@search.model}_form' %>
 
-    <%= sub_header_with_search_form(t("companies.title.last_companies"), "companies") %>
+    <%= sub_header_with_search_form(t("companies.title.last_companies"), @search.model) %>
 
     <div id="<%= @search.model %>_list" class="row-fluid">
       <%= render '#{@search.model}/list', objects: @search_results, is_paginated: true %>

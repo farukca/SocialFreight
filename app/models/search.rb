@@ -32,6 +32,10 @@ class Search < ActiveRecord::Base
     @vehicles = find_vehicles
   end
 
+  def wares
+    @wares = find_wares
+  end
+
   private
   def find_positions
     positions = Position.active
@@ -95,6 +99,15 @@ class Search < ActiveRecord::Base
     vehicles = vehicles.where("code like ?", "%#{self.reference}%") if self.reference.present?
     vehicles = vehicles.where(created_at: self.docdate1..self.docdate2) if self.docdate1.present?
     vehicles
+  end
+
+  def find_wares
+    #wares = Assetim::Ware.search(self.reference)
+    wares = Assetim::Ware.all
+    #wares = Ware.active
+    #wares = wares.where("lower(name) like ?", "%#{self.reference}%") if self.reference.present?
+    #wares = wares.where("lower(serial_no) like ?", "%#{self.reference}%") if self.reference.present?
+    wares
   end
 
 end
