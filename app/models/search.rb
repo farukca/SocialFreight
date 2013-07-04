@@ -36,6 +36,10 @@ class Search < ActiveRecord::Base
     @wares = find_wares
   end
 
+  def tickets
+    @tickets = find_tickets
+  end
+
   private
   def find_positions
     positions = Position.active
@@ -102,12 +106,17 @@ class Search < ActiveRecord::Base
   end
 
   def find_wares
-    #wares = Assetim::Ware.search(self.reference)
-    wares = Assetim::Ware.all
+    wares = Assetim::Ware.search(self.reference)
+    #wares = Assetim::Ware.all
     #wares = Ware.active
     #wares = wares.where("lower(name) like ?", "%#{self.reference}%") if self.reference.present?
     #wares = wares.where("lower(serial_no) like ?", "%#{self.reference}%") if self.reference.present?
     wares
+  end
+
+  def find_tickets
+    tickets = Helpdesk::Ticket.search(self.reference)
+    tickets
   end
 
 end

@@ -3,18 +3,19 @@
     <ul class="nav">
       <%= navigator("homenavigator", main_app.root_url, "", "icon-home") %>
       <%= navigator("postnavigator", main_app.posts_path, "Sohbet", "icon-comment") %>
+      <%= navigator("warenavigator", assetim.root_url, "Envanterler", "icon-comment") %>
+      <%= navigator("ticketnavigator", helpdesk.root_url, "Talepler", "icon-comment") %>
       <%#= firmalar, kişiler, yükler, pozisyonlar, dökümanlar, masraf formları, araçlar, sürücüler(personel), sohbetler, seferler(taşımalar)?,  %>
       <%#= yakıt, faturalar, tahsilat-ödemeler, kiralamalar, garaj giriş-çıkışları, gemiler-trenler?, konşimentolar? %>
-      <%= navigator("companynavigator", main_app.crm_path, t("defaults.link.crm"), "icon-star-empty") %>
-      <%#= navigator("companynavigator", companies_path, t("defaults.link.crm"), "icon-star-empty") %>
-      <%= navigator("contactnavigator", main_app.contacts_path, t("contacts.title.contacts"), "icon-user") %>
-      <%= navigator("loadingnavigator", main_app.loadings_path, t("operations.title.reservations"), "icon-loading") %>
-      <%= navigator("positionnavigator", main_app.positions_path, t("positions.title.positions"), "icon-cog") %>
-      <%= navigator("transportnavigator", main_app.transports_path, t("transports.title.transports"), "icon-random") %>
-      <%= navigator("payoffnavigator", main_app.payoffs_path, "Masraf Formları", "icon-list-alt") %>
+      <%#= navigator("companynavigator", main_app.crm_path, t("defaults.link.crm"), "icon-star-empty") %>
+      <%#= navigator("contactnavigator", main_app.contacts_path, t("contacts.title.contacts"), "icon-user") %>
+      <%#= navigator("loadingnavigator", main_app.loadings_path, t("operations.title.reservations"), "icon-loading") %>
+      <%#= navigator("positionnavigator", main_app.positions_path, t("positions.title.positions"), "icon-cog") %>
+      <%#= navigator("transportnavigator", main_app.transports_path, t("transports.title.transports"), "icon-random") %>
+      <%#= navigator("payoffnavigator", main_app.payoffs_path, "Masraf Formları", "icon-list-alt") %>
       <%#= navigator("costnavigator", "#", "Faturalar", "icon-hdd") %>
       <%#= navigator("documentnavigator", documents_path, "Dokümanlar", "icon-file") %>
-      <%= navigator("fleetnavigator", main_app.vehicles_path, "Filo", "icon-road") %>
+      <%#= navigator("fleetnavigator", main_app.vehicles_path, "Filo", "icon-road") %>
       <%= navigator("peoplenavigator", main_app.people_path, "Personel", "icon-user") %>
       <%#= navigator("opernavigator", operations_path, t("defaults.link.operation"), "icon-cog") %>
 

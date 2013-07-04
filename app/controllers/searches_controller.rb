@@ -51,6 +51,9 @@ class SearchesController < ApplicationController
       when "wares"
         @engine = "assetim/"
         @search_results   = @search.wares#.page(params[:page]).per(10)
+      when "tickets"
+        @engine = "helpdesk/"
+        @search_results   = @search.tickets#.page(params[:page]).per(10)
     end 
     respond_to do |format|
       format.html # show.html.erb
