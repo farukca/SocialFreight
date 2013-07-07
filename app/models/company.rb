@@ -16,6 +16,12 @@ class Company < ActiveRecord::Base
     indexes :tel, index: :not_analyzed
     indexes :website, index: :not_analyzed
     indexes :email, index: :not_analyzed
+    indexes :address, analyzer: 'snowball'
+    indexes :district, analyzer: 'snowball'
+    indexes :city, analyzer: 'snowball'
+    indexes :state, analyzer: 'snowball'
+    indexes :notes, analyzer: 'snowball'
+    indexes :description, analyzer: 'snowball'
     indexes :created_at, type: 'date', index: :not_analyzed
   end
 

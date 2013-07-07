@@ -9,11 +9,13 @@ module UsersHelper
   end
 
   def user_small_avatar(user = @user)
-    user.avatar_url(:small)
+    #user.avatar_url(:small)
+    cl_image_tag(user.avatar_url, width: 48, height: 48, crop: :fill, class: "media-object img-circle")
   end
 
   def user_mini_avatar(user = @user)
-    user.avatar_url(:mini)
+    #user.avatar_url(:mini)
+    cl_image_tag(user.avatar_url, width: 30, height: 30, crop: :fill, class: "media-object img-circle")
   end
 
   def users_active_tasks_count(user = @user)

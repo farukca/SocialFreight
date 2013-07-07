@@ -45,6 +45,11 @@ module ApplicationHelper
     end
   end
 
+  def mini_picture(image_url, title=nil)
+    #user.avatar_url(:mini)
+    cl_image_tag(image_url, width: 30, height: 30, crop: :fill, class: "media-object img-circle", title: title.to_s)
+  end
+
   def created_time(ctime)
     ctime.strftime("%d/%m/%Y %H:%M")
   end

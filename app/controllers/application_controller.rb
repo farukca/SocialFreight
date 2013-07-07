@@ -20,6 +20,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_tab
 
+  def current_engine
+    nil
+  end
+  helper_method :current_engine
+
   private
   def current_patron
     #@current_patron ||= Patron.find(session[:patron_id]) if session[:patron_id]

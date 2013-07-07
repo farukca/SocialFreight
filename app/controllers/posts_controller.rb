@@ -36,9 +36,13 @@ class PostsController < ApplicationController
 
   private
   def find_target
-    params.each do |name, value|
-      if name =~ /(.+)_id$/
-        return $1.classify.constantize.find(value)
+    if params[:ticket_id]
+      return Helpdesk::Ticket.find(params[:ticket_id])
+    else
+      params.each do |name, value|
+        if name =~ /(.+)_id$/
+          return $1.classify.constantize.find(value)
+        end
       end
     end
     nil
