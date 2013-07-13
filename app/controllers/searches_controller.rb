@@ -50,7 +50,7 @@ class SearchesController < ApplicationController
         @search_results   = @search.vehicles.page(params[:page]).per(10)
       when "wares"
         @engine = "assetim/"
-        @search_results   = @search.wares#.page(params[:page]).per(10)
+        @search_results   = @search.wares.page(params[:page]).per(10)
       when "tickets"
         @engine = "helpdesk/"
         @search_results   = @search.tickets.page(params[:page]).per(10)

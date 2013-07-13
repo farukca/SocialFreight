@@ -106,11 +106,12 @@ class Search < ActiveRecord::Base
   end
 
   def find_wares
-    wares = Assetim::Ware.search(self.reference)
-    #wares = Assetim::Ware.all
-    #wares = Ware.active
-    #wares = wares.where("lower(name) like ?", "%#{self.reference}%") if self.reference.present?
-    #wares = wares.where("lower(serial_no) like ?", "%#{self.reference}%") if self.reference.present?
+    if self.searched
+      wares = Assetim::Ware.search(self.reference)
+    else
+      wares = Assetim::Ware.latest
+      wares = wares.where("name like ?", "%#{self.reference}%") if self.reference.present?
+    end
     wares
   end
 
@@ -118,7 +119,7 @@ class Search < ActiveRecord::Base
     if self.searched
       tickets = Helpdesk::Ticket.search(self.reference)
     else
-      tickets = Helpdesk::Ticket.order(:id)
+      tickets = Helpdesk::Ticket.latest
       tickets = tickets.where("title like ?", "%#{self.reference}%") if self.reference.present?
       tickets = tickets.where(user_id: self.user_id) if self.user_id.present?
     end
