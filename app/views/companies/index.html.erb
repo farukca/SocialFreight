@@ -6,7 +6,7 @@
   <%= sub_header_with_search_form(t("companies.title.last_companies"), "companies") %>
 
   <div id="companies_list" class="row-fluid">
-    <%= render partial: "companies/list", objects: @companies, is_paginated: false %>
+    <%= render partial: "companies/list", locals: { objects: @companies, is_paginated: false } %>
   </div>
 
 </div>

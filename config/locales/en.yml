@@ -80,6 +80,7 @@ en:
       create_info: "Record Information"
       update_info: "Last Update Information"
       quick_links: "Quick Record Create"
+      help_center: "Help Center"
     placeholder:
       district: "District"
       postcode: "Postcode"
@@ -139,6 +140,8 @@ en:
     messages:
       destroy_confirm: "You are deleting this record, is it ok ?"
       change_picture: "Click to change this picture"
+      invite_coworkers: "You can invite team members/co-workers"
+      mail_to_support: "Email to SocialFreight Support"
   operations:
     title:
       operationmanagement: "Operation Management"

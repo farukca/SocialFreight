@@ -80,6 +80,7 @@ tr:
       create_info: "Kayıt Bilgisi"
       update_info: "Son Güncelleme Bilgisi"
       quick_links: "Hızlı Kayıt Oluştur"
+      help_center: "Yardım Merkezi"
     placeholder:
       district: "İlçe/Semt"
       postcode: "Posta Kodu"
@@ -139,6 +140,8 @@ tr:
     messages:
       destroy_confirm: "Kaydı Silmek İstediğinizden emin misiniz ?"
       change_picture: "Resmi Değiştirmek için Tıklayınız"
+      invite_coworkers: "Çalışma arkadaşlarınızı davet edin"
+      mail_to_support: "Destek Ekibimize mail atın"
   operations:
     title:
       operationmanagement: "Operasyon Yönetimi"

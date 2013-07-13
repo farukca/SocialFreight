@@ -61,25 +61,9 @@
   <%= render 'shared/recent_list' %>
   <hr/>
   <div class="row-fluid">
-    <div class="btn-toolbar">
-      <div class="btn-group dropup">
-        <a class="btn btn-success btn-block dropdown-toggle" href="#" data-toggle="dropdown"><i class="icon-plus-sign icon-white"></i><%= t("defaults.label.quick_links") %><i class="icon-chevron-up icon-white"></i></a>
-        <ul class="dropdown-menu">
-          <li><%= link_to main_app.new_company_path(nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" do %><i class="icon-glass"></i><%= t("companies.title.quick_company") %><% end %></li>
-          <li><%= link_to main_app.new_contact_path    do %><i class="icon-user"></i><%= t("contacts.title.quick_contact") %><% end %></li>
-          <!--li><%#= link_to "#", id: "modal_position_list", "data-toggle" => "modal", "data-target" => "#newAgileRecord" do %><i class="icon-screenshot"></i>Hızlı Proje Listesi<%# end %></li-->
-
-          <li class="divider"></li>
-        </ul>
-      </div>
-    </div>
-    <div id="newAgileRecord" class="modal fade"></div>
-  </div>
-  <hr/>
-  <div class="row-fluid">
-    <%= link_to main_app.junks_path, class: "btn btn-info btn-block" do %>
-      <i class="icon-white icon-trash"></i><%= t("junks.title.junks") %>
-    <% end %>
+    <%#= link_to main_app.junks_path, class: "btn btn-info btn-block" do %>
+      <!--i class="icon-white icon-trash"></i--><%#= t("junks.title.junks") %>
+    <%# end %>
   </div>
 </div>
 
