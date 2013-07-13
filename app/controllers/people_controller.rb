@@ -8,7 +8,11 @@ class PeopleController < ApplicationController
        q = "%#{params[:q]}%"
        @people = Person.where("lower(name) like ?", q).order(:name, :surname).limit(10)
     else
-       @people = Person.all
+      if params[:id].present?
+        @people = Person.find_all_by_id(params[:id])
+      else
+        @people = Person.all
+      end
     end
     respond_to do |format|
       format.html
