@@ -115,7 +115,13 @@ class Search < ActiveRecord::Base
   end
 
   def find_tickets
-    tickets = Helpdesk::Ticket.search(self.reference)
+    if self.searched
+      tickets = Helpdesk::Ticket.search(self.reference)
+    else
+      tickets = Helpdesk::Ticket.order(:id)
+      tickets = tickets.where("title like ?", "%#{self.reference}%") if self.reference.present?
+      tickets = tickets.where(user_id: self.user_id) if self.user_id.present?
+    end
     tickets
   end
 

@@ -9,7 +9,11 @@ class UsersController < ApplicationController
        q = "%#{params[:q]}%"
        @users = current_patron.users.where("lower(name) like ?", q).order(:name).limit(10)
     else
-      @users = current_patron.users.all
+      if params[:id].present?
+        @users = User.find_all_by_id(params[:id])
+      else
+        @users = current_patron.users.all
+      end
     end
     respond_to do |format|
       format.html { render :layout => "admin" } # index.html.erb
