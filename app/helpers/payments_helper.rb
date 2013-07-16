@@ -14,7 +14,7 @@ module PaymentsHelper
 			  end
 			  column :payment_docno, title: "Hesap Tarihi", html: { th: { class: "span2" } }
 			  #column title: "", html: { th: { class: "span1" } } do |payment|
-			  #	image_tag user_mini_avatar(payment.user), class: "img-circle", title: user_name(payment.user)
+			  #	user_mini_avatar(payment.user)
 			  #end
 			  column title: "", html: { th: { class: "span1" } } do |payment|
 			  	concat link_to t("defaults.link.edit"), edit_payment_path(payment) unless options[:hide_edit_link]

@@ -15,7 +15,7 @@ module CostsHelper
 			  column :document_date, title: "Masraf Tarihi", html: { th: { class: "span1" } }
 			  column :document_no, title: "Belge No", html: { th: { class: "span1" } }
 			  column title: "", html: { th: { class: "span1" } } do |cost|
-			  	image_tag user_mini_avatar(cost.user), class: "img-circle", title: user_name(cost.user)
+			  	user_mini_avatar(cost.user)
 			  end
 			  column title: "", html: { th: { class: "span1" } } do |cost|
 			  	concat link_to t("defaults.link.edit"), edit_cost_path(cost) unless options[:hide_edit_link]

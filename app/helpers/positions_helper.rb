@@ -15,7 +15,7 @@ module PositionsHelper
 			  	 branch_name(position.branch) if position.branch
 			  end
 			  column title: "", html: { th: { class: "span1" } } do |position|
-			  	image_tag user_mini_avatar(position.user), class: "img-circle", title: user_name(position.user)
+			  	user_mini_avatar(position.user)
 			  end
 			  column title: "", html: { th: { class: "span1" } } do |position|
 			  	concat link_to t("defaults.link.edit"), edit_position_path(position) unless options[:hide_edit_link]

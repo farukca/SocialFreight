@@ -24,7 +24,7 @@ module CompaniesHelper
 			  	company_website(company)
 			  end
 			  column title: "", html: { th: { class: "span1" } } do |company|
-			  	image_tag user_mini_avatar(company.user), class: "img-circle", title: user_name(company.user)
+			  	user_mini_avatar(company.user)
 			  end
 			  column title: "", html: { th: { class: "span1" } } do |company|
 			  	concat link_to t("defaults.link.edit"), edit_company_path(company) unless options[:hide_edit_link]

@@ -22,7 +22,7 @@ module ArrivalsHelper
           arrival.delivery_date.strftime("%d/%m/%Y") if arrival.delivery_date
 			  end
 			  #column title: "", html: { th: { class: "span1" } } do |arrival|
-			  #	image_tag user_mini_avatar(arrival.user), class: "img-circle", title: user_name(arrival.user)
+			  #	user_mini_avatar(arrival.user)
 			  #end
 			  column title: "", html: { th: { class: "span1" } } do |arrival|
 			  	concat link_to t("defaults.link.edit"), edit_arrival_path(arrival) unless options[:hide_edit_link]

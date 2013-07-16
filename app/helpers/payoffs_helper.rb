@@ -22,7 +22,7 @@ module PayoffsHelper
 			  end
 			  column :payoff_date, title: "Hesap Tarihi", html: { th: { class: "span2" } }
 			  column title: "", html: { th: { class: "span1" } } do |payoff|
-			  	image_tag user_mini_avatar(payoff.user), class: "img-circle", title: user_name(payoff.user)
+			  	user_mini_avatar(payoff.user)
 			  end
 			  column title: "", html: { th: { class: "span1" } } do |payoff|
 			  	concat link_to t("defaults.link.edit"), edit_payoff_path(payoff) unless options[:hide_edit_link]

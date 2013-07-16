@@ -22,7 +22,7 @@ module DeparturesHelper
           departure.pickup_date.strftime("%d/%m/%Y") if departure.pickup_date
 			  end
 			  #column title: "", html: { th: { class: "span1" } } do |departure|
-			  #	image_tag user_mini_avatar(departure.user), class: "img-circle", title: user_name(departure.user)
+			  #	user_mini_avatar(departure.user)
 			  #end
 			  column title: "", html: { th: { class: "span1" } } do |departure|
 			  	concat link_to t("defaults.link.edit"), edit_departure_path(departure) unless options[:hide_edit_link]

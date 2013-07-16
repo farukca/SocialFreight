@@ -26,7 +26,7 @@ module ContactsHelper
 			  	contact_jobinfo(contact)
 			  end
 			  column title: "", html: { th: { class: "span1" } } do |contact|
-			  	image_tag user_mini_avatar(contact.user), class: "img-circle", title: user_name(contact.user)
+			  	user_mini_avatar(contact.user)
 			  end
 			  column title: "", html: { th: { class: "span1" } } do |contact|
 			  	concat link_to t("defaults.link.edit"), edit_contact_path(contact) unless options[:hide_edit_link]

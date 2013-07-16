@@ -32,7 +32,7 @@ module LoadingsHelper
 			  end
 			  column :commodity, title: t("defaults.label.website"), html: { th: { class: "span2" } }
 			  column title: "", html: { th: { class: "span1" } } do |loading|
-			  	image_tag user_mini_avatar(loading.user), class: "img-circle", title: user_name(loading.user)
+			  	user_mini_avatar(loading.user)
 			  end
 			  column title: "", html: { th: { class: "span1" } } do |loading|
 			  	concat link_to t("defaults.link.edit"), edit_loading_path(loading) unless options[:hide_edit_link]
