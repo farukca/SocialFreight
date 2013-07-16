@@ -4,7 +4,7 @@ development:
   database: socialfreight_development
   pool: 5
   username: postgres
-  password: postgresql
+  password: 12345
   host: localhost
   port: 5432
 
@@ -26,7 +26,7 @@ test:
   database: socialfreight_test
   pool: 5
   username: postgres
-  password: postgresql
+  password: 12345
 
 production:
   adapter: postgresql
@@ -35,4 +35,4 @@ production:
   pool: 5
   host: localhost
   username: postgres
-  password: postgresql
+  password: 12345
