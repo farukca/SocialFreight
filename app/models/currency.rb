@@ -9,4 +9,5 @@ class Currency < ActiveRecord::Base
   validates_uniqueness_of :code, :case_sensitive => false
   validates_uniqueness_of :name, :case_sensitive => false
 
+  scope :nameOrdered, order("name")
 end

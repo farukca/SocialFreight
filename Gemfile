@@ -59,7 +59,7 @@ gem 'exception_notification'
 
 gem 'jquery-rails'
 gem 'execjs'
-gem 'therubyracer'
+#gem 'therubyracer'
 gem 'select2-rails'
 
 # To use ActiveModel has_secure_password
@@ -68,18 +68,18 @@ gem 'select2-rails'
 gem 'jbuilder'
 
 # Use unicorn as the web server
-gem 'unicorn'
-#gem 'thin'
+#gem 'unicorn'
+gem 'thin'
 
 # Deploy with Capistrano
 gem 'capistrano'
 
-gem 'blogger', git: "https://github.com/farukca/blogger.git", ref: "fdf276889a75f743ed9ef41622fd7d881013c57a"
-#gem 'blogger', path: "../blogger"
-gem 'assetim', git: "https://github.com/farukca/assetim.git", ref: "c5124e2d3cb0254e1291388b122c55cda46091e0"
-#gem 'assetim', path: "../assetim"
-gem 'helpdesk', git: "https://github.com/farukca/helpdesk.git", ref: "8a72119fb5f62957d9dd289e5589ff76bfc1eb9d"
-#gem 'helpdesk', path: "../helpdesk"
+#gem 'blogger', git: "https://github.com/farukca/blogger.git", ref: "fdf276889a75f743ed9ef41622fd7d881013c57a"
+gem 'blogger', path: "../blogger"
+#gem 'assetim', git: "https://github.com/farukca/assetim.git", ref: "c5124e2d3cb0254e1291388b122c55cda46091e0"
+gem 'assetim', path: "../assetim"
+#gem 'helpdesk', git: "https://github.com/farukca/helpdesk.git", ref: "8a72119fb5f62957d9dd289e5589ff76bfc1eb9d"
+gem 'helpdesk', path: "../helpdesk"
 
 group :test do
   # Pretty printed test output

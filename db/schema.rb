@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130711113607) do
+ActiveRecord::Schema.define(:version => 20130717075413) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                                  :null => false
@@ -80,31 +80,31 @@ ActiveRecord::Schema.define(:version => 20130711113607) do
   end
 
   create_table "assetim_wares", :force => true do |t|
-    t.string   "name",             :limit => 100, :null => false
-    t.string   "serial_no",        :limit => 100
-    t.string   "barcode",          :limit => 30
+    t.string   "name",          :limit => 100, :null => false
+    t.string   "serial_no",     :limit => 100
+    t.string   "barcode",       :limit => 30
     t.string   "location"
     t.integer  "branch_id"
-    t.string   "status",           :limit => 20
+    t.string   "status",        :limit => 20
     t.text     "desc"
-    t.integer  "patron_id",                       :null => false
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.integer  "patron_id",                    :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
     t.integer  "user_id"
     t.integer  "person_id"
-    t.string   "group",            :limit => 50
-    t.string   "trademark",        :limit => 50
+    t.string   "group",         :limit => 50
+    t.string   "trademark",     :limit => 50
     t.string   "model"
-    t.string   "debit_no",         :limit => 20
-    t.integer  "owner_company_id"
-    t.integer  "user_company_id"
+    t.string   "debit_no",      :limit => 20
     t.integer  "supplier_id"
     t.date     "entry_date"
-    t.string   "invoice_no",       :limit => 25
+    t.string   "invoice_no",    :limit => 25
     t.float    "price"
-    t.string   "currency",         :limit => 10
-    t.string   "warranty",         :limit => 100
+    t.string   "currency",      :limit => 10
+    t.string   "warranty",      :limit => 100
     t.text     "details"
+    t.string   "owner_company"
+    t.string   "user_company"
   end
 
   create_table "banks", :force => true do |t|

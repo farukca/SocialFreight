@@ -107,7 +107,9 @@ jQuery ->
     , 100)
     ).focus ->
       clearTimeout formBlurTime
-
+  $("input[type=text]").tooltip
+    placement: "right"
+    trigger: "focus"
   #$("#post_message").atWho "@",
   #  tpl: "" 
   #  callback: (query, callback) ->
