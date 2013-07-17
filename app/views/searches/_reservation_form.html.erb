@@ -24,6 +24,7 @@
     <%#= f.input :id, :as => :hidden, :input_html => { :value => "" } %>
     <%= f.input :searched, :as => :hidden, :input_html => { :value => "false" } %>
     <%= f.input :operation, :as => :hidden %>
+    <%= f.input :searched, as: :hidden, value: "false" %>
   </div>
   </fieldset>
 <% end %>

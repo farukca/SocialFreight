@@ -8,6 +8,7 @@ class SearchesController < ApplicationController
     @search.model     = params[:model] if params[:model]
     @search.docdate1  = 1.month.ago
     @search.docdate2  = Date.today
+    @search.searched  = false
   end
 
   def create
@@ -53,7 +54,7 @@ class SearchesController < ApplicationController
         @search_results   = @search.wares.page(params[:page]).per(10)
       when "tickets"
         @engine = "helpdesk/"
-        @search_results   = @search.tickets.page(params[:page]).per(10)
+        @search_results   = @search.tickets#.page(params[:page]).per(10)
     end 
     respond_to do |format|
       format.html # show.html.erb

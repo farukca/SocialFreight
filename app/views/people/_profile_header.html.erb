@@ -2,7 +2,7 @@
   <div class="row-fluid">
     <div class="span2 columns">
       <div class="profile-picture">
-        <%= link_to image_tag(@user.avatar_url(:profile)), "#", :class => 'togglebutton', "data-placement" => "below",  "rel" => 'twipsy', "title" => "Resmi Değiştirmek için Tıklayınız", "data-href" => "#logo_change_div" %>
+        <%= link_to user_small_avatar, "#", class: 'togglebutton', "data-placement" => "below",  "rel" => 'twipsy', "title" => "Resmi Değiştirmek için Tıklayınız", "data-href" => "#logo_change_div" %>
       </div>
     </div>
     <div class="span10 columns">

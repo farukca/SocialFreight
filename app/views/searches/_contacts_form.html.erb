@@ -26,6 +26,7 @@
           <%#= f.input :branch_id, as: :select, collection: current_patron.branches, selected: current_user.branch_id %>
         </div>
         <%= f.input :model, as: :hidden, value: "contacts" %>
+        <%= f.input :searched, as: :hidden, value: :false %>
       </div>
       <div id="load_form_details" class="row-fluid slidingDiv">
       </div>
