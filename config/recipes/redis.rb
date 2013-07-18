@@ -2,7 +2,8 @@ namespace :redis do
 
   desc "Install latest stable version of redis"
   task :install, roles: :web do
-  	run "#{sudo} add-apt-repository ppa:rwky/redis"
+    add_apt_repository("ppa:rwky/redis")
+  	#run "#{sudo} add-apt-repository ppa:rwky/redis"
   	run "#{sudo} apt-get -y update"
   	run "#{sudo} apt-get -y install redis-server"
   end

@@ -7,6 +7,16 @@ def set_default(name, *args, &block)
   set(name, *args, &block) unless exists?(name)
 end
 
+def add_apt_repository(repo)
+  run "#{sudo} add-apt-repository #{repo}", :pty => true do |ch, stream, data|
+  	if data =~ /Press.\[ENTER\].to.continue/
+  	  ch.send_data("\n")
+  	else
+  	  Capistrano::Configuration.default_io_proc.call(ch, stream, data)
+  	end
+  end  
+end
+
 namespace :deploy do
 	desc "Install everything to new server"
   task :install do
