@@ -19,11 +19,14 @@ BASHRC
     run %q{export PATH="$HOME/.rbenv/bin:$PATH"}
     run %q{eval "$(rbenv init -)"}
     #run "rbenv #{rbenv_bootstrap}"
-    run %q{sed "s/sudo/sudo -p 'sudo password: '/g" $HOME/.rbenv/plugins/rbenv-installer/bin/rbenv-} + rbenv_bootstrap + " | bash"
-    run "rbenv install #{ruby_version}"
-    run "rbenv global #{ruby_version}"
+    #run %q{sed "s/sudo/sudo -p 'sudo password: '/g" $HOME/.rbenv/plugins/rbenv-installer/bin/rbenv-} + rbenv_bootstrap + " | bash"
+    #run "rbenv install #{ruby_version}"
+    #run "rbenv global #{ruby_version}"
+    rbenv "#{rbenv_bootstrap}"
+    rbenv "install #{ruby_version}"
+    rbenv "global #{ruby_version}"
     run "gem install bundler --no-ri --no-rdoc"
-    run "rbenv rehash"
+    rbenv "rehash"
   end
   after "deploy:install", "rbenv:install"
 end

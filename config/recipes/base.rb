@@ -17,6 +17,16 @@ def add_apt_repository(repo)
   end  
 end
 
+def rbenv(command)
+  run "rbenv #{command}", :pty => true do |ch, stream, data|
+    if data =~ /\[sudo\].password.for/
+      ch.send_data(Capistrano::CLI.password_prompt("Password:") + "\n")
+    else
+      Capistrano::Configuration.default_io_proc.call(ch, stream, data)
+    end
+  end
+end
+
 namespace :deploy do
 	desc "Install everything to new server"
   task :install do
