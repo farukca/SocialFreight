@@ -1,14 +1,4 @@
 GIT
-  remote: https://github.com/farukca/assetim.git
-  revision: bb0a7713530637071310f0b6eaf69f020fc729dd
-  ref: bb0a7713530637071310f0b6eaf69f020fc729dd
-  specs:
-    assetim (0.0.1)
-      rails (~> 3.2.13)
-      simple_form
-      tire
-
-GIT
   remote: https://github.com/farukca/blogger.git
   revision: fdf276889a75f743ed9ef41622fd7d881013c57a
   ref: fdf276889a75f743ed9ef41622fd7d881013c57a
@@ -24,6 +14,14 @@ GIT
     helpdesk (0.0.1)
       kaminari (~> 0.13.0)
       rails (~> 3.2.13)
+
+PATH
+  remote: ../assetim
+  specs:
+    assetim (0.0.1)
+      rails (~> 3.2.13)
+      simple_form
+      tire
 
 GEM
   remote: http://rubygems.org/
