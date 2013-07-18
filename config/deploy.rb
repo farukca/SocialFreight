@@ -15,9 +15,12 @@ load "config/recipes/elasticsearch"
 load "config/recipes/check"
 load "config/recipes/assets"
 
-server "213.128.89.119", :web, :app, :db, primary: true
+#server "213.128.89.119", :web, :app, :db, primary: true
+#set :user, "freighter"
 
-set :user, "freighter"
+server "195.175.207.82", :web, :app, :db, primary: true
+set :user, "nimboulusoy"
+
 set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
 set :use_sudo, false
