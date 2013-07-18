@@ -17,7 +17,7 @@ def add_apt_repository(repo)
   end  
 end
 
-def rbenv(command)
+def runrbenv(command)
   run "rbenv #{command}", :pty => true do |ch, stream, data|
     if data =~ /\[sudo\].password.for/
       ch.send_data(Capistrano::CLI.password_prompt("Password:") + "\n")
