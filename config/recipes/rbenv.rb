@@ -1,6 +1,6 @@
 set_default :ruby_version, "1.9.3-p125"
 #IMPORTANT, if operating system changed, change this bootstrap line
-set_default :rbenv_bootstrap, "bootstrap-ubuntu-11-10"
+set_default :rbenv_bootstrap, "bootstrap-ubuntu-12-04"
 
 namespace :rbenv do
   desc "Install rbenv, Ruby, and the Bundler gem"
