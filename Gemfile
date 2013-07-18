@@ -6,13 +6,6 @@ gem 'rails', '3.2.13'
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-#gem 'mongoid', '~> 2.2'
-#gem 'bson_ext', '~> 1.3'
-#gem 'mongoid_token', '~> 0.9.1'
-#gem 'mongoid_slug'
-#gem 'mongoid_auto_inc'
-#gem 'mongoid_spacial'
-#gem 'mongoid_follow'
 gem 'gmaps4rails'
 
 # Gems used only for assets and not required in production environments by default.
@@ -59,7 +52,7 @@ gem 'exception_notification'
 
 gem 'jquery-rails'
 gem 'execjs'
-#gem 'therubyracer'
+gem 'therubyracer'
 gem 'select2-rails'
 
 # To use ActiveModel has_secure_password
@@ -68,18 +61,18 @@ gem 'select2-rails'
 gem 'jbuilder'
 
 # Use unicorn as the web server
-#gem 'unicorn'
-gem 'thin'
+gem 'unicorn'
+#gem 'thin'
 
 # Deploy with Capistrano
 gem 'capistrano'
 
-#gem 'blogger', git: "https://github.com/farukca/blogger.git", ref: "fdf276889a75f743ed9ef41622fd7d881013c57a"
-gem 'blogger', path: "../blogger"
-#gem 'assetim', git: "https://github.com/farukca/assetim.git", ref: "c5124e2d3cb0254e1291388b122c55cda46091e0"
-gem 'assetim', path: "../assetim"
-#gem 'helpdesk', git: "https://github.com/farukca/helpdesk.git", ref: "8a72119fb5f62957d9dd289e5589ff76bfc1eb9d"
-gem 'helpdesk', path: "../helpdesk"
+gem 'blogger', git: "https://github.com/farukca/blogger.git", ref: "fdf276889a75f743ed9ef41622fd7d881013c57a"
+#gem 'blogger', path: "../blogger"
+gem 'assetim', git: "https://github.com/farukca/assetim.git", ref: "bb0a7713530637071310f0b6eaf69f020fc729dd"
+#gem 'assetim', path: "../assetim"
+gem 'helpdesk', git: "https://github.com/farukca/helpdesk.git", ref: "31151f56bc2484dd866264aefd5ef92af90b5bc9"
+#gem 'helpdesk', path: "../helpdesk"
 
 group :test do
   # Pretty printed test output

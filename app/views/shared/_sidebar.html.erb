@@ -18,6 +18,7 @@
 </div>
 <hr/-->
 <div class="sidebar_div">
+
   <div id="createBtn" class="row-fluid sidebarMenu">
     <div class="btn-toolbar" style="margin-top:20px;">
       <div class="btn-group">
@@ -60,6 +61,10 @@
   <hr/>
   <%= render 'shared/recent_list' %>
   <hr/>
+  <div class="row-fluid">
+    <%= patron_logo(current_patron) %>
+  </div>
+  <hr/> 
   <div class="row-fluid">
     <%#= link_to main_app.junks_path, class: "btn btn-info btn-block" do %>
       <!--i class="icon-white icon-trash"></i--><%#= t("junks.title.junks") %>
