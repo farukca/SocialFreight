@@ -20,7 +20,7 @@ BASHRC
     run %q{eval "$(rbenv init -)"}
     #run "rbenv #{rbenv_bootstrap}"
     run "rbenv #{rbenv_bootstrap}",:pty => true do |ch, stream, data|
-      if data =~ /password for deployer/
+      if data =~ /password for/
         #prompt, and then send the response to the remote process
         ch.send_data(Capistrano::CLI.password_prompt("sudo password for:") + "\n")
       else
