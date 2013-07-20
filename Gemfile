@@ -66,6 +66,7 @@ gem 'unicorn'
 
 # Deploy with Capistrano
 gem 'capistrano'
+gem 'capistrano-rbenv'
 
 gem 'blogger', git: "https://github.com/farukca/blogger.git", ref: "fdf276889a75f743ed9ef41622fd7d881013c57a"
 #gem 'blogger', path: "../blogger"
