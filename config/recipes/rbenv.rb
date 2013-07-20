@@ -21,7 +21,7 @@ BASHRC
     #run "rbenv #{rbenv_bootstrap}"
     run "rbenv #{rbenv_bootstrap}" do |channel, stream, data|
       puts data if data.length >= 3
-      channel.send_data("#{root_password}\n") if data.include? 'password'
+      channel.send_data("qwerty\n") if data.include? 'password'
     end
     #run %q{sed "s/sudo/sudo -p 'sudo password: '/g" $HOME/.rbenv/plugins/rbenv-installer/bin/rbenv-} + rbenv_bootstrap + " | bash"
     run "rbenv install #{ruby_version}"
