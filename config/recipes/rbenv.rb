@@ -19,15 +19,20 @@ BASHRC
     run %q{export PATH="$HOME/.rbenv/bin:$PATH"}
     run %q{eval "$(rbenv init -)"}
     #run "rbenv #{rbenv_bootstrap}"
-    run "rbenv #{rbenv_bootstrap}" do |channel, stream, data|
-      puts data if data.length >= 3
-      channel.send_data("qwerty\n") if data.include? 'password'
+    run "rbenv #{rbenv_bootstrap}",:pty => true do |ch, stream, data|
+      if data =~ /password for deployer/
+        #prompt, and then send the response to the remote process
+        ch.send_data(Capistrano::CLI.password_prompt("sudo password for:") + "\n")
+      else
+        #use the default handler for all other text
+        Capistrano::Configuration.default_io_proc.call(ch,stream,data)
+      end
     end
     #run %q{sed "s/sudo/sudo -p 'sudo password: '/g" $HOME/.rbenv/plugins/rbenv-installer/bin/rbenv-} + rbenv_bootstrap + " | bash"
     run "rbenv install #{ruby_version}"
     run "rbenv global #{ruby_version}"
     run "gem install bundler --no-ri --no-rdoc"
-    runrbenv "rehash"
+    run "rbenv rehash"
   end
   after "deploy:install", "rbenv:install"
 end
