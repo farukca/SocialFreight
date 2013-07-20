@@ -1,6 +1,6 @@
-require "bundler/capistrano"
+#require "bundler/capistrano"
 #require "whenever/capistrano"
-require "capistrano-rbenv"
+#require "capistrano-rbenv"
 
 set :application, "SocialFreight"
 
@@ -28,7 +28,7 @@ set :use_sudo, false
 
 #whenever gem
 #set :whenever_command, "bundle exec whenever"
-set :rbenv_ruby_version, "1.9.3-p392"
+#set :rbenv_ruby_version, "1.9.3-p392"
 
 set :scm, "git"
 set :repository,  "git@github.com:farukca/#{application}.git"
