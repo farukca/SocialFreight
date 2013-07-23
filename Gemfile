@@ -73,8 +73,8 @@ gem 'capistrano-rbenv'
 gem 'blogger', path: "../blogger"
 gem 'assetim', git: "https://github.com/farukca/assetim.git", ref: "d6fb39ab922b40cfb6920a4eb087c0f8eb805397"
 #gem 'assetim', path: "../assetim"
-gem 'helpdesk', git: "https://github.com/farukca/helpdesk.git", ref: "31151f56bc2484dd866264aefd5ef92af90b5bc9"
-#gem 'helpdesk', path: "../helpdesk"
+#gem 'helpdesk', git: "https://github.com/farukca/helpdesk.git", ref: "31151f56bc2484dd866264aefd5ef92af90b5bc9"
+gem 'helpdesk', path: "../helpdesk"
 
 group :test do
   # Pretty printed test output

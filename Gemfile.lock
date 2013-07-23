@@ -8,20 +8,18 @@ GIT
       simple_form
       tire
 
-GIT
-  remote: https://github.com/farukca/helpdesk.git
-  revision: 31151f56bc2484dd866264aefd5ef92af90b5bc9
-  ref: 31151f56bc2484dd866264aefd5ef92af90b5bc9
-  specs:
-    helpdesk (0.0.1)
-      kaminari (~> 0.13.0)
-      rails (~> 3.2.13)
-
 PATH
   remote: ../blogger
   specs:
     blogger (0.0.1)
       rails (~> 3.2.6)
+
+PATH
+  remote: ../helpdesk
+  specs:
+    helpdesk (0.0.1)
+      kaminari (~> 0.13.0)
+      rails (~> 3.2.13)
 
 GEM
   remote: http://rubygems.org/
