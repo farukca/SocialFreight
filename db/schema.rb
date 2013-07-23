@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130717075413) do
+ActiveRecord::Schema.define(:version => 20130723091757) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id",                                  :null => false
@@ -1125,6 +1125,7 @@ ActiveRecord::Schema.define(:version => 20130717075413) do
     t.integer  "patron_id",                                      :null => false
     t.datetime "created_at",                                     :null => false
     t.datetime "updated_at",                                     :null => false
+    t.hstore   "filter"
   end
 
   add_index "searches", ["patron_id"], :name => "index_searches_on_patron_id"

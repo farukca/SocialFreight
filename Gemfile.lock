@@ -9,14 +9,6 @@ GIT
       tire
 
 GIT
-  remote: https://github.com/farukca/blogger.git
-  revision: fdf276889a75f743ed9ef41622fd7d881013c57a
-  ref: fdf276889a75f743ed9ef41622fd7d881013c57a
-  specs:
-    blogger (0.0.1)
-      rails (~> 3.2.6)
-
-GIT
   remote: https://github.com/farukca/helpdesk.git
   revision: 31151f56bc2484dd866264aefd5ef92af90b5bc9
   ref: 31151f56bc2484dd866264aefd5ef92af90b5bc9
@@ -24,6 +16,12 @@ GIT
     helpdesk (0.0.1)
       kaminari (~> 0.13.0)
       rails (~> 3.2.13)
+
+PATH
+  remote: ../blogger
+  specs:
+    blogger (0.0.1)
+      rails (~> 3.2.6)
 
 GEM
   remote: http://rubygems.org/
@@ -50,6 +48,10 @@ GEM
       activesupport (= 3.2.13)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
+    activerecord-postgres-hstore (0.7.6)
+      activerecord (>= 3.1)
+      pg-hstore (>= 1.1.5)
+      rake
     activeresource (3.2.13)
       activemodel (= 3.2.13)
       activesupport (= 3.2.13)
@@ -191,6 +193,7 @@ GEM
       Ascii85 (~> 1.0.0)
     pg (0.13.2)
     pg (0.13.2-x86-mingw32)
+    pg-hstore (1.1.7)
     polyglot (0.3.3)
     prawn (0.12.0)
       pdf-reader (>= 0.9.0)
@@ -341,6 +344,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  activerecord-postgres-hstore
   assetim!
   blogger!
   cancan

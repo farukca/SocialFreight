@@ -1,5 +1,7 @@
 class Search < ActiveRecord::Base
 
+  serialize :filter, ActiveRecord::Coders::Hstore
+
   attr_accessor :session_loading_ids
 
   default_scope { where(patron_id: Patron.current_id) }
@@ -70,10 +72,9 @@ class Search < ActiveRecord::Base
       companies = Company.search(self.reference)
     else
       companies = Company.order(:name)
-      companies = companies.where("lower(name) like ?", "%#{self.reference}%") if self.reference.present?
-      companies = companies.where(created_at: self.docdate1..self.docdate2) if self.docdate1.present?
-      companies = companies.where(branch_id: self.branch_id) if self.branch_id.present?
-      companies = companies.where(country_id: self.country_id) if self.country_id.present?
+      companies = companies.where("lower(name) like ?", "%#{self.filter["reference"]}%") if self.filter["reference"].present?
+      companies = companies.where(branch_id: self.filter["branch_id"]) if self.filter["branch_id"].present?
+      companies = companies.where(country_id: self.filter["country_id"]) if self.filter["country_id"].present?
     end
     companies
   end
@@ -83,8 +84,8 @@ class Search < ActiveRecord::Base
       contacts = Contact.search(self.reference)
     else
     contacts  = Contact.order(:name, :surname)
-    contacts  = contacts.where(company_id: self.company_id) if self.company_id.present?
-    contacts  = contacts.where("lower(name) like ?", "%#{self.reference}%") if self.reference.present?
+    contacts  = contacts.where(company_id: self.filter["company_id"]) if self.filter["company_id"].present?
+    contacts  = contacts.where("lower(name) like ?", "%#{self.filter["reference"]}%") if self.filter["reference"].present?
     end
     contacts
   end

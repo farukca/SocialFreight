@@ -5,20 +5,23 @@
   <div class="row-fluid">
   <%= simple_form_for @search, html: { class: "form-horizontal" } do |f| %>
     <fieldset>
+    <%= f.simple_fields_for :filter do |ff| %>
       <div class="row-fluid">
     	  <div class="span6">
-    		  <%= f.input :reference, label: t("companies.label.name") %>
+    		  <%= ff.input :reference, label: t("companies.label.name"), input_html: { value: @search.filter["reference"] } %>
     	  </div>
         <div class="span6">
-          <%= f.input :branch_id, as: :select, collection: current_patron.branches, selected: current_user.branch_id %>
-    	    <%= f.button :submit, "Search", class: 'btn btn-success' %>
-    	    <%#= link_to "Detaylı Ara", "#", class: 'togglebutton', "data-placement" => "below",  "rel" => 'twipsy', "title" => "Detaylı Ara", "data-href" => "#load_form_details" %>
+          <%= ff.input :branch_id, as: :select, collection: current_patron.branches, selected: current_user.branch_id %>
     	  </div>
       </div>
+    <% end %>
       <div class="row-fluid">
         <%= f.input :model, as: :hidden, value: "companies" %>
         <%= f.input :searched, as: :hidden, value: "false" %>
       </div>
+      <%= f.button :submit, "Search", class: 'btn btn-success' %>
+          <%#= link_to "Detaylı Ara", "#", class: 'togglebutton', "data-placement" => "below",  "rel" => 'twipsy', "title" => "Detaylı Ara", "data-href" => "#load_form_details" %>
+
       <div id="load_form_details" class="row-fluid slidingDiv">
       </div>
     </fieldset>
