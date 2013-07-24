@@ -9,7 +9,7 @@ namespace :postgresql do
     add_apt_repository("ppa:pitti/postgresql")
     #run "#{sudo} add-apt-repository ppa:pitti/postgresql"
     run "#{sudo} apt-get -y update"
-    run "#{sudo} apt-get -y install postgresql libpq-dev"
+    run "#{sudo} apt-get -y install postgresql libpq-dev postgresql-contrib"
   end
   after "deploy:install", "postgresql:install"
 
