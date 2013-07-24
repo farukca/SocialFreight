@@ -8,14 +8,18 @@ GIT
       simple_form
       tire
 
-PATH
-  remote: ../blogger
+GIT
+  remote: https://github.com/farukca/blogger.git
+  revision: 81f76e19a436de8008a2dd4f4f087b4cb36dd322
+  ref: 81f76e19a436de8008a2dd4f4f087b4cb36dd322
   specs:
     blogger (0.0.1)
       rails (~> 3.2.6)
 
-PATH
-  remote: ../helpdesk
+GIT
+  remote: https://github.com/farukca/helpdesk.git
+  revision: 9e2d5f083a2c0a06b2efe8a3e56ac61beec6e12e
+  ref: 9e2d5f083a2c0a06b2efe8a3e56ac61beec6e12e
   specs:
     helpdesk (0.0.1)
       kaminari (~> 0.13.0)
