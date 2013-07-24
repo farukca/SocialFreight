@@ -26,13 +26,13 @@
         <ul class="dropdown-menu">
           <li>
             <%#= link_to reservation_path(:load_info, :operation => current_operation) do %>
-            <%= link_to main_app.new_loading_path(operation: current_operation) do %>
-              <i class="icon-loading"></i> <%= t("defaults.link.new_loading") %>
+            <%= link_to assetim.new_ware_path do %>
+              <i class="icon-loading"></i> <%= t("defaults.link.new_ware") %>
             <% end%>
           </li>
           <li>
-            <%= link_to main_app.new_position_path(operation: current_operation) do %>
-              <i class="icon-cog"></i> <%= t("defaults.link.new_position") %>
+            <%= link_to helpdesk.new_ticket_path do %>
+              <i class="icon-cog"></i> <%= t("defaults.link.new_ticket") %>
             <% end%>
           </li>
           <li class="divider"/>

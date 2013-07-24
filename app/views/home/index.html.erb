@@ -1,17 +1,37 @@
 <div class="slider clearfix row">
 
-  <div class="span5 slider-intro">
-    <h1 style="font-size: 20px;"><%= t("web.label.online_logistics_management") %></h1>
+  <div class="span6 slider-intro">
+    <h1 style="font-size: 20px;"><%#= t("web.label.online_logistics_management") %></h1>
     <p style="font-size:16px;line-height:170%;">
-      <%= t("web.label.painless_management") %></p>
-    <span><%= link_to t("web.link.get_started"), features_path, :class => "small-btn blue rounded-1" %></span>
+      <%#= t("web.label.painless_management") %>
+<h1 style="font-size: 20px;">VİZYONUMUZ</h1>
+
+2016 yılında Lojistik sektöründe, müşteri ve çalışan
+
+memnuniyetini ilke edinmiş bir kurum olarak, dünya
+
+ölçeğinde marka güvenirliliği ile tercih edilen
+
+stratejik bir çözüm ortağı olmak.
+
+ 
+<h1 style="font-size: 20px;">MİSYONUMUZ</h1>
+
+Ulusoy markasının gücü, geleneği ve güvencesiyle,
+<br/>
+müşterilerimize rekabet avantajı sağlayacak
+
+yenilikçi çözümler üretmek.
+    </p>
+    <span><%#= link_to t("web.link.get_started"), features_path, :class => "small-btn blue rounded-1" %></span>
     <span class="pull-right">
-    <%= link_to t("web.link.try_for_free"), new_patron_path, :class => "small-btn blue rounded-1 pull-right" %>
+    <%#= link_to t("web.link.try_for_free"), new_patron_path, :class => "small-btn blue rounded-1 pull-right" %>
     </span>
   </div>
 
-  <div class="span7 hidden-phone">
-    <div id="slider">
+  <div class="span6 hidden-phone">
+    <%= image_tag("ulusoy/haber1.png") %>
+    <!--div id="slider">
       <ul class="slider-images">
         <li><%= link_to image_tag("big_images/slider-img-1.jpg"), road_path %></li>
         <li><%= link_to image_tag("big_images/slider-img-3.jpg"), air_path %></li>
@@ -24,12 +44,12 @@
         <li><a href="#"><%= t("operations.title.seaoperation") %></a></li>
         <li><a href="#"><%= t("operations.title.railoperation") %></a></li>
       </ul>
-    </div>
+    </div-->
   </div>
 
 </div>
 
-<div class="row">
+<!--div class="row">
   <div class="callout container clearfix">
     <div class="callout-info">
       <%= render "betausers/form" %>
@@ -40,5 +60,5 @@
 
 <div class="row hidden-phone">
   <%#= render "shared/site_description" %>
-</div>
+</div-->
 <script type="text/javascript">document.getElementById('home').classList.add('active');</script>

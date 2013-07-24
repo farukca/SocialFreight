@@ -129,6 +129,8 @@ tr:
       edit_loading: "Bu Yük Bilgisini Güncelle"
       new_transport: "Multimodal Taşıma Ekle"
       new_transroute: "Güzergah Noktası Ekle"
+      new_ware: "Yeni Envanter Ekle"
+      new_ticket: "Yeni Telep Gir"
     validmsg:
     errormsg:
       no_record_found: "Kayıt Bulunamadı"

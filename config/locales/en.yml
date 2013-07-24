@@ -129,6 +129,8 @@ en:
       edit_loading: "Edit Booking"
       new_transport: "Add Multimodal Transportation"
       new_transroute: "Add New Route"
+      new_ware: "Add New Ware"
+      new_ticket: "Add New Ticket"
     validmsg:
     errormsg:
       no_record_found: "No Record Found"
