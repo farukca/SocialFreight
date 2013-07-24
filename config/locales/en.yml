@@ -131,6 +131,7 @@ en:
       new_transroute: "Add New Route"
       new_ware: "Add New Ware"
       new_ticket: "Add New Ticket"
+      
     validmsg:
     errormsg:
       no_record_found: "No Record Found"

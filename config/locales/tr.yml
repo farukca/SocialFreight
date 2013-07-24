@@ -131,6 +131,7 @@ tr:
       new_transroute: "Güzergah Noktası Ekle"
       new_ware: "Yeni Envanter Ekle"
       new_ticket: "Yeni Telep Gir"
+      
     validmsg:
     errormsg:
       no_record_found: "Kayıt Bulunamadı"
