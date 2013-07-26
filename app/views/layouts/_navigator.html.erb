@@ -1,10 +1,15 @@
 <div class="navbar-inner fill">
-  <div id="main-navigation" class="row navbar-inner" style="margin-left:10px;">
+  <div id="main-navigation" class="row navbar-inner">
     <ul class="nav">
-      <%= navigator("homenavigator", main_app.root_url, "", "icon-home") %>
+      <li class="divider-vertical"></li>
+      <%= navigator("homenavigator", main_app.root_url, "Ana Sayfa", "icon-home") %>
+      <li class="divider-vertical"></li>
       <%= navigator("postnavigator", main_app.posts_path, "Sohbet", "icon-comment") %>
+      <li class="divider-vertical"></li>
       <%= navigator("warenavigator", assetim.root_url, "Envanterler", "icon-barcode") %>
+      <li class="divider-vertical"></li>
       <%= navigator("ticketnavigator", helpdesk.root_url, "Talepler", "icon-bullhorn") %>
+      <li class="divider-vertical"></li>
       <%#= navigator("companynavigator", main_app.crm_path, t("defaults.link.crm"), "icon-star-empty") %>
       <%#= navigator("contactnavigator", main_app.contacts_path, t("contacts.title.contacts"), "icon-user") %>
       <%#= navigator("loadingnavigator", main_app.loadings_path, t("operations.title.reservations"), "icon-loading") %>
@@ -15,6 +20,7 @@
       <%#= navigator("documentnavigator", documents_path, "Dokümanlar", "icon-file") %>
       <%#= navigator("fleetnavigator", main_app.vehicles_path, "Filo", "icon-road") %>
       <%= navigator("peoplenavigator", main_app.people_path, "Personel Yönetimi", "icon-user") %>
+      <li class="divider-vertical"></li>
       <%#= navigator("opernavigator", operations_path, t("defaults.link.operation"), "icon-cog") %>
 
       <!--li id="opernavigator" <%# if (current_tab == "opernavigator") %>class="dropdown active"<%# else %>class="dropdown"<%#  end %>>

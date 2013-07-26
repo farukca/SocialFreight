@@ -1,25 +1,19 @@
-GIT
-  remote: https://github.com/farukca/assetim.git
-  revision: d6fb39ab922b40cfb6920a4eb087c0f8eb805397
-  ref: d6fb39ab922b40cfb6920a4eb087c0f8eb805397
+PATH
+  remote: ../assetim
   specs:
     assetim (0.0.1)
       rails (~> 3.2.13)
       simple_form
       tire
 
-GIT
-  remote: https://github.com/farukca/blogger.git
-  revision: 81f76e19a436de8008a2dd4f4f087b4cb36dd322
-  ref: 81f76e19a436de8008a2dd4f4f087b4cb36dd322
+PATH
+  remote: ../blogger
   specs:
     blogger (0.0.1)
       rails (~> 3.2.6)
 
-GIT
-  remote: https://github.com/farukca/helpdesk.git
-  revision: 9e2d5f083a2c0a06b2efe8a3e56ac61beec6e12e
-  ref: 9e2d5f083a2c0a06b2efe8a3e56ac61beec6e12e
+PATH
+  remote: ../helpdesk
   specs:
     helpdesk (0.0.1)
       kaminari (~> 0.13.0)
@@ -104,12 +98,14 @@ GEM
       execjs
     coffee-script-source (1.2.0)
     columnize (0.3.6)
+    daemons (1.1.9)
     eco (1.0.0)
       coffee-script
       eco-source
       execjs
     eco-source (1.1.0.rc.1)
     erubis (2.7.0)
+    eventmachine (1.0.3-x86-mingw32)
     exception_notification (2.6.1)
       actionmailer (>= 3.0.4)
     execjs (1.2.9)
@@ -150,8 +146,6 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
       railties (>= 3.0.0)
-    kgio (2.8.0)
-    libv8 (3.11.8.17)
     linecache19 (0.5.12)
       ruby_core_source (>= 0.1.4)
     mail (2.5.4)
@@ -223,14 +217,12 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
-    raindrops (0.11.0)
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
     redis (3.0.2)
     redis-namespace (1.2.1)
       redis (~> 3.0.0)
-    ref (1.0.5)
     resque (1.23.0)
       multi_json (~> 1.0)
       redis-namespace (~> 1.0)
@@ -296,9 +288,10 @@ GEM
     subexec (0.2.3)
     table_for_collection (1.0.6)
       actionpack
-    therubyracer (0.11.4)
-      libv8 (~> 3.11.8.12)
-      ref
+    thin (1.5.1)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
     thor (0.18.1)
     tilt (1.4.1)
     tire (0.5.3)
@@ -319,10 +312,6 @@ GEM
     uglifier (1.0.3)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
-    unicorn (4.6.3)
-      kgio (~> 2.6)
-      rack
-      raindrops (~> 0.7)
     vegas (0.1.11)
       rack (>= 1.0.0)
     wasabi (2.1.0)
@@ -381,11 +370,10 @@ DEPENDENCIES
   socialization
   sorcery
   table_for_collection
-  therubyracer
+  thin
   tire
   turn
   twitter-text
   uglifier (>= 1.0.3)
-  unicorn
   whenever
   wicked
