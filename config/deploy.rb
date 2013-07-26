@@ -35,7 +35,7 @@ set :use_sudo, false
 
 set :scm, "git"
 set :repository,  "git@github.com:farukca/#{application}.git"
-set :branch, "master"
+#set :branch, "master"
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
 #Maintance page
