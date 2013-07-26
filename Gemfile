@@ -69,12 +69,12 @@ gem 'unicorn'
 gem 'capistrano'
 #gem 'capistrano-rbenv'
 
-#gem 'blogger', git: "https://github.com/farukca/blogger.git", ref: "81f76e19a436de8008a2dd4f4f087b4cb36dd322"
-gem 'blogger', path: "../blogger"
-#gem 'assetim', git: "https://github.com/farukca/assetim.git", ref: "d6fb39ab922b40cfb6920a4eb087c0f8eb805397"
-gem 'assetim', path: "../assetim"
-#gem 'helpdesk', git: "https://github.com/farukca/helpdesk.git", ref: "9e2d5f083a2c0a06b2efe8a3e56ac61beec6e12e"
-gem 'helpdesk', path: "../helpdesk"
+gem 'blogger', git: "https://github.com/farukca/blogger.git", ref: "81f76e19a436de8008a2dd4f4f087b4cb36dd322"
+#gem 'blogger', path: "../blogger"
+gem 'assetim', git: "https://github.com/farukca/assetim.git", ref: "d6fb39ab922b40cfb6920a4eb087c0f8eb805397"
+#gem 'assetim', path: "../assetim"
+gem 'helpdesk', git: "https://github.com/farukca/helpdesk.git", ref: "9e2d5f083a2c0a06b2efe8a3e56ac61beec6e12e"
+#gem 'helpdesk', path: "../helpdesk"
 
 group :test do
   # Pretty printed test output
