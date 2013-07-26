@@ -53,7 +53,7 @@ gem 'exception_notification'
 
 gem 'jquery-rails'
 gem 'execjs'
-#gem 'therubyracer'
+gem 'therubyracer'
 gem 'select2-rails'
 
 # To use ActiveModel has_secure_password
@@ -62,8 +62,8 @@ gem 'select2-rails'
 gem 'jbuilder'
 
 # Use unicorn as the web server
-#gem 'unicorn'
-gem 'thin'
+gem 'unicorn'
+#gem 'thin'
 
 # Deploy with Capistrano
 gem 'capistrano'
