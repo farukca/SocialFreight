@@ -1,12 +1,16 @@
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner fill">
     <div class="container-fluid">
-      <%= link_to "UBYS-Portal", main_app.root_url, :class => "brand" %>
+      <%#= link_to "UBYS-Portal", main_app.root_url, :class => "brand" %>
+      <div class="logo-container span6">
+        <div class="span1"><%= link_to (image_tag "ulusoy/ulusoyholding_boncuk.png"), main_app.root_url %></div>
+        <div class="span4"><%= link_to "Ulusoy Bilgi Yönetim Sistemi", main_app.root_url, :class => "brand" %></div>
+      </div>
       <div class="nav-collapse">
         <div class="pull-right">
           <ul class="nav pull-right">
             <% if current_user %>
-              <li style="min-width:55px;">
+              <!--li style="min-width:55px;">
                 <%= render partial: "shared/counter_dropdown", locals: { number: users_active_tasks_count(current_user), object: "tasks" } %>
               </li>
               <li style="min-width:55px;">
@@ -14,7 +18,7 @@
               </li>
               <li style="min-width:55px;margin-right:50px;">
                 <%= render partial: "shared/counter_dropdown", locals: { number: users_unread_notifications_count(current_user), object: "comment" } %>
-              </li>
+              </li-->
               <li style="line-height:30px;margin-top:4px;"><%= user_mini_avatar(current_user) %></li>
               <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.to_s %> <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -27,7 +31,7 @@
                       <%= link_to main_app.new_person_path do%><i class="icon-user"></i>Profil<% end %>
                     <% end %>
                   </li>
-                  <li><%= link_to blogger.new_article_path do %><i class="icon-file"></i>Blog Yaz<% end %></li>
+                  <!--li><%= link_to blogger.new_article_path do %><i class="icon-file"></i>Blog Yaz<% end %></li-->
                   <li class="divider"></li>
                   <li><%= link_to main_app.logout_path do %><i class="icon-off"></i>Logout<% end %></li>
                 </ul>

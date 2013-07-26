@@ -1,6 +1,6 @@
 <div class="slider clearfix row">
 
-  <div class="span6 slider-intro">
+  <div class="span8 slider-intro">
     <h1 style="font-size: 20px;"><%#= t("web.label.online_logistics_management") %></h1>
     <p style="font-size:16px;line-height:170%;">
       <%#= t("web.label.painless_management") %>
@@ -8,7 +8,7 @@
 
 2016 yılında Lojistik sektöründe, müşteri ve çalışan
 
-memnuniyetini ilke edinmiş bir kurum olarak, dünya
+memnuniyetini ilke edinmiş bir kurum olarak, <br>dünya
 
 ölçeğinde marka güvenirliliği ile tercih edilen
 
@@ -29,8 +29,9 @@ yenilikçi çözümler üretmek.
     </span>
   </div>
 
-  <div class="span6 hidden-phone">
-    <%= image_tag("ulusoy/haber1.png") %>
+  <div class="span4 hidden-phone">
+    
+    <embed src="<%= asset_path('ulusoy/video.swf') %>", any_embed_options, wmode="transparent", width="250", height="250" />
     <!--div id="slider">
       <ul class="slider-images">
         <li><%= link_to image_tag("big_images/slider-img-1.jpg"), road_path %></li>

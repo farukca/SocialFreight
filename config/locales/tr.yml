@@ -724,7 +724,8 @@ tr:
     hint:
       new_feedback: "Aklınızdan geçeni yazabilirsiniz"
     link:
-      new_feedback: "Sizi Dinliyoruz"
+      #new_feedback: "Sizi Dinliyoruz"
+      new_feedback: "UBYS Görüş ve Önerileriniz"
     action:
   counters:
     title:

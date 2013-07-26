@@ -15,7 +15,7 @@ module UsersHelper
 
   def user_mini_avatar(user = @user)
     #user.avatar_url(:mini)
-    cl_image_tag(user.avatar_url, width: 30, height: 30, crop: :fill, class: "media-object img-circle")
+    cl_image_tag(user.avatar_url, width: 30, height: 30, crop: :fill, class: "media-object")
   end
 
   def users_active_tasks_count(user = @user)
