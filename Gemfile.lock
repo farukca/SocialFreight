@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/farukca/assetim.git
-  revision: d6fb39ab922b40cfb6920a4eb087c0f8eb805397
-  ref: d6fb39ab922b40cfb6920a4eb087c0f8eb805397
+  revision: e2fbcb839967d30b854127ea85e0adfb1eea8c6c
+  ref: e2fbcb839967d30b854127ea85e0adfb1eea8c6c
   specs:
     assetim (0.0.1)
       rails (~> 3.2.13)

@@ -1,45 +1,30 @@
-<div class="navbar-inner fill">
+<div class="navbar fill" style="margin-top:40px;">
   <div id="main-navigation" class="row navbar-inner">
     <ul class="nav">
-      <li class="divider-vertical"></li>
       <%= navigator("homenavigator", main_app.root_url, "Ana Sayfa", "icon-home") %>
-      <li class="divider-vertical"></li>
       <%= navigator("postnavigator", main_app.posts_path, "Sohbet", "icon-comment") %>
-      <li class="divider-vertical"></li>
-      <%= navigator("warenavigator", assetim.root_url, "Envanterler", "icon-barcode") %>
-      <li class="divider-vertical"></li>
-      <%= navigator("ticketnavigator", helpdesk.root_url, "Talepler", "icon-bullhorn") %>
-      <li class="divider-vertical"></li>
-      <%#= navigator("companynavigator", main_app.crm_path, t("defaults.link.crm"), "icon-star-empty") %>
-      <%#= navigator("contactnavigator", main_app.contacts_path, t("contacts.title.contacts"), "icon-user") %>
-      <%#= navigator("loadingnavigator", main_app.loadings_path, t("operations.title.reservations"), "icon-loading") %>
-      <%#= navigator("positionnavigator", main_app.positions_path, t("positions.title.positions"), "icon-cog") %>
-      <%#= navigator("transportnavigator", main_app.transports_path, t("transports.title.transports"), "icon-random") %>
-      <%#= navigator("payoffnavigator", main_app.payoffs_path, "Masraf Formları", "icon-list-alt") %>
-      <%#= navigator("costnavigator", "#", "Faturalar", "icon-hdd") %>
-      <%#= navigator("documentnavigator", documents_path, "Dokümanlar", "icon-file") %>
-      <%#= navigator("fleetnavigator", main_app.vehicles_path, "Filo", "icon-road") %>
-      <%= navigator("peoplenavigator", main_app.people_path, "Personel Yönetimi", "icon-user") %>
-      <li class="divider-vertical"></li>
-      <%#= navigator("opernavigator", operations_path, t("defaults.link.operation"), "icon-cog") %>
+      <%= navigator("companynavigator", main_app.crm_path, t("defaults.link.crm"), "icon-star-empty") %>
+      <%= navigator("contactnavigator", main_app.contacts_path, t("contacts.title.contacts"), "icon-user") %>
+      <%= navigator("loadingnavigator", main_app.loadings_path, t("operations.title.reservations"), "icon-loading") %>
+      <%= navigator("positionnavigator", main_app.positions_path, t("positions.title.positions"), "icon-cog") %>
 
-      <!--li id="opernavigator" <%# if (current_tab == "opernavigator") %>class="dropdown active"<%# else %>class="dropdown"<%#  end %>>
+      <%= navigator("peoplenavigator", main_app.people_path, "Personel Yönetimi", "icon-user") %>
+
+      <li id="opernavigator" class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-          <i class="icon-cog"></i>
-          <%#= t("defaults.link.operation") %>
-          <b class="caret"></b>
+          <i class="icon-cog"></i>More<b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
-          <%#= navigator("airnavigator", home_operation_path(:air), t("operations.title.airoperation"), "icon-plane") %>
-          <%#= navigator("seanavigator", home_operation_path(:sea), t("operations.title.seaoperation"), "icon-flag") %>
-          <%#= navigator("roadnavigator", home_operation_path(:road), t("operations.title.roadoperation"), "icon-road") %>
-          <%#= navigator("railnavigator", home_operation_path(:rail), t("operations.title.railoperation"), "icon-random") %>
-          <li id="inlandnavigator"><%#= link_to home_operation_path(:inland) do %><i class="icon-qrcode"></i>Dahili Nakliye<%# end %></li>
-          <li id="distronavigator"><%#= link_to home_operation_path(:distro) do %><i class="icon-qrcode"></i>Ulusal Dağıtım<%# end %></li>
-          <li id="heavynavigator"><%#= link_to home_operation_path(:heavy) do %><i class="icon-qrcode"></i>Ağır Nakliye<%# end %></li>
-
+          <%= navigator("payoffnavigator", main_app.payoffs_path, "Masraf Formları", "icon-list-alt") %>
+          <%= navigator("fleetnavigator", main_app.vehicles_path, "Filo", "icon-road") %>
+          <%= navigator("transportnavigator", main_app.transports_path, t("transports.title.transports"), "icon-random") %>
+          <%#= navigator("costnavigator", "#", "Faturalar", "icon-hdd") %>
+          <%= navigator("documentnavigator", main_app.documents_path, "Dokümanlar", "icon-file") %>
+          <hr/>
+          <%= navigator("warenavigator", assetim.root_url, "Envanterler", "icon-barcode") %>
+          <%= navigator("ticketnavigator", helpdesk.root_url, "Talepler", "icon-bullhorn") %>
         </ul>
-      </li-->
+      </li>
       <%# current_patron.operations.each_with_index do |operation, index| %>
         <%# unless operation.to_s.blank? %>
           <!--li class="<%#= selected_navigation(operation.to_s) %>"><%#= link_to operation.to_s.humanize, home_operation_path(operation) %></li-->

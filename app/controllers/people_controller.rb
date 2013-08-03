@@ -23,8 +23,6 @@ class PeopleController < ApplicationController
 
   def new
     @person = Person.new
-    @person.name = current_user.name
-    @person.surname = current_user.surname
     
     respond_to do |format|
       format.html
@@ -43,10 +41,7 @@ class PeopleController < ApplicationController
 
   def create
     @person = Person.new(params[:person])
-    @person.name = current_user.name
-    @person.surname = current_user.surname
     @person.user_id = current_user.id
-    @person.patron_id = current_patron.id
 
     respond_to do |format|
       if @person.save

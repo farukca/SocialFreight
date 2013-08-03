@@ -37,13 +37,12 @@
       </div>
       <div id="signupnote">
         <p><%= t("web.label.no_account_yet") %>&nbsp;<%= link_to t("web.label.signup_for_free"), try_path%></p>
-        <p><%#= t("web.label.are_you_freighter") %>&nbsp;<%#= link_to t("web.label.try_socialfreight"), try_path%></p>
+        <p><%= t("web.label.are_you_freighter") %>&nbsp;<%= link_to t("web.label.try_socialfreight"), try_path%></p>
       </div>
     </div>
     <div class="span6 columns">
       <div id="login_roadmap">
-        <embed src="<%= asset_path('ulusoy/video.swf') %>", any_embed_options />
-        <%#= image_tag "cloud-go.jpg" %>
+        <%= image_tag "cloud-go.jpg" %>
       </div>
     </div>
   </div>

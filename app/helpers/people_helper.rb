@@ -4,8 +4,8 @@ module PeopleHelper
   	person.to_s
   end
 
-  def person_avatar_name(person=@person)
-  	user_mini_avatar(person) + person.to_s
+  def person_small_avatar(person = @person)
+    cl_image_tag(person.avatar_url, width: 48, height: 48, crop: :fill, class: "media-object img-circle")
   end
 
 end

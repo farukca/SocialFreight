@@ -17,7 +17,7 @@
     <%#= f.input :employees, as: :select, label: t("web.label.employee_number"), collection: Patron.employee_ranks.map { |r| [r[1], r[0] ] }, include_blank: false %>
     <%#= f.input :language %>
   </fieldset>
-  <div class="form-actions">
+  <div class="pull-right">
     <%= f.button :submit, t("web.label.signup"), class: 'btn btn-success', "data-loading-text" => "Processing..." %>
   </div>
 <% end %>

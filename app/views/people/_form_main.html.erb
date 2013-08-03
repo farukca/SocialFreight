@@ -5,8 +5,8 @@
         <legend>Pozisyon Bilgileriniz<small class="pull-right">?</small></legend>
         <div class="row-fluid">
           <%= f.input :name, label: "Name & Surname" do %>
-            <%= f.input_field :name, class: "input-small", disabled: "" %>
-            <%= f.input_field :surname, class: "input-small", disabled: "" %>
+            <%= f.input_field :name, class: "input-small" %>
+            <%= f.input_field :surname, class: "input-small" %>
           <% end %>
           <%= f.input :jobtitle %>
           <%= f.input :department %>
@@ -18,7 +18,7 @@
             <%= f.input_field :busitel, class: "input-small" %>
             <%= f.input_field :exttel, class: "input-mini" %>
           <% end %>
-          <%= f.input :start_date, as: :string, input_html: {class: "input-small", "data-datepicker" => "datepicker"} %>
+          <%= f.input :start_date, as: :string, input_html: {class: "input-small datepicker"} %>
         </div>
       </div>
       <div class="span6">
@@ -28,7 +28,7 @@
           <%#= f.input :socialname %>
           <%= f.input :gsm %>
           <%= f.input :hometel %>
-          <%= f.input :birth_date, as: :string, input_html: {class: "input-small", "data-datepicker" => "datepicker"} %>
+          <%= f.input :birth_date, as: :string, input_html: {class: "input-small datepicker"} %>
           <%#= f.input :fax %>
 
           <%#= f.input :status %>

@@ -3,7 +3,7 @@
     <div class="row">
       <div class="logo-container span5">
         <%= link_to (image_tag "logo.png"), main_app.root_url %>
-        <br/><span class="tagline"><%#= t("web.title.sitename") %></span>
+        <br/><span class="tagline"><%= t("web.title.sitename") %></span>
       </div>
       <div class="span7 pull-right">
         <div class="row hidden-phone">
@@ -11,27 +11,19 @@
             <%= link_to main_app.login_path, class: "btn" do %>
               <i class="icon-off"></i><%= t("web.label.login") %>
             <% end %>
-            <%#= link_to main_app.try_path, class: "btn btn-success" do %>
-              <i class="icon-forward icon-white"></i><%#= t("web.label.free_trial") %>
-            <%# end %>
+            <%= link_to main_app.try_path, class: "btn btn-success" do %>
+              <i class="icon-forward icon-white"></i><%= t("web.label.free_trial") %>
+            <% end %>
           </div>
         </div>
         <div class="row">
           <ul id="main-nav" class="sf-menu">
-            <li><%#= link_to t("web.link.mainpage"), main_app.root_url, :id => "home" %></li>
-            <li><%#= link_to t("web.link.whysocialfreight"), main_app.features_path, :id => "features" %></li>
-            <!--li><%#= link_to "Güvenlik", security_path, :id => "security" %></li-->
-            <li><%#= link_to t("web.link.services"), main_app.services_path, :id => "services" %>
-              <!--ul>
-                <li><%#= link_to "Kara Taşımacılığı", road_path %></li>
-                <li><%#= link_to "Hava Taşımacılığı", air_path %></li>
-                <li><%#= link_to "Deniz Taşımacılığı", sea_path %></li>
-                <li><%#= link_to "Demiryolu Taşımacılığı", rail_path %></li>
-                <li><%#= link_to "Ulusal Dağıtım", inland_path %></li>
-              </ul-->
-            </li>
-            <li><%#= link_to t("web.link.roadmap"), main_app.roadmap_path, :id => "roadmap" %></li>
-            <li><%#= link_to t("web.link.contact"), main_app.aboutus_path, :id => "contact_link" %></li>
+            <li><%= link_to t("web.link.mainpage"), main_app.root_url, :id => "home" %></li>
+            <li><%= link_to t("web.link.whysocialfreight"), main_app.features_path, :id => "features" %></li>
+            <li><%#= link_to "Güvenlik", security_path, :id => "security" %></li>
+            <li><%= link_to t("web.link.services"), main_app.services_path, :id => "services" %></li>
+            <li><%= link_to t("web.link.roadmap"), main_app.roadmap_path, :id => "roadmap" %></li>
+            <li><%= link_to t("web.link.contact"), main_app.aboutus_path, :id => "contact_link" %></li>
           </ul>
         </div>
       </div>

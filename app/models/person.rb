@@ -1,17 +1,10 @@
 class Person < ActiveRecord::Base
 
-  extend FriendlyId
 
   belongs_to :patron
-  friendly_id :to_s, use: :slugged, use: :scoped, scope: :patron
 
   belongs_to :user
-  #belongs_to :branch
-  #belongs_to :city
-  #belongs_to :state
   belongs_to :country
-  #belongs_to :manager, :class_name => "Person", :foreign_key => "manager_id"
-  #has_many   :payoffs
 
   mount_uploader :avatar, AvatarUploader
 
@@ -23,8 +16,15 @@ class Person < ActiveRecord::Base
   #validates :name, presence: true, length: { in: 2..30 }
   #validates :surname, presence: true, length: { in: 2..30 }
 
+  default_scope { where(patron_id: Patron.current_id) }
+  scope :latest, order("created_at desc")
+
   def to_s
     "#{self.name} #{self.surname}" 
+  end
+
+  def to_param
+    "#{id}-#{to_s.parameterize}"
   end
 
   def token_inputs
