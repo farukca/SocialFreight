@@ -127,4 +127,14 @@ class Search < ActiveRecord::Base
     tickets
   end
 
+  def find_peoples
+    if self.searched
+      peoples = People.search(self.reference)
+    else
+      peoples = People.latest
+      peoples = peoples.where("name||surname like ?", "%#{self.reference}%") if self.reference.present?
+      peoples = peoples.where(user_id: self.user_id) if self.user_id.present?
+    end
+    peoples
+  end
 end
