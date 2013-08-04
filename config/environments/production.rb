@@ -44,7 +44,7 @@ Socialfreight::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  config.assets.precompile += %w( socialfreight.js socialfreight.css report_manifest.js eco_manifest.js)
+  config.assets.precompile += %w( socialfreight.js socialfreight.css report_manifest.js eco_manifest.js blogger/wysihtml5-0.4.0pre.min.js blogger/wysihtml5-advanced.js)
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
 
