@@ -10,8 +10,8 @@ GIT
 
 GIT
   remote: https://github.com/farukca/blogger.git
-  revision: 87e5ef6f6ad79c2309966414f272f1357cadf91c
-  ref: 87e5ef6f6ad79c2309966414f272f1357cadf91c
+  revision: b7512b7f7ada2e90544ef37f121a14b0cb70da4d
+  ref: b7512b7f7ada2e90544ef37f121a14b0cb70da4d
   specs:
     blogger (0.0.1)
       rails (~> 3.2.6)
