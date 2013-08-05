@@ -69,7 +69,7 @@ gem 'unicorn'
 gem 'capistrano'
 #gem 'capistrano-rbenv'
 
-gem 'blogger', git: "https://github.com/farukca/blogger.git", ref: "b7512b7f7ada2e90544ef37f121a14b0cb70da4d"
+gem 'blogger', git: "https://github.com/farukca/blogger.git", ref: "673b6949a7a8d66e68a541607c55710469162d0f"
 #gem 'blogger', path: "../blogger"
 gem 'assetim', git: "https://github.com/farukca/assetim.git", ref: "e2fbcb839967d30b854127ea85e0adfb1eea8c6c"
 #gem 'assetim', path: "../assetim"
