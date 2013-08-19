@@ -8,10 +8,10 @@
       <div class="span7 pull-right">
         <div class="row hidden-phone">
           <div class="customer_intro">
-            <%= link_to main_app.login_path, class: "btn" do %>
+            <%= link_to nimbos.login_path, class: "btn" do %>
               <i class="icon-off"></i><%= t("web.label.login") %>
             <% end %>
-            <%= link_to main_app.try_path, class: "btn btn-success" do %>
+            <%= link_to nimbos.new_patron_path, class: "btn btn-success" do %>
               <i class="icon-forward icon-white"></i><%= t("web.label.free_trial") %>
             <% end %>
           </div>

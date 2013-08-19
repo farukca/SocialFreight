@@ -25,6 +25,27 @@ GIT
       kaminari (~> 0.13.0)
       rails (~> 3.2.13)
 
+PATH
+  remote: ../nimbos
+  specs:
+    nimbos (0.0.1)
+      bcrypt-ruby (= 3.0.1)
+      client_side_validations
+      client_side_validations-simple_form
+      coffee-rails (~> 3.2.1)
+      eco
+      execjs
+      jbuilder
+      rails (~> 3.2.13)
+      resque
+      rolify
+      sass-rails (~> 3.2.3)
+      simple_form
+      table_for_collection
+      therubyracer
+      uglifier (>= 1.0.3)
+      warden (= 1.2.3)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -120,8 +141,6 @@ GEM
       factory_girl (~> 2.1.0)
       railties (>= 3.0.0)
     fakeweb (1.3.0)
-    faraday (0.8.7)
-      multipart-post (~> 1.1)
     ffi (1.0.9)
     ffi (1.0.9-x86-mingw32)
     friendly_id (4.0.9)
@@ -132,7 +151,6 @@ GEM
     hashr (0.0.22)
     highline (1.6.15)
     hike (1.2.3)
-    httpauth (0.2.0)
     httpi (0.9.7)
       rack
     i18n (0.6.1)
@@ -144,8 +162,6 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.0)
     json_pure (1.6.1)
-    jwt (0.1.6)
-      multi_json (>= 1.0)
     kaminari (0.13.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -168,7 +184,6 @@ GEM
       rack-mobile-detect
       rails
     multi_json (1.0.4)
-    multipart-post (1.2.0)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
@@ -179,13 +194,6 @@ GEM
     nokogiri (1.5.0)
     nokogiri (1.5.0-x86-mingw32)
     nori (1.1.0)
-    oauth (0.4.7)
-    oauth2 (0.8.1)
-      faraday (~> 0.8)
-      httpauth (~> 0.1)
-      jwt (~> 0.1.4)
-      multi_json (~> 1.0)
-      rack (~> 1.2)
     pdf-reader (0.10.1)
       Ascii85 (~> 1.0.0)
     pg (0.13.2)
@@ -284,10 +292,6 @@ GEM
       tilt (~> 1.3, >= 1.3.3)
     socialization (0.4.0)
       activerecord
-    sorcery (0.8.1)
-      bcrypt-ruby (~> 3.0.0)
-      oauth (~> 0.4.4)
-      oauth2 (~> 0.8.0)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -325,6 +329,8 @@ GEM
       raindrops (~> 0.7)
     vegas (0.1.11)
       rack (>= 1.0.0)
+    warden (1.2.3)
+      rack (>= 1.0)
     wasabi (2.1.0)
       nokogiri (>= 1.4.0)
     whenever (0.7.3)
@@ -367,6 +373,7 @@ DEPENDENCIES
   mini_magick
   minitest
   mobile-fu
+  nimbos!
   pg
   prawn
   rails (= 3.2.13)
@@ -379,7 +386,6 @@ DEPENDENCIES
   simple_form (~> 2.0)
   simplecov
   socialization
-  sorcery
   table_for_collection
   therubyracer
   tire

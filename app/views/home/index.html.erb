@@ -5,9 +5,9 @@
     <p style="font-size:16px;line-height:170%;">
       <%= t("web.label.painless_management") %>
     </p>
-    <span><%= link_to t("web.link.get_started"), features_path, :class => "small-btn blue rounded-1" %></span>
+    <span><%= link_to t("web.link.get_started"), main_app.features_path, :class => "small-btn blue rounded-1" %></span>
     <span class="pull-right">
-    <%= link_to t("web.link.try_for_free"), new_patron_path, :class => "small-btn blue rounded-1 pull-right" %>
+    <%= link_to t("web.link.try_for_free"), nimbos.new_patron_path, :class => "small-btn blue rounded-1 pull-right" %>
     </span>
   </div>
 

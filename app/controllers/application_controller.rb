@@ -69,7 +69,7 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     #locale = logged_in? ? current_user.locale : (params[:locale])
-    if logged_in?
+    if user_signed_in?
       locale = current_user.language
     end
     unless locale.present?

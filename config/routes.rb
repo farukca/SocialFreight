@@ -9,27 +9,27 @@ Socialfreight::Application.routes.draw do
   get "dashboard" => "dashboard#index", :as => "dashboard"
   get "calendar"  => "dashboard#calendar", :as => "calendar"
 
-  resources :users do
-    member do
-      get :activate, :activation, :follow
-    end
-    collection do
-      get :invite_coworkers
-    end
-    collection do
-      put  :create_coworkers
-    end
-  end
-  resources :sessions
-  resources :password_resets
+  # resources :users do
+  #   member do
+  #     get :activate, :activation, :follow
+  #   end
+  #   collection do
+  #     get :invite_coworkers
+  #   end
+  #   collection do
+  #     put  :create_coworkers
+  #   end
+  # end
+  # resources :sessions
+  # resources :password_resets
   resources :betausers
 
-  resources :patrons
-  resources :operations do
-    member do
-      get :home, :select
-    end
-  end
+  # resources :patrons
+  # resources :operations do
+  #   member do
+  #     get :home, :select
+  #   end
+  # end
   resources :places
   resources :companies do
     resources :posts
@@ -41,7 +41,7 @@ Socialfreight::Application.routes.draw do
   resources :findocs
   resources :invoitems
   
-  resources :branches
+  #resources :branches
   resources :people
   resources :positions do
     resources :posts
@@ -62,35 +62,25 @@ Socialfreight::Application.routes.draw do
       get :plan
     end
   end
-  resources :departures do
-    resources :posts
-  end
-  resources :arrivals do
-    resources :posts
-  end
+  resources :departures
+  resources :arrivals
   resources :packages
   resources :containers
   resources :transnodes
   resources :connects
 
-  resources :rentals do
-    resources :posts
-  end
-  resources :vehicles do
-    resources :posts
-  end
+  resources :rentals
+  resources :vehicles
   resources :vessels
-  resources :documents do
-    resources :posts
-  end
+  resources :documents
   resources :costs
   resources :payoffs
   resources :payments
   resources :fuels
 
-  resources :listheaders do
-    resources :listitems
-  end
+  #resources :listheaders do
+  #  resources :listitems
+  #end
 
   resources :searches do
     member do
@@ -98,23 +88,23 @@ Socialfreight::Application.routes.draw do
     end
   end
 
-  resources :countries
-  resources :cities
-  resources :currencies
-  resources :banks
+  #resources :countries
+  #resources :cities
+  #resources :currencies
+  #resources :banks
   resources :feedbacks
-  resources :posts do
-    resources :comments
-  end
-  resources :todolists do
-    resources :tasks
-  end
-  resources :reminders
+  #resources :posts do
+  #  resources :comments
+  #end
+  #resources :todolists do
+  #  resources :tasks
+  #end
+  #resources :reminders
   resources :activities
   resources :nicks
   resources :junks
 
-  resources :setup
+  #resources :setup
   resources :reservation
   resources :transplan
   resources :operation_wizard
@@ -136,6 +126,7 @@ Socialfreight::Application.routes.draw do
 
   root :to => 'home#index'
 
+  mount Nimbos::Engine, at: "/nimbos"
   mount Resque::Server, at: "/resque"
   mount Blogger::Engine, at: "/blog"
   mount Assetim::Engine, at: "/assetim"

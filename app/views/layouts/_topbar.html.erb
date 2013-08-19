@@ -18,8 +18,8 @@
               <li style="line-height:30px;margin-top:4px;"><%= user_mini_avatar(current_user) %></li>
               <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.to_s %> <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><%= link_to main_app.dashboard_path do %><i class="icon-cog"></i>Preferences<% end %></li>
-                  <li><%= link_to main_app.calendar_path do %><i class="icon-calendar"></i>Takvim<% end %></li>
+                  <li><%= link_to nimbos.dashboard_path do %><i class="icon-cog"></i>Preferences<% end %></li>
+                  <li><%= link_to nimbos.calendar_path do %><i class="icon-calendar"></i>Takvim<% end %></li>
                   <li>
                     <% if current_user.person %>
                       <%= link_to main_app.person_path(current_user.person) do%><i class="icon-user"></i>Profil<% end %>
@@ -34,8 +34,8 @@
               </li>
             <% else %>
               <li><%#= link_to "Kayıt Ol", signup_path %> </li>
-              <li><%= link_to "Giriş Yap", main_app.login_path %></li>
-              <li><%= link_to "Ücretsiz Deneyin", main_app.new_patron_path %></li>
+              <li><%= link_to "Giriş Yap", nimbos.login_path %></li>
+              <li><%= link_to "Ücretsiz Deneyin", nimbos.new_patron_path %></li>
             <% end %>
           </ul>
         </div>
