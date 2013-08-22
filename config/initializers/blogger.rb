@@ -1,1 +1,1 @@
-Blogger.user_class = "User"
+Blogger.user_class = "Nimbos::User"

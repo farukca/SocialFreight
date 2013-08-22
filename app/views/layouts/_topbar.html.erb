@@ -10,23 +10,23 @@
                 <%= render partial: "shared/counter_dropdown", locals: { number: users_active_tasks_count(current_user), object: "tasks" } %>
               </li>
               <li style="min-width:55px;">
-                <%= render partial: "shared/counter_dropdown", locals: { number: users_unread_messages_count(current_user), object: "envelope" } %>
+                <%#= render partial: "shared/counter_dropdown", locals: { number: users_unread_messages_count(current_user), object: "envelope" } %>
               </li>
               <li style="min-width:55px;margin-right:50px;">
-                <%= render partial: "shared/counter_dropdown", locals: { number: users_unread_notifications_count(current_user), object: "comment" } %>
+                <%#= render partial: "shared/counter_dropdown", locals: { number: users_unread_notifications_count(current_user), object: "comment" } %>
               </li>
               <li style="line-height:30px;margin-top:4px;"><%= user_mini_avatar(current_user) %></li>
               <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.to_s %> <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><%= link_to nimbos.dashboard_path do %><i class="icon-cog"></i>Preferences<% end %></li>
                   <li><%= link_to nimbos.calendar_path do %><i class="icon-calendar"></i>Takvim<% end %></li>
-                  <li>
-                    <% if current_user.person %>
-                      <%= link_to main_app.person_path(current_user.person) do%><i class="icon-user"></i>Profil<% end %>
-                    <% else %>
-                      <%= link_to main_app.new_person_path do%><i class="icon-user"></i>Profil<% end %>
-                    <% end %>
-                  </li>
+                  <!--li>
+                    <%# if current_user.person %>
+                      <%#= link_to main_app.person_path(current_user.person) do%><i class="icon-user"></i>Profil<%# end %>
+                    <%# else %>
+                      <%#= link_to main_app.new_person_path do%><i class="icon-user"></i>Profil<%# end %>
+                    <%# end %>
+                  </li-->
                   <li><%= link_to blogger.new_article_path do %><i class="icon-file"></i>Blog Yaz<% end %></li>
                   <li class="divider"></li>
                   <li><%= link_to main_app.logout_path do %><i class="icon-off"></i>Logout<% end %></li>

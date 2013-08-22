@@ -3,11 +3,11 @@ class Contact < ActiveRecord::Base
   extend FriendlyId
   include Tire::Model::Search
   include Tire::Model::Callbacks
-  index_name { "contacts-#{Patron.current_id}" }
+  index_name { "contacts-#{Nimbos::Patron.current_id}" }
   
-  belongs_to :patron
+  #belongs_to :patron
   belongs_to :company, counter_cache: true
-  belongs_to :user
+  belongs_to :user, class_name: "Nimbos::User"
 
   friendly_id :to_s, use: :slugged, use: :scoped, scope: :patron
 
@@ -49,7 +49,7 @@ class Contact < ActiveRecord::Base
     }.to_json
   end
 
-  default_scope { where(patron_id: Patron.current_id) }
+  default_scope { where(patron_id: Nimbos::Patron.current_id) }
   scope :latest, order("created_at desc")
 
   def to_s

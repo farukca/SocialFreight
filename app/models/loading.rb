@@ -6,13 +6,13 @@ class Loading < ActiveRecord::Base
   
   include Tire::Model::Search
   include Tire::Model::Callbacks
-  index_name { "loadings-#{Patron.current_id}" }
+  index_name { "loadings-#{Nimbos::Patron.current_id}" }
 
   #include GeneratesNick
-  include GeneratesPost
-  include GeneratesActivity
+  include Nimbos::Concerns::GeneratesPost
+  include Nimbos::Concerns::GeneratesActivity
 
-  belongs_to :patron
+  belongs_to :patron, class_name: Nimbos::Patron
   friendly_id :reference, use: :slugged, use: :scoped, scope: :patron
   
   belongs_to :position, counter_cache: true, touch: true
@@ -23,10 +23,10 @@ class Loading < ActiveRecord::Base
   belongs_to :sender, :class_name => "Company", :foreign_key => "sender_id"
   belongs_to :consignee, :class_name => "Company", :foreign_key => "consignee_id"
 
-  belongs_to :user
-  belongs_to :saler, :class_name => "User", :foreign_key => "saler_id"
-  belongs_to :creater, :class_name => "User", :foreign_key => "creater_id"
-  belongs_to :updater, :class_name => "User", :foreign_key => "updater_id"
+  belongs_to :user, class_name: "Nimbos::User"
+  belongs_to :saler, :class_name => "Nimbos::User", :foreign_key => "saler_id"
+  belongs_to :creater, :class_name => "Nimbos::User", :foreign_key => "creater_id"
+  belongs_to :updater, :class_name => "Nimbos::User", :foreign_key => "updater_id"
 
   has_many   :departures
   has_many   :arrivals
@@ -67,7 +67,7 @@ class Loading < ActiveRecord::Base
   validates :marks_nos, length: { maximum: 60 }
   validates :notes, length: { maximum: 500 }
 
-  default_scope { where(patron_id: Patron.current_id) }
+  default_scope { where(patron_id: Nimbos::Patron.current_id) }
   scope :active, where(status: "A")
   scope :air, where(operation: "air")
   scope :sea, where(operation: "sea")
@@ -108,7 +108,7 @@ private
   def set_initials
     #counter = self.patron.generate_counter("Loading", self.operation, nil)
     #self.reference = self.operation + "." + self.direction + "." + sprintf('%07d', counter)
-    self.reference = Patron.generate_counter("Loading", self.operation, nil)
+    self.reference = Nimbos::Patron.generate_counter("Loading", self.operation, nil)
     set_slug(self.reference)
   end
 

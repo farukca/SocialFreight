@@ -7,8 +7,12 @@ class Company < ActiveRecord::Base
 
   include Tire::Model::Search
   include Tire::Model::Callbacks
-  index_name { "companies-#{Patron.current_id}" }
+  index_name { "companies-#{Nimbos::Patron.current_id}" }
   #include Searchable
+
+  #include GeneratesNick
+  include Nimbos::Concerns::GeneratePost
+  include Nimbos::Concerns::GenerateActivity
 
   mapping do
     indexes :id, index: :not_analyzed
@@ -25,20 +29,13 @@ class Company < ActiveRecord::Base
     indexes :created_at, type: 'date', index: :not_analyzed
   end
 
-  #include GeneratesNick
-  include GeneratesPost
-  include GeneratesActivity
-
   friendly_id :name, use: :slugged, use: :scoped, scope: :patron_id
 
-  #belongs_to :patron
-  belongs_to :branch
-  #belongs_to :city
-  #belongs_to :state
-  belongs_to :country
-  belongs_to :user
-  belongs_to :saler, :class_name => User, :inverse_of => :saler
-  belongs_to :parent, :class_name => Company, :inverse_of => :parent
+  belongs_to :branch, :class_name => "Nimbos::Branch"
+  belongs_to :country, :class_name => "Nimbos::Country"
+  belongs_to :user, :class_name => "Nimbos::User"
+  belongs_to :saler, :class_name => "Nimbos::User", :inverse_of => :saler
+  belongs_to :parent, :class_name => "Company", :inverse_of => :parent
 
   has_many :contacts
   has_many :events, as: :eventable, dependent: :destroy
@@ -68,7 +65,7 @@ class Company < ActiveRecord::Base
 
   after_create  :set_after_jobs
 
-  default_scope { where(patron_id: Patron.current_id) }
+  default_scope { where(patron_id: Nimbos::Patron.current_id) }
   scope :latest, order("created_at desc")
 
   def to_indexed_json
@@ -114,11 +111,11 @@ class Company < ActiveRecord::Base
 
   private
   def set_initials
-    self.company_no = Patron.generate_counter("Company", nil, nil)
+    self.company_no = Nimbos::Patron.generate_counter("Company", nil, nil)
   end
 
   def set_after_jobs
-    self.user.follow!(self) if self.user
+    #self.user.follow!(self) if self.user
       #self.user.create_activity(self, name, patron_id, patron_token)
       #Patron.journal_record(self.patron_id, user, branch, nil, self.class.name, 1, 0)
   end

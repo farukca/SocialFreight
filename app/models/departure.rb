@@ -23,7 +23,7 @@ class Departure < ActiveRecord::Base
   validates :district, length: { maximum: 30 }
   validates :postcode, length: { maximum: 5 }
 
-  default_scope { where(patron_id: Patron.current_id) }
+  default_scope { where(patron_id: Nimbos::Patron.current_id) }
   
   def gmaps4rails_address
     "#{self.address}, #{self.district}, #{self.city.name}, #{self.country.name}"

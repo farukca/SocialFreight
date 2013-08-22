@@ -30,12 +30,15 @@ PATH
   specs:
     nimbos (0.0.1)
       bcrypt-ruby (= 3.0.1)
+      carrierwave
       client_side_validations
       client_side_validations-simple_form
+      cloudinary
       coffee-rails (~> 3.2.1)
       eco
       execjs
       jbuilder
+      mini_magick
       rails (~> 3.2.13)
       resque
       rolify
@@ -88,7 +91,6 @@ GEM
     arel (3.0.2)
     aws_cf_signer (0.1.1)
     bcrypt-ruby (3.0.1)
-    bcrypt-ruby (3.0.1-x86-mingw32)
     builder (3.0.4)
     cancan (1.6.7)
     capistrano (2.13.5)

@@ -13,7 +13,7 @@
 //= require bootstrap
 // require highcharts
 //= require select2
-//= require patron
+// require patron
 //= require loading
 //= require search
 //= require bootstrap-datepicker
@@ -25,12 +25,12 @@
 //= require searches
 //= require operation_wizard
 //= require connects
-//= require todolists
-//= require tasks
+// require todolists
+// require tasks
 //= require costs
-//= require comments
+// require comments
 // require templates/tasks/tasks.jst.eco
-//= require templates/comments/form.jst.eco
+// require templates/comments/form.jst.eco
 // require templates/positions/positions.jst.eco
 // require templates/loadings/reservations.jst.eco
 // require_tree.

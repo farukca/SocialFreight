@@ -28,15 +28,15 @@ class ApplicationController < ActionController::Base
   private
   def current_patron
     #@current_patron ||= Patron.find(session[:patron_id]) if session[:patron_id]
-    @current_patron ||= Patron.find(current_user.patron_id) if current_user
+    @current_patron ||= Nimbos::Patron.find(current_user.patron_id) if current_user
   end
   helper_method :current_patron
 
   def scope_current_patron
-    Patron.current_id = current_patron.id if current_patron
+    Nimbos::Patron.current_id = current_patron.id if current_patron
     yield
   ensure
-    Patron.current_id = nil
+    Nimbos::Patron.current_id = nil
   end
 
   def current_operation

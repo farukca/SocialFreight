@@ -1,8 +1,0 @@
-<form id="new_comment_<%= @comment.commentable_type %>_<%= @comment.commentable_id %>" class="form-horizontal" action="<%= @comment.commentable_path %>/comments" data-remote="true" method="post">
-  <input name="authenticity_token" type="hidden" value="" />
-  <div class="row-fluid">
-    <div class="row-fluid">
-      <input class="input-block-level" id="comment_comment_text" name="comment[comment_text]" size="30" type="text" />
-    </div>
-  </div>  
-</form>

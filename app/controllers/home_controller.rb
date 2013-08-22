@@ -4,7 +4,7 @@ class HomeController < ApplicationController
 
   def index
     if current_user && current_patron
-      redirect_to user_path(current_user)
+      redirect_to nimbos.user_path(current_user)
     else
       @betauser = Betauser.new
     end

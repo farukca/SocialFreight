@@ -16,7 +16,7 @@ class Container < ActiveRecord::Base
   #validates :free_day, numericality: true
   #validates :demurrage, numericality: true
 
-  default_scope { where(patron_id: Patron.current_id) }
+  default_scope { where(patron_id: Nimbos::Patron.current_id) }
 
   public
   def header

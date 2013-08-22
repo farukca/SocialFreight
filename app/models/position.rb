@@ -6,20 +6,20 @@ class Position < ActiveRecord::Base
   extend FriendlyId
   include Tire::Model::Search
   include Tire::Model::Callbacks
-  index_name { "loadings-#{Patron.current_id}" }
+  index_name { "loadings-#{Nimbos::Patron.current_id}" }
 
   #include GeneratesNick
-  include GeneratesPost
-  include GeneratesActivity
+  include Nimbos::Concerns::GeneratesPost
+  include Nimbos::Concerns::GeneratesActivity
   
-  belongs_to :patron  
+  belongs_to :patron, class_name: Nimbos::Patron
   friendly_id :reference, use: :slugged, use: :scoped, scope: :patron
   
-  belongs_to :branch
+  belongs_to :branch, class_name: Nimbos::Branch
   belongs_to :agent, :class_name => "Company", :foreign_key => "agent_id"
   belongs_to :load_place, :class_name => "Place", :foreign_key => "load_place_id"
   belongs_to :unload_place, :class_name => "Place", :foreign_key => "unload_place_id"
-  belongs_to :user
+  belongs_to :user, class_name: Nimbos::User
 
   has_many :loadings, dependent: :nullify
   has_many :costs, as: :costable, dependent: :destroy
@@ -47,7 +47,7 @@ class Position < ActiveRecord::Base
   validates :description, presence: { message: I18n.t('defaults.inputerror.cant_be_blank') }, length: { maximum: 255 }
   validates :notes, length: { maximum: 500 }
 
-  default_scope { where(patron_id: Patron.current_id) }
+  default_scope { where(patron_id: Nimbos::Patron.current_id) }
   scope :active, where(status: "A")
   scope :air, where(operation: "air")
   scope :sea, where(operation: "sea")
@@ -77,7 +77,7 @@ class Position < ActiveRecord::Base
 
 private
   def set_initials
-    self.reference = Patron.generate_counter("Position", self.operation, self.direction)
+    self.reference = Nimbos::Patron.generate_counter("Position", self.operation, self.direction)
     set_slug(self.reference.parameterize) #.gsub(/[.?*!^%&/(_)=]/, '').parameterize
   end
 

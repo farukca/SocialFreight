@@ -11,7 +11,7 @@ class Package < ActiveRecord::Base
   validates :container_no, length: { maximum: 40 }
   validates :imo, :gtip, :po, length: { maximum: 20 }
 
-  default_scope { where(patron_id: Patron.current_id) }
+  default_scope { where(patron_id: Nimbos::Patron.current_id) }
 
   class << self
     def pack_types()

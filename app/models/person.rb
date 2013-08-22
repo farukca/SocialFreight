@@ -1,7 +1,7 @@
 class Person < ActiveRecord::Base
 
 
-  belongs_to :patron
+  belongs_to :patron, class_name: Nimbos::Patron
 
   belongs_to :user
   belongs_to :country
@@ -16,7 +16,7 @@ class Person < ActiveRecord::Base
   #validates :name, presence: true, length: { in: 2..30 }
   #validates :surname, presence: true, length: { in: 2..30 }
 
-  default_scope { where(patron_id: Patron.current_id) }
+  default_scope { where(patron_id: Nimbos::Patron.current_id) }
   scope :latest, order("created_at desc")
 
   def to_s

@@ -1,9 +1,0 @@
-<% if @tasks.length: %>
-  <% for task in @tasks: %>
-    <li>
-      <%= task.task_text %>
-    </li>
-  <% end %>
-<% else: %>
-  <div class="alert alert-warning">No tasks found</div>
-<% end %>

@@ -19,6 +19,6 @@ class Cost < ActiveRecord::Base
   validates_presence_of :user_id
   validates_presence_of :patron_id
 
-  default_scope { where(patron_id: Patron.current_id) }
+  default_scope { where(patron_id: Nimbos::Patron.current_id) }
   
 end

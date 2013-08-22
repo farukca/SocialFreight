@@ -1,8 +1,0 @@
-<li class="media">
-  <div class="feedline">
-    <%= link_to user_mini_avatar(comment.user), user_path(comment.user), class: "pull-left" %>
-    <span><%= link_to comment.user, user_path(comment.user) %></span>
-    <span><%= comment.comment_text %></span>
-    <span class="sub-info"><%= comment.created_at.to_s(:pretty) %></span>
-  </div>
-</li>

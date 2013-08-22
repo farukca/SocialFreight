@@ -9,7 +9,7 @@
  *= require bootstrap_changes
  *= require datepicker
  *= require contacts
- *= require tasks
+ * require tasks
  *= require gmaps4rails
  *= require token-input
  * require chosen

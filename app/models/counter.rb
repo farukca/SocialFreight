@@ -7,7 +7,7 @@ class Counter < ActiveRecord::Base
   validates :count, numericality: { only_integer: true }
   validates :prefix, presence: true, :if => Proc.new { |a| a.operation.present? }
 
-  default_scope { where(patron_id: Patron.current_id) }
+  default_scope { where(patron_id: Nimbos::Patron.current_id) }
   
   def get_reference
     strRef = ""
