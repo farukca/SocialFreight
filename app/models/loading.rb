@@ -9,8 +9,8 @@ class Loading < ActiveRecord::Base
   index_name { "loadings-#{Nimbos::Patron.current_id}" }
 
   #include GeneratesNick
-  include Nimbos::Concerns::GeneratesPost
-  include Nimbos::Concerns::GeneratesActivity
+  include Nimbos::Concerns::GeneratePost
+  include Nimbos::Concerns::GenerateActivity
 
   belongs_to :patron, class_name: Nimbos::Patron
   friendly_id :reference, use: :slugged, use: :scoped, scope: :patron
