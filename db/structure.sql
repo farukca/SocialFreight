@@ -22,571 +22,25 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 
+--
+-- Name: hstore; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS hstore WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION hstore; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION hstore IS 'data type for storing sets of (key, value) pairs';
+
+
 SET search_path = public, pg_catalog;
-
---
--- Name: ghstore; Type: SHELL TYPE; Schema: public; Owner: -
---
-
-CREATE TYPE ghstore;
-
-
---
--- Name: ghstore_in(cstring); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION ghstore_in(cstring) RETURNS ghstore
-    LANGUAGE c STRICT
-    AS '$libdir/hstore', 'ghstore_in';
-
-
---
--- Name: ghstore_out(ghstore); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION ghstore_out(ghstore) RETURNS cstring
-    LANGUAGE c STRICT
-    AS '$libdir/hstore', 'ghstore_out';
-
-
---
--- Name: ghstore; Type: TYPE; Schema: public; Owner: -
---
-
-CREATE TYPE ghstore (
-    INTERNALLENGTH = variable,
-    INPUT = ghstore_in,
-    OUTPUT = ghstore_out,
-    ALIGNMENT = int4,
-    STORAGE = plain
-);
-
-
---
--- Name: hstore; Type: SHELL TYPE; Schema: public; Owner: -
---
-
-CREATE TYPE hstore;
-
-
---
--- Name: hstore_in(cstring); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION hstore_in(cstring) RETURNS hstore
-    LANGUAGE c STRICT
-    AS '$libdir/hstore', 'hstore_in';
-
-
---
--- Name: hstore_out(hstore); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION hstore_out(hstore) RETURNS cstring
-    LANGUAGE c STRICT
-    AS '$libdir/hstore', 'hstore_out';
-
-
---
--- Name: hstore; Type: TYPE; Schema: public; Owner: -
---
-
-CREATE TYPE hstore (
-    INTERNALLENGTH = variable,
-    INPUT = hstore_in,
-    OUTPUT = hstore_out,
-    ALIGNMENT = int4,
-    STORAGE = extended
-);
-
-
---
--- Name: akeys(hstore); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION akeys(hstore) RETURNS text[]
-    LANGUAGE c IMMUTABLE STRICT
-    AS '$libdir/hstore', 'akeys';
-
-
---
--- Name: avals(hstore); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION avals(hstore) RETURNS text[]
-    LANGUAGE c IMMUTABLE STRICT
-    AS '$libdir/hstore', 'avals';
-
-
---
--- Name: defined(hstore, text); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION defined(hstore, text) RETURNS boolean
-    LANGUAGE c IMMUTABLE STRICT
-    AS '$libdir/hstore', 'defined';
-
-
---
--- Name: delete(hstore, text); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION delete(hstore, text) RETURNS hstore
-    LANGUAGE c IMMUTABLE STRICT
-    AS '$libdir/hstore', 'delete';
-
-
---
--- Name: each(hstore); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION each(hs hstore, OUT key text, OUT value text) RETURNS SETOF record
-    LANGUAGE c IMMUTABLE STRICT
-    AS '$libdir/hstore', 'each';
-
-
---
--- Name: exist(hstore, text); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION exist(hstore, text) RETURNS boolean
-    LANGUAGE c IMMUTABLE STRICT
-    AS '$libdir/hstore', 'exists';
-
-
---
--- Name: fetchval(hstore, text); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION fetchval(hstore, text) RETURNS text
-    LANGUAGE c IMMUTABLE STRICT
-    AS '$libdir/hstore', 'fetchval';
-
-
---
--- Name: ghstore_compress(internal); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION ghstore_compress(internal) RETURNS internal
-    LANGUAGE c IMMUTABLE STRICT
-    AS '$libdir/hstore', 'ghstore_compress';
-
-
---
--- Name: ghstore_consistent(internal, internal, integer, oid, internal); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION ghstore_consistent(internal, internal, integer, oid, internal) RETURNS boolean
-    LANGUAGE c IMMUTABLE STRICT
-    AS '$libdir/hstore', 'ghstore_consistent';
-
-
---
--- Name: ghstore_decompress(internal); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION ghstore_decompress(internal) RETURNS internal
-    LANGUAGE c IMMUTABLE STRICT
-    AS '$libdir/hstore', 'ghstore_decompress';
-
-
---
--- Name: ghstore_penalty(internal, internal, internal); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION ghstore_penalty(internal, internal, internal) RETURNS internal
-    LANGUAGE c IMMUTABLE STRICT
-    AS '$libdir/hstore', 'ghstore_penalty';
-
-
---
--- Name: ghstore_picksplit(internal, internal); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION ghstore_picksplit(internal, internal) RETURNS internal
-    LANGUAGE c IMMUTABLE STRICT
-    AS '$libdir/hstore', 'ghstore_picksplit';
-
-
---
--- Name: ghstore_same(internal, internal, internal); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION ghstore_same(internal, internal, internal) RETURNS internal
-    LANGUAGE c IMMUTABLE STRICT
-    AS '$libdir/hstore', 'ghstore_same';
-
-
---
--- Name: ghstore_union(internal, internal); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION ghstore_union(internal, internal) RETURNS internal
-    LANGUAGE c IMMUTABLE STRICT
-    AS '$libdir/hstore', 'ghstore_union';
-
-
---
--- Name: gin_consistent_hstore(internal, smallint, internal, integer, internal, internal); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION gin_consistent_hstore(internal, smallint, internal, integer, internal, internal) RETURNS boolean
-    LANGUAGE c IMMUTABLE STRICT
-    AS '$libdir/hstore', 'gin_consistent_hstore';
-
-
---
--- Name: gin_extract_hstore(internal, internal); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION gin_extract_hstore(internal, internal) RETURNS internal
-    LANGUAGE c IMMUTABLE STRICT
-    AS '$libdir/hstore', 'gin_extract_hstore';
-
-
---
--- Name: gin_extract_hstore_query(internal, internal, smallint, internal, internal); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION gin_extract_hstore_query(internal, internal, smallint, internal, internal) RETURNS internal
-    LANGUAGE c IMMUTABLE STRICT
-    AS '$libdir/hstore', 'gin_extract_hstore_query';
-
-
---
--- Name: hs_concat(hstore, hstore); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION hs_concat(hstore, hstore) RETURNS hstore
-    LANGUAGE c IMMUTABLE STRICT
-    AS '$libdir/hstore', 'hs_concat';
-
-
---
--- Name: hs_contained(hstore, hstore); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION hs_contained(hstore, hstore) RETURNS boolean
-    LANGUAGE c IMMUTABLE STRICT
-    AS '$libdir/hstore', 'hs_contained';
-
-
---
--- Name: hs_contains(hstore, hstore); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION hs_contains(hstore, hstore) RETURNS boolean
-    LANGUAGE c IMMUTABLE STRICT
-    AS '$libdir/hstore', 'hs_contains';
-
-
---
--- Name: isdefined(hstore, text); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION isdefined(hstore, text) RETURNS boolean
-    LANGUAGE c IMMUTABLE STRICT
-    AS '$libdir/hstore', 'defined';
-
-
---
--- Name: isexists(hstore, text); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION isexists(hstore, text) RETURNS boolean
-    LANGUAGE c IMMUTABLE STRICT
-    AS '$libdir/hstore', 'exists';
-
 
 SET default_tablespace = '';
 
 SET default_with_oids = false;
-
---
--- Name: queue_classic_jobs; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE queue_classic_jobs (
-    id integer NOT NULL,
-    q_name character varying(255),
-    method character varying(255),
-    args text,
-    locked_at timestamp with time zone
-);
-
-
---
--- Name: lock_head(character varying); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION lock_head(tname character varying) RETURNS SETOF queue_classic_jobs
-    LANGUAGE plpgsql
-    AS $_$
-BEGIN
-  RETURN QUERY EXECUTE 'SELECT * FROM lock_head($1,10)' USING tname;
-END;
-$_$;
-
-
---
--- Name: lock_head(character varying, integer); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION lock_head(q_name character varying, top_boundary integer) RETURNS SETOF queue_classic_jobs
-    LANGUAGE plpgsql
-    AS $_$
-DECLARE
-  unlocked integer;
-  relative_top integer;
-  job_count integer;
-BEGIN
-  -- The purpose is to release contention for the first spot in the table.
-  -- The select count(*) is going to slow down dequeue performance but allow
-  -- for more workers. Would love to see some optimization here...
-
-  EXECUTE 'SELECT count(*) FROM '
-    || '(SELECT * FROM queue_classic_jobs WHERE q_name = '
-    || quote_literal(q_name)
-    || ' LIMIT '
-    || quote_literal(top_boundary)
-    || ') limited'
-  INTO job_count;
-
-  SELECT TRUNC(random() * (top_boundary - 1))
-  INTO relative_top;
-
-  IF job_count < top_boundary THEN
-    relative_top = 0;
-  END IF;
-
-  LOOP
-    BEGIN
-      EXECUTE 'SELECT id FROM queue_classic_jobs '
-        || ' WHERE locked_at IS NULL'
-        || ' AND q_name = '
-        || quote_literal(q_name)
-        || ' ORDER BY id ASC'
-        || ' LIMIT 1'
-        || ' OFFSET ' || quote_literal(relative_top)
-        || ' FOR UPDATE NOWAIT'
-      INTO unlocked;
-      EXIT;
-    EXCEPTION
-      WHEN lock_not_available THEN
-        -- do nothing. loop again and hope we get a lock
-    END;
-  END LOOP;
-
-  RETURN QUERY EXECUTE 'UPDATE queue_classic_jobs '
-    || ' SET locked_at = (CURRENT_TIMESTAMP)'
-    || ' WHERE id = $1'
-    || ' AND locked_at is NULL'
-    || ' RETURNING *'
-  USING unlocked;
-
-  RETURN;
-END;
-$_$;
-
-
---
--- Name: skeys(hstore); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION skeys(hstore) RETURNS SETOF text
-    LANGUAGE c IMMUTABLE STRICT
-    AS '$libdir/hstore', 'skeys';
-
-
---
--- Name: svals(hstore); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION svals(hstore) RETURNS SETOF text
-    LANGUAGE c IMMUTABLE STRICT
-    AS '$libdir/hstore', 'svals';
-
-
---
--- Name: tconvert(text, text); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION tconvert(text, text) RETURNS hstore
-    LANGUAGE c IMMUTABLE
-    AS '$libdir/hstore', 'tconvert';
-
-
---
--- Name: ->; Type: OPERATOR; Schema: public; Owner: -
---
-
-CREATE OPERATOR -> (
-    PROCEDURE = fetchval,
-    LEFTARG = hstore,
-    RIGHTARG = text
-);
-
-
---
--- Name: <@; Type: OPERATOR; Schema: public; Owner: -
---
-
-CREATE OPERATOR <@ (
-    PROCEDURE = hs_contained,
-    LEFTARG = hstore,
-    RIGHTARG = hstore,
-    COMMUTATOR = @>,
-    RESTRICT = contsel,
-    JOIN = contjoinsel
-);
-
-
---
--- Name: =>; Type: OPERATOR; Schema: public; Owner: -
---
-
-CREATE OPERATOR => (
-    PROCEDURE = tconvert,
-    LEFTARG = text,
-    RIGHTARG = text
-);
-
-
---
--- Name: ?; Type: OPERATOR; Schema: public; Owner: -
---
-
-CREATE OPERATOR ? (
-    PROCEDURE = exist,
-    LEFTARG = hstore,
-    RIGHTARG = text,
-    RESTRICT = contsel,
-    JOIN = contjoinsel
-);
-
-
---
--- Name: @; Type: OPERATOR; Schema: public; Owner: -
---
-
-CREATE OPERATOR @ (
-    PROCEDURE = hs_contains,
-    LEFTARG = hstore,
-    RIGHTARG = hstore,
-    COMMUTATOR = ~,
-    RESTRICT = contsel,
-    JOIN = contjoinsel
-);
-
-
---
--- Name: @>; Type: OPERATOR; Schema: public; Owner: -
---
-
-CREATE OPERATOR @> (
-    PROCEDURE = hs_contains,
-    LEFTARG = hstore,
-    RIGHTARG = hstore,
-    COMMUTATOR = <@,
-    RESTRICT = contsel,
-    JOIN = contjoinsel
-);
-
-
---
--- Name: ||; Type: OPERATOR; Schema: public; Owner: -
---
-
-CREATE OPERATOR || (
-    PROCEDURE = hs_concat,
-    LEFTARG = hstore,
-    RIGHTARG = hstore
-);
-
-
---
--- Name: ~; Type: OPERATOR; Schema: public; Owner: -
---
-
-CREATE OPERATOR ~ (
-    PROCEDURE = hs_contained,
-    LEFTARG = hstore,
-    RIGHTARG = hstore,
-    COMMUTATOR = @,
-    RESTRICT = contsel,
-    JOIN = contjoinsel
-);
-
-
---
--- Name: gin_hstore_ops; Type: OPERATOR CLASS; Schema: public; Owner: -
---
-
-CREATE OPERATOR CLASS gin_hstore_ops
-    DEFAULT FOR TYPE hstore USING gin AS
-    STORAGE text ,
-    OPERATOR 7 @>(hstore,hstore) ,
-    OPERATOR 9 ?(hstore,text) ,
-    FUNCTION 1 bttextcmp(text,text) ,
-    FUNCTION 2 gin_extract_hstore(internal,internal) ,
-    FUNCTION 3 gin_extract_hstore_query(internal,internal,smallint,internal,internal) ,
-    FUNCTION 4 gin_consistent_hstore(internal,smallint,internal,integer,internal,internal);
-
-
---
--- Name: gist_hstore_ops; Type: OPERATOR CLASS; Schema: public; Owner: -
---
-
-CREATE OPERATOR CLASS gist_hstore_ops
-    DEFAULT FOR TYPE hstore USING gist AS
-    STORAGE ghstore ,
-    OPERATOR 7 @>(hstore,hstore) ,
-    OPERATOR 9 ?(hstore,text) ,
-    OPERATOR 13 @(hstore,hstore) ,
-    FUNCTION 1 ghstore_consistent(internal,internal,integer,oid,internal) ,
-    FUNCTION 2 ghstore_union(internal,internal) ,
-    FUNCTION 3 ghstore_compress(internal) ,
-    FUNCTION 4 ghstore_decompress(internal) ,
-    FUNCTION 5 ghstore_penalty(internal,internal,internal) ,
-    FUNCTION 6 ghstore_picksplit(internal,internal) ,
-    FUNCTION 7 ghstore_same(internal,internal,internal);
-
-
---
--- Name: activities; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE activities (
-    id integer NOT NULL,
-    user_id integer NOT NULL,
-    target_type character varying(40),
-    target_id integer,
-    target_name character varying(60),
-    patron_id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    branch_id integer DEFAULT 0
-);
-
-
---
--- Name: activities_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE activities_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: activities_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE activities_id_seq OWNED BY activities.id;
-
 
 --
 -- Name: arrivals; Type: TABLE; Schema: public; Owner: -; Tablespace: 
@@ -850,92 +304,6 @@ ALTER SEQUENCE blogger_articles_id_seq OWNED BY blogger_articles.id;
 
 
 --
--- Name: branches; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE branches (
-    id integer NOT NULL,
-    name character varying(40) NOT NULL,
-    tel character varying(15),
-    fax character varying(15),
-    email character varying(40),
-    postcode character varying(5),
-    address character varying(80),
-    district character varying(40),
-    city_id integer,
-    state_id integer,
-    country_id character varying(2),
-    status character varying(1) DEFAULT 'A'::character varying,
-    patron_id integer NOT NULL,
-    latitude double precision,
-    longitude double precision,
-    gmaps boolean,
-    slug character varying(40),
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    city character varying(100)
-);
-
-
---
--- Name: branches_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE branches_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: branches_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE branches_id_seq OWNED BY branches.id;
-
-
---
--- Name: cases; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE cases (
-    id integer NOT NULL,
-    company_id integer NOT NULL,
-    case_date date NOT NULL,
-    case_type character varying(40) NOT NULL,
-    case_source character varying(40),
-    source_url character varying(100),
-    case_status character varying(10),
-    description text,
-    user_id integer NOT NULL,
-    patron_id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: cases_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE cases_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: cases_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE cases_id_seq OWNED BY cases.id;
-
-
---
 -- Name: cities; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -970,42 +338,6 @@ CREATE SEQUENCE cities_id_seq
 --
 
 ALTER SEQUENCE cities_id_seq OWNED BY cities.id;
-
-
---
--- Name: comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE comments (
-    id integer NOT NULL,
-    user_id integer NOT NULL,
-    comment_text character varying(300),
-    commentable_type character varying(40),
-    commentable_id integer,
-    commenter character varying(1) DEFAULT 'U'::character varying,
-    patron_id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: comments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE comments_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
 
 
 --
@@ -1265,31 +597,6 @@ ALTER SEQUENCE counters_id_seq OWNED BY counters.id;
 
 
 --
--- Name: countries; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE countries (
-    code character varying(2) NOT NULL,
-    name character varying(40) NOT NULL,
-    telcode character varying(10),
-    latitude double precision,
-    longitude double precision,
-    gmaps boolean,
-    slug character varying(40),
-    locale character varying(20),
-    language character varying(10),
-    time_zone character varying(255),
-    mail_encoding character varying(20),
-    domain character varying(10),
-    code3 character varying(3),
-    currency character varying(20),
-    region character varying(100),
-    subregion character varying(100),
-    listable boolean DEFAULT true
-);
-
-
---
 -- Name: currates; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1328,18 +635,6 @@ CREATE SEQUENCE currates_id_seq
 --
 
 ALTER SEQUENCE currates_id_seq OWNED BY currates.id;
-
-
---
--- Name: currencies; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE currencies (
-    code character varying(5) NOT NULL,
-    name character varying(40) NOT NULL,
-    symbol character varying(1),
-    multiplier double precision DEFAULT 1 NOT NULL
-);
 
 
 --
@@ -1939,75 +1234,6 @@ ALTER SEQUENCE likes_id_seq OWNED BY likes.id;
 
 
 --
--- Name: listheaders; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE listheaders (
-    id integer NOT NULL,
-    code character varying(255),
-    name character varying(255),
-    i18n_code character varying(255),
-    description character varying(255),
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: listheaders_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE listheaders_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: listheaders_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE listheaders_id_seq OWNED BY listheaders.id;
-
-
---
--- Name: listitems; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE listitems (
-    id integer NOT NULL,
-    code character varying(255),
-    name character varying(255),
-    list_code character varying(255),
-    i18n_code character varying(255),
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    listheader_id integer NOT NULL
-);
-
-
---
--- Name: listitems_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE listitems_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: listitems_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE listitems_id_seq OWNED BY listitems.id;
-
-
---
 -- Name: loadings; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2277,7 +1503,7 @@ ALTER SEQUENCE nimbos_comments_id_seq OWNED BY nimbos_comments.id;
 --
 
 CREATE TABLE nimbos_countries (
-    code integer NOT NULL,
+    code character varying(2) NOT NULL,
     name character varying(40) NOT NULL,
     telcode character varying(10),
     latitude double precision,
@@ -2299,55 +1525,17 @@ CREATE TABLE nimbos_countries (
 
 
 --
--- Name: nimbos_countries_code_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE nimbos_countries_code_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: nimbos_countries_code_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE nimbos_countries_code_seq OWNED BY nimbos_countries.code;
-
-
---
 -- Name: nimbos_currencies; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE nimbos_currencies (
-    code integer NOT NULL,
+    code character varying(5) NOT NULL,
     name character varying(40) NOT NULL,
     symbol character varying(1),
     multiplier numeric(5,0) DEFAULT 1 NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
-
-
---
--- Name: nimbos_currencies_code_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE nimbos_currencies_code_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: nimbos_currencies_code_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE nimbos_currencies_code_seq OWNED BY nimbos_currencies.code;
 
 
 --
@@ -2791,69 +1979,6 @@ ALTER SEQUENCE partners_id_seq OWNED BY partners.id;
 
 
 --
--- Name: patrons; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE patrons (
-    id integer NOT NULL,
-    name character varying(40) NOT NULL,
-    title character varying(60),
-    email character varying(60) NOT NULL,
-    website character varying(60),
-    tel character varying(20),
-    fax character varying(20),
-    gsm character varying(20),
-    postcode character varying(5),
-    address character varying(60),
-    contact_name character varying(40),
-    contact_surname character varying(40),
-    city_id integer,
-    state_id integer,
-    country_id character varying(2),
-    patron_type character varying(20),
-    employees character varying(10),
-    language character varying(2),
-    status character varying(1) DEFAULT 'A'::character varying,
-    logo character varying(255),
-    token character varying(40),
-    slug character varying(40),
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    time_zone character varying(30),
-    district character varying(40),
-    currency character varying(10),
-    operations character varying(100),
-    vehicle_owner boolean DEFAULT false,
-    depot_owner boolean DEFAULT false,
-    iata_code character varying(30),
-    fmc_code character varying(30),
-    locale character varying(20),
-    mail_encoding character varying(20),
-    city character varying(100),
-    state character varying(100)
-);
-
-
---
--- Name: patrons_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE patrons_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: patrons_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE patrons_id_seq OWNED BY patrons.id;
-
-
---
 -- Name: payments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -3133,105 +2258,6 @@ ALTER SEQUENCE positions_id_seq OWNED BY positions.id;
 
 
 --
--- Name: posts; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE posts (
-    id integer NOT NULL,
-    user_id integer NOT NULL,
-    message character varying(300),
-    target_type character varying(40),
-    target_id integer,
-    target_name character varying(40),
-    post_type character varying(2),
-    is_private boolean DEFAULT false,
-    is_syspost boolean DEFAULT false,
-    patron_id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: posts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE posts_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: posts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE posts_id_seq OWNED BY posts.id;
-
-
---
--- Name: queue_classic_jobs_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE queue_classic_jobs_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: queue_classic_jobs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE queue_classic_jobs_id_seq OWNED BY queue_classic_jobs.id;
-
-
---
--- Name: reminders; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE reminders (
-    id integer NOT NULL,
-    title character varying(255) NOT NULL,
-    start_date date NOT NULL,
-    start_hour character varying(5),
-    finish_date date,
-    calendar_scope character varying(40),
-    description text,
-    remindfor_type character varying(100),
-    remindfor_id integer,
-    user_id integer NOT NULL,
-    patron_id integer NOT NULL,
-    trashed boolean DEFAULT false,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: reminders_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE reminders_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: reminders_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE reminders_id_seq OWNED BY reminders.id;
-
-
---
 -- Name: rentals; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -3446,48 +2472,6 @@ ALTER SEQUENCE states_id_seq OWNED BY states.id;
 
 
 --
--- Name: tasks; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE tasks (
-    id integer NOT NULL,
-    user_id integer NOT NULL,
-    task_text character varying(1000) NOT NULL,
-    task_code character varying(50),
-    i18n_code character varying(50),
-    cruser_id integer,
-    status character varying(1) DEFAULT 'A'::character varying,
-    due_date date,
-    closed_date date,
-    close_text character varying(255),
-    system_task boolean DEFAULT false,
-    patron_id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    todolist_id integer NOT NULL
-);
-
-
---
--- Name: tasks_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE tasks_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: tasks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE tasks_id_seq OWNED BY tasks.id;
-
-
---
 -- Name: teams; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -3518,43 +2502,6 @@ CREATE SEQUENCE teams_id_seq
 --
 
 ALTER SEQUENCE teams_id_seq OWNED BY teams.id;
-
-
---
--- Name: todolists; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE todolists (
-    id integer NOT NULL,
-    name character varying(255) NOT NULL,
-    user_id integer NOT NULL,
-    todop_type character varying(100),
-    todop_id integer,
-    patron_id integer NOT NULL,
-    tasks_count integer DEFAULT 0,
-    trashed boolean DEFAULT false,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: todolists_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE todolists_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: todolists_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE todolists_id_seq OWNED BY todolists.id;
 
 
 --
@@ -3652,6 +2599,7 @@ CREATE TABLE transports (
     user_id integer NOT NULL,
     dep_place_type character varying(1),
     arv_place_type character varying(1),
+    transports integer NOT NULL,
     patron_id integer NOT NULL,
     dep_place character varying(60),
     arv_place character varying(60),
@@ -3722,68 +2670,6 @@ CREATE SEQUENCE transroutes_id_seq
 --
 
 ALTER SEQUENCE transroutes_id_seq OWNED BY transroutes.id;
-
-
---
--- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE users (
-    id integer NOT NULL,
-    email character varying(40) NOT NULL,
-    crypted_password character varying(255),
-    salt character varying(255),
-    name character varying(40),
-    surname character varying(40),
-    patron_id integer,
-    patron_key character varying(20),
-    language character varying(255) DEFAULT 'en'::character varying,
-    time_zone character varying(255) DEFAULT 'Eastern Time (US & Canada)'::character varying,
-    locale character varying(8),
-    region character varying(2),
-    user_type character varying(2),
-    mail_encoding character varying(20),
-    last_login_at timestamp without time zone,
-    last_logout_at timestamp without time zone,
-    last_activity_at timestamp without time zone,
-    activation_state character varying(255),
-    activation_token character varying(255),
-    activation_token_expires_at timestamp without time zone,
-    password_reset_token character varying(255),
-    password_reset_email_time timestamp without time zone,
-    password_reset_token_expires_at timestamp without time zone,
-    failed_logins_count integer,
-    lock_expires_at integer,
-    role character varying(255),
-    avatar character varying(255),
-    slug character varying(255),
-    branch_id integer DEFAULT 0 NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    remember_me_token character varying(255) DEFAULT NULL::character varying,
-    remember_me_token_expires_at timestamp without time zone,
-    user_status character varying(1) DEFAULT 'A'::character varying,
-    firstuser boolean DEFAULT false
-);
-
-
---
--- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE users_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE users_id_seq OWNED BY users.id;
 
 
 --
@@ -3926,13 +2812,6 @@ ALTER SEQUENCE waybills_id_seq OWNED BY waybills.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY activities ALTER COLUMN id SET DEFAULT nextval('activities_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY arrivals ALTER COLUMN id SET DEFAULT nextval('arrivals_id_seq'::regclass);
 
 
@@ -3975,28 +2854,7 @@ ALTER TABLE ONLY blogger_articles ALTER COLUMN id SET DEFAULT nextval('blogger_a
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY branches ALTER COLUMN id SET DEFAULT nextval('branches_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY cases ALTER COLUMN id SET DEFAULT nextval('cases_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY cities ALTER COLUMN id SET DEFAULT nextval('cities_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq'::regclass);
 
 
 --
@@ -4143,20 +3001,6 @@ ALTER TABLE ONLY likes ALTER COLUMN id SET DEFAULT nextval('likes_id_seq'::regcl
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY listheaders ALTER COLUMN id SET DEFAULT nextval('listheaders_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY listitems ALTER COLUMN id SET DEFAULT nextval('listitems_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY loadings ALTER COLUMN id SET DEFAULT nextval('loadings_id_seq'::regclass);
 
 
@@ -4193,20 +3037,6 @@ ALTER TABLE ONLY nimbos_branches ALTER COLUMN id SET DEFAULT nextval('nimbos_bra
 --
 
 ALTER TABLE ONLY nimbos_comments ALTER COLUMN id SET DEFAULT nextval('nimbos_comments_id_seq'::regclass);
-
-
---
--- Name: code; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY nimbos_countries ALTER COLUMN code SET DEFAULT nextval('nimbos_countries_code_seq'::regclass);
-
-
---
--- Name: code; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY nimbos_currencies ALTER COLUMN code SET DEFAULT nextval('nimbos_currencies_code_seq'::regclass);
 
 
 --
@@ -4283,13 +3113,6 @@ ALTER TABLE ONLY partners ALTER COLUMN id SET DEFAULT nextval('partners_id_seq':
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY patrons ALTER COLUMN id SET DEFAULT nextval('patrons_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY payments ALTER COLUMN id SET DEFAULT nextval('payments_id_seq'::regclass);
 
 
@@ -4319,27 +3142,6 @@ ALTER TABLE ONLY places ALTER COLUMN id SET DEFAULT nextval('places_id_seq'::reg
 --
 
 ALTER TABLE ONLY positions ALTER COLUMN id SET DEFAULT nextval('positions_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY posts ALTER COLUMN id SET DEFAULT nextval('posts_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY queue_classic_jobs ALTER COLUMN id SET DEFAULT nextval('queue_classic_jobs_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY reminders ALTER COLUMN id SET DEFAULT nextval('reminders_id_seq'::regclass);
 
 
 --
@@ -4381,21 +3183,7 @@ ALTER TABLE ONLY states ALTER COLUMN id SET DEFAULT nextval('states_id_seq'::reg
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY tasks ALTER COLUMN id SET DEFAULT nextval('tasks_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY teams ALTER COLUMN id SET DEFAULT nextval('teams_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY todolists ALTER COLUMN id SET DEFAULT nextval('todolists_id_seq'::regclass);
 
 
 --
@@ -4423,13 +3211,6 @@ ALTER TABLE ONLY transroutes ALTER COLUMN id SET DEFAULT nextval('transroutes_id
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY vehicles ALTER COLUMN id SET DEFAULT nextval('vehicles_id_seq'::regclass);
 
 
@@ -4445,14 +3226,6 @@ ALTER TABLE ONLY vessels ALTER COLUMN id SET DEFAULT nextval('vessels_id_seq'::r
 --
 
 ALTER TABLE ONLY waybills ALTER COLUMN id SET DEFAULT nextval('waybills_id_seq'::regclass);
-
-
---
--- Name: activities_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY activities
-    ADD CONSTRAINT activities_pkey PRIMARY KEY (id);
 
 
 --
@@ -4504,35 +3277,11 @@ ALTER TABLE ONLY blogger_articles
 
 
 --
--- Name: branches_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY branches
-    ADD CONSTRAINT branches_pkey PRIMARY KEY (id);
-
-
---
--- Name: cases_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY cases
-    ADD CONSTRAINT cases_pkey PRIMARY KEY (id);
-
-
---
 -- Name: cities_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY cities
     ADD CONSTRAINT cities_pkey PRIMARY KEY (id);
-
-
---
--- Name: comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY comments
-    ADD CONSTRAINT comments_pkey PRIMARY KEY (id);
 
 
 --
@@ -4576,27 +3325,11 @@ ALTER TABLE ONLY counters
 
 
 --
--- Name: countries_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY countries
-    ADD CONSTRAINT countries_pkey PRIMARY KEY (code);
-
-
---
 -- Name: currates_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY currates
     ADD CONSTRAINT currates_pkey PRIMARY KEY (id);
-
-
---
--- Name: currencies_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY currencies
-    ADD CONSTRAINT currencies_pkey PRIMARY KEY (code);
 
 
 --
@@ -4709,22 +3442,6 @@ ALTER TABLE ONLY junks
 
 ALTER TABLE ONLY likes
     ADD CONSTRAINT likes_pkey PRIMARY KEY (id);
-
-
---
--- Name: listheaders_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY listheaders
-    ADD CONSTRAINT listheaders_pkey PRIMARY KEY (id);
-
-
---
--- Name: listitems_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY listitems
-    ADD CONSTRAINT listitems_pkey PRIMARY KEY (id);
 
 
 --
@@ -4856,6 +3573,14 @@ ALTER TABLE ONLY nimbos_users
 
 
 --
+-- Name: operations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY operations
+    ADD CONSTRAINT operations_pkey PRIMARY KEY (code);
+
+
+--
 -- Name: packages_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -4869,14 +3594,6 @@ ALTER TABLE ONLY packages
 
 ALTER TABLE ONLY partners
     ADD CONSTRAINT partners_pkey PRIMARY KEY (id);
-
-
---
--- Name: patrons_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY patrons
-    ADD CONSTRAINT patrons_pkey PRIMARY KEY (id);
 
 
 --
@@ -4904,14 +3621,6 @@ ALTER TABLE ONLY people
 
 
 --
--- Name: pk_operations; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY operations
-    ADD CONSTRAINT pk_operations PRIMARY KEY (code);
-
-
---
 -- Name: places_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -4925,30 +3634,6 @@ ALTER TABLE ONLY places
 
 ALTER TABLE ONLY positions
     ADD CONSTRAINT positions_pkey PRIMARY KEY (id);
-
-
---
--- Name: posts_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY posts
-    ADD CONSTRAINT posts_pkey PRIMARY KEY (id);
-
-
---
--- Name: queue_classic_jobs_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY queue_classic_jobs
-    ADD CONSTRAINT queue_classic_jobs_pkey PRIMARY KEY (id);
-
-
---
--- Name: reminders_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY reminders
-    ADD CONSTRAINT reminders_pkey PRIMARY KEY (id);
 
 
 --
@@ -4992,27 +3677,11 @@ ALTER TABLE ONLY states
 
 
 --
--- Name: tasks_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY tasks
-    ADD CONSTRAINT tasks_pkey PRIMARY KEY (id);
-
-
---
 -- Name: teams_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY teams
     ADD CONSTRAINT teams_pkey PRIMARY KEY (id);
-
-
---
--- Name: todolists_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY todolists
-    ADD CONSTRAINT todolists_pkey PRIMARY KEY (id);
 
 
 --
@@ -5037,14 +3706,6 @@ ALTER TABLE ONLY transports
 
 ALTER TABLE ONLY transroutes
     ADD CONSTRAINT transroutes_pkey PRIMARY KEY (id);
-
-
---
--- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY users
-    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
 
 
 --
@@ -5114,27 +3775,6 @@ CREATE INDEX fk_mentions ON mentions USING btree (mentioner_id, mentioner_type);
 
 
 --
--- Name: idx_qc_on_name_only_unlocked; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX idx_qc_on_name_only_unlocked ON queue_classic_jobs USING btree (q_name, id) WHERE (locked_at IS NULL);
-
-
---
--- Name: index_activities_on_branch_id_and_patron_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_activities_on_branch_id_and_patron_id ON activities USING btree (branch_id, patron_id);
-
-
---
--- Name: index_activities_on_user_id_and_patron_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_activities_on_user_id_and_patron_id ON activities USING btree (user_id, patron_id);
-
-
---
 -- Name: index_arrivals_on_city_id_and_country_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -5156,24 +3796,10 @@ CREATE INDEX index_arrivals_on_patron_id ON arrivals USING btree (patron_id);
 
 
 --
--- Name: index_branches_on_patron_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_branches_on_patron_id ON branches USING btree (patron_id);
-
-
---
 -- Name: index_cities_on_country_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_cities_on_country_id ON cities USING btree (country_id);
-
-
---
--- Name: index_comments_on_user_id_and_patron_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_comments_on_user_id_and_patron_id ON comments USING btree (user_id, patron_id);
 
 
 --
@@ -5233,17 +3859,17 @@ CREATE INDEX index_costs_on_patron_id ON costs USING btree (patron_id);
 
 
 --
+-- Name: index_counters_on_patron_id_and_counter_type_and_operation; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_counters_on_patron_id_and_counter_type_and_operation ON counters USING btree (patron_id, counter_type, operation);
+
+
+--
 -- Name: index_counters_unique; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_counters_unique ON counters USING btree (patron_id, counter_type, operation, period);
-
-
---
--- Name: index_countries_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_countries_on_slug ON countries USING btree (slug);
 
 
 --
@@ -5422,13 +4048,6 @@ CREATE INDEX index_nimbos_users_on_remember_me_token ON nimbos_users USING btree
 
 
 --
--- Name: index_on_commentable_patron; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_on_commentable_patron ON comments USING btree (commentable_type, commentable_id, patron_id);
-
-
---
 -- Name: index_owners_costs; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -5454,13 +4073,6 @@ CREATE INDEX index_packages_parent ON packages USING btree (packed_type, packed_
 --
 
 CREATE INDEX index_partners_on_company_id ON partners USING btree (company_id);
-
-
---
--- Name: index_patrons_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX index_patrons_on_slug ON patrons USING btree (slug);
 
 
 --
@@ -5510,41 +4122,6 @@ CREATE INDEX index_positions_on_reference_and_patron_id ON positions USING btree
 --
 
 CREATE INDEX index_positions_on_user_id_and_patron_id ON positions USING btree (user_id, patron_id);
-
-
---
--- Name: index_posts_on_patron_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_posts_on_patron_id ON posts USING btree (patron_id);
-
-
---
--- Name: index_posts_on_target_type_and_target_id_and_patron_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_posts_on_target_type_and_target_id_and_patron_id ON posts USING btree (target_type, target_id, patron_id);
-
-
---
--- Name: index_posts_on_user_id_and_patron_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_posts_on_user_id_and_patron_id ON posts USING btree (user_id, patron_id);
-
-
---
--- Name: index_reminders_on_remindfor_type_and_remindfor_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_reminders_on_remindfor_type_and_remindfor_id ON reminders USING btree (remindfor_type, remindfor_id);
-
-
---
--- Name: index_reminders_on_user_id_and_patron_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_reminders_on_user_id_and_patron_id ON reminders USING btree (user_id, patron_id);
 
 
 --
@@ -5618,34 +4195,6 @@ CREATE INDEX index_trucks_costs ON costs USING btree (truck, vehicle);
 
 
 --
--- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
-
-
---
--- Name: index_users_on_patron_id_and_patron_key; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_users_on_patron_id_and_patron_key ON users USING btree (patron_id, patron_key);
-
-
---
--- Name: index_users_on_patron_id_and_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX index_users_on_patron_id_and_slug ON users USING btree (patron_id, slug);
-
-
---
--- Name: index_users_on_remember_me_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_users_on_remember_me_token ON users USING btree (remember_me_token);
-
-
---
 -- Name: index_users_roles_on_user_id_and_role_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -5695,27 +4244,10 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 
 
 --
--- Name: user_tasks; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX user_tasks ON tasks USING btree (user_id, status, patron_id);
-
-
---
 -- PostgreSQL database dump complete
 --
 
-INSERT INTO schema_migrations (version) VALUES ('20120225101201');
-
-INSERT INTO schema_migrations (version) VALUES ('20120225123837');
-
 INSERT INTO schema_migrations (version) VALUES ('20120225182511');
-
-INSERT INTO schema_migrations (version) VALUES ('20120225201316');
-
-INSERT INTO schema_migrations (version) VALUES ('20120225202324');
-
-INSERT INTO schema_migrations (version) VALUES ('20120225205130');
 
 INSERT INTO schema_migrations (version) VALUES ('20120225205608');
 
@@ -5724,10 +4256,6 @@ INSERT INTO schema_migrations (version) VALUES ('20120225210604');
 INSERT INTO schema_migrations (version) VALUES ('20120225212637');
 
 INSERT INTO schema_migrations (version) VALUES ('20120225214006');
-
-INSERT INTO schema_migrations (version) VALUES ('20120225214648');
-
-INSERT INTO schema_migrations (version) VALUES ('20120225215201');
 
 INSERT INTO schema_migrations (version) VALUES ('20120225220023');
 
@@ -5747,8 +4275,6 @@ INSERT INTO schema_migrations (version) VALUES ('20120226140148');
 
 INSERT INTO schema_migrations (version) VALUES ('20120226140646');
 
-INSERT INTO schema_migrations (version) VALUES ('20120226142249');
-
 INSERT INTO schema_migrations (version) VALUES ('20120226142733');
 
 INSERT INTO schema_migrations (version) VALUES ('20120226142930');
@@ -5763,8 +4289,6 @@ INSERT INTO schema_migrations (version) VALUES ('20120228100928');
 
 INSERT INTO schema_migrations (version) VALUES ('20120228100929');
 
-INSERT INTO schema_migrations (version) VALUES ('20120228110936');
-
 INSERT INTO schema_migrations (version) VALUES ('20120228212313');
 
 INSERT INTO schema_migrations (version) VALUES ('20120303224742');
@@ -5774,8 +4298,6 @@ INSERT INTO schema_migrations (version) VALUES ('20120312195900');
 INSERT INTO schema_migrations (version) VALUES ('20120325205527');
 
 INSERT INTO schema_migrations (version) VALUES ('20120328161901');
-
-INSERT INTO schema_migrations (version) VALUES ('20120329203240');
 
 INSERT INTO schema_migrations (version) VALUES ('20120402154746');
 
@@ -5787,13 +4309,9 @@ INSERT INTO schema_migrations (version) VALUES ('20120509193506');
 
 INSERT INTO schema_migrations (version) VALUES ('20120510192031');
 
-INSERT INTO schema_migrations (version) VALUES ('20120517220209');
-
 INSERT INTO schema_migrations (version) VALUES ('20120520153126');
 
 INSERT INTO schema_migrations (version) VALUES ('20120531092713');
-
-INSERT INTO schema_migrations (version) VALUES ('20120609134319');
 
 INSERT INTO schema_migrations (version) VALUES ('20120609134822');
 
@@ -5807,17 +4325,7 @@ INSERT INTO schema_migrations (version) VALUES ('20120713090115');
 
 INSERT INTO schema_migrations (version) VALUES ('20120713112622');
 
-INSERT INTO schema_migrations (version) VALUES ('20120716121303');
-
 INSERT INTO schema_migrations (version) VALUES ('20120718211443');
-
-INSERT INTO schema_migrations (version) VALUES ('20120726093138');
-
-INSERT INTO schema_migrations (version) VALUES ('20120726094605');
-
-INSERT INTO schema_migrations (version) VALUES ('20120726144501');
-
-INSERT INTO schema_migrations (version) VALUES ('20120726144553');
 
 INSERT INTO schema_migrations (version) VALUES ('20120730142055');
 
@@ -5855,12 +4363,6 @@ INSERT INTO schema_migrations (version) VALUES ('20120930185032');
 
 INSERT INTO schema_migrations (version) VALUES ('20121013102650');
 
-INSERT INTO schema_migrations (version) VALUES ('20121013110915');
-
-INSERT INTO schema_migrations (version) VALUES ('20121020211955');
-
-INSERT INTO schema_migrations (version) VALUES ('20121020213159');
-
 INSERT INTO schema_migrations (version) VALUES ('20121020221210');
 
 INSERT INTO schema_migrations (version) VALUES ('20121021191541');
@@ -5870,12 +4372,6 @@ INSERT INTO schema_migrations (version) VALUES ('20121023135117');
 INSERT INTO schema_migrations (version) VALUES ('20121023135601');
 
 INSERT INTO schema_migrations (version) VALUES ('20121023140354');
-
-INSERT INTO schema_migrations (version) VALUES ('20121023143513');
-
-INSERT INTO schema_migrations (version) VALUES ('20121023144156');
-
-INSERT INTO schema_migrations (version) VALUES ('20121023144750');
 
 INSERT INTO schema_migrations (version) VALUES ('20121023192941');
 
@@ -5899,8 +4395,6 @@ INSERT INTO schema_migrations (version) VALUES ('20121023200534');
 
 INSERT INTO schema_migrations (version) VALUES ('20121023200928');
 
-INSERT INTO schema_migrations (version) VALUES ('20121023201551');
-
 INSERT INTO schema_migrations (version) VALUES ('20121023202452');
 
 INSERT INTO schema_migrations (version) VALUES ('20121023202640');
@@ -5911,27 +4405,15 @@ INSERT INTO schema_migrations (version) VALUES ('20121023203447');
 
 INSERT INTO schema_migrations (version) VALUES ('20121023203844');
 
-INSERT INTO schema_migrations (version) VALUES ('20121024082549');
-
-INSERT INTO schema_migrations (version) VALUES ('20121024083408');
-
 INSERT INTO schema_migrations (version) VALUES ('20121104143430');
 
 INSERT INTO schema_migrations (version) VALUES ('20121108163417');
-
-INSERT INTO schema_migrations (version) VALUES ('20121111183749');
-
-INSERT INTO schema_migrations (version) VALUES ('20121118134232');
 
 INSERT INTO schema_migrations (version) VALUES ('20121120210612');
 
 INSERT INTO schema_migrations (version) VALUES ('20121120211554');
 
 INSERT INTO schema_migrations (version) VALUES ('20121124193614');
-
-INSERT INTO schema_migrations (version) VALUES ('20121130065024');
-
-INSERT INTO schema_migrations (version) VALUES ('20121130142958');
 
 INSERT INTO schema_migrations (version) VALUES ('20121201123124');
 
@@ -5946,8 +4428,6 @@ INSERT INTO schema_migrations (version) VALUES ('20121220144348');
 INSERT INTO schema_migrations (version) VALUES ('20121222224511');
 
 INSERT INTO schema_migrations (version) VALUES ('20121222232813');
-
-INSERT INTO schema_migrations (version) VALUES ('20121224101802');
 
 INSERT INTO schema_migrations (version) VALUES ('20121227163358');
 
@@ -5964,12 +4444,6 @@ INSERT INTO schema_migrations (version) VALUES ('20130122180801');
 INSERT INTO schema_migrations (version) VALUES ('20130122203836');
 
 INSERT INTO schema_migrations (version) VALUES ('20130205050943');
-
-INSERT INTO schema_migrations (version) VALUES ('20130212224715');
-
-INSERT INTO schema_migrations (version) VALUES ('20130224114544');
-
-INSERT INTO schema_migrations (version) VALUES ('20130301215731');
 
 INSERT INTO schema_migrations (version) VALUES ('20130316214803');
 
@@ -5994,8 +4468,6 @@ INSERT INTO schema_migrations (version) VALUES ('20130709142307');
 INSERT INTO schema_migrations (version) VALUES ('20130711113607');
 
 INSERT INTO schema_migrations (version) VALUES ('20130717075413');
-
-INSERT INTO schema_migrations (version) VALUES ('20130723091712');
 
 INSERT INTO schema_migrations (version) VALUES ('20130723091757');
 

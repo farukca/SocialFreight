@@ -91,6 +91,7 @@ GEM
     arel (3.0.2)
     aws_cf_signer (0.1.1)
     bcrypt-ruby (3.0.1)
+    bcrypt-ruby (3.0.1-x86-mingw32)
     builder (3.0.4)
     cancan (1.6.7)
     capistrano (2.13.5)
