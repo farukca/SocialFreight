@@ -70,12 +70,12 @@ gem 'capistrano'
 #gem 'capistrano-rbenv'
 
 gem 'nimbos', path: "../nimbos"
-gem 'blogger', git: "https://github.com/farukca/blogger.git", ref: "ff08d3632e75889ca0399fb31c026d5f3ffaddf9"
-#gem 'blogger', path: "../blogger"
-gem 'assetim', git: "https://github.com/farukca/assetim.git", ref: "e2fbcb839967d30b854127ea85e0adfb1eea8c6c"
-#gem 'assetim', path: "../assetim"
-gem 'helpdesk', git: "https://github.com/farukca/helpdesk.git", ref: "9e2d5f083a2c0a06b2efe8a3e56ac61beec6e12e"
-#gem 'helpdesk', path: "../helpdesk"
+#gem 'blogger', git: "https://github.com/farukca/blogger.git", ref: "ff08d3632e75889ca0399fb31c026d5f3ffaddf9"
+gem 'blogger', path: "../blogger"
+#gem 'assetim', git: "https://github.com/farukca/assetim.git", ref: "e2fbcb839967d30b854127ea85e0adfb1eea8c6c"
+gem 'assetim', path: "../assetim"
+#gem 'helpdesk', git: "https://github.com/farukca/helpdesk.git", ref: "9e2d5f083a2c0a06b2efe8a3e56ac61beec6e12e"
+gem 'helpdesk', path: "../helpdesk"
 
 group :test do
   # Pretty printed test output
