@@ -1,14 +1,8 @@
 Socialfreight::Application.routes.draw do
 
-  get "logout" => "sessions#destroy", :as => "logout"
-  get "login"  => "sessions#new", :as => "login"
-  get "signup" => "users#new", :as => "signup"
-  get "try"    => "patrons#new", :as => "try"
+  #get "signup" => "users#new", :as => "signup"
   #get "today" => "home#today", :as => "today"
   #get "today" => "home#egitim", :as => "egitim"
-  get "dashboard" => "dashboard#index", :as => "dashboard"
-  get "calendar"  => "dashboard#calendar", :as => "calendar"
-
   # resources :users do
   #   member do
   #     get :activate, :activation, :follow
@@ -100,7 +94,7 @@ Socialfreight::Application.routes.draw do
   #  resources :tasks
   #end
   #resources :reminders
-  resources :activities
+  #resources :activities
   resources :nicks
   resources :junks
 
@@ -124,13 +118,13 @@ Socialfreight::Application.routes.draw do
   get "finance" => "findocs#home"
   get "fleetman" => "vehicles#home"
 
-  root :to => 'home#index'
-
-  mount Nimbos::Engine, at: "/nimbos"
+  mount Nimbos::Engine, at: "/"
   mount Resque::Server, at: "/resque"
   mount Blogger::Engine, at: "/blog"
   mount Assetim::Engine, at: "/assetim"
   mount Helpdesk::Engine, at: "/helpdesk"
+
+  root :to => 'home#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

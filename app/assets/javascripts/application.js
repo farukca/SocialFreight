@@ -28,9 +28,9 @@
 // require todolists
 // require tasks
 //= require costs
-// require comments
-// require templates/tasks/tasks.jst.eco
-// require templates/comments/form.jst.eco
+//= require nimbos/comments
+//= require nimbos/templates/tasks/tasks.jst.eco
+//= require nimbos/templates/comments/form.jst.eco
 // require templates/positions/positions.jst.eco
 // require templates/loadings/reservations.jst.eco
 // require_tree.
