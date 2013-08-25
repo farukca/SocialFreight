@@ -12,11 +12,11 @@ class Loading < ActiveRecord::Base
   include Nimbos::Concerns::GeneratePost
   include Nimbos::Concerns::GenerateActivity
 
-  belongs_to :patron, class_name: Nimbos::Patron
+  belongs_to :patron, class_name: "Nimbos::Patron"
   friendly_id :reference, use: :slugged, use: :scoped, scope: :patron
   
   belongs_to :position, counter_cache: true, touch: true
-  belongs_to :branch
+  belongs_to :branch, class_name: "Nimbos::Branch"
   belongs_to :company
   belongs_to :agent, :class_name => "Company", :foreign_key => "agent_id"
   #belongs_to :bank, :class_name => "Company", :foreign_key => "bank_id"
@@ -36,11 +36,11 @@ class Loading < ActiveRecord::Base
   has_many :packages, as: :packed, dependent: :destroy
   accepts_nested_attributes_for :packages, :containers
 
-  has_many :todolists, as: :todop, dependent: :destroy
+  has_many :todolists, class_name: "Nimbos::Todolist", as: :todop, dependent: :destroy
     
   #has_many :waybills, as: :waybillable, dependent: :destroy
   #has_many :comments, as: :commentable, dependent: :destroy
-  has_many :posts, as: :target, dependent: :destroy
+  has_many :posts, class_name: "Nimbos::Post", as: :target, dependent: :destroy
   has_many :documents, as: :documented, dependent: :destroy
   has_many :costs, as: :costable, dependent: :destroy
   has_many :invoitems, as: :invoitem_owner, dependent: :destroy

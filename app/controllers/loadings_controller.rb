@@ -14,7 +14,7 @@ class LoadingsController < ApplicationController
 
   def show
     @loading = Loading.find(params[:id])
-    @todolist = Todolist.new
+    @todolist = Nimbos::Todolist.new
     respond_to do |format|
       format.html
       format.json { render json: @loading }

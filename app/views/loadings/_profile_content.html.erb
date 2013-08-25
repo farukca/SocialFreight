@@ -54,7 +54,7 @@
       <h5>
         Todo List
         <span class="sub-link">
-          <%= link_to "Create todolist for this loading", new_todolist_path(loading_id: @loading.id), class: "btn btn-small btn-info" %>
+          <%= link_to "Create todolist for this loading", nimbos.new_todolist_path(loading_id: @loading.id), class: "btn btn-small btn-info" %>
         </span>
       </h5>
     </div>
@@ -76,13 +76,13 @@
     </div>
     <div id="new_post_div" class="row-fluid slidingDiv">
       <div class="span6">
-        <%= render 'posts/form', object: @loading %>
+        <%= render 'nimbos/posts/form', object: @loading %>
       </div>
     </div>
     <%#= render 'posts/postlist', posts: @loading.posts %>
     <div class="row-fluid">
       <ul id="Loading_<%= @loading.id %>_posts">
-        <%= render partial: "posts/post_listitem", collection: @loading.posts.latests, as: :post %>
+        <%= render partial: "nimbos/posts/post_listitem", collection: @loading.posts.latests, as: :post %>
       </ul>
     </div>
   </div>
