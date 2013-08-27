@@ -11,7 +11,7 @@
           <%= f.input :staff_id, as: :hidden, label: "Sürücü/Personel", input_html: {class: "chosen_input", "data-url" => "/people.json", "data-newrecurl" => "/people/new", "data-selected" => @payment.staff_id ? @payment.staff.to_s : "", "data-placeholder" => "Sürücü/Personel Seçiniz."} %>
           <%= f.input :payment_price do %>
             <%= f.input_field :payment_price, class: "input-small" %>
-            <%= f.input_field :price_curr, :as => :select, :collection => Currency.all, :include_blank => false, class: "input-small" %>
+            <%= f.input_field :price_curr, :as => :select, :collection => Nimbos::Currency.all, :include_blank => false, class: "input-small" %>
           <% end %>
         </div>
         <div class="span6">

@@ -2,7 +2,7 @@ class Nick < ActiveRecord::Base
 
   belongs_to :nicknamed, polymorphic: true
 
-  default_scope { where(patron_id: Patron.current_id) }
+  default_scope { where(patron_id: Nimbos::Patron.current_id) }
   
   def self.log(target, slug, patron_id)
   	clean_slug = slug.to_s.parameterize.downcase.gsub("-", "")

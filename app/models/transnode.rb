@@ -15,7 +15,7 @@ class Transnode < ActiveRecord::Base
   validates_presence_of :departure_date #, :message => I18n.t('tasks.errors.name.cant_be_blank')
   validates_presence_of :arrival_date #, :message => I18n.t('tasks.errors.name.cant_be_blank')
 
-  default_scope { where(patron_id: Patron.current_id) }
+  default_scope { where(patron_id: Nimbos::Patron.current_id) }
   
   class << self
     def trans_types()

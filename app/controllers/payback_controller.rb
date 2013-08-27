@@ -16,7 +16,7 @@ class PaybackController < ApplicationController
       when :work_list
       	staff_id = session[:wicked_payback_staff_id]
     	  @person = Person.find(staff_id)
-        @user   = @person.user || User.new
+        @user   = @person.user || Nimbos::User.new
     	  @transports = Transport.where(:driver_id => staff_id)
     end
 

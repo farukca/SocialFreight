@@ -124,7 +124,7 @@ Socialfreight::Application.routes.draw do
   mount Assetim::Engine, at: "/assetim"
   mount Helpdesk::Engine, at: "/helpdesk"
 
-  root :to => 'home#index'
+  root :to => "home#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -13,7 +13,7 @@
           <%= f.input :process_type, :as => :select, :collection => ["Credit","Debit"] %>
           <%= f.input :amount do %>
             <%= f.input_field :amount, :class => "input-small" %>
-            <%= f.input_field :curr, :as => :select, :collection => Currency.all, :include_blank => false, :class => "input-small" %>
+            <%= f.input_field :curr, :as => :select, :collection => Nimbos::Currency.all, :include_blank => false, :class => "input-small" %>
           <% end %>
           <%= f.input :branch_id, :as => :select, :collection => current_patron.branches, :include_blank => false %>
           <%= f.input :unit_type, as: "hidden" %>

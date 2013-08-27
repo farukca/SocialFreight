@@ -19,5 +19,5 @@ class Invoitem < ActiveRecord::Base
   validates_presence_of :price_curr
   validates_presence_of :local_curr
   
-  default_scope { where(patron_id: Patron.current_id) }
+  default_scope { where(patron_id: Nimbos::Patron.current_id) }
 end

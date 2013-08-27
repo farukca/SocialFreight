@@ -12,8 +12,8 @@
           <div class="span6">
             <%= f.input :name %>
             <%= f.input :code %>
-            <%= f.input :currency, as: :select, :collection => Currency.all %>
-            <%= f.input :country, as: :select, :collection => Country.all %>
+            <%= f.input :currency, as: :select, :collection => Nimbos::Currency.all %>
+            <%= f.input :country, as: :select, :collection => Nimbos::Country.all %>
           </div>
           <div class="span6">
             <%= f.input :service_code %>

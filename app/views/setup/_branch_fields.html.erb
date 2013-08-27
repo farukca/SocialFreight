@@ -1,6 +1,0 @@
-<%= f.input :name, label: t("branches.title.branch_info") do %>
-  <%= f.input_field :name, placeholder: t("branches.label.name") %>
-  <%= f.input_field :country_id, as: :select, collection: Country.all, include_blank: true, priority: current_patron.country_id, placeholder: t("branches.placeholder.country") %>
-  <%#= f.input :state_id %>
-  <%= f.input_field :city, placeholder: t("branches.placeholder.city") %>
-<% end %>

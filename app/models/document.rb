@@ -12,7 +12,7 @@ class Document < ActiveRecord::Base
   validates_presence_of :document_type
   validates_presence_of :user_id
   
-  default_scope { where(patron_id: Patron.current_id) }
+  default_scope { where(patron_id: Nimbos::Patron.current_id) }
 
   def to_s
   	document_type7

@@ -5,6 +5,6 @@ class Partner < ActiveRecord::Base
 
   attr_accessible :company_id, :partner_id, :user_id, :partner_type, :notes
 
-  default_scope { where(patron_id: Patron.current_id) }
+  default_scope { where(patron_id: Nimbos::Patron.current_id) }
 
 end

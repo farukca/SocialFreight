@@ -33,7 +33,7 @@
 
           <%#= f.input :status %>
           <%= f.input :country_id do %>
-            <%= f.input_field :country_id, as: :select, collection: Country.all, include_blank: false, class: "input-small", selected: current_patron.country_id %>
+            <%= f.input_field :country_id, as: :select, collection: Nimbos::Country.all, include_blank: false, class: "input-small", selected: current_patron.country_id %>
             <%= f.input_field :city, class: "input-small" %>
           <% end %>
         </div>

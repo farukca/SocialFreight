@@ -4,7 +4,7 @@ body {
 #content {
     *background-attachment: fixed;
     background-color: #2888BF;
-    background-image: url(/assets/backg/grid2.png);
+    background-image: url(/assets/grid2.png);
     background-position: center top;
     background-repeat: repeat;
 }

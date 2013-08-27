@@ -18,7 +18,7 @@
       <%= f.input :supplier_id, :as => :select, :collection => [[@transnode.supplier_id ? @transnode.supplier.name : "", @transnode.supplier_id]], :label => I18n.t("position.#{@transnode.trans_method}.label.supplier"), :input_html => {:class => "chosen_input", "data-url" => "/companies.json" }, hint: "Liner Agent" %>
       <%= f.input :freight_price do %>
         <%= f.input_field :freight_price, :class => "input-small" %>
-        <%= f.input_field :freight_curr, :as => :select, :collection => Currency.all, :include_blank => false, :class => "input-small" %>
+        <%= f.input_field :freight_curr, :as => :select, :collection => Nimbos::Currency.all, :include_blank => false, :class => "input-small" %>
       <% end %>
       <%= f.input :ticket_no, hint: "Freight document number & date" do %>
         <%= f.input_field :ticket_no, :class => "input-small" %>

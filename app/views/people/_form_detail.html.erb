@@ -7,8 +7,8 @@
         <%= f.input :hometel %>
         <%= f.input :nation %>
         <%= f.input :country_id do %>
-          <%= f.input_field :country_id, :as => :select, :collection => Country.all, :include_blank => false, :class => "input-small" %>
-          <%= f.grouped_collection_select :city_id, Country.order(:name), :cities, :name, :id, :name, {:include_blank => true}, {:class => "input-small"} %>
+          <%= f.input_field :country_id, :as => :select, :collection => Nimbos::Country.all, :include_blank => false, :class => "input-small" %>
+          <%= f.grouped_collection_select :city_id, Nimbos::Country.order(:name), :cities, :name, :id, :name, {:include_blank => true}, {:class => "input-small"} %>
         <% end %>
         <%= f.input :district do %>
           <%= f.input_field :district, :class => "input-small" %>

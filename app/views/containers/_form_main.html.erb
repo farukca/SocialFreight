@@ -4,9 +4,9 @@
     <fieldset>
       <%= f.input :container_type, label: t("containers.label.container_type") do %>
         <% if @loading && (@loading.operation == "air") %>
-          <%= f.select :container_type, Listitem.aircontainers.map { |t| [t.name, t.code] }, include_blank: true %>
+          <%= f.select :container_type, Nimbos::Listitem.aircontainers.map { |t| [t.name, t.code] }, include_blank: true %>
         <% else %>
-          <%= f.select :container_type, Listitem.seacontainers.map { |t| [t.name, t.code] }, include_blank: true %>
+          <%= f.select :container_type, Nimbos::Listitem.seacontainers.map { |t| [t.name, t.code] }, include_blank: true %>
         <% end %>
       <% end %>
       <%= f.input :name, label: t("containers.label.name") %>
@@ -20,7 +20,7 @@
       <%= f.input :due_date, as: :string, label: t("defaults.label.unload_date"), input_html: {class: "input-small", "data-datepicker" => "datepicker"} %>
       <%= f.input :demurrage, label: t("containers.label.demurrage") do %>
         <%= f.input_field :demurrage, class: "input-small" %>
-        <%= f.input_field :demurrage_curr, as: :select, collection: Currency.all, include_blank: false, class: "input-small" %>
+        <%= f.input_field :demurrage_curr, as: :select, collection: Nimbos::Currency.all, include_blank: false, class: "input-small" %>
       <% end %>
     </fieldset>
   </div>

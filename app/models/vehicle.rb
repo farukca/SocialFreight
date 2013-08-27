@@ -5,7 +5,7 @@ class Vehicle < ActiveRecord::Base
   extend FriendlyId
   include Tire::Model::Search
   include Tire::Model::Callbacks
-  index_name { "vehicles-#{Patron.current_id}" }
+  index_name { "vehicles-#{Nimbos::Patron.current_id}" }
 
   include GeneratesNick
 
@@ -15,7 +15,7 @@ class Vehicle < ActiveRecord::Base
   validates :vehicle_class, presence: { message: I18n.t('defaults.inputerror.cant_be_blank') }
   validates :vehicle_status, presence: { message: I18n.t('defaults.inputerror.cant_be_blank') }
 
-  default_scope { where(patron_id: Patron.current_id) }
+  default_scope { where(patron_id: Nimbos::Patron.current_id) }
 
   def token_inputs
     { :id => code, :name => code }
