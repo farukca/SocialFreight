@@ -2308,8 +2308,8 @@ CREATE TABLE nimbos_currencies (
     name character varying(40) NOT NULL,
     symbol character varying(1),
     multiplier numeric(5,0) DEFAULT 1 NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    created_at timestamp without time zone DEFAULT now() NOT NULL,
+    updated_at timestamp without time zone DEFAULT now() NOT NULL
 );
 
 
@@ -5978,6 +5978,10 @@ INSERT INTO schema_migrations (version) VALUES ('20130818121655');
 
 INSERT INTO schema_migrations (version) VALUES ('20130818121656');
 
+<<<<<<< HEAD
+INSERT INTO schema_migrations (version) VALUES ('20130825172553');
+=======
 INSERT INTO schema_migrations (version) VALUES ('20130825172553');
 
 INSERT INTO schema_migrations (version) VALUES ('20130825201031');
+>>>>>>> origin/master
