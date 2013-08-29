@@ -26,7 +26,7 @@ class Position < ActiveRecord::Base
   has_many :invoitems, as: :invoitem_owner, dependent: :destroy
   has_many :documents, as: :documented, dependent: :destroy
   #has_many :comments, as: :commentable, dependent: :destroy
-  has_many :posts, as: :target, dependent: :destroy
+  has_many :posts, class_name: "Nimbos::Post", as: :target, dependent: :destroy
   has_many :events, as: :eventable, dependent: :destroy
   has_many :todolists, class_name: "Nimbos::Todolist", as: :todop, dependent: :destroy
 
