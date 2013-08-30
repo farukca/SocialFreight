@@ -111,7 +111,7 @@ class Search < ActiveRecord::Base
       wares = Assetim::Ware.search(self.reference)
     else
       wares = Assetim::Ware.latest
-      wares = wares.where("name like ?", "%#{self.reference}%") if self.reference.present?
+      wares = wares.where("lower(name) like ?", "%#{self.reference.downcase}%") if self.reference.present?
     end
     wares
   end
