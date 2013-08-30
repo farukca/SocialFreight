@@ -1,25 +1,33 @@
-PATH
-  remote: ../assetim
+GIT
+  remote: https://github.com/farukca/assetim.git
+  revision: 899299ee88eb2af42e10ab5a4a0a7d78697d0ba8
+  ref: 899299ee88eb2af42e10ab5a4a0a7d78697d0ba8
   specs:
     assetim (0.0.1)
       rails (~> 3.2.13)
       simple_form
       tire
 
-PATH
-  remote: ../blogger
+GIT
+  remote: https://github.com/farukca/blogger.git
+  revision: ff08d3632e75889ca0399fb31c026d5f3ffaddf9
+  ref: ff08d3632e75889ca0399fb31c026d5f3ffaddf9
   specs:
     blogger (0.0.1)
       rails (~> 3.2.6)
 
-PATH
-  remote: ../helpdesk
+GIT
+  remote: https://github.com/farukca/helpdesk.git
+  revision: 2d73c704d9d02672288ec952b847a0dcc7762de1
+  ref: 2d73c704d9d02672288ec952b847a0dcc7762de1
   specs:
     helpdesk (0.0.1)
       rails (~> 3.2.13)
 
-PATH
-  remote: ../nimbos
+GIT
+  remote: https://github.com/farukca/nimbos.git
+  revision: 2cadb6f041b4e9b8edb969f5f4e1a169c4501c06
+  ref: 2cadb6f041b4e9b8edb969f5f4e1a169c4501c06
   specs:
     nimbos (0.0.1)
       bcrypt-ruby (= 3.0.1)

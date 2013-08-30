@@ -16,11 +16,11 @@ load "config/recipes/elasticsearch"
 load "config/recipes/check"
 load "config/recipes/assets"
 
-server "213.128.89.119", :web, :app, :db, primary: true
-set :user, "freighter"
+#server "213.128.89.119", :web, :app, :db, primary: true
+#set :user, "freighter"
 
-#server "195.175.207.82", :web, :app, :db, primary: true
-#set :user, "nimboulusoy"
+server "195.175.207.82", :web, :app, :db, primary: true
+set :user, "nimboulusoy"
 
 #server "192.168.2.10", :web, :app, :db, primary: true
 #set :user, "nimbo1"
