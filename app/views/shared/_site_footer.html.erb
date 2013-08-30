@@ -1,6 +1,6 @@
 <div class="alternate">
   <div class="container">
-    <div class="span3">
+    <!--div class="span3">
       <h4>Company</h4>
       <ul>
         <li><%= link_to "Niçin SocialFreight", main_app.features_path %></li>
@@ -9,23 +9,27 @@
         <li><%= link_to "Roadmap", main_app.roadmap_path %></li>
         <li><%= link_to "Hakkımızda", main_app.aboutus_path %></li>
       </ul>
-    </div>
+    </div-->
 
     <div class="span3">
-      <h4><%= t("web.link.contact") %></h4>
+      <!--h4><%= t("web.link.contact") %></h4-->
       <p class="footerp">
-        Orhantepe Mah. Eser Sok. No:5/A<br/>
-        Kartal İstanbul Türkiye
+        İnönü mh. Muammer Aksoy cd. Ulusoy Tesisleri<br/>
+        Küçükçekmece / İstanbul<br/>
+        t: 0212 692 99 99<br/>
+        f:  0212 696 96 28<br/>
       </p>
-      <p class="footerp"> <br/>Mail: <%= mail_to "yourfriends@socialfreight.com
-", "yourfriends@socialfreight.com" %></p>
+      <p class="footerp"><a href="http://www.ulusoylogistics.com" target="_blank">web: www.ulusoylogistics.com</a></p>
+      <p class="footerp">Mail: <%= mail_to "info@ulusoy.com
+", "info@ulusoy.com" %></p>
     </div>
 
     <div class="span2">
-      <h4>Follow</h4>
+      <!--h4>Follow</h4-->
       <ul>
-        <li><a href="http://www.twitter.com/socialfreight" target="_blank">Twitter</a></li>
-        <li><a href="https://plus.google.com/110390764490908829840" rel="publisher">Google+</a></li>
+        <li><%= link_to "Hakkımızda", aboutus_path %></li>
+        <li><a href="http://www.twitter.com/ulusoylogistics" target="_blank">Twitter</a></li>
+        <li><a href="http://www.facebook.com/ulusoylogistics" rel="publisher">Facebook</a></li>
       </ul>
     </div>
 
