@@ -1,10 +1,10 @@
 class Person < ActiveRecord::Base
 
 
-  belongs_to :patron, class_name: Nimbos::Patron
+  belongs_to :patron, class_name: "Nimbos::Patron"
 
-  belongs_to :user
-  belongs_to :country
+  belongs_to :user, class_name: "Nimbos::User"
+  belongs_to :country, class_name: "Nimbos::Country"
 
   mount_uploader :avatar, AvatarUploader
 
