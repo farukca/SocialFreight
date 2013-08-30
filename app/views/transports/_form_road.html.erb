@@ -26,7 +26,7 @@
         <%= f.input :supplier_id, as: :hidden, label: t("transports.label.transporter"), input_html: { class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => t("transports.placeholder.transporter") } %>
         <%= f.input :freight_price, label: t("defaults.label.freight_price") do %>
           <%= f.input_field :freight_price, class: "input-small" %>
-          <%= f.input_field :freight_curr, as: :select, collection: Currency.all, include_blank: false, class: "input-small" %>
+          <%= f.input_field :freight_curr, as: :select, collection: Nimbos::Currency.all, include_blank: false, class: "input-small" %>
         <% end %>
       </fieldset>
     </div>
@@ -38,10 +38,10 @@
           <%= f.input_field :departure_hour, placeholder: t("transports.placeholder.transport_hour"), class: "input-hour" %>
         <% end %>
         <%= f.input :dep_place, label: t("transports.label.departure_place") do %>
-          <%#= f.input_field :dep_place_type, as: :select, collection: Listitem.transpoints.map { |t| [t.name, t.code] }, include_blank: true, class: "input-small" %>
+          <%#= f.input_field :dep_place_type, as: :select, collection: Nimbos::Listitem.transpoints.map { |t| [t.name, t.code] }, include_blank: true, class: "input-small" %>
           <%= f.input_field :dep_place %>
         <% end %>
-        <%=f.input :dep_country_id, as: :select, label: t("transports.label.departure_citycountry"), collection: Country.all, include_blank: true, input_html: { class: "country_select" }, placeholder: t("transports.placeholder.departure_country") %>
+        <%=f.input :dep_country_id, as: :select, label: t("transports.label.departure_citycountry"), collection: Nimbos::Country.all, include_blank: true, input_html: { class: "country_select" }, placeholder: t("transports.placeholder.departure_country") %>
         <%= f.input :dep_city, placeholder: t("transports.placeholder.departure_city") %>
         <hr>
         <%= f.input :arrival_date, label: t("transports.label.arrival_datehour") do %>
@@ -52,7 +52,7 @@
           <%#= f.input_field :arv_place_type, as: :select, collection: Listitem.transpoints.map { |t| [t.name, t.code] }, include_blank: true, class: "input-small" %>
           <%= f.input_field :arv_place %>
         <% end %>
-        <%= f.input :arv_country_id, as: :select, label: t("transports.label.arrival_citycountry"), collection: Country.all, include_blank: true, input_html: { class: "country_select" }, placeholder: t("transports.placeholder.arrival_country") %>
+        <%= f.input :arv_country_id, as: :select, label: t("transports.label.arrival_citycountry"), collection: Nimbos::Country.all, include_blank: true, input_html: { class: "country_select" }, placeholder: t("transports.placeholder.arrival_country") %>
         <%= f.input :arv_city, placeholder: t("transports.placeholder.arrival_city") %>
       </fieldset>
     </div>

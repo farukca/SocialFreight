@@ -10,6 +10,6 @@ class Fuel < ActiveRecord::Base
                   :notes, :payment_card, :payment_type, :payoff_id, :price_curr, :process_date, :process_type,
                   :staff_id, :truck, :vehicle, :country_id, :city_id
 
-  default_scope { where(patron_id: Patron.current_id) }
+  default_scope { where(patron_id: Nimbos::Patron.current_id) }
     
 end

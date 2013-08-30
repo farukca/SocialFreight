@@ -9,7 +9,7 @@
           <%= f.input :cost_type %>
           <%= f.input :cost_price do %>
             <%= f.input_field :cost_price, :class => "input-small" %>
-            <%= f.input_field :price_curr, :as => :select, :collection => Currency.all, :include_blank => false, :class => "input-small" %>
+            <%= f.input_field :price_curr, :as => :select, :collection => Nimbos::Currency.all, :include_blank => false, :class => "input-small" %>
           <% end %>
           <%#= f.input :cost_vat do %>
             <%#= f.input_field :cost_vat, :class => "input-small" %>
@@ -44,7 +44,7 @@
             <%#= f.input_field :settlement_price, :class => "input-small" %>
             <%#= f.input_field :settlement_curr, :as => :select, :collection => Currency.all, :include_blank => false, :class => "input-small" %>
           <%# end %>
-          <%= f.input :country_id, as: :select, collection: Country.find(:all, order: :name), include_blank: true, input_html: { class: "country_select" } %>
+          <%= f.input :country_id, as: :select, collection: Nimbos::Country.find(:all, order: :name), include_blank: true, input_html: { class: "country_select" } %>
           <%#= f.input :city_id, as: :select, collection: City.find(:all, conditions: ["country_id = :c", { :c => @cost.country_id } ]), include_blank: true, input_html: { class: "city_select", "data-placeholder" => "Şehir Seçiniz"} %>
           <%= f.input :description, as: :text, input_html: {rows: "3"} %>
         </div>

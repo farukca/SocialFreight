@@ -11,7 +11,7 @@
           <%= f.input :unit_name %>
           <%= f.input :item_price do %>
             <%= f.input_field :item_price, class: "input-small" %>
-            <%= f.input_field :price_curr, :as => :select, :collection => Currency.all, :include_blank => false, class: "input-small" %>
+            <%= f.input_field :price_curr, :as => :select, :collection => Nimbos::Currency.all, :include_blank => false, class: "input-small" %>
           <% end %>
           <%= f.input :item_vat do %>
             <%= f.input_field :vat_rate, class: "input-small" %>

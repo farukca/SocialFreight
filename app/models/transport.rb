@@ -5,8 +5,8 @@ class Transport < ActiveRecord::Base
   belongs_to :owner, class_name: "Company", foreign_key: "owner_id"
   belongs_to :driver, class_name: "Person", foreign_key: "driver_id"
 
-  belongs_to :dep_country, class_name: "Country", foreign_key: "dep_country_id"
-  belongs_to :arv_country, class_name: "Country", foreign_key: "arv_country_id"
+  belongs_to :dep_country, class_name: "Nimbos::Country", foreign_key: "dep_country_id"
+  belongs_to :arv_country, class_name: "Nimbos::Country", foreign_key: "arv_country_id"
   
   has_many :payoff
   has_many :transroutes
@@ -26,7 +26,7 @@ class Transport < ActiveRecord::Base
   validates :dep_country, presence: true
   validates :arv_country, presence: true
 
-  default_scope { where(patron_id: Patron.current_id) }
+  default_scope { where(patron_id: Nimbos::Patron.current_id) }
   scope :active, where(status: "A")
 
   class << self

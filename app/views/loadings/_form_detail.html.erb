@@ -6,7 +6,7 @@
       <%= f.input :sender_id, as: :hidden, label: t("defaults.label.sender"), input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => t("operations.placeholder.sender") } %>
       <%= f.input :consignee_id, as: :hidden, label: t("defaults.label.consignee"), input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => t("operations.placeholder.consignee") } %>
       <%= f.input :agent_id, as: :hidden, label: t("defaults.label.agent"), input_html: {class: "chosen_input", "data-url" => "/companies.json", "data-newrecurl" => "/companies/new", "data-placeholder" => t("operations.placeholder.agent") } %>
-      <%= f.input :category, as: :select, label: t("operations.label.category"), collection: Listitem.sectors.map { |t| [t.name, t.code] }, include_blank: true %>
+      <%= f.input :category, as: :select, label: t("operations.label.category"), collection: Nimbos::Listitem.sectors.map { |t| [t.name, t.code] }, include_blank: true %>
       <%#= f.input :bank_flag, label: t("operations.label.bank_flag") %>
       <%= f.input :bank, label: t("operations.label.bank") %>
     </div>
@@ -15,7 +15,7 @@
       <%= f.input :producer, label: t("operations.label.producer") %>
       <%= f.input :product_price, label: t("operations.label.product_price") do %>
         <%= f.input_field :product_price, class: "input-small" %>
-        <%= f.input_field :product_curr, as: :select, collection: Currency.all, include_blank: false, class: "input-small" %>
+        <%= f.input_field :product_curr, as: :select, collection: Nimbos::Currency.all, include_blank: false, class: "input-small" %>
       <% end %>
       <%= f.input :marks_nos, as: :text, input_html: { rows: 2 }, label: t("operations.label.marks_nos") %>
     </div>

@@ -9,7 +9,7 @@
     <div class="row-fluid">
       <div class="span6">
         <%= f.input :code, label: "Plaka" %>
-        <%= f.input :vehicle_class, as: :select, collection: Listitem.truckclass.map { |t| [t.name, t.code] } %>
+        <%= f.input :vehicle_class, as: :select, collection: Nimbos::Listitem.truckclass.map { |t| [t.name, t.code] } %>
         <%= f.input :vehicle_type %>
       </div>
       <div class="span6">
@@ -18,7 +18,7 @@
           <%= f.input_field :model, class: "input-small" %>
           <%= f.input_field :model_year, class: "input-small" %>
         <% end %>
-        <%= f.input :vehicle_status, as: :select, collection: Listitem.truckstatus.map { |t| [t.name, t.code] } %>
+        <%= f.input :vehicle_status, as: :select, collection: Nimbos::Listitem.truckstatus.map { |t| [t.name, t.code] } %>
       </div>
     </div>
 
@@ -30,13 +30,13 @@
         <%= f.input :motor_number %>
         <%= f.input :vehicle_price do %>
           <%= f.input_field :vehicle_price, class: "input-small" %>
-          <%= f.input_field :price_curr, as: :select, collection: Currency.all, class: "input-small" %>
+          <%= f.input_field :price_curr, as: :select, collection: Nimbos::Currency.all, class: "input-small" %>
         <% end %>
         <%#= f.input :sat_no %>
         <%#= f.input :tire_size %>
       </div>
       <div class="span6">
-        <%= f.input :fuel_type, as: :select, collection: Listitem.fueltypes.map { |t| [t.name, t.code] } %>
+        <%= f.input :fuel_type, as: :select, collection: Nimbos::Listitem.fueltypes.map { |t| [t.name, t.code] } %>
         <%= f.input :notes, as: :text, input_html: { rows: 2} %>
         <%#= f.input :fuel_capacity do %>
           <%#= f.input_field :fuel_capacity,  class: "input-small" %>

@@ -2,7 +2,7 @@ class Journal < ActiveRecord::Base
 
   belongs_to :journaled, polymorphic: true
 
-  default_scope { where(patron_id: Patron.current_id) }
+  default_scope { where(patron_id: Nimbos::Patron.current_id) }
   
   def self.log(journaled, journal_model, patron_id, unit, amount)
     patron_id ||= user.patron_id

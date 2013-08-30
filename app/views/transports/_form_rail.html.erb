@@ -19,7 +19,7 @@
         <hr>
         <%= f.input :freight_price, label: t("defaults.label.freight_price") do %>
           <%= f.input_field :freight_price, :class => "input-small" %>
-          <%= f.input_field :freight_curr, :as => :select, :collection => Currency.all, :include_blank => false, :class => "input-small" %>
+          <%= f.input_field :freight_curr, :as => :select, :collection => Nimbos::Currency.all, :include_blank => false, :class => "input-small" %>
         <% end %>
         <%= f.input :waybill_no, label: t("transports.label.cim_info") do %>
           <%= f.input_field :waybill_no, class: "input-small", placeholder: t("transports.placeholder.cim_no") %>
@@ -36,7 +36,7 @@
         <% end %>
         <%= f.input :dep_place, label:"Çıkış İstasyonu", placeholder: t("transports.label.departure_station") %>
         <%= f.input :dep_country_id, label: t("transports.label.departure_citycountry") do %>
-          <%=f.input_field :dep_country_id, as: :select, collection: Country.all, include_blank: true, class: "input-small country_select", placeholder: t("transports.placeholder.departure_country") %>
+          <%=f.input_field :dep_country_id, as: :select, collection: Nimbos::Country.all, include_blank: true, class: "input-small country_select", placeholder: t("transports.placeholder.departure_country") %>
           <%= f.input_field :dep_city, class: "input-small", placeholder: t("transports.placeholder.departure_city") %>
         <% end %>
         <hr>
@@ -46,7 +46,7 @@
         <% end %>
         <%= f.input :arv_place, label:"Varış İstasyonu", placeholder: t("transports.label.arrival_station") %>
         <%= f.input :arv_country_id, label: t("transports.label.arrival_citycountry") do %>
-          <%= f.input_field :arv_country_id, as: :select, collection: Country.all, include_blank: true, class: "input-small country_select", placeholder: t("transports.placeholder.arrival_country") %>
+          <%= f.input_field :arv_country_id, as: :select, collection: Nimbos::Country.all, include_blank: true, class: "input-small country_select", placeholder: t("transports.placeholder.arrival_country") %>
           <%= f.input_field :arv_city, class: "input-small", placeholder: t("transports.placeholder.arrival_city") %>
         <% end %>
         <% if params[:action] != "edit" %>

@@ -12,23 +12,23 @@ class Position < ActiveRecord::Base
   include Nimbos::Concerns::GeneratePost
   include Nimbos::Concerns::GenerateActivity
   
-  belongs_to :patron, class_name: Nimbos::Patron
+  belongs_to :patron, class_name: "Nimbos::Patron"
   friendly_id :reference, use: :slugged, use: :scoped, scope: :patron
   
-  belongs_to :branch, class_name: Nimbos::Branch
+  belongs_to :branch, class_name: "Nimbos::Branch"
   belongs_to :agent, :class_name => "Company", :foreign_key => "agent_id"
   belongs_to :load_place, :class_name => "Place", :foreign_key => "load_place_id"
   belongs_to :unload_place, :class_name => "Place", :foreign_key => "unload_place_id"
-  belongs_to :user, class_name: Nimbos::User
+  belongs_to :user, class_name: "Nimbos::User"
 
   has_many :loadings, dependent: :nullify
   has_many :costs, as: :costable, dependent: :destroy
   has_many :invoitems, as: :invoitem_owner, dependent: :destroy
   has_many :documents, as: :documented, dependent: :destroy
   #has_many :comments, as: :commentable, dependent: :destroy
-  has_many :posts, as: :target, dependent: :destroy
+  has_many :posts, class_name: "Nimbos::Post", as: :target, dependent: :destroy
   has_many :events, as: :eventable, dependent: :destroy
-  has_many :todolists, as: :todop, dependent: :destroy
+  has_many :todolists, class_name: "Nimbos::Todolist", as: :todop, dependent: :destroy
 
   has_many :transports, dependent: :destroy
   accepts_nested_attributes_for :transports, :reject_if => lambda { |a| a[:trans_method].blank? }, :allow_destroy => true

@@ -4,6 +4,6 @@ class Team < ActiveRecord::Base
   #belongs_to :patron
   friendly_id :name, use: :slugged, use: :scoped, scope: :patron_id
 
-  default_scope { where(patron_id: Patron.current_id) }  
+  default_scope { where(patron_id: Nimbos::Patron.current_id) }  
 
 end

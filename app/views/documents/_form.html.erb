@@ -13,7 +13,7 @@
           <%= f.input :document_date, as: :string, input_html: { class: "input-date datepicker" }, label: t("documents.label.document_date") %>
           <%= f.input :document_no, label: t("documents.label.document_no") %>
           <%= f.input :document_file, as: :file, label: t("documents.label.upload_document") %>
-          <%#= f.input :country_id, as: :select, collection: Country.find(:all, order: :name), include_blank: true, input_html: { class: "country_select", "data-placeholder" => "Ülke Seçiniz" } %>
+          <%#= f.input :country_id, as: :select, collection: Nimbos::Country.find(:all, order: :name), include_blank: true, input_html: { class: "country_select", "data-placeholder" => "Ülke Seçiniz" } %>
           <%#= f.input :city_id, as: :select, collection: City.find(:all, conditions: ["country_id = :c", { :c => @document.country_id } ]), include_blank: true, input_html: { class: "city_select", "data-placeholder" => "Şehir Seçiniz"} %>
           <%#= f.input :operation, as: :select, collection: Operation.all, label: t("documents.label.operation") %>
           <%= f.input :owner_reference, label: t("documents.label.owner_reference") %>

@@ -19,14 +19,14 @@ class Payoff < ActiveRecord::Base
   validates :name, :payoff_date, :staff_id, :payoff_type, :user_id, presence: true
   validates :departure_km, :arrival_km, :return_km, numericality: { only_integer: true }
 
-  default_scope { where(patron_id: Patron.current_id) }
+  default_scope { where(patron_id: Nimbos::Patron.current_id) }
   
   before_create :set_initials
 
 
   private
   def set_initials
-    self.name = Patron.generate_counter("Payoff", nil, nil)
+    self.name = Nimbos::Patron.generate_counter("Payoff", nil, nil)
     set_slug(self.name)
   end
 

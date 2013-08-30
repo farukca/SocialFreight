@@ -7,5 +7,5 @@ class Event < ActiveRecord::Base
   attr_accessible :event_date, :event_source, :event_status, :event_type, :company_id, :description, :source_url,
                   :eventable_type, :eventable_id, :event_title, :event_hour, :finish_date
   
-  default_scope { where(patron_id: Patron.current_id) }
+  default_scope { where(patron_id: Nimbos::Patron.current_id) }
 end

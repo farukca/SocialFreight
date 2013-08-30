@@ -18,7 +18,7 @@
     </div>
     <div id="res_form_details" class="slidingDiv span12">
       <%= f.input :company_id %>
-      <%= f.input :country_id, :as => :select, :collection => Country.all, :include_blank => false, :input_html => {:class => "input-medium"} %>
+      <%= f.input :country_id, :as => :select, :collection => Nimbos::Country.all, :include_blank => false, :input_html => {:class => "input-medium"} %>
     </div>
     <%= f.input :model, :as => :hidden, :input_html => { :value => "reservations" } %>
     <%#= f.input :id, :as => :hidden, :input_html => { :value => "" } %>
