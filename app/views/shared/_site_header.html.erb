@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="logo-container span5">
-        <%= link_to (image_tag "logo.png"), main_app.root_url %>
+        <%= link_to (image_tag "logo_ulusoy.png"), main_app.root_url %>
         <br/><span class="tagline"><%= t("web.title.sitename") %></span>
       </div>
       <div class="span7 pull-right">
@@ -11,12 +11,12 @@
             <%= link_to nimbos.login_path, class: "btn" do %>
               <i class="icon-off"></i><%= t("web.label.login") %>
             <% end %>
-            <%= link_to nimbos.new_patron_path, class: "btn btn-success" do %>
-              <i class="icon-forward icon-white"></i><%= t("web.label.free_trial") %>
-            <% end %>
+            <%#= link_to nimbos.new_patron_path, class: "btn btn-success" do %>
+              <i class="icon-forward icon-white"></i><%#= t("web.label.free_trial") %>
+            <%# end %>
           </div>
         </div>
-        <div class="row">
+        <!--div class="row">
           <ul id="main-nav" class="sf-menu">
             <li><%= link_to t("web.link.mainpage"), main_app.root_url, :id => "home" %></li>
             <li><%= link_to t("web.link.whysocialfreight"), main_app.features_path, :id => "features" %></li>
@@ -25,7 +25,7 @@
             <li><%= link_to t("web.link.roadmap"), main_app.roadmap_path, :id => "roadmap" %></li>
             <li><%= link_to t("web.link.contact"), main_app.aboutus_path, :id => "contact_link" %></li>
           </ul>
-        </div>
+        </div-->
       </div>
     </div>
   </div>

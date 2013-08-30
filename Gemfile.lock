@@ -16,7 +16,6 @@ PATH
   remote: ../helpdesk
   specs:
     helpdesk (0.0.1)
-      kaminari (~> 0.13.0)
       rails (~> 3.2.13)
 
 PATH

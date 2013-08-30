@@ -23,9 +23,9 @@ müşterilerimize rekabet avantajı sağlayacak
 
 yenilikçi çözümler üretmek.
     </p>
-    <span><%= link_to t("web.link.get_started"), main_app.features_path, :class => "small-btn blue rounded-1" %></span>
+    <span><%#= link_to t("web.link.get_started"), main_app.features_path, :class => "small-btn blue rounded-1" %></span>
     <span class="pull-right">
-    <%= link_to t("web.link.try_for_free"), nimbos.new_patron_path, :class => "small-btn blue rounded-1 pull-right" %>
+    <%#= link_to t("web.link.try_for_free"), nimbos.new_patron_path, :class => "small-btn blue rounded-1 pull-right" %>
     </span>
   </div>
 
@@ -37,16 +37,4 @@ yenilikçi çözümler üretmek.
 
 </div>
 
-<div class="row">
-  <div class="callout container clearfix">
-    <div class="callout-info">
-      <%= render "betausers/form" %>
-    </div>
-  </div>
-  <%= render "shared/site_portofilo" %>
-</div>
-
-<div class="row hidden-phone">
-  <%#= render "shared/site_description" %>
-</div>
 <script type="text/javascript">document.getElementById('home').classList.add('active');</script>
