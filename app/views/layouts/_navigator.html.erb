@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-<div class="navbar navbar-fixed-top fill" style="margin-top:40px;">
-  <div id="main-navigation" class="row navbar-inner">
-    <ul class="nav">
-      <%= navigator("homenavigator", main_app.root_url, "Ana Sayfa", "icon-home") %>
-      <%= navigator("postnavigator", nimbos.posts_path, "Sohbet", "icon-comment") %>
-      <%= navigator("companynavigator", main_app.crm_path, t("defaults.link.crm"), "icon-star-empty") %>
-      <%= navigator("contactnavigator", main_app.contacts_path, t("contacts.title.contacts"), "icon-user") %>
-      <%= navigator("loadingnavigator", main_app.loadings_path, t("operations.title.reservations"), "icon-loading") %>
-      <%= navigator("positionnavigator", main_app.positions_path, t("positions.title.positions"), "icon-cog") %>
-
-      <%= navigator("peoplenavigator", main_app.people_path, "Personel Yönetimi", "icon-user") %>
-=======
 <div class="navbar-inner fill">
   <div id="main-navigation" class="row navbar-inner">
     <ul class="nav">
@@ -23,45 +10,8 @@
       <li class="divider-vertical"></li>
       <%= navigator("ticketnavigator", helpdesk.root_url, "Talepler", "icon-bullhorn") %>
       <li class="divider-vertical"></li>
-      <%#= navigator("companynavigator", main_app.crm_path, t("defaults.link.crm"), "icon-star-empty") %>
-      <%#= navigator("contactnavigator", main_app.contacts_path, t("contacts.title.contacts"), "icon-user") %>
-      <%#= navigator("loadingnavigator", main_app.loadings_path, t("operations.title.reservations"), "icon-loading") %>
-      <%#= navigator("positionnavigator", main_app.positions_path, t("positions.title.positions"), "icon-cog") %>
-      <%#= navigator("transportnavigator", main_app.transports_path, t("transports.title.transports"), "icon-random") %>
-      <%#= navigator("payoffnavigator", main_app.payoffs_path, "Masraf Formları", "icon-list-alt") %>
-      <%#= navigator("costnavigator", "#", "Faturalar", "icon-hdd") %>
-      <%#= navigator("documentnavigator", documents_path, "Dokümanlar", "icon-file") %>
-      <%#= navigator("fleetnavigator", main_app.vehicles_path, "Filo", "icon-road") %>
       <%= navigator("peoplenavigator", main_app.people_path, "Personel Yönetimi", "icon-user") %>
       <li class="divider-vertical"></li>
-      <%#= navigator("opernavigator", operations_path, t("defaults.link.operation"), "icon-cog") %>
->>>>>>> origin/ulusoy
-
-      <li id="opernavigator" class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-          <i class="icon-cog"></i>More<b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu">
-          <%= navigator("payoffnavigator", main_app.payoffs_path, "Masraf Formları", "icon-list-alt") %>
-          <%= navigator("fleetnavigator", main_app.vehicles_path, "Filo", "icon-road") %>
-          <%= navigator("transportnavigator", main_app.transports_path, t("transports.title.transports"), "icon-random") %>
-          <%#= navigator("costnavigator", "#", "Faturalar", "icon-hdd") %>
-          <%= navigator("documentnavigator", main_app.documents_path, "Dokümanlar", "icon-file") %>
-          <hr/>
-          <%= navigator("warenavigator", assetim.root_url, "Envanterler", "icon-barcode") %>
-          <%= navigator("ticketnavigator", helpdesk.root_url, "Talepler", "icon-bullhorn") %>
-        </ul>
-      </li>
-      <%# current_patron.operations.each_with_index do |operation, index| %>
-        <%# unless operation.to_s.blank? %>
-          <!--li class="<%#= selected_navigation(operation.to_s) %>"><%#= link_to operation.to_s.humanize, home_operation_path(operation) %></li-->
-        <%# end %>
-      <%# end %>
-      <%#= navigator("fleetnavigator", fleetman_path, t("defaults.link.fleet"), "icon-road") %>
-      <%#= navigator("financenavigator", finance_path, t("defaults.link.finance"), "icon-signal") %>
-      <!--li id="glnavigator"><%#= link_to "#" do %><i class="icon-list-all"></i>Muhasebe<%# end %></li>
-      <li id="iknavigator"><%#= link_to "#" do %><i class="icon-user"></i>İK<%# end %></li-->
-      <!--li id="othersnavigator"><%#= link_to "#" do %><i class="icon-resize-full"></i>Diğer İşlemler<%# end %></li-->
     </ul>
   </div>
 </div>
