@@ -5,6 +5,7 @@ tmp/
 .sass-cache/
 config/database.yml
 config/database.example.yml
+config/settings.example.yml
 public/assets
 public/uploads
 uploads/

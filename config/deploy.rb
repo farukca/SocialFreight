@@ -15,6 +15,7 @@ load "config/recipes/resque"
 load "config/recipes/elasticsearch"
 load "config/recipes/check"
 load "config/recipes/assets"
+load "config/recipes/settings"
 
 #server "213.128.89.119", :web, :app, :db, primary: true
 #set :user, "freighter"

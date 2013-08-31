@@ -24,10 +24,8 @@ GIT
     helpdesk (0.0.1)
       rails (~> 3.2.13)
 
-GIT
-  remote: https://github.com/farukca/nimbos.git
-  revision: 2cadb6f041b4e9b8edb969f5f4e1a169c4501c06
-  ref: 2cadb6f041b4e9b8edb969f5f4e1a169c4501c06
+PATH
+  remote: ../nimbos
   specs:
     nimbos (0.0.1)
       bcrypt-ruby (= 3.0.1)
@@ -92,7 +90,6 @@ GEM
     arel (3.0.2)
     aws_cf_signer (0.1.1)
     bcrypt-ruby (3.0.1)
-    bcrypt-ruby (3.0.1-x86-mingw32)
     builder (3.0.4)
     cancan (1.6.7)
     capistrano (2.13.5)

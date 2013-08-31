@@ -42,6 +42,10 @@ class Search < ActiveRecord::Base
     @tickets = find_tickets
   end
 
+  def people
+    @people  = find_people
+  end
+
   private
   def find_positions
     positions = Position.active
@@ -127,14 +131,16 @@ class Search < ActiveRecord::Base
     tickets
   end
 
-  def find_peoples
+  def find_people
     if self.searched
-      peoples = People.search(self.reference)
+      people = Person.search(self.reference)
     else
-      peoples = People.latest
-      peoples = peoples.where("name||surname like ?", "%#{self.reference}%") if self.reference.present?
-      peoples = peoples.where(user_id: self.user_id) if self.user_id.present?
+      people = Person.latest
+      people = people.where("lower(name) like ?", "%#{self.filter["name"].downcase}%") if self.filter["name"].present?
+      people = people.where("lower(surname) like ?", "%#{self.filter["surname"].downcase}%") if self.filter["surname"].present?
+      people = people.where(country_id: self.filter["country_id"]) if self.filter["country_id"].present?
+      people = people.where(city: self.filter["city"]) if self.filter["city"].present?
     end
-    peoples
+    people
   end
 end

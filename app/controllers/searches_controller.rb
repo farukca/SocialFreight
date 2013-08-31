@@ -49,6 +49,8 @@ class SearchesController < ApplicationController
         @search_results   = @search.transports.page(params[:page]).per(10)
       when "vehicles"
         @search_results   = @search.vehicles.page(params[:page]).per(10)
+      when "people"
+        @search_results   = @search.people.page(params[:page]).per(10)
       when "wares"
         @engine = "assetim/"
         @search_results   = @search.wares.page(params[:page]).per(10)
