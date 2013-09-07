@@ -1,25 +1,19 @@
-GIT
-  remote: https://github.com/farukca/assetim.git
-  revision: 899299ee88eb2af42e10ab5a4a0a7d78697d0ba8
-  ref: 899299ee88eb2af42e10ab5a4a0a7d78697d0ba8
+PATH
+  remote: ../assetim
   specs:
     assetim (0.0.1)
       rails (~> 3.2.13)
       simple_form
       tire
 
-GIT
-  remote: https://github.com/farukca/blogger.git
-  revision: ff08d3632e75889ca0399fb31c026d5f3ffaddf9
-  ref: ff08d3632e75889ca0399fb31c026d5f3ffaddf9
+PATH
+  remote: ../blogger
   specs:
     blogger (0.0.1)
       rails (~> 3.2.6)
 
-GIT
-  remote: https://github.com/farukca/helpdesk.git
-  revision: 2d73c704d9d02672288ec952b847a0dcc7762de1
-  ref: 2d73c704d9d02672288ec952b847a0dcc7762de1
+PATH
+  remote: ../helpdesk
   specs:
     helpdesk (0.0.1)
       rails (~> 3.2.13)
@@ -47,6 +41,14 @@ PATH
       therubyracer
       uglifier (>= 1.0.3)
       warden (= 1.2.3)
+
+PATH
+  remote: ../personal
+  specs:
+    personal (0.0.1)
+      rails (~> 3.2.13)
+      simple_form
+      tire
 
 GEM
   remote: http://rubygems.org/
@@ -90,6 +92,7 @@ GEM
     arel (3.0.2)
     aws_cf_signer (0.1.1)
     bcrypt-ruby (3.0.1)
+    bcrypt-ruby (3.0.1-x86-mingw32)
     builder (3.0.4)
     cancan (1.6.7)
     capistrano (2.13.5)
@@ -375,6 +378,7 @@ DEPENDENCIES
   minitest
   mobile-fu
   nimbos!
+  personal!
   pg
   prawn
   rails (= 3.2.13)

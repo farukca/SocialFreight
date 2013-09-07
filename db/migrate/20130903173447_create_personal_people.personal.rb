@@ -1,13 +1,13 @@
-class CreatePeople < ActiveRecord::Migration
+# This migration comes from personal (originally 20130903143448)
+class CreatePersonalPeople < ActiveRecord::Migration
   def change
-    create_table :people do |t|
+    create_table :personal_people do |t|
       t.string  :name, :limit => 30, :null => false
       t.string  :surname, :limit => 30, :null => false
       t.integer :user_id, :null => false
       t.string  :socialname, :limit => 30
       t.string  :salutation, :limit => 20
       t.string  :gender, :limit => 1
-      t.string  :email, :limit => 40, :null => false
       t.string  :jobtitle, :limit => 40
       t.string  :department, :limit => 40
       t.string  :hometel, :limit => 15
@@ -20,13 +20,12 @@ class CreatePeople < ActiveRecord::Migration
       t.string  :postcode, :limit => 5
       t.string  :address, :limit => 80
       t.string  :district, :limit => 40
-      t.integer :city_id
-      t.integer :state_id
+      t.integer :city
+      t.integer :state
       t.string  :country_id, :limit => 2
-      t.string  :status, :limit => 1, :default => 'A'
+      t.string  :status, :limit => 10, :default => 'active'
       t.integer :branch_id
       t.integer :patron_id, :null => false
-      t.string  :patron_token, :limit => 20, :null => false
       t.string  :twitter, :limit => 30
       t.string  :facebook, :limit => 50
       t.string  :linkedin, :limit => 50
@@ -42,8 +41,6 @@ class CreatePeople < ActiveRecord::Migration
       t.timestamps
     end
     
-    add_index :people, [:user_id, :patron_id, :patron_token], :unique => true
-    add_index :people, [:user_id]
-    add_index :people, [:patron_id, :patron_token]
+    add_index :people, [:user_id, :patron_id], :unique => true
   end
 end

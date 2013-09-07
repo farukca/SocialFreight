@@ -1534,8 +1534,8 @@ CREATE TABLE nimbos_currencies (
     name character varying(40) NOT NULL,
     symbol character varying(1),
     multiplier numeric(5,0) DEFAULT 1 NOT NULL,
-    created_at timestamp without time zone DEFAULT now() NOT NULL,
-    updated_at timestamp without time zone DEFAULT now() NOT NULL
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -2145,6 +2145,71 @@ CREATE SEQUENCE people_id_seq
 --
 
 ALTER SEQUENCE people_id_seq OWNED BY people.id;
+
+
+--
+-- Name: personal_people; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE personal_people (
+    id integer NOT NULL,
+    name character varying(30) NOT NULL,
+    surname character varying(30) NOT NULL,
+    user_id integer NOT NULL,
+    socialname character varying(30),
+    salutation character varying(20),
+    gender character varying(1),
+    jobtitle character varying(40),
+    department character varying(40),
+    hometel character varying(15),
+    busitel character varying(15),
+    exttel character varying(15),
+    fax character varying(15),
+    gsm character varying(15),
+    voip character varying(15),
+    website character varying(30),
+    postcode character varying(5),
+    address character varying(80),
+    district character varying(40),
+    city integer,
+    state integer,
+    country_id character varying(2),
+    status character varying(10) DEFAULT 'active'::character varying,
+    branch_id integer,
+    patron_id integer NOT NULL,
+    twitter character varying(30),
+    facebook character varying(50),
+    linkedin character varying(50),
+    manager_id integer,
+    person_no integer,
+    start_date date,
+    citizen_no character varying(20),
+    birth_date date,
+    nation character varying(2),
+    avatar character varying(100),
+    slug character varying(60),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: personal_people_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE personal_people_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: personal_people_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE personal_people_id_seq OWNED BY personal_people.id;
 
 
 --
@@ -3135,6 +3200,13 @@ ALTER TABLE ONLY people ALTER COLUMN id SET DEFAULT nextval('people_id_seq'::reg
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY personal_people ALTER COLUMN id SET DEFAULT nextval('personal_people_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY places ALTER COLUMN id SET DEFAULT nextval('places_id_seq'::regclass);
 
 
@@ -3622,6 +3694,14 @@ ALTER TABLE ONLY people
 
 
 --
+-- Name: personal_people_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY personal_people
+    ADD CONSTRAINT personal_people_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: places_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -4091,6 +4171,13 @@ CREATE INDEX index_people_on_user_id ON people USING btree (user_id);
 
 
 --
+-- Name: index_people_on_user_id_and_patron_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_people_on_user_id_and_patron_id ON people USING btree (user_id, patron_id);
+
+
+--
 -- Name: index_places_on_city_id_and_country_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -4505,3 +4592,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130818121656');
 INSERT INTO schema_migrations (version) VALUES ('20130825172553');
 
 INSERT INTO schema_migrations (version) VALUES ('20130825201031');
+
+INSERT INTO schema_migrations (version) VALUES ('20130903173447');

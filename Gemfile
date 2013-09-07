@@ -71,12 +71,13 @@ gem 'capistrano'
 
 #gem 'nimbos', git: "https://github.com/farukca/nimbos.git", ref: "2cadb6f041b4e9b8edb969f5f4e1a169c4501c06"
 gem 'nimbos', path: "../nimbos"
-gem 'blogger', git: "https://github.com/farukca/blogger.git", ref: "ff08d3632e75889ca0399fb31c026d5f3ffaddf9"
-#gem 'blogger', path: "../blogger"
-gem 'assetim', git: "https://github.com/farukca/assetim.git", ref: "899299ee88eb2af42e10ab5a4a0a7d78697d0ba8"
-#gem 'assetim', path: "../assetim"
-gem 'helpdesk', git: "https://github.com/farukca/helpdesk.git", ref: "2d73c704d9d02672288ec952b847a0dcc7762de1"
-#gem 'helpdesk', path: "../helpdesk"
+gem 'personal', path: "../personal"
+#gem 'blogger', git: "https://github.com/farukca/blogger.git", ref: "ff08d3632e75889ca0399fb31c026d5f3ffaddf9"
+gem 'blogger', path: "../blogger"
+#gem 'assetim', git: "https://github.com/farukca/assetim.git", ref: "899299ee88eb2af42e10ab5a4a0a7d78697d0ba8"
+gem 'assetim', path: "../assetim"
+#gem 'helpdesk', git: "https://github.com/farukca/helpdesk.git", ref: "2d73c704d9d02672288ec952b847a0dcc7762de1"
+gem 'helpdesk', path: "../helpdesk"
 
 group :test do
   # Pretty printed test output
