@@ -123,7 +123,7 @@ Socialfreight::Application.routes.draw do
   mount Blogger::Engine, at: "/blog"
   mount Assetim::Engine, at: "/assetim"
   mount Helpdesk::Engine, at: "/helpdesk"
-  mount Personal::Engine, at: "/personal"
+  mount Personal::Engine, at: "/"
 
   root :to => "home#index"
   # The priority is based upon order of creation:

@@ -42,6 +42,7 @@ jQuery ->
       minimumInputLength: 2
       width: "220px"
       minimumInputLength: 3
+      allowClear: true
       ajax:
         url: el.data("url")
         dataType: "json"
