@@ -11,7 +11,7 @@ class Company < ActiveRecord::Base
   #include Searchable
 
   #include GeneratesNick
-  include Nimbos::Concerns::GeneratePost
+  #include Nimbos::Concerns::GeneratePost
   include Nimbos::Concerns::GenerateActivity
 
   mapping do

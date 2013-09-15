@@ -21,7 +21,7 @@
 //= require modal_popup
 //= require reservation
 //= require transplan
-//= require transports
+//= require logistics/transports
 //= require searches
 //= require operation_wizard
 //= require connects

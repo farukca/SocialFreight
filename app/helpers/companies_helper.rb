@@ -9,7 +9,7 @@ module CompaniesHelper
   end
 
   def company_input_hint
-  	link_to t("companies.hint.add_company"), new_company_path(nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord"
+  	link_to t("companies.hint.add_company"), main_app.new_company_path(nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord"
   end
 
 	def companies_list_table(companies=@companies, options={})

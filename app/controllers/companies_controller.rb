@@ -1,5 +1,6 @@
 class CompaniesController < ApplicationController
-  
+  include Nimbos::Concerns::GeneratePost
+
   before_filter :require_login
   before_filter(:only => [:home]) { |c| c.set_tab "companynavigator" }
   
@@ -64,6 +65,7 @@ class CompaniesController < ApplicationController
     
     respond_to do |format|
       if @company.save
+        generate_post(current_user.id, @company, @company.name, "created_company", true)
         flash[:notice] = "Company was successfully created."
         format.html { redirect_to @company }
         format.js

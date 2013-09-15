@@ -19,6 +19,13 @@ PATH
       rails (~> 3.2.13)
 
 PATH
+  remote: ../logistics
+  specs:
+    logistics (0.0.1)
+      rails (~> 3.2.13)
+      tire
+
+PATH
   remote: ../nimbos
   specs:
     nimbos (0.0.1)
@@ -373,6 +380,7 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   kaminari (~> 0.13.0)
+  logistics!
   meta_request (= 0.2.0)
   mini_magick
   minitest

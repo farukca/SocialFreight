@@ -87,6 +87,19 @@ module ApplicationHelper
     end
   end
 
+  def section_header_with_link(title, url, url_name)
+    content_tag :div, class: "page-header" do
+      content_tag :h5 do
+        concat title
+        concat (
+          content_tag :small do
+            link_to url_name, url, class: "btn"
+          end
+          )
+      end
+    end
+  end
+
   def page_intro_helper(intro_text)
     content_tag :div, class: "row-fluid" do
       content_tag :p, intro_text

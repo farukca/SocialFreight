@@ -37,6 +37,7 @@ class ContactsController < ApplicationController
     
     respond_to do |format|
       if @contact.save
+        generate_post(current_user.id, @contact, @contact.to_s, "created_contact", true)
         format.html { redirect_to @contact.company, notice: 'Contact was successfully created.' }
         format.json { render json: @contact, status: :created, location: @contact }
       else

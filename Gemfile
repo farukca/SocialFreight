@@ -78,6 +78,7 @@ gem 'blogger', path: "../blogger"
 gem 'assetim', path: "../assetim"
 #gem 'helpdesk', git: "https://github.com/farukca/helpdesk.git", ref: "2d73c704d9d02672288ec952b847a0dcc7762de1"
 gem 'helpdesk', path: "../helpdesk"
+gem 'logistics', path: "../logistics"
 
 group :test do
   # Pretty printed test output

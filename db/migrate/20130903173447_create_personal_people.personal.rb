@@ -41,6 +41,6 @@ class CreatePersonalPeople < ActiveRecord::Migration
       t.timestamps
     end
     
-    add_index :people, [:user_id, :patron_id], :unique => true
+    add_index :personal_people, [:user_id, :patron_id], :unique => true
   end
 end

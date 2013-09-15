@@ -25,9 +25,7 @@ Socialfreight::Application.routes.draw do
   #   end
   # end
   resources :places
-  resources :companies do
-    resources :posts
-  end
+  resources :companies
   resources :partners
   resources :contacts
   resources :events
@@ -37,30 +35,6 @@ Socialfreight::Application.routes.draw do
   
   #resources :branches
 
-  resources :positions do
-    resources :posts
-    member do
-      get :addload
-      get :plan
-    end
-  end
-  resources :transports do
-    resources :posts
-  end
-  resources :transroutes
-
-  resources :loadings do
-    resources :posts
-    member do
-      get :addtoplan
-      get :plan
-    end
-  end
-  resources :departures
-  resources :arrivals
-  resources :packages
-  resources :containers
-  resources :transnodes
   resources :connects
 
   resources :rentals
@@ -124,6 +98,7 @@ Socialfreight::Application.routes.draw do
   mount Assetim::Engine, at: "/assetim"
   mount Helpdesk::Engine, at: "/helpdesk"
   mount Personal::Engine, at: "/"
+  mount Logistics::Engine, at: "/"
 
   root :to => "home#index"
   # The priority is based upon order of creation:
