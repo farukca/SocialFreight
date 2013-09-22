@@ -1,8 +1,0 @@
- <tr>
-  <td><%= link_to t("defaults.link.restore"), junk, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  <td><%= junk.created_at %></td>
-  <td><%= link_to junk.name, junk.junked %></td>
-  <td><%= junk.user.to_s %></td>
-  <td><%= junk.desc %></td>
-  <td></td>
-</tr>

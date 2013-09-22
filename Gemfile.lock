@@ -1,8 +1,14 @@
 PATH
+  remote: ../arsiv
+  specs:
+    arsiv (0.0.1)
+      rails (~> 3.2.14)
+
+PATH
   remote: ../assetim
   specs:
     assetim (0.0.1)
-      rails (~> 3.2.13)
+      rails (~> 3.2.14)
       simple_form
       tire
 
@@ -10,20 +16,32 @@ PATH
   remote: ../blogger
   specs:
     blogger (0.0.1)
-      rails (~> 3.2.6)
+      rails (~> 3.2.14)
+
+PATH
+  remote: ../fleet
+  specs:
+    fleet (0.0.1)
+      rails (~> 3.2.14)
 
 PATH
   remote: ../helpdesk
   specs:
     helpdesk (0.0.1)
-      rails (~> 3.2.13)
+      rails (~> 3.2.14)
 
 PATH
   remote: ../logistics
   specs:
     logistics (0.0.1)
-      rails (~> 3.2.13)
+      rails (~> 3.2.14)
       tire
+
+PATH
+  remote: ../network
+  specs:
+    network (0.0.1)
+      rails (~> 3.2.14)
 
 PATH
   remote: ../nimbos
@@ -39,9 +57,8 @@ PATH
       execjs
       jbuilder
       mini_magick
-      rails (~> 3.2.13)
+      rails (~> 3.2.14)
       resque
-      rolify
       sass-rails (~> 3.2.3)
       simple_form
       table_for_collection
@@ -53,20 +70,31 @@ PATH
   remote: ../personal
   specs:
     personal (0.0.1)
-      rails (~> 3.2.13)
+      rails (~> 3.2.14)
       simple_form
       tire
+
+PATH
+  remote: ../roster
+  specs:
+    roster (0.0.1)
+      rails (~> 3.2.14)
+
+PATH
+  remote: ../surveyor
+  specs:
+    surveyor (0.0.1)
+      rails (~> 3.2.14)
 
 GEM
   remote: http://rubygems.org/
   specs:
-    Ascii85 (1.0.1)
-    actionmailer (3.2.13)
-      actionpack (= 3.2.13)
-      mail (~> 2.5.3)
-    actionpack (3.2.13)
-      activemodel (= 3.2.13)
-      activesupport (= 3.2.13)
+    actionmailer (3.2.14)
+      actionpack (= 3.2.14)
+      mail (~> 2.5.4)
+    actionpack (3.2.14)
+      activemodel (= 3.2.14)
+      activesupport (= 3.2.14)
       builder (~> 3.0.0)
       erubis (~> 2.7.0)
       journey (~> 1.0.4)
@@ -74,23 +102,23 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
-    activemodel (3.2.13)
-      activesupport (= 3.2.13)
+    activemodel (3.2.14)
+      activesupport (= 3.2.14)
       builder (~> 3.0.0)
-    activerecord (3.2.13)
-      activemodel (= 3.2.13)
-      activesupport (= 3.2.13)
+    activerecord (3.2.14)
+      activemodel (= 3.2.14)
+      activesupport (= 3.2.14)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
     activerecord-postgres-hstore (0.7.6)
       activerecord (>= 3.1)
       pg-hstore (>= 1.1.5)
       rake
-    activeresource (3.2.13)
-      activemodel (= 3.2.13)
-      activesupport (= 3.2.13)
-    activesupport (3.2.13)
-      i18n (= 0.6.1)
+    activeresource (3.2.14)
+      activemodel (= 3.2.14)
+      activesupport (= 3.2.14)
+    activesupport (3.2.14)
+      i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
     akami (1.0.0)
       gyoku (>= 0.4.0)
@@ -101,7 +129,6 @@ GEM
     bcrypt-ruby (3.0.1)
     bcrypt-ruby (3.0.1-x86-mingw32)
     builder (3.0.4)
-    cancan (1.6.7)
     capistrano (2.13.5)
       highline
       net-scp (>= 1.0.0)
@@ -154,9 +181,6 @@ GEM
     fakeweb (1.3.0)
     ffi (1.0.9)
     ffi (1.0.9-x86-mingw32)
-    friendly_id (4.0.9)
-    gmaps4rails (1.4.8)
-      json
     gyoku (0.4.4)
       builder (>= 2.1.2)
     hashr (0.0.22)
@@ -164,7 +188,7 @@ GEM
     hike (1.2.3)
     httpi (0.9.7)
       rack
-    i18n (0.6.1)
+    i18n (0.6.5)
     jbuilder (0.9.1)
       activesupport (>= 3.0.0)
     journey (1.0.4)
@@ -187,7 +211,7 @@ GEM
     meta_request (0.2.0)
       rack-contrib
       rails
-    mime-types (1.23)
+    mime-types (1.25)
     mini_magick (3.5.0)
       subexec (~> 0.2.1)
     minitest (2.11.2)
@@ -205,15 +229,10 @@ GEM
     nokogiri (1.5.0)
     nokogiri (1.5.0-x86-mingw32)
     nori (1.1.0)
-    pdf-reader (0.10.1)
-      Ascii85 (~> 1.0.0)
     pg (0.13.2)
     pg (0.13.2-x86-mingw32)
     pg-hstore (1.1.7)
     polyglot (0.3.3)
-    prawn (0.12.0)
-      pdf-reader (>= 0.9.0)
-      ttfunk (~> 1.0.2)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -227,17 +246,17 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
-    rails (3.2.13)
-      actionmailer (= 3.2.13)
-      actionpack (= 3.2.13)
-      activerecord (= 3.2.13)
-      activeresource (= 3.2.13)
-      activesupport (= 3.2.13)
+    rails (3.2.14)
+      actionmailer (= 3.2.14)
+      actionpack (= 3.2.14)
+      activerecord (= 3.2.14)
+      activeresource (= 3.2.14)
+      activesupport (= 3.2.14)
       bundler (~> 1.0)
-      railties (= 3.2.13)
-    railties (3.2.13)
-      actionpack (= 3.2.13)
-      activesupport (= 3.2.13)
+      railties (= 3.2.14)
+    railties (3.2.14)
+      actionpack (= 3.2.14)
+      activesupport (= 3.2.14)
       rack-ssl (~> 1.3.2)
       rake (>= 0.8.7)
       rdoc (~> 3.4)
@@ -257,7 +276,6 @@ GEM
       vegas (~> 0.1.2)
     rest-client (1.6.7)
       mime-types (>= 1.16)
-    rolify (3.2.0)
     ruby-debug-base19 (0.11.25)
       columnize (>= 0.3.1)
       linecache19 (>= 0.5.11)
@@ -301,8 +319,6 @@ GEM
       rack (~> 1.3, >= 1.3.6)
       rack-protection (~> 1.2)
       tilt (~> 1.3, >= 1.3.3)
-    socialization (0.4.0)
-      activerecord
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -322,10 +338,9 @@ GEM
       multi_json (~> 1.0)
       rake
       rest-client (~> 1.6)
-    treetop (1.4.14)
+    treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    ttfunk (1.0.3)
     turn (0.8.2)
       ansi (>= 1.2.2)
     twitter-text (1.5.0)
@@ -347,9 +362,6 @@ GEM
     whenever (0.7.3)
       activesupport (>= 2.3.4)
       chronic (~> 0.6.3)
-    wicked (0.2.0)
-      activesupport (>= 3.0.7)
-      rails (>= 3.0.7)
     xpath (0.1.4)
       nokogiri (~> 1.3)
 
@@ -359,9 +371,9 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-postgres-hstore
+  arsiv!
   assetim!
   blogger!
-  cancan
   capistrano
   capybara
   carrierwave
@@ -374,8 +386,7 @@ DEPENDENCIES
   execjs
   factory_girl_rails
   fakeweb
-  friendly_id (~> 4.0.9)
-  gmaps4rails
+  fleet!
   helpdesk!
   jbuilder
   jquery-rails
@@ -385,20 +396,20 @@ DEPENDENCIES
   mini_magick
   minitest
   mobile-fu
+  network!
   nimbos!
   personal!
   pg
-  prawn
-  rails (= 3.2.13)
+  rails (= 3.2.14)
   resque
-  rolify
+  roster!
   ruby-debug19
   sass-rails (~> 3.2.3)
   savon
   select2-rails
   simple_form (~> 2.0)
   simplecov
-  socialization
+  surveyor!
   table_for_collection
   therubyracer
   tire
@@ -407,4 +418,3 @@ DEPENDENCIES
   uglifier (>= 1.0.3)
   unicorn
   whenever
-  wicked

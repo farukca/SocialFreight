@@ -8,9 +8,9 @@
  * require bootstrap-glyphicons
  *= require bootstrap_changes
  *= require datepicker
- *= require contacts
+ * require contacts
  * require tasks
- *= require gmaps4rails
+ * require gmaps4rails
  *= require token-input
  * require chosen
  *= require select2

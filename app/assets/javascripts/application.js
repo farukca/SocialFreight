@@ -6,35 +6,35 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require gmaps4rails/googlemaps.js
 //= require rails.validations
 //= require rails.validations.simple_form
-//= require jquery.timeago
 //= require bootstrap
-// require highcharts
-//= require select2
-// require patron
-//= require loading
-//= require search
 //= require bootstrap-datepicker
-//= require home
-//= require modal_popup
-//= require reservation
-//= require transplan
+//= require select2
+//= require logistics/loadings
 //= require logistics/transports
-//= require searches
-//= require operation_wizard
-//= require connects
-// require todolists
-// require tasks
-//= require costs
 //= require nimbos/comments
 //= require nimbos/templates/tasks/tasks.jst.eco
 //= require nimbos/templates/comments/form.jst.eco
-// require templates/positions/positions.jst.eco
-// require templates/loadings/reservations.jst.eco
+//= require home
+
+// require logistics/templates/positions/positions.jst.eco
+// require logistics/templates/loadings/reservations.jst.eco
 // require_tree.
 
+
+// require jquery.timeago
+// require gmaps4rails/googlemaps.js
+// require highcharts
+// require patron
+// require reservation
+// require transplan
+// require searches
+// require operation_wizard
+// require connects
+// require todolists
+// require tasks
+// require costs
 // require simpleform_clientsidev
 // require jquery.tokeninput
 // require jquery.autocomplete

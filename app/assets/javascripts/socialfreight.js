@@ -10,7 +10,6 @@
 //= require rails.validations
 //= require rails.validations.simple_form
 //= require bootstrap
-//= require modal_popup
 //= require twitter
 // require superfish
 //= require script

@@ -30,7 +30,7 @@
 </div>
 <%#= render 'shared/site_news' %>
 <%= render 'shared/site_footer' %>
-<%= link_to t("feedbacks.link.new_feedback"), main_app.new_feedback_path(nolayout: 1), "data-toggle" => "modal", "data-target" => "#default_modal_popup", class: "btn Feedback hidden-phone", title: t("feedbacks.hint.new_feedback") %>
+<%= link_to t("feedbacks.link.new_feedback"), surveyor.new_feedback_path(nolayout: 1), "data-toggle" => "modal", "data-target" => "#default_modal_popup", class: "btn Feedback hidden-phone", title: t("feedbacks.hint.new_feedback") %>
 <div id="default_modal_popup" class="modal fade"></div>
 </body>
 <script type="text/javascript">

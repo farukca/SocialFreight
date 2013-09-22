@@ -56,12 +56,12 @@ module ApplicationHelper
 
   def search_form_helper(model_name)
     capture do
-      form_for(Search.new, :url => main_app.searches_path, remote: true, class: "form-search") do |f|
+      form_for(Roster::Search.new, :url => roster.searches_path, remote: true, class: "form-search") do |f|
         concat f.text_field :reference, class: "input-xlarge search-query", placeholder: t("#{model_name}.defaults.fullsearch_placeholder")
         concat f.hidden_field :model, value: model_name
-        concat f.hidden_field :searched, value: "t"
+        concat f.hidden_field :search_type, value: "fulltext"
         concat f.submit t("defaults.link.search"), class: "btn"
-        concat link_to t("defaults.link.detailed_search"), main_app.new_search_path(model: model_name)
+        concat link_to t("defaults.link.detailed_search"), roster.new_search_path(model: model_name)
       end
     end
   end

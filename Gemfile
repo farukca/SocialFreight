@@ -1,13 +1,13 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.13'
+gem 'rails', '3.2.14'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
 gem 'activerecord-postgres-hstore'
-gem 'gmaps4rails'
+#gem 'gmaps4rails'
 
 # Gems used only for assets and not required in production environments by default.
 group :assets do
@@ -28,8 +28,8 @@ gem 'mobile-fu'
 
 #gem 'rails3-jquery-autocomplete'
 gem 'kaminari', '~> 0.13.0'
-gem 'friendly_id', '~> 4.0.9'
-gem 'socialization'
+#gem 'friendly_id', '~> 4.0.9'
+#gem 'socialization'
 gem 'twitter-text'
 
 #File uploading
@@ -38,16 +38,14 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'cloudinary'
 
-#gem 'sorcery'
-gem 'cancan'
-gem 'rolify'
-gem 'wicked'
+#gem 'cancan'
+#gem 'wicked'
 gem 'resque', require: "resque/server"
 gem 'savon'
 gem 'whenever', require: false
 gem 'tire'
 #PDF
-gem 'prawn'
+#gem 'prawn'
 
 gem 'exception_notification'
 
@@ -69,16 +67,21 @@ gem 'unicorn'
 gem 'capistrano'
 #gem 'capistrano-rbenv'
 
-#gem 'nimbos', git: "https://github.com/farukca/nimbos.git", ref: "2cadb6f041b4e9b8edb969f5f4e1a169c4501c06"
-gem 'nimbos', path: "../nimbos"
-gem 'personal', path: "../personal"
-#gem 'blogger', git: "https://github.com/farukca/blogger.git", ref: "ff08d3632e75889ca0399fb31c026d5f3ffaddf9"
-gem 'blogger', path: "../blogger"
+gem 'arsiv', path: "../arsiv"
 #gem 'assetim', git: "https://github.com/farukca/assetim.git", ref: "899299ee88eb2af42e10ab5a4a0a7d78697d0ba8"
 gem 'assetim', path: "../assetim"
+#gem 'blogger', git: "https://github.com/farukca/blogger.git", ref: "ff08d3632e75889ca0399fb31c026d5f3ffaddf9"
+gem 'blogger', path: "../blogger"
+gem 'fleet', path: "../fleet"
 #gem 'helpdesk', git: "https://github.com/farukca/helpdesk.git", ref: "2d73c704d9d02672288ec952b847a0dcc7762de1"
 gem 'helpdesk', path: "../helpdesk"
 gem 'logistics', path: "../logistics"
+gem 'network', path: "../network"
+#gem 'nimbos', git: "https://github.com/farukca/nimbos.git", ref: "2cadb6f041b4e9b8edb969f5f4e1a169c4501c06"
+gem 'nimbos', path: "../nimbos"
+gem 'personal', path: "../personal"
+gem 'roster', path: "../roster"
+gem 'surveyor', path: "../surveyor"
 
 group :test do
   # Pretty printed test output

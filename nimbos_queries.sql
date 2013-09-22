@@ -44,4 +44,5 @@ SELECT setval('public.nimbos_todolists_id_seq', (select max(id)+1 from nimbos_to
 insert into nimbos_tasks (select id, todolist_id, user_id, task_text, task_code, i18n_code, cruser_id, status, due_date, closed_date, close_text, system_task, patron_id, created_at, updated_at from tasks);
 SELECT setval('public.nimbos_tasks_id_seq', (select max(id)+1 from nimbos_tasks), true);
 
-DROP TABLE people;
+insert into nimbos_counters (select id,counter_type,count,prefix,suffix,period,confirmed,patron_id,now(),now() from counters)
+SELECT setval('public.nimbos_counters_id_seq', (select max(id) from nimbos_counters), true);

@@ -13,7 +13,7 @@ jQuery ->
     todayHighlight: true
   $(".alert-message").alert()
   $(".collapse").collapse('show')
-  $("span.timeago").timeago()
+  #$("span.timeago").timeago()
   $(".slidingDiv").hide()
   $(".togglebutton").show()
   $(document).on "click", ".togglebutton", (event) ->
@@ -89,6 +89,11 @@ jQuery ->
       tokenLimit: 1
       prePopulate: el.data("pre")
       preventDuplicates: true
+
+  $("a[data-toggle=modal]").click ->
+    target = $(this).attr('data-target')
+    url = $(this).attr('href')
+    $(target).load(url)
 
   #$("#post_message").mentionsInput onDataRequest: (mode, query, callback) ->
   #  $.getJSON "/nicks.json", (responseData) ->

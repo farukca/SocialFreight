@@ -648,6 +648,83 @@ ALTER SEQUENCE arrivals_id_seq OWNED BY arrivals.id;
 
 
 --
+-- Name: arsiv_documents; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE arsiv_documents (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    document_date date NOT NULL,
+    document_no character varying(255),
+    documented_type character varying(100),
+    documented_id integer,
+    status character varying(10) DEFAULT 'active'::character varying,
+    country_id character varying(20),
+    description character varying(255),
+    document_file character varying(255),
+    user_id integer NOT NULL,
+    patron_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: arsiv_documents_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE arsiv_documents_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: arsiv_documents_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE arsiv_documents_id_seq OWNED BY arsiv_documents.id;
+
+
+--
+-- Name: arsiv_junks; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE arsiv_junks (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    junked_type character varying(100) NOT NULL,
+    junked_id integer NOT NULL,
+    user_id integer NOT NULL,
+    patron_id integer NOT NULL,
+    "desc" text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: arsiv_junks_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE arsiv_junks_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: arsiv_junks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE arsiv_junks_id_seq OWNED BY arsiv_junks.id;
+
+
+--
 -- Name: assetim_ware_actions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1228,43 +1305,6 @@ ALTER SEQUENCE costs_id_seq OWNED BY costs.id;
 
 
 --
--- Name: counters; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE counters (
-    id integer NOT NULL,
-    counter_type character varying(40) NOT NULL,
-    operation character varying(20),
-    direction character varying(1),
-    count integer DEFAULT 0 NOT NULL,
-    patron_id integer NOT NULL,
-    prefix character varying(10),
-    suffix character varying(10),
-    period integer DEFAULT 0,
-    confirmed boolean DEFAULT false
-);
-
-
---
--- Name: counters_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE counters_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: counters_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE counters_id_seq OWNED BY counters.id;
-
-
---
 -- Name: countries; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1617,6 +1657,56 @@ CREATE SEQUENCE finunits_id_seq
 --
 
 ALTER SEQUENCE finunits_id_seq OWNED BY finunits.id;
+
+
+--
+-- Name: fleet_vehicles; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE fleet_vehicles (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    code character varying(20) NOT NULL,
+    vehicle_class character varying(20),
+    vehicle_type character varying(20),
+    brand character varying(20),
+    model character varying(50),
+    model_year integer,
+    patron_id integer,
+    owner character varying(50),
+    vehicle_price numeric DEFAULT 0,
+    price_curr character varying(5),
+    buying_date date,
+    fuel_capacity integer,
+    fuel_type character varying(10),
+    tire_size character varying(2),
+    link_type character varying(2),
+    longitude double precision,
+    latitude double precision,
+    slug character varying(20),
+    notes text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: fleet_vehicles_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE fleet_vehicles_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: fleet_vehicles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE fleet_vehicles_id_seq OWNED BY fleet_vehicles.id;
 
 
 --
@@ -2151,7 +2241,7 @@ ALTER SEQUENCE logistics_arrivals_id_seq OWNED BY logistics_arrivals.id;
 
 CREATE TABLE logistics_containers (
     id integer NOT NULL,
-    name integer NOT NULL,
+    name character varying(40) NOT NULL,
     sealno character varying(40),
     container_type character varying(40),
     loading_id integer NOT NULL,
@@ -2543,6 +2633,116 @@ CREATE SEQUENCE mentions_id_seq
 --
 
 ALTER SEQUENCE mentions_id_seq OWNED BY mentions.id;
+
+
+--
+-- Name: network_companies; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE network_companies (
+    id integer NOT NULL,
+    name character varying(50) NOT NULL,
+    title character varying(255),
+    company_type character varying(10),
+    tel character varying(30),
+    fax character varying(30),
+    gsm character varying(30),
+    voip character varying(30),
+    email character varying(100),
+    website character varying(255),
+    sector character varying(40),
+    postcode character varying(5),
+    address character varying(255),
+    district character varying(100),
+    city character varying(100),
+    state character varying(100),
+    country_id character varying(2),
+    status character varying(10) DEFAULT 'active'::character varying,
+    branch_id integer NOT NULL,
+    patron_id integer NOT NULL,
+    latitude double precision,
+    longitude double precision,
+    gmaps boolean,
+    notes text,
+    saler_id integer,
+    user_id integer NOT NULL,
+    company_no character varying(10),
+    slug character varying(50),
+    contacts_count integer DEFAULT 0,
+    events_count integer DEFAULT 0,
+    partners_count integer DEFAULT 0,
+    discussions_count integer DEFAULT 0,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: network_companies_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE network_companies_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: network_companies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE network_companies_id_seq OWNED BY network_companies.id;
+
+
+--
+-- Name: network_contacts; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE network_contacts (
+    id integer NOT NULL,
+    name character varying(50),
+    surname character varying(50) NOT NULL,
+    company_id integer,
+    user_id integer NOT NULL,
+    salutation character varying(10),
+    email character varying(100),
+    tel character varying(30),
+    gsm character varying(30),
+    jobtitle character varying(100),
+    department character varying(60),
+    tel2 character varying(30),
+    fax character varying(30),
+    birthdate date,
+    patron_id integer,
+    twitter character varying(50),
+    facebook character varying(50),
+    linkedin character varying(50),
+    des character varying(255),
+    slug character varying(60),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: network_contacts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE network_contacts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: network_contacts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE network_contacts_id_seq OWNED BY network_contacts.id;
 
 
 --
@@ -2943,13 +3143,22 @@ CREATE TABLE nimbos_posts (
     message text NOT NULL,
     target_type character varying(40),
     target_id integer,
-    target_name character varying(40),
-    post_type character varying(20),
+    target_title character varying(255),
+    target_url character varying(255),
     is_private boolean DEFAULT false,
     is_syspost boolean DEFAULT false,
     patron_id integer NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    parent_type character varying(40),
+    parent_id integer,
+    parent_title character varying(255),
+    parent_url character varying(255),
+    post_action character varying(50),
+    channel character varying(50),
+    trashed boolean DEFAULT false,
+    comments_count integer DEFAULT 0,
+    likes_count integer DEFAULT 0
 );
 
 
@@ -3882,6 +4091,42 @@ ALTER SEQUENCE roles_id_seq OWNED BY roles.id;
 
 
 --
+-- Name: roster_searches; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE roster_searches (
+    id integer NOT NULL,
+    model character varying(30) NOT NULL,
+    reference character varying(40),
+    user_id integer NOT NULL,
+    patron_id integer NOT NULL,
+    search_type character varying(10) DEFAULT 'detailed'::character varying,
+    filter hstore,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: roster_searches_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE roster_searches_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: roster_searches_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE roster_searches_id_seq OWNED BY roster_searches.id;
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -4010,6 +4255,77 @@ CREATE SEQUENCE states_id_seq
 --
 
 ALTER SEQUENCE states_id_seq OWNED BY states.id;
+
+
+--
+-- Name: surveyor_betausers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE surveyor_betausers (
+    id integer NOT NULL,
+    email character varying(255),
+    name character varying(100),
+    company character varying(100),
+    phone character varying(30),
+    country character varying(20),
+    ipaddr character varying(20),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: surveyor_betausers_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE surveyor_betausers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: surveyor_betausers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE surveyor_betausers_id_seq OWNED BY surveyor_betausers.id;
+
+
+--
+-- Name: surveyor_feedbacks; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE surveyor_feedbacks (
+    id integer NOT NULL,
+    name character varying(40) NOT NULL,
+    email character varying(100),
+    msg character varying(500),
+    user_id integer,
+    patron_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: surveyor_feedbacks_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE surveyor_feedbacks_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: surveyor_feedbacks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE surveyor_feedbacks_id_seq OWNED BY surveyor_feedbacks.id;
 
 
 --
@@ -4507,6 +4823,20 @@ ALTER TABLE ONLY arrivals ALTER COLUMN id SET DEFAULT nextval('arrivals_id_seq':
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY arsiv_documents ALTER COLUMN id SET DEFAULT nextval('arsiv_documents_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY arsiv_junks ALTER COLUMN id SET DEFAULT nextval('arsiv_junks_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY assetim_ware_actions ALTER COLUMN id SET DEFAULT nextval('assetim_ware_actions_id_seq'::regclass);
 
 
@@ -4598,13 +4928,6 @@ ALTER TABLE ONLY costs ALTER COLUMN id SET DEFAULT nextval('costs_id_seq'::regcl
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY counters ALTER COLUMN id SET DEFAULT nextval('counters_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY currates ALTER COLUMN id SET DEFAULT nextval('currates_id_seq'::regclass);
 
 
@@ -4648,6 +4971,13 @@ ALTER TABLE ONLY findocs ALTER COLUMN id SET DEFAULT nextval('findocs_id_seq'::r
 --
 
 ALTER TABLE ONLY finunits ALTER COLUMN id SET DEFAULT nextval('finunits_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY fleet_vehicles ALTER COLUMN id SET DEFAULT nextval('fleet_vehicles_id_seq'::regclass);
 
 
 --
@@ -4788,6 +5118,20 @@ ALTER TABLE ONLY logistics_transroutes ALTER COLUMN id SET DEFAULT nextval('logi
 --
 
 ALTER TABLE ONLY mentions ALTER COLUMN id SET DEFAULT nextval('mentions_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY network_companies ALTER COLUMN id SET DEFAULT nextval('network_companies_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY network_contacts ALTER COLUMN id SET DEFAULT nextval('network_contacts_id_seq'::regclass);
 
 
 --
@@ -4997,6 +5341,13 @@ ALTER TABLE ONLY roles ALTER COLUMN id SET DEFAULT nextval('roles_id_seq'::regcl
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY roster_searches ALTER COLUMN id SET DEFAULT nextval('roster_searches_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY searches ALTER COLUMN id SET DEFAULT nextval('searches_id_seq'::regclass);
 
 
@@ -5012,6 +5363,20 @@ ALTER TABLE ONLY ships ALTER COLUMN id SET DEFAULT nextval('ships_id_seq'::regcl
 --
 
 ALTER TABLE ONLY states ALTER COLUMN id SET DEFAULT nextval('states_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY surveyor_betausers ALTER COLUMN id SET DEFAULT nextval('surveyor_betausers_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY surveyor_feedbacks ALTER COLUMN id SET DEFAULT nextval('surveyor_feedbacks_id_seq'::regclass);
 
 
 --
@@ -5098,6 +5463,22 @@ ALTER TABLE ONLY activities
 
 ALTER TABLE ONLY arrivals
     ADD CONSTRAINT arrivals_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: arsiv_documents_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY arsiv_documents
+    ADD CONSTRAINT arsiv_documents_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: arsiv_junks_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY arsiv_junks
+    ADD CONSTRAINT arsiv_junks_pkey PRIMARY KEY (id);
 
 
 --
@@ -5205,14 +5586,6 @@ ALTER TABLE ONLY costs
 
 
 --
--- Name: counters_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY counters
-    ADD CONSTRAINT counters_pkey PRIMARY KEY (id);
-
-
---
 -- Name: countries_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -5282,6 +5655,14 @@ ALTER TABLE ONLY findocs
 
 ALTER TABLE ONLY finunits
     ADD CONSTRAINT finunits_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: fleet_vehicles_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY fleet_vehicles
+    ADD CONSTRAINT fleet_vehicles_pkey PRIMARY KEY (id);
 
 
 --
@@ -5442,6 +5823,22 @@ ALTER TABLE ONLY logistics_transroutes
 
 ALTER TABLE ONLY mentions
     ADD CONSTRAINT mentions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: network_companies_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY network_companies
+    ADD CONSTRAINT network_companies_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: network_contacts_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY network_contacts
+    ADD CONSTRAINT network_contacts_pkey PRIMARY KEY (id);
 
 
 --
@@ -5701,6 +6098,14 @@ ALTER TABLE ONLY roles
 
 
 --
+-- Name: roster_searches_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY roster_searches
+    ADD CONSTRAINT roster_searches_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: searches_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -5722,6 +6127,22 @@ ALTER TABLE ONLY ships
 
 ALTER TABLE ONLY states
     ADD CONSTRAINT states_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: surveyor_betausers_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY surveyor_betausers
+    ADD CONSTRAINT surveyor_betausers_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: surveyor_feedbacks_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY surveyor_feedbacks
+    ADD CONSTRAINT surveyor_feedbacks_pkey PRIMARY KEY (id);
 
 
 --
@@ -5889,6 +6310,34 @@ CREATE INDEX index_arrivals_on_patron_id ON arrivals USING btree (patron_id);
 
 
 --
+-- Name: index_arsiv_documents_on_documented_type_and_documented_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_arsiv_documents_on_documented_type_and_documented_id ON arsiv_documents USING btree (documented_type, documented_id);
+
+
+--
+-- Name: index_arsiv_documents_on_patron_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_arsiv_documents_on_patron_id ON arsiv_documents USING btree (patron_id);
+
+
+--
+-- Name: index_arsiv_junks_on_junked_type_and_junked_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_arsiv_junks_on_junked_type_and_junked_id ON arsiv_junks USING btree (junked_type, junked_id);
+
+
+--
+-- Name: index_arsiv_junks_on_user_id_and_patron_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_arsiv_junks_on_user_id_and_patron_id ON arsiv_junks USING btree (user_id, patron_id);
+
+
+--
 -- Name: index_branches_on_patron_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -5907,6 +6356,13 @@ CREATE INDEX index_cities_on_country_id ON cities USING btree (country_id);
 --
 
 CREATE INDEX index_comments_on_user_id_and_patron_id ON comments USING btree (user_id, patron_id);
+
+
+--
+-- Name: index_companies_on_lower_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_companies_on_lower_name ON network_companies USING btree (patron_id, lower((name)::text));
 
 
 --
@@ -5966,13 +6422,6 @@ CREATE INDEX index_costs_on_patron_id ON costs USING btree (patron_id);
 
 
 --
--- Name: index_counters_unique; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX index_counters_unique ON counters USING btree (patron_id, counter_type, operation, period);
-
-
---
 -- Name: index_countries_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -6019,6 +6468,20 @@ CREATE INDEX index_findocs_of_patron_branch ON findocs USING btree (patron_id, b
 --
 
 CREATE INDEX index_finunits_on_patron_id_and_branch_id_and_unit_type ON finunits USING btree (patron_id, branch_id, unit_type);
+
+
+--
+-- Name: index_fleet_vehicles_on_code_and_patron_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_fleet_vehicles_on_code_and_patron_id ON fleet_vehicles USING btree (code, patron_id);
+
+
+--
+-- Name: index_fleet_vehicles_on_patron_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_fleet_vehicles_on_patron_id ON fleet_vehicles USING btree (patron_id);
 
 
 --
@@ -6236,6 +6699,34 @@ CREATE INDEX index_logistics_transroutes_on_patron_id_and_route_id ON logistics_
 --
 
 CREATE INDEX index_logistics_transroutes_on_transport_id ON logistics_transroutes USING btree (transport_id);
+
+
+--
+-- Name: index_network_companies_on_name_and_patron_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_network_companies_on_name_and_patron_id ON network_companies USING btree (name, patron_id);
+
+
+--
+-- Name: index_network_companies_on_patron_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_network_companies_on_patron_id ON network_companies USING btree (patron_id);
+
+
+--
+-- Name: index_network_contacts_on_company_id_and_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_network_contacts_on_company_id_and_user_id ON network_contacts USING btree (company_id, user_id);
+
+
+--
+-- Name: index_network_contacts_on_patron_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_network_contacts_on_patron_id ON network_contacts USING btree (patron_id);
 
 
 --
@@ -6463,6 +6954,13 @@ CREATE INDEX index_roles_on_name_and_resource_type_and_resource_id ON roles USIN
 
 
 --
+-- Name: index_roster_searches_on_patron_id_and_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_roster_searches_on_patron_id_and_user_id ON roster_searches USING btree (patron_id, user_id);
+
+
+--
 -- Name: index_searches_on_patron_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -6598,6 +7096,8 @@ CREATE INDEX user_tasks ON tasks USING btree (user_id, status, patron_id);
 --
 -- PostgreSQL database dump complete
 --
+
+SET search_path TO "$user",public;
 
 INSERT INTO schema_migrations (version) VALUES ('20120225101201');
 
@@ -6950,3 +7450,25 @@ INSERT INTO schema_migrations (version) VALUES ('20130912194342');
 INSERT INTO schema_migrations (version) VALUES ('20130915104207');
 
 INSERT INTO schema_migrations (version) VALUES ('20130915114218');
+
+INSERT INTO schema_migrations (version) VALUES ('20130917035850');
+
+INSERT INTO schema_migrations (version) VALUES ('20130917035851');
+
+INSERT INTO schema_migrations (version) VALUES ('20130921152034');
+
+INSERT INTO schema_migrations (version) VALUES ('20130921152035');
+
+INSERT INTO schema_migrations (version) VALUES ('20130921152051');
+
+INSERT INTO schema_migrations (version) VALUES ('20130921152110');
+
+INSERT INTO schema_migrations (version) VALUES ('20130921152111');
+
+INSERT INTO schema_migrations (version) VALUES ('20130921152112');
+
+INSERT INTO schema_migrations (version) VALUES ('20130921152130');
+
+INSERT INTO schema_migrations (version) VALUES ('20130921152151');
+
+INSERT INTO schema_migrations (version) VALUES ('20130921152152');

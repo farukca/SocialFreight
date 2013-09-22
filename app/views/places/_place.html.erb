@@ -1,9 +1,0 @@
-<tr>
-  <td><%= "#{place.place_type.humanize} Port" %></td>
-  <td><%= link_to place.name, place_path(place) %></td>
-  <td><%= place.code %></td>
-  <td><%= place.country.name if place.country %></td>
-  <td><%= place.city.name if place.city %></td>
-  <td><%= place.district %></td>
-  <td><%= place.description %></td>
-</tr>

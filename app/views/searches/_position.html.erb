@@ -1,9 +1,0 @@
-<tr>
-  <td><%= radio_button_tag :selectedrow, position.id, false, "data-positionid" => position.id, "data-ref" => position.reference, "data-operation" => position.operation %></td>
-  <td><%= link_to position.reference, position %></td>
-  <td><%= position.direction %></td>
-  <td><%= position.load_place.name if position.load_place %></td>
-  <td><%= position.load_date %></td>
-  <td><%= position.unload_place.name if position.unload_place %></td>
-  <td><%= position.unload_date %></td>
-</tr>

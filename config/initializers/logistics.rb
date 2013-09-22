@@ -1,7 +1,0 @@
-Logistics.user_class     = "Nimbos::User"
-Logistics.person_class   = "Personal::Person"
-Logistics.branch_class   = "Nimbos::Branch"
-Logistics.company_class  = "Company"
-Logistics.todolist_class = "Nimbos::Todolist"
-Logistics.discussion_class = "Nimbos::Discussion"
-Logistics.country_class  = "Nimbos::Country"

@@ -6,7 +6,7 @@ class HomeController < ApplicationController
     if current_user && current_patron
       redirect_to nimbos.user_path(current_user)
     else
-      @betauser = Betauser.new
+      @betauser = Surveyor::Betauser.new
     end
   end
 
