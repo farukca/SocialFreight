@@ -8,6 +8,7 @@ module Trashable
 
   def trash
     update_attribute :trashed, true
+    #delete from elasticsearch
   end
 
   #def trash
@@ -19,5 +20,6 @@ module Trashable
   def recover
     # update_column not appropriate here as it uses the default scope
     update_attribute :trashed, nil
+    #add to elasticsearch
   end
 end

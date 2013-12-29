@@ -38,6 +38,12 @@ PATH
       tire
 
 PATH
+  remote: ../messenger
+  specs:
+    messenger (0.0.1)
+      rails (~> 3.2.14)
+
+PATH
   remote: ../network
   specs:
     network (0.0.1)
@@ -392,6 +398,7 @@ DEPENDENCIES
   jquery-rails
   kaminari (~> 0.13.0)
   logistics!
+  messenger!
   meta_request (= 0.2.0)
   mini_magick
   minitest

@@ -2636,6 +2636,74 @@ ALTER SEQUENCE mentions_id_seq OWNED BY mentions.id;
 
 
 --
+-- Name: messenger_message_users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE messenger_message_users (
+    id integer NOT NULL,
+    user_id integer NOT NULL,
+    message_id integer NOT NULL,
+    is_read boolean DEFAULT false,
+    read_at timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: messenger_message_users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE messenger_message_users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: messenger_message_users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE messenger_message_users_id_seq OWNED BY messenger_message_users.id;
+
+
+--
+-- Name: messenger_messages; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE messenger_messages (
+    id integer NOT NULL,
+    message text NOT NULL,
+    sender_id integer NOT NULL,
+    parent_id integer,
+    patron_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: messenger_messages_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE messenger_messages_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: messenger_messages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE messenger_messages_id_seq OWNED BY messenger_messages.id;
+
+
+--
 -- Name: network_companies; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -5124,6 +5192,20 @@ ALTER TABLE ONLY mentions ALTER COLUMN id SET DEFAULT nextval('mentions_id_seq':
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY messenger_message_users ALTER COLUMN id SET DEFAULT nextval('messenger_message_users_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY messenger_messages ALTER COLUMN id SET DEFAULT nextval('messenger_messages_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY network_companies ALTER COLUMN id SET DEFAULT nextval('network_companies_id_seq'::regclass);
 
 
@@ -5823,6 +5905,22 @@ ALTER TABLE ONLY logistics_transroutes
 
 ALTER TABLE ONLY mentions
     ADD CONSTRAINT mentions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: messenger_message_users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY messenger_message_users
+    ADD CONSTRAINT messenger_message_users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: messenger_messages_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY messenger_messages
+    ADD CONSTRAINT messenger_messages_pkey PRIMARY KEY (id);
 
 
 --
@@ -7472,3 +7570,7 @@ INSERT INTO schema_migrations (version) VALUES ('20130921152130');
 INSERT INTO schema_migrations (version) VALUES ('20130921152151');
 
 INSERT INTO schema_migrations (version) VALUES ('20130921152152');
+
+INSERT INTO schema_migrations (version) VALUES ('20131011123214');
+
+INSERT INTO schema_migrations (version) VALUES ('20131011123215');

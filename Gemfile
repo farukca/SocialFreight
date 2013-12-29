@@ -1,23 +1,20 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.14'
+gem 'rails', '4.0.0'
 
 # Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
+# gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-gem 'activerecord-postgres-hstore'
-#gem 'gmaps4rails'
 
-# Gems used only for assets and not required in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
-  gem 'eco'
-end
+# Gems used only for assets and not required
+# in production environments by default.
+gem 'sass-rails',   '~> 4.0.0'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'uglifier', '>= 1.3.0'
+gem 'eco'
 
-gem 'simple_form', '~> 2.0'
+gem 'simple_form', '~> 3.0.0'
 gem 'client_side_validations', '~> 3.2.0'
 gem 'client_side_validations-simple_form', '~> 2.0.0'
 
@@ -27,7 +24,7 @@ gem 'table_for_collection'
 gem 'mobile-fu'
 
 #gem 'rails3-jquery-autocomplete'
-gem 'kaminari', '~> 0.13.0'
+gem 'kaminari', '~> 0.14.1'
 #gem 'friendly_id', '~> 4.0.9'
 #gem 'socialization'
 gem 'twitter-text'
@@ -64,7 +61,7 @@ gem 'unicorn'
 #gem 'thin'
 
 # Deploy with Capistrano
-gem 'capistrano'
+gem 'capistrano', '~> 3.0.0'
 #gem 'capistrano-rbenv'
 
 gem 'arsiv', path: "../arsiv"
@@ -82,6 +79,7 @@ gem 'nimbos', path: "../nimbos"
 gem 'personal', path: "../personal"
 gem 'roster', path: "../roster"
 gem 'surveyor', path: "../surveyor"
+gem 'messenger', path: "../messenger"
 
 group :test do
   # Pretty printed test output

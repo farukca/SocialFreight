@@ -14,6 +14,7 @@
 //= require logistics/loadings
 //= require logistics/transports
 //= require nimbos/comments
+//= require nimbos/todolists
 //= require nimbos/templates/tasks/tasks.jst.eco
 //= require nimbos/templates/comments/form.jst.eco
 //= require home

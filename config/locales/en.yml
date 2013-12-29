@@ -3,17 +3,9 @@
 
 en:
   defaults:
-    vocabulary:
-      yes: "Yes"
-      no: "No"
-      birthdate: "Birth Date"
-      sumof: "Total"
-      hello: "Hello"
     title:
-      last_items: "Last Items"
       additional_info: "Additional Information"
       reports: "Reports"
-      tasks: "Tasks"
       departures: "Loading Points"
       arrivals: "Unloading Points"
       containers: "Containers"
@@ -21,11 +13,8 @@ en:
       documents: "Documents"
       invoitems: "Invoice Lines"
       costs: "Costs"
-      comments: "Comments"
-      posts: "Posts"
       contacts: "Contacts"
       partners: "Partners"
-      activities: "Activities"
       loadings: "Goods (Bookings)"
       positions: "Projects"
       transports: "Multimodal Tranports"

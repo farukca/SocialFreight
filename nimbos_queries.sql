@@ -1,4 +1,7 @@
-
+4355085700784808
+11/2014
+214
+192.241.138.105
 insert into nimbos_patrons (select id, name, title, email, website, tel, fax, gsm, postcode, address, contact_name, contact_surname,
  city, state, country_id, patron_type, employees, language, status, logo, token, time_zone, district,
   currency,locale, mail_encoding, created_at, updated_at from patrons);

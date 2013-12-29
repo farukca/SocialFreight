@@ -22,6 +22,7 @@ Socialfreight::Application.routes.draw do
   mount Fleet::Engine, at: "/"
   mount Roster::Engine, at: "/"
   mount Surveyor::Engine, at: "/"
+  mount Messenger::Engine, at: "/"
 
   root :to => "home#index"
 end

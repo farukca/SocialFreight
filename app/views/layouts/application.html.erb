@@ -16,17 +16,17 @@
   <div class="container-fluid" style="margin-top:20px">
     <%#= render 'layouts/navigator' %>
     <div id="wrapper" class="row-fluid">
-      <div id="messages" class="row-fluid">
-        <% flash.each do |name, msg| %>
-          <a class="close" data-dismiss="alert" href="#">&times;</a>
-          <%= content_tag :div, msg, :id => "flash_#{name}", class: "alert alert-#{name}" %>
-        <% end %>
-      </div>
       <div class="row-fluid">
         <div id="sidebarCell" class="span2 sidebarCell hidden-phone">
           <%= render :partial => 'shared/sidebar' %>
         </div>
         <div id="bodyCell" class="span10 oRight">
+          <div id="messages" class="row-fluid">
+            <% flash.each do |name, msg| %>
+              <a class="close" data-dismiss="alert" href="#">&times;</a>
+              <%= content_tag :div, msg, :id => "flash_#{name}", class: "alert alert-#{name}" %>
+            <% end %>
+          </div>
           <%= yield %>
         </div>
       </div>

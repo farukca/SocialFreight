@@ -60,7 +60,7 @@ jQuery ->
           if $.isFunction(callback)
             callback data[0] 
 
-  $("#post_related_user_ids").select2
+  $(".multiple_selects").select2
     placeholder: "Mail ile bilgilendirilecek kullanıcıları seçiniz"
     minimumInputLength: 2
     width: "100%"
@@ -89,8 +89,7 @@ jQuery ->
       tokenLimit: 1
       prePopulate: el.data("pre")
       preventDuplicates: true
-
-  $("a[data-toggle=modal]").click ->
+  $(document).on "click", "a[data-toggle=modal]", (event) ->
     target = $(this).attr('data-target')
     url = $(this).attr('href')
     $(target).load(url)

@@ -3,17 +3,9 @@
 
 tr:
   defaults:
-    vocabulary:
-      yes: "Evet"
-      no: "Hayır"
-      birthdate: "Doğum Tarihi"
-      sumof: "Toplam"
-      hello: "Merhaba"
     title:
-      last_items: "Son İşlemler"
       additional_info: "Ek Bilgiler"
       reports: "Raporlar"
-      tasks: "Görevler"
       departures: "Yükleme Noktaları"
       arrivals: "Boşaltma Noktaları"
       containers: "Konteyner Bilgileri"
@@ -21,11 +13,8 @@ tr:
       documents: "Doküman Bilgileri"
       invoitems: "Fatura Kalem Bilgileri"
       costs: "Masraf Bilgileri"
-      comments: "Yorumlar"
-      posts: "Bildirimler"
       contacts: "Kontak Bilgileri"
       partners: "İş Ortakları"
-      activities: "Aktiviteler"
       loadings: "Yükler"
       positions: "Pozisyonlar"
       transports: "Multimodal Taşımalar"
