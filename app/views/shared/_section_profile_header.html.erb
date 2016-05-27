@@ -4,11 +4,11 @@
     <span class="sub-link">
       <%#= link_to t("defaults.link.new_#{object.class.to_s.downcase}"), new_record_path(object.class.to_s.downcase), class: "btn btn-small btn-info" %>
       
-      <%= link_to t("defaults.link.edit_#{object.class.to_s.downcase}"), edit_record_path(object), class: "btn btn-small btn-info" %>
+      <%= link_to t("simple_form.helpers.defaults.edit_#{object.class.to_s.downcase}"), edit_record_path(object), class: "btn btn-small btn-info" %>
     </span>
     <span class="help-link">
       <%= link_to "#" do %><%= "#{object.class.name.humanize.pluralize} Help" %>
-        <i class="icon-question-sign"></i>
+        <i class="fa fa-question-sign"></i>
       <% end %>
     </span>
   </h5>

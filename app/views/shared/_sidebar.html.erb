@@ -22,28 +22,28 @@
   <div id="createBtn" class="row-fluid sidebarMenu">
     <div class="btn-toolbar" style="margin-top:20px;">
       <div class="btn-group">
-        <a class="btn btn-success btn-block dropdown-toggle" href="#" data-toggle="dropdown"><i class="icon-plus-sign icon-white"></i><%= t("defaults.link.new_record") %><i class="icon-chevron-down icon-white"></i></a>
+        <a class="btn btn-success btn-block dropdown-toggle" href="#" data-toggle="dropdown"><i class="fa fa-plus-sign fa-white"></i><%= t("defaults.link.new_record") %><i class="fa fa-chevron-down fa-white"></i></a>
         <ul class="dropdown-menu">
           <li>
             <%#= link_to reservation_path(:load_info, :operation => current_operation) do %>
             <%= link_to assetim.new_ware_path do %>
-              <i class="icon-loading"></i> <%= t("defaults.link.new_ware") %>
+              <i class="fa fa-loading"></i> <%= t("defaults.link.new_ware") %>
             <% end%>
           </li>
           <li>
             <%= link_to helpdesk.new_ticket_path do %>
-              <i class="icon-cog"></i> <%= t("defaults.link.new_ticket") %>
+              <i class="fa fa-cog"></i> <%= t("defaults.link.new_ticket") %>
             <% end%>
           </li>
           <li class="divider"/>
           <li>
             <%= link_to network.new_company_path do %>
-              <i class="icon-company"></i> <%= t("defaults.link.new_company") %>
+              <i class="fa fa-company"></i> <%= t("defaults.link.new_company") %>
             <% end %>
           </li>
           <li>
             <%= link_to network.new_contact_path do %>
-              <i class="icon-list-alt"></i> <%= t("defaults.link.new_contact") %>
+              <i class="fa fa-list-alt"></i> <%= t("defaults.link.new_contact") %>
             <% end %>
           </li>
         </ul>
@@ -59,18 +59,8 @@
   <hr/> 
   <div class="row-fluid">
     <%#= link_to main_app.junks_path, class: "btn btn-info btn-block" do %>
-      <!--i class="icon-white icon-trash"></i--><%#= t("junks.title.junks") %>
+      <!--i class="fa-white fa-trash"></i--><%#= t("junks.title.junks") %>
     <%# end %>
   </div>
   <div id="newAgileRecord" class="modal fade"></div>
 </div>
-
-<style type="text/css">
-.sidebar_div {
-    border: 1px solid #E0E0E0;
-    background-color: #E0E0E0;
-    background-repeat: no-repeat;
-    -moz-box-shadow: 0 0 10px 10px #E0E0E0;
-    -webkit-box-shadow: 0 0 10px 10px#E0E0E0;
-    box-shadow: 0 0 10px 10px #E0E0E0;
-</style>
